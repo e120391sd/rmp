@@ -726,7 +726,7 @@
     function xm(t) {
         return typeof t == "object" && t !== null ? t : {}
     }
-    var ZT = ["allowfullscreen", "allowpaymentrequest", "async", "autofocus", "autoplay", "checked", "controls", "default", "defer", "disabled", "formnovalidate", "hidden", "inert", "ismap", "loop", "multiple", "muted", "nomodule", "novalidate", "open", "playsinline", "readonly", "required", "reversed", "selected"],
+    var ZT = ["mod", "allowfullscreen", "allowpaymentrequest", "async", "autofocus", "autoplay", "checked", "controls", "default", "defer", "disabled", "formnovalidate", "hidden", "inert", "ismap", "loop", "multiple", "muted", "nomodule", "novalidate", "open", "playsinline", "readonly", "required", "reversed", "selected"],
         JT = new Set([...ZT]);
 
     function di(t, e, n) {
@@ -2041,7 +2041,8 @@ void main() {
         markOwnRevs: () => markOwnRevs,
         autocleanse: () => autocleanse,
         hideBots: () => hideBots,
-        revOnSelect : () => revOnSelect
+        revOnSelect : () => revOnSelect,
+        neverExcludeItems: () => alwaysPickup
     });
     var l1 = {};
     Kn(l1, {
@@ -2192,7 +2193,8 @@ void main() {
         markOwnRevs: () => markOwnRevs,
         autocleanse: () => autocleanse,
         hideBots: () => hideBots,
-        revOnSelect : () => revOnSelect
+        revOnSelect : () => revOnSelect,
+        neverExcludeItems: () => alwaysPickup
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2341,7 +2343,8 @@ void main() {
         markOwnRevs = ne(true),
         autocleanse = ne(false),
         hideBots = ne(false),
-        revOnSelect = ne(false);
+        revOnSelect = ne(false),
+        alwaysPickup = ne("Purum");
     var a1;
     a1 = {
         ...l1
@@ -9761,7 +9764,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             dead: [.6, .6, .6]
         },
         vr = t => {
-            if (I && I.player) {
+            if (I && I.player) { // pick up item pickup loot
                 let e = Mt.clientPlayerChangeTarget.packData({
                     target: t
                 });
@@ -15136,7 +15139,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function eF(t) {
-        console.log(t)
         let e, n = t[76].name + "",
             o, i, s, r;
 
@@ -15552,8 +15554,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        console.log(fe)
-        let revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, C
+        let alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
             props: {
                 store: hideBots
@@ -15584,6 +15585,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }
         }), {
             c() {
+                alwaysPickupElement = h("div"), alwaysPickupElement.textContent = `Never exclude items`, alwaysPickupValue = h("input"),
                 hideBotsElement = h("div"), hideBotsElement.textContent = `Hide non-partied player names`, K(hideBotsValue.$$.fragment),
                 revOnSelectElement = h("div"), revOnSelectElement.textContent = `Revitalize on select`, K(revOnSelectValue.$$.fragment),
                 radElement = h("div"), radElement.textContent = `Show on minimap`, K(radValue.$$.fragment),
@@ -15592,24 +15594,30 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 markOwnRevsElement = h("div"), markOwnRevsElement.textContent = `Highlight own revitalize`, K(markOwnRevsValue.$$.fragment),
                 autocleanseElement = h("div"), autocleanseElement.textContent = `Auto cleanse CC`, K(autocleanseValue.$$.fragment),
                 radCategory = h("div"), radCategory.textContent = `Rare Mob Notifier`, shamanCategory = h("div"), shamanCategory.textContent = `Shaman Mods`, generalCategory = h("div"), generalCategory.textContent = `General`,
-                subRevUnfriendly = h("div"), subRevUnfriendly.textContent = `Only enable during gloom`, subAutocleanse = h("div"), subAutocleanse.textContent = `Has a small random delay, but don't blame me if you get banned for this lol it's just here for fun`,
+                subRevUnfriendly = h("div"), subRevUnfriendly.textContent = `Only enable during gloom`, subAutocleanse = h("div"), subAutocleanse.textContent = `Has a small random delay, but don't blame me if you get banned for this lol it's just here for fun`, subNeverExcludeItems = h("div"), subNeverExcludeItems.textContent = `Does not change pet behavior`,
                 seperator1 = h("div"), seperator2 = h("div"), seperator3 = h("div"), seperator4 = h("div"), seperator5 = h("div"),
-                p(subRevUnfriendly, "class", "textgrey"), p(subAutocleanse, "class", "textgrey")
-                p(radCategory, "class", "textprimary"), p(shamanCategory, "class", "textprimary"), p(generalCategory, "class", "textprimary")
+                p(subRevUnfriendly, "class", "textgrey"), p(subAutocleanse, "class", "textgrey"), p(subNeverExcludeItems, "class", "textgrey"),
+                p(radCategory, "class", "textprimary"), p(shamanCategory, "class", "textprimary"), p(generalCategory, "class", "textprimary"),
+                p(alwaysPickupValue, "type", "text")
             },
             m(M, D) {
-                w(M, generalCategory, D), w(M, seperator5, D)
+                w(M, generalCategory, D), w(M, seperator5, D),
+                w(M, alwaysPickupElement, D), w(M, alwaysPickupValue, D), We(alwaysPickupValue, t[70]), d(alwaysPickupElement, subNeverExcludeItems)
                 w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
                 w(M, radCategory, D), w(M, seperator1, D)
                 w(M, radElement, D), Q(radValue, M, D),
                 w(M, radSoundElement, D), Q(radSoundValue, M, D),
                 w(M, shamanCategory, D), w(M, seperator2, D)
                 w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D),
-                w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(M, subRevUnfriendly, D), w(M, seperator3, D),
+                w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, subRevUnfriendly),
                 w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
-                w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(M, subAutocleanse, D), w(M, seperator4, D), C = !0
+                w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, subAutocleanse), C = !0
+
+                H(alwaysPickupValue, "input", t[69]), H(alwaysPickupValue, "change", t[34])
             },
-            p: ae,
+            p(te,ae) {
+                ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70])
+            },
             i(M) {
                 C || (S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), C = !0)
             },
@@ -15617,7 +15625,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), C = !1
             },
             d(M) {
-                M && (x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M)
+                M && (x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M)
             }
         }
     }
@@ -15701,8 +15709,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function CV(t, e, n) {
-        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W;
-        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re));
+        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, apt;
+        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re)), re(t, alwaysPickup, Re => n(32, apt = Re));
         let R = [{
                 id: "ui",
                 name: P.ui.settings.interface
@@ -15904,9 +15912,12 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         function at() {
             W = Gt(this.value), er.set(W)
         }
+        function setAlwaysPickup() {
+            apt = this.value, alwaysPickup.set(apt)
+        }
         return [Ji, N, ge, se, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, Y, Ce, ve, _e, be, Te, ie, Ie, ee, qe, Ge, Qe, He, he, ce, $e, oe, J, O, ue, je, Ue, ke, ze, Oe, dt, Ft, Ze, Ct, xe, Je, kt, At, De, at, () => {
             Xe(el, o = !1, o), ge && window.location.reload()
-        }]
+        },setAlwaysPickup, apt,]
     }
     var dv = class extends Fe {
             constructor(e) {
@@ -17603,7 +17614,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 filter: !t[9] || (!t[44].temp || t[44].temp.getStashTime() > t[4] || "") || t[6].includes(t[44]) ? !0 : ""
             }
         }), e.$on("click", function() {
-            console.log(e)
             Ni(t[6].includes(t[44]) ? void 0 : t[20]) && (t[6].includes(t[44]) ? void 0 : t[20]).apply(this, arguments)
         }), {
             c() {
@@ -27389,12 +27399,14 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }
         },
         TA = (t, e) => {
+            if(e.find(i => i.id === t.id)) return
             it(t.hudPos, t.visualPosition || t.pos), vl(t.hudPos, t.hudPos) && t.hudPos[2] < .997 && e.push(t)
         },
         EA = t => {
             let e = [];
             I.entities.array.forEach(i => {
-                i.type !== 3 || !i.visual.transform.visible || i.quality < (i.droptype === "material" ? fe.materialQualityFilter : fe.itemQualityFilter) || j2.includes(i.droptype) || TA(i, e)
+                if(i.type === 3 && fe.neverExcludeItems.toLowerCase().replace(/\s/g, "").split(",").includes(i.name.toLowerCase().replace(/\s/g, ""))) TA(i,e)
+                i.type !== 3 || !i.visual.transform.visible || i.quality < (i.droptype === "material" ? fe.materialQualityFilter : fe.itemQualityFilter) || ( j2.includes(i.droptype) ) || TA(i, e)
             }), Tc.forEach(i => {
                 i.uiTimeout < I.time ? Tc.delete(i) : TA(i, e)
             }), e = e.sort((i, s) => s.id - i.id);
