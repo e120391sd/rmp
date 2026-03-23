@@ -19,6 +19,9 @@
                 {name:"Undead Necromancer",id:2,type:"pet"},
                 {name:"Nightshade",id:5,type:"pet"},
             ]
+    document.createElement('style');
+    style.textContent = `.slot.glow { border: 4px solid #60b64d !important; }`;
+    document.head.appendChild(style);
     var NT = Object.defineProperty;
     var Kn = (t, e) => {
         for (var n in e) NT(t, n, {
@@ -17600,6 +17603,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 filter: !t[9] || (!t[44].temp || t[44].temp.getStashTime() > t[4] || "") || t[6].includes(t[44]) ? !0 : ""
             }
         }), e.$on("click", function() {
+            console.log(e)
             Ni(t[6].includes(t[44]) ? void 0 : t[20]) && (t[6].includes(t[44]) ? void 0 : t[20]).apply(this, arguments)
         }), {
             c() {
