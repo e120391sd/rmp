@@ -11,7 +11,6 @@
                 {name:"Moonhowler",id:23,type:"mount"},
                 {name:"Silkrunner",id:24,type:"mount"},
                 {name:"Shimmerbranch",id:25,type:"mount"},
-
                 {name:"Coal Golem",id:3,type:"pet"},
                 {name:"Bandit Leader",id:7,type:"pet"},
                 {name:"Pirate Captain",id:4,type:"pet"},
