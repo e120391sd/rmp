@@ -15589,7 +15589,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 hideBotsElement = h("div"), hideBotsElement.textContent = `Hide non-partied player names`, K(hideBotsValue.$$.fragment),
                 revOnSelectElement = h("div"), revOnSelectElement.textContent = `Revitalize on select`, K(revOnSelectValue.$$.fragment),
                 radElement = h("div"), radElement.textContent = `Show on minimap`, K(radValue.$$.fragment),
-                radSoundElement = h("div"), radSoundElement.textContent = `Play sound`, K(radSoundValue.$$.fragment),
+                radSoundElement = h("div"), radSoundElement.textContent = `Play sound when nearby`, K(radSoundValue.$$.fragment),
                 revUnfriendlyElement = h("div"), revUnfriendlyElement.textContent = `Next friendly ignore faction`, K(revUnfriendlyValue.$$.fragment),
                 markOwnRevsElement = h("div"), markOwnRevsElement.textContent = `Highlight own revitalize`, K(markOwnRevsValue.$$.fragment),
                 autocleanseElement = h("div"), autocleanseElement.textContent = `Auto cleanse CC`, K(autocleanseValue.$$.fragment),
