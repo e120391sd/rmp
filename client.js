@@ -19,7 +19,7 @@
                 {name:"Undead Necromancer",id:2,type:"pet"},
                 {name:"Nightshade",id:5,type:"pet"},
             ]
-    document.createElement('style');
+    let style = document.createElement('style');
     style.textContent = `.slot.glow { border: 4px solid #60b64d !important; }`;
     document.head.appendChild(style);
     var NT = Object.defineProperty;
