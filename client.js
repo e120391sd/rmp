@@ -1,7 +1,7 @@
 (() => {
     let rareMobs = [
                 {name:"Ghost",id:15,type:"mount"},
-                {name:"Mature Grub",id:16,type:"mount"},
+                {name:"Keiler",id:16,type:"mount"},
                 {name:"Mireshell",id:17,type:"mount"},
                 {name:"Desert Scarab",id:18,type:"mount"},
                 {name:"Glimworm",id:19,type:"mount"},
