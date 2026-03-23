@@ -29814,7 +29814,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             addEntity(e) {
                 for(let mob of rareMobs) {
                     if(e.name === mob.name) {
-                        jt("gm", `${e.name} has been found nearby!`, false)
+                        jt("gm", `${e.name} has been found nearby!`, true)
                         wt(97)
                     }
                 }
