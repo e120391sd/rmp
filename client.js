@@ -26022,7 +26022,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             if (vn === void 0 || vn.suspended) return;
             let n = vn.currentTime,
                 o = Qf.get(I.getAreaId(Qt.position[0], Qt.position[2])),
-                s = t > .5 ? o.ambientnight : o.ambientnight,
+                s = t > .5 ? o.ambientnight : o.ambientday,
                 r = 5;
             e > 0 && (s = 167, r = .5), Z8(Sz, n, r, s, !1), Z8(Pz, n, 5, o.music, !0)
         },
