@@ -7658,8 +7658,8 @@ void main() {
     var Lx = () => {
             Eo.font = "bold 18px hordes", Eo.fillText("Hordes", 0, 0)
         },
-        pr = async(t, e, n = 1, o = 1, i = 1, s = 1, r = 0, l = 0, a = .5, c = .5) => {
-            Eo.globalAlpha = 1;
+        pr = (t, e, n = 1, o = 1, i = 1, s = 1, r = 0, l = 0, a = .5, c = .5) => {
+            Eo.globalAlpha = fe.nameplateShowTransparency ? n : 1;
             let f = t.width * o,
                 u = t.height * o,
                 m = Math.round(f * i),
@@ -15393,7 +15393,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         }
     }
 
-    function xV(t) { // controls
+    function xV(t) {
         let e, n, o, i = P.ui.settings.mousesensitivity + "",
             s, r, l, a = t[11].toFixed(2) + "",
             c, f, u, m, g, v, _, b, k, y, F, A, C, M = P.ui.settings.skillbarslots + "",
@@ -15424,9 +15424,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         for (let he = 0; he < Qe.length; he += 1) He[he] = nF(Z6(t, Qe, he));
         return {
             c() {
-                e = h("div"), e.textContent = `${P.ui.settings.camera}`, n = h("div"), o = h("div"), s = T(i), r = Ne(), l = h("span"), c = T(a), f = h("input"), u = h("div"), u.textContent = `${P.ui.settings.invertmousex}`, K(m.$$.fragment), g = h("div"), g.textContent = `${P.ui.settings.invertmousey}`, K(v.$$.fragment), _ = h("div"), _.textContent = ``, K(b.$$.fragment), k = h("div"), k.textContent = `${P.ui.settings.pointerlock}`, K(y.$$.fragment), F = h("div"), F.textContent = `${P.ui.settings.skillbar}`, A = h("div"), C = h("div"), D = T(M), U = Ne(), V = h("span"), B = T(t[12]), q = h("br"), L = h("small"), L.textContent = `${P.ui.settings.reload}`, $ = h("input"), W = h("div"), W.textContent = "Targeting", R = h("div"), N = h("div"), N.textContent = "Target Next Friendly: Allow Non-Partied", K(Y.$$.fragment), ge = h("div"), Ce = T("Target Next Friendly: Cycle Size "), ve = h("span"), se = T(t[13]), le = h("input"), _e = h("div"), _e.textContent = `${P.ui.settings.keybindings}`, be = h("div"), Te = h("small"), Te.textContent = `${P.ui.settings.reload}`, ie = h("small"), ie.textContent = `${P.ui.settings.bindingreset}`;
+                e = h("div"), e.textContent = `${P.ui.settings.camera}`, n = h("div"), o = h("div"), s = T(i), r = Ne(), l = h("span"), c = T(a), f = h("input"), u = h("div"), u.textContent = `${P.ui.settings.invertmousex}`, K(m.$$.fragment), g = h("div"), g.textContent = `${P.ui.settings.invertmousey}`, K(v.$$.fragment), _ = h("div"), _.textContent = `${P.ui.settings.lockedcamera}`, K(b.$$.fragment), k = h("div"), k.textContent = `${P.ui.settings.pointerlock}`, K(y.$$.fragment), F = h("div"), F.textContent = `${P.ui.settings.skillbar}`, A = h("div"), C = h("div"), D = T(M), U = Ne(), V = h("span"), B = T(t[12]), q = h("br"), L = h("small"), L.textContent = `${P.ui.settings.reload}`, $ = h("input"), W = h("div"), W.textContent = "Targeting", R = h("div"), N = h("div"), N.textContent = "Target Next Friendly: Allow Non-Partied", K(Y.$$.fragment), ge = h("div"), Ce = T("Target Next Friendly: Cycle Size "), ve = h("span"), se = T(t[13]), le = h("input"), _e = h("div"), _e.textContent = `${P.ui.settings.keybindings}`, be = h("div"), Te = h("small"), Te.textContent = `${P.ui.settings.reload}`, ie = h("small"), ie.textContent = `${P.ui.settings.bindingreset}`;
                 for (let he = 0; he < He.length; he += 1) He[he].c();
-                Ie = de(), p(e, "class", "textprimary"), p(l, "class", "textgrey"), p(f, "type", "range"), p(f, "step", "0.05"), p(f, "min", "0.1"), p(f, "max", "3"), p(F, "class", "textprimary"), p(V, "class", "textgrey"), p(L, "class", "textgrey"), p($, "type", "range"), p($, "min", "10"), p($, "max", "24"), p(W, "class", "textprimary"), p(ve, "class", "textgrey"), p(le, "type", "range"), p(le, "min", "1"), p(le, "max", "15"), p(_e, "class", "textprimary"), p(Te, "class", "textgrey"), p(ie, "class", "textprimary")
+                Ie = de(), p(e, "class", "textprimary"), p(l, "class", "textgrey"), p(f, "type", "range"), p(f, "step", "0.05"), p(f, "min", "0.1"), p(f, "max", "3"), p(F, "class", "textprimary"), p(V, "class", "textgrey"), p(L, "class", "textgrey"), p($, "type", "range"), p($, "min", "10"), p($, "max", "24"), p(W, "class", "textprimary"), p(ve, "class", "textgrey"), p(le, "type", "range"), p(le, "min", "1"), p(le, "max", "10"), p(_e, "class", "textprimary"), p(Te, "class", "textgrey"), p(ie, "class", "textprimary")
             },
             m(he, ce) {
                 w(he, e, ce), w(he, n, ce), w(he, o, ce), d(o, s), d(o, r), d(o, l), d(l, c), w(he, f, ce), We(f, t[11]), w(he, u, ce), Q(m, he, ce), w(he, g, ce), Q(v, he, ce), w(he, _, ce), Q(b, he, ce), w(he, k, ce), Q(y, he, ce), w(he, F, ce), w(he, A, ce), w(he, C, ce), d(C, D), d(C, U), d(C, V), d(V, B), d(C, q), d(C, L), w(he, $, ce), We($, t[12]), w(he, W, ce), w(he, R, ce), w(he, N, ce), Q(Y, he, ce), w(he, ge, ce), d(ge, Ce), d(ge, ve), d(ve, se), w(he, le, ce), We(le, t[13]), w(he, _e, ce), w(he, be, ce), w(he, Te, ce), w(he, ie, ce);
@@ -29786,7 +29786,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 _ = u,
                 b = m,
                 k = g;
-            this.hasMovementOverride() ? (this.buffMovementOverride(e, n, o), f = this.steer[0], u = this.steer[1], m = this.jump, g = this.rot) : (f = (nt.left.down ? 1 : 0) + (nt.right.down ? -1 : 0), u = (nt.fwd.down || nt.lmb.down && nt.rmb.down ? 1 : 0) + (nt.back.down ? -1 : 0), m = nt.jump.down ? 1 : 0, g = fe.false && nt.lmb.down || nt.rmb.down || nt.turnleft.down || nt.turnright.down ? so[0] : this.rot), (f !== v || u !== _) && (s = f !== v, r = u !== _, this.setSteer(f, u)), m !== b && (this.setJump(m), a = !0);
+            this.hasMovementOverride() ? (this.buffMovementOverride(e, n, o), f = this.steer[0], u = this.steer[1], m = this.jump, g = this.rot) : (f = (nt.left.down ? 1 : 0) + (nt.right.down ? -1 : 0), u = (nt.fwd.down || nt.lmb.down && nt.rmb.down ? 1 : 0) + (nt.back.down ? -1 : 0), m = nt.jump.down ? 1 : 0, g = fe.lockedcamera && nt.lmb.down || nt.rmb.down || nt.turnleft.down || nt.turnright.down ? so[0] : this.rot), (f !== v || u !== _) && (s = f !== v, r = u !== _, this.setSteer(f, u)), m !== b && (this.setJump(m), a = !0);
             let y = hl(g, this.lastNetRot);
             this.inputTicksSinceLastRotUpdate++, g !== k && this.setRot(g), g !== this.lastNetRot && ((this.steer[0] !== 0 || this.steer[1] !== 0) && Math.abs(y) > .1 || this.inputTicksSinceLastRotUpdate > 10 || r || s || Math.abs(y) > .2) && (this.lastNetRot = k, i = !0);
             let F = this.getStatBasedMoveSpeed();
@@ -29881,7 +29881,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             this.updateCharPanel(), this.updatePartyInfo(n), super.postDelta(e, n, o), this.handleCamera(e), this.secondlyUpdates.done(n) && this.handleAreaCheck(o), this.heartBeatTimer.done(n) && this.handleHeartBeat(n)
         }
         updateTransformRotation(e) {
-            this.stats.alive && this.buffs.visualFreeze === 0 && (this.updateMountRotation(e), this.buffs.movementOverride.size || !nt.rmb.down && !(fe.false && nt.lmb.down) ? this.visual.transform.rotation[1] = this.rot : this.visual.transform.rotation[1] = so[0], this.visual.transform.rotation[1] += this.mountRotAdd)
+            this.stats.alive && this.buffs.visualFreeze === 0 && (this.updateMountRotation(e), this.buffs.movementOverride.size || !nt.rmb.down && !(fe.lockedcamera && nt.lmb.down) ? this.visual.transform.rotation[1] = this.rot : this.visual.transform.rotation[1] = so[0], this.visual.transform.rotation[1] += this.mountRotAdd)
         }
         setLevel(e) {
             super.setLevel(e), this.uiFrameDirty = !0
