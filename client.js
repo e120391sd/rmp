@@ -2043,7 +2043,8 @@ void main() {
         hideBots: () => hideBots,
         revOnSelect : () => revOnSelect,
         neverExcludeItems: () => alwaysPickup,
-        disallowSpecialSelling: () => disallowSpecialSelling
+        disallowSpecialSelling: () => disallowSpecialSelling,
+        losTarget: () => losTarget
     });
     var l1 = {};
     Kn(l1, {
@@ -2196,7 +2197,8 @@ void main() {
         hideBots: () => hideBots,
         revOnSelect : () => revOnSelect,
         neverExcludeItems: () => alwaysPickup,
-        disallowSpecialSelling: () => disallowSpecialSelling
+        disallowSpecialSelling: () => disallowSpecialSelling,
+        losTarget: () => losTarget
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2347,7 +2349,8 @@ void main() {
         hideBots = ne(false),
         revOnSelect = ne(false),
         alwaysPickup = ne("Purum"),
-        disallowSpecialSelling = ne(true);
+        disallowSpecialSelling = ne(true),
+        losTarget = ne(true);
     var a1;
     a1 = {
         ...l1
@@ -7518,7 +7521,7 @@ void main() {
             }, r, `${l} ${en(i,s)}?`)
         },
         iu = (t, e, n, o, i) => {
-            if((o === "charm" || (o === mount && e>0)) && fe.disallowSpecialSelling) return // disallow charm & mount selling
+            if((o === "charm" || (o === "mount" && e>0) || e>0) && fe.disallowSpecialSelling) return // disallow charm & mount selling
             Tx("itemtradersell", t, e, n, o, i, "Sell item", "Really sell")
         },
         lg = (t, e, n, o, i) => {
@@ -9893,6 +9896,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         Pd = [],
         rc = 0,
         Hg = t => {
+            let raycastHitGeometry = (targetpos,originpos) => {
+                    let vector = [targetpos[0] - originpos[0], targetpos[1] - originpos[1], targetpos[2] - originpos[2]]
+                    let vectorInverse = [1 / vector[0], 1 / vector[1], 1 / vector[2]];
+                    let editedOrigin = [originpos[0],originpos[1]+1,originpos[2]]
+                    let hits = I.triangleGrid.queryRay(editedOrigin, vector, vectorInverse);
+                    return hits.length > 0
+            }
             if (I.player) {
                 if (rc === 1) {
                     let e = 0,
@@ -9907,7 +9917,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 } else if (rc === 2) {
                     let e = I.entities.type[0].filter(i => {
                         let isOppositeFaction = i.faction !== I.player.faction && !fe.revUnfriendly
-                        return !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? !1 : i.stats && i.stats.alive && !isOppositeFaction && $r(i.pos, I.player.pos) < 30
+                        let isOutOfLineOfSight = raycastHitGeometry(i.pos, I.player.pos) && fe.losTarget
+                        return !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? !1 : i.stats && i.stats.alive && !isOppositeFaction && $r(i.pos, I.player.pos) < 30 && !isOutOfLineOfSight
                     }).sort((i, s) => {
                             let r = Zt.has(i.name),
                                 l = Zt.has(s.name);
@@ -15558,7 +15569,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        let seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
+        let losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
             props: {
                 store: hideBots
@@ -15591,15 +15602,20 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: disallowSpecialSelling
             }
+        }), losTargetValue = new Et({
+            props: {
+                store: losTarget
+            }
         }), {
             c() {
+                losTargetElement = h("div"), losTargetElement.textContent = `Target Next Friendly: Exclude LOS`, K(losTargetValue.$$.fragment),
                 alwaysPickupElement = h("div"), alwaysPickupElement.textContent = `Never filter items`, alwaysPickupValue = h("input"),
-                specialSellElement = h("div"), specialSellElement.textContent = `Block +(×) mount & charm vendor`, specialSellElement.style.color = "#ff4949", K(specialSellValue.$$.fragment),
+                specialSellElement = h("div"), specialSellElement.textContent = `Block +(×) item & charm vendor`, specialSellElement.style.color = "#ff4949", K(specialSellValue.$$.fragment),
                 hideBotsElement = h("div"), hideBotsElement.textContent = `Hide non-partied player names`, K(hideBotsValue.$$.fragment),
                 revOnSelectElement = h("div"), revOnSelectElement.textContent = `Revitalize on select`, K(revOnSelectValue.$$.fragment),
                 radElement = h("div"), radElement.textContent = `Show icon on minimap`, K(radValue.$$.fragment),
                 radSoundElement = h("div"), radSoundElement.textContent = `Play sound when nearby`, K(radSoundValue.$$.fragment),
-                revUnfriendlyElement = h("div"), revUnfriendlyElement.textContent = `Next friendly ignore faction`, K(revUnfriendlyValue.$$.fragment),
+                revUnfriendlyElement = h("div"), revUnfriendlyElement.textContent = `Target Next Friendly: Ignore faction`, K(revUnfriendlyValue.$$.fragment),
                 markOwnRevsElement = h("div"), markOwnRevsElement.textContent = `Highlight own revitalize`, K(markOwnRevsValue.$$.fragment),
                 autocleanseElement = h("div"), autocleanseElement.textContent = `Auto cleanse CC`, K(autocleanseValue.$$.fragment),
                 radCategory = h("div"), radCategory.textContent = `Rare Mob Notifier`, shamanCategory = h("div"), shamanCategory.textContent = `Shaman Mods`, generalCategory = h("div"), generalCategory.textContent = `Uncategorized`,
@@ -15615,9 +15631,10 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, radSoundElement, D), Q(radSoundValue, M, D),
                 w(M, shamanCategory, D), w(M, seperator3, D)
                 w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D),
-                w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, seperator4), d(revUnfriendlyElement, subRevUnfriendly),
                 w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
                 w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
+                w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, seperator4), d(revUnfriendlyElement, subRevUnfriendly),
+                w(M, losTargetElement, D), Q(losTargetValue, M, D),
                 w(M, generalCategory, D), w(M, seperator6, D),
                 w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
                 w(M, specialSellElement, D), Q(specialSellValue, M, D),
@@ -15630,13 +15647,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70])
             },
             i(M) {
-                C || (S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) {
-                E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) {
-                M && (x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M)
+                M && (x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M)
             }
         }
     }
