@@ -27495,7 +27495,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             let n = t.visual && t.visual.cDist;
             if (n > fe.nameplateViewRange) return;
             n ? n /= 70 : n = 0;
-            let o = t.party > 0 && t.party === I.player.party,
+            let o = false,
                 i = t.faction !== void 0 ? I.player.hostility(t) : 0,
                 s = I.player.clan,
                 r = I.player.level,
