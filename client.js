@@ -7515,6 +7515,7 @@ void main() {
             }, r, `${l} ${en(i,s)}?`)
         },
         iu = (t, e, n, o, i) => {
+            console.log(t,e,n,o,i)
             Tx("itemtradersell", t, e, n, o, i, "Sell item", "Really sell")
         },
         lg = (t, e, n, o, i) => {
@@ -15422,7 +15423,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             c() {
                 e = h("div"), e.textContent = `${P.ui.settings.camera}`, n = h("div"), o = h("div"), s = T(i), r = Ne(), l = h("span"), c = T(a), f = h("input"), u = h("div"), u.textContent = `${P.ui.settings.invertmousex}`, K(m.$$.fragment), g = h("div"), g.textContent = `${P.ui.settings.invertmousey}`, K(v.$$.fragment), _ = h("div"), _.textContent = ``, K(b.$$.fragment), k = h("div"), k.textContent = `${P.ui.settings.pointerlock}`, K(y.$$.fragment), F = h("div"), F.textContent = `${P.ui.settings.skillbar}`, A = h("div"), C = h("div"), D = T(M), U = Ne(), V = h("span"), B = T(t[12]), q = h("br"), L = h("small"), L.textContent = `${P.ui.settings.reload}`, $ = h("input"), W = h("div"), W.textContent = "Targeting", R = h("div"), N = h("div"), N.textContent = "Target Next Friendly: Allow Non-Partied", K(Y.$$.fragment), ge = h("div"), Ce = T("Target Next Friendly: Cycle Size "), ve = h("span"), se = T(t[13]), le = h("input"), _e = h("div"), _e.textContent = `${P.ui.settings.keybindings}`, be = h("div"), Te = h("small"), Te.textContent = `${P.ui.settings.reload}`, ie = h("small"), ie.textContent = `${P.ui.settings.bindingreset}`;
                 for (let he = 0; he < He.length; he += 1) He[he].c();
-                Ie = de(), p(e, "class", "textprimary"), p(l, "class", "textgrey"), p(f, "type", "range"), p(f, "step", "0.05"), p(f, "min", "0.1"), p(f, "max", "3"), p(F, "class", "textprimary"), p(V, "class", "textgrey"), p(L, "class", "textgrey"), p($, "type", "range"), p($, "min", "10"), p($, "max", "24"), p(W, "class", "textprimary"), p(ve, "class", "textgrey"), p(le, "type", "range"), p(le, "min", "1"), p(le, "max", "10"), p(_e, "class", "textprimary"), p(Te, "class", "textgrey"), p(ie, "class", "textprimary")
+                Ie = de(), p(e, "class", "textprimary"), p(l, "class", "textgrey"), p(f, "type", "range"), p(f, "step", "0.05"), p(f, "min", "0.1"), p(f, "max", "3"), p(F, "class", "textprimary"), p(V, "class", "textgrey"), p(L, "class", "textgrey"), p($, "type", "range"), p($, "min", "10"), p($, "max", "24"), p(W, "class", "textprimary"), p(ve, "class", "textgrey"), p(le, "type", "range"), p(le, "min", "1"), p(le, "max", "15"), p(_e, "class", "textprimary"), p(Te, "class", "textgrey"), p(ie, "class", "textprimary")
             },
             m(he, ce) {
                 w(he, e, ce), w(he, n, ce), w(he, o, ce), d(o, s), d(o, r), d(o, l), d(l, c), w(he, f, ce), We(f, t[11]), w(he, u, ce), Q(m, he, ce), w(he, g, ce), Q(v, he, ce), w(he, _, ce), Q(b, he, ce), w(he, k, ce), Q(y, he, ce), w(he, F, ce), w(he, A, ce), w(he, C, ce), d(C, D), d(C, U), d(C, V), d(V, B), d(C, q), d(C, L), w(he, $, ce), We($, t[12]), w(he, W, ce), w(he, R, ce), w(he, N, ce), Q(Y, he, ce), w(he, ge, ce), d(ge, Ce), d(ge, ve), d(ve, se), w(he, le, ce), We(le, t[13]), w(he, _e, ce), w(he, be, ce), w(he, Te, ce), w(he, ie, ce);
