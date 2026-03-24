@@ -15614,10 +15614,10 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, radElement, D), Q(radValue, M, D),
                 w(M, radSoundElement, D), Q(radSoundValue, M, D),
                 w(M, shamanCategory, D), w(M, seperator3, D)
-                //w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D),
+                w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D),
                 w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, seperator4), d(revUnfriendlyElement, subRevUnfriendly),
                 w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
-                //w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
+                w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
                 w(M, generalCategory, D), w(M, seperator6, D),
                 w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
                 w(M, specialSellElement, D), Q(specialSellValue, M, D),
@@ -29943,12 +29943,10 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             addEntity(e) {
                 for(let mob of rareMobs) {
                     if(e.name === mob.name && e.type == 1 && fe.radarSound) {
-                        jt("gm", `${e.name} has been found nearby!`, true)
-                        wt(97)
+                        jt("gm", `${e.name} has been found nearby!`, true);
+                        wt(97);
                     }
                 }
-                let hsl = I.entities.type[1].filter((i) => i.buffs.buffs.has(124))
-                //console.log(`Currently loaded entities with hellspawn buff: ${hsl.length} | [${hsl.map((i) => i.name).join(", ")}]`)
                 if (e === void 0 || e.type === void 0) {
                     console.log("Error: tried adding an entity of unknown type to the world");
                     return
