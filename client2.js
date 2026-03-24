@@ -20,7 +20,7 @@
                 {name:"Nightshade",id:5,type:"pet"},
             ]
     let style = document.createElement('style');
-    style.textContent = `.slot.glow { border: 4px solid #60b64d !important; }`;
+    style.textContent = `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`;
     document.head.appendChild(style);
     var NT = Object.defineProperty;
     var Kn = (t, e) => {
