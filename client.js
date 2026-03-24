@@ -29814,7 +29814,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
                 e !== this.class && (super.setClass(e), this.skin = nU[this.class])
                 O1.set(777,nightshade)
-                if(this.name === "coskek") this.skin = 777
+                if(this.name === "coskek") this.skin = 34
                 this.remakeTransform()
             }
             makeVisual(e, n) {
