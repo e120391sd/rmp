@@ -10928,7 +10928,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         breakOnCast: !0,
         icon: "ui/skills/36",
         fx: {
-            visual: 102,
+            visual: 34,
             apply: 76,
             endSound: 69
         },
