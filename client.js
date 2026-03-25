@@ -15647,9 +15647,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, radElement, D), Q(radValue, M, D),
                 w(M, radSoundElement, D), Q(radSoundValue, M, D),
                 w(M, shamanCategory, D), w(M, seperator3, D),
-                w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
                 w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
                 w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D)
+                w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
                 w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
                 w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, seperator4), d(revUnfriendlyElement, subRevUnfriendly),
                 w(M, losTargetElement, D), Q(losTargetValue, M, D),
