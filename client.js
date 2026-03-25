@@ -27536,7 +27536,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         },
         uB = (t, e, n) => e ? 4 : n === 0 ? fe.classColorBars && t.type === 0 ? 8 + t.class : 1 : I.player.canCombatInteract(t) ? n === 2 ? fe.classColorBars ? 8 + t.class : 5 : t.type === 1 && t.aggroMode === 0 ? 2 : 3 : 6,
         mB = (t, e) => {
-            console.log(fe.disableClantags,fe.hideBots,t.clan)
             let n = t.visual && t.visual.cDist;
             if (n > fe.nameplateViewRange) return;
             n ? n /= 70 : n = 0;
