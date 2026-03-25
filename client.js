@@ -10014,7 +10014,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 k = !0, y || (F = [H(l, "click", t[20]), H(l, "contextmenu", t[25])], y = !0)
             },
             p(L, $) {
-                Ve(e, "scale", Math.min(1.1,t.targetScale))
+                Ve(e, "scale", Math.min(1.25,t.targetScale))
                 L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
@@ -15647,9 +15647,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, radElement, D), Q(radValue, M, D),
                 w(M, radSoundElement, D), Q(radSoundValue, M, D),
                 w(M, shamanCategory, D), w(M, seperator3, D),
+                w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
                 w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
                 w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D)
-                w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
                 w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
                 w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, seperator4), d(revUnfriendlyElement, subRevUnfriendly),
                 w(M, losTargetElement, D), Q(losTargetValue, M, D),
@@ -27514,7 +27514,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 s = I.player.clan,
                 r = I.player.level,
                 l = t.id === zn,
-                a = t.id === I.playerId,
+                a = false, //t.id === I.playerId,
                 c = t.id === _n,
                 playerIsBot = t.party === 0 && fe.hideBots;
             if ((t.type !== 3 && t.stats) && !playerIsBot) {
@@ -30463,9 +30463,10 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             o === void 0 || DT.get(t)(o, e, n)
             let caster = e[0],
                 skillId = e[1],
+                castStart = e[2]
                 target = e[3],
-                question = e[4],
-                isSkill = e[5] // isSkill is tick?
+                casttimefinish = e[4],
+                isSkill = e[5]
 
                 caster = I.getEntityById(caster)
                 let targetableSkillIds = new Set([54, 51])
@@ -30478,7 +30479,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 })
             }
             
-            if(fe.targetEnabled && isSkill && targetableSkillIds.has(skillId)) { //iceblockthing
+            if(fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) { //iceblockthing
                 //if(caster.party === 0) return
                 let targ = I.getEntityById(target)
                 if(!targettedPlayers.get(target))targettedPlayers.set(target,[])
