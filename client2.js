@@ -22,6 +22,7 @@
     let style = document.createElement('style');
     style.textContent = `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`;
     document.head.appendChild(style);
+    let targettedPlayers = new Map()
     var NT = Object.defineProperty;
     var Kn = (t, e) => {
         for (var n in e) NT(t, n, {
@@ -2045,7 +2046,8 @@ void main() {
         neverExcludeItems: () => alwaysPickup,
         disallowSpecialSelling: () => disallowSpecialSelling,
         losTarget: () => losTarget,
-        timeSlider: () => timeSlider
+        timeSlider: () => timeSlider,
+        targetEnabled: () => targetEnabled
     });
     var l1 = {};
     Kn(l1, {
@@ -2200,7 +2202,8 @@ void main() {
         neverExcludeItems: () => alwaysPickup,
         disallowSpecialSelling: () => disallowSpecialSelling,
         losTarget: () => losTarget,
-        timeSlider: () => timeSlider
+        timeSlider: () => timeSlider,
+        targetEnabled: () => targetEnabled
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2353,7 +2356,8 @@ void main() {
         alwaysPickup = ne("Purum"),
         disallowSpecialSelling = ne(true),
         losTarget = ne(true),
-        timeSlider = ne(0);
+        timeSlider = ne(0),
+        targetEnabled = ne(true);
     var a1;
     a1 = {
         ...l1
@@ -10002,7 +10006,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             c() {
                 e = h("div"), n = h("div"), A && A.c(), o = h("img"), r = h("div"), l = h("div"), K(a.$$.fragment), C && C.c(), U.c(), f = de(), V && V.c(), u = h("div");
                 for (let L = 0; L < m.length; L += 1) m[L].c();
-                p(o, "class", i = "pclass icon border black bgc" + t[5].class + " svelte-g292qg"), st(o.src, s = (t[5].rarity !== !1 ? "/data/ui/mobpower/" + t[5].rarity : "/data/ui/classes/" + t[5].class) + "." + On + "?v=8822612") || p(o, "src", s), p(n, "class", "iconcontainer svelte-g292qg"), p(l, "class", c = "panel-black barsInner " + (t[5].id && t[5].range ? "targetable" : "") + " svelte-g292qg"), p(u, "class", v = "buffarray " + t[2] + " svelte-g292qg"), p(r, "class", _ = "bars " + (t[17] && t[5].id == t[17].id && t[2] == "party" ? "target" : "") + " svelte-g292qg"), p(e, "id", t[4]), p(e, "class", b = "grid " + (t[3] ? "right" : "left") + " svelte-g292qg"), Ve(e, "font-size", t[15] + "%"), Ve(e, "opacity", t[5].range ? "" : .6)
+                p(o, "class", i = "pclass icon border black bgc" + t[5].class + " svelte-g292qg"), st(o.src, s = (t[5].rarity !== !1 ? "/data/ui/mobpower/" + t[5].rarity : "/data/ui/classes/" + t[5].class) + "." + On + "?v=8822612") || p(o, "src", s), p(n, "class", "iconcontainer svelte-g292qg"), p(l, "class", c = "panel-black barsInner " + (t[5].id && t[5].range ? "targetable" : "") + " svelte-g292qg"), p(u, "class", v = "buffarray " + t[2] + " svelte-g292qg"), p(r, "class", _ = "bars " + (t[17] && t[5].id == t[17].id && t[2] == "party" ? "target" : "") + " svelte-g292qg"), p(e, "id", t[4]), p(e, "class", b = "grid " + (t[3] ? "right" : "left") + " svelte-g292qg"), Ve(e, "font-size", t[15] + "%"),Ve(e, "opacity", t[5].range ? "" : .6)
             },
             m(L, $) {
                 w(L, e, $), d(e, n), A && A.m(n, null), d(n, o), d(e, r), d(r, l), Q(a, l, null), C && C.m(l, null), U.m(r, null), d(r, f), V && V.m(r, null), d(r, u);
@@ -10010,6 +10014,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 k = !0, y || (F = [H(l, "click", t[20]), H(l, "contextmenu", t[25])], y = !0)
             },
             p(L, $) {
+                Ve(e, "scale", Math.min(1.1,t.targetScale))
                 L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
@@ -10248,6 +10253,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 o && o.m(i, s), w(i, e, s), n = !0
             },
             p(i, [s]) {
+                let castsOnPlayer = targettedPlayers.get(i[5].id) || []
+                let targetScale = (1 + (castsOnPlayer.length / 75))
+                i.targetScale = targetScale
                 i[5].visible ? o ? (o.p(i, s), s & 32 && S(o, 1)) : (o = b4(i), o.c(), S(o, 1), o.m(e.parentNode, e)) : o && (we(), E(o, 1, 1, () => {
                     o = null
                 }), Me())
@@ -10289,7 +10297,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         }, N = Y => Ax(Y, r);
         return t.$$set = Y => {
             "unit" in Y && a(n(0, v = Y.unit)), "buffs" in Y && g(n(1, _ = Y.buffs)), "mode" in Y && n(2, b = Y.mode), "order" in Y && n(3, k = Y.order), "id" in Y && n(4, y = Y.id)
-        }, t.$$.update = () => {
+        }, t.$$.update = () => { // party item drawing
             t.$$.dirty & 32 && n(24, o = r.world == I.id ? r.alive ? !1 : "Dead" : r.world), t.$$.dirty & 18874404 && (n(21, F = r.hpMax ? b == "default" ? ro(r.hp) + "/" + ro(r.hpMax) : ro(r.hp) : "?"), n(6, C = o || F), n(8, D = o != "offline" ? ~~(r.hpMax ? r.hp / r.hpMax * 100 : 100) : 0), n(13, L = o ? "bggrey" : (I.mode.partyBasedHostility ? r.party === I.player.party : r.faction === I.player.faction) ? "bghealth" : "bgenemy")), t.$$.dirty & 36 && n(22, A = r.mpMax ? b == "default" ? ro(r.mp) + "/" + ro(r.mpMax) : ro(r.mp) : "?"), t.$$.dirty & 32 && n(10, V = r.name ? Vx(r.name, 10) : ""), t.$$.dirty & 32 && n(11, B = r.timedSkill ? (P.ui.hiddenskills[r.timedSkill.id] || P.items.book[r.timedSkill.id]).name : `Lv. ${r.level}`), t.$$.dirty & 20971552 && n(7, M = o || (r.timedSkill ? r.timedCast.remaining(I.smoothtime).toFixed(1) : A)), t.$$.dirty & 16777248 && n(9, U = o != "offline" ? ~~(r.mpMax ? r.mp / r.mpMax * 100 : 100) : 0), t.$$.dirty & 16777248 && n(12, q = o != "offline" && r.timedSkill ? r.timedCast.fraction(I.smoothtime) * 100 : 0), t.$$.dirty & 16777216 && n(16, i = o ? "bggrey" : "bgmana"), t.$$.dirty & 4 && n(15, s = Math.round(b == "default" ? 100 : 85)), t.$$.dirty & 8388640 && (n(14, $ = W != r.id), n(23, W = r.id))
         }, [v, _, b, k, y, r, C, M, D, U, V, B, q, L, $, s, i, c, f, u, R, F, A, W, o, N]
     }
@@ -15572,7 +15580,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        let timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
+        let targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
             props: {
                 store: hideBots
@@ -15609,8 +15617,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: losTarget
             }
+        }), targetEnabledValue = new Et({
+            props: {
+                store: targetEnabled
+            }
         }), {
             c() {
+                targetEnabledElement = h("div"), targetEnabledElement.textContent = `Grow nameplate on ST`, K(targetEnabledValue.$$.fragment),
                 timeText = h("div"), timeText.textContent = `Time`, timeSlider = h("input"),
                 losTargetElement = h("div"), losTargetElement.textContent = `Target Next Friendly: Exclude LOS`, K(losTargetValue.$$.fragment),
                 alwaysPickupElement = h("div"), alwaysPickupElement.textContent = `Never filter items`, alwaysPickupValue = h("input"),
@@ -15633,10 +15646,11 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, radCategory, D), d(radCategory,seperator1), d(radCategory,subRad),  w(M, seperator2, D),
                 w(M, radElement, D), Q(radValue, M, D),
                 w(M, radSoundElement, D), Q(radSoundValue, M, D),
-                w(M, shamanCategory, D), w(M, seperator3, D)
-                w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D),
+                w(M, shamanCategory, D), w(M, seperator3, D),
                 w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
                 w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
+                w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D)
+                w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
                 w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, seperator4), d(revUnfriendlyElement, subRevUnfriendly),
                 w(M, losTargetElement, D), Q(losTargetValue, M, D),
                 w(M, generalCategory, D), w(M, seperator6, D),
@@ -15652,13 +15666,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
             },
             i(M) {
-                C || (S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(targetEnabledValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) {
-                E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(targetEnabledValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) {
-                M && (x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M)
+                M && (x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M)
             }
         }
     }
@@ -27505,6 +27519,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 playerIsBot = t.party === 0 && fe.hideBots;
             if ((t.type !== 3 && t.stats) && !playerIsBot) {
                 t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, .5, 1);
+                let castsOnPlayer = targettedPlayers.get(t.id) || []
+                t.namePlateScale *= (1 + castsOnPlayer.length / 10)
                 let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                     v = t.skills.timedSkill !== void 0;
@@ -30445,19 +30461,30 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     var VT = (t, e, n) => {
             let o = I.getEntityById(e[0]);
             o === void 0 || DT.get(t)(o, e, n)
-            if(!e.length >= 3) return
             let caster = e[0],
                 skillId = e[1],
-                target = e[2]
+                target = e[3],
+                question = e[4],
+                isSkill = e[5] // isSkill is tick?
+
+                caster = I.getEntityById(caster)
+                let targetableSkillIds = new Set([54, 51])
+            if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
+                let isTargeting = Array.from(targettedPlayers,([id, casters]) => ({ id, casters})).map(i => {
+                    let indexOf = i.casters.indexOf(e[0])
+                    if(indexOf === -1) return
+                    i.casters.splice(indexOf,1)
+                    console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
+                })
+            }
             
-            if(skillId === 48 && target === I.playerId && I.player.class === 1) { //iceblockthing
-                let block = I.player.skills.skills.get(53)
-                if(!block || !block.cd.end > I.time) return
-                /*Io(Mt.clientPlayerSkill.packData({
-                        id: 53,
-                        info: []
-                }))*/
-                console.log(`${o.name} vamped!`)
+            if(fe.targetEnabled && isSkill && targetableSkillIds.has(skillId)) { //iceblockthing
+                //if(caster.party === 0) return
+                let targ = I.getEntityById(target)
+                if(!targettedPlayers.get(target))targettedPlayers.set(target,[])
+                let player = targettedPlayers.get(target)
+                player.push(e[0])
+                console.log(`added ${skillId} by ${e[0]}`)
             }
         },
         sU = t => {
