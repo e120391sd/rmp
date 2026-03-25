@@ -2050,7 +2050,8 @@ void main() {
         targetEnabled: () => targetEnabled,
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
-        disableClantags: () => disableClantags
+        disableClantags: () => disableClantags,
+        timeToIngame: () => timeToIngame
     });
     var l1 = {};
     Kn(l1, {
@@ -2209,7 +2210,8 @@ void main() {
         targetEnabled: () => targetEnabled,
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
-        disableClantags: () => disableClantags
+        disableClantags: () => disableClantags,
+        timeToIngame: () => timeToIngame
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2366,7 +2368,8 @@ void main() {
         targetEnabled = ne(true),
         disableDamage = ne(false),
         disableHealing = ne(false),
-        disableClantags = ne(false);
+        disableClantags = ne(false),
+        timeToIngame = ne(false);
     var a1;
     a1 = {
         ...l1
@@ -15589,7 +15592,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        let declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
+        let timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
             props: {
                 store: hideBots
@@ -15642,8 +15645,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: disableClantags
             }
+        }), timeToIngameValue = new Et({
+            props: {
+                store: timeToIngame
+            }
         }), {
             c() {
+                timeToIngameElement = h("div"), timeToIngameElement.textContent = `Use device time`, K(timeToIngameValue.$$.fragment),
                 disableClantagsElement = h("div"), disableClantagsElement.textContent = `Disable clan tags`, K(disableClantagsValue.$$.fragment),
                 disableDamageElement = h("div"), disableDamageElement.textContent = `Disable damage indicator`, K(disableDamageValue.$$.fragment),
                 disableHealingElement = h("div"), disableHealingElement.textContent = `Disable healing indicator`, K(disableHealingValue.$$.fragment),
@@ -15686,6 +15694,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, specialSellElement, D), Q(specialSellValue, M, D),
                 w(M, alwaysPickupElement, D), w(M, alwaysPickupValue, D), We(alwaysPickupValue, t[70]), d(alwaysPickupElement, seperator8), d(alwaysPickupElement, subNeverExcludeItems),
                 w(M, timeText, D), w(M, timeSlider, D), We(timeSlider, t[72]),
+                w(M, timeToIngameElement, D), Q(timeToIngameValue, M, D),
                 C = !0
                 H(timeSlider, "input", t[71]), H(timeSlider, "change", t[34])
                 H(alwaysPickupValue, "input", t[69]), H(alwaysPickupValue, "change", t[34])
@@ -15694,13 +15703,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
             },
             i(M) {
-                C || (S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) {
-                E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) {
-                M && (x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M)
+                M && (x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M)
             }
         }
     }
@@ -26109,6 +26118,19 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tP = (t, e, n) => {
             let o = (e / 3600 + .9) % 1;
             if(fe.timeSlider !== "0") o = fe.timeSlider / 1000
+            if(fe.timeToIngame) {
+                let now = new Date();
+                let seconds = 3600 * 4
+
+                let dayStart = 8 * 3600;
+                let dayEnd = 14 * 3600;
+                let totalSeconds = 24 * 3600;
+
+                let nightSeconds = (seconds - dayEnd + totalSeconds) % totalSeconds;
+                let nightDuration = totalSeconds - (dayEnd - dayStart);
+
+                o = seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.5 : 0.5 + (nightSeconds / nightDuration) * 0.5;
+            }
             o < .7 ? o = Lf(0, .7, o) * .4 : o = .4 + Lf(.7, 1, o) * .6, X8(o, b0, e, n), K8(o, b0, e, n), J8(o, b0)
         };
     var Ru = () => [-0, -0, -0, -0, -0, -0],
