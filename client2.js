@@ -2051,7 +2051,8 @@ void main() {
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
-        timeToIngame: () => timeToIngame
+        timeToIngame: () => timeToIngame,
+        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots
     });
     var l1 = {};
     Kn(l1, {
@@ -2211,7 +2212,8 @@ void main() {
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
-        timeToIngame: () => timeToIngame
+        timeToIngame: () => timeToIngame,
+        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2369,7 +2371,8 @@ void main() {
         disableDamage = ne(false),
         disableHealing = ne(false),
         disableClantags = ne(false),
-        timeToIngame = ne(false);
+        timeToIngame = ne(false),
+        nextFriendlyIgnoreBots = ne(true);
     var a1;
     a1 = {
         ...l1
@@ -9937,7 +9940,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     let e = I.entities.type[0].filter(i => {
                         let isOppositeFaction = i.faction !== I.player.faction && !fe.revUnfriendly
                         let isOutOfLineOfSight = raycastHitGeometry(i.pos, I.player.pos) && fe.losTarget
-                        return !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? !1 : i.stats && i.stats.alive && !isOppositeFaction && $r(i.pos, I.player.pos) < 30 && !isOutOfLineOfSight
+                        let isBot = i.id !== I.playerId && i.party === 0 && !i.clan && nextFriendlyIgnoreBots
+                        return !isBot && !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? !1 : i.stats && i.stats.alive && !isOppositeFaction && $r(i.pos, I.player.pos) < 30 && !isOutOfLineOfSight
                     }).sort((i, s) => {
                             let r = Zt.has(i.name),
                                 l = Zt.has(s.name);
@@ -15592,7 +15596,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        let timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
+        let nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
             props: {
                 store: hideBots
@@ -15649,8 +15653,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: timeToIngame
             }
+        }), nextFriendlyIgnoreBotsValue = new Et({
+            props: {
+                store: nextFriendlyIgnoreBots
+            }
         }), {
             c() {
+                nextFriendlyIgnoreBotsElement = h("div"), nextFriendlyIgnoreBotsElement.textContent = `Target Next Friendly: Ignore Bots`, K(nextFriendlyIgnoreBotsValue.$$.fragment),
                 timeToIngameElement = h("div"), timeToIngameElement.textContent = `Use device time`, K(timeToIngameValue.$$.fragment),
                 disableClantagsElement = h("div"), disableClantagsElement.textContent = `Disable clan tags`, K(disableClantagsValue.$$.fragment),
                 disableDamageElement = h("div"), disableDamageElement.textContent = `Disable damage indicator`, K(disableDamageValue.$$.fragment),
@@ -15660,7 +15669,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 losTargetElement = h("div"), losTargetElement.textContent = `Target Next Friendly: Exclude LOS`, K(losTargetValue.$$.fragment),
                 alwaysPickupElement = h("div"), alwaysPickupElement.textContent = `Never filter items`, alwaysPickupValue = h("input"),
                 specialSellElement = h("div"), specialSellElement.textContent = `Block +(×) item & charm vendor`, specialSellElement.style.color = "#ff4949", K(specialSellValue.$$.fragment),
-                hideBotsElement = h("div"), hideBotsElement.textContent = `Hide non-partied player names`, K(hideBotsValue.$$.fragment),
+                hideBotsElement = h("div"), hideBotsElement.textContent = `Hide bot names`, K(hideBotsValue.$$.fragment),
                 revOnSelectElement = h("div"), revOnSelectElement.textContent = `Revitalize on select`, K(revOnSelectValue.$$.fragment),
                 radElement = h("div"), radElement.textContent = `Show icon on minimap`, K(radValue.$$.fragment),
                 radSoundElement = h("div"), radSoundElement.textContent = `Play sound when nearby`, K(radSoundValue.$$.fragment),
@@ -15679,16 +15688,17 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, radElement, D), Q(radValue, M, D),
                 w(M, radSoundElement, D), Q(radSoundValue, M, D),
                 w(M, shamanCategory, D), w(M, seperator3, D),
-                w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
-                w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D)
+                //w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
+                //w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D)
+                w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
                 w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, seperator4), d(revUnfriendlyElement, subRevUnfriendly),
                 w(M, losTargetElement, D), Q(losTargetValue, M, D),
+                w(M, nextFriendlyIgnoreBotsElement, D), Q(nextFriendlyIgnoreBotsValue, M, D),
                 w(M, declutterCategory, D), d(declutterCategory,seperator9), d(declutterCategory,subDeclutterCategory),  w(M, seperator10, D),
                 w(M, disableClantagsElement, D), Q(disableClantagsValue, M, D)
                 w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
                 w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
                 w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
-                w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
                 w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
                 w(M, generalCategory, D), w(M, seperator6, D),
                 w(M, specialSellElement, D), Q(specialSellValue, M, D),
@@ -15703,13 +15713,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
             },
             i(M) {
-                C || (S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) {
-                E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) {
-                M && (x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M)
+                M && (x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M)
             }
         }
     }

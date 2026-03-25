@@ -15705,6 +15705,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, alwaysPickupElement, D), w(M, alwaysPickupValue, D), We(alwaysPickupValue, t[70]), d(alwaysPickupElement, seperator8), d(alwaysPickupElement, subNeverExcludeItems),
                 w(M, timeText, D), w(M, timeSlider, D), We(timeSlider, t[72]),
                 w(M, timeToIngameElement, D), Q(timeToIngameValue, M, D),
+                w(M, nextFriendlyIgnoreBotsElement, D), Q(nextFriendlyIgnoreBotsValue, M, D),
                 C = !0
                 H(timeSlider, "input", t[71]), H(timeSlider, "change", t[34])
                 H(alwaysPickupValue, "input", t[69]), H(alwaysPickupValue, "change", t[34])
