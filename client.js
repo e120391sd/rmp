@@ -15671,11 +15671,11 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, losTargetElement, D), Q(losTargetValue, M, D),
                 w(M, generalCategory, D), w(M, seperator6, D),
                 w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
+                w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
+                w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
                 w(M, specialSellElement, D), Q(specialSellValue, M, D),
                 w(M, alwaysPickupElement, D), w(M, alwaysPickupValue, D), We(alwaysPickupValue, t[70]), d(alwaysPickupElement, seperator8), d(alwaysPickupElement, subNeverExcludeItems),
                 w(M, timeText, D), w(M, timeSlider, D), We(timeSlider, t[72]),
-                w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
-                w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
                 C = !0
                 H(timeSlider, "input", t[71]), H(timeSlider, "change", t[34])
                 H(alwaysPickupValue, "input", t[69]), H(alwaysPickupValue, "change", t[34])
@@ -30489,7 +30489,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 isSkill = e[5]
 
                 caster = I.getEntityById(caster)
-                let targetableSkillIds = new Set([54, 51])
+                let targetableSkillIds = new Set([54, 51, 91])
             if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
                 let isTargeting = Array.from(targettedPlayers,([id, casters]) => ({ id, casters})).map(i => {
                     let indexOf = i.casters.indexOf(e[0])
