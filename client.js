@@ -27536,6 +27536,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         },
         uB = (t, e, n) => e ? 4 : n === 0 ? fe.classColorBars && t.type === 0 ? 8 + t.class : 1 : I.player.canCombatInteract(t) ? n === 2 ? fe.classColorBars ? 8 + t.class : 5 : t.type === 1 && t.aggroMode === 0 ? 2 : 3 : 6,
         mB = (t, e) => {
+            console.log(fe.disableClantags,fe.hideBots,t.clan)
             let n = t.visual && t.visual.cDist;
             if (n > fe.nameplateViewRange) return;
             n ? n /= 70 : n = 0;
@@ -27546,7 +27547,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 l = t.id === zn,
                 a = false, //t.id === I.playerId,
                 c = t.id === _n,
-                playerIsBot = t.id !== I.playerId && t.party === 0 && fe.hideBots;
+                playerIsBot = t.id !== I.playerId && t.party === 0 && !t.clan && fe.hideBots;
             if ((t.type !== 3 && t.stats) && !playerIsBot) {
                 t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, .5, 1);
                 let castsOnPlayer = targettedPlayers.get(t.id) || []
@@ -27561,7 +27562,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         k = vt(t.skills.timedCast.fraction(I.smoothtime), 0, 1);
                     pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, 1, 0, b), k > 0 && pr(Jn[7], t.hudPos, g, t.namePlateScale, k, 1, 0, b)
                 }
-                if (!a && _ && (pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1), pr(Jn[uB(t, o, i)], t.hudPos, g, t.namePlateScale, t.stats.getResource(6) / t.stats.getStat(6), 1), t.clan && dr(ho(Un, t.hudPos[0] - (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.clan, t.clan == s ? qt.clan : t.faction === 0 ? qt.faction0small : qt.faction1small, g, 1, 2, 0, 1), t.level && (fe.alwaysShowLevel || l))) {
+                if (!a && _ && (pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1), pr(Jn[uB(t, o, i)], t.hudPos, g, t.namePlateScale, t.stats.getResource(6) / t.stats.getStat(6), 1), fe.disableClantags ? null : t.clan && dr(ho(Un, t.hudPos[0] - (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.clan, t.clan == s ? qt.clan : t.faction === 0 ? qt.faction0small : qt.faction1small, g, 1, 2, 0, 1), t.level && (fe.alwaysShowLevel || l))) {
                     let b = qt.lev1;
                     i !== 0 && (t.level - r > 4 ? b = qt.lev3 : t.level - r > 1 ? b = qt.lev2 : t.level - r < -5 && (b = qt.lev0)), dr(ho(Un, t.hudPos[0] + (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.level, b, g, 1, 0, 0, 0)
                 }
@@ -27572,7 +27573,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     g = l ? -16 : -9,
                     v = a && t.clan ? t.clan.length * 5 : 0,
                     _ = dr(t.hudPos, t.name, f, m, 1, v, g);
-                t.clan && a && dr(ho(Un, t.hudPos[0] - _ / 2 + Wo, t.hudPos[1]), fe.disableClantags ? "" : t.clan, t.faction === 0 ? l ? qt.faction0 : qt.faction0small : l ? qt.faction1 : qt.faction1small, m, 1, t.clan.length * 5, g, 1)
+                t.clan && a && dr(ho(Un, t.hudPos[0] - _ / 2 + Wo, t.hudPos[1]), t.clan, t.faction === 0 ? l ? qt.faction0 : qt.faction0small : l ? qt.faction1 : qt.faction1small, m, 1, t.clan.length * 5, g, 1)
             }
             t.speechText && dr(t.hudPos, t.speechText, t.speechStyle, 1, 1, 0, l ? -30 : -20, .5, 1)
         },
