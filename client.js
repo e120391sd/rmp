@@ -30528,10 +30528,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
 
             if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
                 let isTargeting = casters.map(i => {
-                    let foundCast = i.casters.find(i => i.playerId === e[0])
-                    let indexOf = i.casters.indexOf(foundCast)
+                    let indexOf = casters.indexOf(i)
                     if(indexOf === -1) return
-                    i.casters.splice(indexOf,1)
+                    casters.splice(indexOf,1)
                     console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
                 })
             }
@@ -30547,8 +30546,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }
 
             for(let cast of getExpiringCasts) {
-                let indexOf = i.casters.indexOf(foundCast)
-                i.casters.splice(indexOf,1)
+                let indexOf = casters.indexOf(foundCast)
+                casters.splice(indexOf,1)
                 console.log(`removed cast by ${foundCast.playerId}, cast expired`)
             }
         },
