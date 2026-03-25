@@ -2047,7 +2047,9 @@ void main() {
         disallowSpecialSelling: () => disallowSpecialSelling,
         losTarget: () => losTarget,
         timeSlider: () => timeSlider,
-        targetEnabled: () => targetEnabled
+        targetEnabled: () => targetEnabled,
+        disableDamage: () => disableDamage,
+        disableHealing: () => disableHealing
     });
     var l1 = {};
     Kn(l1, {
@@ -2203,7 +2205,9 @@ void main() {
         disallowSpecialSelling: () => disallowSpecialSelling,
         losTarget: () => losTarget,
         timeSlider: () => timeSlider,
-        targetEnabled: () => targetEnabled
+        targetEnabled: () => targetEnabled,
+        disableDamage: () => disableDamage,
+        disableHealing: () => disableHealing
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2357,7 +2361,9 @@ void main() {
         disallowSpecialSelling = ne(true),
         losTarget = ne(true),
         timeSlider = ne(0),
-        targetEnabled = ne(true);
+        targetEnabled = ne(true),
+        disableDamage = ne(false),
+        disableHealing = ne(false);
     var a1;
     a1 = {
         ...l1
@@ -7854,11 +7860,11 @@ void main() {
             },
             pheal: {
                 fill: "#12F027",
-                size: 20
+                size: 0
             },
             pdmg: {
                 fill: Lt("enemy"),
-                size: 20
+                size: 0
             }
         },
         pg = {},
@@ -15580,7 +15586,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        let targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
+        let disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
             props: {
                 store: hideBots
@@ -15621,8 +15627,18 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: targetEnabled
             }
+        }),  disableHealingValue = new Et({
+            props: {
+                store: disableHealing
+            }
+        }),  disableDamageValue = new Et({
+            props: {
+                store: disableDamage
+            }
         }), {
             c() {
+                disableDamageElement = h("div"), disableDamageElement.textContent = `Disable damage indicator`, K(disableDamageValue.$$.fragment),
+                disableHealingElement = h("div"), disableHealingElement.textContent = `Disable healing indicator`, K(disableHealingValue.$$.fragment),
                 targetEnabledElement = h("div"), targetEnabledElement.textContent = `Grow nameplate on ST`, K(targetEnabledValue.$$.fragment),
                 timeText = h("div"), timeText.textContent = `Time`, timeSlider = h("input"),
                 losTargetElement = h("div"), losTargetElement.textContent = `Target Next Friendly: Exclude LOS`, K(losTargetValue.$$.fragment),
@@ -15658,6 +15674,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, specialSellElement, D), Q(specialSellValue, M, D),
                 w(M, alwaysPickupElement, D), w(M, alwaysPickupValue, D), We(alwaysPickupValue, t[70]), d(alwaysPickupElement, seperator8), d(alwaysPickupElement, subNeverExcludeItems),
                 w(M, timeText, D), w(M, timeSlider, D), We(timeSlider, t[72]),
+                w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
+                w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
                 C = !0
                 H(timeSlider, "input", t[71]), H(timeSlider, "change", t[34])
                 H(alwaysPickupValue, "input", t[69]), H(alwaysPickupValue, "change", t[34])
@@ -15666,13 +15684,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
             },
             i(M) {
-                C || (S(targetEnabledValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) {
-                E(targetEnabledValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) {
-                M && (x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M)
+                M && (x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M), Z(disableHealingValue), Z(disableDamageValue)
             }
         }
     }
@@ -27404,9 +27422,11 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         },
         N2 = (t, e, n, o, i = !1, s) => {
             let r = n === 3;
+            if(fe.disableDamage) e = ""
             Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9)
         },
         W2 = (t, e, n, o = !1, i) => {
+            if(fe.disableHealing) e = ""
             Yu(t, o, n === 3, o || n !== 3, ht(e), o ? qt.pheal : qt.heal, i, cs, 1.3)
         },
         SA = (t, e, n) => {
