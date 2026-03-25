@@ -15659,8 +15659,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 revUnfriendlyElement = h("div"), revUnfriendlyElement.textContent = `Target Next Friendly: Ignore faction`, K(revUnfriendlyValue.$$.fragment),
                 markOwnRevsElement = h("div"), markOwnRevsElement.textContent = `Highlight own revitalize`, K(markOwnRevsValue.$$.fragment),
                 autocleanseElement = h("div"), autocleanseElement.textContent = `Auto cleanse CC`, K(autocleanseValue.$$.fragment),
-                radCategory = h("div"), radCategory.textContent = `Rare Mob Notifier`, shamanCategory = h("div"), shamanCategory.textContent = `Shaman Mods`, generalCategory = h("div"), generalCategory.textContent = `Uncategorized`, declutterCategory = h("div"), declutterCategory.textContent = `De - Clutter`,
-                subDeclutterCategory = h("small"), subDeclutterCategory.textContent = `Very useful to have enabled in obe or wars`, subRad = h("small"), subRad.textContent = `Detects rare mobs within load distance`, subRevUnfriendly = h("small"), subRevUnfriendly.textContent = `Only enable during gloom`, subAutocleanse = h("small"), subAutocleanse.textContent = `Has a small random delay, but don't blame me if you get banned for this lol it's just here for fun`, subNeverExcludeItems = h("small"), subNeverExcludeItems.textContent = `Does not change pet behavior`,
+                radCategory = h("div"), radCategory.textContent = `Rare Mob Notifier`, shamanCategory = h("div"), shamanCategory.textContent = `Shaman Mods`, generalCategory = h("div"), generalCategory.textContent = `Uncategorized`, declutterCategory = h("div"), declutterCategory.textContent = `De-Clutter Mods`,
+                subDeclutterCategory = h("small"), subDeclutterCategory.textContent = `Very useful stuff to have enabled in obe or wars`, subRad = h("small"), subRad.textContent = `Detects rare mobs within load distance`, subRevUnfriendly = h("small"), subRevUnfriendly.textContent = `Only enable during gloom`, subAutocleanse = h("small"), subAutocleanse.textContent = `Has a small random delay, but don't blame me if you get banned for this lol it's just here for fun`, subNeverExcludeItems = h("small"), subNeverExcludeItems.textContent = `Does not change pet behavior`,
                 seperator1 = h("br"), seperator2 = h("br"), seperator3 = h("br"), seperator4 = h("br"), seperator5 = h("br"), seperator6 = h("br"), seperator7 = h("br"), seperator8 = h("br"), seperator9 = h("br"), seperator10 = h("br")
                 p(subRevUnfriendly, "class", "textgrey"), p(subAutocleanse, "class", "textgrey"), p(subNeverExcludeItems, "class", "textgrey"), p(subRad, "class", "textgrey"), p(subDeclutterCategory, "class", "textgrey")
                 p(radCategory, "class", "textprimary"), p(shamanCategory, "class", "textprimary"), p(generalCategory, "class", "textprimary"), p(declutterCategory, "class", "textprimary"),
@@ -27541,7 +27541,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             n ? n /= 70 : n = 0;
             let o = false,
                 i = t.faction !== void 0 ? I.player.hostility(t) : 0,
-                s = fe.disableClantags ? "" : I.player.clan,
+                s = I.player.clan,
                 r = I.player.level,
                 l = t.id === zn,
                 a = false, //t.id === I.playerId,
@@ -27572,7 +27572,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     g = l ? -16 : -9,
                     v = a && t.clan ? t.clan.length * 5 : 0,
                     _ = dr(t.hudPos, t.name, f, m, 1, v, g);
-                t.clan && a && dr(ho(Un, t.hudPos[0] - _ / 2 + Wo, t.hudPos[1]), t.clan, t.faction === 0 ? l ? qt.faction0 : qt.faction0small : l ? qt.faction1 : qt.faction1small, m, 1, t.clan.length * 5, g, 1)
+                t.clan && a && dr(ho(Un, t.hudPos[0] - _ / 2 + Wo, t.hudPos[1]), fe.disableClantags ? "" : t.clan, t.faction === 0 ? l ? qt.faction0 : qt.faction0small : l ? qt.faction1 : qt.faction1small, m, 1, t.clan.length * 5, g, 1)
             }
             t.speechText && dr(t.hudPos, t.speechText, t.speechStyle, 1, 1, 0, l ? -30 : -20, .5, 1)
         },
