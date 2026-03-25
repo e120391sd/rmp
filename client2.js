@@ -10026,7 +10026,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 k = !0, y || (F = [H(l, "click", t[20]), H(l, "contextmenu", t[25])], y = !0)
             },
             p(L, $) {
-                Ve(e, "scale", Math.min(1.25,t.targetScale))
+                Ve(e, "scale", Math.min(1.3,t.targetScale))
                 L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
@@ -10266,7 +10266,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             p(i, [s]) {
                 let castsOnPlayer = targettedPlayers.get(i[5].id) || []
-                let targetScale = (1 + (castsOnPlayer.length / 75))
+                let targetScale = (1 + (castsOnPlayer.length / 25))
                 i.targetScale = targetScale
                 i[5].visible ? o ? (o.p(i, s), s & 32 && S(o, 1)) : (o = b4(i), o.c(), S(o, 1), o.m(e.parentNode, e)) : o && (we(), E(o, 1, 1, () => {
                     o = null
@@ -15709,7 +15709,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) {
-                M && (x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M)
+                M && (x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(revOnSelectElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement),x(autocleanseElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(autocleanseValue, M), Z(revOnSelectValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M)
             }
         }
     }
@@ -26120,7 +26120,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             if(fe.timeSlider !== "0") o = fe.timeSlider / 1000
             if(fe.timeToIngame) {
                 let now = new Date();
-                let seconds = 3600 * 4
+                let seconds = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
 
                 let dayStart = 8 * 3600;
                 let dayEnd = 14 * 3600;
@@ -27558,7 +27558,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         },
         uB = (t, e, n) => e ? 4 : n === 0 ? fe.classColorBars && t.type === 0 ? 8 + t.class : 1 : I.player.canCombatInteract(t) ? n === 2 ? fe.classColorBars ? 8 + t.class : 5 : t.type === 1 && t.aggroMode === 0 ? 2 : 3 : 6,
         mB = (t, e) => {
-            console.log(fe.disableClantags,fe.hideBots,t.clan)
             let n = t.visual && t.visual.cDist;
             if (n > fe.nameplateViewRange) return;
             n ? n /= 70 : n = 0;
@@ -30522,10 +30521,17 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 isSkill = e[5]
 
                 caster = I.getEntityById(caster)
-                let targetableSkillIds = new Set([54, 51, 91])
+                let targets = Array.from(targettedPlayers,([id, casters]) => {
+                    return {id,casters}
+                })
+                let targetableSkillIds = new Set([54, 51])
+                let currentTime = Date.now()
+                let expiringCasts = Array.from(targettedPlayers,([id,casterArray]) => ({id,casterArray})).filter(target => target.casterArray.some(casterObject => currentTime > casterObject.expiryTime))
+
             if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
-                let isTargeting = Array.from(targettedPlayers,([id, casters]) => ({ id, casters})).map(i => {
-                    let indexOf = i.casters.indexOf(e[0])
+                let isTargeting = targets.map(i => {
+                    let foundCast = i.casters.find(t => t.playerId === e[0])
+                    let indexOf = i.casters.indexOf(foundCast)
                     if(indexOf === -1) return
                     i.casters.splice(indexOf,1)
                     console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
@@ -30537,8 +30543,18 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let targ = I.getEntityById(target)
                 if(!targettedPlayers.get(target))targettedPlayers.set(target,[])
                 let player = targettedPlayers.get(target)
-                player.push(e[0])
+                let playerObject = {playerId: e[0], expiryTime: currentTime + 4250}
+                player.push(playerObject)
+                console.log(player[0],targettedPlayers)
                 console.log(`added ${skillId} by ${e[0]}`)
+            }
+
+            for(let target of expiringCasts) {
+                let foundCast = target.casterArray.find(i => currentTime > i.expiryTime)
+                let index = target.casterArray.indexOf(foundCast)
+                if(index === -1) return
+                target.casterArray.splice(index,1)
+                console.log(`removed cast by ${foundCast.playerId}, expired`)
             }
         },
         sU = t => {

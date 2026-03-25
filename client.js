@@ -30521,16 +30521,19 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 isSkill = e[5]
 
                 caster = I.getEntityById(caster)
-                let casters = Array.from(targettedPlayers,([id, casters]) => ({ id, casters}))
+                let targets = Array.from(targettedPlayers,([id, casters]) => {
+                    return {id,casters}
+                })
                 let targetableSkillIds = new Set([54, 51])
                 let currentTime = Date.now()
-                let getExpiringCasts = casters.filter(i => currentTime > i.expiryTime)
+                let expiringCasts = Array.from(targettedPlayers,([id,casterArray]) => ({id,casterArray})).filter(target => target.casterArray.some(casterObject => currentTime > casterObject.expiryTime))
 
             if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
-                let isTargeting = casters.map(i => {
-                    let indexOf = casters.indexOf(i)
+                let isTargeting = targets.map(i => {
+                    let foundCast = i.casters.find(t => t.playerId === e[0])
+                    let indexOf = i.casters.indexOf(foundCast)
                     if(indexOf === -1) return
-                    casters.splice(indexOf,1)
+                    i.casters.splice(indexOf,1)
                     console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
                 })
             }
@@ -30540,15 +30543,18 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let targ = I.getEntityById(target)
                 if(!targettedPlayers.get(target))targettedPlayers.set(target,[])
                 let player = targettedPlayers.get(target)
-                let playerObject = {playerId: e[0], expiryTime: currentTime + 5000}
-                player.push(e[0])
+                let playerObject = {playerId: e[0], expiryTime: currentTime + 4250}
+                player.push(playerObject)
+                console.log(player[0],targettedPlayers)
                 console.log(`added ${skillId} by ${e[0]}`)
             }
 
-            for(let cast of getExpiringCasts) {
-                let indexOf = casters.indexOf(foundCast)
-                casters.splice(indexOf,1)
-                console.log(`removed cast by ${foundCast.playerId}, cast expired`)
+            for(let target of expiringCasts) {
+                let foundCast = target.casterArray.find(i => currentTime > i.expiryTime)
+                let index = target.casterArray.indexOf(foundCast)
+                if(index === -1) return
+                target.casterArray.splice(index,1)
+                console.log(`removed cast by ${foundCast.playerId}, expired`)
             }
         },
         sU = t => {
