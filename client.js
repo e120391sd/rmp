@@ -10026,7 +10026,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 k = !0, y || (F = [H(l, "click", t[20]), H(l, "contextmenu", t[25])], y = !0)
             },
             p(L, $) {
-                Ve(e, "scale", Math.min(1.25,t.targetScale))
+                Ve(e, "scale", Math.min(1.3,t.targetScale))
                 L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
@@ -10266,7 +10266,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             p(i, [s]) {
                 let castsOnPlayer = targettedPlayers.get(i[5].id) || []
-                let targetScale = (1 + (castsOnPlayer.length / 75))
+                let targetScale = (1 + (castsOnPlayer.length / 25))
                 i.targetScale = targetScale
                 i[5].visible ? o ? (o.p(i, s), s & 32 && S(o, 1)) : (o = b4(i), o.c(), S(o, 1), o.m(e.parentNode, e)) : o && (we(), E(o, 1, 1, () => {
                     o = null
