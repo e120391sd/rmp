@@ -9940,8 +9940,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     let e = I.entities.type[0].filter(i => {
                         let isOppositeFaction = i.faction !== I.player.faction && !fe.revUnfriendly
                         let isOutOfLineOfSight = raycastHitGeometry(i.pos, I.player.pos) && fe.losTarget
-                        console.log(fe.nextFriendlyIgnoreBots,i.party,i.clan,i.name)
-                        let isBot = i.id !== I.playerId && !(i.party > 0) && !i.clan && fe.nextFriendlyIgnoreBots
+                        let isBot = i.id !== I.playerId && i.party === 0 && !i.clan && fe.nextFriendlyIgnoreBots
+                        console.log(fe.nextFriendlyIgnoreBots,i.party,i.clan,i.name, isBot)
                         return !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? !1 : i.stats && i.stats.alive && !isOppositeFaction && $r(i.pos, I.player.pos) < 30 && !isOutOfLineOfSight && !isBot
                     }).sort((i, s) => {
                             let r = Zt.has(i.name),
