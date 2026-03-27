@@ -26131,16 +26131,16 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             if(fe.timeSlider !== "0") o = fe.timeSlider / 1000
             if(fe.timeToIngame) {
                 let now = new Date();
-                let seconds = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+                let seconds = 24 * 3600
 
-                let dayStart = 8 * 3600;
-                let dayEnd = 14 * 3600;
+                let dayStart = 7.25 * 3600;
+                let dayEnd = 20 * 3600;
                 let totalSeconds = 24 * 3600;
 
                 let nightSeconds = (seconds - dayEnd + totalSeconds) % totalSeconds;
                 let nightDuration = totalSeconds - (dayEnd - dayStart);
 
-                o = seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.5 : 0.5 + (nightSeconds / nightDuration) * 0.5;
+                o = Math.min(1, seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.72 : 0.825 + (nightSeconds / nightDuration) * 0.1);
             }
             o < .7 ? o = Lf(0, .7, o) * .4 : o = .4 + Lf(.7, 1, o) * .6, X8(o, b0, e, n), K8(o, b0, e, n), J8(o, b0)
         };
