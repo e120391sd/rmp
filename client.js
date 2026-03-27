@@ -26140,7 +26140,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let nightSeconds = (seconds - dayEnd + totalSeconds) % totalSeconds;
                 let nightDuration = totalSeconds - (dayEnd - dayStart);
 
-                o = Math.min(1, seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.72 : 0.825 + (nightSeconds / nightDuration) * 0.1);
+                o = Math.min(1, seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.72 : 0.8 + (nightSeconds / nightDuration) * 0.1);
             }
             o < .7 ? o = Lf(0, .7, o) * .4 : o = .4 + Lf(.7, 1, o) * .6, X8(o, b0, e, n), K8(o, b0, e, n), J8(o, b0)
         };
