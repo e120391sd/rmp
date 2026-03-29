@@ -9793,7 +9793,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             dead: [.6, .6, .6]
         },
         vr = t => {
-            if (I && I.player) { // pick up item pickup loot
+            if (I && I.player) {
                 let e = Mt.clientPlayerChangeTarget.packData({
                     target: t
                 });
@@ -26134,7 +26134,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let seconds = 24 * 3600
 
                 let dayStart = 7.25 * 3600;
-                let dayEnd = 20 * 3600;
+                let dayEnd = 23 * 3600;
                 let totalSeconds = 24 * 3600;
 
                 let nightSeconds = (seconds - dayEnd + totalSeconds) % totalSeconds;
