@@ -26134,7 +26134,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let seconds = 24 * 3600
 
                 let dayStart = 7.25 * 3600;
-                let dayEnd = 23 * 3600;
+                let dayEnd = 1 * 3600;
                 let totalSeconds = 24 * 3600;
 
                 let nightSeconds = (seconds - dayEnd + totalSeconds) % totalSeconds;
