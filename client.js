@@ -1,6 +1,6 @@
 (() => {
     let rareMobs = [
-                {name:"Ghost",id:15,type:"mount"},
+                {name:"Sea Turtle",id:15,type:"mount"},
                 {name:"Keiler",id:16,type:"mount"},
                 {name:"Mireshell",id:17,type:"mount"},
                 {name:"Desert Scarab",id:18,type:"mount"},
@@ -30050,6 +30050,15 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     if(e.name === mob.name && e.type == 1 && fe.radarSound) {
                         jt("gm", `${e.name} has been found nearby!`, true);
                         wt(97);
+                        fetch("https://discord.com/api/webhooks/1218988501081526292/YcfR8-k_b535cNBMwgGpGjF1t_0dBKDazcQ08qKm1yifcbQkeWQk7JqBBX9NKHKDLVA6", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            content: `@everyone \`[${I.player.name}]\`: **${e.name}** has been found!`
+                        })}
+                        )
                     }
                 }
                 if (e === void 0 || e.type === void 0) {
