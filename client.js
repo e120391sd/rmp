@@ -26132,7 +26132,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             if(fe.timeSlider !== "0") o = fe.timeSlider / 1000
             if(fe.timeToIngame) {
                 let now = new Date();
-                let seconds = 24 * 3600
+                let seconds = (now.getHours() * 3600) + (now.getMinutes() * 60) + now.getSeconds() * 3600
 
                 let dayStart = 7.25 * 3600;
                 let dayEnd = 24 * 3600;
