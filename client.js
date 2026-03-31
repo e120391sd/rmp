@@ -19,6 +19,7 @@
                 {name:"Undead Necromancer",id:2,type:"pet"},
                 {name:"Nightshade",id:5,type:"pet"},
             ]
+    let alreadyNotified = new Map();
     let style = document.createElement('style');
     style.textContent = `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`;
     document.head.appendChild(style);
@@ -30047,18 +30048,22 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }
             addEntity(e) {
                 for(let mob of rareMobs) {
-                    if(e.name === mob.name && e.type == 1 && fe.radarSound) {
-                        jt("gm", `${e.name} has been found nearby!`, true);
-                        wt(97);
-                        fetch("https://discord.com/api/webhooks/1488329999684730911/ykx0aWKr__IJXLwZ-jIqJAaT5yTEHr6ryfXvM5QMd3JHWISxcUF7Qisx1lzHu7b2vP7w", {
-                        method: "POST",
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            content: `@everyone \`[${I.player.name}]\`: **${e.name}** has been found!`
-                        })}
-                        )
+                    if(e.name === mob.name && e.type == 1 && !alreadyNotified.get(e.id)) {
+                        alreadyNotified.set(e.id, true)
+                        if(fe.radarSound) {
+                            wt(97);
+                            jt("gm", `${e.name} has been found nearby!`, true);
+                        }
+                        if(fe.radar) {
+                            fetch("https://discord.com/api/webhooks/1488329999684730911/ykx0aWKr__IJXLwZ-jIqJAaT5yTEHr6ryfXvM5QMd3JHWISxcUF7Qisx1lzHu7b2vP7w", {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                content: `@everyone \`[${I.player.name}]\`: **${e.name}** has been found!`
+                            })})
+                        }
                     }
                 }
                 if (e === void 0 || e.type === void 0) {
