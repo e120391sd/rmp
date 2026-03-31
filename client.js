@@ -27466,12 +27466,10 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         },
         N2 = (t, e, n, o, i = !1, s) => {
             let r = n === 3;
-            if(fe.disableDamage) e = ""
-            Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9)
+            Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(fe.disableDamage ? "" : e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9)
         },
         W2 = (t, e, n, o = !1, i) => {
-            if(fe.disableHealing) e = ""
-            Yu(t, o, n === 3, o || n !== 3, ht(e), o ? qt.pheal : qt.heal, i, cs, 1.3)
+            Yu(t, o, n === 3, o || n !== 3, ht(fe.disableHealing ? "" : e), o ? qt.pheal : qt.heal, i, cs, 1.3)
         },
         SA = (t, e, n) => {
             Yu(t, n, !1, !0, "Immune", n ? qt.mana : qt.spell, e, cs, 2)
