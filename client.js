@@ -30061,7 +30061,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                content: `@everyone \`[${I.player.name}]\`: **${e.name}** has been found!`
+                                content: `@everyone \`[${e.type} spawn notification]\`: **${e.name}** has been found!`
                             })})
                         }
                     }
