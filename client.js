@@ -3592,6 +3592,7 @@ void main() {
         $3 = [],
         w7 = 0;
     for (let t in Mt) Mt[t] && (Mt[t].header = w7++, Mt[t].packData = function(e) {
+        console.log(e,e._header)
         return e._header = this.header, this.encode(e)
     }, $3.push(Mt[t]));
     var O3 = t => {
