@@ -30052,6 +30052,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                             wt(97);
                             jt("gm", `${e.name} has been found nearby!`, true);
                         }
+                        /*
                         if(fe.radar) {
                             fetch("https://discord.com/api/webhooks/1488329999684730911/ykx0aWKr__IJXLwZ-jIqJAaT5yTEHr6ryfXvM5QMd3JHWISxcUF7Qisx1lzHu7b2vP7w", {
                             method: "POST",
@@ -30061,7 +30062,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                             body: JSON.stringify({
                                 content: `@everyone \`[${e.type} spawn notification]\`: **${e.name}** has been found!`
                             })})
-                        }
+                        }*/
                     }
                 }
                 if (e === void 0 || e.type === void 0) {
