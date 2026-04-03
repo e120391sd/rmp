@@ -27519,7 +27519,26 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         EA = t => {
             let e = [];
             I.entities.array.forEach(i => {
-                if(i.type === 3 && fe.neverExcludeItems.toLowerCase().replace(/\s/g, "").split(",").some(entry => entry.includes(i.name.toLowerCase().replace(/\s/g, "")) || i.name.toLowerCase().replace(/\s/g, "").includes(entry))) TA(i,e)
+                if (
+                i.type === 3 &&
+                fe.neverExcludeItems
+                    .split(",")
+                    .map(entry => entry.trim())
+                    .some(entry => {
+                    const itemName = i.name.toLowerCase().replace(/\s/g, "");
+                    const regexMatch = entry.match(/^\/(.+)\/([gimsuy]*)$/);
+                    if (regexMatch) {
+                        try {
+                        const regex = new RegExp(regexMatch[1], regexMatch[2]);
+                        return regex.test(i.name);
+                        } catch {
+                        return false;
+                        }
+                    }
+                    const normalizedEntry = entry.toLowerCase().replace(/\s/g, "");
+                    return normalizedEntry.includes(itemName) || itemName.includes(normalizedEntry);
+                    }) // lowkey too lazy to write this properly soooooooooo
+                ) TA(i, e);
                 i.type !== 3 || !i.visual.transform.visible || i.quality < (i.droptype === "material" ? fe.materialQualityFilter : fe.itemQualityFilter) || ( j2.includes(i.droptype) ) || TA(i, e)
             }), Tc.forEach(i => {
                 i.uiTimeout < I.time ? Tc.delete(i) : TA(i, e)
