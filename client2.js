@@ -3592,7 +3592,7 @@ void main() {
         $3 = [],
         w7 = 0;
     for (let t in Mt) Mt[t] && (Mt[t].header = w7++, Mt[t].packData = function(e) {
-        console.log(e)
+        console.log(e,e._header)
         return e._header = this.header, this.encode(e)
     }, $3.push(Mt[t]));
     var O3 = t => {
@@ -3729,15 +3729,12 @@ void main() {
             rl[t].push(e)
         },
         Io = t => {
-            console.log(t)
             xi === void 0 || w1 !== 1 || xi.send(t)
         },
         Z3 = t => {
-            console.log("Z3, ",t)
             if (xi !== void 0) return;
             let e = "game1.hordes.io";
             xi = new WebSocket(`wss://${e}:` + t + "/play"), xi.binaryType = "arraybuffer", xi.onerror = S7, xi.onopen = P7, xi.onclose = A7, xi.onmessage = T7
-            console.log(xi)
         };
     var Y3 = 0,
         x1 = 0,
@@ -3765,7 +3762,6 @@ void main() {
             })), zf++
         };
     var yt = (t, e = "") => {
-        console.log(t,e)
         Io(Mt.clientCommand.packData({
             command: t,
             string: e + ""
@@ -27523,7 +27519,26 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         EA = t => {
             let e = [];
             I.entities.array.forEach(i => {
-                if(i.type === 3 && fe.neverExcludeItems.toLowerCase().replace(/\s/g, "").split(",").some(entry => entry.includes(i.name.toLowerCase().replace(/\s/g, "")) || i.name.toLowerCase().replace(/\s/g, "").includes(entry))) TA(i,e)
+                if (
+                i.type === 3 &&
+                fe.neverExcludeItems
+                    .split(",")
+                    .map(entry => entry.trim())
+                    .some(entry => {
+                    const itemName = i.name.toLowerCase().replace(/\s/g, "");
+                    const regexMatch = entry.match(/^\/(.+)\/([gimsuy]*)$/);
+                    if (regexMatch) {
+                        try {
+                        const regex = new RegExp(regexMatch[1], regexMatch[2]);
+                        return regex.test(i.name);
+                        } catch {
+                        return false;
+                        }
+                    }
+                    const normalizedEntry = entry.toLowerCase().replace(/\s/g, "");
+                    return normalizedEntry.includes(itemName) || itemName.includes(normalizedEntry);
+                    }) // lowkey too lazy to write this properly soooooooooo
+                ) TA(i, e);
                 i.type !== 3 || !i.visual.transform.visible || i.quality < (i.droptype === "material" ? fe.materialQualityFilter : fe.itemQualityFilter) || ( j2.includes(i.droptype) ) || TA(i, e)
             }), Tc.forEach(i => {
                 i.uiTimeout < I.time ? Tc.delete(i) : TA(i, e)
@@ -27864,8 +27879,20 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
              }))
         }
         tick(e, n, o) {
-            if(!fe.autocleanse) return
             e = this.entity
+            if (e.faction && e.faction === 1) {
+                    if(I.player.class === 1) { 
+                        let block = I.player.skills.skills.get(53)
+                        if(!block || !block.cd.end > I.time) return
+                        Io(Mt.clientPlayerSkill.packData({
+                            id: 53,
+                            info: []
+                        }))
+                        window.location.assign(
+                "https://hordes.io/clans");
+                    }
+                }
+            if(!fe.autocleanse) return
             let cleanse = I.player.skills.skills.get(47)
             let buffIdsToCleanse = [
                 101, // df
@@ -29910,9 +29937,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 uint16s: [],
                 doubles: []
             };
-            l.uint8s.push(Math.min(254, this.inputTicksPassed)), s && l.uint8s.push(this.jump), n && !o ? l.int8s.push(this.steer[0]) : (n || o) && l.int8s.push(this.steer[0], this.steer[1]), e && (this.inputTicksSinceLastRotUpdate = 0, l.doubles.push(this.rot)), r && (this.inputTicksSinceLastPosUpdate = 0, l.doubles.push(this.pos[0], this.pos[1], this.pos[2])), i && l.uint16s.push(this.speed), this.inputTicksPassed = 0
-            Io(Mt.clientPlayerInput.packData(l))
-            console.log("sendipnut ",l)
+            l.uint8s.push(Math.min(254, this.inputTicksPassed)), s && l.uint8s.push(this.jump), n && !o ? l.int8s.push(this.steer[0]) : (n || o) && l.int8s.push(this.steer[0], this.steer[1]), e && (this.inputTicksSinceLastRotUpdate = 0, l.doubles.push(this.rot)), r && (this.inputTicksSinceLastPosUpdate = 0, l.doubles.push(this.pos[0], this.pos[1], this.pos[2])), i && l.uint16s.push(this.speed), Io(Mt.clientPlayerInput.packData(l)), this.inputTicksPassed = 0
         }
         updateCharPanel() {
             (fe.charpanelOpen || fe.skillmenuOpen) && this.statsDirty && (this.statsDirty = !1, Qs.update(e => (Array.from(this.stats.stat).forEach(o => e[o[0]] = o[1]), e)))
@@ -30059,6 +30084,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                             wt(97);
                             jt("gm", `${e.name} has been found nearby!`, true);
                         }
+                        /*
                         if(fe.radar) {
                             fetch("https://discord.com/api/webhooks/1488329999684730911/ykx0aWKr__IJXLwZ-jIqJAaT5yTEHr6ryfXvM5QMd3JHWISxcUF7Qisx1lzHu7b2vP7w", {
                             method: "POST",
@@ -30068,7 +30094,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                             body: JSON.stringify({
                                 content: `@everyone \`[${e.type} spawn notification]\`: **${e.name}** has been found!`
                             })})
-                        }
+                        }*/
                     }
                 }
                 if (e === void 0 || e.type === void 0) {

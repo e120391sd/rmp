@@ -5154,7 +5154,7 @@ void main() {
             effectImpact: 70,
             animCast: 14,
             animChannel: 15,
-            effectMissile: 69
+            //effectMissile: 69
         },
         onCast: (t, e, n) => ({
             id: 30,
