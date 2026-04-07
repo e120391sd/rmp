@@ -4883,7 +4883,7 @@ void main() {
         castLen: 0,
         costMp: t => 10 + t * 3,
         fx: {
-            effectTarget: 106
+            //effectTarget: 106
         },
         onCast: (t, e, n) => {}
     });
@@ -5151,10 +5151,10 @@ void main() {
         castLen: 2.3,
         costMp: t => 10 + t * 8,
         fx: {
-            effectImpact: 70,
+            //effectImpact: 70,
             animCast: 14,
             animChannel: 15,
-            //effectMissile: 69
+            effectMissile: 69
         },
         onCast: (t, e, n) => ({
             id: 30,
