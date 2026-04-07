@@ -10742,7 +10742,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 3,
         icon: "ui/skills/18",
         fx: {
-            stick: 38,
+            //stick: 38,
             color: [.7, .1, .1, .5]
         },
         intervalDuration: 1.5,
