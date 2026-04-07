@@ -4883,7 +4883,7 @@ void main() {
         castLen: 0,
         costMp: t => 10 + t * 3,
         fx: {
-            effectTarget: 106
+            //effectTarget: 106
         },
         onCast: (t, e, n) => {}
     });
@@ -5154,7 +5154,7 @@ void main() {
             effectImpact: 70,
             animCast: 14,
             animChannel: 15,
-            effectMissile: 69
+            //effectMissile: 69
         },
         onCast: (t, e, n) => ({
             id: 30,
@@ -10892,8 +10892,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/12",
         fx: {
-            apply: 50,
-            stick: 49,
+            //apply: 50,
+            //stick: 49,
             color: [.5, .4, .05, .5]
         },
         statsStatic: (t, e) => {
@@ -10927,7 +10927,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 5,
         icon: "ui/skills/43",
         fx: {
-            stick: 20
+            //stick: 20
         }
     });
     var J4 = new me({
@@ -11047,8 +11047,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/29",
         fx: {
-            apply: 51,
-            stick: 66,
+            //apply: 51,
+            //stick: 66,
             color: [.1, 1, .3, .3]
         },
         statsStatic: (t, e) => {
@@ -27879,20 +27879,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
              }))
         }
         tick(e, n, o) {
-            e = this.entity
-            if (e.faction && e.faction === 1) {
-                    if(I.player.class === 1) { 
-                        let block = I.player.skills.skills.get(53)
-                        if(!block || !block.cd.end > I.time) return
-                        Io(Mt.clientPlayerSkill.packData({
-                            id: 53,
-                            info: []
-                        }))
-                        window.location.assign(
-                "https://hordes.io/clans");
-                    }
-                }
             if(!fe.autocleanse) return
+            e = this.entity
             let cleanse = I.player.skills.skills.get(47)
             let buffIdsToCleanse = [
                 101, // df

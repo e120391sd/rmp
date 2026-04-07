@@ -5151,10 +5151,10 @@ void main() {
         castLen: 2.3,
         costMp: t => 10 + t * 8,
         fx: {
-            //effectImpact: 70,
+            effectImpact: 70,
             animCast: 14,
             animChannel: 15,
-            effectMissile: 69
+            //effectMissile: 69
         },
         onCast: (t, e, n) => ({
             id: 30,
@@ -10927,7 +10927,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 5,
         icon: "ui/skills/43",
         fx: {
-            stick: 20
+            //stick: 20
         }
     });
     var J4 = new me({
