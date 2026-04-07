@@ -10892,8 +10892,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/12",
         fx: {
-            apply: 50,
-            stick: 49,
+            //apply: 50,
+            //stick: 49,
             color: [.5, .4, .05, .5]
         },
         statsStatic: (t, e) => {
@@ -11047,8 +11047,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/29",
         fx: {
-            apply: 51,
-            stick: 66,
+            //apply: 51,
+            //stick: 66,
             color: [.1, 1, .3, .3]
         },
         statsStatic: (t, e) => {
