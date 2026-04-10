@@ -30790,9 +30790,12 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     };
     window.onload = async () => {
         console.log("Hordes 0.51.8822 Live"), await L1();
-        let t = await fetch("data/game/game.bin?v=8822612");
-        let decode = Ia.gamedata.decode(new Uint8Array(await t.arrayBuffer()))
-        z1(decode), xx(), bA(), qA(), new l8({
+        let t = await fetch("https://raw.githubusercontent.com/e120391sd/rmp/refs/heads/main/oldgame.json");
+        //let decode = Ia.gamedata.decode(new Uint8Array(await t.arrayBuffer()))
+        let res = await t.text()
+        res = JSON.parse(res)
+        console.log(res.classes)
+        z1(res), xx(), bA(), qA(), new l8({
             target: document.querySelector("body")
         }), Q3(YA, XA), N3(new Fh({})), Z2(!0), zT()
     };
