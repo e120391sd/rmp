@@ -77692,7 +77692,7 @@
       "id": 0,
       "scale": 255,
       "spec": 21,
-      "texture": 1225
+      "texture": 1217
     },
     {
       "brightest": 164,
@@ -77701,7 +77701,7 @@
       "id": 4,
       "scale": 120,
       "spec": 18,
-      "texture": 1225
+      "texture": 2060
     },
     {
       "brightest": 178,
@@ -77716,7 +77716,7 @@
       "id": 15,
       "scale": 128,
       "spec": 141,
-      "texture": 1225
+      "texture": 1235
     },
     {
       "brightest": 67,
@@ -77725,7 +77725,7 @@
       "id": 21,
       "scale": 255,
       "spec": 127,
-      "texture": 1225
+      "texture": 1854
     },
     {
       "brightest": 255,
@@ -77740,7 +77740,7 @@
       "id": 27,
       "scale": 128,
       "spec": 20,
-      "texture": 1225
+      "texture": 1867
     },
     {
       "brightest": 125,
@@ -77749,7 +77749,7 @@
       "id": 29,
       "scale": 128,
       "spec": 26,
-      "texture": 1225
+      "texture": 2125
     },
     {
       "brightest": 129,
@@ -77784,7 +77784,7 @@
       "id": 31,
       "scale": 128,
       "spec": 19,
-      "texture": 1225
+      "texture": 2124
     },
     {
       "brightest": 146,
@@ -77793,7 +77793,7 @@
       "id": 32,
       "scale": 128,
       "spec": 23,
-      "texture": 1225
+      "texture": 2126
     },
     {
       "brightest": 143,
@@ -77802,7 +77802,7 @@
       "id": 33,
       "scale": 128,
       "spec": 13,
-      "texture": 1225
+      "texture": 2051
     },
     {
       "brightest": 158,
@@ -77837,7 +77837,7 @@
       "id": 34,
       "scale": 128,
       "spec": 12,
-      "texture": 1225
+      "texture": 2053
     },
     {
       "brightest": 222,
@@ -77846,7 +77846,7 @@
       "id": 36,
       "scale": 128,
       "spec": 73,
-      "texture": 1225
+      "texture": 2054
     },
     {
       "brightest": 226,
@@ -77855,7 +77855,7 @@
       "id": 44,
       "scale": 128,
       "spec": 39,
-      "texture": 1225
+      "texture": 1875
     },
     {
       "brightest": 233,
@@ -77870,7 +77870,7 @@
       "id": 50,
       "scale": 128,
       "spec": 21,
-      "texture": 1225
+      "texture": 2103
     },
     {
       "brightest": 141,
