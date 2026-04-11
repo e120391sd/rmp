@@ -7894,7 +7894,7 @@ void main() {
             if (pg[i]) return pg[i];
             let s = document.createElement("canvas"),
                 r = s.getContext("2d");
-            return r.font = "bold " + 5 + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
+            return r.font = "bold " + n + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
         },
         Vo = (t, e, n, o, i, s, r) => {
             t || (t = document.createElement("canvas"), t.width = n, t.height = o);
