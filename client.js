@@ -15668,7 +15668,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }
         }), {
             c() {
-                ignoreNameplateElement = h("div"), ignoreNameplateElement.textContent = `Ignore nameplate view range limit`, K(ignoreNameplateValue.$$.fragment),
+                ignoreNameplateElement = h("div"), ignoreNameplateElement.textContent = `Change nameplate select style`, K(ignoreNameplateValue.$$.fragment),
                 nextFriendlyIgnoreBotsElement = h("div"), nextFriendlyIgnoreBotsElement.textContent = `Target Next Friendly: Exclude Bots`, K(nextFriendlyIgnoreBotsValue.$$.fragment),
                 timeToIngameElement = h("div"), timeToIngameElement.textContent = `Use device time`, K(timeToIngameValue.$$.fragment),
                 disableClantagsElement = h("div"), disableClantagsElement.textContent = `Disable clan tags`, K(disableClantagsValue.$$.fragment),
@@ -27592,13 +27592,12 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         fB = () => {
             let t = [];
             return I.entities.array.forEach((e, n) => {
-                !e.visual || !e.visual.transform.visible || e.stats && !e.stats.alive || e.id !== zn && e.visual.cDist && e.visual.cDist > 60 || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
+                !e.visual || !e.visual.transform.visible || e.stats && !e.stats.alive || e.id !== zn && e.visual.cDist && e.visual.cDist < 1 || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
             }), t.sort((e, n) => n.hudPos[2] - e.hudPos[2])
         },
         uB = (t, e, n) => e ? 4 : n === 0 ? fe.classColorBars && t.type === 0 ? 8 + t.class : 1 : I.player.canCombatInteract(t) ? n === 2 ? fe.classColorBars ? 8 + t.class : 5 : t.type === 1 && t.aggroMode === 0 ? 2 : 3 : 6,
         mB = (t, e) => {
             let n = t.visual && t.visual.cDist;
-            if(fe.ignoreNameplateViewRange) n = 0
             if (n > fe.nameplateViewRange) return;
             n ? n /= 70 : n = 0;
             let o = false,
@@ -27616,7 +27615,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                     v = t.skills.timedSkill !== void 0;
-                !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
+                !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
                 let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
                 if (v && _) {
                     let b = Jn[0].height - Wo,
