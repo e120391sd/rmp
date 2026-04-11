@@ -7689,7 +7689,7 @@ void main() {
     var ug, mg = {},
         Lt = t => (ug === void 0 && (ug = getComputedStyle(document.body)), mg[t] !== void 0 ? mg[t] : mg[t] = ug.getPropertyValue("--" + t));
     var Lx = () => {
-            Eo.font = "bold 18px hordes", Eo.fillText("Hordes", 0, 0)
+            Eo.font = "bold 5px hordes", Eo.fillText("Hordes", 0, 0)
         },
         pr = (t, e, n = 1, o = 1, i = 1, s = 1, r = 0, l = 0, a = .5, c = .5) => {
             Eo.globalAlpha = fe.nameplateShowTransparency ? n : 1;
