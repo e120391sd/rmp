@@ -2053,7 +2053,8 @@ void main() {
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
         timeToIngame: () => timeToIngame,
-        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots
+        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
+        ignoreNameplateViewRange: () => ignoreNameplateViewRange
     });
     var l1 = {};
     Kn(l1, {
@@ -2214,7 +2215,8 @@ void main() {
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
         timeToIngame: () => timeToIngame,
-        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots
+        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
+        ignoreNameplateViewRange: () => ignoreNameplateViewRange
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2373,7 +2375,8 @@ void main() {
         disableHealing = ne(false),
         disableClantags = ne(false),
         timeToIngame = ne(false),
-        nextFriendlyIgnoreBots = ne(true);
+        nextFriendlyIgnoreBots = ne(true),
+        ignoreNameplateViewRange = ne(false);
     var a1;
     a1 = {
         ...l1
@@ -15598,7 +15601,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        let nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
+        let ignoreNameplateValue, ignoreNameplateElement, nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
             props: {
                 store: hideBots
@@ -15659,8 +15662,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: nextFriendlyIgnoreBots
             }
+        }), ignoreNameplateValue = new Et({
+            props: {
+                store: ignoreNameplateViewRange
+            }
         }), {
             c() {
+                ignoreNameplateElement = h("div"), ignoreNameplateElement.textContent = `Ignore nameplate view range limit`, K(ignoreNameplateValue.$$.fragment),
                 nextFriendlyIgnoreBotsElement = h("div"), nextFriendlyIgnoreBotsElement.textContent = `Target Next Friendly: Exclude Bots`, K(nextFriendlyIgnoreBotsValue.$$.fragment),
                 timeToIngameElement = h("div"), timeToIngameElement.textContent = `Use device time`, K(timeToIngameValue.$$.fragment),
                 disableClantagsElement = h("div"), disableClantagsElement.textContent = `Disable clan tags`, K(disableClantagsValue.$$.fragment),
@@ -15702,6 +15710,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
                 w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
                 //w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
+                w(M, ignoreNameplateElement, D), Q(ignoreNameplateValue, M, D),
                 w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
                 w(M, generalCategory, D), w(M, seperator6, D),
                 w(M, specialSellElement, D), Q(specialSellValue, M, D),
@@ -15716,13 +15725,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
             },
             i(M) { // S(targetEnabledValue.$$.fragment, M)
-                C || (S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) { //  E(targetEnabledValue.$$.fragment, M)
-                E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) { // x(targetEnabledElement), x(targetEnabledValue) Z(targetEnabledValue, M)
-                M && (x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M)
+                M && (x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue)
             }
         }
     }
@@ -27589,7 +27598,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         uB = (t, e, n) => e ? 4 : n === 0 ? fe.classColorBars && t.type === 0 ? 8 + t.class : 1 : I.player.canCombatInteract(t) ? n === 2 ? fe.classColorBars ? 8 + t.class : 5 : t.type === 1 && t.aggroMode === 0 ? 2 : 3 : 6,
         mB = (t, e) => {
             let n = t.visual && t.visual.cDist;
-            if (n > fe.nameplateViewRange) return;
+            if (n > fe.nameplateViewRange && !fe.ignoreNameplateViewRange) return;
             n ? n /= 70 : n = 0;
             let o = false,
                 i = t.faction !== void 0 ? I.player.hostility(t) : 0,
