@@ -7703,7 +7703,7 @@ void main() {
         qx = (t, e, n, o, i = 0, s = 0, r = .5, l = .5) => pr(e, t, n, o, 1, 1, i, s, r, l),
         vl = (t, e, n = !1) => (n ? (e[0] = t[0], e[1] = t[1]) : Ao(e, t, gt.projectionViewMatrix), n || e[2] < 1 && e[0] > -1 && e[0] < 1 ? (e[1] = Math.max(-1, Math.min(e[1], 1)), e[0] = Math.round((e[0] * .5 + .5) * Ln.width), e[1] = Math.round((e[1] * -.5 + .5) * Ln.height), e[1] = Math.max(30, e[1]), e) : !1),
         Rx = (t, e, n) => {
-            t.font = "bold " + 5 + "px hordes", t.shadowColor = "#000", t.shadowOffsetX = 1, t.shadowOffsetY = 1, t.fillStyle = n
+            t.font = "bold " + 8 + "px hordes", t.shadowColor = "#000", t.shadowOffsetX = 1, t.shadowOffsetY = 1, t.fillStyle = n
         },
         qt = {
             name: {
