@@ -4889,7 +4889,7 @@ void main() {
         castLen: 0,
         costMp: t => 10 + t * 3,
         fx: {
-            effectTarget: fe.removeFX ? null : 106
+            effectTarget: fe.removeFX ? void 0 : 106
         },
         onCast: (t, e, n) => {}
     });
@@ -4910,7 +4910,7 @@ void main() {
         costMp: t => t * 2,
         fx: {
             effectMissile: 107,
-            effectTarget: fe.removeFX ? null : 111
+            effectTarget: fe.removeFX ? void 0 : 111
         },
         onCast: (t, e, n, o, i, s) => {}
     });
@@ -5160,7 +5160,7 @@ void main() {
             effectImpact: 70,
             animCast: 14,
             animChannel: 15,
-            effectMissile: fe.removeFX ? null : 69
+            effectMissile: fe.removeFX ? void 0 : 69
         },
         onCast: (t, e, n) => ({
             id: 30,
@@ -10748,7 +10748,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 3,
         icon: "ui/skills/18",
         fx: {
-            stick: fe.removeFX ? null : 38,
+            stick: fe.removeFX ? void 0 : 38,
             color: [.7, .1, .1, .5]
         },
         intervalDuration: 1.5,
@@ -10898,8 +10898,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/12",
         fx: {
-            apply: fe.removeFX ? null : 50,
-            stick: fe.removeFX ? null : 49,
+            apply: fe.removeFX ? void 0 : 50,
+            stick: fe.removeFX ? void 0 : 49,
             color: [.5, .4, .05, .5]
         },
         statsStatic: (t, e) => {
@@ -10933,7 +10933,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 5,
         icon: "ui/skills/43",
         fx: {
-            stick: fe.removeFX ? null : 20
+            stick: fe.removeFX ? void 0 : 20
         }
     });
     var J4 = new me({
@@ -11053,8 +11053,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/29",
         fx: {
-            apply: fe.removeFX ? null : 51,
-            stick: fe.removeFX ? null : 66,
+            apply: fe.removeFX ? void 0 : 51,
+            stick: fe.removeFX ? void 0 : 66,
             color: [.1, 1, .3, .3]
         },
         statsStatic: (t, e) => {
@@ -27601,7 +27601,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         fB = () => {
             let t = [];
             return I.entities.array.forEach((e, n) => {
-                !e.visual || !e.visual.transform.visible || e.stats && !e.stats.alive || e.id !== zn && e.visual.cDist && e.visual.cDist > 60 || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
+                !e.visual || !e.visual.transform.visible || e.stats && !e.stats.alive || e.id !== zn && e.visual.cDist && e.visual.cDist > 500 || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
             }), t.sort((e, n) => n.hudPos[2] - e.hudPos[2])
         },
         uB = (t, e, n) => e ? 4 : n === 0 ? fe.classColorBars && t.type === 0 ? 8 + t.class : 1 : I.player.canCombatInteract(t) ? n === 2 ? fe.classColorBars ? 8 + t.class : 5 : t.type === 1 && t.aggroMode === 0 ? 2 : 3 : 6,
