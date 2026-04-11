@@ -7689,7 +7689,7 @@ void main() {
     var ug, mg = {},
         Lt = t => (ug === void 0 && (ug = getComputedStyle(document.body)), mg[t] !== void 0 ? mg[t] : mg[t] = ug.getPropertyValue("--" + t));
     var Lx = () => {
-            Eo.font = "bold 5px hordes", Eo.fillText("Hordes", 0, 0)
+            Eo.font = "bold 18px hordes", Eo.fillText("Hordes", 0, 0)
         },
         pr = (t, e, n = 1, o = 1, i = 1, s = 1, r = 0, l = 0, a = .5, c = .5) => {
             Eo.globalAlpha = fe.nameplateShowTransparency ? n : 1;
@@ -7703,7 +7703,7 @@ void main() {
         qx = (t, e, n, o, i = 0, s = 0, r = .5, l = .5) => pr(e, t, n, o, 1, 1, i, s, r, l),
         vl = (t, e, n = !1) => (n ? (e[0] = t[0], e[1] = t[1]) : Ao(e, t, gt.projectionViewMatrix), n || e[2] < 1 && e[0] > -1 && e[0] < 1 ? (e[1] = Math.max(-1, Math.min(e[1], 1)), e[0] = Math.round((e[0] * .5 + .5) * Ln.width), e[1] = Math.round((e[1] * -.5 + .5) * Ln.height), e[1] = Math.max(30, e[1]), e) : !1),
         Rx = (t, e, n) => {
-            t.font = "bold " + 8 + "px hordes", t.shadowColor = "#000", t.shadowOffsetX = 1, t.shadowOffsetY = 1, t.fillStyle = n
+            t.font = "bold " + e + "px hordes", t.shadowColor = "#000", t.shadowOffsetX = 1, t.shadowOffsetY = 1, t.fillStyle = n
         },
         qt = {
             name: {
@@ -27488,6 +27488,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(fe.disableDamage ? "" : e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9)
         },
         W2 = (t, e, n, o = !1, i) => {
+            console.log(t,e,n,o,i)
             Yu(t, o, n === 3, o || n !== 3, ht(fe.disableHealing ? "" : e), o ? qt.pheal : qt.heal, i, cs, 1.3)
         },
         SA = (t, e, n) => {
