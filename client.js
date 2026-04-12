@@ -15776,7 +15776,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 //hidebuffsSub = h("div"), hidebuffsSub.textContent = `Buff list: LocalStorage["hiddenBuffs"]`, p(hidebuffsSub, "class", "textgrey"), hidebuffsSub.style.fontSize = "14px",
                 sortPartySub = h("div"), sortPartySub.textContent = `Shaman => Archer => Mage => Warrior`, p(sortPartySub, "class", "textgrey"), sortPartySub.style.fontSize = "13px",
                 CCIseperator2 = h("div"), hideBuffsSeperator = h("br"), sortPartySeperator = h("br"),
-                hideBuffsElement = h("div"), hideBuffsElement.textContent = `Hide irrelevant buff icons`, K(hideBuffsValue.$$.fragment)
+                hideBuffsElement = h("div"), hideBuffsElement.textContent = `Hide irrelevant buffs`, K(hideBuffsValue.$$.fragment)
                 sortPartyElement = h("div"), sortPartyElement.textContent = `Sort party by class`, K(sortPartyValue.$$.fragment)
                 CCIdfcontainer = h("div"), CCIdfcontainer.style.display = "flex", CCIdfcontainer.style.alignItems = "center", 
                 CCIchillcontainer = h("div"), CCIchillcontainer.style.display = "flex", CCIchillcontainer.style.alignItems = "center", 
