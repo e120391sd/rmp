@@ -2069,6 +2069,8 @@ void main() {
         sortParty: () => sortParty,
         hideBuffs: () => hideBuffs,
         hiddenBuffs: () => hiddenBuffs,
+        hideClassBuffs: () => hideClassBuffs,
+        hiddenClassBuffs: () => hiddenClassBuffs,
         onlyShowOwnRev: () => onlyShowOwnRev,
         prestigeChange: () => prestigeChange
     });
@@ -2247,6 +2249,8 @@ void main() {
         sortParty: () => sortParty,
         hideBuffs: () => hideBuffs,
         hiddenBuffs: () => hiddenBuffs,
+        hideClassBuffs: () => hideClassBuffs,
+        hiddenClassBuffs: () => hiddenClassBuffs,
         onlyShowOwnRev: () => onlyShowOwnRev,
         prestigeChange: () => prestigeChange
     });
@@ -2423,6 +2427,8 @@ void main() {
         sortParty = ne(false),
         hideBuffs = ne(false),
         hiddenBuffs = ne([92, 96, 95, 86, 68, 67, 89, 108, 74]),
+        hideClassBuffs = ne(false),
+        hiddenClassBuffs = ne([116, 80, 81, 76, 75]),
         onlyShowOwnRev = ne(false),
         ignoreNameplateViewRange = ne(false);
     var a1;
@@ -10086,7 +10092,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             p(L, $) {
                 Ve(e, "scale", Math.min(1.3,t.targetScale))
                 let container = e.querySelector(".bars")
-                container.style.border = t.CCFound ? `2px solid ${t.CCColor}` : null, container.style.borderRadius = "6px"
+                container.style.border = t.CCFound ? `4px solid ${t.CCColor}` : null, container.style.borderRadius = "6px"
                 L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
@@ -15663,7 +15669,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        let sortPartyElement, sortPartyValue, hideBuffsElement, hideBuffsValue, hidebuffsSub, sortPartySub, hideBuffsSeperator, sortPartySeperator, ownRevElement, ownRevValue
+        let sortPartyElement, sortPartyValue, hideBuffsElement, hideBuffsValue, hidebuffsSub, sortPartySub, hideBuffsSeperator, sortPartySeperator, ownRevElement, ownRevValue, hideClassBuffsElement, hideClassBuffsValue
         let CCIsub, CCIseperator2, CCIdfcontainer, CCIchillcontainer, CCIagocontainer, CCIrelcontainer, CCIblindcontainer, CCIstuncontainer, seperatorCCI, CCICategory, CCIToggleElement, CCIToggleValue, CCIdfimage, CCIdftext, CCIdfcolor, CCIchillimage, CCIchilltext, CCIchillcolor, CCIagoimage, CCIagotext, CCIagocolor, CCIstunimage, CCIstuncolor, CCIstuntext, CCIrelimage, CCIreltext, CCIrelcolor, CCIblindimage, CCIblindtext, CCIblindcolor
         let stackIndElement, stackIndValue, shrinkIndElement, shrinkIndValue, removeFXElement, removeFXValue, ignoreNameplateValue, ignoreNameplateElement, nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
@@ -15758,11 +15764,16 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: onlyShowOwnRev
             }
+        }), hideClassBuffsValue = new Et({
+            props: {
+                store: hideClassBuffs
+            }
         }), {
             c() {
-                ownRevElement = h("div"), ownRevElement.textContent = `Only show own revitalize`, K(ownRevValue.$$.fragment)
+                ownRevElement = h("div"), ownRevElement.textContent = `Hide class buffs`, K(ownRevValue.$$.fragment),
+                ownRevElement = h("div"), ownRevElement.textContent = `Only show own revitalize`, K(ownRevValue.$$.fragment),
                 CCIsub = h("div"), CCIsub.textContent = `-- Colors: --`, p(CCIsub, "class", "textgrey"),
-                hidebuffsSub = h("div"), hidebuffsSub.textContent = `Buff list: LocalStorage["hiddenBuffs"]`, p(hidebuffsSub, "class", "textgrey"), hidebuffsSub.style.fontSize = "14px",
+                //hidebuffsSub = h("div"), hidebuffsSub.textContent = `Buff list: LocalStorage["hiddenBuffs"]`, p(hidebuffsSub, "class", "textgrey"), hidebuffsSub.style.fontSize = "14px",
                 sortPartySub = h("div"), sortPartySub.textContent = `Shaman => Archer => Mage => Warrior`, p(sortPartySub, "class", "textgrey"), sortPartySub.style.fontSize = "13px",
                 CCIseperator2 = h("div"), hideBuffsSeperator = h("br"), sortPartySeperator = h("br"),
                 hideBuffsElement = h("div"), hideBuffsElement.textContent = `Hide irrelevant buff icons`, K(hideBuffsValue.$$.fragment)
@@ -15835,7 +15846,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, removeFXElement, D), Q(removeFXValue, M, D),
                 //w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
                 w(M, ignoreNameplateElement, D), Q(ignoreNameplateValue, M, D),
-                w(M, hideBuffsElement, D), Q(hideBuffsValue, M, D), d(hideBuffsElement,hideBuffsSeperator), d(hideBuffsElement, hidebuffsSub),
+                w(M, hideBuffsElement, D), Q(hideBuffsValue, M, D), //d(hideBuffsElement,hideBuffsSeperator), d(hideBuffsElement, hidebuffsSub),
+                w(M, hideClassBuffsElement, D), Q(hideClassBuffsValue, M, D),
                 w(M, generalCategory, D), w(M, seperator6, D),
                 w(M, specialSellElement, D), Q(specialSellValue, M, D),
                 w(M, alwaysPickupElement, D), w(M, alwaysPickupValue, D), We(alwaysPickupValue, t[70]), d(alwaysPickupElement, seperator8), d(alwaysPickupElement, subNeverExcludeItems),
@@ -15867,7 +15879,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             d(M) { // x(targetEnabledElement), x(targetEnabledValue) Z(targetEnabledValue, M)
                 M && (
-                    x(sortPartyElement), x(sortPartyValue), x(hideBuffsElement), x(hideBuffsValue), x(hidebuffsSub), x(sortPartySub), x(hideBuffsSeperator), x(sortPartySeperator), x(ownRevElement), x(ownRevValue),
+                    x(sortPartyElement), x(sortPartyValue), x(hideBuffsElement), x(hideBuffsValue), x(sortPartySub), x(sortPartySeperator), x(ownRevElement), x(ownRevValue),
                     x(CCIsub), x(CCIseperator2), x(CCIchillcontainer), x(CCIdfcontainer), x(CCIagocontainer), x(CCIrelcontainer), x(CCIblindcontainer), x(CCIstuncontainer),
                     x(seperatorCCI), x(CCICategory), x(CCIToggleElement), x(CCIToggleValue), x(CCIdfimage), x(CCIdftext), x(CCIdfcolor), x(CCIchillimage), x(CCIchilltext), x(CCIchillcolor), x(CCIagoimage), x(CCIagotext), x(CCIagocolor), x(CCIstunimage), x(CCIstuntext), x(CCIstuncolor), x(CCIrelimage), x(CCIreltext), x(CCIrelcolor), x(CCIblindimage), x(CCIblindtext), x(CCIblindcolor), Z(CCIToggleValue, M),
                     x(stackIndElement), x(stackIndValue), x(shrinkIndElement), x(shrinkIndValue), x(removeFXElement), x(removeFXValue), x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)),
@@ -29479,6 +29491,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         a.logic.type = 2;
                     }
                     console.log(a.id)
+                    if(fe.hideClassBuffs && fe.hiddenClassBuffs.find(i => i === a.id)) return;
                     if((fe.hideBuffs && fe.hiddenBuffs.find(i => i === a.id)) || (I.player.class === 3 && fe.onlyShowOwnRev && a.id === 60 && c !== I.playerId)) return;
                     !a.logic.passive && a.logic.icon !== void 0 &&
                     /*(a.id !== 60 || c === I.playerId) &&*/
