@@ -7810,7 +7810,7 @@ void main() {
                 size: fe.shrinkIndicators ? 14 : 28
             },
             spellCrit: {
-                fill: "#ff8e04",
+                fill: "#ffa02d",
                 size: fe.shrinkIndicators ? 20 : 40
             },
             heal: {
