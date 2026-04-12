@@ -29490,7 +29490,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         a.logic = Object.assign(Object.create(Object.getPrototypeOf(a.logic)), a.logic);
                         a.logic.type = 2;
                     }
-                    console.log(a.id)
                     if(fe.hideClassBuffs && fe.hiddenClassBuffs.find(i => i === a.id)) return;
                     if((fe.hideBuffs && fe.hiddenBuffs.find(i => i === a.id)) || (I.player.class === 3 && fe.onlyShowOwnRev && a.id === 60 && c !== I.playerId)) return;
                     !a.logic.passive && a.logic.icon !== void 0 &&
