@@ -15808,7 +15808,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 p(subRevUnfriendly, "class", "textgrey"), p(subAutocleanse, "class", "textgrey"), p(subNeverExcludeItems, "class", "textgrey"), p(subRad, "class", "textgrey"), p(subDeclutterCategory, "class", "textgrey")
                 p(radCategory, "class", "textprimary"), p(shamanCategory, "class", "textprimary"), p(generalCategory, "class", "textprimary"), p(declutterCategory, "class", "textprimary"),
                 radCategory.style.fontSize = "20px", shamanCategory.style.fontSize = "20px", generalCategory.style.fontSize = "20px", CCICategory.style.fontSize = "20px", declutterCategory.style.fontSize = "20px",
-                subRad.style.fontSize = "12px", subDeclutterCategory.style.fontSize = "12px",
+                subRad.style.fontSize = "15px", subDeclutterCategory.style.fontSize = "15px",
                 shamanCategory.style.marginTop = "10px", generalCategory.style.marginTop = "10px", CCICategory.style.marginTop = "10px", declutterCategory.style.marginTop = "10px",
                 p(alwaysPickupValue, "type", "text"), p(timeSlider, "type", "range"), p(timeSlider, "max", "1000")
             },
