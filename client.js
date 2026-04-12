@@ -7806,11 +7806,11 @@ void main() {
                 size: fe.shrinkIndicators ? 12 : 24
             },
             spell: {
-                fill: "#fff178",
+                fill: "#FFE404",
                 size: fe.shrinkIndicators ? 14 : 28
             },
             spellCrit: {
-                fill: "#FFE404",
+                fill: "#ff8e04",
                 size: fe.shrinkIndicators ? 20 : 40
             },
             heal: {
