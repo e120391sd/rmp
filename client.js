@@ -2056,7 +2056,8 @@ void main() {
         nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
         ignoreNameplateViewRange: () => ignoreNameplateViewRange,
         removeFX: () => removeFX,
-        shrinkIndicators: () => shrinkIndicators
+        shrinkIndicators: () => shrinkIndicators,
+        stackIndicators: () => stackIndicators
     });
     var l1 = {};
     Kn(l1, {
@@ -2220,7 +2221,8 @@ void main() {
         nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
         ignoreNameplateViewRange: () => ignoreNameplateViewRange,
         removeFX: () => removeFX,
-        shrinkIndicators: () => shrinkIndicators
+        shrinkIndicators: () => shrinkIndicators,
+        stackIndicators: () => stackIndicators
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2382,6 +2384,7 @@ void main() {
         nextFriendlyIgnoreBots = ne(true),
         removeFX = ne(true),
         shrinkIndicators = ne(true),
+        stackIndicators = ne(false),
         ignoreNameplateViewRange = ne(false);
     var a1;
     a1 = {
@@ -7803,7 +7806,7 @@ void main() {
                 size: fe.shrinkIndicators ? 12 : 24
             },
             spell: {
-                fill: "#FFE404",
+                fill: "#fff178",
                 size: fe.shrinkIndicators ? 14 : 28
             },
             spellCrit: {
@@ -7897,7 +7900,8 @@ void main() {
             if (pg[i]) return pg[i];
             let s = document.createElement("canvas"),
                 r = s.getContext("2d");
-            return r.font = "bold " + n + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
+            r.font = "bold " + n + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
+            return s
         },
         Vo = (t, e, n, o, i, s, r) => {
             t || (t = document.createElement("canvas"), t.width = n, t.height = o);
@@ -15607,7 +15611,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        let shrinkIndElement, shrinkIndValue, removeFXElement, removeFXValue, ignoreNameplateValue, ignoreNameplateElement, nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
+        let stackIndElement, stackIndValue, shrinkIndElement, shrinkIndValue, removeFXElement, removeFXValue, ignoreNameplateValue, ignoreNameplateElement, nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
             props: {
                 store: hideBots
@@ -15680,8 +15684,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: shrinkIndicators
             }
+        }), stackIndValue = new Et({
+            props: {
+                store: stackIndicators
+            }
         }), {
             c() {
+                stackIndElement = h("div"), stackIndElement.textContent = `Stack damage indicators`, K(stackIndValue.$$.fragment),
                 shrinkIndElement = h("div"), shrinkIndElement.textContent = `Shrink indicator size`, K(shrinkIndValue.$$.fragment),
                 removeFXElement = h("div"), removeFXElement.textContent = `Disable skill tick effects`, K(removeFXValue.$$.fragment),
                 ignoreNameplateElement = h("div"), ignoreNameplateElement.textContent = `Change nameplate select style`, K(ignoreNameplateValue.$$.fragment),
@@ -15725,6 +15734,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, disableClantagsElement, D), Q(disableClantagsValue, M, D)
                 w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
                 w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
+                w(M, stackIndElement, D), Q(stackIndValue, M, D),
                 w(M, shrinkIndElement, D), Q(shrinkIndValue, M, D),
                 w(M, removeFXElement, D), Q(removeFXValue, M, D),
                 //w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
@@ -15743,13 +15753,14 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
             },
             i(M) { // S(targetEnabledValue.$$.fragment, M)
-                C || (S(shrinkIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(stackIndValue.$$.fragment, M), S(shrinkIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) { //  E(targetEnabledValue.$$.fragment, M)
-                E(shrinkIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(stackIndValue.$$.fragment, M), E(shrinkIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) { // x(targetEnabledElement), x(targetEnabledValue) Z(targetEnabledValue, M)
-                M && (x(shrinkIndElement), x(shrinkIndValue), x(removeFXElement), x(removeFXValue), x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(shrinkIndValue, M)
+                M && (x(stackIndElement), x(stackIndValue), x(shrinkIndElement), x(shrinkIndValue), x(removeFXElement), x(removeFXValue), x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)),
+                Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(shrinkIndValue, M), Z(stackIndValue, M)
             }
         }
     }
@@ -27492,9 +27503,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 i.screenOffset[0] *= Math.max(0, 1 - t * 3), i.screenOffset[1] *= Math.max(0, 1 - t * 3), n[0] = i.screenPos[0] + i.screenOffset[0], n[1] = i.screenPos[1] + i.screenOffset[1], qx(n, i.img, i.alpha, i.scale)
             }
         },
-        N2 = (t, e, n, o, i = !1, s) => {
+        N2 = (t, e, n, o, i = !1, s, skillId = 0, caster = {}, target = {}) => {
             let r = n === 3;
-            Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(fe.disableDamage ? "" : e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9)
+            Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(fe.disableDamage ? "" : e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9, skillId,caster,target)
         },
         W2 = (t, e, n, o = !1, i) => {
             Yu(t, o, n === 3, o || n !== 3, ht(fe.disableHealing ? "" : e), o ? qt.pheal : qt.heal, i, cs, 1.3)
@@ -27508,9 +27519,37 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     var AA = (t, e) => {
             Yu(t, !1, !1, !0, `+${e} Fame`, qt.fame, 5.5, cs, 1.5)
         },
-        Yu = (t, e = !1, n = !1, o = !1, i, s, r, l, a) => {
-            let c = lB();
-            it(c.pos, t), c.pos[1] += r || 0, c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o, c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0), c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width, c.height = c.img.height, Hu.push(c)
+        updateElement = (obj,newObj,params) => {
+            obj.value += newObj.value
+            obj.img = lu(obj.value + "", params)
+            obj.timer.duration = Math.min(obj.timer.duration + 1, 2)
+            obj.timer.end = Math.min(Math.max(obj.timer.end, cs + 1), cs + 2)
+        },
+        Yu = (t, e = !1, n = !1, o = !1, i, s, r, l, a, skillId = 0, caster = {}, target = {}) => {
+            let c = lB()
+            it(c.pos, t)
+            c.pos[1] += r || 0
+            c.value = Number(String(i).replace(/[^0-9]/g, ''))
+            c.skillId = skillId
+            c.caster = caster
+            c.lastHit = Date.now()
+            c.target = target
+
+            for (let ii of Hu) {
+                if(!fe.stackIndicators) continue
+                if(ii.caster.id == null || ii.target.id == null) continue
+                n = true // float
+                let sameCaster = c.caster.id === ii.caster.id
+                let sameTarget = c.target.id === ii.target.id
+                let sameSkill = c.skillId === ii.skillId
+
+                if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s)
+            }
+
+            c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o,
+            c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0),
+            c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width,
+            c.height = c.img.height, Hu.push(c)
         },
         O2 = [],
         lB = () => O2.length ? O2.pop() : {
@@ -27526,7 +27565,12 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             alpha: 0,
             img: void 0,
             width: 0,
-            height: 0
+            height: 0,
+            value: 0,
+            skillId: 0,
+            caster: {},
+            lastHit: 0,
+            target: {}
         },
         aB = t => {
             O2.push(t)
@@ -30510,7 +30554,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         s !== void 0 && fe.dpsmeterMode === 0 && Vd(s, o, i);
         let f = t === I.player,
             u = s === I.player;
-        if (f ? fe.showIncomingDamage && N2([-.3, -.3, .5], o, l, a, !0, 0) : u && N2(t.visualPosition, o, l, a, !1, 2), l > 0 && t.stats.changeResource(6, -o), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
+        if (f ? fe.showIncomingDamage && N2([-.3, -.3, .5], o, l, a, !0, 0) : u && N2(t.visualPosition, o, l, a, !1, 2, i, s, t), l > 0 && t.stats.changeResource(6, -o), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
             let m = r > 0 && Er.has(r) ? Er.get(r).effect.transform : s && s.visual && s.visual.transform,
                 g = t.visual.transform;
             s && s.visual && Nu.has(i) && s.visual.anim(Nu.get(i), !1, t.id), l !== 1 ? (t.visual.onHurt(o / t.stats.getStat(6), l), m && n_(i, m, g, t.radius, u ? 1 : 0)) : m && (wc.has(i) || Nu.has(i)) && LT(13, m, g, t.radius, u ? 1 : 0)
