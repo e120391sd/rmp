@@ -15722,7 +15722,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 seperator1 = h("br"), seperator2 = h("br"), seperator3 = h("br"), seperator4 = h("br"), seperator5 = h("br"), seperator6 = h("br"), seperator7 = h("br"), seperator8 = h("br"), seperator9 = h("br"), seperator10 = h("br")
                 p(subRevUnfriendly, "class", "textgrey"), p(subAutocleanse, "class", "textgrey"), p(subNeverExcludeItems, "class", "textgrey"), p(subRad, "class", "textgrey"), p(subDeclutterCategory, "class", "textgrey")
                 p(radCategory, "class", "textprimary"), p(shamanCategory, "class", "textprimary"), p(generalCategory, "class", "textprimary"), p(declutterCategory, "class", "textprimary"),
-                p(alwaysPickupValue, "type", "text"), p(timeSlider, "type", "range"), p(timeSlider, "max", "1000")
+                p(alwaysPickupValue, "type", "text"), p(timeSlider, "type", "color")//, p(timeSlider, "max", "1000")
             },
             m(M, D) {
                 w(M, radCategory, D), d(radCategory,seperator1), d(radCategory,subRad),  w(M, seperator2, D),
@@ -27549,6 +27549,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 if(!fe.stackIndicators) continue
                 if(ii.caster.id == null || ii.target.id == null) continue
                 c.crit = true // float
+                c.float = false
                 let sameCaster = c.caster.id === ii.caster.id
                 let sameTarget = c.target.id === ii.target.id
                 let sameSkill = c.skillId === ii.skillId
