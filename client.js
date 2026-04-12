@@ -10092,7 +10092,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             p(L, $) {
                 Ve(e, "scale", Math.min(1.3,t.targetScale))
                 let container = e.querySelector(".bars")
-                container.style.border = t.CCFound ? `4px solid ${t.CCColor}` : null, container.style.borderRadius = "6px"
+                container.style.border = t.CCFound ? `3px solid ${t.CCColor}` : null, container.style.borderRadius = "6px"
                 L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
