@@ -27525,8 +27525,14 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     var AA = (t, e) => {
             Yu(t, !1, !1, !0, `+${e} Fame`, qt.fame, 5.5, cs, 1.5)
         },
-        updateElement = (obj,newObj,params) => {
+        updateElement = (obj,newObj,params,t, r, n, o) => {
             obj.value += newObj.value
+            it(obj.pos, t)
+            obj.pos[1] += r || 0
+            X(obj.screenPos, 0, 0, 0)
+            ho(obj.screenOffset, 0, 0, 0)
+            obj.crit = n
+            obj.float = o
             obj.img = lu(obj.value.toLocaleString('en-US'), params)
             obj.timer.duration = Math.min(obj.timer.duration + 1, 2)
             obj.timer.end = Math.min(Math.max(obj.timer.end, cs + 1), cs + 2)
@@ -27548,13 +27554,11 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             for (let ii of Hu) {
                 if(!fe.stackIndicators) continue
                 if(ii.caster.id == null || ii.target.id == null) continue
-                c.crit = true // float
-                c.float = false
                 let sameCaster = c.caster.id === ii.caster.id
                 let sameTarget = c.target.id === ii.target.id
                 let sameSkill = c.skillId === ii.skillId
 
-                if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s)
+                if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s, t, r, n, o)
             }
             Hu.push(c)
         },
