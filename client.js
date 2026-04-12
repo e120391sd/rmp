@@ -27542,7 +27542,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             for (let ii of Hu) {
                 if(!fe.stackIndicators) continue
                 if(ii.caster.id == null || ii.target.id == null) continue
-                n = true // float
+                c.crit = true // float
                 let sameCaster = c.caster.id === ii.caster.id
                 let sameTarget = c.target.id === ii.target.id
                 let sameSkill = c.skillId === ii.skillId
