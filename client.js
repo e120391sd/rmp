@@ -27535,6 +27535,10 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             c.lastHit = Date.now()
             c.target = target
 
+            c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o,
+            c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0),
+            c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width,
+            c.height = c.img.height
             for (let ii of Hu) {
                 if(!fe.stackIndicators) continue
                 if(ii.caster.id == null || ii.target.id == null) continue
@@ -27545,11 +27549,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
 
                 if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s)
             }
-
-            c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o,
-            c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0),
-            c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width,
-            c.height = c.img.height, Hu.push(c)
+            Hu.push(c)
         },
         O2 = [],
         lB = () => O2.length ? O2.pop() : {
