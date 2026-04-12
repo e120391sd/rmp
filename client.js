@@ -2426,9 +2426,9 @@ void main() {
         CCIndicator = ne(false),
         sortParty = ne(false),
         hideBuffs = ne(false),
-        hiddenBuffs = ne([92, 96, 95, 86, 68, 67, 89, 108, 74]),
+        hiddenBuffs = ne([92, 96, 95, 86, 68, 67, 89, 74]),
         hideClassBuffs = ne(false),
-        hiddenClassBuffs = ne([116, 80, 81, 76, 75]),
+        hiddenClassBuffs = ne([116, 78, 81, 76, 75]),
         onlyShowOwnRev = ne(false),
         ignoreNameplateViewRange = ne(false);
     var a1;
