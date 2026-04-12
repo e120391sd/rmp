@@ -29708,7 +29708,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             this.party = e, this.partyrole = n
         }
         setPrestige(e) {
-            if(fe.prestigeChange) e = fe.prestigeSimulate
+            if(fe.prestigeChange && this.id === I.player.id) e = fe.prestigeSimulate
             return e !== this.prestige ? (this.prestige = e, this.prestigeRank = uc(e), !0) : !1
         }
         setElo(e) {
