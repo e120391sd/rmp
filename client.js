@@ -2057,7 +2057,9 @@ void main() {
         ignoreNameplateViewRange: () => ignoreNameplateViewRange,
         removeFX: () => removeFX,
         shrinkIndicators: () => shrinkIndicators,
-        stackIndicators: () => stackIndicators
+        stackIndicators: () => stackIndicators,
+        prestigeSimulate: () => prestigeSimulate,
+        prestigeChange: () => prestigeChange
     });
     var l1 = {};
     Kn(l1, {
@@ -2222,7 +2224,9 @@ void main() {
         ignoreNameplateViewRange: () => ignoreNameplateViewRange,
         removeFX: () => removeFX,
         shrinkIndicators: () => shrinkIndicators,
-        stackIndicators: () => stackIndicators
+        stackIndicators: () => stackIndicators,
+        prestigeSimulate: () => prestigeSimulate,
+        prestigeChange: () => prestigeChange
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2385,6 +2389,8 @@ void main() {
         removeFX = ne(true),
         shrinkIndicators = ne(true),
         stackIndicators = ne(false),
+        prestigeChange = ne(false),
+        prestigeSimulate = ne(0),
         ignoreNameplateViewRange = ne(false);
     var a1;
     a1 = {
@@ -3604,7 +3610,7 @@ void main() {
         $3 = [],
         w7 = 0;
     for (let t in Mt) Mt[t] && (Mt[t].header = w7++, Mt[t].packData = function(e) {
-        console.log(e,e._header)
+        //console.log(e,e._header)
         return e._header = this.header, this.encode(e)
     }, $3.push(Mt[t]));
     var O3 = t => {
@@ -13822,7 +13828,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         } else return
                     }
                     let _e = zt.get(y.id); //send skill
-                    console.log(`Sent skill id ${y.id} ${y.info}`)
+                    //console.log(`Sent skill id ${y.id} ${y.info}`)
                     _e.envCast > 0 ? _r > 0 ? gu(0, 0, 0) : gu(y.id, _e.range, _e.envCast) : Io(Mt.clientPlayerSkill.packData({
                         id: y.id,
                         info: y.info
@@ -29702,6 +29708,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             this.party = e, this.partyrole = n
         }
         setPrestige(e) {
+            if(fe.prestigeChange) e = fe.prestigeSimulate
             return e !== this.prestige ? (this.prestige = e, this.prestigeRank = uc(e), !0) : !1
         }
         setElo(e) {
@@ -30649,7 +30656,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     let indexOf = i.casters.indexOf(foundCast)
                     if(indexOf === -1) return
                     i.casters.splice(indexOf,1)
-                    console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
+                    //console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
                 })
             }
             
@@ -30660,8 +30667,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let player = targettedPlayers.get(target)
                 let playerObject = {playerId: e[0], expiryTime: currentTime + 4250}
                 player.push(playerObject)
-                console.log(player[0],targettedPlayers)
-                console.log(`added ${skillId} by ${e[0]}`)
+                //console.log(player[0],targettedPlayers)
+                //console.log(`added ${skillId} by ${e[0]}`)
             }
 
             for(let target of expiringCasts) {
@@ -30669,7 +30676,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let index = target.casterArray.indexOf(foundCast)
                 if(index === -1) return
                 target.casterArray.splice(index,1)
-                console.log(`removed cast by ${foundCast.playerId}, expired`)
+                //console.log(`removed cast by ${foundCast.playerId}, expired`)
             }
         },
         sU = t => {
