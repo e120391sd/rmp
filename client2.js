@@ -27521,7 +27521,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         },
         updateElement = (obj,newObj,params) => {
             obj.value += newObj.value
-            obj.img = lu(obj.value + "", params)
+            obj.img = lu(obj.value.toLocaleString(), params)
             obj.timer.duration = Math.min(obj.timer.duration + 1, 2)
             obj.timer.end = Math.min(Math.max(obj.timer.end, cs + 1), cs + 2)
         },
