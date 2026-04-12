@@ -2057,7 +2057,20 @@ void main() {
         ignoreNameplateViewRange: () => ignoreNameplateViewRange,
         removeFX: () => removeFX,
         shrinkIndicators: () => shrinkIndicators,
-        stackIndicators: () => stackIndicators
+        stackIndicators: () => stackIndicators,
+        prestigeSimulate: () => prestigeSimulate,
+        deepFreezeColor: () => deepFreezeColor,
+        chillColor: () => chillColor,
+        agonizeColor: () => agonizeColor,
+        stunColor: () => stunColor,
+        blindColor: () => blindColor,
+        relColor: () => relColor,
+        CCIndicator: () => CCIndicator,
+        sortParty: () => sortParty,
+        hideBuffs: () => hideBuffs,
+        hiddenBuffs: () => hiddenBuffs,
+        onlyShowOwnRev: () => onlyShowOwnRev,
+        prestigeChange: () => prestigeChange
     });
     var l1 = {};
     Kn(l1, {
@@ -2222,7 +2235,20 @@ void main() {
         ignoreNameplateViewRange: () => ignoreNameplateViewRange,
         removeFX: () => removeFX,
         shrinkIndicators: () => shrinkIndicators,
-        stackIndicators: () => stackIndicators
+        stackIndicators: () => stackIndicators,
+        prestigeSimulate: () => prestigeSimulate,
+        deepFreezeColor: () => deepFreezeColor,
+        chillColor: () => chillColor,
+        agonizeColor: () => agonizeColor,
+        stunColor: () => stunColor,
+        blindColor: () => blindColor,
+        relColor: () => relColor,
+        CCIndicator: () => CCIndicator,
+        sortParty: () => sortParty,
+        hideBuffs: () => hideBuffs,
+        hiddenBuffs: () => hiddenBuffs,
+        onlyShowOwnRev: () => onlyShowOwnRev,
+        prestigeChange: () => prestigeChange
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2385,6 +2411,19 @@ void main() {
         removeFX = ne(true),
         shrinkIndicators = ne(true),
         stackIndicators = ne(false),
+        prestigeChange = ne(false),
+        prestigeSimulate = ne(0),
+        deepFreezeColor = ne("#4cfff9"),
+        chillColor = ne("#4cfff9"),
+        agonizeColor = ne("#ff2020"),
+        stunColor = ne("#ff2020"),
+        blindColor = ne("#ffed2d"),
+        relColor = ne("#ffed2d"),
+        CCIndicator = ne(false),
+        sortParty = ne(false),
+        hideBuffs = ne(false),
+        hiddenBuffs = ne([92, 96, 95, 86, 68, 67, 89, 108, 74]),
+        onlyShowOwnRev = ne(false),
         ignoreNameplateViewRange = ne(false);
     var a1;
     a1 = {
@@ -3604,7 +3643,7 @@ void main() {
         $3 = [],
         w7 = 0;
     for (let t in Mt) Mt[t] && (Mt[t].header = w7++, Mt[t].packData = function(e) {
-        console.log(e,e._header)
+        //console.log(e,e._header)
         return e._header = this.header, this.encode(e)
     }, $3.push(Mt[t]));
     var O3 = t => {
@@ -7806,11 +7845,11 @@ void main() {
                 size: fe.shrinkIndicators ? 12 : 24
             },
             spell: {
-                fill: "#fff178",
+                fill: "#FFE404",
                 size: fe.shrinkIndicators ? 14 : 28
             },
             spellCrit: {
-                fill: "#FFE404",
+                fill: "#ffa02d",
                 size: fe.shrinkIndicators ? 20 : 40
             },
             heal: {
@@ -10046,6 +10085,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             p(L, $) {
                 Ve(e, "scale", Math.min(1.3,t.targetScale))
+                let container = e.querySelector(".bars")
+                container.style.border = t.CCFound ? `2px solid ${t.CCColor}` : null, container.style.borderRadius = "6px"
                 L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
@@ -10284,6 +10325,17 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 o && o.m(i, s), w(i, e, s), n = !0
             },
             p(i, [s]) {
+                let playerBuffs = I.getEntityById(i[5].id)
+                if(playerBuffs) playerBuffs = playerBuffs.buffs.buffs
+                i.CCFound = false, i.CCColor = "#ffffff"
+                if(playerBuffs && fe.CCIndicator) {
+                    if(playerBuffs.has(69)) i.CCFound = true, i.CCColor = fe.chillColor
+                    if(playerBuffs.has(121)) i.CCFound = true, i.CCColor = fe.relColor
+                    if(playerBuffs.has(119)) i.CCFound = true, i.CCColor = fe.blindColor
+                    if(playerBuffs.has(88)) i.CCFound = true, i.CCColor = fe.stunColor
+                    if(playerBuffs.has(91)) i.CCFound = true, i.CCColor = fe.agonizeColor
+                    if(playerBuffs.has(101)) i.CCFound = true, i.CCColor = fe.deepFreezeColor
+                }
                 let castsOnPlayer = targettedPlayers.get(i[5].id) || []
                 let targetScale = (1 + (castsOnPlayer.length / 25))
                 i.targetScale = targetScale
@@ -15611,6 +15663,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
+        let sortPartyElement, sortPartyValue, hideBuffsElement, hideBuffsValue, hidebuffsSub, sortPartySub, hideBuffsSeperator, sortPartySeperator, ownRevElement, ownRevValue
+        let CCIsub, CCIseperator2, CCIdfcontainer, CCIchillcontainer, CCIagocontainer, CCIrelcontainer, CCIblindcontainer, CCIstuncontainer, seperatorCCI, CCICategory, CCIToggleElement, CCIToggleValue, CCIdfimage, CCIdftext, CCIdfcolor, CCIchillimage, CCIchilltext, CCIchillcolor, CCIagoimage, CCIagotext, CCIagocolor, CCIstunimage, CCIstuncolor, CCIstuntext, CCIrelimage, CCIreltext, CCIrelcolor, CCIblindimage, CCIblindtext, CCIblindcolor
         let stackIndElement, stackIndValue, shrinkIndElement, shrinkIndValue, removeFXElement, removeFXValue, ignoreNameplateValue, ignoreNameplateElement, nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
             props: {
@@ -15688,8 +15742,45 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: stackIndicators
             }
+        }), CCIToggleValue = new Et({
+            props: {
+                store: CCIndicator
+            }
+        }), sortPartyValue = new Et({
+            props: {
+                store: sortParty
+            }
+        }), hideBuffsValue = new Et({
+            props: {
+                store: hideBuffs
+            }
+        }), ownRevValue = new Et({
+            props: {
+                store: onlyShowOwnRev
+            }
         }), {
             c() {
+                ownRevElement = h("div"), ownRevElement.textContent = `Only show own revitalize`, K(ownRevValue.$$.fragment)
+                CCIsub = h("div"), CCIsub.textContent = `-- Colors: --`, p(CCIsub, "class", "textgrey"),
+                hidebuffsSub = h("div"), hidebuffsSub.textContent = `Buff list: LocalStorage["hiddenBuffs"]`, p(hidebuffsSub, "class", "textgrey"), hidebuffsSub.style.fontSize = "14px",
+                sortPartySub = h("div"), sortPartySub.textContent = `Shaman => Archer => Mage => Warrior`, p(sortPartySub, "class", "textgrey"), sortPartySub.style.fontSize = "13px",
+                CCIseperator2 = h("div"), hideBuffsSeperator = h("br"), sortPartySeperator = h("br"),
+                hideBuffsElement = h("div"), hideBuffsElement.textContent = `Hide irrelevant buff icons`, K(hideBuffsValue.$$.fragment)
+                sortPartyElement = h("div"), sortPartyElement.textContent = `Sort party by class`, K(sortPartyValue.$$.fragment)
+                CCIdfcontainer = h("div"), CCIdfcontainer.style.display = "flex", CCIdfcontainer.style.alignItems = "center", 
+                CCIchillcontainer = h("div"), CCIchillcontainer.style.display = "flex", CCIchillcontainer.style.alignItems = "center", 
+                CCIagocontainer = h("div"), CCIagocontainer.style.display = "flex", CCIagocontainer.style.alignItems = "center", 
+                CCIrelcontainer = h("div"), CCIrelcontainer.style.display = "flex", CCIrelcontainer.style.alignItems = "center", 
+                CCIblindcontainer = h("div"), CCIblindcontainer.style.display = "flex", CCIblindcontainer.style.alignItems = "center", 
+                CCIstuncontainer = h("div"), CCIstuncontainer.style.display = "flex", CCIstuncontainer.style.alignItems = "center", 
+                CCIstunimage = h("img"), CCIstunimage.src = `https://hordes.io/data/ui/skills/stunBuff.avif?v=8822612`, CCIstunimage.style.width = "30px", CCIstunimage.style.height = "30px", CCIstunimage.style.marginRight = "10px", CCIstuntext = h("div"), CCIstuntext.textContent = `Charge`, CCIstuntext.style.fontSize = "16px", CCIstuncolor = h("input"), p(CCIstuncolor, "type", "color")
+                CCIblindimage = h("img"), CCIblindimage.src = `https://hordes.io/data/ui/skills/49.avif?v=8822612`, CCIblindimage.style.width = "30px", CCIblindimage.style.marginRight = "10px", CCIblindtext = h("div"), CCIblindtext.textContent = `Blinding Shot`, CCIblindtext.style.fontSize = "16px", CCIblindcolor = h("input"), p(CCIblindcolor, "type", "color")
+                CCIrelimage = h("img"), CCIrelimage.src = `https://hordes.io/data/ui/skills/50.avif?v=8822612`, CCIrelimage.style.width = "30px",CCIrelimage.style.marginRight = "10px", CCIreltext = h("div"), CCIreltext.textContent = `Relentless Cry`, CCIreltext.style.fontSize = "16px", CCIrelcolor = h("input"), p(CCIrelcolor, "type", "color")
+                CCIagoimage = h("img"), CCIagoimage.src = `https://hordes.io/data/ui/skills/37.avif?v=8822612`, CCIagoimage.style.width = "30px",CCIagoimage.style.marginRight = "10px", CCIagotext = h("div"), CCIagotext.textContent = `Agonize`, CCIagotext.style.fontSize = "16px", CCIagocolor = h("input"), p(CCIagocolor, "type", "color")
+                CCIchillimage = h("img"), CCIchillimage.src = `https://hordes.io/data/ui/skills/14.avif?v=8822612`, CCIchillimage.style.width = "30px",CCIchillimage.style.marginRight = "10px", CCIchilltext = h("div"), CCIchilltext.textContent = `Chilling Radiance`, CCIchilltext.style.fontSize = "16px", CCIchillcolor = h("input"), p(CCIchillcolor, "type", "color")
+                CCIdfimage = h("img"), CCIdfimage.src = `	https://hordes.io/data/ui/skills/deepFrozen.avif?v=8822612`, CCIdfimage.style.width = "30px",CCIdfimage.style.marginRight = "10px", CCIdftext = h("div"), CCIdftext.textContent = `Deep Frozen`, CCIdftext.style.fontSize = "16px", CCIdfcolor = h("input"), p(CCIdfcolor, "type", "color")
+                seperatorCCI = h("div"), CCICategory = h("div"), CCICategory.textContent = `CC Indicators`, p(CCICategory,"class","textprimary")
+                CCIToggleElement = h("div"), CCIToggleElement.textContent = `Enable CC Indicators`, K(CCIToggleValue.$$.fragment),
                 stackIndElement = h("div"), stackIndElement.textContent = `Stack damage indicators`, K(stackIndValue.$$.fragment),
                 shrinkIndElement = h("div"), shrinkIndElement.textContent = `Shrink indicator size`, K(shrinkIndValue.$$.fragment),
                 removeFXElement = h("div"), removeFXElement.textContent = `Disable skill tick effects`, K(removeFXValue.$$.fragment),
@@ -15716,6 +15807,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 seperator1 = h("br"), seperator2 = h("br"), seperator3 = h("br"), seperator4 = h("br"), seperator5 = h("br"), seperator6 = h("br"), seperator7 = h("br"), seperator8 = h("br"), seperator9 = h("br"), seperator10 = h("br")
                 p(subRevUnfriendly, "class", "textgrey"), p(subAutocleanse, "class", "textgrey"), p(subNeverExcludeItems, "class", "textgrey"), p(subRad, "class", "textgrey"), p(subDeclutterCategory, "class", "textgrey")
                 p(radCategory, "class", "textprimary"), p(shamanCategory, "class", "textprimary"), p(generalCategory, "class", "textprimary"), p(declutterCategory, "class", "textprimary"),
+                radCategory.style.fontSize = "20px", shamanCategory.style.fontSize = "20px", generalCategory.style.fontSize = "20px", CCICategory.style.fontSize = "20px", declutterCategory.style.fontSize = "20px",
+                subRad.style.fontSize = "15px", subDeclutterCategory.style.fontSize = "15px",
+                shamanCategory.style.marginTop = "10px", generalCategory.style.marginTop = "10px", CCICategory.style.marginTop = "10px", declutterCategory.style.marginTop = "10px",
                 p(alwaysPickupValue, "type", "text"), p(timeSlider, "type", "range"), p(timeSlider, "max", "1000")
             },
             m(M, D) {
@@ -15726,11 +15820,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 //w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
                 //w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D)
                 w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
+                w(M, ownRevElement, D), Q(ownRevValue, M, D),
                 w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, seperator4), d(revUnfriendlyElement, subRevUnfriendly),
                 w(M, nextFriendlyIgnoreBotsElement, D), Q(nextFriendlyIgnoreBotsValue, M, D),
                 w(M, losTargetElement, D), Q(losTargetValue, M, D),
                 w(M, nextFriendlyIgnoreBotsElement, D), Q(nextFriendlyIgnoreBotsValue, M, D),
                 w(M, declutterCategory, D), d(declutterCategory,seperator9), d(declutterCategory,subDeclutterCategory),  w(M, seperator10, D),
+                w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
                 w(M, disableClantagsElement, D), Q(disableClantagsValue, M, D)
                 w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
                 w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
@@ -15739,28 +15835,43 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, removeFXElement, D), Q(removeFXValue, M, D),
                 //w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
                 w(M, ignoreNameplateElement, D), Q(ignoreNameplateValue, M, D),
-                w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
+                w(M, hideBuffsElement, D), Q(hideBuffsValue, M, D), d(hideBuffsElement,hideBuffsSeperator), d(hideBuffsElement, hidebuffsSub),
                 w(M, generalCategory, D), w(M, seperator6, D),
                 w(M, specialSellElement, D), Q(specialSellValue, M, D),
                 w(M, alwaysPickupElement, D), w(M, alwaysPickupValue, D), We(alwaysPickupValue, t[70]), d(alwaysPickupElement, seperator8), d(alwaysPickupElement, subNeverExcludeItems),
                 w(M, timeText, D), w(M, timeSlider, D), We(timeSlider, t[72]),
                 w(M, timeToIngameElement, D), Q(timeToIngameValue, M, D),
-                C = !0
-                H(timeSlider, "input", t[71]), H(timeSlider, "change", t[34])
-                H(alwaysPickupValue, "input", t[69]), H(alwaysPickupValue, "change", t[34])
+                w(M, sortPartyElement, D), Q(sortPartyValue, M, D), d(sortPartyElement,sortPartySeperator), d(sortPartyElement, sortPartySub),
+                w(M, CCICategory, D), w(M, seperatorCCI, D),
+                w(M, CCIToggleElement, D), Q(CCIToggleValue, M, D),
+                w(M, CCIsub, D), w(M, CCIseperator2, D),
+                w(M, CCIchillcontainer, D), d(CCIchillcontainer, CCIchillimage), d(CCIchillcontainer, CCIchilltext), w(M, CCIchillcolor, D), We(CCIchillcolor, t[76]), H(CCIchillcolor, "input", t[75]),
+                w(M, CCIdfcontainer, D), d(CCIdfcontainer, CCIdfimage), d(CCIdfcontainer, CCIdftext), w(M, CCIdfcolor, D), We(CCIdfcolor, t[74]), H(CCIdfcolor, "input", t[73]),
+                w(M, CCIagocontainer, D), d(CCIagocontainer, CCIagoimage), d(CCIagocontainer, CCIagotext), w(M, CCIagocolor, D), We(CCIagocolor, t[78]), H(CCIagocolor, "input", t[77]),
+                w(M, CCIstuncontainer, D), d(CCIstuncontainer, CCIstunimage), d(CCIstuncontainer, CCIstuntext), w(M, CCIstuncolor, D), We(CCIstuncolor, t[80]), H(CCIstuncolor, "input", t[79]),
+                w(M, CCIrelcontainer, D), d(CCIrelcontainer, CCIrelimage), d(CCIrelcontainer, CCIreltext), w(M, CCIrelcolor, D), We(CCIrelcolor, t[84]), H(CCIrelcolor, "input", t[83]),
+                w(M, CCIblindcontainer, D), d(CCIblindcontainer, CCIblindimage), d(CCIblindcontainer, CCIblindtext), w(M, CCIblindcolor, D), We(CCIblindcolor, t[82]), H(CCIblindcolor, "input", t[81]),
+                C = !0,
+                H(timeSlider, "input", t[71]),
+                H(alwaysPickupValue, "input", t[69])
             },
             p(te,ae) {
                 ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
+                && We(CCIchillcolor, te[76]) && We(CCIdfcolor, te[74]) && We(CCIagocolor, te[78]) && We(CCIstuncolor, te[80]) && We(CCIrelcolor, te[84]) && We(CCIblindcolor, te[82])
             },
             i(M) { // S(targetEnabledValue.$$.fragment, M)
-                C || (S(stackIndValue.$$.fragment, M), S(shrinkIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(shrinkIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) { //  E(targetEnabledValue.$$.fragment, M)
-                E(stackIndValue.$$.fragment, M), E(shrinkIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(shrinkIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) { // x(targetEnabledElement), x(targetEnabledValue) Z(targetEnabledValue, M)
-                M && (x(stackIndElement), x(stackIndValue), x(shrinkIndElement), x(shrinkIndValue), x(removeFXElement), x(removeFXValue), x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)),
-                Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(shrinkIndValue, M), Z(stackIndValue, M)
+                M && (
+                    x(sortPartyElement), x(sortPartyValue), x(hideBuffsElement), x(hideBuffsValue), x(hidebuffsSub), x(sortPartySub), x(hideBuffsSeperator), x(sortPartySeperator), x(ownRevElement), x(ownRevValue),
+                    x(CCIsub), x(CCIseperator2), x(CCIchillcontainer), x(CCIdfcontainer), x(CCIagocontainer), x(CCIrelcontainer), x(CCIblindcontainer), x(CCIstuncontainer),
+                    x(seperatorCCI), x(CCICategory), x(CCIToggleElement), x(CCIToggleValue), x(CCIdfimage), x(CCIdftext), x(CCIdfcolor), x(CCIchillimage), x(CCIchilltext), x(CCIchillcolor), x(CCIagoimage), x(CCIagotext), x(CCIagocolor), x(CCIstunimage), x(CCIstuntext), x(CCIstuncolor), x(CCIrelimage), x(CCIreltext), x(CCIrelcolor), x(CCIblindimage), x(CCIblindtext), x(CCIblindcolor), Z(CCIToggleValue, M),
+                    x(stackIndElement), x(stackIndValue), x(shrinkIndElement), x(shrinkIndValue), x(removeFXElement), x(removeFXValue), x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)),
+                Z(ownRevValue, M), Z(hideBuffsValue, M), Z(sortPartyValue, M), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(shrinkIndValue, M), Z(stackIndValue, M)
             }
         }
     }
@@ -15844,8 +15955,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function CV(t, e, n) {
-        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, apt, tsl;
-        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re)), re(t, alwaysPickup, Re => n(32, apt = Re)), re(t, timeSlider, Re => n(32, tsl = Re));;
+        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, apt, tsl, dfc, crc, agc, stc, bsc, rec;
+        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re)), re(t, alwaysPickup, Re => n(70, apt = Re)), re(t, timeSlider, Re => n(72, tsl = Re)), re(t, deepFreezeColor, Re => n(74, dfc = Re)), re(t, chillColor, Re => n(76, crc = Re)), re(t, agonizeColor, Re => n(78, agc = Re)), re(t, stunColor, Re => n(80, stc = Re)), re(t, blindColor, Re => n(82, bsc = Re)), re(t, relColor, Re => n(84, rec = Re));
         let R = [{
                 id: "ui",
                 name: P.ui.settings.interface
@@ -16053,9 +16164,27 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         function setTimeSlider() {
             tsl = this.value, timeSlider.set(tsl)
         }
+        function setDC() {
+            dfc = this.value, deepFreezeColor.set(dfc)
+        }
+        function setCC() {
+            crc = this.value, chillColor.set(crc)
+        }
+        function setAC() {
+            agc = this.value, agonizeColor.set(agc)
+        }
+        function setSC() {
+            stc = this.value, stunColor.set(stc)
+        }
+        function setBC() {
+            bsc = this.value, blindColor.set(bsc)
+        }
+        function setRC() {
+            rec = this.value, relColor.set(rec)
+        }
         return [Ji, N, ge, se, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, Y, Ce, ve, _e, be, Te, ie, Ie, ee, qe, Ge, Qe, He, he, ce, $e, oe, J, O, ue, je, Ue, ke, ze, Oe, dt, Ft, Ze, Ct, xe, Je, kt, At, De, at, () => {
             Xe(el, o = !1, o), ge && window.location.reload()
-        },setAlwaysPickup, apt, setTimeSlider, tsl]
+        },setAlwaysPickup, apt, setTimeSlider, tsl, setDC, dfc, setCC, crc, setAC, agc, setSC, stc, setBC, bsc, setRC, rec]
     }
     var dv = class extends Fe {
             constructor(e) {
@@ -20297,6 +20426,20 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 m = !0, g || (v = [H(o, "click", t[9]), H(i, "click", t[12]), H(i, "contextmenu", bu), H(s, "click", t[13]), H(s, "contextmenu", bu)], g = !0)
             },
             p(B, [q]) {
+                if (fe.sortParty) {
+                    let container = document.querySelector(".partyframes");
+                    let frames = [...container.querySelectorAll(".grid")];
+                    let getClass = el => el.querySelector(".iconcontainer").children[0].classList[4];
+                    let getNum = el => parseInt(getClass(el).replace("bgc", ""));
+
+                    const nums = frames.map(getNum);
+                    const alreadySorted = nums.every((n, i) => i === 0 || nums[i - 1] >= n);
+
+                    if (!alreadySorted) {
+                        frames.sort((a, b) => getNum(b) - getNum(a));
+                        frames.forEach(frame => container.appendChild(frame));
+                    }
+                }
                 b === (b = _(B, q)) && k ? k.p(B, q) : (k.d(1), k = b(B), k && (k.c(), k.m(n, i))), F === (F = y(B, q)) && A ? A.p(B, q) : (A.d(1), A = F(B), A && (A.c(), A.m(i, null)));
                 let L = r;
                 r = D(B, q), r === L ? M[r].p(B, q) : (we(), E(M[L], 1, 1, () => {
@@ -27519,9 +27662,14 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     var AA = (t, e) => {
             Yu(t, !1, !1, !0, `+${e} Fame`, qt.fame, 5.5, cs, 1.5)
         },
-        updateElement = (obj,newObj,params) => {
+        updateElement = (obj,newObj,params,t, r, n, o) => {
             obj.value += newObj.value
-            obj.img = lu(obj.value.toLocaleString(), params)
+            it(obj.pos, t)
+            obj.pos[1] += r || 0
+            X(obj.screenPos, 0, 0, 0)
+            ho(obj.screenOffset, 0, 0, 0)
+            obj.crit = true
+            obj.img = lu(obj.value.toLocaleString('en-US'), params)
             obj.timer.duration = Math.min(obj.timer.duration + 1, 2)
             obj.timer.end = Math.min(Math.max(obj.timer.end, cs + 1), cs + 2)
         },
@@ -27535,21 +27683,20 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             c.lastHit = Date.now()
             c.target = target
 
+            c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o,
+            c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0),
+            c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width,
+            c.height = c.img.height
             for (let ii of Hu) {
                 if(!fe.stackIndicators) continue
                 if(ii.caster.id == null || ii.target.id == null) continue
-                n = true // float
                 let sameCaster = c.caster.id === ii.caster.id
                 let sameTarget = c.target.id === ii.target.id
                 let sameSkill = c.skillId === ii.skillId
 
-                if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s)
+                if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s, t, r, n, o)
             }
-
-            c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o,
-            c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0),
-            c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width,
-            c.height = c.img.height, Hu.push(c)
+            Hu.push(c)
         },
         O2 = [],
         lB = () => O2.length ? O2.pop() : {
@@ -29331,6 +29478,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         a.logic = Object.assign(Object.create(Object.getPrototypeOf(a.logic)), a.logic);
                         a.logic.type = 2;
                     }
+                    console.log(a.id)
+                    if((fe.hideBuffs && fe.hiddenBuffs.find(i => i === a.id)) || (I.player.class === 3 && fe.onlyShowOwnRev && a.id === 60 && c !== I.playerId)) return;
                     !a.logic.passive && a.logic.icon !== void 0 &&
                     /*(a.id !== 60 || c === I.playerId) &&*/
                         (!fe.buffsHideIrrelevant 
@@ -29702,6 +29851,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             this.party = e, this.partyrole = n
         }
         setPrestige(e) {
+            if(fe.prestigeChange && this.id === I.player.id) e = fe.prestigeSimulate
             return e !== this.prestige ? (this.prestige = e, this.prestigeRank = uc(e), !0) : !1
         }
         setElo(e) {
@@ -30649,7 +30799,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     let indexOf = i.casters.indexOf(foundCast)
                     if(indexOf === -1) return
                     i.casters.splice(indexOf,1)
-                    console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
+                    //console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
                 })
             }
             
@@ -30660,8 +30810,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let player = targettedPlayers.get(target)
                 let playerObject = {playerId: e[0], expiryTime: currentTime + 4250}
                 player.push(playerObject)
-                console.log(player[0],targettedPlayers)
-                console.log(`added ${skillId} by ${e[0]}`)
+                //console.log(player[0],targettedPlayers)
+                //console.log(`added ${skillId} by ${e[0]}`)
             }
 
             for(let target of expiringCasts) {
@@ -30669,7 +30819,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let index = target.casterArray.indexOf(foundCast)
                 if(index === -1) return
                 target.casterArray.splice(index,1)
-                console.log(`removed cast by ${foundCast.playerId}, expired`)
+                //console.log(`removed cast by ${foundCast.playerId}, expired`)
             }
         },
         sU = t => {
