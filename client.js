@@ -27531,8 +27531,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             obj.pos[1] += r || 0
             X(obj.screenPos, 0, 0, 0)
             ho(obj.screenOffset, 0, 0, 0)
-            obj.crit = n
-            obj.float = o
+            obj.crit = false
+            obj.float = false
             obj.img = lu(obj.value.toLocaleString('en-US'), params)
             obj.timer.duration = Math.min(obj.timer.duration + 1, 2)
             obj.timer.end = Math.min(Math.max(obj.timer.end, cs + 1), cs + 2)
