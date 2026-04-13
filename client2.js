@@ -27915,8 +27915,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 c = t.id === _n,
                 playerIsBot = t.id !== I.playerId && t.party === 0 && !t.clan && fe.hideBots;
             if ((t.type !== 3 && t.stats) && !playerIsBot) {
-                console.log(t)
-                if (t.level === 1 && !fe.nameplateShowMonsters) return;
+                if (t.class === 5 && !fe.nameplateShowMonsters) return;
                 let min = 0.5 * (fe.nameplateSize / 250)
                 let max = 2.0 * (fe.nameplateSize / 250)
                 t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, min, max);
