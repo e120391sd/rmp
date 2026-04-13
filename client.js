@@ -7765,7 +7765,7 @@ void main() {
                 g = Math.round(u * s);
             return m === 0 || g === 0 || Eo.drawImage(t, 0, 0, Math.round(t.width * i), Math.round(t.height * s), Math.round(e[0] - f * a + r * o), Math.round(e[1] - u * c + l * o), m, g), m
         },
-        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => n.size >= 8 ? drHD(t, e, n, o, i, s, r, l, a) : pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
+        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => n.size >= 1 ? drHD(t, e, n, o, i, s, r, l, a) : pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
         drHD = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5, dpr = 2) => {
             let canvas = luHD(e, n, dpr);
             let lw = canvas.logicalWidth,
