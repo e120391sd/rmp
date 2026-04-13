@@ -20548,7 +20548,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     const alreadySorted = nums.every((n, i) => i === 0 || nums[i - 1] >= n);
 
                     if (!alreadySorted) {
-                        frames.sort((a, b) => getNum(b) - getNum(a));
+                        frames.sort((a, b) => getNum(a) - getNum(b));
                         frames.forEach(frame => container.appendChild(frame));
                     }
                 }
