@@ -7765,7 +7765,7 @@ void main() {
                 g = Math.round(u * s);
             return m === 0 || g === 0 || Eo.drawImage(t, 0, 0, Math.round(t.width * i), Math.round(t.height * s), Math.round(e[0] - f * a + r * o), Math.round(e[1] - u * c + l * o), m, g), m
         },
-        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => n.size >= 8 ? drHD(t, e, n, o, i, s, r, l, a) : pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
+        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => n.size >= 1 ? drHD(t, e, n, o, i, s, r, l, a) : pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
         drHD = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5, dpr = 2) => {
             let canvas = luHD(e, n, dpr);
             let lw = canvas.logicalWidth,
@@ -10616,7 +10616,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(y, e, F), g && g.m(e, null), d(e, n), v && v.m(e, null), d(e, o), _ && _.m(e, null), d(e, i), t[32](i), b && b.m(e, null), d(e, r), k && k.m(e, null), f = !0, u || (m = [H(e, "pointerenter", t[20]), H(e, "pointerleave", t[21]), H(e, "pointerdown", t[18]), H(e, "pointerup", t[19])], u = !0)
             },
             p(y, F) {
-                console.log(y)
                 y[1] !== void 0 ? g ? g.p(y, F) : (g = C4(y), g.c(), g.m(e, n)) : g && (g.d(1), g = null), y[2] !== void 0 ? v ? v.p(y, F) : (v = S4(y), v.c(), v.m(e, o)) : v && (v.d(1), v = null), fe.cdTextSkills && y[4] !== void 0 ? _ ? _.p(y, F) : (_ = P4(y), _.c(), _.m(e, i)) : _ && (_.d(1), _ = null), (!f || F[0] & 81928 && s !== (s = "overlay " + y[16] + " " + (!y[14] || y[3] > 0 && y[3] < 10 ? "" : "offCd") + " svelte-ctcp9l")) && p(i, "class", s), y[10] ? b || (b = A4(y), b.c(), b.m(e, r)) : b && (b.d(1), b = null), (!f || F[0] & 64 && l !== (l = "icon " + y[6] + " svelte-ctcp9l")) && p(r, "class", l), (!f || F[0] & 131072 && !st(r.src, a = y[17])) && p(r, "src", a), y[8] && y[11] && !y[15] ? k ? (k.p(y, F), F[0] & 35072 && S(k, 1)) : (k = T4(y), k.c(), S(k, 1), k.m(e, null)) : k && (we(), E(k, 1, 1, () => {
                     k = null
                 }), Me()), (!f || F[0] & 128) && p(e, "id", y[7]), (!f || F[0] & 34849 && c !== (c = "border " + y[5] + " " + (y[15] && y[15].data == y[0] ? "grey" : "") + " slot " + (y[11] ? "hover" : "") + " " + (y[0] !== void 0 || y[15] ? "filled" : "") + " svelte-ctcp9l")) && p(e, "class", c)
@@ -11533,7 +11532,108 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         icon: "ui/skills/39",
         customIcon: t => "items/mount/mount" + lr[t.data[0]].tier + "_q1",
         fx: {
-            mount: t => lr[t.data[0]].skin,
+            mount: t => {
+                let newc = {
+      "animset": 4,
+      "body": [{
+            "bid": 0,
+            "mid": 1,
+            "pid": -1,
+            "col": [1, 0, 0, 1],
+            "pos": [0, -0.05877852522924732, 0],
+            "rot": [0, 0.008437705217870572, 0],
+            "scl": [0.6, 0.6, 0.6],
+            "dynamic": 1,
+            "lod": 1,
+            "colMode": 1,
+            "ts": 1
+        }, {
+            "bid": 16,
+            "mid": 1,
+            "pid": 0,
+            "col": [1, 0, 0, 1],
+            "pos": [0, 0.1, -1],
+            "rot": [0, 0, 0],
+            "scl": [1.2, 1.2, 1.4],
+            "dynamic": 1,
+            "lod": 1,
+            "colMode": 2,
+            "ts": 0
+        }, {
+            "bid": 1,
+            "mid": 1559,
+            "pid": 0,
+            "col": [1.792156862745098, 0.011764705882352941, 0.011764705882352941, 0],
+            "pos": [0, -0.05, 0.52],
+            "rot": [0, 0, 0],
+            "scl": [0.6, 0.6, 0.6],
+            "dynamic": 1,
+            "lod": 1,
+            "colMode": 0,
+            "ts": 0
+        }, {
+            "bid": 4,
+            "mid": 1560,
+            "pid": -1,
+            "col": [1, 0, 0, 1],
+            "pos": [0, 0, 0],
+            "rot": [0, 0, 0],
+            "scl": [2, 5, 2],
+            "dynamic": 1,
+            "lod": 1,
+            "colMode": 2,
+            "ts": 1
+        }, {
+            "bid": 5,
+            "mid": 1560,
+            "pid": -1,
+            "col": [1, 0, 0, 1],
+            "pos": [0, 1.2246467991473533e-17, 0],
+            "rot": [0, 3.141592653589793, 0],
+            "scl": [2, 5, 2],
+            "dynamic": 1,
+            "lod": 1,
+            "colMode": 2,
+            "ts": 1
+        }],
+      "capeswing": 1,
+      "colPrim": [
+        0.1,
+        0.1,
+        0.1,
+        0.5
+      ],
+      "colSec": [
+        0.1,
+        0.1,
+        0.1,
+        0.5
+      ],
+      "effects": [],
+      "id": 21,
+      "mountPart": 0,
+      "mountPos": [
+        0,
+        0.800000011920929,
+        -1
+      ],
+      "sheathedPos": [
+        0,
+        0,
+        -0.5
+      ],
+      "size": 1,
+      "skeleton": 1,
+      "soundset": 5,
+      "unsheathedPos": [
+        0,
+        0.800000011920929,
+        0
+      ]
+    }
+                O1.set(1,newc)
+                return 1
+            }, // mount apply
             apply: 76,
             endSound: 69
         },

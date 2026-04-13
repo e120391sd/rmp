@@ -11533,7 +11533,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         icon: "ui/skills/39",
         customIcon: t => "items/mount/mount" + lr[t.data[0]].tier + "_q1",
         fx: {
-            mount: t => lr[t.data[0]].skin,
+            mount: t => lr[t.data[0]].skin, // mount apply
             apply: 76,
             endSound: 69
         },
