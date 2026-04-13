@@ -27893,7 +27893,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 r = o - Wo * 2;
             Jn.push(Vo(null, Lt("panel"), n, o, 0, 0, i)), Vo(Jn[0], Lt("grey"), s, r, Wo, Wo, 1), Jn.push(Vo(null, Lt("health"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#ffbc00", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("enemy"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("party"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("pvp"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#555555", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("spell"), s, r, 0, 0, 1));
             for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, Lt("c" + l), s, r, 0, 0, 1));
-            IA = Vo(null, "#ffffff", 100 + Wo +1, 9 + Wo +1, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo +1, 16 + Wo +1, 0, 0, 3)
+            IA = Vo(null, "#ffffff", 100 + Wo +1, 9 + Wo, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo +1, 16 + Wo, 0, 0, 3)
         },
         fB = () => {
             let t = [];
@@ -27915,8 +27915,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 c = t.id === _n,
                 playerIsBot = t.id !== I.playerId && t.party === 0 && !t.clan && fe.hideBots;
             if ((t.type !== 3 && t.stats) && !playerIsBot) {
-                let min = 0.5 * (fe.nameplateSize / 500)
-                let max = 2.0 * (fe.nameplateSize / 500)
+                let min = 0.5 * (fe.nameplateSize / 250)
+                let max = 2.0 * (fe.nameplateSize / 250)
                 t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, min, max);
                 let castsOnPlayer = targettedPlayers.get(t.id) || []
                 t.namePlateScale *= (1 + castsOnPlayer.length / 10)
