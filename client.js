@@ -2436,7 +2436,7 @@ void main() {
         CCIndicator = ne(false),
         sortParty = ne(false),
         hideBuffs = ne(false),
-        hiddenBuffs = ne([92, 96, 95, 86, 68, 67, 89, 74]),
+        hiddenBuffs = ne([92,96,95,86,68,67,89,74,127,130,93]),
         hideClassBuffs = ne(false),
         hiddenClassBuffs = ne([80, 78, 81, 76, 75]),
         onlyShowOwnRev = ne(false),
@@ -10616,7 +10616,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(y, e, F), g && g.m(e, null), d(e, n), v && v.m(e, null), d(e, o), _ && _.m(e, null), d(e, i), t[32](i), b && b.m(e, null), d(e, r), k && k.m(e, null), f = !0, u || (m = [H(e, "pointerenter", t[20]), H(e, "pointerleave", t[21]), H(e, "pointerdown", t[18]), H(e, "pointerup", t[19])], u = !0)
             },
             p(y, F) {
-                console.log(y)
                 y[1] !== void 0 ? g ? g.p(y, F) : (g = C4(y), g.c(), g.m(e, n)) : g && (g.d(1), g = null), y[2] !== void 0 ? v ? v.p(y, F) : (v = S4(y), v.c(), v.m(e, o)) : v && (v.d(1), v = null), fe.cdTextSkills && y[4] !== void 0 ? _ ? _.p(y, F) : (_ = P4(y), _.c(), _.m(e, i)) : _ && (_.d(1), _ = null), (!f || F[0] & 81928 && s !== (s = "overlay " + y[16] + " " + (!y[14] || y[3] > 0 && y[3] < 10 ? "" : "offCd") + " svelte-ctcp9l")) && p(i, "class", s), y[10] ? b || (b = A4(y), b.c(), b.m(e, r)) : b && (b.d(1), b = null), (!f || F[0] & 64 && l !== (l = "icon " + y[6] + " svelte-ctcp9l")) && p(r, "class", l), (!f || F[0] & 131072 && !st(r.src, a = y[17])) && p(r, "src", a), y[8] && y[11] && !y[15] ? k ? (k.p(y, F), F[0] & 35072 && S(k, 1)) : (k = T4(y), k.c(), S(k, 1), k.m(e, null)) : k && (we(), E(k, 1, 1, () => {
                     k = null
                 }), Me()), (!f || F[0] & 128) && p(e, "id", y[7]), (!f || F[0] & 34849 && c !== (c = "border " + y[5] + " " + (y[15] && y[15].data == y[0] ? "grey" : "") + " slot " + (y[11] ? "hover" : "") + " " + (y[0] !== void 0 || y[15] ? "filled" : "") + " svelte-ctcp9l")) && p(e, "class", c)
