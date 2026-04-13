@@ -27916,7 +27916,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 playerIsBot = t.id !== I.playerId && t.party === 0 && !t.clan && fe.hideBots;
             if ((t.type !== 3 && t.stats) && !playerIsBot) {
                 let min = 0.5 * (fe.nameplateSize / 500)
-                let max = 1.0 * (fe.nameplateSize / 500)
+                let max = 2.0 * (fe.nameplateSize / 500)
                 t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, min, max);
                 let castsOnPlayer = targettedPlayers.get(t.id) || []
                 t.namePlateScale *= (1 + castsOnPlayer.length / 10)
