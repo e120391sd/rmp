@@ -27906,7 +27906,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             let n = t.visual && t.visual.cDist;
             if (n > fe.nameplateViewRange) return;
             n ? n /= 70 : n = 0;
-            let o = false,
+            let o = false
                 i = t.faction !== void 0 ? I.player.hostility(t) : 0,
                 s = I.player.clan,
                 r = I.player.level,
@@ -27915,6 +27915,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 c = t.id === _n,
                 playerIsBot = t.id !== I.playerId && t.party === 0 && !t.clan && fe.hideBots;
             if ((t.type !== 3 && t.stats) && !playerIsBot) {
+                console.log(t)
+                if (t.level === 1 && !fe.nameplateShowMonsters) return;
                 let min = 0.5 * (fe.nameplateSize / 250)
                 let max = 2.0 * (fe.nameplateSize / 250)
                 t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, min, max);
