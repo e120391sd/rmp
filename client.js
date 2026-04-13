@@ -27891,7 +27891,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 r = o - Wo * 2;
             Jn.push(Vo(null, Lt("panel"), n, o, 0, 0, i)), Vo(Jn[0], Lt("grey"), s, r, Wo, Wo, 1), Jn.push(Vo(null, Lt("health"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#ffbc00", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("enemy"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("party"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("pvp"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#555555", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("spell"), s, r, 0, 0, 1));
             for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, Lt("c" + l), s, r, 0, 0, 1));
-            IA = Vo(null, "#ffffff", 100 + Wo * 2, 9 + Wo * 2, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo * 2, 16 + Wo * 2, 0, 0, 3)
+            IA = Vo(null, "#ffffff", 100 + Wo +1, 9 + Wo +1, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo +1, 16 + Wo +1, 0, 0, 3)
         },
         fB = () => {
             let t = [];
@@ -27931,7 +27931,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                     v = t.skills.timedSkill !== void 0;
-                !(CCFound) && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
+                !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
                 let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
                 if(CCFound && _) {
                     let w = (Jn[0].width + Wo * 2) - .75
