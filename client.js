@@ -27934,7 +27934,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                     v = t.skills.timedSkill !== void 0;
                 !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
-                let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && (fe.nameplateShowMonsters && !t.class) || i === 2 && fe.nameplateShowEnemyPlayers;
+                let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && (fe.nameplateShowMonsters && !t.elo) || i === 2 && fe.nameplateShowEnemyPlayers;
                 if(CCFound && _) {
                     let w = (Jn[0].width + Wo * 2) - .75
                     let h = ((v ? DA : IA).height)
@@ -27952,7 +27952,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 }
             }
             let f, u = !1;
-            if ((t.type === 3 ? (f = t.partyTimeoutCheck(I.player) ? qt[t.color] : qt.itemgrey, u = !0) : i === 0 ? (f = l ? qt.name : qt.nameSmall, u = fe.nameShowFriendlyPlayers) : i === 1 ? (f = l ? qt.enemy : qt.enemySmall, u = fe.nameShowMonsters) : i === 2 && (f = l ? qt.pvp : qt.pvpSmall, u = fe.nameShowEnemyPlayers), l || u) && !playerIsBot) {
+            if ((t.type === 3 ? (f = t.partyTimeoutCheck(I.player) ? qt[t.color] : qt.itemgrey, u = !0) : i === 0 ? (f = l ? qt.name : qt.nameSmall, u = fe.nameShowFriendlyPlayers) : i === 1 ? (f = l ? qt.enemy : qt.enemySmall, u = (fe.nameShowMonsters && !t.elo)) : i === 2 && (f = l ? qt.pvp : qt.pvpSmall, u = fe.nameShowEnemyPlayers), l || u) && !playerIsBot) {
                 let m = t.type === 3 && c && !t.canBePickedUpBy(I.player) ? .5 : l || t.type === 3 ? 1 : c ? .9 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l ? -16 : -9,
                     v = a && t.clan ? t.clan.length * 5 : 0,
