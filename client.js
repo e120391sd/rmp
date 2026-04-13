@@ -2076,6 +2076,7 @@ void main() {
         nameSize: () => nameSize,
         nameSpacing: () => nameSpacing,
         CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
+        noFrameColor: () => noFrameColor,
         prestigeChange: () => prestigeChange
     });
     var l1 = {};
@@ -2260,6 +2261,7 @@ void main() {
         nameSize: () => nameSize,
         nameSpacing: () => nameSpacing,
         CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
+        noFrameColor: () => noFrameColor,
         prestigeChange: () => prestigeChange
     });
     var Gr = ne(""),
@@ -2442,6 +2444,7 @@ void main() {
         nameSize = ne(500),
         nameSpacing = ne(0),
         CCIndicatorOnNameplates = ne(false),
+        noFrameColor = ne(false);
         ignoreNameplateViewRange = ne(false);
     var a1;
     a1 = {
@@ -10613,6 +10616,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(y, e, F), g && g.m(e, null), d(e, n), v && v.m(e, null), d(e, o), _ && _.m(e, null), d(e, i), t[32](i), b && b.m(e, null), d(e, r), k && k.m(e, null), f = !0, u || (m = [H(e, "pointerenter", t[20]), H(e, "pointerleave", t[21]), H(e, "pointerdown", t[18]), H(e, "pointerup", t[19])], u = !0)
             },
             p(y, F) {
+                console.log(y)
                 y[1] !== void 0 ? g ? g.p(y, F) : (g = C4(y), g.c(), g.m(e, n)) : g && (g.d(1), g = null), y[2] !== void 0 ? v ? v.p(y, F) : (v = S4(y), v.c(), v.m(e, o)) : v && (v.d(1), v = null), fe.cdTextSkills && y[4] !== void 0 ? _ ? _.p(y, F) : (_ = P4(y), _.c(), _.m(e, i)) : _ && (_.d(1), _ = null), (!f || F[0] & 81928 && s !== (s = "overlay " + y[16] + " " + (!y[14] || y[3] > 0 && y[3] < 10 ? "" : "offCd") + " svelte-ctcp9l")) && p(i, "class", s), y[10] ? b || (b = A4(y), b.c(), b.m(e, r)) : b && (b.d(1), b = null), (!f || F[0] & 64 && l !== (l = "icon " + y[6] + " svelte-ctcp9l")) && p(r, "class", l), (!f || F[0] & 131072 && !st(r.src, a = y[17])) && p(r, "src", a), y[8] && y[11] && !y[15] ? k ? (k.p(y, F), F[0] & 35072 && S(k, 1)) : (k = T4(y), k.c(), S(k, 1), k.m(e, null)) : k && (we(), E(k, 1, 1, () => {
                     k = null
                 }), Me()), (!f || F[0] & 128) && p(e, "id", y[7]), (!f || F[0] & 34849 && c !== (c = "border " + y[5] + " " + (y[15] && y[15].data == y[0] ? "grey" : "") + " slot " + (y[11] ? "hover" : "") + " " + (y[0] !== void 0 || y[15] ? "filled" : "") + " svelte-ctcp9l")) && p(e, "class", c)
@@ -13870,7 +13874,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 img: t[14],
                 remaining: t[12],
                 key: t[7].hotkey,
-                border: t[10] || t[8] ? "auto" : t[11] || t[9] || t[6] || t[13] ? "grey" : t[4] ? Nt(t[4].quality)[0] : "white",
+                border: t[10] || t[8] ? "auto" : fe.noFrameColor ? "black" : t[11] || t[9] || t[6] || t[13] ? "grey" : t[4] ? Nt(t[4].quality)[0] : "white",
                 $$slots: {
                     default: [GD]
                 },
@@ -13887,7 +13891,12 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             p(o, i) {
                 let s = {};
-                i[0] & 2 && (s.shift = o[1]), i[0] & 144 && (s.describe = o[7].id >= 0 && !o[7].item || o[4] !== void 0), i[0] & 2080 && (s.status = o[11] ? -1 : o[5] !== void 0 ? o[5].status : 0), i[0] & 128 && (s.id = "sk" + o[7].hotkey), i[0] & 144 && (s.data = o[7].id >= 0 || o[4] !== void 0 ? o[7] : void 0), i[0] & 512 && (s.auto = o[9]), i[0] & 1024 && (s.queued = o[10]), i[0] & 65536 && (s.meta = o[16]), i[0] & 32768 && (s.css = o[15]), i[0] & 8 && (s.stacks = o[3]), i[0] & 8192 && (s.cd = o[13]), i[0] & 16384 && (s.img = o[14]), i[0] & 4096 && (s.remaining = o[12]), i[0] & 128 && (s.key = o[7].hotkey), i[0] & 12112 && (s.border = o[10] || o[8] ? "auto" : o[11] || o[9] || o[6] || o[13] ? "grey" : o[4] ? Nt(o[4].quality)[0] : "white"), i[0] & 148 | i[1] & 8 && (s.$$scope = {
+                i[0] & 2 && (s.shift = o[1]), i[0] & 144 && (s.describe = o[7].id >= 0 && !o[7].item || o[4] !== void 0), i[0] & 2080 && (s.status = o[11] ? -1 : o[5] !== void 0 ? o[5].status : 0), i[0] & 128 && (s.id = "sk" + o[7].hotkey), i[0] & 144 && (s.data = o[7].id >= 0 || o[4] !== void 0 ? o[7] : void 0), i[0] & 512 && (s.auto = o[9]), i[0] & 1024 && (s.queued = o[10]), i[0] & 65536 && (s.meta = o[16]), i[0] & 32768 && (s.css = o[15]), i[0] & 8 && (s.stacks = o[3]), i[0] & 8192 && (s.cd = o[13]), i[0] & 16384 && (s.img = o[14]), i[0] & 4096 && (s.remaining = o[12]), i[0] & 128 && (s.key = o[7].hotkey), i[0] & 12112 && 
+                (s.border = 
+o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
+	: o[11] || o[9] || o[6] || o[13] ? "grey" 
+		: o[4] ? Nt(o[4].quality)[0] 
+		: "white"), i[0] & 148 | i[1] & 8 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -15728,7 +15737,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        let namePlateCategory, namePlateCategorySeperator
+        let namePlateCategory, namePlateCategorySeperator, noFrameColorElement, noFrameColorValue
         let sortPartyElement, sortPartyValue, hideBuffsElement, hideBuffsValue, hidebuffsSub, sortPartySub, hideBuffsSeperator, sortPartySeperator, ownRevElement, ownRevValue, hideClassBuffsElement, hideClassBuffsValue, nameplateSizeSlider, nameplateSizeElement, showOnNamesElement, showOnNamesValue, nameSizeSlider, nameeSizeElement, nameSpacingElement, nameSpacingValue
         let CCIsub, CCIseperator2, CCIdfcontainer, CCIchillcontainer, CCIagocontainer, CCIrelcontainer, CCIblindcontainer, CCIstuncontainer, seperatorCCI, CCICategory, CCIToggleElement, CCIToggleValue, CCIdfimage, CCIdftext, CCIdfcolor, CCIchillimage, CCIchilltext, CCIchillcolor, CCIagoimage, CCIagotext, CCIagocolor, CCIstunimage, CCIstuncolor, CCIstuntext, CCIrelimage, CCIreltext, CCIrelcolor, CCIblindimage, CCIblindtext, CCIblindcolor
         let stackIndElement, stackIndValue, shrinkIndElement, shrinkIndValue, removeFXElement, removeFXValue, ignoreNameplateValue, ignoreNameplateElement, nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
@@ -15828,8 +15837,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: CCIndicatorOnNameplates
             }
+        }), noFrameColorValue = new Et({
+            props: {
+                store: noFrameColor
+            }
         }), {
             c() {
+                noFrameColorElement = h("div"), noFrameColorElement.textContent = `Disable skillbar frames`, K(noFrameColorValue.$$.fragment),
                 namePlateCategory = h("div"), namePlateCategory.textContent = `Nameplate Mods`, p(namePlateCategory, "class", "textprimary"), namePlateCategory.style.fontSize = "20px", namePlateCategorySeperator = h("div"),
                 nameSpacingElement = h("div"), nameSpacingElement.textContent = `Nameplate text margin`, nameSpacingValue = h("input"), p(nameSpacingValue, "type", "range"), p(nameSpacingValue, "min", "0"), p(nameSpacingValue, "max", "1000")
                 nameeSizeElement = h("div"), nameeSizeElement.textContent = `Nameplate text size`, nameSizeSlider = h("input"), p(nameSizeSlider, "type", "range"), p(nameSizeSlider, "min", "0"), p(nameSizeSlider, "max", "1000")
@@ -15923,6 +15937,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, timeText, D), w(M, timeSlider, D), We(timeSlider, t[72]),
                 w(M, timeToIngameElement, D), Q(timeToIngameValue, M, D),
                 w(M, sortPartyElement, D), Q(sortPartyValue, M, D), d(sortPartyElement,sortPartySeperator), d(sortPartyElement, sortPartySub),
+                w(M, noFrameColorElement, D), Q(noFrameColorValue, M, D),
                 w(M, CCICategory, D), w(M, seperatorCCI, D),
                 w(M, CCIToggleElement, D), Q(CCIToggleValue, M, D),
                 w(M, showOnNamesElement, D), Q(showOnNamesValue, M, D),
@@ -15942,21 +15957,21 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 && We(CCIchillcolor, te[76]) && We(CCIdfcolor, te[74]) && We(CCIagocolor, te[78]) && We(CCIstuncolor, te[80]) && We(CCIrelcolor, te[84]) && We(CCIblindcolor, te[82]) && We(shrinkIndValue, t[86]) && We(nameplateSizeSlider, t[88]) && We(nameSizeSlider, t[90]) && We(nameSpacingValue, t[92])
             },
             i(M) { // S(targetEnabledValue.$$.fragment, M)
-                C || (S(targetEnabledValue.$$.fragment, M), S(showOnNamesValue.$$.fragment, M), S(hideClassBuffsValue.$$.fragment, M), S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(noFrameColorValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(showOnNamesValue.$$.fragment, M), S(hideClassBuffsValue.$$.fragment, M), S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) { //  E(targetEnabledValue.$$.fragment, M)
-                E(targetEnabledValue.$$.fragment, M), E(showOnNamesValue.$$.fragment, M), E(hideClassBuffsValue.$$.fragment, M), E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                S(noFrameColorValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(showOnNamesValue.$$.fragment, M), E(hideClassBuffsValue.$$.fragment, M), E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) { // x(targetEnabledElement), x(targetEnabledValue) Z(targetEnabledValue, M)
                 M && (
                     //x(targetEnabledElement), x(targetEnabledValue),
-                    x(namePlateCategory), x(namePlateCategorySeperator),
+                    x(namePlateCategory), x(namePlateCategorySeperator), x(noFrameColorElement), x(noFrameColorValue),
                     x(sortPartyElement), x(sortPartyValue), x(hideBuffsElement), x(hideBuffsValue), x(sortPartySub), x(sortPartySeperator), x(ownRevElement), x(ownRevValue), x(hideClassBuffsValue), x(hideClassBuffsElement), x(showOnNamesElement), x(showOnNamesValue), x(nameplateSizeElement), x(nameplateSizeSlider), x(nameeSizeElement), x(nameSizeSlider), x(nameSpacingElement), x(nameSpacingValue),
                     x(CCIsub), x(CCIseperator2), x(CCIchillcontainer), x(CCIdfcontainer), x(CCIagocontainer), x(CCIrelcontainer), x(CCIblindcontainer), x(CCIstuncontainer),
                     x(seperatorCCI), x(CCICategory), x(CCIToggleElement), x(CCIToggleValue), x(CCIdfimage), x(CCIdftext), x(CCIdfcolor), x(CCIchillimage), x(CCIchilltext), x(CCIchillcolor), x(CCIagoimage), x(CCIagotext), x(CCIagocolor), x(CCIstunimage), x(CCIstuntext), x(CCIstuncolor), x(CCIrelimage), x(CCIreltext), x(CCIrelcolor), x(CCIblindimage), x(CCIblindtext), x(CCIblindcolor), Z(CCIToggleValue, M),
                     x(stackIndElement), x(stackIndValue), x(shrinkIndElement), x(shrinkIndValue), x(removeFXElement), x(removeFXValue), x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)),
                 //Z(targetEnabledValue, M),
-                Z(showOnNamesValue, M), Z(hideClassBuffsValue, M), Z(ownRevValue, M), Z(hideBuffsValue, M), Z(sortPartyValue, M), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(stackIndValue, M)
+                Z(noFrameColorValue, M), Z(showOnNamesValue, M), Z(hideClassBuffsValue, M), Z(ownRevValue, M), Z(hideBuffsValue, M), Z(sortPartyValue, M), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(stackIndValue, M)
             }
         }
     }
