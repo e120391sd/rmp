@@ -27923,7 +27923,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
                 if(CCFound && _) {
                     let w = (Jn[0].width + Wo * 2) - .75
-                    let h = (v ? DA : IA).height
+                    let h = ((v ? DA : IA).height) - .25
                     outline = Vo(null, CCColor, w, h, 0, 0, 3)
                     pr(outline, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0)
                 }
