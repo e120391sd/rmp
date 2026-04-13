@@ -27920,13 +27920,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                     v = t.skills.timedSkill !== void 0;
                 !(CCFound) && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
-                if(CCFound) {
+                let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
+                if(CCFound && _) {
                     let w = Jn[0].width + Wo * 2
                     let h = (v ? DA : IA).height
                     outline = Vo(null, CCColor, w, h, 0, 0, 3)
                     pr(outline, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0)
                 }
-                let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
                 if (v && _) {
                     let b = Jn[0].height - Wo,
                         k = vt(t.skills.timedCast.fraction(I.smoothtime), 0, 1);
