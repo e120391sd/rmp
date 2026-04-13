@@ -15915,8 +15915,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, nameplateSizeElement, D), w(M, nameplateSizeSlider, D), We(nameplateSizeSlider, t[88]), H(nameplateSizeSlider, "input", t[87]),
                 w(M, nameeSizeElement, D), w(M, nameSizeSlider, D), We(nameSizeSlider, t[90]), H(nameSizeSlider, "input", t[89]),
                 w(M, nameSpacingElement, D), w(M, nameSpacingValue, D), We(nameSpacingValue, t[92]), H(nameSpacingValue, "input", t[91]),
-                w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
                 w(M, ignoreNameplateElement, D), Q(ignoreNameplateValue, M, D),
+                w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
                 w(M, generalCategory, D), w(M, seperator6, D),
                 w(M, specialSellElement, D), Q(specialSellValue, M, D),
                 w(M, alwaysPickupElement, D), w(M, alwaysPickupValue, D), We(alwaysPickupValue, t[70]), d(alwaysPickupElement, seperator8), d(alwaysPickupElement, subNeverExcludeItems),
@@ -15949,7 +15949,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             d(M) { // x(targetEnabledElement), x(targetEnabledValue) Z(targetEnabledValue, M)
                 M && (
-                    x(targetEnabledElement), x(targetEnabledValue), 
+                    x(targetEnabledElement), x(targetEnabledValue), x(namePlateCategory), x(namePlateCategorySeperator),
                     x(sortPartyElement), x(sortPartyValue), x(hideBuffsElement), x(hideBuffsValue), x(sortPartySub), x(sortPartySeperator), x(ownRevElement), x(ownRevValue), x(hideClassBuffsValue), x(hideClassBuffsElement), x(showOnNamesElement), x(showOnNamesValue), x(nameplateSizeElement), x(nameplateSizeSlider), x(nameeSizeElement), x(nameSizeSlider), x(nameSpacingElement), x(nameSpacingValue),
                     x(CCIsub), x(CCIseperator2), x(CCIchillcontainer), x(CCIdfcontainer), x(CCIagocontainer), x(CCIrelcontainer), x(CCIblindcontainer), x(CCIstuncontainer),
                     x(seperatorCCI), x(CCICategory), x(CCIToggleElement), x(CCIToggleValue), x(CCIdfimage), x(CCIdftext), x(CCIdfcolor), x(CCIchillimage), x(CCIchilltext), x(CCIchillcolor), x(CCIagoimage), x(CCIagotext), x(CCIagocolor), x(CCIstunimage), x(CCIstuntext), x(CCIstuncolor), x(CCIrelimage), x(CCIreltext), x(CCIrelcolor), x(CCIblindimage), x(CCIblindtext), x(CCIblindcolor), Z(CCIToggleValue, M),
