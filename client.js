@@ -27950,9 +27950,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let m = t.type === 3 && c && !t.canBePickedUpBy(I.player) ? .5 : l || t.type === 3 ? 1 : c ? .9 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l ? -16 : -9,
                     v = a && t.clan ? t.clan.length * 5 : 0,
-                    nameSpacing = fe.nameSpacing / 100 // perhaps 1000
+                    nameSpacing = fe.nameSpacing / 10 // perhaps 1000
                 
-                t.hudPos[1] += nameSpacing
+                t.hudPos[1] -= nameSpacing
                 let _ = dr(t.hudPos, t.name, f, m, 1 * (fe.nameSize / 500), v, g);
                 t.clan && a && dr(ho(Un, t.hudPos[0] - _ / 2 + Wo, t.hudPos[1]), t.clan, t.faction === 0 ? l ? qt.faction0 : qt.faction0small : l ? qt.faction1 : qt.faction1small, m, 1, t.clan.length * 5, g, 1)
             }
