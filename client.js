@@ -2072,6 +2072,9 @@ void main() {
         hideClassBuffs: () => hideClassBuffs,
         hiddenClassBuffs: () => hiddenClassBuffs,
         onlyShowOwnRev: () => onlyShowOwnRev,
+        nameplateSize: () => nameplateSize,
+        nameSize: () => nameSize,
+        CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
         prestigeChange: () => prestigeChange
     });
     var l1 = {};
@@ -2252,6 +2255,9 @@ void main() {
         hideClassBuffs: () => hideClassBuffs,
         hiddenClassBuffs: () => hiddenClassBuffs,
         onlyShowOwnRev: () => onlyShowOwnRev,
+        nameplateSize: () => nameplateSize,
+        nameSize: () => nameSize,
+        CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
         prestigeChange: () => prestigeChange
     });
     var Gr = ne(""),
@@ -2413,7 +2419,7 @@ void main() {
         timeToIngame = ne(false),
         nextFriendlyIgnoreBots = ne(true),
         removeFX = ne(true),
-        shrinkIndicators = ne(true),
+        shrinkIndicators = ne(500),
         stackIndicators = ne(false),
         prestigeChange = ne(false),
         prestigeSimulate = ne(0),
@@ -2430,6 +2436,9 @@ void main() {
         hideClassBuffs = ne(false),
         hiddenClassBuffs = ne([80, 78, 81, 76, 75]),
         onlyShowOwnRev = ne(false),
+        nameplateSize = ne(500),
+        nameSize = ne(500),
+        CCIndicatorOnNameplates = ne(false),
         ignoreNameplateViewRange = ne(false);
     var a1;
     a1 = {
@@ -7750,7 +7759,27 @@ void main() {
                 g = Math.round(u * s);
             return m === 0 || g === 0 || Eo.drawImage(t, 0, 0, Math.round(t.width * i), Math.round(t.height * s), Math.round(e[0] - f * a + r * o), Math.round(e[1] - u * c + l * o), m, g), m
         },
-        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
+        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => n.size >= 8 ? drHD(t, e, n, o, i, s, r, l, a) : pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
+        drHD = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5, dpr = 2) => {
+            let canvas = luHD(e, n, dpr);
+            let lw = canvas.logicalWidth,
+                lh = canvas.logicalHeight;
+            
+            Eo.globalAlpha = fe.nameplateShowTransparency ? o : 1;
+            let f = lw * i,
+                u = lh * i,
+                m = Math.round(f),
+                g = Math.round(u);
+            if (m === 0 || g === 0) return m;
+            Eo.drawImage(
+                canvas,
+                0, 0, canvas.width, canvas.height,
+                Math.round(t[0] - f * l + s * i),
+                Math.round(t[1] - u * a + r * i),
+                m, g
+            );
+            return m;
+        },
         qx = (t, e, n, o, i = 0, s = 0, r = .5, l = .5) => pr(e, t, n, o, 1, 1, i, s, r, l),
         vl = (t, e, n = !1) => (n ? (e[0] = t[0], e[1] = t[1]) : Ao(e, t, gt.projectionViewMatrix), n || e[2] < 1 && e[0] > -1 && e[0] < 1 ? (e[1] = Math.max(-1, Math.min(e[1], 1)), e[0] = Math.round((e[0] * .5 + .5) * Ln.width), e[1] = Math.round((e[1] * -.5 + .5) * Ln.height), e[1] = Math.max(30, e[1]), e) : !1),
         Rx = (t, e, n) => {
@@ -7844,23 +7873,23 @@ void main() {
             },
             phys: {
                 fill: Lt("name"),
-                size: fe.shrinkIndicators ? 9 : 18
+                size: 18 * (fe.shrinkIndicators / 500)
             },
             physCrit: {
                 fill: Lt("name"),
-                size: fe.shrinkIndicators ? 12 : 24
+                size: 24  * (fe.shrinkIndicators / 500)
             },
             spell: {
                 fill: "#FFE404",
-                size: fe.shrinkIndicators ? 14 : 28
+                size: 28  * (fe.shrinkIndicators / 500)
             },
             spellCrit: {
                 fill: "#ffa02d",
-                size: fe.shrinkIndicators ? 20 : 40
+                size: 40  * (fe.shrinkIndicators / 500)
             },
             heal: {
                 fill: "#12F027",
-                size: fe.shrinkIndicators ? 10 : 28
+                size: 28  * (fe.shrinkIndicators / 500)
             },
             mana: {
                 fill: Lt("mana"),
@@ -7872,7 +7901,7 @@ void main() {
             },
             fame: {
                 fill: Lt("fame"),
-                size: fe.shrinkIndicators ? 10 : 20
+                size: 20  * (fe.shrinkIndicators / 500)
             },
             gold: {
                 fill: "#EEDDA3",
@@ -7928,11 +7957,11 @@ void main() {
             },
             pheal: {
                 fill: "#12F027",
-                size: fe.shrinkIndicators ? 10 : 20
+                size: 20 * (fe.shrinkIndicators / 500)
             },
             pdmg: {
                 fill: Lt("enemy"),
-                size: fe.shrinkIndicators ? 10 : 20
+                size: 20 * (fe.shrinkIndicators / 500)
             }
         },
         pg = {},
@@ -7947,6 +7976,33 @@ void main() {
                 r = s.getContext("2d");
             r.font = "bold " + n + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
             return s
+        },
+        luHD = (t, {
+            fill: e,
+            size: n,
+            wrap: o = 0
+        }, dpr = 2) => {
+            let i = t + e + n + dpr;
+            if (pg[i]) return pg[i];
+            let s = document.createElement("canvas"),
+                r = s.getContext("2d");
+            
+            let scaledN = n * dpr;
+            r.font = "bold " + scaledN + "px hordes";
+            
+            if (o > 0) {
+                PE(s, r, t, 0, 0, o * dpr, scaledN, e);
+            } else {
+                s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5 * dpr;
+                s.height = Math.ceil(scaledN * 1.2 + 5 * dpr);
+                Rx(r, scaledN, e);
+                r.fillText(t, 0, s.height - 6 * dpr);
+            }
+            s.logicalWidth = s.width / dpr;
+            s.logicalHeight = s.height / dpr;
+            
+            pg[i] = s;
+            return s;
         },
         Vo = (t, e, n, o, i, s, r) => {
             t || (t = document.createElement("canvas"), t.width = n, t.height = o);
@@ -15669,7 +15725,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function modSettings(t) {
-        let sortPartyElement, sortPartyValue, hideBuffsElement, hideBuffsValue, hidebuffsSub, sortPartySub, hideBuffsSeperator, sortPartySeperator, ownRevElement, ownRevValue, hideClassBuffsElement, hideClassBuffsValue
+        let sortPartyElement, sortPartyValue, hideBuffsElement, hideBuffsValue, hidebuffsSub, sortPartySub, hideBuffsSeperator, sortPartySeperator, ownRevElement, ownRevValue, hideClassBuffsElement, hideClassBuffsValue, nameplateSizeSlider, nameplateSizeElement, showOnNamesElement, showOnNamesValue, nameSizeSlider, nameeSizeElement
         let CCIsub, CCIseperator2, CCIdfcontainer, CCIchillcontainer, CCIagocontainer, CCIrelcontainer, CCIblindcontainer, CCIstuncontainer, seperatorCCI, CCICategory, CCIToggleElement, CCIToggleValue, CCIdfimage, CCIdftext, CCIdfcolor, CCIchillimage, CCIchilltext, CCIchillcolor, CCIagoimage, CCIagotext, CCIagocolor, CCIstunimage, CCIstuncolor, CCIstuntext, CCIrelimage, CCIreltext, CCIrelcolor, CCIblindimage, CCIblindtext, CCIblindcolor
         let stackIndElement, stackIndValue, shrinkIndElement, shrinkIndValue, removeFXElement, removeFXValue, ignoreNameplateValue, ignoreNameplateElement, nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
         return hideBotsValue = new Et({
@@ -15740,10 +15796,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: removeFX
             }
-        }), shrinkIndValue = new Et({
-            props: {
-                store: shrinkIndicators
-            }
         }), stackIndValue = new Et({
             props: {
                 store: stackIndicators
@@ -15768,8 +15820,15 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             props: {
                 store: hideClassBuffs
             }
+        }), showOnNamesValue = new Et({
+            props: {
+                store: CCIndicatorOnNameplates
+            }
         }), {
             c() {
+                nameeSizeElement = h("div"), nameeSizeElement.textContent = `Nameplate text size`, nameSizeSlider = h("input"), p(nameSizeSlider, "type", "range"), p(nameSizeSlider, "min", "0"), p(nameSizeSlider, "max", "1000")
+                nameplateSizeElement = h("div"), nameplateSizeElement.textContent = `Nameplate size`, nameplateSizeSlider = h("input"), p(nameplateSizeSlider, "type", "range"), p(nameplateSizeSlider, "min", "0"), p(nameplateSizeSlider, "max", "1000")
+                showOnNamesElement = h("div"), showOnNamesElement.textContent = `Show on nameplates`, K(showOnNamesValue.$$.fragment),
                 hideClassBuffsElement = h("div"), hideClassBuffsElement.textContent = `Hide class buffs`, K(hideClassBuffsValue.$$.fragment),
                 ownRevElement = h("div"), ownRevElement.textContent = `Only show own revitalize`, K(ownRevValue.$$.fragment),
                 CCIsub = h("div"), CCIsub.textContent = `-- Colors: --`, p(CCIsub, "class", "textgrey"),
@@ -15793,7 +15852,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 seperatorCCI = h("div"), CCICategory = h("div"), CCICategory.textContent = `CC Indicators`, p(CCICategory,"class","textprimary")
                 CCIToggleElement = h("div"), CCIToggleElement.textContent = `Enable CC Indicators`, K(CCIToggleValue.$$.fragment),
                 stackIndElement = h("div"), stackIndElement.textContent = `Stack damage indicators`, K(stackIndValue.$$.fragment),
-                shrinkIndElement = h("div"), shrinkIndElement.textContent = `Shrink indicator size`, K(shrinkIndValue.$$.fragment),
+                shrinkIndElement = h("div"), shrinkIndElement.textContent = `Indicator size`, shrinkIndValue = h("input"), p(shrinkIndValue, "type", "range"), p(shrinkIndValue, "min", "0"), p(shrinkIndValue, "max", "1000")
                 removeFXElement = h("div"), removeFXElement.textContent = `Disable skill tick effects`, K(removeFXValue.$$.fragment),
                 ignoreNameplateElement = h("div"), ignoreNameplateElement.textContent = `Change nameplate select style`, K(ignoreNameplateValue.$$.fragment),
                 nextFriendlyIgnoreBotsElement = h("div"), nextFriendlyIgnoreBotsElement.textContent = `Target Next Friendly: Exclude Bots`, K(nextFriendlyIgnoreBotsValue.$$.fragment),
@@ -15842,7 +15901,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
                 w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
                 w(M, stackIndElement, D), Q(stackIndValue, M, D),
-                w(M, shrinkIndElement, D), Q(shrinkIndValue, M, D),
+                w(M, shrinkIndElement, D), w(M, shrinkIndValue, D), We(shrinkIndValue, t[86]), H(shrinkIndValue, "input", t[85]),
+                w(M, nameplateSizeElement, D), w(M, nameplateSizeSlider, D), We(nameplateSizeSlider, t[88]), H(nameplateSizeSlider, "input", t[87]),
+                w(M, nameeSizeElement, D), w(M, nameSizeSlider, D), We(nameSizeSlider, t[90]), H(nameSizeSlider, "input", t[89]),
                 w(M, removeFXElement, D), Q(removeFXValue, M, D),
                 //w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
                 w(M, ignoreNameplateElement, D), Q(ignoreNameplateValue, M, D),
@@ -15856,6 +15917,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 w(M, sortPartyElement, D), Q(sortPartyValue, M, D), d(sortPartyElement,sortPartySeperator), d(sortPartyElement, sortPartySub),
                 w(M, CCICategory, D), w(M, seperatorCCI, D),
                 w(M, CCIToggleElement, D), Q(CCIToggleValue, M, D),
+                w(M, showOnNamesElement, D), Q(showOnNamesValue, M, D),
                 w(M, CCIsub, D), w(M, CCIseperator2, D),
                 w(M, CCIchillcontainer, D), d(CCIchillcontainer, CCIchillimage), d(CCIchillcontainer, CCIchilltext), w(M, CCIchillcolor, D), We(CCIchillcolor, t[76]), H(CCIchillcolor, "input", t[75]),
                 w(M, CCIdfcontainer, D), d(CCIdfcontainer, CCIdfimage), d(CCIdfcontainer, CCIdftext), w(M, CCIdfcolor, D), We(CCIdfcolor, t[74]), H(CCIdfcolor, "input", t[73]),
@@ -15868,22 +15930,22 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 H(alwaysPickupValue, "input", t[69])
             },
             p(te,ae) {
-                ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
-                && We(CCIchillcolor, te[76]) && We(CCIdfcolor, te[74]) && We(CCIagocolor, te[78]) && We(CCIstuncolor, te[80]) && We(CCIrelcolor, te[84]) && We(CCIblindcolor, te[82])
+                ae[0] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
+                && We(CCIchillcolor, te[76]) && We(CCIdfcolor, te[74]) && We(CCIagocolor, te[78]) && We(CCIstuncolor, te[80]) && We(CCIrelcolor, te[84]) && We(CCIblindcolor, te[82]) && We(shrinkIndValue, t[86]) && We(nameplateSizeSlider, t[88]) && We(nameSizeSlider, t[90])
             },
             i(M) { // S(targetEnabledValue.$$.fragment, M)
-                C || (S(hideClassBuffsValue.$$.fragment, M), S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(shrinkIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(showOnNamesValue.$$.fragment, M), S(hideClassBuffsValue.$$.fragment, M), S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) { //  E(targetEnabledValue.$$.fragment, M)
-                E(hideClassBuffsValue.$$.fragment, M), E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(shrinkIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(showOnNamesValue.$$.fragment, M), E(hideClassBuffsValue.$$.fragment, M), E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) { // x(targetEnabledElement), x(targetEnabledValue) Z(targetEnabledValue, M)
                 M && (
-                    x(sortPartyElement), x(sortPartyValue), x(hideBuffsElement), x(hideBuffsValue), x(sortPartySub), x(sortPartySeperator), x(ownRevElement), x(ownRevValue), x(hideClassBuffsValue), x(hideClassBuffsElement),
+                    x(sortPartyElement), x(sortPartyValue), x(hideBuffsElement), x(hideBuffsValue), x(sortPartySub), x(sortPartySeperator), x(ownRevElement), x(ownRevValue), x(hideClassBuffsValue), x(hideClassBuffsElement), x(showOnNamesElement), x(showOnNamesValue), x(nameplateSizeElement), x(nameplateSizeSlider), x(nameeSizeElement), x(nameSizeSlider),
                     x(CCIsub), x(CCIseperator2), x(CCIchillcontainer), x(CCIdfcontainer), x(CCIagocontainer), x(CCIrelcontainer), x(CCIblindcontainer), x(CCIstuncontainer),
                     x(seperatorCCI), x(CCICategory), x(CCIToggleElement), x(CCIToggleValue), x(CCIdfimage), x(CCIdftext), x(CCIdfcolor), x(CCIchillimage), x(CCIchilltext), x(CCIchillcolor), x(CCIagoimage), x(CCIagotext), x(CCIagocolor), x(CCIstunimage), x(CCIstuntext), x(CCIstuncolor), x(CCIrelimage), x(CCIreltext), x(CCIrelcolor), x(CCIblindimage), x(CCIblindtext), x(CCIblindcolor), Z(CCIToggleValue, M),
                     x(stackIndElement), x(stackIndValue), x(shrinkIndElement), x(shrinkIndValue), x(removeFXElement), x(removeFXValue), x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)),
-                Z(hideClassBuffsValue, M), Z(ownRevValue, M), Z(hideBuffsValue, M), Z(sortPartyValue, M), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(shrinkIndValue, M), Z(stackIndValue, M)
+                Z(showOnNamesValue, M), Z(hideClassBuffsValue, M), Z(ownRevValue, M), Z(hideBuffsValue, M), Z(sortPartyValue, M), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(stackIndValue, M)
             }
         }
     }
@@ -15967,8 +16029,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function CV(t, e, n) {
-        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, apt, tsl, dfc, crc, agc, stc, bsc, rec;
-        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re)), re(t, alwaysPickup, Re => n(70, apt = Re)), re(t, timeSlider, Re => n(72, tsl = Re)), re(t, deepFreezeColor, Re => n(74, dfc = Re)), re(t, chillColor, Re => n(76, crc = Re)), re(t, agonizeColor, Re => n(78, agc = Re)), re(t, stunColor, Re => n(80, stc = Re)), re(t, blindColor, Re => n(82, bsc = Re)), re(t, relColor, Re => n(84, rec = Re));
+        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, apt, tsl, dfc, crc, agc, stc, bsc, rec, inds, nams, nas;
+        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re)), re(t, alwaysPickup, Re => n(70, apt = Re)), re(t, timeSlider, Re => n(72, tsl = Re)), re(t, deepFreezeColor, Re => n(74, dfc = Re)), re(t, chillColor, Re => n(76, crc = Re)), re(t, agonizeColor, Re => n(78, agc = Re)), re(t, stunColor, Re => n(80, stc = Re)), re(t, blindColor, Re => n(82, bsc = Re)), re(t, relColor, Re => n(84, rec = Re)), re(t, shrinkIndicators, Re => n(86, inds = Re)), re(t, nameplateSize, Re => n(88, nams = Re)), re(t, nameSize, Re => n(90, nas = Re));
         let R = [{
                 id: "ui",
                 name: P.ui.settings.interface
@@ -16194,9 +16256,18 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         function setRC() {
             rec = this.value, relColor.set(rec)
         }
+        function setInds() {
+            inds = Number(this.value), shrinkIndicators.set(inds)
+        }
+        function setNams() {
+            nams = Number(this.value), nameplateSize.set(nams)
+        }
+        function setNas() {
+            nas = Number(this.value), nameSize.set(nas)
+        }
         return [Ji, N, ge, se, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, Y, Ce, ve, _e, be, Te, ie, Ie, ee, qe, Ge, Qe, He, he, ce, $e, oe, J, O, ue, je, Ue, ke, ze, Oe, dt, Ft, Ze, Ct, xe, Je, kt, At, De, at, () => {
             Xe(el, o = !1, o), ge && window.location.reload()
-        },setAlwaysPickup, apt, setTimeSlider, tsl, setDC, dfc, setCC, crc, setAC, agc, setSC, stc, setBC, bsc, setRC, rec]
+        },setAlwaysPickup, apt, setTimeSlider, tsl, setDC, dfc, setCC, crc, setAC, agc, setSC, stc, setBC, bsc, setRC, rec, setInds, inds, setNams, nams, setNas, nas]
     }
     var dv = class extends Fe {
             constructor(e) {
@@ -27830,13 +27901,31 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 c = t.id === _n,
                 playerIsBot = t.id !== I.playerId && t.party === 0 && !t.clan && fe.hideBots;
             if ((t.type !== 3 && t.stats) && !playerIsBot) {
-                t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, .5, 1);
+                t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, .5, 1) * (fe.nameplateSize / 500);
                 let castsOnPlayer = targettedPlayers.get(t.id) || []
                 t.namePlateScale *= (1 + castsOnPlayer.length / 10)
+                let CCFound, CCColor
+                let playerBuffs = I.getEntityById(t.id)
+                if(playerBuffs) playerBuffs = playerBuffs.buffs.buffs
+                CCFound = false, CCColor = "#ffffff"
+                if(playerBuffs && fe.CCIndicatorOnNameplates && fe.CCIndicator) {
+                    if(playerBuffs.has(69)) CCFound = true, CCColor = fe.chillColor
+                    if(playerBuffs.has(121)) CCFound = true, CCColor = fe.relColor
+                    if(playerBuffs.has(119)) CCFound = true, CCColor = fe.blindColor
+                    if(playerBuffs.has(88)) CCFound = true, CCColor = fe.stunColor
+                    if(playerBuffs.has(91)) CCFound = true, CCColor = fe.agonizeColor
+                    if(playerBuffs.has(101)) CCFound = true, CCColor = fe.deepFreezeColor
+                }
                 let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                     v = t.skills.timedSkill !== void 0;
-                !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
+                !(CCFound) && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
+                if(CCFound) {
+                    let w = Jn[0].width + Wo * 2
+                    let h = (v ? DA : IA).height
+                    outline = Vo(null, CCColor, w, h, 0, 0, 3)
+                    pr(outline, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0)
+                }
                 let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
                 if (v && _) {
                     let b = Jn[0].height - Wo,
@@ -27853,7 +27942,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 let m = t.type === 3 && c && !t.canBePickedUpBy(I.player) ? .5 : l || t.type === 3 ? 1 : c ? .9 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l ? -16 : -9,
                     v = a && t.clan ? t.clan.length * 5 : 0,
-                    _ = dr(t.hudPos, t.name, f, m, 1, v, g);
+                    _ = dr(t.hudPos, t.name, f, m, 1 * (fe.nameSize / 500), v, g);
                 t.clan && a && dr(ho(Un, t.hudPos[0] - _ / 2 + Wo, t.hudPos[1]), t.clan, t.faction === 0 ? l ? qt.faction0 : qt.faction0small : l ? qt.faction1 : qt.faction1small, m, 1, t.clan.length * 5, g, 1)
             }
             t.speechText && dr(t.hudPos, t.speechText, t.speechStyle, 1, 1, 0, l ? -30 : -20, .5, 1)
