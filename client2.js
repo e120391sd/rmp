@@ -3081,7 +3081,12 @@ void main() {
             }
         },
         B3 = {
-            decode: t => {
+            decode: (t,id) => {
+                console.log(id)
+                if(id && id.includes("1937")) {
+                    console.log("returning edited model")
+                    return {}
+                }
                 let e = t,
                     n = {};
                 z = 0;
@@ -6897,8 +6902,8 @@ void main() {
         Y1 = 2 ** 15 - 1,
         O9 = 2 ** 16 - 1,
         X1 = 2 ** 32 - 1;
-    var tx = t => {
-        let e = Ia.modelformat.decode(t),
+    var tx = (t,id) => {
+        let e = Ia.modelformat.decode(t,id),
             n = Y1 / (X1 / e.sx),
             o = Y1 / (X1 / e.sy),
             i = Y1 / (X1 / e.sz);
@@ -6909,6 +6914,7 @@ void main() {
         return e
     };
     var Q1 = async (t, e, n, o, i, s = 3) => {
+        console.log(t,e,o)
         switch (e.split(".").pop()) {
             case "jpg":
             case "png":
@@ -6916,7 +6922,7 @@ void main() {
             case "webp": {
                 let r = new Image;
                 r.onload = () => {
-                    n[e] = o(r), i(n[e], t + e), r.onload = void 0
+                    n[e] = o(r,e), i(n[e], t + e), r.onload = void 0
                 }, r.src = t + e + "?v=8822612";
                 break
             }
@@ -6924,7 +6930,7 @@ void main() {
                 fetch(t + e + "?v=8822612").then(r => {
                     if (!r.ok) throw new Error;
                     r.arrayBuffer().then(async l => {
-                        n[e] = await o(l), i(n[e], t + e)
+                        n[e] = await o(l,e), i(n[e], t + e)
                     })
                 }).catch(r => {
                     console.log(e + " fetch failed"), s > 1 && Q1(t, e, n, o, i, --s)
@@ -6940,8 +6946,9 @@ void main() {
         },
         eu = async (t, e, n, o, i) => {
             n[e] ? i(...n[e]) : ul[t + e] ? ul[t + e].push(i) : (ul[t + e] = [], ul[t + e].push(i), Q1(t, e, n, o, W9))
-        }, j9 = t => {
-            let e = tx(new Uint8Array(t));
+        }, j9 = (t,id) => {
+            console.log(t)
+            let e = tx(new Uint8Array(t),id);
             return [{
                 index: {
                     type: 5125,
@@ -8006,7 +8013,7 @@ void main() {
                 s.height = Math.ceil(scaledN * 1.2 + 5 * dpr);
                 Rx(r, scaledN, e);
                 if(fe.outlines) {
-                    r.lineWidth = 1.75 * dpr;
+                    r.lineWidth = 1.5 * dpr;
                     r.strokeStyle = 'black';
                     r.strokeText(t, 0, s.height - 6 * dpr);
                 }
