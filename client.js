@@ -21,7 +21,7 @@
             ]
     let alreadyNotified = new Map();
     let style = document.createElement('style');
-    style.textContent = `.slot.glow { outline: 2px solid #60b64d; border-radius: 6px; }`;
+    style.textContent = `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`;
     document.head.appendChild(style);
     let targettedPlayers = new Map()
     var NT = Object.defineProperty;
