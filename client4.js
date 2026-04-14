@@ -25647,7 +25647,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         g2 = 0,
         v2 = 0,
         p8 = (t, e) => {
-            t = Math.max(150, Math.min(1500, t)), li = t * .8, m2 = Math.min(li, 150), u2 = 20, d2 = li, v2 = li ** 2, h2 = Math.min(li, 50), g2 = Math.min(li / 32, 150 / 32) ** 2, gt.far = m8 = t, HR = t ** 2, sf(gt), Au = Math.min(li, 100 + e * 50), Pu = Math.min(li, 40 + e * 10), p2 = (Au + Pu) / 2, Wn = Math.ceil(t * 2 / 32), Wn += Wn % 2, Rs = Wn / 2, Rs += Rs % 2, YR()
+            t = Math.max(150, Math.min(1500, t)), li = t * .8, m2 = Math.min(li, 150), u2 = 5, d2 = li, v2 = li ** 2, h2 = Math.min(li, 50), g2 = Math.min(li / 32, 150 / 32) ** 2, gt.far = m8 = t, HR = t ** 2, sf(gt), Au = Math.min(li, 100 + e * 50), Pu = Math.min(li, 40 + e * 10), p2 = (Au + Pu) / 2, Wn = Math.ceil(t * 2 / 32), Wn += Wn % 2, Rs = Wn / 2, Rs += Rs % 2, YR()
         },
         f2 = [],
         wr = [],
@@ -26533,7 +26533,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             Lo.length = 0, zl.length = 0, Bl.length = 0, qu.length = 0
         };
     j8(Ii);
-    var vc = [0, 2, 2.3],
+    var vc = [1.5, 2.5, 0],
         _c = [0, 0, 0];
     to(vc, vc);
     var fn = {},
@@ -26668,7 +26668,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     _0.forEach(t => {
         let e = t.from !== t.to,
             n = !e && t.from !== Bs;
-        e ? t.dur = .5 : n ? t.dur = 5 : t.dur = 1.5, Q8 += t.dur
+        e ? t.dur = .5 : n ? t.dur = 5 : t.dur = .1, Q8 += t.dur
     });
     var C2 = 0;
     _0.forEach(t => {
@@ -26687,9 +26687,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         }
         let r = Jt.sky.data;
-        ls(r.skycolors, 0, fn.skytop[i], fn.skytop[s], o), ls(r.skycolors, 3, fn.skymid[i], fn.skymid[s], o), ls(r.skycolors, 6, fn.skybot[i], fn.skybot[s], o), ls(r.skycolors, 9, fn.horizon[i], fn.horizon[s], o), ls(r.skycolors, 12, fn.clouds[i], fn.clouds[s], o), ls(r.suncolor, 0, fn.sun[i], fn.sun[s], o), it(_c, vc), _c[1] = Math.abs(Math.sin(t * 6.282)), to(_c, _c);
+        ls(r.skycolors, 0, fn.skytop[i], fn.skytop[s], o), ls(r.skycolors, 3, fn.skymid[i], fn.skymid[s], o), ls(r.skycolors, 6, fn.skybot[i], fn.skybot[s], o), ls(r.skycolors, 9, fn.horizon[i], fn.horizon[s], o), ls(r.skycolors, 12, fn.clouds[i], fn.clouds[s], o), ls(r.suncolor, 0, fn.sun[i], fn.sun[s], o), it(_c, vc), to(_c, _c);
         let l = Jt.environment.data;
-        ls(l.worldlight, 0, fn.direct[i], fn.direct[s], o), ls(l.worldlight, 3, fn.ambient[i], fn.ambient[s], o), l.worldlight[6] = vc[0], l.worldlight[7] = vc[1], l.worldlight[8] = vc[2], ls(l.fog, 0, fn.fog[i], fn.fog[s], o), l.fog[3] = n > 0 ? -100 : u2, l.fog[4] = n > 0 ? m2 : li, l.daycycle[0] = t, l.time[0] = e % 3600, ut[31].uniforms.amount.value = qf(o, fn.bloom[i], fn.bloom[s])
+        ls(l.worldlight, 0, fn.direct[i], fn.direct[s], o), ls(l.worldlight, 3, fn.ambient[i], fn.ambient[s], o), l.worldlight[6] = vc[0], l.worldlight[7] = vc[1], l.worldlight[8] = vc[2], ls(l.fog, 0, fn.fog[i], fn.fog[s], o), l.fog[3] = n > 0 ? -100 : u2, l.fog[4] = n > 0 ? m2 : Math.min(li, 60), l.daycycle[0] = t, l.time[0] = e % 3600, ut[31].uniforms.amount.value = qf(o, fn.bloom[i], fn.bloom[s])
     };
     var Sz = [],
         Pz = [],
@@ -26747,7 +26747,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
 
                 o = Math.min(1, seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.72 : 0.8 + (nightSeconds / nightDuration) * 0.1);
             }
-            o < .7 ? o = Lf(0, .7, o) * .4 : o = .4 + Lf(.7, 1, o) * .6, X8(o, b0, e, n), K8(o, b0, e, n), J8(o, b0)
+            o < .85 ? o = Lf(0, .85, o) * .5 : o = .5 + Lf(.85, 1, o) * .5, X8(o, b0, e, n), K8(o, b0, e, n), J8(o, b0)
         };
     var Ru = () => [-0, -0, -0, -0, -0, -0],
         as = Ru();
@@ -28309,7 +28309,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 l = t.id === zn,
                 a = false, //t.id === I.playerId,
                 c = t.id === _n,
-                playerIsBot = isBotName(t.name) && !t.clan && fe.hideBots,
+                playerIsBot = t.level < 45 && isBotName(t.name) && fe.hideBots,
                 isPet = t.class === 5 && t.level === 1;
             if ((t.type !== 3 && t.stats)) {
                 let min = 0.5 * (fe.nameplateSize / 250);
