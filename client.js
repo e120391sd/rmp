@@ -6885,9 +6885,7 @@ void main() {
         t.classes.forEach(e => ed.set(e.id, e)), t.files.forEach(e => Ga.set(e.id, e)), t.particles.forEach(e => Jp.set(e.id, e)), t.effects.forEach(e => Xf.set(e.id, e)), t.sounds.forEach(e => Kp.set(e.id, e)), t.soundsets.forEach(e => B1.set(e.id, e)), t.soundsetSteps.forEach(e => U1.set(e.id, e)), t.meshes.forEach(e => Fi.set(e.id, e)), t.ribbons.forEach(e => $1.set(e.id, e)), t.areas.forEach(e => Qf.set(e.id, e)), t.terrains.forEach(e => Ha.set(e.id, e)), t.foliages.forEach(e => Ya.set(e.id, e)), t.environments.forEach(e => Xa.set(e.id, e)), t.animations.forEach(e => Zf.set(e.id, e)), t.skins.forEach(e => O1.set(e.id, e)), t.skeletons.forEach(e => N1.set(e.id, e)), t.creatures.forEach(e => W1.set(e.id, e)), t.creaturesMonster.forEach(e => j1.set(e.id, e)), t.creaturesConjurer.forEach(e => B9.set(e.id, e)), t.creaturesTrader.forEach(e => G1.set(e.id, e)), t.traderShopItems.forEach(e => os.set(e.id, e)), t.worlds.forEach(e => {
             H1.set(e.id, e)
         });
-        for (let e = 0; e < t.filesExt.length; ++e) Kf.push(t.filesExt[e]);
-        for (let e = 0; e < t.minimap.length; ++e) Jf.push(t.minimap[e])
-
+        
         // edit skins:
         let shadowstrider = {
       "animset": 4,
@@ -7088,6 +7086,8 @@ void main() {
       "texture": 0
     },)
         O1.set(23,shadowstrider)
+        for (let e = 0; e < t.filesExt.length; ++e) Kf.push(t.filesExt[e]);
+        for (let e = 0; e < t.minimap.length; ++e) Jf.push(t.minimap[e])
     };
     var td = (t, e) => {
         if (!Ga.has(t)) return console.log("unknown file id: " + t), "";
