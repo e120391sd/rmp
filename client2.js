@@ -21,7 +21,7 @@
             ]
     let alreadyNotified = new Map();
     let style = document.createElement('style');
-    style.textContent = `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`;
+    style.textContent = `.slot.glow { outline: 2px solid #60b64d; border-radius: 6px; }`;
     document.head.appendChild(style);
     let targettedPlayers = new Map()
     var NT = Object.defineProperty;
@@ -2078,6 +2078,7 @@ void main() {
         CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
         noFrameColor: () => noFrameColor,
         outlines: () => outlines,
+        enableMageCapeswing: () => enableMageCapeswing,
         prestigeChange: () => prestigeChange
     });
     var l1 = {};
@@ -2264,7 +2265,11 @@ void main() {
         CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
         noFrameColor: () => noFrameColor,
         outlines: () => outlines,
-        prestigeChange: () => prestigeChange
+        enableMageCapeswing: () => enableMageCapeswing,
+        prestigeChange: () => prestigeChange,
+        flashNameplates: () => flashNameplates,
+        flashCCIndicator: () => flashCCIndicator,
+        hideChat: () => hideChat
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2448,7 +2453,11 @@ void main() {
         CCIndicatorOnNameplates = ne(false),
         noFrameColor = ne(false),
         outlines = ne(false),
-        ignoreNameplateViewRange = ne(false);
+        enableMageCapeswing = ne(false),
+        ignoreNameplateViewRange = ne(false),
+        flashNameplates = ne(true),
+        flashCCIndicator = ne(false),
+        hideChat = ne(false);
     var a1;
     a1 = {
         ...l1
@@ -2465,6 +2474,7 @@ void main() {
         },
         fe = {};
     for (let t in a1) a3(t, a1[t]);
+    hideChat.subscribe(v => { let el = document.getElementById('modHideChatStyle'); if (!el) { el = document.createElement('style'); el.id = 'modHideChatStyle'; document.head.appendChild(el); } el.textContent = v ? '.l-corner-ll { display: none !important; }' : ''; });
     var P;
     Jr.subscribe(async t => {
         await fetch(`/data/loc/${t}.json?v=8822612`).then(async e => {
@@ -3082,11 +3092,7 @@ void main() {
         },
         B3 = {
             decode: (t,id) => {
-                console.log(id)
-                if(id && id.includes("1937")) {
-                    console.log("returning edited model")
-                    return {}
-                }
+                //console.log(id)
                 let e = t,
                     n = {};
                 z = 0;
@@ -6889,6 +6895,210 @@ void main() {
         t.classes.forEach(e => ed.set(e.id, e)), t.files.forEach(e => Ga.set(e.id, e)), t.particles.forEach(e => Jp.set(e.id, e)), t.effects.forEach(e => Xf.set(e.id, e)), t.sounds.forEach(e => Kp.set(e.id, e)), t.soundsets.forEach(e => B1.set(e.id, e)), t.soundsetSteps.forEach(e => U1.set(e.id, e)), t.meshes.forEach(e => Fi.set(e.id, e)), t.ribbons.forEach(e => $1.set(e.id, e)), t.areas.forEach(e => Qf.set(e.id, e)), t.terrains.forEach(e => Ha.set(e.id, e)), t.foliages.forEach(e => Ya.set(e.id, e)), t.environments.forEach(e => Xa.set(e.id, e)), t.animations.forEach(e => Zf.set(e.id, e)), t.skins.forEach(e => O1.set(e.id, e)), t.skeletons.forEach(e => N1.set(e.id, e)), t.creatures.forEach(e => W1.set(e.id, e)), t.creaturesMonster.forEach(e => j1.set(e.id, e)), t.creaturesConjurer.forEach(e => B9.set(e.id, e)), t.creaturesTrader.forEach(e => G1.set(e.id, e)), t.traderShopItems.forEach(e => os.set(e.id, e)), t.worlds.forEach(e => {
             H1.set(e.id, e)
         });
+        
+        // edit skins:
+        let shadowstrider = {
+      "animset": 4,
+      "body": [
+        {
+          "bid": 0,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 1,
+          "lod": 1,
+          "mid": 1,
+          "pid": -1,
+          "pos": [
+            0,
+            -0.05877852439880371,
+            0
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            0.6000000238418579,
+            0.6000000238418579,
+            1
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 16,
+          "col": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 1,
+          "pid": 0,
+          "pos": [
+            0,
+            0.10000000149011612,
+            -1
+          ],
+          "rot": [
+            0.6000000238418579,
+            0,
+            0
+          ],
+          "scl": [
+            1.2000000476837158,
+            1.5000000476837158,
+            1.599999976158142
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 1,
+          "col": [
+            0,
+            3.5,
+            0.2,
+            0
+          ],
+          "colMode": 0,
+          "lod": 1,
+          "mid": 1559,
+          "pid": 0,
+          "pos": [
+            0,
+            -0.05000000074505806,
+            0.5199999809265137
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            0.6500000238418579,
+            0.6500000238418579,
+            0.6500000238418579
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 4,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 7878,
+          "pid": -1,
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            1.399999976158142,
+            1.399999976158142,
+            1.399999976158142
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 5,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 7878,
+          "pid": -1,
+          "pos": [
+            0,
+            1.2246467698671066e-17,
+            0
+          ],
+          "rot": [
+            0,
+            3.1415927410125732,
+            0
+          ],
+          "scl": [
+            1.399999976158142,
+            1.399999976158142,
+            1.399999976158142
+          ],
+          "ts": 1
+        }
+      ],
+      "capeswing": 1,
+      "colPrim": [
+        0,
+        0,
+        0,
+        0,
+      ],
+      "colSec": [
+        0,
+        0,
+        0,
+        0,
+      ],
+      "effects": [],
+      "id": 23,
+      "mountPart": 0,
+      "mountPos": [
+        0,
+        0.800000011920929,
+        -1
+      ],
+      "sheathedPos": [
+        0,
+        0,
+        -0.5
+      ],
+      "size": 1,
+      "skeleton": 1,
+      "soundset": 5,
+      "unsheathedPos": [
+        0,
+        0.800000011920929,
+        0
+      ]
+    }   
+        Ga.set(7777,{
+      "ext": 0,
+      "id": 7777,
+      "type": 1
+    })
+        Fi.set(7878,{
+      "cull": 1,
+      "effects": [],
+      "geometry": 7777,
+      "id": 7878,
+      "shader": 0,
+      "shadow": 1,
+      "texture": 0
+    },)
+        O1.set(23,shadowstrider)
+        let mage = O1.get(2)
+        if(fe.enableMageCapeswing) mage.capeswing = 1
+        O1.set(2,mage)
         for (let e = 0; e < t.filesExt.length; ++e) Kf.push(t.filesExt[e]);
         for (let e = 0; e < t.minimap.length; ++e) Jf.push(t.minimap[e])
     };
@@ -6903,7 +7113,11 @@ void main() {
         O9 = 2 ** 16 - 1,
         X1 = 2 ** 32 - 1;
     var tx = (t,id) => {
-        let e = Ia.modelformat.decode(t,id),
+        let e = Ia.modelformat.decode(t,id)
+        if(id && id.includes("7777")) {
+            e = {"color": [], "flags": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "index": [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 11, 13, 14, 15, 16, 17, 18, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 29, 31, 32, 33, 34, 35, 36, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 47, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71], "indexInvisible": [], "normal": [0, 0, 127, 0, 0, 127, -43, 76, -92, -43, 76, -92, -43, 76, -92, 86, 67, 65, 86, 67, 65, 86, 67, 65, -15, -126, 5, -15, -126, 5, -15, -126, 5, -88, 46, -79, -88, 46, -79, -88, 46, -79, -88, 46, -79, -105, 26, -66, -105, 26, -66, -105, 26, -66, 0, 0, 127, 0, 0, 127, -23, 76, 99, -23, 76, 99, -23, 76, 99, -27, 67, -104, -27, 67, -104, -27, 67, -104, 15, -126, 5, 15, -126, 5, 15, -126, 5, 20, 46, 117, 20, 46, 117, 20, 46, 117, 20, 46, 117, 42, 26, 117, 42, 26, 117, 42, 26, 117, 0, 0, 127, 0, 0, 127, 84, 76, -57, 84, 76, -57, 84, 76, -57, -51, 67, 95, -51, 67, 95, -51, 67, 95, -7, -126, -14, -7, -126, -14, -7, -126, -14, 65, 46, -99, 65, 46, -99, 65, 46, -99, 65, 46, -99, 49, 26, -114, 49, 26, -114, 49, 26, -114, 32, 21, -121, 32, 21, -121, 32, 21, -121, -78, -100, 6, -78, -100, 6, -78, -100, 6, -106, 21, 67, -106, 21, 67, -106, 21, 67, 61, -100, 48, 61, -100, 48, 61, -100, 48, 50, 21, 115, 50, 21, 115, 50, 21, 115, 57, -100, -53, 57, -100, -53, 57, -100, -53], "position": [-3458, -839, 4623, -17556, 17618, 22962, -17556, 17618, 22962, -3458, -839, 4623, -15729, 4264, 15731, -3458, -839, 4623, -17556, 17618, 22962, -12855, 3675, 21163, -3458, -839, 4623, -12855, 3675, 21163, -15729, 4264, 15731, -17556, 17618, 22962, -12855, 3675, 21163, -15729, 4264, 15731, -25433, -28395, 32706, -17556, 17618, 22962, -15729, 4264, 15731, -25433, -28395, 32706, 4234, -883, 211, 22668, 17574, -803, 22668, 17574, -803, 4234, -883, 211, 18336, 4220, 3148, 4234, -883, 211, 22668, 17574, -803, 18249, 3631, -3861, 4234, -883, 211, 18249, 3631, -3861, 18336, 4220, 3148, 22668, 17574, -803, 18249, 3631, -3861, 18336, 4220, 3148, 32767, -28439, -974, 22668, 17574, -803, 18336, 4220, 3148, 32767, -28439, -974, -3383, -342, -3708, -17341, 18116, -22300, -17341, 18116, -22300, -3383, -342, -3708, -12422, 4762, -20652, -3383, -342, -3708, -17341, 18116, -22300, -15452, 4173, -15424, -3383, -342, -3708, -15452, 4173, -15424, -12422, 4762, -20652, -17341, 18116, -22300, -15452, 4173, -15424, -12422, 4762, -20652, -24817, -27897, -32767, -17341, 18116, -22300, -12422, 4762, -20652, -24817, -27897, -32767, 32767, -28439, -974, 18249, 3631, -3861, 22668, 17574, -803, 18336, 4220, 3148, 18249, 3631, -3861, 32767, -28439, -974, -24817, -27897, -32767, -15452, 4173, -15424, -17341, 18116, -22300, -12422, 4762, -20652, -15452, 4173, -15424, -24817, -27897, -32767, -25433, -28395, 32706, -12855, 3675, 21163, -17556, 17618, 22962, -15729, 4264, 15731, -12855, 3675, 21163, -25433, -28395, 32706], "sx": 1491072017, "sy": 4294967295, "sz": 2298683767, "uv": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
+        } //shadowstrider legs
+        let
             n = Y1 / (X1 / e.sx),
             o = Y1 / (X1 / e.sy),
             i = Y1 / (X1 / e.sz);
@@ -6914,7 +7128,10 @@ void main() {
         return e
     };
     var Q1 = async (t, e, n, o, i, s = 3) => {
-        console.log(t,e,o)
+        //console.log(t,e,o)
+        if(e && e.includes("7777")) {
+            return n[e] = await o(t,e), i(n[e], t + e)
+        }
         switch (e.split(".").pop()) {
             case "jpg":
             case "png":
@@ -6947,7 +7164,6 @@ void main() {
         eu = async (t, e, n, o, i) => {
             n[e] ? i(...n[e]) : ul[t + e] ? ul[t + e].push(i) : (ul[t + e] = [], ul[t + e].push(i), Q1(t, e, n, o, W9))
         }, j9 = (t,id) => {
-            console.log(t)
             let e = tx(new Uint8Array(t),id);
             return [{
                 index: {
@@ -10169,7 +10385,47 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             p(L, $) {
                 Ve(e, "scale", Math.min(1.3,t.targetScale))
                 let container = e.querySelector(".bars")
-                container.style.border = t.CCFound ? `3px solid ${t.CCColor}` : null, container.style.borderRadius = "6px"
+                if (t.CCFound) {
+                    let ccDrawColor = t.CCColor
+                    if (fe.flashCCIndicator) {
+                        let pt = (Math.sin(I.smoothtime * Math.PI * 6) + 1) * 0.5
+                        let cr = parseInt(t.CCColor.slice(1,3), 16), cg = parseInt(t.CCColor.slice(3,5), 16), cb = parseInt(t.CCColor.slice(5,7), 16)
+                        let br = Math.min(255, Math.round(cr + (255 - cr) * pt * 0.65))
+                        let bg = Math.min(255, Math.round(cg + (255 - cg) * pt * 0.65))
+                        let bb = Math.min(255, Math.round(cb + (255 - cb) * pt * 0.65))
+                        ccDrawColor = `rgb(${br},${bg},${bb})`
+                    }
+                    container.style.outline = `3px solid ${ccDrawColor}`
+                } else { container.style.outline = null }
+                container.style.borderRadius = "6px"
+                let hpBarEl = l.firstElementChild;
+                if (hpBarEl) {
+                    let flashDiv = hpBarEl._hpFlash;
+                    if (!flashDiv) {
+                        flashDiv = document.createElement("div");
+                        flashDiv.style.cssText = "position:absolute;top:0;height:100%;background:white;pointer-events:none;z-index:2;display:none;";
+                        hpBarEl.style.position = "relative";
+                        hpBarEl.style.overflow = "hidden";
+                        hpBarEl.appendChild(flashDiv);
+                        hpBarEl._hpFlash = flashDiv;
+                    }
+                    let r5 = L[5];
+                    let flashing = fe.flashNameplates && r5.hpFlashTime !== void 0 && I.smoothtime - r5.hpFlashTime < 0.2 && r5.hpFlashFraction !== void 0;
+                    let progressBarEl = hpBarEl.firstElementChild;
+                    if (progressBarEl) progressBarEl.style.transition = flashing ? "none" : "";
+                    if (flashing) {
+                        let elapsed = I.smoothtime - r5.hpFlashTime;
+                        let hpPct = r5.hpMax ? ~~(r5.hp / r5.hpMax * 100) : 100;
+                        let flashPct = ~~(r5.hpFlashFraction * 100);
+                        let lostPct = flashPct - hpPct;
+                        let progress = elapsed / 0.2;
+                        flashDiv.style.display = "";
+                        flashDiv.style.left = hpPct + "%";
+                        flashDiv.style.width = lostPct * (1 - progress) + "%";
+                    } else {
+                        flashDiv.style.display = "none";
+                    }
+                }
                 L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
@@ -10233,7 +10489,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function mD(t) {
-        let e, n = t[2] == "default" && k4(t);
+        let e, n = t[2] == "default" && !fe.flashNameplates && k4(t);
         return {
             c() {
                 n && n.c(), e = de()
@@ -10242,7 +10498,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 n && n.m(o, i), w(o, e, i)
             },
             p(o, i) {
-                o[2] == "default" ? n ? n.p(o, i) : (n = k4(o), n.c(), n.m(e.parentNode, e)) : n && (n.d(1), n = null)
+                o[2] == "default" && !fe.flashNameplates ? n ? n.p(o, i) : (n = k4(o), n.c(), n.m(e.parentNode, e)) : n && (n.d(1), n = null)
             },
             d(o) {
                 o && x(e), n && n.d(o)
@@ -11547,7 +11803,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         icon: "ui/skills/39",
         customIcon: t => "items/mount/mount" + lr[t.data[0]].tier + "_q1",
         fx: {
-            mount: t => lr[t.data[0]].skin, // mount apply
+            mount: t => {
+                return lr[t.data[0]].skin
+            },// mount apply
             apply: 76,
             endSound: 69
         },
@@ -15751,7 +16009,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function modSettings(t) {
-        let namePlateCategory, namePlateCategorySeperator, noFrameColorElement, noFrameColorValue, outlinesElement, outlinesValue
+        let namePlateCategory, namePlateCategorySeperator, noFrameColorElement, noFrameColorValue, outlinesElement, outlinesValue, mageSwingElement, mageSwingValue, flashNameplatesElement, flashNameplatesValue, flashCCIndicatorElement, flashCCIndicatorValue, hideChatElement, hideChatValue
         let sortPartyElement, sortPartyValue, hideBuffsElement, hideBuffsValue, hidebuffsSub, sortPartySub, hideBuffsSeperator, sortPartySeperator, ownRevElement, ownRevValue, hideClassBuffsElement, hideClassBuffsValue, nameplateSizeSlider, nameplateSizeElement, showOnNamesElement, showOnNamesValue, nameSizeSlider, nameeSizeElement, nameSpacingElement, nameSpacingValue
         let CCIsub, CCIseperator2, CCIdfcontainer, CCIchillcontainer, CCIagocontainer, CCIrelcontainer, CCIblindcontainer, CCIstuncontainer, seperatorCCI, CCICategory, CCIToggleElement, CCIToggleValue, CCIdfimage, CCIdftext, CCIdfcolor, CCIchillimage, CCIchilltext, CCIchillcolor, CCIagoimage, CCIagotext, CCIagocolor, CCIstunimage, CCIstuncolor, CCIstuntext, CCIrelimage, CCIreltext, CCIrelcolor, CCIblindimage, CCIblindtext, CCIblindcolor
         let stackIndElement, stackIndValue, shrinkIndElement, shrinkIndValue, removeFXElement, removeFXValue, ignoreNameplateValue, ignoreNameplateElement, nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
@@ -15859,8 +16117,25 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             props: {
                 store: outlines
             }
+        }), mageSwingValue = new Et({
+            props: {
+                store: enableMageCapeswing
+            }
+        }), flashNameplatesValue = new Et({
+            props: {
+                store: flashNameplates
+            }
+        }), flashCCIndicatorValue = new Et({
+            props: {
+                store: flashCCIndicator
+            }
+        }), hideChatValue = new Et({
+            props: {
+                store: hideChat
+            }
         }), {
             c() {
+                mageSwingElement = h("div"), mageSwingElement.textContent = `Enable mage cape-swing`, K(mageSwingValue.$$.fragment),
                 outlinesElement = h("div"), outlinesElement.textContent = `Outlines`, K(outlinesValue.$$.fragment),
                 noFrameColorElement = h("div"), noFrameColorElement.textContent = `Disable skillbar frames`, K(noFrameColorValue.$$.fragment),
                 namePlateCategory = h("div"), namePlateCategory.textContent = `Nameplate Mods`, p(namePlateCategory, "class", "textprimary"), namePlateCategory.style.fontSize = "20px", namePlateCategorySeperator = h("div"),
@@ -15890,13 +16165,16 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 CCIdfimage = h("img"), CCIdfimage.src = `	https://hordes.io/data/ui/skills/deepFrozen.avif?v=8822612`, CCIdfimage.style.width = "30px",CCIdfimage.style.marginRight = "10px", CCIdftext = h("div"), CCIdftext.textContent = `Deep Frozen`, CCIdftext.style.fontSize = "16px", CCIdfcolor = h("input"), p(CCIdfcolor, "type", "color")
                 seperatorCCI = h("div"), CCICategory = h("div"), CCICategory.textContent = `CC Indicators`, p(CCICategory,"class","textprimary")
                 CCIToggleElement = h("div"), CCIToggleElement.textContent = `Enable CC Indicators`, K(CCIToggleValue.$$.fragment),
+                flashCCIndicatorElement = h("div"), flashCCIndicatorElement.textContent = `Flash CC indicator color`, K(flashCCIndicatorValue.$$.fragment),
                 stackIndElement = h("div"), stackIndElement.textContent = `Stack damage indicators`, K(stackIndValue.$$.fragment),
                 shrinkIndElement = h("div"), shrinkIndElement.textContent = `Indicator size`, shrinkIndValue = h("input"), p(shrinkIndValue, "type", "range"), p(shrinkIndValue, "min", "0"), p(shrinkIndValue, "max", "1000")
                 removeFXElement = h("div"), removeFXElement.textContent = `Disable skill tick effects`, K(removeFXValue.$$.fragment),
                 ignoreNameplateElement = h("div"), ignoreNameplateElement.textContent = `Hide nameplate select outline`, K(ignoreNameplateValue.$$.fragment),
+                flashNameplatesElement = h("div"), flashNameplatesElement.textContent = `Flash damage on nameplates`, K(flashNameplatesValue.$$.fragment),
                 nextFriendlyIgnoreBotsElement = h("div"), nextFriendlyIgnoreBotsElement.textContent = `Target Next Friendly: Exclude Bots`, K(nextFriendlyIgnoreBotsValue.$$.fragment),
                 timeToIngameElement = h("div"), timeToIngameElement.textContent = `Use device time`, K(timeToIngameValue.$$.fragment),
                 disableClantagsElement = h("div"), disableClantagsElement.textContent = `Disable clan tags`, K(disableClantagsValue.$$.fragment),
+                hideChatElement = h("div"), hideChatElement.textContent = `Hide chat window`, K(hideChatValue.$$.fragment),
                 disableDamageElement = h("div"), disableDamageElement.textContent = `Disable damage indicator`, K(disableDamageValue.$$.fragment),
                 disableHealingElement = h("div"), disableHealingElement.textContent = `Disable healing indicator`, K(disableHealingValue.$$.fragment),
                 targetEnabledElement = h("div"), targetEnabledElement.textContent = `Nameplates react to single-target`, K(targetEnabledValue.$$.fragment),
@@ -15937,6 +16215,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 w(M, declutterCategory, D), d(declutterCategory,seperator9), d(declutterCategory,subDeclutterCategory),  w(M, seperator10, D),
                 w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
                 w(M, disableClantagsElement, D), Q(disableClantagsValue, M, D)
+                w(M, hideChatElement, D), Q(hideChatValue, M, D),
                 w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
                 w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
                 w(M, stackIndElement, D), Q(stackIndValue, M, D),
@@ -15949,6 +16228,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 w(M, nameeSizeElement, D), w(M, nameSizeSlider, D), We(nameSizeSlider, t[90]), H(nameSizeSlider, "input", t[89]),
                 w(M, nameSpacingElement, D), w(M, nameSpacingValue, D), We(nameSpacingValue, t[92]), H(nameSpacingValue, "input", t[91]),
                 w(M, ignoreNameplateElement, D), Q(ignoreNameplateValue, M, D),
+                w(M, flashNameplatesElement, D), Q(flashNameplatesValue, M, D),
                 w(M, outlinesElement, D), Q(outlinesValue, M, D),
                 //w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
                 w(M, generalCategory, D), w(M, seperator6, D),
@@ -15958,8 +16238,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 w(M, timeToIngameElement, D), Q(timeToIngameValue, M, D),
                 w(M, sortPartyElement, D), Q(sortPartyValue, M, D), d(sortPartyElement,sortPartySeperator), d(sortPartyElement, sortPartySub),
                 w(M, noFrameColorElement, D), Q(noFrameColorValue, M, D),
+                w(M, mageSwingElement, D), Q(mageSwingValue, M, D),
                 w(M, CCICategory, D), w(M, seperatorCCI, D),
                 w(M, CCIToggleElement, D), Q(CCIToggleValue, M, D),
+                w(M, flashCCIndicatorElement, D), Q(flashCCIndicatorValue, M, D),
                 w(M, showOnNamesElement, D), Q(showOnNamesValue, M, D),
                 w(M, CCIsub, D), w(M, CCIseperator2, D),
                 w(M, CCIchillcontainer, D), d(CCIchillcontainer, CCIchillimage), d(CCIchillcontainer, CCIchilltext), w(M, CCIchillcolor, D), We(CCIchillcolor, t[76]), H(CCIchillcolor, "input", t[75]),
@@ -15977,21 +16259,21 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 && We(CCIchillcolor, te[76]) && We(CCIdfcolor, te[74]) && We(CCIagocolor, te[78]) && We(CCIstuncolor, te[80]) && We(CCIrelcolor, te[84]) && We(CCIblindcolor, te[82]) && We(shrinkIndValue, t[86]) && We(nameplateSizeSlider, t[88]) && We(nameSizeSlider, t[90]) && We(nameSpacingValue, t[92])
             },
             i(M) { // S(targetEnabledValue.$$.fragment, M)
-                C || (S(outlinesValue.$$.fragment, M), S(noFrameColorValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(showOnNamesValue.$$.fragment, M), S(hideClassBuffsValue.$$.fragment, M), S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(mageSwingValue.$$.fragment, M), S(flashNameplatesValue.$$.fragment, M), S(flashCCIndicatorValue.$$.fragment, M), S(hideChatValue.$$.fragment, M), S(outlinesValue.$$.fragment, M), S(noFrameColorValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(showOnNamesValue.$$.fragment, M), S(hideClassBuffsValue.$$.fragment, M), S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) { //  E(targetEnabledValue.$$.fragment, M)
-                E(outlinesValue.$$.fragment, M), E(noFrameColorValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(showOnNamesValue.$$.fragment, M), E(hideClassBuffsValue.$$.fragment, M), E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(mageSwingValue.$$.fragment, M), E(flashNameplatesValue.$$.fragment, M), E(flashCCIndicatorValue.$$.fragment, M), E(hideChatValue.$$.fragment, M), E(outlinesValue.$$.fragment, M), E(noFrameColorValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(showOnNamesValue.$$.fragment, M), E(hideClassBuffsValue.$$.fragment, M), E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) { // x(targetEnabledElement), x(targetEnabledValue) Z(targetEnabledValue, M)
                 M && (
                     //x(targetEnabledElement), x(targetEnabledValue),
-                    x(namePlateCategory), x(namePlateCategorySeperator), x(noFrameColorElement), x(noFrameColorValue), x(outlinesElement), x(outlinesValue),
+                    x(namePlateCategory), x(namePlateCategorySeperator), x(noFrameColorElement), x(noFrameColorValue), x(outlinesElement), x(outlinesValue), x(mageSwingElement), x(mageSwingValue), x(flashNameplatesElement), x(flashNameplatesValue), x(flashCCIndicatorElement), x(flashCCIndicatorValue), x(hideChatElement), x(hideChatValue),
                     x(sortPartyElement), x(sortPartyValue), x(hideBuffsElement), x(hideBuffsValue), x(sortPartySub), x(sortPartySeperator), x(ownRevElement), x(ownRevValue), x(hideClassBuffsValue), x(hideClassBuffsElement), x(showOnNamesElement), x(showOnNamesValue), x(nameplateSizeElement), x(nameplateSizeSlider), x(nameeSizeElement), x(nameSizeSlider), x(nameSpacingElement), x(nameSpacingValue),
                     x(CCIsub), x(CCIseperator2), x(CCIchillcontainer), x(CCIdfcontainer), x(CCIagocontainer), x(CCIrelcontainer), x(CCIblindcontainer), x(CCIstuncontainer),
                     x(seperatorCCI), x(CCICategory), x(CCIToggleElement), x(CCIToggleValue), x(CCIdfimage), x(CCIdftext), x(CCIdfcolor), x(CCIchillimage), x(CCIchilltext), x(CCIchillcolor), x(CCIagoimage), x(CCIagotext), x(CCIagocolor), x(CCIstunimage), x(CCIstuntext), x(CCIstuncolor), x(CCIrelimage), x(CCIreltext), x(CCIrelcolor), x(CCIblindimage), x(CCIblindtext), x(CCIblindcolor), Z(CCIToggleValue, M),
                     x(stackIndElement), x(stackIndValue), x(shrinkIndElement), x(shrinkIndValue), x(removeFXElement), x(removeFXValue), x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)),
                 //Z(targetEnabledValue, M),
-                Z(outlinesValue, M), Z(noFrameColorValue, M), Z(showOnNamesValue, M), Z(hideClassBuffsValue, M), Z(ownRevValue, M), Z(hideBuffsValue, M), Z(sortPartyValue, M), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(stackIndValue, M)
+                Z(mageSwingValue,M), Z(flashNameplatesValue, M), Z(flashCCIndicatorValue, M), Z(hideChatValue, M), Z(outlinesValue, M), Z(noFrameColorValue, M), Z(showOnNamesValue, M), Z(hideClassBuffsValue, M), Z(ownRevValue, M), Z(hideBuffsValue, M), Z(sortPartyValue, M), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(stackIndValue, M)
             }
         }
     }
@@ -27794,16 +28076,18 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     var AA = (t, e) => {
             Yu(t, !1, !1, !0, `+${e} Fame`, qt.fame, 5.5, cs, 1.5)
         },
-        updateElement = (obj,newObj,params,t, r, n, o) => {
+        updateElement = (obj,newObj,params,t, r, n, o,l,a) => {
             obj.value += newObj.value
             it(obj.pos, t)
             obj.pos[1] += r || 0
-            X(obj.screenPos, 0, 0, 0)
-            ho(obj.screenOffset, 0, 0, 0)
-            obj.crit = true
-            obj.img = lu(obj.value.toLocaleString('en-US'), params)
+            obj.float = o
+            obj.crit = n
             obj.timer.duration = Math.min(obj.timer.duration + 1, 2)
             obj.timer.end = Math.min(Math.max(obj.timer.end, cs + 1), cs + 2)
+            obj.img = lu(obj.value.toLocaleString('en-US'), params)
+            obj.timer.reset(l, a)
+            X(obj.screenPos, 0, 0, 0)
+            ho(obj.screenOffset, 0, 0, 0)
         },
         Yu = (t, e = !1, n = !1, o = !1, i, s, r, l, a, skillId = 0, caster = {}, target = {}) => {
             let c = lB()
@@ -27826,7 +28110,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 let sameTarget = c.target.id === ii.target.id
                 let sameSkill = c.skillId === ii.skillId
 
-                if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s, t, r, n, o)
+                if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s, t, r, n, o,l,a)
             }
             Hu.push(c)
         },
@@ -27928,7 +28212,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 r = o - Wo * 2;
             Jn.push(Vo(null, Lt("panel"), n, o, 0, 0, i)), Vo(Jn[0], Lt("grey"), s, r, Wo, Wo, 1), Jn.push(Vo(null, Lt("health"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#ffbc00", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("enemy"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("party"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("pvp"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#555555", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("spell"), s, r, 0, 0, 1));
             for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, Lt("c" + l), s, r, 0, 0, 1));
-            IA = Vo(null, "#ffffff", 100 + Wo +1, 9 + Wo +1, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo +1, 16 + Wo , 0, 0, 3)
+            Jn.push(Vo(null, "#ffffff", s, r, 0, 0, 1)); // index 12 — white damage flash
+            IA = Vo(null, "#ffffff", 100 + Wo, 9 + Wo, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo, 16 + Wo , 0, 0, 3)
         },
         fB = () => {
             let t = [];
@@ -27936,11 +28221,79 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 !e.visual || !e.visual.transform.visible || e.stats && !e.stats.alive || e.id !== zn && e.visual.cDist && e.visual.cDist > 500 || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
             }), t.sort((e, n) => n.hudPos[2] - e.hudPos[2])
         },
+        syllables = ['acaru', 'achi', 'acti', 'ael', 'aelle', 'aelo', 'aer', 'aeri', 'aero',
+  'aesh', 'aez', 'aias', 'aid', 'aien', 'aile', 'aist', 'akda', 'ale', 'alle', 'alpha', 'ambi', 'amlug', 'amne', 'amni', 'amo', 'amoe', 'amu', 'ana', 'andro', 'ani',
+  'anke', 'anse', 'anti', 'aol', 'aqua', 'arae', 'arc', 'argo', 'aria', 'ariel', 'aries', 'arius', 'arje', 'ark', 'arrow', 'arti', 'arvel', 'arye', 'aryn', 'ash', 'astri',
+  'athen', 'aukh', 'aura', 'aveni', 'axe', 'axna', 'az', 'azci', 'azo', 'azri', 'azu', 'azure', 'bag', 'bain', 'bais', 'bando', 'bane', 'baph', 'bard', 'baro', 'baron',
+  'bat', 'battle', 'beef', 'ber', 'bhol', 'bhul', 'bik', 'bird', 'bith', 'blade', 'blaze', 'bloch', 'blok', 'blood', 'bloom', 'bo', 'boink', 'bokh', 'bomb', 'bone', 'bonk',
+  'bore', 'borne', 'boro', 'bound', 'bow', 'brain', 'brass', 'brie', 'brir', 'bris', 'broke', 'bry', 'bryr', 'bubble', 'bugo', 'caen', 'calm', 'canis', 'cape', 'capri',
+  'carp', 'cary', 'cassi', 'cat', 'cavi', 'celo', 'cern', 'charm', 'chea', 'chef', 'cherry', 'ciea', 'cili', 'cill', 'ciri', 'claw', 'clear', 'cone', 'contra', 'copi',
+  'corba', 'corn', 'craft', 'cri', 'cris', 'cry', 'cryo', 'crypt', 'cua', 'cya', 'cye', 'cygni', 'cyra', 'daar', 'dae', 'daemo', 'dagg', 'dakk', 'dale', 'dali', 'dalia',
+  'dall', 'dane', 'dania', 'danus', 'dao', 'daru', 'dawn', 'daz', 'dazar', 'dead', 'deaf', 'deci', 'deer', 'dei', 'delia', 'delra', 'delta', 'dema', 'demo', 'deo', 'dero',
+  'deus', 'deux', 'dhai', 'dhar', 'dhrar', 'dhug', 'dhyl', 'dia', 'dieri', 'dio', 'doe', 'dog', 'dohr', 'doom', 'dorr', 'down', 'drae', 'drakh', 'drakk', 'dran', 'dre',
+  'drea', 'dread', 'dream', 'dris', 'drop', 'druk', 'dry', 'dryd', 'dryn', 'dryr', 'dryto', 'duin', 'duirn', 'duke', 'duo', 'dusk', 'dy', 'dya', 'dyas', 'dysra', 'eago',
+  'eal', 'earl', 'eas', 'echo', 'ecto', 'edo', 'eerie', 'eevo', 'egg', 'ego', 'eina', 'eine', 'eiri', 'elia', 'elle', 'elma', 'elo', 'elyo', 'elyor', 'elys', 'endo', 'equi',
+  'equu', 'erdy', 'eris', 'erra', 'erri', 'erth', 'ervi', 'essa', 'eua', 'euda', 'eudo', 'eumo', 'evack', 'eve', 'eye', 'eyre', 'fa', 'fade', 'fael', 'fai', 'fang', 'far',
+  'fare', 'fauca', 'feia', 'filau', 'fire', 'fish', 'fizz', 'flame', 'flero', 'flesh', 'flock', 'foe', 'fois', 'forh', 'fous', 'fray', 'fror', 'frost', 'fulvu', 'fume',
+  'fur', 'fyn', 'fyr', 'fyre', 'gabo', 'gaia', 'galaz', 'gali', 'galo', 'gami', 'gamma', 'gax', 'gaz', 'gecko', 'geo', 'ghal', 'ghaz', 'ghi', 'ghiri', 'ghost', 'ghyr',
+  'gias', 'giko', 'gin', 'gio', 'giri', 'git', 'giu', 'glass', 'glee', 'glerk', 'gley', 'glio', 'gloo', 'glow', 'gnci', 'gnorr', 'godh', 'gog', 'gogu', 'gold', 'gonda',
+  'goner', 'gonzu', 'gore', 'grand', 'grape', 'gras', 'grato', 'grauf', 'graz', 'grel', 'grex', 'grim', 'grin', 'grind', 'groku', 'grow', 'gru', 'guac', 'gui', 'guiza',
+  'guke', 'gulum', 'gun', 'gurk', 'guru', 'gwen', 'gyn', 'gyrna', 'hag', 'haju', 'hammer', 'hari', 'hatch', 'hate', 'heim', 'heir', 'heis', 'hek', 'hell', 'helm', 'hera',
+  'hercu', 'heria', 'hex', 'hexa', 'hexi', 'hexo', 'hirt', 'hole', 'homa', 'hong', 'horn', 'horo', 'howl', 'hydra', 'hysta', 'iar', 'ice', 'ida', 'idra', 'iele', 'ievi',
+  'ieze', 'igni', 'ikto', 'ilae', 'ili', 'illae', 'ilno', 'ilye', 'inde', 'ink', 'int', 'inte', 'intra', 'intro', 'iola', 'iope', 'ior', 'iqra', 'ira', 'iraei', 'irag',
+  'irius', 'iuna', 'iyja', 'iyra', 'jaed', 'jard', 'jasia', 'jassi', 'jerky', 'jiji', 'jinx', 'joy', 'juan', 'jui', 'jurio', 'kae', 'kaga', 'kai', 'kar', 'kash', 'kaz',
+  'kei', 'kery', 'key', 'khad', 'khon', 'khuza', 'khyr', 'klee', 'klip', 'knight', 'knod', 'kom', 'kotr', 'krata', 'kreo', 'kriod', 'kron', 'krono', 'kuhr', 'kuvok', 'kwyl',
+  'kyri', 'kyto', 'la', 'lach', 'lae', 'laea', 'laer', 'laeth', 'lair', 'lamb', 'lanc', 'lase', 'laude', 'laza', 'lea', 'lee', 'lei', 'leif', 'lenai', 'lenda', 'lene',
+  'leo', 'lere', 'lessa', 'lethe', 'lex', 'lhor', 'li', 'lia', 'libra', 'liel', 'lieu', 'life', 'light', 'limbo', 'limp', 'lingo', 'lio', 'lirai', 'liro', 'lith', 'llien',
+  'lloe', 'lo', 'lock', 'lofty', 'loi', 'lone', 'lopo', 'lore', 'lort', 'love', 'low', 'lozz', 'lua', 'luim', 'lumo', 'luna', 'lush', 'lust', 'lya', 'lymph', 'lynx', 'lyra',
+  'lyre', 'lys', 'lyvi', 'mae', 'mage', 'magi', 'magno', 'maie', 'major', 'mali', 'malo', 'manca', 'mane', 'mango', 'manto', 'marco', 'marrow', 'marsh', 'max', 'medi',
+  'medu', 'meen', 'mel', 'melia', 'mell', 'melng', 'melon', 'meph', 'merc', 'mese', 'meso', 'metal', 'miki', 'mince', 'mini', 'miri', 'misia', 'mistra', 'mizu', 'mmior',
+  'mo', 'mock', 'moi', 'moor', 'morb', 'more', 'morgh', 'morja', 'morl', 'moss', 'moza', 'mozo', 'mroer', 'mua', 'muami', 'mugg', 'muku', 'mulae', 'muno', 'muo', 'mutt',
+  'muzor', 'mydra', 'myr', 'myri', 'myth', 'nae', 'nai', 'nail', 'nando', 'nari', 'naul', 'nava', 'naz', 'neazu', 'ned', 'neia', 'neme', 'nemo', 'neo', 'nep', 'nera', 'nero',
+  'night', 'nill', 'niroi', 'nise', 'niye', 'nobnar', 'noi', 'nose', 'nox', 'noxi', 'nua', 'nuanyi', 'nuck', 'nuk', 'numzu', 'nye', 'nyel', 'nymph', 'nyri', 'nyx', 'oah',
+  'oak', 'ocea', 'ocia', 'octa', 'octo', 'odd', 'odin', 'odio', 'odis', 'odru', 'oghm', 'ogu', 'oia', 'oisse', 'ola', 'olg', 'olle', 'omega', 'omni', 'oni', 'only', 'onos',
+  'onty', 'oper', 'ophe', 'ophi', 'opi', 'orb', 'orc', 'ordi', 'ore', 'orio', 'orlo', 'ouch', 'our', 'outro', 'over', 'owl', 'ozy', 'pain', 'pais', 'pale', 'paleo', 'path',
+  'paw', 'paylo', 'peak', 'pear', 'pearl', 'pecto', 'peia', 'peli', 'pemo', 'pepe', 'peri', 'perlo', 'perse', 'pery', 'peso', 'phae', 'phar', 'phau', 'pheh', 'pheia',
+  'pheus', 'phi', 'phiel', 'phine', 'phio', 'phoi', 'phono', 'phy', 'phyr', 'phyre', 'pika', 'pilia', 'pine', 'piol', 'piuc', 'plor', 'pluto', 'poe', 'pore', 'pox', 'prae',
+  'pres', 'prio', 'pseu', 'psy', 'purla', 'py', 'pyro', 'pytho', 'pyxi', 'qaas', 'qae', 'qama', 'qas', 'qash', 'qasi', 'qaso', 'qasu', 'qi', 'qindi', 'qis', 'qish', 'qisi',
+  'qo', 'qos', 'qoui', 'qry', 'qu', 'qua', 'quas', 'quasi', 'quaso', 'quila', 'quo', 'quoi', 'quon', 'qurza', 'quti', 'quul', 'qwert', 'qyph', 'rael', 'raer', 'raes',
+  'raesh', 'raeth', 'rage', 'rai', 'raor', 'rash', 'rath', 'raven', 'razz', 'reap', 'reav', 'reens', 'reme', 'reo', 'rethe', 'reve', 'rhor', 'rhya', 'riad', 'riel', 'rienn',
+  'rift', 'rind', 'rine', 'ring', 'rio', 'rismo', 'rissa', 'riznu', 'roar', 'rock', 'roe', 'rof', 'rog', 'rol', 'roll', 'rolu', 'rone', 'rori', 'rose', 'rosi', 'roth',
+  'rune', 'runi', 'ruth', 'rya', 'ryas', 'rym', 'rynn', 'ryo', 'sael', 'saew', 'sai', 'sale', 'salt', 'salty', 'sarya', 'sau', 'sauce', 'sauth', 'scaf', 'scar', 'sces',
+  'schi', 'scia', 'scorp', 'scum', 'sea', 'see', 'seir', 'sela', 'semi', 'seus', 'shade', 'shard', 'shear', 'shemu', 'shie', 'shine', 'shon', 'shrub', 'shuk', 'shur', 'sia',
+  'sie', 'sigma', 'sil', 'silk', 'sill', 'sima', 'sirie', 'skin', 'skull', 'sky', 'smith', 'so', 'soi', 'solar', 'soul', 'spear', 'speed', 'splint', 'spring', 'stag', 'star',
+  'stone', 'storm', 'stout', 'stra', 'strau', 'stris', 'styx', 'sub', 'swift', 'sword', 'sya', 'syl', 'sys', 'tae', 'taer', 'tala', 'tale', 'tali', 'talle', 'tan', 'tango',
+  'tarmi', 'tarre', 'tau', 'taug', 'tear', 'teava', 'teni', 'terra', 'teu', 'teus', 'thae', 'than', 'thano', 'thau', 'theia', 'theo', 'thera', 'thin', 'thorn', 'thras',
+  'thro', 'thry', 'thual', 'thuen', 'thye', 'thyn', 'tia', 'tiara', 'tiik', 'tike', 'tilre', 'tima', 'timni', 'tiri', 'to', 'tona', 'tone', 'tor', 'toxi', 'tran', 'tree',
+  'tren', 'tri', 'trila', 'trin', 'tris', 'triss', 'trith', 'trog', 'troll', 'trove', 'true', 'tryl', 'tryn', 'tusk', 'tusso', 'tuts', 'tyr', 'tyra', 'tyrg', 'ues', 'ugly',
+  'ui', 'uie', 'uipho', 'ujuy', 'uku', 'ulvu', 'under', 'uni', 'uozi', 'up', 'urlu', 'uro', 'us', 'uth', 'utha', 'utta', 'uugu', 'uvy', 'vaal', 'vae', 'vaen', 'vaez',
+  'vain', 'vang', 'varo', 'varr', 'vat', 'vayne', 'vazu', 'veba', 'veda', 'veni', 'vephie', 'vesla', 'veth', 'vigo', 'virgo', 'vitro', 'vizi', 'vlor', 'voda', 'void',
+  'vois', 'volno', 'volo', 'volt', 'vomi', 'vonth', 'vord', 'vors', 'vox', 'vugz', 'vulen', 'vulpe', 'waaz', 'wake', 'war', 'wasu', 'weap', 'wei', 'wenk', 'willo', 'wind',
+  'wing', 'wirya', 'wise', 'witch', 'wix', 'wolf', 'world', 'wrath', 'xas', 'xhan', 'xhi', 'xih', 'xilo', 'xio', 'xiza', 'xor', 'xugu', 'xuk', 'xuxu', 'xyli', 'yae', 'yare',
+  'yari', 'yeno', 'yir', 'yiryo', 'ylla', 'yo', 'yoer', 'yore', 'yrgo', 'yrie', 'yrni', 'ytia', 'zak', 'zal', 'zaph', 'zaro', 'zedh', 'zee', 'zel', 'zele', 'zeli', 'zelph',
+  'zera', 'zest', 'zhem', 'zia', 'zog', 'zoi', 'zon', 'zort', 'zoti', 'zug', 'zul', 'zur', 'zutu', 'zuvi', 'zvon', 'zzuk'],
+
         uB = (t, e, n) => e ? 4 : n === 0 ? fe.classColorBars && t.type === 0 ? 8 + t.class : 1 : I.player.canCombatInteract(t) ? n === 2 ? fe.classColorBars ? 8 + t.class : 5 : t.type === 1 && t.aggroMode === 0 ? 2 : 3 : 6,
         mB = (t, e) => {
             let n = t.visual && t.visual.cDist;
             if (n > fe.nameplateViewRange) return;
             n ? n /= 70 : n = 0;
+            function isBotName(str) {
+                str = str.toLowerCase()
+                let set = new Set(syllables);
+                let dp = new Array(str.length + 1).fill(false);
+                dp[0] = true;
+
+                for (let i = 1; i <= str.length; i++) {
+                    for (let j = 0; j < i; j++) {
+                    if (dp[j] && set.has(str.slice(j, i))) {
+                        dp[i] = true;
+                        break;
+                    }
+                    }
+                }
+                return dp[str.length];
+            }
             let o = false
                 i = t.faction !== void 0 ? I.player.hostility(t) : 0,
                 s = I.player.clan,
@@ -27948,12 +28301,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 l = t.id === zn,
                 a = false, //t.id === I.playerId,
                 c = t.id === _n,
-                playerIsBot = t.id !== I.playerId && t.party === 0 && !t.clan && fe.hideBots;
-            if ((t.type !== 3 && t.stats) && !playerIsBot) {
-                if (t.class === 5 && !fe.nameplateShowMonsters) return;
-                let min = 0.5 * (fe.nameplateSize / 250)
-                let max = 2.0 * (fe.nameplateSize / 250)
-                t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, min, max);
+                playerIsBot = t.level <= 45 && isBotName(t.name) && fe.hideBots,
+                isPet = t.class === 5 && t.level === 1;
+            if ((t.type !== 3 && t.stats)) {
+                let min = 0.5 * (fe.nameplateSize / 250);
+                let max = 2.0 * (fe.nameplateSize / 250);
+                if (!l && playerIsBot) return;
+                if (!l && isPet && !fe.nameplateShowMonsters) return;
+                t.namePlateScale =  vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, min, max);
                 let castsOnPlayer = targettedPlayers.get(t.id) || []
                 t.namePlateScale *= (1 + castsOnPlayer.length / 10)
                 let CCFound, CCColor
@@ -27971,12 +28326,22 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                     v = t.skills.timedSkill !== void 0;
+                    
                 !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
                 let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
                 if(CCFound && _) {
                     let w = (Jn[0].width + Wo * 2) - .75
                     let h = ((v ? DA : IA).height)
-                    outline = Vo(null, CCColor, w, h, 0, 0, 3)
+                    let ccDrawColor = CCColor
+                    if (fe.flashCCIndicator) {
+                        let pt = (Math.sin(I.smoothtime * Math.PI * 6) + 1) * 0.5
+                        let cr = parseInt(CCColor.slice(1,3), 16), cg = parseInt(CCColor.slice(3,5), 16), cb = parseInt(CCColor.slice(5,7), 16)
+                        let br = Math.min(255, Math.round(cr + (255 - cr) * pt * 0.65))
+                        let bg = Math.min(255, Math.round(cg + (255 - cg) * pt * 0.65))
+                        let bb = Math.min(255, Math.round(cb + (255 - cb) * pt * 0.65))
+                        ccDrawColor = `rgb(${br},${bg},${bb})`
+                    }
+                    outline = Vo(null, ccDrawColor, w, h, 0, 0, 3)
                     pr(outline, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0)
                 }
                 if (v && _) {
@@ -27984,13 +28349,15 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         k = vt(t.skills.timedCast.fraction(I.smoothtime), 0, 1);
                     pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, 1, 0, b), k > 0 && pr(Jn[7], t.hudPos, g, t.namePlateScale, k, 1, 0, b)
                 }
-                if (!a && _ && (pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1), pr(Jn[uB(t, o, i)], t.hudPos, g, t.namePlateScale, t.stats.getResource(6) / t.stats.getStat(6), 1), fe.disableClantags ? null : t.clan && dr(ho(Un, t.hudPos[0] - (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.clan, t.clan == s ? qt.clan : t.faction === 0 ? qt.faction0small : qt.faction1small, g, 1, 2, 0, 1), t.level && (fe.alwaysShowLevel || l))) {
+                if (!a && _ && (pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1), fe.flashNameplates && t.hpFlashTime !== void 0 && I.smoothtime - t.hpFlashTime < 0.2 && (() => { let elapsed = I.smoothtime - t.hpFlashTime, curFrac = t.stats.getResource(6) / t.stats.getStat(6), lostFrac = t.hpFlashFraction - curFrac, progress = elapsed / 0.2; pr(Jn[12], t.hudPos, g, t.namePlateScale, lostFrac * (1 - progress), 1, curFrac * Jn[12].width, 0) })(), pr(Jn[uB(t, o, i)], t.hudPos, g, t.namePlateScale, t.stats.getResource(6) / t.stats.getStat(6), 1), fe.disableClantags ? null : t.clan && dr(ho(Un, t.hudPos[0] - (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.clan, t.clan == s ? qt.clan : t.faction === 0 ? qt.faction0small : qt.faction1small, g, 1, 2, 0, 1), t.level && (fe.alwaysShowLevel || l))) {
                     let b = qt.lev1;
                     i !== 0 && (t.level - r > 4 ? b = qt.lev3 : t.level - r > 1 ? b = qt.lev2 : t.level - r < -5 && (b = qt.lev0)), dr(ho(Un, t.hudPos[0] + (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.level, b, g, 1, 0, 0, 0)
                 }
             }
             let f, u = !1;
             if ((t.type === 3 ? (f = t.partyTimeoutCheck(I.player) ? qt[t.color] : qt.itemgrey, u = !0) : i === 0 ? (f = l ? qt.name : qt.nameSmall, u = fe.nameShowFriendlyPlayers) : i === 1 ? (f = l ? qt.enemy : qt.enemySmall, u = fe.nameShowMonsters) : i === 2 && (f = l ? qt.pvp : qt.pvpSmall, u = fe.nameShowEnemyPlayers), l || u) && !playerIsBot) {
+                if (!l && playerIsBot) return;
+                if (!l && isPet && !fe.nameShowMonsters) return;
                 let m = t.type === 3 && c && !t.canBePickedUpBy(I.player) ? .5 : l || t.type === 3 ? 1 : c ? .9 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l ? -16 : -9,
                     v = a && t.clan ? t.clan.length * 5 : 0,
@@ -29599,7 +29966,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 if (o || i) {
                     let s = this.squaredDistance(I.player.pos) < 900;
                     s != this.uiRange && (this.uiFrameDirty = !0), this.uiRange = s
-                }(this.uiFrameDirty || this.skills.timedSkill !== void 0) && (o && this.hydrateUnitStore(Hi), n ? this.hydrateUnitStore(Gi) : i && this.hydrateUnitStore(Zt.get(this.name).unitStore)), (this.buffDisplayDirty || n || o) && (o && this.hydrateBuffStore(n, Qc, fe.buffcountUnitframes), n ? this.hydrateBuffStore(n, da, fe.buffcountUnitframes) : (this.buffDisplayDirty || o) && i && this.hydrateBuffStore(n, Zt.get(this.name).buffStore, fe.buffcountParty)), this.speechText !== void 0 && this.speechTimer.done(e) && (this.speechText = void 0)
+                }(this.uiFrameDirty || this.skills.timedSkill !== void 0 || (fe.flashNameplates && this.hpFlashTime !== void 0 && I.smoothtime - this.hpFlashTime < 0.2) || (fe.flashCCIndicator && fe.CCIndicator && this.buffs && this.buffs.buffs && (this.buffs.buffs.has(69) || this.buffs.buffs.has(88) || this.buffs.buffs.has(91) || this.buffs.buffs.has(101) || this.buffs.buffs.has(119) || this.buffs.buffs.has(121)))) && (o && this.hydrateUnitStore(Hi), n ? this.hydrateUnitStore(Gi) : i && this.hydrateUnitStore(Zt.get(this.name).unitStore)), (this.buffDisplayDirty || n || o) && (o && this.hydrateBuffStore(n, Qc, fe.buffcountUnitframes), n ? this.hydrateBuffStore(n, da, fe.buffcountUnitframes) : (this.buffDisplayDirty || o) && i && this.hydrateBuffStore(n, Zt.get(this.name).buffStore, fe.buffcountParty)), this.speechText !== void 0 && this.speechTimer.done(e) && (this.speechText = void 0)
             }
             setTarget(e) {
                 let n = this.target,
@@ -29617,7 +29984,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 return o
             }
             hydrateUnitStore(e) {
-                e.update(n => (n.visible = !0, n.name = this.name, n.alive = this.stats.alive, n.hp = this.stats.getResource(6), n.hpMax = this.stats.getStat(6), n.mp = this.stats.getResource(7), n.mpMax = this.stats.getStat(7), n.level = this.level, n.class = this.class, n.id = this.id, n.clan = this.clan, n.faction = this.faction, n.party = this.party, n.role = this.partyrole, n.type = this.type, n.combat = !this.stats.combatTimer.done(I.time), n.range = this.uiRange, n.rarity = this.faction === 2 && (this.rarity || !1), n.timedSkill = this.skills.timedSkill, n.timedCast = this.skills.timedCast, n)), this.uiFrameDirty = !1
+                e.update(n => (n.visible = !0, n.name = this.name, n.alive = this.stats.alive, n.hp = this.stats.getResource(6), n.hpMax = this.stats.getStat(6), n.mp = this.stats.getResource(7), n.mpMax = this.stats.getStat(7), n.level = this.level, n.class = this.class, n.id = this.id, n.clan = this.clan, n.faction = this.faction, n.party = this.party, n.role = this.partyrole, n.type = this.type, n.combat = !this.stats.combatTimer.done(I.time), n.range = this.uiRange, n.rarity = this.faction === 2 && (this.rarity || !1), n.timedSkill = this.skills.timedSkill, n.timedCast = this.skills.timedCast, n.hpFlashTime = this.hpFlashTime, n.hpFlashFraction = this.hpFlashFraction, n)), this.uiFrameDirty = !1
             }
             hydrateBuffStore(e, n, o) {
                 n.update(i => ZB(i, this.buffs, o, e)), this.buffDisplayDirty = !1
@@ -30860,7 +31227,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         s !== void 0 && fe.dpsmeterMode === 0 && Vd(s, o, i);
         let f = t === I.player,
             u = s === I.player;
-        if (f ? fe.showIncomingDamage && N2([-.3, -.3, .5], o, l, a, !0, 0) : u && N2(t.visualPosition, o, l, a, !1, 2, i, s, t), l > 0 && t.stats.changeResource(6, -o), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
+        if (f ? fe.showIncomingDamage && N2([-.3, -.3, .5], o, l, a, !0, 0) : u && N2(t.visualPosition, o, l, a, !1, 2, i, s, t), l > 0 && (o > 0 && (t.hpFlashTime = I.smoothtime, t.hpFlashFraction = t.stats.getResource(6) / t.stats.getStat(6)), t.stats.changeResource(6, -o)), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
             let m = r > 0 && Er.has(r) ? Er.get(r).effect.transform : s && s.visual && s.visual.transform,
                 g = t.visual.transform;
             s && s.visual && Nu.has(i) && s.visual.anim(Nu.get(i), !1, t.id), l !== 1 ? (t.visual.onHurt(o / t.stats.getStat(6), l), m && n_(i, m, g, t.radius, u ? 1 : 0)) : m && (wc.has(i) || Nu.has(i)) && LT(13, m, g, t.radius, u ? 1 : 0)
