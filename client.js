@@ -2269,7 +2269,8 @@ void main() {
         prestigeChange: () => prestigeChange,
         flashNameplates: () => flashNameplates,
         flashCCIndicator: () => flashCCIndicator,
-        hideChat: () => hideChat
+        hideChat: () => hideChat,
+        disablePartyNameplates: () => disablePartyNameplates
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2457,7 +2458,8 @@ void main() {
         ignoreNameplateViewRange = ne(false),
         flashNameplates = ne(true),
         flashCCIndicator = ne(false),
-        hideChat = ne(false);
+        hideChat = ne(false),
+        disablePartyNameplates = ne(false);
     var a1;
     a1 = {
         ...l1
@@ -16009,7 +16011,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function modSettings(t) {
-        let namePlateCategory, namePlateCategorySeperator, noFrameColorElement, noFrameColorValue, outlinesElement, outlinesValue, mageSwingElement, mageSwingValue, flashNameplatesElement, flashNameplatesValue, flashCCIndicatorElement, flashCCIndicatorValue, hideChatElement, hideChatValue
+        let namePlateCategory, namePlateCategorySeperator, noFrameColorElement, noFrameColorValue, outlinesElement, outlinesValue, mageSwingElement, mageSwingValue, flashNameplatesElement, flashNameplatesValue, flashCCIndicatorElement, flashCCIndicatorValue, hideChatElement, hideChatValue, disablePartyNameplatesElement, disablePartyNameplatesValue
         let sortPartyElement, sortPartyValue, hideBuffsElement, hideBuffsValue, hidebuffsSub, sortPartySub, hideBuffsSeperator, sortPartySeperator, ownRevElement, ownRevValue, hideClassBuffsElement, hideClassBuffsValue, nameplateSizeSlider, nameplateSizeElement, showOnNamesElement, showOnNamesValue, nameSizeSlider, nameeSizeElement, nameSpacingElement, nameSpacingValue
         let CCIsub, CCIseperator2, CCIdfcontainer, CCIchillcontainer, CCIagocontainer, CCIrelcontainer, CCIblindcontainer, CCIstuncontainer, seperatorCCI, CCICategory, CCIToggleElement, CCIToggleValue, CCIdfimage, CCIdftext, CCIdfcolor, CCIchillimage, CCIchilltext, CCIchillcolor, CCIagoimage, CCIagotext, CCIagocolor, CCIstunimage, CCIstuncolor, CCIstuntext, CCIrelimage, CCIreltext, CCIrelcolor, CCIblindimage, CCIblindtext, CCIblindcolor
         let stackIndElement, stackIndValue, shrinkIndElement, shrinkIndValue, removeFXElement, removeFXValue, ignoreNameplateValue, ignoreNameplateElement, nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
@@ -16133,6 +16135,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             props: {
                 store: hideChat
             }
+        }), disablePartyNameplatesValue = new Et({
+            props: {
+                store: disablePartyNameplates
+            }
         }), {
             c() {
                 mageSwingElement = h("div"), mageSwingElement.textContent = `Enable mage cape-swing`, K(mageSwingValue.$$.fragment),
@@ -16171,6 +16177,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 removeFXElement = h("div"), removeFXElement.textContent = `Disable skill tick effects`, K(removeFXValue.$$.fragment),
                 ignoreNameplateElement = h("div"), ignoreNameplateElement.textContent = `Hide nameplate select outline`, K(ignoreNameplateValue.$$.fragment),
                 flashNameplatesElement = h("div"), flashNameplatesElement.textContent = `Flash damage on nameplates`, K(flashNameplatesValue.$$.fragment),
+                disablePartyNameplatesElement = h("div"), disablePartyNameplatesElement.textContent = `Disable blue partied nameplates`, K(disablePartyNameplatesValue.$$.fragment),
                 nextFriendlyIgnoreBotsElement = h("div"), nextFriendlyIgnoreBotsElement.textContent = `Target Next Friendly: Exclude Bots`, K(nextFriendlyIgnoreBotsValue.$$.fragment),
                 timeToIngameElement = h("div"), timeToIngameElement.textContent = `Use device time`, K(timeToIngameValue.$$.fragment),
                 disableClantagsElement = h("div"), disableClantagsElement.textContent = `Disable clan tags`, K(disableClantagsValue.$$.fragment),
@@ -16229,6 +16236,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 w(M, nameSpacingElement, D), w(M, nameSpacingValue, D), We(nameSpacingValue, t[92]), H(nameSpacingValue, "input", t[91]),
                 w(M, ignoreNameplateElement, D), Q(ignoreNameplateValue, M, D),
                 w(M, flashNameplatesElement, D), Q(flashNameplatesValue, M, D),
+                w(M, disablePartyNameplatesElement, D), Q(disablePartyNameplatesValue, M, D),
                 w(M, outlinesElement, D), Q(outlinesValue, M, D),
                 //w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
                 w(M, generalCategory, D), w(M, seperator6, D),
@@ -16259,21 +16267,21 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 && We(CCIchillcolor, te[76]) && We(CCIdfcolor, te[74]) && We(CCIagocolor, te[78]) && We(CCIstuncolor, te[80]) && We(CCIrelcolor, te[84]) && We(CCIblindcolor, te[82]) && We(shrinkIndValue, t[86]) && We(nameplateSizeSlider, t[88]) && We(nameSizeSlider, t[90]) && We(nameSpacingValue, t[92])
             },
             i(M) { // S(targetEnabledValue.$$.fragment, M)
-                C || (S(mageSwingValue.$$.fragment, M), S(flashNameplatesValue.$$.fragment, M), S(flashCCIndicatorValue.$$.fragment, M), S(hideChatValue.$$.fragment, M), S(outlinesValue.$$.fragment, M), S(noFrameColorValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(showOnNamesValue.$$.fragment, M), S(hideClassBuffsValue.$$.fragment, M), S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(mageSwingValue.$$.fragment, M), S(flashNameplatesValue.$$.fragment, M), S(flashCCIndicatorValue.$$.fragment, M), S(hideChatValue.$$.fragment, M), S(disablePartyNameplatesValue.$$.fragment, M), S(outlinesValue.$$.fragment, M), S(noFrameColorValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(showOnNamesValue.$$.fragment, M), S(hideClassBuffsValue.$$.fragment, M), S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
             },
             o(M) { //  E(targetEnabledValue.$$.fragment, M)
-                E(mageSwingValue.$$.fragment, M), E(flashNameplatesValue.$$.fragment, M), E(flashCCIndicatorValue.$$.fragment, M), E(hideChatValue.$$.fragment, M), E(outlinesValue.$$.fragment, M), E(noFrameColorValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(showOnNamesValue.$$.fragment, M), E(hideClassBuffsValue.$$.fragment, M), E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(mageSwingValue.$$.fragment, M), E(flashNameplatesValue.$$.fragment, M), E(flashCCIndicatorValue.$$.fragment, M), E(hideChatValue.$$.fragment, M), E(disablePartyNameplatesValue.$$.fragment, M), E(outlinesValue.$$.fragment, M), E(noFrameColorValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(showOnNamesValue.$$.fragment, M), E(hideClassBuffsValue.$$.fragment, M), E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
             },
             d(M) { // x(targetEnabledElement), x(targetEnabledValue) Z(targetEnabledValue, M)
                 M && (
                     //x(targetEnabledElement), x(targetEnabledValue),
-                    x(namePlateCategory), x(namePlateCategorySeperator), x(noFrameColorElement), x(noFrameColorValue), x(outlinesElement), x(outlinesValue), x(mageSwingElement), x(mageSwingValue), x(flashNameplatesElement), x(flashNameplatesValue), x(flashCCIndicatorElement), x(flashCCIndicatorValue), x(hideChatElement), x(hideChatValue),
+                    x(namePlateCategory), x(namePlateCategorySeperator), x(noFrameColorElement), x(noFrameColorValue), x(outlinesElement), x(outlinesValue), x(mageSwingElement), x(mageSwingValue), x(flashNameplatesElement), x(flashNameplatesValue), x(flashCCIndicatorElement), x(flashCCIndicatorValue), x(hideChatElement), x(hideChatValue), x(disablePartyNameplatesElement), x(disablePartyNameplatesValue),
                     x(sortPartyElement), x(sortPartyValue), x(hideBuffsElement), x(hideBuffsValue), x(sortPartySub), x(sortPartySeperator), x(ownRevElement), x(ownRevValue), x(hideClassBuffsValue), x(hideClassBuffsElement), x(showOnNamesElement), x(showOnNamesValue), x(nameplateSizeElement), x(nameplateSizeSlider), x(nameeSizeElement), x(nameSizeSlider), x(nameSpacingElement), x(nameSpacingValue),
                     x(CCIsub), x(CCIseperator2), x(CCIchillcontainer), x(CCIdfcontainer), x(CCIagocontainer), x(CCIrelcontainer), x(CCIblindcontainer), x(CCIstuncontainer),
                     x(seperatorCCI), x(CCICategory), x(CCIToggleElement), x(CCIToggleValue), x(CCIdfimage), x(CCIdftext), x(CCIdfcolor), x(CCIchillimage), x(CCIchilltext), x(CCIchillcolor), x(CCIagoimage), x(CCIagotext), x(CCIagocolor), x(CCIstunimage), x(CCIstuntext), x(CCIstuncolor), x(CCIrelimage), x(CCIreltext), x(CCIrelcolor), x(CCIblindimage), x(CCIblindtext), x(CCIblindcolor), Z(CCIToggleValue, M),
                     x(stackIndElement), x(stackIndValue), x(shrinkIndElement), x(shrinkIndValue), x(removeFXElement), x(removeFXValue), x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)),
                 //Z(targetEnabledValue, M),
-                Z(mageSwingValue,M), Z(flashNameplatesValue, M), Z(flashCCIndicatorValue, M), Z(hideChatValue, M), Z(outlinesValue, M), Z(noFrameColorValue, M), Z(showOnNamesValue, M), Z(hideClassBuffsValue, M), Z(ownRevValue, M), Z(hideBuffsValue, M), Z(sortPartyValue, M), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(stackIndValue, M)
+                Z(mageSwingValue,M), Z(flashNameplatesValue, M), Z(flashCCIndicatorValue, M), Z(hideChatValue, M), Z(disablePartyNameplatesValue, M), Z(outlinesValue, M), Z(noFrameColorValue, M), Z(showOnNamesValue, M), Z(hideClassBuffsValue, M), Z(ownRevValue, M), Z(hideBuffsValue, M), Z(sortPartyValue, M), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(stackIndValue, M)
             }
         }
     }
@@ -28294,7 +28302,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }
                 return dp[str.length];
             }
-            let o = false
+            let o = !fe.disablePartyNameplates && t.party > 0 && t.party === I.player.party,
                 i = t.faction !== void 0 ? I.player.hostility(t) : 0,
                 s = I.player.clan,
                 r = I.player.level,
