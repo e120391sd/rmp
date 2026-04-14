@@ -7096,7 +7096,7 @@ void main() {
       "shader": 0,
       "shadow": 1,
       "texture": 0
-    },)
+    })
         O1.set(23,shadowstrider)
         let mage = O1.get(2)
         if(fe.enableMageCapeswing) mage.capeswing = 1
