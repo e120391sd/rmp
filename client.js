@@ -10390,15 +10390,16 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 if (t.CCFound) {
                     let ccDrawColor = t.CCColor
                     if (fe.flashCCIndicator) {
-                        let pt = (Math.sin(I.smoothtime * Math.PI * 6) + 1) * 0.5
+                        let pt = (Math.sin(I.smoothtime * Math.PI * 12) + 1) * 1.2
                         let cr = parseInt(t.CCColor.slice(1,3), 16), cg = parseInt(t.CCColor.slice(3,5), 16), cb = parseInt(t.CCColor.slice(5,7), 16)
-                        let br = Math.min(255, Math.round(cr + (255 - cr) * pt * 0.65))
-                        let bg = Math.min(255, Math.round(cg + (255 - cg) * pt * 0.65))
-                        let bb = Math.min(255, Math.round(cb + (255 - cb) * pt * 0.65))
+                        let br = Math.round(cr * (1 - pt * 0.3))
+                        let bg = Math.round(cg * (1 - pt * 0.3))
+                        let bb = Math.round(cb * (1 - pt * 0.3))
                         ccDrawColor = `rgb(${br},${bg},${bb})`
                     }
-                    container.style.outline = `3px solid ${ccDrawColor}`
-                } else { container.style.outline = null }
+                    container.style.outline = `4px solid ${ccDrawColor}`
+                    container.style.boxShadow = `0 0 20px ${ccDrawColor}`
+                } else { container.style.outline = null, container.style.boxShadow = null }
                 container.style.borderRadius = "6px"
                 let hpBarEl = l.firstElementChild;
                 if (hpBarEl) {
@@ -28350,14 +28351,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     let h = ((v ? DA : IA).height)
                     let ccDrawColor = CCColor
                     if (fe.flashCCIndicator) {
-                        let pt = (Math.sin(I.smoothtime * Math.PI * 6) + 1) * 0.5
+                        let pt = (Math.sin(I.smoothtime * Math.PI * 6) + 1) * 1.2
                         let cr = parseInt(CCColor.slice(1,3), 16), cg = parseInt(CCColor.slice(3,5), 16), cb = parseInt(CCColor.slice(5,7), 16)
-                        let br = Math.min(255, Math.round(cr + (255 - cr) * pt * 0.65))
-                        let bg = Math.min(255, Math.round(cg + (255 - cg) * pt * 0.65))
-                        let bb = Math.min(255, Math.round(cb + (255 - cb) * pt * 0.65))
+                        let br = Math.round(cr * (1 - pt * 0.4))
+                        let bg = Math.round(cg * (1 - pt * 0.4))
+                        let bb = Math.round(cb * (1 - pt * 0.4))
                         ccDrawColor = `rgb(${br},${bg},${bb})`
                     }
-                    outline = Vo(null, ccDrawColor, w, h, 0, 0, 3)
+                    outline = Vo(null, ccDrawColor, w, h, 0, 0, 4)
                     pr(outline, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0)
                 }
                 if (v && _) {
