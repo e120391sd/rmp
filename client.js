@@ -28330,7 +28330,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
                 let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
                 if(CCFound && _) {
-                    let w = (Jn[0].width + Wo * 2) - .75
+                    let w = (Jn[0].width + Wo * 2)
                     let h = ((v ? DA : IA).height)
                     let ccDrawColor = CCColor
                     if (fe.flashCCIndicator) {
