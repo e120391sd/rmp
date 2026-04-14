@@ -28146,7 +28146,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 r = o - Wo * 2;
             Jn.push(Vo(null, Lt("panel"), n, o, 0, 0, i)), Vo(Jn[0], Lt("grey"), s, r, Wo, Wo, 1), Jn.push(Vo(null, Lt("health"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#ffbc00", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("enemy"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("party"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("pvp"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#555555", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("spell"), s, r, 0, 0, 1));
             for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, Lt("c" + l), s, r, 0, 0, 1));
-            IA = Vo(null, "#ffffff", 100 + Wo +1, 9 + Wo +1, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo +1, 16 + Wo , 0, 0, 3)
+            IA = Vo(null, "#ffffff", 100 + Wo +1, 9 + Wo, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo +1, 16 + Wo , 0, 0, 3)
         },
         fB = () => {
             let t = [];
