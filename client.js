@@ -28309,7 +28309,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 l = t.id === zn,
                 a = false, //t.id === I.playerId,
                 c = t.id === _n,
-                playerIsBot = t.level <= 45 && isBotName(t.name) && fe.hideBots,
+                playerIsBot = t.level < 45 && isBotName(t.name) && fe.hideBots,
                 isPet = t.class === 5 && t.level === 1;
             if ((t.type !== 3 && t.stats)) {
                 let min = 0.5 * (fe.nameplateSize / 250);
