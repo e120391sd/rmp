@@ -26739,13 +26739,21 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 let seconds = (now.getHours() * 3600) + (now.getMinutes() * 60) + now.getSeconds()
 
                 let dayStart = 7.25 * 3600;
-                let dayEnd = 24 * 3600;
+                let dayEnd = 21 * 3600;
                 let totalSeconds = 24 * 3600;
 
                 let nightSeconds = (seconds - dayEnd + totalSeconds) % totalSeconds;
                 let nightDuration = totalSeconds - (dayEnd - dayStart);
+                
+                let dawnStart = 5 * 3600;
+                let nightToDawn = (dawnStart - dayEnd + totalSeconds) % totalSeconds;
+                let dawnDuration = nightDuration - nightToDawn;
 
-                o = Math.min(1, seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.72 : 0.8 + (nightSeconds / nightDuration) * 0.1);
+                o = Math.min(1, seconds >= dayStart && seconds < dayEnd
+                    ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.775
+                    : nightSeconds < nightToDawn
+                        ? 0.775 + (nightSeconds / nightToDawn) * 0.10
+                        : 0.875 + ((nightSeconds - nightToDawn) / dawnDuration) * 0.125);
             }
             o < .7 ? o = Lf(0, .7, o) * .4 : o = .4 + Lf(.7, 1, o) * .6, X8(o, b0, e, n), K8(o, b0, e, n), J8(o, b0)
         };
