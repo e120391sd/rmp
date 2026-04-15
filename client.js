@@ -10400,7 +10400,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     container.style.outline = `4px solid ${ccDrawColor}`
                     container.style.boxShadow = `0 0 20px ${ccDrawColor}`
                 } else { container.style.outline = null, container.style.boxShadow = null }
-                container.style.borderRadius = "6px"
+                container.style.borderRadius = "3px"
                 let hpBarEl = l.firstElementChild;
                 if (hpBarEl) {
                     let flashDiv = hpBarEl._hpFlash;
