@@ -2270,7 +2270,13 @@ void main() {
         flashNameplates: () => flashNameplates,
         flashCCIndicator: () => flashCCIndicator,
         hideChat: () => hideChat,
-        disablePartyNameplates: () => disablePartyNameplates
+        disablePartyNameplates: () => disablePartyNameplates,
+        customCrownEnabled: () => customCrownEnabled,
+        customCrownHeadbandColor: () => customCrownHeadbandColor,
+        customCrownCrownColor: () => customCrownCrownColor,
+        customCrownGemColor: () => customCrownGemColor,
+        customCapeEnabled: () => customCapeEnabled,
+        customCapeColor: () => customCapeColor
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2459,7 +2465,13 @@ void main() {
         flashNameplates = ne(true),
         flashCCIndicator = ne(false),
         hideChat = ne(false),
-        disablePartyNameplates = ne(false);
+        disablePartyNameplates = ne(false),
+        customCrownEnabled = ne(false),
+        customCrownHeadbandColor = ne("#ffaa00"),
+        customCrownCrownColor = ne("#ffaa00"),
+        customCrownGemColor = ne("#ffaa00"),
+        customCapeEnabled = ne(false),
+        customCapeColor = ne("#ffaa00");
     var a1;
     a1 = {
         ...l1
@@ -2476,7 +2488,35 @@ void main() {
         },
         fe = {};
     for (let t in a1) a3(t, a1[t]);
-    hideChat.subscribe(v => { let el = document.getElementById("modHideChatStyle"); if (!el) { el = document.createElement("style"), el.id = "modHideChatStyle", document.head.appendChild(el) } el.textContent = v ? ".l-corner-ll { display: none !important; }" : "" });
+    hideChat.subscribe(v => { let el = document.getElementById('modHideChatStyle'); if (!el) { el = document.createElement('style'); el.id = 'modHideChatStyle'; document.head.appendChild(el); } el.textContent = v ? '.l-corner-ll { display: none !important; }' : ''; });
+    function applyCustomCrownColors() {
+        if (!I || !I.player || !I.player.visual) return;
+        let v = I.player.visual;
+        if (fe.customCrownEnabled) {
+            let parseHex = c => [parseInt(c.slice(1,3),16)/255, parseInt(c.slice(3,5),16)/255, parseInt(c.slice(5,7),16)/255, 0];
+            if (v.body[11]) v.changeMeshBaseColor(v.body[11], parseHex(fe.customCrownHeadbandColor))
+            if (v.body[13]) v.changeMeshBaseColor(v.body[13], parseHex(fe.customCrownCrownColor))
+            if (v.body[12]) v.changeMeshBaseColor(v.body[12], parseHex(fe.customCrownGemColor))
+        } else {
+            I.player.setPrestige(I.player.prestige, true)
+        }
+    }
+    customCrownEnabled.subscribe(applyCustomCrownColors);
+    customCrownHeadbandColor.subscribe(applyCustomCrownColors);
+    customCrownCrownColor.subscribe(applyCustomCrownColors);
+    customCrownGemColor.subscribe(applyCustomCrownColors);
+    function applyCustomCapeColor() {
+        if (!I || !I.player || !I.player.visual) return;
+        let v = I.player.visual;
+        if (fe.customCapeEnabled) {
+            let parseHex = c => [parseInt(c.slice(1,3),16)/255, parseInt(c.slice(3,5),16)/255, parseInt(c.slice(5,7),16)/255, 0];
+            if (v.body[10]) v.changeMeshBaseColor(v.body[10], parseHex(fe.customCapeColor))
+        } else {
+            I.player.setLevel(I.player.level)
+        }
+    }
+    customCapeEnabled.subscribe(applyCustomCapeColor);
+    customCapeColor.subscribe(applyCustomCapeColor);
     var P;
     Jr.subscribe(async t => {
         await fetch(`/data/loc/${t}.json?v=8822612`).then(async e => {
@@ -16016,6 +16056,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let sortPartyElement, sortPartyValue, hideBuffsElement, hideBuffsValue, hidebuffsSub, sortPartySub, hideBuffsSeperator, sortPartySeperator, ownRevElement, ownRevValue, hideClassBuffsElement, hideClassBuffsValue, nameplateSizeSlider, nameplateSizeElement, showOnNamesElement, showOnNamesValue, nameSizeSlider, nameeSizeElement, nameSpacingElement, nameSpacingValue
         let CCIsub, CCIseperator2, CCIdfcontainer, CCIchillcontainer, CCIagocontainer, CCIrelcontainer, CCIblindcontainer, CCIstuncontainer, seperatorCCI, CCICategory, CCIToggleElement, CCIToggleValue, CCIdfimage, CCIdftext, CCIdfcolor, CCIchillimage, CCIchilltext, CCIchillcolor, CCIagoimage, CCIagotext, CCIagocolor, CCIstunimage, CCIstuncolor, CCIstuntext, CCIrelimage, CCIreltext, CCIrelcolor, CCIblindimage, CCIblindtext, CCIblindcolor
         let stackIndElement, stackIndValue, shrinkIndElement, shrinkIndValue, removeFXElement, removeFXValue, ignoreNameplateValue, ignoreNameplateElement, nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
+        let customCrownCategory, customCrownSeperator, customCrownToggleElement, customCrownToggleValue, customCrownHeadbandContainer, customCrownHeadbandLabel, customCrownHeadbandInput, customCrownCrownContainer, customCrownCrownLabel, customCrownCrownInput, customCrownGemContainer, customCrownGemLabel, customCrownGemInput
+        let customCapeToggleElement, customCapeToggleValue, customCapeContainer, customCapeLabel, customCapeInput
         return hideBotsValue = new Et({
             props: {
                 store: hideBots
@@ -16140,6 +16182,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             props: {
                 store: disablePartyNameplates
             }
+        }), customCrownToggleValue = new Et({
+            props: {
+                store: customCrownEnabled
+            }
+        }), customCapeToggleValue = new Et({
+            props: {
+                store: customCapeEnabled
+            }
         }), {
             c() {
                 mageSwingElement = h("div"), mageSwingElement.textContent = `Enable mage cape-swing`, K(mageSwingValue.$$.fragment),
@@ -16205,7 +16255,23 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 radCategory.style.fontSize = "20px", shamanCategory.style.fontSize = "20px", generalCategory.style.fontSize = "20px", CCICategory.style.fontSize = "20px", declutterCategory.style.fontSize = "20px",
                 subRad.style.fontSize = "12px", subDeclutterCategory.style.fontSize = "11px",
                 shamanCategory.style.marginTop = "10px", generalCategory.style.marginTop = "10px", CCICategory.style.marginTop = "10px", declutterCategory.style.marginTop = "10px",
-                p(alwaysPickupValue, "type", "text"), p(timeSlider, "type", "range"), p(timeSlider, "max", "1000")
+                p(alwaysPickupValue, "type", "text"), p(timeSlider, "type", "range"), p(timeSlider, "max", "1000"),
+                customCrownCategory = h("div"), customCrownCategory.textContent = `Custom Crown`, p(customCrownCategory, "class", "textprimary"), customCrownCategory.style.fontSize = "20px", customCrownCategory.style.marginTop = "10px",
+                customCrownSeperator = h("br"),
+                customCrownToggleElement = h("div"), customCrownToggleElement.textContent = `Enable Custom Crown`, K(customCrownToggleValue.$$.fragment),
+                customCrownHeadbandContainer = h("div"), customCrownHeadbandContainer.style.display = "flex", customCrownHeadbandContainer.style.alignItems = "center",
+                customCrownHeadbandLabel = h("div"), customCrownHeadbandLabel.textContent = `Headband Color`, customCrownHeadbandLabel.style.fontSize = "16px", customCrownHeadbandLabel.style.marginRight = "8px",
+                customCrownHeadbandInput = h("input"), p(customCrownHeadbandInput, "type", "color"),
+                customCrownCrownContainer = h("div"), customCrownCrownContainer.style.display = "flex", customCrownCrownContainer.style.alignItems = "center",
+                customCrownCrownLabel = h("div"), customCrownCrownLabel.textContent = `Crown Color`, customCrownCrownLabel.style.fontSize = "16px", customCrownCrownLabel.style.marginRight = "8px",
+                customCrownCrownInput = h("input"), p(customCrownCrownInput, "type", "color"),
+                customCrownGemContainer = h("div"), customCrownGemContainer.style.display = "flex", customCrownGemContainer.style.alignItems = "center",
+                customCrownGemLabel = h("div"), customCrownGemLabel.textContent = `Gem Color`, customCrownGemLabel.style.fontSize = "16px", customCrownGemLabel.style.marginRight = "8px",
+                customCrownGemInput = h("input"), p(customCrownGemInput, "type", "color"),
+                customCapeToggleElement = h("div"), customCapeToggleElement.textContent = `Enable Custom Cape`, K(customCapeToggleValue.$$.fragment),
+                customCapeContainer = h("div"), customCapeContainer.style.display = "flex", customCapeContainer.style.alignItems = "center",
+                customCapeLabel = h("div"), customCapeLabel.textContent = `Cape Color`, customCapeLabel.style.fontSize = "16px", customCapeLabel.style.marginRight = "8px",
+                customCapeInput = h("input"), p(customCapeInput, "type", "color")
             },
             m(M, D) {
                 w(M, radCategory, D), d(radCategory,seperator1), d(radCategory,subRad),  w(M, seperator2, D),
@@ -16259,6 +16325,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 w(M, CCIstuncontainer, D), d(CCIstuncontainer, CCIstunimage), d(CCIstuncontainer, CCIstuntext), w(M, CCIstuncolor, D), We(CCIstuncolor, t[80]), H(CCIstuncolor, "input", t[79]),
                 w(M, CCIrelcontainer, D), d(CCIrelcontainer, CCIrelimage), d(CCIrelcontainer, CCIreltext), w(M, CCIrelcolor, D), We(CCIrelcolor, t[84]), H(CCIrelcolor, "input", t[83]),
                 w(M, CCIblindcontainer, D), d(CCIblindcontainer, CCIblindimage), d(CCIblindcontainer, CCIblindtext), w(M, CCIblindcolor, D), We(CCIblindcolor, t[82]), H(CCIblindcolor, "input", t[81]),
+                w(M, customCrownCategory, D), w(M, customCrownSeperator, D),
+                w(M, customCrownToggleElement, D), Q(customCrownToggleValue, M, D),
+                w(M, customCrownHeadbandContainer, D), d(customCrownHeadbandContainer, customCrownHeadbandLabel), w(M, customCrownHeadbandInput, D), We(customCrownHeadbandInput, t[94]), H(customCrownHeadbandInput, "input", t[93]),
+                w(M, customCrownCrownContainer, D), d(customCrownCrownContainer, customCrownCrownLabel), w(M, customCrownCrownInput, D), We(customCrownCrownInput, t[96]), H(customCrownCrownInput, "input", t[95]),
+                w(M, customCrownGemContainer, D), d(customCrownGemContainer, customCrownGemLabel), w(M, customCrownGemInput, D), We(customCrownGemInput, t[98]), H(customCrownGemInput, "input", t[97]),
+                w(M, customCapeToggleElement, D), Q(customCapeToggleValue, M, D),
+                w(M, customCapeContainer, D), d(customCapeContainer, customCapeLabel), w(M, customCapeInput, D), We(customCapeInput, t[100]), H(customCapeInput, "input", t[99]),
                 C = !0,
                 H(timeSlider, "input", t[71]),
                 H(alwaysPickupValue, "input", t[69])
@@ -16266,12 +16339,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             p(te,ae) {
                 ae[0] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
                 && We(CCIchillcolor, te[76]) && We(CCIdfcolor, te[74]) && We(CCIagocolor, te[78]) && We(CCIstuncolor, te[80]) && We(CCIrelcolor, te[84]) && We(CCIblindcolor, te[82]) && We(shrinkIndValue, t[86]) && We(nameplateSizeSlider, t[88]) && We(nameSizeSlider, t[90]) && We(nameSpacingValue, t[92])
+                && We(customCrownHeadbandInput, te[94]) && We(customCrownCrownInput, te[96]) && We(customCrownGemInput, te[98])
+                && We(customCapeInput, te[100])
             },
             i(M) { // S(targetEnabledValue.$$.fragment, M)
-                C || (S(mageSwingValue.$$.fragment, M), S(flashNameplatesValue.$$.fragment, M), S(flashCCIndicatorValue.$$.fragment, M), S(hideChatValue.$$.fragment, M), S(disablePartyNameplatesValue.$$.fragment, M), S(outlinesValue.$$.fragment, M), S(noFrameColorValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(showOnNamesValue.$$.fragment, M), S(hideClassBuffsValue.$$.fragment, M), S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+                C || (S(mageSwingValue.$$.fragment, M), S(flashNameplatesValue.$$.fragment, M), S(flashCCIndicatorValue.$$.fragment, M), S(hideChatValue.$$.fragment, M), S(disablePartyNameplatesValue.$$.fragment, M), S(outlinesValue.$$.fragment, M), S(noFrameColorValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(showOnNamesValue.$$.fragment, M), S(hideClassBuffsValue.$$.fragment, M), S(ownRevValue.$$.fragment, M), S(hideBuffsValue.$$.fragment, M), S(sortPartyValue.$$.fragment, M), S(CCIToggleValue.$$.fragment, M), S(stackIndValue.$$.fragment, M), S(removeFXValue.$$.fragment, M), S(ignoreNameplateValue.$$.fragment, M), S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), S(customCrownToggleValue.$$.fragment, M), S(customCapeToggleValue.$$.fragment, M), C = !0)
             },
             o(M) { //  E(targetEnabledValue.$$.fragment, M)
-                E(mageSwingValue.$$.fragment, M), E(flashNameplatesValue.$$.fragment, M), E(flashCCIndicatorValue.$$.fragment, M), E(hideChatValue.$$.fragment, M), E(disablePartyNameplatesValue.$$.fragment, M), E(outlinesValue.$$.fragment, M), E(noFrameColorValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(showOnNamesValue.$$.fragment, M), E(hideClassBuffsValue.$$.fragment, M), E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+                E(mageSwingValue.$$.fragment, M), E(flashNameplatesValue.$$.fragment, M), E(flashCCIndicatorValue.$$.fragment, M), E(hideChatValue.$$.fragment, M), E(disablePartyNameplatesValue.$$.fragment, M), E(outlinesValue.$$.fragment, M), E(noFrameColorValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(showOnNamesValue.$$.fragment, M), E(hideClassBuffsValue.$$.fragment, M), E(ownRevValue.$$.fragment, M), E(hideBuffsValue.$$.fragment, M), E(sortPartyValue.$$.fragment, M), E(CCIToggleValue.$$.fragment, M), E(stackIndValue.$$.fragment, M), E(removeFXValue.$$.fragment, M), E(ignoreNameplateValue.$$.fragment, M), E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), E(customCrownToggleValue.$$.fragment, M), E(customCapeToggleValue.$$.fragment, M), C = !1
             },
             d(M) { // x(targetEnabledElement), x(targetEnabledValue) Z(targetEnabledValue, M)
                 M && (
@@ -16280,6 +16355,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     x(sortPartyElement), x(sortPartyValue), x(hideBuffsElement), x(hideBuffsValue), x(sortPartySub), x(sortPartySeperator), x(ownRevElement), x(ownRevValue), x(hideClassBuffsValue), x(hideClassBuffsElement), x(showOnNamesElement), x(showOnNamesValue), x(nameplateSizeElement), x(nameplateSizeSlider), x(nameeSizeElement), x(nameSizeSlider), x(nameSpacingElement), x(nameSpacingValue),
                     x(CCIsub), x(CCIseperator2), x(CCIchillcontainer), x(CCIdfcontainer), x(CCIagocontainer), x(CCIrelcontainer), x(CCIblindcontainer), x(CCIstuncontainer),
                     x(seperatorCCI), x(CCICategory), x(CCIToggleElement), x(CCIToggleValue), x(CCIdfimage), x(CCIdftext), x(CCIdfcolor), x(CCIchillimage), x(CCIchilltext), x(CCIchillcolor), x(CCIagoimage), x(CCIagotext), x(CCIagocolor), x(CCIstunimage), x(CCIstuntext), x(CCIstuncolor), x(CCIrelimage), x(CCIreltext), x(CCIrelcolor), x(CCIblindimage), x(CCIblindtext), x(CCIblindcolor), Z(CCIToggleValue, M),
+                    x(customCrownCategory), x(customCrownSeperator), x(customCrownToggleElement), x(customCrownToggleValue), x(customCrownHeadbandContainer), x(customCrownHeadbandLabel), x(customCrownHeadbandInput), x(customCrownCrownContainer), x(customCrownCrownLabel), x(customCrownCrownInput), x(customCrownGemContainer), x(customCrownGemLabel), x(customCrownGemInput), Z(customCrownToggleValue, M),
+                    x(customCapeToggleElement), x(customCapeToggleValue), x(customCapeContainer), x(customCapeLabel), x(customCapeInput), Z(customCapeToggleValue, M),
                     x(stackIndElement), x(stackIndValue), x(shrinkIndElement), x(shrinkIndValue), x(removeFXElement), x(removeFXValue), x(ignoreNameplateElement), x(ignoreNameplateValue), x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)),
                 //Z(targetEnabledValue, M),
                 Z(mageSwingValue,M), Z(flashNameplatesValue, M), Z(flashCCIndicatorValue, M), Z(hideChatValue, M), Z(disablePartyNameplatesValue, M), Z(outlinesValue, M), Z(noFrameColorValue, M), Z(showOnNamesValue, M), Z(hideClassBuffsValue, M), Z(ownRevValue, M), Z(hideBuffsValue, M), Z(sortPartyValue, M), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M), Z(ignoreNameplateValue, M), Z(removeFXValue, M), Z(stackIndValue, M)
@@ -16366,8 +16443,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function CV(t, e, n) {
-        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, apt, tsl, dfc, crc, agc, stc, bsc, rec, inds, nams, nas, nmsp;
-        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re)), re(t, alwaysPickup, Re => n(70, apt = Re)), re(t, timeSlider, Re => n(72, tsl = Re)), re(t, deepFreezeColor, Re => n(74, dfc = Re)), re(t, chillColor, Re => n(76, crc = Re)), re(t, agonizeColor, Re => n(78, agc = Re)), re(t, stunColor, Re => n(80, stc = Re)), re(t, blindColor, Re => n(82, bsc = Re)), re(t, relColor, Re => n(84, rec = Re)), re(t, shrinkIndicators, Re => n(86, inds = Re)), re(t, nameplateSize, Re => n(88, nams = Re)), re(t, nameSize, Re => n(90, nas = Re)), re(t, nameSpacing, Re => n(92, nmsp = Re));
+        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, apt, tsl, dfc, crc, agc, stc, bsc, rec, inds, nams, nas, nmsp, hbc, crownc, gmc, capec;
+        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re)), re(t, alwaysPickup, Re => n(70, apt = Re)), re(t, timeSlider, Re => n(72, tsl = Re)), re(t, deepFreezeColor, Re => n(74, dfc = Re)), re(t, chillColor, Re => n(76, crc = Re)), re(t, agonizeColor, Re => n(78, agc = Re)), re(t, stunColor, Re => n(80, stc = Re)), re(t, blindColor, Re => n(82, bsc = Re)), re(t, relColor, Re => n(84, rec = Re)), re(t, shrinkIndicators, Re => n(86, inds = Re)), re(t, nameplateSize, Re => n(88, nams = Re)), re(t, nameSize, Re => n(90, nas = Re)), re(t, nameSpacing, Re => n(92, nmsp = Re)), re(t, customCrownHeadbandColor, Re => n(94, hbc = Re)), re(t, customCrownCrownColor, Re => n(96, crownc = Re)), re(t, customCrownGemColor, Re => n(98, gmc = Re)), re(t, customCapeColor, Re => n(100, capec = Re));
         let R = [{
                 id: "ui",
                 name: P.ui.settings.interface
@@ -16605,9 +16682,21 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         function setNmsp() {
             nmsp = Number(this.value), nameSpacing.set(nmsp)
         }
+        function setHBC() {
+            hbc = this.value, customCrownHeadbandColor.set(hbc)
+        }
+        function setCrownC() {
+            crownc = this.value, customCrownCrownColor.set(crownc)
+        }
+        function setGmC() {
+            gmc = this.value, customCrownGemColor.set(gmc)
+        }
+        function setCapeC() {
+            capec = this.value, customCapeColor.set(capec)
+        }
         return [Ji, N, ge, se, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, Y, Ce, ve, _e, be, Te, ie, Ie, ee, qe, Ge, Qe, He, he, ce, $e, oe, J, O, ue, je, Ue, ke, ze, Oe, dt, Ft, Ze, Ct, xe, Je, kt, At, De, at, () => {
             Xe(el, o = !1, o), ge && window.location.reload()
-        },setAlwaysPickup, apt, setTimeSlider, tsl, setDC, dfc, setCC, crc, setAC, agc, setSC, stc, setBC, bsc, setRC, rec, setInds, inds, setNams, nams, setNas, nas, setNmsp, nmsp]
+        },setAlwaysPickup, apt, setTimeSlider, tsl, setDC, dfc, setCC, crc, setAC, agc, setSC, stc, setBC, bsc, setRC, rec, setInds, inds, setNams, nams, setNas, nas, setNmsp, nmsp, setHBC, hbc, setCrownC, crownc, setGmC, gmc, setCapeC, capec]
     }
     var dv = class extends Fe {
             constructor(e) {
@@ -30437,6 +30526,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     let o = Math.min(this.prestigeRank, 10),
                         i = this.prestigeRank - 11;
                     o < 1 ? (this.visual.setCrown(!1), this.visual.setHeadgear(!1)) : (this.visual.setHeadgear(i < 0 ? $g[Math.min(4, o - 1)] : Rn.darkgold), o > 5 ? this.visual.setCrown($g[o - 6]) : this.visual.setCrown(!1)), i < 0 ? this.visual.setGem(!1) : this.visual.setGem(h4[i], i > 0 ? 1 : .8)
+                    if (fe.customCrownEnabled && this.id === I.player.id) {
+                        let parseHex = c => [parseInt(c.slice(1,3),16)/255, parseInt(c.slice(3,5),16)/255, parseInt(c.slice(5,7),16)/255, 0];
+                        if (this.visual.body[11]) this.visual.changeMeshBaseColor(this.visual.body[11], parseHex(fe.customCrownHeadbandColor))
+                        if (this.visual.body[13]) this.visual.changeMeshBaseColor(this.visual.body[13], parseHex(fe.customCrownCrownColor))
+                        if (this.visual.body[12]) this.visual.changeMeshBaseColor(this.visual.body[12], parseHex(fe.customCrownGemColor))
+                    }
                 }
             }
             setElo(e, n) {
@@ -30447,6 +30542,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
             setLevel(e) {
                 super.setLevel(e), e >= 15 ? this.visual.setCape(this.faction === 0 ? Rn.vanguard : Rn.bloodlust, e >= 25 ? 1 : .5) : this.visual.setCape(!1)
+                if (fe.customCapeEnabled && this.id === I.player.id && e >= 15) {
+                    let parseHex = c => [parseInt(c.slice(1,3),16)/255, parseInt(c.slice(3,5),16)/255, parseInt(c.slice(5,7),16)/255, 0];
+                    if (this.visual.body[10]) this.visual.changeMeshBaseColor(this.visual.body[10], parseHex(fe.customCapeColor))
+                }
             }
             setParty(e, n) {
                 this.uiFrameDirty = !0, this.buffDisplayDirty = !0, super.setParty(e, n)
