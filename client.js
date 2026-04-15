@@ -10397,10 +10397,10 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         let bb = Math.round(cb * (1 - pt * 0.25))
                         ccDrawColor = `rgb(${br},${bg},${bb})`
                     }
-                    container.style.outline = `4px solid ${ccDrawColor}`
-                    container.style.boxShadow = `0 0 20px ${ccDrawColor}`
+                    container.style.outline = `3px solid ${ccDrawColor}`
+                    container.style.boxShadow = `0 0 15px ${ccDrawColor}`
                 } else { container.style.outline = null, container.style.boxShadow = null }
-                container.style.borderRadius = "3px"
+                container.style.borderRadius = "1px"
                 let hpBarEl = l.firstElementChild;
                 if (hpBarEl) {
                     let flashDiv = hpBarEl._hpFlash;
