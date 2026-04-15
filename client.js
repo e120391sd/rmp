@@ -7083,7 +7083,7 @@ void main() {
         0
       ]
     }   
-        /*Ga.set(7777,{
+        Ga.set(7777,{
       "ext": 0,
       "id": 7777,
       "type": 1
@@ -7097,7 +7097,7 @@ void main() {
       "shadow": 1,
       "texture": 0
     })
-        O1.set(23,shadowstrider)*/
+        O1.set(23,shadowstrider)
         let mage = O1.get(2)
         if(fe.enableMageCapeswing) mage.capeswing = 1
         O1.set(2,mage)
