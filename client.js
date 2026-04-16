@@ -7290,6 +7290,15 @@ void main() {
       "shadow": 1,
       "texture": 0
     })
+        Fi.set(1560,{
+      "cull": 1,
+      "effects": [],
+      "geometry": 7777,
+      "id": 1560,
+      "shader": 0,
+      "shadow": 1,
+      "texture": 0
+    })
         O1.set(23,shadowstrider)
         O1.set(31,scarab)
         let mage = O1.get(2)
