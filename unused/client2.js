@@ -7294,7 +7294,7 @@ void main() {
       "cull": 1,
       "effects": [],
       "geometry": 7777,
-      "id": 7878,
+      "id": 1560,
       "shader": 0,
       "shadow": 1,
       "texture": 0
