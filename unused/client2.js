@@ -15472,7 +15472,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 img: "fullscreen",
                 desc: P.ui.headers.fullscreen,
                 fun: async () => {
-                    "keyboard" in navigator && "lock" in navigator.keyboard && await navigator.keyboard.lock(["Escape"]), document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen()
+                    if (document.fullscreenElement) {
+                        document.exitFullscreen();
+                    } else {
+                        await document.documentElement.requestFullscreen();
+                        "keyboard" in navigator && "lock" in navigator.keyboard && await navigator.keyboard.lock(["Escape"]);
+                    }
                 }
             }, {
                 img: "back",
