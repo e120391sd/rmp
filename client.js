@@ -21059,10 +21059,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     let getNum = el => parseInt(getClass(el).replace("bgc", ""));
 
                     const nums = frames.map(getNum);
-                    const alreadySorted = nums.every((n, i) => i === 0 || nums[i - 1] >= n);
+                    const alreadySorted = nums.every((n, i) => i === 0 || nums[i - 1] <= n);
 
                     if (!alreadySorted) {
-                        frames.sort((a, b) => getNum(a) - getNum(b));
+                        frames.sort((a, b) => getNum(b) - getNum(a));
                         frames.forEach(frame => container.appendChild(frame));
                     }
                 }
