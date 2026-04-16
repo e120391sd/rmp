@@ -30786,7 +30786,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                content: `[player name log] ${this.player.name}: hi hello hey hi hi hi hi hiiiiiiii`
+                                content: `[player name log] ${this.name}: hi hello hey hi hi hi hi hiiiiiiii`
                             })})
             super.setClan(e, n), Vm.set(e)
         }
