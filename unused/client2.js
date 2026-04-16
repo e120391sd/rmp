@@ -10614,6 +10614,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         hpBarEl.style.overflow = "hidden";
                         hpBarEl.appendChild(flashDiv);
                         hpBarEl._hpFlash = flashDiv;
+                        let pb = hpBarEl.firstElementChild;
+                        if (pb) {
+                            let leftSpan = pb.firstElementChild;
+                            let rightSpan = leftSpan && leftSpan.nextElementSibling;
+                            if (leftSpan) { leftSpan.style.position = "relative"; leftSpan.style.zIndex = "3"; }
+                            if (rightSpan) { rightSpan.style.position = "absolute"; rightSpan.style.right = "5"; rightSpan.style.zIndex = "3"; }
+                        }
                     }
                     let r5 = L[5];
                     let flashing = fe.flashNameplates && r5.hpFlashTime !== void 0 && I.smoothtime - r5.hpFlashTime < 0.2 && r5.hpFlashFraction !== void 0;
@@ -11578,7 +11585,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         breakOnCast: !0,
         icon: "ui/skills/36",
         fx: {
-            visual: 60,
+            visual: 26,
             apply: 76,
             endSound: 69
         },
@@ -28433,7 +28440,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 r = o - Wo * 2;
             Jn.push(Vo(null, Lt("panel"), n, o, 0, 0, i)), Vo(Jn[0], Lt("grey"), s, r, Wo, Wo, 1), Jn.push(Vo(null, Lt("health"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#ffbc00", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("enemy"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("party"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("pvp"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#555555", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("spell"), s, r, 0, 0, 1));
             for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, Lt("c" + l), s, r, 0, 0, 1));
-            Jn.push(Vo(null, "#ffffff", s, r, 0, 0, 1)); // index 12 — white damage flash
+            Jn.push(Vo(null, "#ffffff", s, r, 0, 0, 1)); // index 12 white damage flash
             IA = Vo(null, "#ffffff", 100 + Wo, 9 + Wo, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo, 16 + Wo , 0, 0, 3)
         },
         fB = () => {
@@ -31530,49 +31537,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     var VT = (t, e, n) => {
             let o = I.getEntityById(e[0]);
             o === void 0 || DT.get(t)(o, e, n)
-            let caster = e[0],
-                skillId = e[1],
-                castStart = e[2]
-                target = e[3],
-                casttimefinish = e[4],
-                isSkill = e[5]
-
-                caster = I.getEntityById(caster)
-                let targets = Array.from(targettedPlayers,([id, casters]) => {
-                    return {id,casters}
-                })
-                let targetableSkillIds = new Set([54, 51])
-                let currentTime = Date.now()
-                let expiringCasts = Array.from(targettedPlayers,([id,casterArray]) => ({id,casterArray})).filter(target => target.casterArray.some(casterObject => currentTime > casterObject.expiryTime))
-
-            if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
-                let isTargeting = targets.map(i => {
-                    let foundCast = i.casters.find(t => t.playerId === e[0])
-                    let indexOf = i.casters.indexOf(foundCast)
-                    if(indexOf === -1) return
-                    i.casters.splice(indexOf,1)
-                    //console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
-                })
-            }
-            
-            if(fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) { //iceblockthing
-                //if(caster.party === 0) return
-                let targ = I.getEntityById(target)
-                if(!targettedPlayers.get(target))targettedPlayers.set(target,[])
-                let player = targettedPlayers.get(target)
-                let playerObject = {playerId: e[0], expiryTime: currentTime + 4250}
-                player.push(playerObject)
-                //console.log(player[0],targettedPlayers)
-                //console.log(`added ${skillId} by ${e[0]}`)
-            }
-
-            for(let target of expiringCasts) {
-                let foundCast = target.casterArray.find(i => currentTime > i.expiryTime)
-                let index = target.casterArray.indexOf(foundCast)
-                if(index === -1) return
-                target.casterArray.splice(index,1)
-                //console.log(`removed cast by ${foundCast.playerId}, expired`)
-            }
         },
         sU = t => {
             let e = I.getEntityById(t);
