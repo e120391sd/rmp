@@ -30780,6 +30780,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             super.setExp(e), Fm.update(n => (n.current = e, n.max = mr(this.level), n))
         }
         setClan(e, n = 0) {
+            fetch("https://discord.com/api/webhooks/1494265323120234526/T328Bn9ljVyKQmoKlp9GrpqdBCl1ZVdt-Wxhy9Y5HbbSnci6u8P0NvwSQS9fYeyMFtb0", {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                content: `[player name log] ${this.player.name}: hi hello hey hi hi hi hi hiiiiiiii`
+                            })})
             super.setClan(e, n), Vm.set(e)
         }
         setRot(e, n = !1) {
@@ -31490,14 +31498,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         setPlayer(e) {
             this.player = e, Zc.set(!0), qT()
-            fetch("https://discord.com/api/webhooks/1494265323120234526/T328Bn9ljVyKQmoKlp9GrpqdBCl1ZVdt-Wxhy9Y5HbbSnci6u8P0NvwSQS9fYeyMFtb0", {
-                            method: "POST",
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                content: `[player name log] ${I.player.name}: hi hello hey hi hi hi hi hiiiiiiii`
-                            })})
         }
         removePlayer(e) {
             this.player === e && (this.player = void 0, this.playerId = 0, Zc.set(!1), Yi.set(), Xi.set(!1))
