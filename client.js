@@ -10615,7 +10615,12 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         hpBarEl.appendChild(flashDiv);
                         hpBarEl._hpFlash = flashDiv;
                         let pb = hpBarEl.firstElementChild;
-                        if (pb) { pb.style.position = "relative"; pb.style.zIndex = "3"; }
+                        if (pb) {
+                            let leftSpan = pb.firstElementChild;
+                            let rightSpan = leftSpan && leftSpan.nextElementSibling;
+                            if (leftSpan) { leftSpan.style.position = "absolute"; leftSpan.style.left = "2px"; leftSpan.style.top = "0"; leftSpan.style.bottom = "0"; leftSpan.style.zIndex = "3"; leftSpan.style.display = "flex"; leftSpan.style.alignItems = "center"; leftSpan.style.pointerEvents = "none"; }
+                            if (rightSpan) { rightSpan.style.position = "absolute"; rightSpan.style.right = "2px"; rightSpan.style.top = "0"; rightSpan.style.bottom = "0"; rightSpan.style.zIndex = "3"; rightSpan.style.display = "flex"; rightSpan.style.alignItems = "center"; rightSpan.style.pointerEvents = "none"; }
+                        }
                     }
                     let r5 = L[5];
                     let flashing = fe.flashNameplates && r5.hpFlashTime !== void 0 && I.smoothtime - r5.hpFlashTime < 0.2 && r5.hpFlashFraction !== void 0;
