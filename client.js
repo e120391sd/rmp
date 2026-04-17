@@ -18674,8 +18674,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 p(stashGearSetWithdrawBtn, "class", "btn green textblack");
                 Ve(stashGearSetWithdrawBtn, "font", "bold 14px hordes"), Ve(stashGearSetWithdrawBtn, "min-width", "95px");
                 stashGearSetDepositBtn.textContent = "Deposit";
-                p(stashGearSetDepositBtn, "class", "btn black");
-                Ve(stashGearSetDepositBtn, "color", "teal"), Ve(stashGearSetDepositBtn, "font", "bold 14px hordes"), Ve(stashGearSetDepositBtn, "min-width", "95px");
+                p(stashGearSetDepositBtn, "class", "btn cyan textblack"), Ve(stashGearSetDepositBtn, "font", "bold 14px hordes"), Ve(stashGearSetDepositBtn, "min-width", "95px");
                 p(stashGearSetRow, "style", "display:flex;gap:4px;align-items:center;flex-shrink:0;order:-1;margin-right:auto;");
                 Ve(stashGearSetEl, "max-width", "150px");
                 (t[35] || []).forEach(({ label, value }) => { let opt = h("option"); opt.textContent = label, opt.value = value, d(stashGearSetEl, opt); });
