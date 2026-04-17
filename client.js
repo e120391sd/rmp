@@ -2079,7 +2079,9 @@ void main() {
         noFrameColor: () => noFrameColor,
         outlines: () => outlines,
         enableMageCapeswing: () => enableMageCapeswing,
-        prestigeChange: () => prestigeChange
+        prestigeChange: () => prestigeChange,
+        savedGearSets: () => savedGearSets,
+        savedGearSetsValue: () => savedGearSetsValue,
     });
     var l1 = {};
     Kn(l1, {
@@ -2270,7 +2272,9 @@ void main() {
         flashNameplates: () => flashNameplates,
         flashCCIndicator: () => flashCCIndicator,
         hideChat: () => hideChat,
-        disablePartyNameplates: () => disablePartyNameplates
+        disablePartyNameplates: () => disablePartyNameplates,
+        savedGearSets: () => savedGearSets,
+        savedGearSetsValue: () => savedGearSetsValue,
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2459,7 +2463,9 @@ void main() {
         flashNameplates = ne(true),
         flashCCIndicator = ne(false),
         hideChat = ne(false),
-        disablePartyNameplates = ne(false);
+        disablePartyNameplates = ne(false),
+        savedGearSets = ne([]),
+        savedGearSetsValue = ne([]);
     var a1;
     a1 = {
         ...l1
@@ -14379,9 +14385,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 i[0] & 2 && (s.shift = o[1]), i[0] & 144 && (s.describe = o[7].id >= 0 && !o[7].item || o[4] !== void 0), i[0] & 2080 && (s.status = o[11] ? -1 : o[5] !== void 0 ? o[5].status : 0), i[0] & 128 && (s.id = "sk" + o[7].hotkey), i[0] & 144 && (s.data = o[7].id >= 0 || o[4] !== void 0 ? o[7] : void 0), i[0] & 512 && (s.auto = o[9]), i[0] & 1024 && (s.queued = o[10]), i[0] & 65536 && (s.meta = o[16]), i[0] & 32768 && (s.css = o[15]), i[0] & 8 && (s.stacks = o[3]), i[0] & 8192 && (s.cd = o[13]), i[0] & 16384 && (s.img = o[14]), i[0] & 4096 && (s.remaining = o[12]), i[0] & 128 && (s.key = o[7].hotkey), i[0] & 12112 && 
                 (s.border = 
 o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
-	: o[11] || o[9] || o[6] || o[13] ? "grey" 
-		: o[4] ? Nt(o[4].quality)[0] 
-		: "white"), i[0] & 148 | i[1] & 8 && (s.$$scope = {
+    : o[11] || o[9] || o[6] || o[13] ? "grey" 
+        : o[4] ? Nt(o[4].quality)[0] 
+        : "white"), i[0] & 148 | i[1] & 8 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -18446,7 +18452,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 i[0] & 2048 && (s.settings = [{
                     name: "Stash Settings",
                     fun: o[33]
-                }]), i[0] & 131071 | i[1] & 65536 && (s.$$scope = {
+                }]), i[0] & 131071 | i[1] & 65584 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -18638,7 +18644,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     function eL(t) {
         let e, n, o, i, s = t[8].length + "",
             r, l, a = (t[10].subscribed_until ? Nn[1].stash : Nn[0].stash) + "",
-            c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V = t[11] && VF(t),
+            c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, stashGearSetRow, stashGearSetEl, stashGearSetWithdrawBtn, stashGearSetEvts = [], V = t[11] && VF(t),
             B = pe(t[14] < 1 ? [{
                 stores: t[8],
                 name: ""
@@ -18666,6 +18672,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let W = t[0] > 0 && BF(t);
         return {
             c() {
+                stashGearSetRow = h("div"), stashGearSetEl = h("select"), stashGearSetWithdrawBtn = h("button");
+                stashGearSetWithdrawBtn.textContent = "Withdraw";
+                p(stashGearSetWithdrawBtn, "class", "btn green textblack");
+                Ve(stashGearSetWithdrawBtn, "font", "bold 14px hordes"), Ve(stashGearSetWithdrawBtn, "min-width", "95px");
+                p(stashGearSetRow, "style", "display:flex;gap:4px;align-items:center;flex-shrink:0;order:-1;margin-right:auto;");
+                Ve(stashGearSetEl, "max-width", "150px");
+                (t[35] || []).forEach(({ label, value }) => { let opt = h("option"); opt.textContent = label, opt.value = value, d(stashGearSetEl, opt); });
                 V && V.c(), e = h("div");
                 for (let R = 0; R < q.length; R += 1) q[R].c();
                 n = h("div"), o = h("div"), i = h("span"), r = T(s), l = T(" / "), c = T(a), $ && $.c(), u = h("div"), K(m.$$.fragment), g = h("div"), v = h("img"), k = h("div"), y = h("img"), W && W.c(), C = de(), p(e, "class", "panel-black scrollbar marg-top marg-bot slotparent svelte-gou6xs"), Ve(e, "max-height", t[13] + "px"), p(i, "class", f = t[8].length < (t[10].subscribed_until ? Nn[1].stash : Nn[0].stash) ? "textgreen" : "textred"), p(o, "class", "navbtn panel-black border black gold svelte-gou6xs"), Ve(o, "margin-right", "auto"), p(u, "class", "navbtn panel-black border black gold svelte-gou6xs"), p(v, "class", "svgicon"), st(v.src, _ = "/data/ui/icons/deposit.svg?v=8822612") || p(v, "src", _), p(g, "class", b = "navbtn btn grey gold " + (t[0] === 1 ? "active" : "") + " svelte-gou6xs"), p(y, "class", "svgicon"), st(y.src, F = "/data/ui/icons/withdraw.svg?v=8822612") || p(y, "src", F), p(k, "class", A = "navbtn btn grey gold " + (t[0] === 2 ? "active" : "") + " svelte-gou6xs"), p(n, "class", "formelements svelte-gou6xs")
@@ -18673,9 +18686,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             m(R, N) {
                 V && V.m(R, N), w(R, e, N);
                 for (let Y = 0; Y < q.length; Y += 1) q[Y] && q[Y].m(e, null);
-                t[28](e), w(R, n, N), d(n, o), d(o, i), d(i, r), d(i, l), d(i, c), $ && $.m(i, null), d(n, u), Q(m, u, null), d(n, g), d(g, v), d(n, k), d(k, y), W && W.m(R, N), w(R, C, N), M = !0, D || (U = [H(e, "pointerup", t[18]), H(g, "click", t[30]), H(k, "click", t[31])], D = !0)
+                t[28](e), w(R, n, N), d(stashGearSetRow, stashGearSetEl), d(stashGearSetRow, stashGearSetWithdrawBtn), d(n, o), d(o, i), d(i, r), d(i, l), d(i, c), $ && $.m(i, null), d(n, u), Q(m, u, null), d(n, g), d(g, v), d(n, k), d(k, y), W && W.m(R, N), w(R, C, N), W && d(C.previousSibling.lastChild, stashGearSetRow), stashGearSetEvts = [H(stashGearSetEl, "change", t[37]), H(stashGearSetWithdrawBtn, "click", t[38])], M = !0, D || (U = [H(e, "pointerup", t[18]), H(g, "click", t[30]), H(k, "click", t[31])], D = !0)
             },
             p(R, N) {
+                if (N[1] & 16) { while (stashGearSetEl.firstChild) stashGearSetEl.removeChild(stashGearSetEl.firstChild); (R[35] || []).forEach(({ label, value }) => { let opt = h("option"); opt.textContent = label, opt.value = value, d(stashGearSetEl, opt); }); }
+                if (N[1] & 48) stashGearSetEl.value = R[36] ?? "";
                 if (R[11] ? V ? V.p(R, N) : (V = VF(R), V.c(), V.m(e.parentNode, e)) : V && (V.d(1), V = null), N[0] & 1627128) {
                     B = pe(R[14] < 1 ? [{
                         stores: R[8],
@@ -18699,7 +18714,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     Me()
                 }(!M || N[0] & 8192) && Ve(e, "max-height", R[13] + "px"), (!M || N[0] & 256) && s !== (s = R[8].length + "") && G(r, s), (!M || N[0] & 1024) && a !== (a = (R[10].subscribed_until ? Nn[1].stash : Nn[0].stash) + "") && G(c, a), R[10].subscribed_until ? $ && ($.d(1), $ = null) : $ ? $.p(R, N) : ($ = zF(R), $.c(), $.m(i, null)), (!M || N[0] & 1280 && f !== (f = R[8].length < (R[10].subscribed_until ? Nn[1].stash : Nn[0].stash) ? "textgreen" : "textred")) && p(i, "class", f);
                 let Y = {};
-                N[0] & 4 && (Y.amount = R[2].gold), m.$set(Y), (!M || N[0] & 1 && b !== (b = "navbtn btn grey gold " + (R[0] === 1 ? "active" : "") + " svelte-gou6xs")) && p(g, "class", b), (!M || N[0] & 1 && A !== (A = "navbtn btn grey gold " + (R[0] === 2 ? "active" : "") + " svelte-gou6xs")) && p(k, "class", A), R[0] > 0 ? W ? (W.p(R, N), N[0] & 1 && S(W, 1)) : (W = BF(R), W.c(), S(W, 1), W.m(C.parentNode, C)) : W && (we(), E(W, 1, 1, () => {
+                N[0] & 4 && (Y.amount = R[2].gold), m.$set(Y), (!M || N[0] & 1 && b !== (b = "navbtn btn grey gold " + (R[0] === 1 ? "active" : "") + " svelte-gou6xs")) && p(g, "class", b), (!M || N[0] & 1 && A !== (A = "navbtn btn grey gold " + (R[0] === 2 ? "active" : "") + " svelte-gou6xs")) && p(k, "class", A), R[0] > 0 ? W ? (W.p(R, N), N[0] & 1 && S(W, 1)) : (W = BF(R), W.c(), S(W, 1), W.m(C.parentNode, C), d(C.previousSibling, stashGearSetRow)) : W && (we(), E(W, 1, 1, () => {
                     W = null
                 }), Me())
             },
@@ -18715,7 +18730,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 E(m.$$.fragment, R), E(W), M = !1
             },
             d(R) {
-                R && (x(e), x(n), x(C)), V && V.d(R), ot(q, R), t[28](null), $ && $.d(), Z(m), W && W.d(R), D = !1, rt(U)
+                R && (x(e), x(n), x(C)), V && V.d(R), ot(q, R), t[28](null), $ && $.d(), Z(m), W && W.d(R), D = !1, rt(U), stashGearSetEvts.forEach(fn => fn())
             }
         }
     }
@@ -18747,8 +18762,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function nL(t, e, n) {
-        let o, i, s, r, l, a, c, f, u, m, g;
-        re(t, Ro, ee => n(2, o = ee)), re(t, Zo, ee => n(23, i = ee)), re(t, Dn, ee => n(37, s = ee)), re(t, Em, ee => n(24, r = ee)), re(t, ya, ee => n(10, l = ee)), re(t, hf, ee => n(11, a = ee)), re(t, Ks, ee => n(12, c = ee)), re(t, er, ee => n(13, f = ee)), re(t, Sa, ee => n(14, u = ee)), re(t, zo, ee => n(16, g = ee));
+        let o, i, s, r, l, a, c, f, u, m, g, stashGearSets, stashGearSetSelected;
+        re(t, Ro, ee => n(2, o = ee)), re(t, Zo, ee => n(23, i = ee)), re(t, Dn, ee => n(37, s = ee)), re(t, Em, ee => n(24, r = ee)), re(t, ya, ee => n(10, l = ee)), re(t, hf, ee => n(11, a = ee)), re(t, Ks, ee => n(12, c = ee)), re(t, er, ee => n(13, f = ee)), re(t, Sa, ee => n(14, u = ee)), re(t, zo, ee => n(16, g = ee)), re(t, savedGearSets, ee => n(35, stashGearSets = ee));
         let v = nt.shift.store;
         re(t, v, ee => n(15, m = ee));
         let _, b, k = {},
@@ -18819,9 +18834,25 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 Xe(hf, a = !a, a)
             },
             Ie = ee => Xe(Ro, o = !1, o);
+        const onStashGearSetChange = (ee) => n(36, stashGearSetSelected = ee.target.value);
+        async function stashGearSetWithdraw() {
+            let targetValue = stashGearSetSelected ?? (fe.savedGearSets[0] && fe.savedGearSets[0].value);
+            if (!targetValue) return;
+            let gearSet = fe.savedGearSets.find(ee => ee.value === targetValue);
+            if (!gearSet) return;
+            let targetIds = new Set(gearSet.items), processed = new Set();
+            let stashSnapshot = [...C].map(store => store.temp);
+            for (let item of stashSnapshot) {
+                if (!item || !item.dbid || !targetIds.has(item.dbid) || processed.has(item.dbid)) continue;
+                if (I.player.inventory.getFirstEmptySlot() < 0) break;
+                processed.add(item.dbid);
+                yt("itemunstash", item.dbid + "");
+                await new Promise(ee => setTimeout(ee, 500));
+            }
+        }
         return t.$$.update = () => {
             t.$$.dirty[0] & 16777216 && U(), t.$$.dirty[0] & 8388615 && n(1, R = o ? Math.min(W === 1 ? i : o.gold, R) : 0)
-        }, [W, R, o, _, b, y, F, A, C, M, l, a, c, f, u, m, g, v, V, B, q, L, $, i, r, ge, Ce, ve, se, le, _e, be, Te, ie, Ie]
+        }, [W, R, o, _, b, y, F, A, C, M, l, a, c, f, u, m, g, v, V, B, q, L, $, i, r, ge, Ce, ve, se, le, _e, be, Te, ie, Ie, stashGearSets, stashGearSetSelected, onStashGearSetChange, stashGearSetWithdraw]
     }
     var _v = class extends Fe {
             constructor(e) {
@@ -20457,7 +20488,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             },
             p(o, i) {
                 let s = {};
-                i & 8388727 && (s.$$scope = {
+                i & 8683639 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -20628,7 +20659,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             V, B, q, L, $, W, R, N = ht(t[0][20] || 0) + "",
             Y, ge, Ce = t[2] < kr ? "/ " + ro(qs[t[2]]) : "",
             ve, se, le = P.ui.charpanel.rank + "",
-            _e, be, Te, ie, Ie, ee, qe, Ge, Qe, He, he, ce, $e, oe, J, O, ue;
+            _e, be, Te, ie, Ie, ee, qe, Ge, Qe, He, he, ce, $e, oe, J, O, ue, gearSetSelectorRow, gearSetSelectorEquip, gearSetSelectorCreate, gearSetSelectorDelete, gearSetSelectorEl, gearSetSelectorNameInput, gearSetSelectorEvts = [];
         Qe = new $d({
             props: {
                 amount: t[0][21] || 0
@@ -20664,6 +20695,18 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         });
         return {
             c() {
+                gearSetSelectorRow = h("div"), gearSetSelectorEquip = h("button"), gearSetSelectorCreate = h("button"), gearSetSelectorDelete = h("button"), gearSetSelectorEl = h("select"), gearSetSelectorNameInput = h("input");
+                gearSetSelectorEquip.textContent = "Equip";
+                p(gearSetSelectorEquip, "class", "btn black textgreen");
+                Ve(gearSetSelectorEquip, "font", "bold 15px hordes"), Ve(gearSetSelectorEquip, "min-width", "70px"), Ve(gearSetSelectorEquip, "white-space", "nowrap");
+                p(gearSetSelectorNameInput, "type", "text"), p(gearSetSelectorNameInput, "placeholder", "Name"), p(gearSetSelectorNameInput, "class", "textwhite");
+                Ve(gearSetSelectorNameInput, "font", "bold 15px hordes");
+                gearSetSelectorCreate.textContent = "Create", gearSetSelectorDelete.textContent = "Delete";
+                p(gearSetSelectorCreate, "class", "btn black textprimary"), p(gearSetSelectorDelete, "class", "btn black textprimary");
+                Ve(gearSetSelectorCreate, "font", "bold 15px hordes"), Ve(gearSetSelectorCreate, "min-width", "70px"), Ve(gearSetSelectorCreate, "white-space", "nowrap");
+                Ve(gearSetSelectorDelete, "font", "bold 15px hordes"), Ve(gearSetSelectorDelete, "min-width", "70px"), Ve(gearSetSelectorDelete, "white-space", "nowrap");
+                p(gearSetSelectorRow, "style", "display:flex;gap:4px;align-items:center;padding:2px 0;");
+                (t[15] || []).forEach(({ label, value }) => { let opt = h("option"); opt.textContent = label, opt.value = value, d(gearSetSelectorEl, opt); });
                 e = h("div"), n = h("div"), o = h("span"), o.textContent = `${P.ui.charpanel.name}`, i = h("span"), r = T(s), l = h("span"), l.textContent = `${P.ui.charpanel.level}`, a = h("span"), f = T(c), u = h("span"), u.textContent = `${P.ui.charpanel.class}`, m = h("span"), g = h("img"), _ = Ne(), k = T(b), F = h("span"), F.textContent = `${P.ui.charpanel.faction}`, A = h("span"), C = h("img"), D = Ne(), V = T(U), q = h("span"), q.textContent = `${P.ui.stats.array[20]}`, L = h("span"), $ = h("img"), R = Ne(), Y = T(N), ge = Ne(), ve = T(Ce), se = T(" ("), _e = T(le), be = Ne(), Te = T(t[2]), ie = T("/"), Ie = T(kr), ee = T(")"), qe = h("span"), qe.textContent = `${P.ui.charpanel.rating}`, Ge = h("span"), K(Qe.$$.fragment), He = h("span"), He.textContent = `${P.ui.charpanel.medals}`, K(he.$$.fragment), ce = h("div");
                 for (let xe = 0; xe < 6; xe += 1) Ue[xe].c();
                 $e = de(), K(oe.$$.fragment), J = h("div");
@@ -20673,6 +20716,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 p(i, "class", "bold textwhite"), p(a, "class", "bold textwhite"), p(g, "class", "texticon"), st(g.src, v = ns(t[4].class)) || p(g, "src", v), p(m, "class", y = "bold " + ("textc" + t[4].class) + " svelte-rbq5ku"), p(C, "class", "texticon"), st(C.src, M = R1(t[4].faction)) || p(C, "src", M), p(A, "class", B = "bold " + ("textf" + t[4].faction) + " svelte-rbq5ku"), p($, "class", "texticon"), st($.src, W = ja) || p($, "src", W), p(L, "class", "bold textprestige"), p(n, "class", "statcol panel-black svelte-rbq5ku"), Ve(n, "grid-template-columns", "1fr 2fr"), p(ce, "id", "statpoints"), p(ce, "class", "statcol panel-black svelte-rbq5ku"), Ve(ce, "grid-template-columns", "1fr auto auto"), p(e, "class", "grid"), Ve(e, "grid-template-columns", "3fr 2fr"), p(J, "id", "equipslots"), p(J, "class", "items svelte-rbq5ku"), p(O, "class", "grid three stats2 svelte-rbq5ku")
             },
             m(xe, Je) {
+                d(gearSetSelectorRow, gearSetSelectorCreate), d(gearSetSelectorRow, gearSetSelectorDelete), d(gearSetSelectorRow, gearSetSelectorEquip), d(gearSetSelectorRow, gearSetSelectorEl), d(gearSetSelectorRow, gearSetSelectorNameInput), w(xe, gearSetSelectorRow, Je);
+                gearSetSelectorEvts = [H(gearSetSelectorEquip, "click", t[17]), H(gearSetSelectorCreate, "click", t[12]), H(gearSetSelectorDelete, "click", t[13]), H(gearSetSelectorEl, "change", t[14]), H(gearSetSelectorNameInput, "input", t[16])];
                 w(xe, e, Je), d(e, n), d(n, o), d(n, i), d(i, r), d(n, l), d(n, a), d(a, f), d(n, u), d(n, m), d(m, g), d(m, _), d(m, k), d(n, F), d(n, A), d(A, C), d(A, D), d(A, V), d(n, q), d(n, L), d(L, $), d(L, R), d(L, Y), d(L, ge), d(L, ve), d(L, se), d(L, _e), d(L, be), d(L, Te), d(L, ie), d(L, Ie), d(L, ee), d(n, qe), d(n, Ge), Q(Qe, Ge, null), d(n, He), Q(he, n, null), d(e, ce);
                 for (let kt = 0; kt < 6; kt += 1) Ue[kt] && Ue[kt].m(ce, null);
                 d(ce, $e), Q(oe, ce, null), w(xe, J, Je);
@@ -20682,7 +20727,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 ue = !0
             },
             p(xe, Je) {
-                (!ue || Je & 16) && s !== (s = xe[4].name + "") && G(r, s), (!ue || Je & 16) && c !== (c = xe[4].level + "") && G(f, c), (!ue || Je & 16 && !st(g.src, v = ns(xe[4].class))) && p(g, "src", v), (!ue || Je & 16) && b !== (b = P.classes[xe[4].class].name + "") && G(k, b), (!ue || Je & 16 && y !== (y = "bold " + ("textc" + xe[4].class) + " svelte-rbq5ku")) && p(m, "class", y), (!ue || Je & 16 && !st(C.src, M = R1(xe[4].faction))) && p(C, "src", M), (!ue || Je & 16) && U !== (U = P.factions[xe[4].faction].name + "") && G(V, U), (!ue || Je & 16 && B !== (B = "bold " + ("textf" + xe[4].faction) + " svelte-rbq5ku")) && p(A, "class", B), (!ue || Je & 1) && N !== (N = ht(xe[0][20] || 0) + "") && G(Y, N), (!ue || Je & 4) && Ce !== (Ce = xe[2] < kr ? "/ " + ro(qs[xe[2]]) : "") && G(ve, Ce), (!ue || Je & 4) && G(Te, xe[2]);
+                if (Je & 32768) { while (gearSetSelectorEl.firstChild) gearSetSelectorEl.removeChild(gearSetSelectorEl.firstChild); (xe[15] || []).forEach(({ label, value }) => { let opt = h("option"); opt.textContent = label, opt.value = value, d(gearSetSelectorEl, opt); }); }
+                if (Je & 32768 || Je & 262144) gearSetSelectorEl.value = xe[18] ?? "";
+(!ue || Je & 16) && s !== (s = xe[4].name + "") && G(r, s), (!ue || Je & 16) && c !== (c = xe[4].level + "") && G(f, c), (!ue || Je & 16 && !st(g.src, v = ns(xe[4].class))) && p(g, "src", v), (!ue || Je & 16) && b !== (b = P.classes[xe[4].class].name + "") && G(k, b), (!ue || Je & 16 && y !== (y = "bold " + ("textc" + xe[4].class) + " svelte-rbq5ku")) && p(m, "class", y), (!ue || Je & 16 && !st(C.src, M = R1(xe[4].faction))) && p(C, "src", M), (!ue || Je & 16) && U !== (U = P.factions[xe[4].faction].name + "") && G(V, U), (!ue || Je & 16 && B !== (B = "bold " + ("textf" + xe[4].faction) + " svelte-rbq5ku")) && p(A, "class", B), (!ue || Je & 1) && N !== (N = ht(xe[0][20] || 0) + "") && G(Y, N), (!ue || Je & 4) && Ce !== (Ce = xe[2] < kr ? "/ " + ro(qs[xe[2]]) : "") && G(ve, Ce), (!ue || Je & 4) && G(Te, xe[2]);
                 let kt = {};
                 Je & 1 && (kt.amount = xe[0][21] || 0), Qe.$set(kt);
                 let At = {};
@@ -20737,7 +20784,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 ue = !1
             },
             d(xe) {
-                xe && (x(e), x(J), x(O)), Z(Qe), Z(he), ot(Ue, xe), Z(oe), ot(Oe, xe), ot(Ze, xe)
+                xe && (x(gearSetSelectorRow), x(e), x(J), x(O)), Z(Qe), Z(he), ot(Ue, xe), Z(oe), ot(Oe, xe), ot(Ze, xe), gearSetSelectorEvts.forEach(fn => fn());
             }
         }
     }
@@ -20797,10 +20844,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         },
         SC = (t, e) => e >= 101;
-
+        let selectedGearSet = null
     function $L(t, e, n) {
-        let o, i, s, r, l, a;
-        re(t, Qs, _ => n(0, i = _)), re(t, ws, _ => n(3, s = _)), re(t, Gi, _ => n(4, r = _)), re(t, ha, _ => n(5, l = _)), re(t, ga, _ => n(6, a = _)), I && I.player && !MC && (MC = !0, Ml.forEach((_, b) => {
+        let o, i, s, r, l, a, gearSets, selectedGearSet, gearSetName = "";
+        re(t, Qs, _ => n(0, i = _)), re(t, ws, _ => n(3, s = _)), re(t, Gi, _ => n(4, r = _)), re(t, ha, _ => n(5, l = _)), re(t, ga, _ => n(6, a = _)), re(t, savedGearSets, _ => n(15, gearSets = _)), I && I.player && !MC && (MC = !0, Ml.forEach((_, b) => {
             b - 61 == I.player.class && _.statsConvert && _.statsConvert.forEach(k => {
                 let y = Pv.get(k[0]) || new Map;
                 y.set(k[2], (y.get(k[2]) || 0) + k[1]), Iv.set(k[0], y)
@@ -20815,9 +20862,64 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             v = () => {
                 Xe(ws, s = !1, s)
             };
+        function gearSetSelectorCreate() {
+            let equipped = [];
+            I.player.inventory.slots.forEach((item, slot) => {
+                if (slot >= 101 && item && item.dbid) equipped.push(item.dbid);
+            });
+            equipped.sort();
+            let current = fe.savedGearSets || [];
+            let isDuplicate = current.some(set => {
+                let setItems = (set.items || []).slice().sort();
+                return setItems.length === equipped.length && setItems.every((id, idx) => id === equipped[idx]);
+            });
+            if (!isDuplicate) {
+                let name = gearSetName, newValue = Date.now().toString();
+                savedGearSets.update(sets => [...sets, { label: name, value: newValue, items: equipped }]);
+                n(18, selectedGearSet = newValue);
+            }
+        }
+        function gearSetSelectorDelete() {
+            let target = selectedGearSet ?? (fe.savedGearSets[0] && fe.savedGearSets[0].value);
+            if (target === undefined) return;
+            savedGearSets.update(sets => sets.filter(set => set.value !== target));
+            let remaining = fe.savedGearSets;
+            n(18, selectedGearSet = remaining.length > 0 ? remaining[0].value : undefined);
+        }
+        const gearSetSelectorChange = (e) => n(18, selectedGearSet = e.target.value);
+        const onGearSetNameInput = (e) => gearSetName = e.target.value;
+        async function gearSetSelectorEquip() {
+            let targetValue = selectedGearSet ?? (fe.savedGearSets[0] && fe.savedGearSets[0].value);
+            if (!targetValue) return;
+            let gearSet = fe.savedGearSets.find(s => s.value === targetValue);
+            if (!gearSet) return;
+            let targetIds = new Set(gearSet.items);
+            const buildEquipList = () => {
+                let processed = new Set();
+                I.player.inventory.slots.forEach((item, slot) => {
+                    if (slot >= 101 && item && item.dbid && targetIds.has(item.dbid)) processed.add(item.dbid);
+                });
+                let toEquip = [], reservedSlots = new Set();
+                I.player.inventory.slots.forEach((item, slot) => {
+                    if (slot < 101 && item && item.dbid && targetIds.has(item.dbid) && !processed.has(item.dbid)) {
+                        processed.add(item.dbid);
+                        let equipSlot = item.getBestEquipslot(I.player.inventory);
+                        if (equipSlot === undefined || reservedSlots.has(equipSlot)) equipSlot = [110, 111].find(s => !I.player.inventory.slots.get(s) && !reservedSlots.has(s)) ?? [110, 111].find(s => !reservedSlots.has(s));
+                        if (equipSlot !== undefined) { reservedSlots.add(equipSlot); toEquip.push({ from: slot, to: equipSlot }); }
+                    }
+                });
+                return toEquip;
+            };
+            let toEquip = buildEquipList();
+            if (toEquip.length === 0) { await new Promise(r => setTimeout(r, 750)); toEquip = buildEquipList(); }
+            for (let { from, to } of toEquip) {
+                yt("itemmove", `${from} ${to}`);
+                await new Promise(r => setTimeout(r, 250));
+            }
+        }
         return t.$$.update = () => {
             t.$$.dirty & 1 && n(2, o = uc(i[20] || 0))
-        }, [i, c, o, s, r, l, a, f, u, m, g, v]
+        }, [i, c, o, s, r, l, a, f, u, m, g, v, gearSetSelectorCreate, gearSetSelectorDelete, gearSetSelectorChange, gearSets, onGearSetNameInput, gearSetSelectorEquip, selectedGearSet]
     }
     var Ev = class extends Fe {
             constructor(e) {
@@ -31535,9 +31637,50 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         t.setPosLock(e[1], e[2], e[3])
     });
     var VT = (t, e, n) => {
-            let o = I.getEntityById(e[0]);
-            o === void 0 || DT.get(t)(o, e, n)
-        },
+        let caster = e[0],
+        skillId = e[1],
+        castStart = e[2]
+        target = e[3],
+        casttimefinish = e[4],
+        isSkill = e[5]
+
+        caster = I.getEntityById(caster)
+        let targets = Array.from(targettedPlayers,([id, casters]) => {
+            return {id,casters}
+        })
+        let targetableSkillIds = new Set([54, 51])
+        let currentTime = Date.now()
+        let expiringCasts = Array.from(targettedPlayers,([id,casterArray]) => ({id,casterArray})).filter(target => target.casterArray.some(casterObject => currentTime > casterObject.expiryTime))
+
+        if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
+            let isTargeting = targets.map(i => {
+                let foundCast = i.casters.find(t => t.playerId === e[0])
+                let indexOf = i.casters.indexOf(foundCast)
+                if(indexOf === -1) return
+                i.casters.splice(indexOf,1)
+                //console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
+            })
+        }
+
+        if(fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) { //iceblockthing
+            //if(caster.party === 0) return
+            let targ = I.getEntityById(target)
+            if(!targettedPlayers.get(target))targettedPlayers.set(target,[])
+            let player = targettedPlayers.get(target)
+            let playerObject = {playerId: e[0], expiryTime: currentTime + 4250}
+            player.push(playerObject)
+            //console.log(player[0],targettedPlayers)
+            //console.log(`added ${skillId} by ${e[0]}`)
+        }
+
+        for(let target of expiringCasts) {
+            let foundCast = target.casterArray.find(i => currentTime > i.expiryTime)
+            let index = target.casterArray.indexOf(foundCast)
+            if(index === -1) return
+            target.casterArray.splice(index,1)
+            //console.log(`removed cast by ${foundCast.playerId}, expired`)
+        }
+    },
         sU = t => {
             let e = I.getEntityById(t);
             return `${t>0?e?e.name:"unknown":"nobody"}`
