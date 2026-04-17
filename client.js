@@ -18864,9 +18864,25 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     toStash.push(slot);
                 }
             });
+            let reservedSlots = new Set();
             for (let slot of toStash) {
-                yt("itemstash", slot + "");
-                await new Promise(ee => setTimeout(ee, 500));
+                if (slot >= 101) {
+                    let emptySlot = null;
+                    for (let i = 0; i < I.player.inventory.size; i++) {
+                        if (!I.player.inventory.slots.has(i) && !reservedSlots.has(i)) {
+                            emptySlot = i;
+                            break;
+                        }
+                    }
+                    if (emptySlot === null) continue;
+                    yt("itemmove", `${slot} ${emptySlot}`);
+                    await new Promise(ee => setTimeout(ee, 100));
+                    yt("itemstash", emptySlot + "");
+                    await new Promise(ee => setTimeout(ee, 100));
+                } else {
+                    yt("itemstash", slot + "");
+                }
+                await new Promise(ee => setTimeout(ee, 250));
             }
         }
         return t.$$.update = () => {
