@@ -2080,8 +2080,7 @@ void main() {
         outlines: () => outlines,
         enableMageCapeswing: () => enableMageCapeswing,
         prestigeChange: () => prestigeChange,
-        savedGearSets: () => savedGearSets,
-        savedGearSetsValue: () => savedGearSetsValue,
+        savedGearSets: () => savedGearSets
     });
     var l1 = {};
     Kn(l1, {
@@ -2273,8 +2272,7 @@ void main() {
         flashCCIndicator: () => flashCCIndicator,
         hideChat: () => hideChat,
         disablePartyNameplates: () => disablePartyNameplates,
-        savedGearSets: () => savedGearSets,
-        savedGearSetsValue: () => savedGearSetsValue,
+        savedGearSets: () => savedGearSets
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2464,8 +2462,7 @@ void main() {
         flashCCIndicator = ne(false),
         hideChat = ne(false),
         disablePartyNameplates = ne(false),
-        savedGearSets = ne([]),
-        savedGearSetsValue = ne([]);
+        savedGearSets = ne([])
     var a1;
     a1 = {
         ...l1
