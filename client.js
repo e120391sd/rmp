@@ -18763,7 +18763,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
 
     function nL(t, e, n) {
         let o, i, s, r, l, a, c, f, u, m, g, stashGearSets, stashGearSetSelected;
-        re(t, Ro, ee => n(2, o = ee)), re(t, Zo, ee => n(23, i = ee)), re(t, Dn, ee => n(37, s = ee)), re(t, Em, ee => n(24, r = ee)), re(t, ya, ee => n(10, l = ee)), re(t, hf, ee => n(11, a = ee)), re(t, Ks, ee => n(12, c = ee)), re(t, er, ee => n(13, f = ee)), re(t, Sa, ee => n(14, u = ee)), re(t, zo, ee => n(16, g = ee)), re(t, savedGearSets, ee => n(35, stashGearSets = ee));
+        re(t, Ro, ee => n(2, o = ee)), re(t, Zo, ee => n(23, i = ee)), re(t, Dn, ee => n(37, s = ee)), re(t, Em, ee => n(24, r = ee)), re(t, ya, ee => n(10, l = ee)), re(t, hf, ee => n(11, a = ee)), re(t, Ks, ee => n(12, c = ee)), re(t, er, ee => n(13, f = ee)), re(t, Sa, ee => n(14, u = ee)), re(t, zo, ee => n(16, g = ee)), re(t, savedGearSets, ee => n(35, stashGearSets = ee.filter(s => s.playerId === (I.player && I.player.id))));
         let v = nt.shift.store;
         re(t, v, ee => n(15, m = ee));
         let _, b, k = {},
@@ -18836,7 +18836,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             Ie = ee => Xe(Ro, o = !1, o);
         const onStashGearSetChange = (ee) => n(36, stashGearSetSelected = ee.target.value);
         async function stashGearSetWithdraw() {
-            let targetValue = stashGearSetSelected ?? (fe.savedGearSets[0] && fe.savedGearSets[0].value);
+            let playerSets = fe.savedGearSets.filter(s => s.playerId === (I.player && I.player.id));
+            let targetValue = stashGearSetSelected ?? (playerSets[0] && playerSets[0].value);
             if (!targetValue) return;
             let gearSet = fe.savedGearSets.find(ee => ee.value === targetValue);
             if (!gearSet) return;
@@ -20847,7 +20848,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let selectedGearSet = null
     function $L(t, e, n) {
         let o, i, s, r, l, a, gearSets, selectedGearSet, gearSetName = "";
-        re(t, Qs, _ => n(0, i = _)), re(t, ws, _ => n(3, s = _)), re(t, Gi, _ => n(4, r = _)), re(t, ha, _ => n(5, l = _)), re(t, ga, _ => n(6, a = _)), re(t, savedGearSets, _ => n(15, gearSets = _)), I && I.player && !MC && (MC = !0, Ml.forEach((_, b) => {
+        re(t, Qs, _ => n(0, i = _)), re(t, ws, _ => n(3, s = _)), re(t, Gi, _ => n(4, r = _)), re(t, ha, _ => n(5, l = _)), re(t, ga, _ => n(6, a = _)), re(t, savedGearSets, _ => n(15, gearSets = _.filter(s => s.playerId === (I.player && I.player.id)))), I && I.player && !MC && (MC = !0, Ml.forEach((_, b) => {
             b - 61 == I.player.class && _.statsConvert && _.statsConvert.forEach(k => {
                 let y = Pv.get(k[0]) || new Map;
                 y.set(k[2], (y.get(k[2]) || 0) + k[1]), Iv.set(k[0], y)
@@ -20875,21 +20876,23 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             });
             if (!isDuplicate) {
                 let name = gearSetName, newValue = Date.now().toString();
-                savedGearSets.update(sets => [...sets, { label: name, value: newValue, items: equipped }]);
+                savedGearSets.update(sets => [...sets, { label: name, value: newValue, items: equipped, playerId: I.player.id }]);
                 n(18, selectedGearSet = newValue);
             }
         }
         function gearSetSelectorDelete() {
-            let target = selectedGearSet ?? (fe.savedGearSets[0] && fe.savedGearSets[0].value);
+            let playerSets = fe.savedGearSets.filter(s => s.playerId === (I.player && I.player.id));
+            let target = selectedGearSet ?? (playerSets[0] && playerSets[0].value);
             if (target === undefined) return;
             savedGearSets.update(sets => sets.filter(set => set.value !== target));
-            let remaining = fe.savedGearSets;
+            let remaining = fe.savedGearSets.filter(s => s.playerId === (I.player && I.player.id));
             n(18, selectedGearSet = remaining.length > 0 ? remaining[0].value : undefined);
         }
         const gearSetSelectorChange = (e) => n(18, selectedGearSet = e.target.value);
         const onGearSetNameInput = (e) => gearSetName = e.target.value;
         async function gearSetSelectorEquip() {
-            let targetValue = selectedGearSet ?? (fe.savedGearSets[0] && fe.savedGearSets[0].value);
+            let playerSets = fe.savedGearSets.filter(s => s.playerId === (I.player && I.player.id));
+            let targetValue = selectedGearSet ?? (playerSets[0] && playerSets[0].value);
             if (!targetValue) return;
             let gearSet = fe.savedGearSets.find(s => s.value === targetValue);
             if (!gearSet) return;
