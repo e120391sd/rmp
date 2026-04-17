@@ -28636,11 +28636,15 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             if ((t.type !== 3 && t.stats)) {
                 let min = 0.5 * (fe.nameplateSize / 250);
                 let max = 2.0 * (fe.nameplateSize / 250);
+
                 if (!l && playerIsBot) return;
                 if (!l && isPet && !fe.nameplateShowMonsters) return;
-                t.namePlateScale =  vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, min, max);
-                let castsOnPlayer = targettedPlayers.get(t.id) || []
-                t.namePlateScale *= (1 + castsOnPlayer.length / 10)
+
+                let castsOnPlayer = targettedPlayers.get(t.id) || [];
+                let targetScale = (l ? 1 : 0) * (1 + castsOnPlayer.length / 10);
+
+                t.namePlateScale = vt(
+                t.namePlateScale + (targetScale - t.namePlateScale) * 0.25,min,max);
                 let CCFound, CCColor
                 let playerBuffs = I.getEntityById(t.id)
                 if(playerBuffs) playerBuffs = playerBuffs.buffs.buffs
@@ -31639,6 +31643,49 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     var VT = (t, e, n) => {
             let o = I.getEntityById(e[0]);
             o === void 0 || DT.get(t)(o, e, n)
+            let caster = e[0],
+    skillId = e[1],
+    castStart = e[2]
+    target = e[3],
+    casttimefinish = e[4],
+    isSkill = e[5]
+
+    caster = I.getEntityById(caster)
+    let targets = Array.from(targettedPlayers,([id, casters]) => {
+        return {id,casters}
+    })
+    let targetableSkillIds = new Set([54, 51])
+    let currentTime = Date.now()
+    let expiringCasts = Array.from(targettedPlayers,([id,casterArray]) => ({id,casterArray})).filter(target => target.casterArray.some(casterObject => currentTime > casterObject.expiryTime))
+
+    if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
+        let isTargeting = targets.map(i => {
+            let foundCast = i.casters.find(t => t.playerId === e[0])
+            let indexOf = i.casters.indexOf(foundCast)
+            if(indexOf === -1) return
+            i.casters.splice(indexOf,1)
+            //console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
+        })
+    }
+
+    if(fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) { //iceblockthing
+        //if(caster.party === 0) return
+        let targ = I.getEntityById(target)
+        if(!targettedPlayers.get(target))targettedPlayers.set(target,[])
+        let player = targettedPlayers.get(target)
+        let playerObject = {playerId: e[0], expiryTime: currentTime + 4250}
+        player.push(playerObject)
+        //console.log(player[0],targettedPlayers)
+        //console.log(`added ${skillId} by ${e[0]}`)
+    }
+
+    for(let target of expiringCasts) {
+        let foundCast = target.casterArray.find(i => currentTime > i.expiryTime)
+        let index = target.casterArray.indexOf(foundCast)
+        if(index === -1) return
+        target.casterArray.splice(index,1)
+        //console.log(`removed cast by ${foundCast.playerId}, expired`)
+    }
         },
         sU = t => {
             let e = I.getEntityById(t);
