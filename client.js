@@ -2052,52 +2052,8 @@ void main() {
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
-        disableCircleCooldowns: () => disableCircleCooldowns,
-        nextFriendlyClassSelectorEnabled: () => nextFriendlyClassSelectorEnabled,
-        nextFriendlyClassArcher: () => nextFriendlyClassArcher,
-        nextFriendlyClassShaman: () => nextFriendlyClassShaman,
-        nextFriendlyClassWarrior: () => nextFriendlyClassWarrior,
-        nextFriendlyClassMage: () => nextFriendlyClassMage,
-        classSelectorKbArcher: () => classSelectorKbArcher,
-        classSelectorKbShaman: () => classSelectorKbShaman,
-        classSelectorKbWarrior: () => classSelectorKbWarrior,
-        classSelectorKbMage: () => classSelectorKbMage,
-        classSelectorAnimations: () => classSelectorAnimations,
-        kbItemNames: () => kbItemNamesStore,
         timeToIngame: () => timeToIngame,
-        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
-        ignoreNameplateViewRange: () => ignoreNameplateViewRange,
-        removeFX: () => removeFX,
-        fxAlphaSprite: () => fxAlphaSprite,
-        fxAlphaRibbon: () => fxAlphaRibbon,
-        fxAlphaModel: () => fxAlphaModel,
-        shrinkIndicators: () => shrinkIndicators,
-        stackIndicators: () => stackIndicators,
-        prestigeSimulate: () => prestigeSimulate,
-        deepFreezeColor: () => deepFreezeColor,
-        chillColor: () => chillColor,
-        agonizeColor: () => agonizeColor,
-        stunColor: () => stunColor,
-        blindColor: () => blindColor,
-        relColor: () => relColor,
-        CCIndicator: () => CCIndicator,
-        sortParty: () => sortParty,
-        hideBuffs: () => hideBuffs,
-        hiddenBuffs: () => hiddenBuffs,
-        hideClassBuffs: () => hideClassBuffs,
-        hiddenClassBuffs: () => hiddenClassBuffs,
-        onlyShowOwnRev: () => onlyShowOwnRev,
-        stackSameBuffs: () => stackSameBuffs,
-        revStackNameplate: () => revStackNameplate,
-        nameplateSize: () => nameplateSize,
-        nameSize: () => nameSize,
-        nameSpacing: () => nameSpacing,
-        CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
-        noFrameColor: () => noFrameColor,
-        outlines: () => outlines,
-        enableMageCapeswing: () => enableMageCapeswing,
-        prestigeChange: () => prestigeChange,
-        kbItemNames: () => kbItemNamesStore
+        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots
     });
     var l1 = {};
     Kn(l1, {
@@ -2257,70 +2213,8 @@ void main() {
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
-        disableCircleCooldowns: () => disableCircleCooldowns,
-        nextFriendlyClassSelectorEnabled: () => nextFriendlyClassSelectorEnabled,
-        nextFriendlyClassArcher: () => nextFriendlyClassArcher,
-        nextFriendlyClassShaman: () => nextFriendlyClassShaman,
-        nextFriendlyClassWarrior: () => nextFriendlyClassWarrior,
-        nextFriendlyClassMage: () => nextFriendlyClassMage,
-        classSelectorKbArcher: () => classSelectorKbArcher,
-        classSelectorKbShaman: () => classSelectorKbShaman,
-        classSelectorKbWarrior: () => classSelectorKbWarrior,
-        classSelectorKbMage: () => classSelectorKbMage,
-        classSelectorAnimations: () => classSelectorAnimations,
-        kbItemNames: () => kbItemNamesStore,
         timeToIngame: () => timeToIngame,
-        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
-        ignoreNameplateViewRange: () => ignoreNameplateViewRange,
-        removeFX: () => removeFX,
-        fxAlphaSprite: () => fxAlphaSprite,
-        fxAlphaRibbon: () => fxAlphaRibbon,
-        fxAlphaModel: () => fxAlphaModel,
-        shrinkIndicators: () => shrinkIndicators,
-        stackIndicators: () => stackIndicators,
-        prestigeSimulate: () => prestigeSimulate,
-        deepFreezeColor: () => deepFreezeColor,
-        chillColor: () => chillColor,
-        agonizeColor: () => agonizeColor,
-        stunColor: () => stunColor,
-        blindColor: () => blindColor,
-        relColor: () => relColor,
-        CCIndicator: () => CCIndicator,
-        sortParty: () => sortParty,
-        hideBuffs: () => hideBuffs,
-        hiddenBuffs: () => hiddenBuffs,
-        hideClassBuffs: () => hideClassBuffs,
-        hiddenClassBuffs: () => hiddenClassBuffs,
-        onlyShowOwnRev: () => onlyShowOwnRev,
-        stackSameBuffs: () => stackSameBuffs,
-        revStackNameplate: () => revStackNameplate,
-        nameplateSize: () => nameplateSize,
-        nameSize: () => nameSize,
-        nameSpacing: () => nameSpacing,
-        CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
-        noFrameColor: () => noFrameColor,
-        outlines: () => outlines,
-        enableMageCapeswing: () => enableMageCapeswing,
-        prestigeChange: () => prestigeChange,
-        flashNameplates: () => flashNameplates,
-        flashCCIndicator: () => flashCCIndicator,
-        hideChat: () => hideChat,
-        disablePartyNameplates: () => disablePartyNameplates,
-        charmAutoEquip: () => charmAutoEquip,
-        charmAutoStash: () => charmAutoStash,
-        aoeCircleEnabled: () => aoeCircleEnabled,
-        aoeCircleSize: () => aoeCircleSize,
-        aoeCircleAlpha: () => aoeCircleAlpha,
-        aoeCircleColor: () => aoeCircleColor,
-        preventInputLock: () => preventInputLock,
-        ghostMode: () => ghostMode,
-        speedOverride: () => speedOverride,
-        freezeBuffs: () => freezeBuffs,
-        noRangeCheck: () => noRangeCheck,
-        freeflyMode: () => freeflyMode,
-        freezeServer: () => freezeServer,
-        showDeadPlayers: () => showDeadPlayers,
-        showInvisiblePlayers: () => showInvisiblePlayers
+        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2478,77 +2372,8 @@ void main() {
         disableDamage = ne(false),
         disableHealing = ne(false),
         disableClantags = ne(false),
-        disableCircleCooldowns = ne(false),
-        nextFriendlyClassSelectorEnabled = ne(false),
-        nextFriendlyClassArcher = ne(false),
-        nextFriendlyClassShaman = ne(false),
-        nextFriendlyClassWarrior = ne(false),
-        nextFriendlyClassMage = ne(false),
-        classSelectorKbArcher = ne(""),
-        classSelectorKbShaman = ne(""),
-        classSelectorKbWarrior = ne(""),
-        classSelectorKbMage = ne(""),
-        classSelectorAnimations = ne(true),
-        kbItemNamesStore = ne("control"),
         timeToIngame = ne(false),
-        nextFriendlyIgnoreBots = ne(true),
-        removeFX = ne(true),
-        shrinkIndicators = ne(500),
-        stackIndicators = ne(false),
-        prestigeChange = ne(false),
-        prestigeSimulate = ne(0),
-        preventInputLock = ne(false),
-        ghostMode = ne(false),
-        freezeBuffs = ne(false),
-        noRangeCheck = ne(false),
-        freeflyMode = ne(false),
-        freezeServer = ne(false),
-        showDeadPlayers = ne(false),
-        showInvisiblePlayers = ne(false),
-        deepFreezeColor = ne("#4cfff9"),
-        chillColor = ne("#4cfff9"),
-        agonizeColor = ne("#ff2020"),
-        stunColor = ne("#ff2020"),
-        blindColor = ne("#ffed2d"),
-        relColor = ne("#ffed2d"),
-        CCIndicator = ne(false),
-        sortParty = ne(false),
-        hideBuffs = ne(false),
-        hiddenBuffs = ne([92,96,95,86,68,67,89,74,127,130,93]),
-        hideClassBuffs = ne(false),
-        hiddenClassBuffs = ne([80, 78, 81, 76, 75]),
-        onlyShowOwnRev = ne(false),
-        stackSameBuffs = ne(false),
-        revStackNameplate = ne(false),
-        nameplateSize = ne(500),
-        nameSize = ne(500),
-        nameSpacing = ne(0),
-        CCIndicatorOnNameplates = ne(false),
-        noFrameColor = ne(false),
-        outlines = ne(false),
-        enableMageCapeswing = ne(false),
-        ignoreNameplateViewRange = ne(false),
-        flashNameplates = ne(true),
-        flashCCIndicator = ne(false),
-        hideChat = ne(false),
-        disablePartyNameplates = ne(false),
-        charmAutoEquip = ne(false),
-        charmAutoStash = ne(false),
-        aoeCircleEnabled = ne(false),
-        aoeCircleSize = ne(75),
-        aoeCircleAlpha = ne(50),
-        aoeCircleColor = ne("#ffffff"),
-        fxAlphaSprite = ne(100),
-        fxAlphaRibbon = ne(100),
-        fxAlphaModel = ne(100),
-        posX = ne(""),
-        posY = ne(""),
-        posZ = ne(""),
-        speedOverride = ne(0)
-    var _posX = "", _posY = "", _posZ = "";
-    posX.subscribe(v => _posX = v);
-    posY.subscribe(v => _posY = v);
-    posZ.subscribe(v => _posZ = v);
+        nextFriendlyIgnoreBots = ne(true);
     var a1;
     a1 = {
         ...l1
@@ -2565,7 +2390,6 @@ void main() {
         },
         fe = {};
     for (let t in a1) a3(t, a1[t]);
-    hideChat.subscribe(v => { let el = document.getElementById("modHideChatStyle"); if (!el) { el = document.createElement("style"), el.id = "modHideChatStyle", document.head.appendChild(el) } el.textContent = v ? ".l-corner-ll { display: none !important; }" : "" });
     var P;
     Jr.subscribe(async t => {
         await fetch(`/data/loc/${t}.json?v=8822612`).then(async e => {
@@ -3182,8 +3006,7 @@ void main() {
             }
         },
         B3 = {
-            decode: (t,id) => {
-                //console.log(id)
+            decode: t => {
                 let e = t,
                     n = {};
                 z = 0;
@@ -3769,6 +3592,7 @@ void main() {
         $3 = [],
         w7 = 0;
     for (let t in Mt) Mt[t] && (Mt[t].header = w7++, Mt[t].packData = function(e) {
+        console.log(e,e._header)
         return e._header = this.header, this.encode(e)
     }, $3.push(Mt[t]));
     var O3 = t => {
@@ -3905,7 +3729,7 @@ void main() {
             rl[t].push(e)
         },
         Io = t => {
-            xi === void 0 || w1 !== 1 || fe.freezeServer || xi.send(t)
+            xi === void 0 || w1 !== 1 || xi.send(t)
         },
         Z3 = t => {
             if (xi !== void 0) return;
@@ -4771,7 +4595,7 @@ void main() {
                 } else if (this.targetMode === 16) s = e;
                 else if (this.targetMode === 17 && (s === void 0 || s === e)) return 3;
                 if (s !== void 0 && !s.stats.alive) return 10;
-                if (!fe.noRangeCheck && s && o !== e.id && s !== e && this.range > 0 && !e.combatRangeCheck(s, i ? this.range : this.graceRange)) return 6
+                if (s && o !== e.id && s !== e && this.range > 0 && !e.combatRangeCheck(s, i ? this.range : this.graceRange)) return 6
             }
             return this.disablingBuffs.some(s => e.buffs.hasAnyWithTag(s)) ? 12 : 0
         }
@@ -5059,7 +4883,7 @@ void main() {
         castLen: 0,
         costMp: t => 10 + t * 3,
         fx: {
-            effectTarget: fe.removeFX ? void 0 : 106
+            effectTarget: 106
         },
         onCast: (t, e, n) => {}
     });
@@ -5080,7 +4904,7 @@ void main() {
         costMp: t => t * 2,
         fx: {
             effectMissile: 107,
-            effectTarget: fe.removeFX ? void 0 : 111
+            effectTarget: 111
         },
         onCast: (t, e, n, o, i, s) => {}
     });
@@ -5330,7 +5154,7 @@ void main() {
             effectImpact: 70,
             animCast: 14,
             animChannel: 15,
-            effectMissile: fe.removeFX ? void 0 : 69
+            effectMissile: 69
         },
         onCast: (t, e, n) => ({
             id: 30,
@@ -6985,413 +6809,6 @@ void main() {
         t.classes.forEach(e => ed.set(e.id, e)), t.files.forEach(e => Ga.set(e.id, e)), t.particles.forEach(e => Jp.set(e.id, e)), t.effects.forEach(e => Xf.set(e.id, e)), t.sounds.forEach(e => Kp.set(e.id, e)), t.soundsets.forEach(e => B1.set(e.id, e)), t.soundsetSteps.forEach(e => U1.set(e.id, e)), t.meshes.forEach(e => Fi.set(e.id, e)), t.ribbons.forEach(e => $1.set(e.id, e)), t.areas.forEach(e => Qf.set(e.id, e)), t.terrains.forEach(e => Ha.set(e.id, e)), t.foliages.forEach(e => Ya.set(e.id, e)), t.environments.forEach(e => Xa.set(e.id, e)), t.animations.forEach(e => Zf.set(e.id, e)), t.skins.forEach(e => O1.set(e.id, e)), t.skeletons.forEach(e => N1.set(e.id, e)), t.creatures.forEach(e => W1.set(e.id, e)), t.creaturesMonster.forEach(e => j1.set(e.id, e)), t.creaturesConjurer.forEach(e => B9.set(e.id, e)), t.creaturesTrader.forEach(e => G1.set(e.id, e)), t.traderShopItems.forEach(e => os.set(e.id, e)), t.worlds.forEach(e => {
             H1.set(e.id, e)
         });
-        
-        // edit skins:
-        let shadowstrider = {
-      "animset": 4,
-      "body": [
-        {
-          "bid": 0,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 1,
-          "lod": 1,
-          "mid": 1,
-          "pid": -1,
-          "pos": [
-            0,
-            -0.05877852439880371,
-            0
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.6000000238418579,
-            0.6000000238418579,
-            1
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 16,
-          "col": [
-            0,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 1,
-          "pid": 0,
-          "pos": [
-            0,
-            0.10000000149011612,
-            -1
-          ],
-          "rot": [
-            0.6000000238418579,
-            0,
-            0
-          ],
-          "scl": [
-            1.2000000476837158,
-            1.5000000476837158,
-            1.599999976158142
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 1,
-          "col": [
-            0,
-            2.5,
-            0.7,
-            0
-          ],
-          "colMode": 0,
-          "lod": 1,
-          "mid": 1559,
-          "pid": 0,
-          "pos": [
-            0,
-            -0.05000000074505806,
-            0.5199999809265137
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.6500000238418579,
-            0.6500000238418579,
-            0.6500000238418579
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 4,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 7878,
-          "pid": -1,
-          "pos": [
-            0,
-            0,
-            0
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            1.599999976158142,
-            1.599999976158142,
-            1.599999976158142
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 5,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 7878,
-          "pid": -1,
-          "pos": [
-            0,
-            1.2246467698671066e-17,
-            0
-          ],
-          "rot": [
-            0,
-            3.1415927410125732,
-            0
-          ],
-          "scl": [
-            1.599999976158142,
-            1.599999976158142,
-            1.599999976158142
-          ],
-          "ts": 1
-        }
-      ],
-      "capeswing": 1,
-      "colPrim": [
-        0.1,
-        0.1,
-        0.1,
-        0.1,
-      ],
-      "colSec": [
-        0.1,
-        0.1,
-        0.1,
-        0.1,
-      ],
-      "effects": [],
-      "id": 23,
-      "mountPart": 0,
-      "mountPos": [
-        0,
-        0.800000011920929,
-        -1
-      ],
-      "sheathedPos": [
-        0,
-        0,
-        -0.5
-      ],
-      "size": 1,
-      "skeleton": 1,
-      "soundset": 5,
-      "unsheathedPos": [
-        0,
-        0.800000011920929,
-        0
-      ]
-    }   
-    let scarab = {
-      "animset": 4,
-      "body": [
-        {
-          "bid": 0,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 1,
-          "lod": 1,
-          "mid": 13,
-          "pid": -1,
-          "pos": [
-            0,
-            0.05067838728427887,
-            0
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.800000011920929,
-            0.800000011920929,
-            0.800000011920929
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 16,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 13,
-          "pid": 0,
-          "pos": [
-            0,
-            0.20000000298023224,
-            -0.800000011920929
-          ],
-          "rot": [
-            0,
-            -3.140000104904175,
-            0
-          ],
-          "scl": [
-            1.100000023841858,
-            1.100000023841858,
-            1.100000023841858
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 1,
-          "col": [
-            5,
-            5,
-            5,
-            5
-          ],
-          "colMode": 0,
-          "lod": 1,
-          "mid": 1570,
-          "pid": 0,
-          "pos": [
-            0,
-            0.056985560804605484,
-            0.22015266120433807
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.6000000238418579,
-            0.6000000238418579,
-            0.6000000238418579
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 4,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 7878,
-          "pid": -1,
-          "pos": [
-            0,
-            0,
-            0
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.6000000238418579,
-            0.6000000238418579,
-            0.6000000238418579
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 5,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 7878,
-          "pid": -1,
-          "pos": [
-            0,
-            1.2246467698671066e-17,
-            0
-          ],
-          "rot": [
-            0,
-            3.1415927410125732,
-            0
-          ],
-          "scl": [
-            0.6000000238418579,
-            0.6000000238418579,
-            0.6000000238418579
-          ],
-          "ts": 1
-        }
-      ],
-      "capeswing": 1,
-      "colPrim": [
-        0.20000000298023224,
-        0.20000000298023224,
-        0.20000000298023224,
-        0.5
-      ],
-      "colSec": [
-        1,
-        0.6117647290229797,
-        0,
-        0.8999999761581421
-      ],
-      "effects": [
-        {
-          "bid": 16,
-          "id": 98
-        },
-        {
-          "bid": 0,
-          "id": 98
-        }
-      ],
-      "id": 31,
-      "mountPart": 0,
-      "mountPos": [
-        0,
-        0.800000011920929,
-        -1
-      ],
-      "sheathedPos": [
-        0,
-        0,
-        -0.5
-      ],
-      "size": 1,
-      "skeleton": 1,
-      "soundset": 10,
-      "unsheathedPos": [
-        0,
-        0.800000011920929,
-        0
-      ]
-    }
-        Ga.set(7777,{
-      "ext": 0,
-      "id": 7777,
-      "type": 1
-    })
-        Fi.set(7878,{
-      "cull": 1,
-      "effects": [],
-      "geometry": 7777,
-      "id": 7878,
-      "shader": 0,
-      "shadow": 1,
-      "texture": 0
-    })
-        Fi.set(1560,{
-      "cull": 1,
-      "effects": [],
-      "geometry": 7777,
-      "id": 1560,
-      "shader": 0,
-      "shadow": 1,
-      "texture": 0
-    })
-        O1.set(23,shadowstrider)
-        O1.set(31,scarab)
-        let mage = O1.get(2)
-        if(fe.enableMageCapeswing) mage.capeswing = 1
-        O1.set(2,mage)
         for (let e = 0; e < t.filesExt.length; ++e) Kf.push(t.filesExt[e]);
         for (let e = 0; e < t.minimap.length; ++e) Jf.push(t.minimap[e])
     };
@@ -7405,12 +6822,8 @@ void main() {
         Y1 = 2 ** 15 - 1,
         O9 = 2 ** 16 - 1,
         X1 = 2 ** 32 - 1;
-    var tx = (t,id) => {
-        let e = Ia.modelformat.decode(t,id)
-        if(id && id.includes("7777")) {
-            e = {"color": [], "flags": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "index": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 21, 22, 23, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 54, 55, 56, 57, 58, 59, 60, 61, 62], "indexInvisible": [], "normal": [-59, 49, -101, -59, 49, -101, -59, 49, -101, 90, 52, 73, 90, 52, 73, 90, 52, 73, -8, -126, 9, -8, -126, 9, -8, -126, 9, 91, 30, -84, 91, 30, -84, 91, 30, -84, -110, 33, -54, -110, 33, -54, -110, 33, -54, 61, -92, 63, 61, -92, 63, 61, -92, 63, -116, 32, 42, -116, 32, 42, -116, 32, 42, 42, 29, -116, 42, 29, -116, 42, 29, -116, 85, 37, 86, 85, 37, 86, 85, 37, 86, -9, -126, -8, -9, -126, -8, -9, -126, -8, -57, 56, 98, -57, 56, 98, -57, 56, 98, 92, 51, -70, 92, 51, -70, 92, 51, -70, 29, 30, 120, 29, 30, 120, 29, 30, 120, 65, -92, -58, 65, -92, -58, 65, -92, -58, -17, 46, 117, -17, 46, 117, -17, 46, 117, -23, 48, -115, -23, 48, -115, -23, 48, -115, 12, -126, -2, 12, -126, -2, 12, -126, -2, -123, 31, 5, -123, 31, 5, -123, 31, 5, 46, 30, 114, 46, 30, 114, 46, 30, 114, 52, 27, -113, 52, 27, -113, 52, 27, -113, -88, -91, 3, -88, -91, 3, -88, -91, 3], "position": [-17517, 21263, 21835, -3234, -839, 4840, -18001, 3859, 18011, -3234, -839, 4840, -17517, 21263, 21835, -14730, 4013, 23061, -3234, -839, 4840, -14730, 4013, 23061, -18001, 3859, 18011, -17517, 21263, 21835, -14730, 4013, 23061, -18001, 3859, 18011, -17517, 21263, 21835, -18001, 3859, 18011, -25776, -28395, 30865, -14380, 3738, -23436, -17987, 3840, -18418, -24817, -28540, -32767, -24817, -28540, -32767, -17987, 3840, -18418, -17462, 21116, -22876, -17462, 21116, -22876, -14380, 3738, -23436, -24817, -28540, -32767, -17462, 21116, -22876, -17987, 3840, -18418, -14380, 3738, -23436, -3599, -980, -5202, -17987, 3840, -18418, -14380, 3738, -23436, -3599, -980, -5202, -17462, 21116, -22876, -17987, 3840, -18418, -17462, 21116, -22876, -3599, -980, -5202, -14380, 3738, -23436, -25776, -28395, 30865, -14730, 4013, 23061, -17517, 21263, 21835, -18001, 3859, 18011, -14730, 4013, 23061, -25776, -28395, 30865, 22535, 21773, -843, 3852, -323, -251, 21070, 4395, 2270, 3852, -323, -251, 22535, 21773, -843, 20899, 4498, -3979, 3852, -323, -251, 20899, 4498, -3979, 21070, 4395, 2270, 22535, 21773, -843, 20899, 4498, -3979, 21070, 4395, 2270, 22535, 21773, -843, 21070, 4395, 2270, 32767, -27883, -191, 32767, -27883, -191, 20899, 4498, -3979, 22535, 21773, -843, 21070, 4395, 2270, 20899, 4498, -3979, 32767, -27883, -191], "sx": 1510605408, "sy": 4294967295, "sz": 2130266763, "uv": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
-        } //shadowstrider legs
-        let
+    var tx = t => {
+        let e = Ia.modelformat.decode(t),
             n = Y1 / (X1 / e.sx),
             o = Y1 / (X1 / e.sy),
             i = Y1 / (X1 / e.sz);
@@ -7421,10 +6834,6 @@ void main() {
         return e
     };
     var Q1 = async (t, e, n, o, i, s = 3) => {
-        //console.log(t,e,o)
-        if(e && e.includes("7777")) {
-            return n[e] = await o(t,e), i(n[e], t + e)
-        }
         switch (e.split(".").pop()) {
             case "jpg":
             case "png":
@@ -7432,7 +6841,7 @@ void main() {
             case "webp": {
                 let r = new Image;
                 r.onload = () => {
-                    n[e] = o(r,e), i(n[e], t + e), r.onload = void 0
+                    n[e] = o(r), i(n[e], t + e), r.onload = void 0
                 }, r.src = t + e + "?v=8822612";
                 break
             }
@@ -7440,7 +6849,7 @@ void main() {
                 fetch(t + e + "?v=8822612").then(r => {
                     if (!r.ok) throw new Error;
                     r.arrayBuffer().then(async l => {
-                        n[e] = await o(l,e), i(n[e], t + e)
+                        n[e] = await o(l), i(n[e], t + e)
                     })
                 }).catch(r => {
                     console.log(e + " fetch failed"), s > 1 && Q1(t, e, n, o, i, --s)
@@ -7456,8 +6865,8 @@ void main() {
         },
         eu = async (t, e, n, o, i) => {
             n[e] ? i(...n[e]) : ul[t + e] ? ul[t + e].push(i) : (ul[t + e] = [], ul[t + e].push(i), Q1(t, e, n, o, W9))
-        }, j9 = (t,id) => {
-            let e = tx(new Uint8Array(t),id);
+        }, j9 = t => {
+            let e = tx(new Uint8Array(t));
             return [{
                 index: {
                     type: 5125,
@@ -7762,7 +7171,7 @@ void main() {
                 xs.update(t => !t), wt(90)
             }), ln(fe.kbParty, nt.party = {}).onPress(() => {
                 ei.update(t => !t), wt(90)
-            }), delete kx["shift"], document.addEventListener("wheel", rE, {
+            }), document.addEventListener("wheel", rE, {
                 passive: !0
             }), document.addEventListener("keydown", aE, !1), document.addEventListener("keyup", cE, !1), document.addEventListener("contextmenu", lE, !1), document.addEventListener("mousedown", iE, !1), document.addEventListener("mouseup", sE, !1), document.addEventListener("mousemove", oE, !1)
         },
@@ -7806,13 +7215,11 @@ void main() {
         aE = t => {
             if (!Fx(t)) return;
             let e = t.key.toLowerCase();
-            if(fe.kbItemNames && e === fe.kbItemNames){ nt.shift.down||(nt.shift.down=!0,nt.shift.press.forEach(f=>f(t)),nt.shift.store.set(!0)); t&&t.preventDefault(); }
             t.ctrlKey && ur("ctrl+" + e, !0, t) || t.shiftKey && ur("shift+" + e, !0, t) || ur(e, !0, t)
         },
         cE = t => {
             if (!Fx(t)) return;
             let e = t.key.toLowerCase();
-            if(fe.kbItemNames && e === fe.kbItemNames){ nt.shift.down&&(nt.shift.down=!1,nt.shift.release.forEach(f=>f(t)),nt.shift.store.set(!1)); }
             ur("ctrl+" + e, !1), ur("shift+" + e, !1), ur(e, !1)
         },
         Fx = t => {
@@ -8286,27 +7693,7 @@ void main() {
                 g = Math.round(u * s);
             return m === 0 || g === 0 || Eo.drawImage(t, 0, 0, Math.round(t.width * i), Math.round(t.height * s), Math.round(e[0] - f * a + r * o), Math.round(e[1] - u * c + l * o), m, g), m
         },
-        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => n.size >= 1 ? drHD(t, e, n, o, i, s, r, l, a) : pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
-        drHD = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5, dpr = 2) => {
-            let canvas = luHD(e, n, dpr);
-            let lw = canvas.logicalWidth,
-                lh = canvas.logicalHeight;
-            
-            Eo.globalAlpha = fe.nameplateShowTransparency ? o : 1;
-            let f = lw * i,
-                u = lh * i,
-                m = Math.round(f),
-                g = Math.round(u);
-            if (m === 0 || g === 0) return m;
-            Eo.drawImage(
-                canvas,
-                0, 0, canvas.width, canvas.height,
-                Math.round(t[0] - f * l + s * i),
-                Math.round(t[1] - u * a + r * i),
-                m, g
-            );
-            return m;
-        },
+        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
         qx = (t, e, n, o, i = 0, s = 0, r = .5, l = .5) => pr(e, t, n, o, 1, 1, i, s, r, l),
         vl = (t, e, n = !1) => (n ? (e[0] = t[0], e[1] = t[1]) : Ao(e, t, gt.projectionViewMatrix), n || e[2] < 1 && e[0] > -1 && e[0] < 1 ? (e[1] = Math.max(-1, Math.min(e[1], 1)), e[0] = Math.round((e[0] * .5 + .5) * Ln.width), e[1] = Math.round((e[1] * -.5 + .5) * Ln.height), e[1] = Math.max(30, e[1]), e) : !1),
         Rx = (t, e, n) => {
@@ -8400,23 +7787,23 @@ void main() {
             },
             phys: {
                 fill: Lt("name"),
-                size: 18 * (fe.shrinkIndicators / 500)
+                size: 18
             },
             physCrit: {
                 fill: Lt("name"),
-                size: 24  * (fe.shrinkIndicators / 500)
+                size: 24
             },
             spell: {
                 fill: "#FFE404",
-                size: 28  * (fe.shrinkIndicators / 500)
+                size: 28
             },
             spellCrit: {
-                fill: "#ffa02d",
-                size: 40  * (fe.shrinkIndicators / 500)
+                fill: "#FFE404",
+                size: 40
             },
             heal: {
                 fill: "#12F027",
-                size: 28  * (fe.shrinkIndicators / 500)
+                size: 28
             },
             mana: {
                 fill: Lt("mana"),
@@ -8428,7 +7815,7 @@ void main() {
             },
             fame: {
                 fill: Lt("fame"),
-                size: 20  * (fe.shrinkIndicators / 500)
+                size: 20
             },
             gold: {
                 fill: "#EEDDA3",
@@ -8484,11 +7871,11 @@ void main() {
             },
             pheal: {
                 fill: "#12F027",
-                size: 20 * (fe.shrinkIndicators / 500)
+                size: 0
             },
             pdmg: {
                 fill: Lt("enemy"),
-                size: 20 * (fe.shrinkIndicators / 500)
+                size: 0
             }
         },
         pg = {},
@@ -8501,40 +7888,7 @@ void main() {
             if (pg[i]) return pg[i];
             let s = document.createElement("canvas"),
                 r = s.getContext("2d");
-            r.font = "bold " + n + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
-            return s
-        },
-        luHD = (t, {
-            fill: e,
-            size: n,
-            wrap: o = 0
-        }, dpr = 2) => {
-            let i = t + e + n + dpr;
-            if (pg[i]) return pg[i];
-            let s = document.createElement("canvas"),
-                r = s.getContext("2d");
-            
-            let scaledN = n * dpr;
-            r.font = "bold " + scaledN + "px hordes";
-            
-            if (o > 0) {
-                PE(s, r, t, 0, 0, o * dpr, scaledN, e);
-            } else {
-                s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5 * dpr;
-                s.height = Math.ceil(scaledN * 1.2 + 5 * dpr);
-                Rx(r, scaledN, e);
-                if(fe.outlines) {
-                    r.lineWidth = 1.5 * dpr;
-                    r.strokeStyle = 'black';
-                    r.strokeText(t, 0, s.height - 6 * dpr);
-                }
-                r.fillText(t, 0, s.height - 6 * dpr);
-            }
-            s.logicalWidth = s.width / dpr;
-            s.logicalHeight = s.height / dpr;
-            
-            pg[i] = s;
-            return s;
+            return r.font = "bold " + n + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
         },
         Vo = (t, e, n, o, i, s, r) => {
             t || (t = document.createElement("canvas"), t.width = n, t.height = o);
@@ -9485,10 +8839,10 @@ void main() {
     }
 
     function jE(t, e, n) {
+        let o;
         re(t, ji, l => n(0, o = l));
 
         function i(l) {
-            //if(I.getEntityById(I.player.target).name === "Conjurer") posTrailBreakNext = true;
             Io(Mt.clientPlayerInteract.packData({
                 id: l
             })), Xe(ji, o = void 0, o)
@@ -9570,9 +8924,7 @@ void main() {
     });
     var cu = new Map,
         sw = !1,
-        // lag functions ccds
         YE = () => {
-            if (fe.disableCircleCooldowns) return;
             fetch("/data/ui/circlecooldowns/circlecooldowns.txt?v=8822612").then(async t => {
                 let e = (await t.text()).split(`
 `);
@@ -9588,7 +8940,6 @@ void main() {
             })
         },
         fu = (t, e, n) => {
-            if (fe.disableCircleCooldowns) return;
             sw && e && t !== e.step && (e.cdimg !== void 0 && (cu.get(n)[e.step].push(e.removeChild(e.cdimg)), e.cdimg = void 0), (e.step = t) > 0 && (cu.get(n)[e.step].length === 1 ? e.cdimg = cu.get(n)[e.step][0].cloneNode() : e.cdimg = cu.get(n)[e.step].pop(), e.appendChild(e.cdimg)))
         };
 
@@ -9872,12 +9223,12 @@ precision highp float;precision highp int;in vec4 vColor;out vec4 fragColor;void
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec3 position;in vec4 color;in mat4 worldMatrix;out vec4 vColor;void main(){vColor=color;gl_Position=projectionViewMatrix*worldMatrix*vec4(position,1.0);;}`;
     var Sw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vInteriorlight;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float q=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 r=shadowPVMatrix[1]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[1],s);}else{vec4 r=shadowPVMatrix[0]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[0],s);}p=p;p=max(p,q);}vec3 t=worldlight[1];vec3 u=worldlight[0];t=mix(t,vInteriorlight.rgb*0.5,vInteriorlight.a);u=mix(u,vInteriorlight.rgb,vInteriorlight.a);o.rgb=b(t,u,o.rgb,vNormal,p,vLight,0.0);o.rgb/=o.a;float v=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,v);float w=distance(vWorldPos.xz,circlePos.xz);float x=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfsw=circleInfo.a;if(w<circlePos.w+0.1&&(x>0.0||(cfsw>1.0&&vWorldPos.y<=circlePos.y))){float adyw=cfsw>1.0?(vWorldPos.y>circlePos.y?x:1.0):x;float blndw=cfsw>1.0?(w<circlePos.w?cfsw-1.0:0.0):((w<circlePos.w?w/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-w))/0.1));o.rgb=mix(o.rgb,circleInfo.rgb,adyw*min(1.0,cfsw)*blndw);}fragColor=o;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vInteriorlight;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float q=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 r=shadowPVMatrix[1]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[1],s);}else{vec4 r=shadowPVMatrix[0]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[0],s);}p=p;p=max(p,q);}vec3 t=worldlight[1];vec3 u=worldlight[0];t=mix(t,vInteriorlight.rgb*0.5,vInteriorlight.a);u=mix(u,vInteriorlight.rgb,vInteriorlight.a);o.rgb=b(t,u,o.rgb,vNormal,p,vLight,0.0);o.rgb/=o.a;float v=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,v);float w=distance(vWorldPos.xz,circlePos.xz);float x=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(w<circlePos.w+0.1&&x>0.0){o.rgb=mix(o.rgb,circleInfo.rgb,x*circleInfo.a*((w<circlePos.w?w/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-w))/0.1)));}fragColor=o;}`;
     var Pw = `#version 300 es
 precision highp float;precision highp int;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec2 uv;in vec3 position;in vec3 normal;in vec4 interiorlight;in mat4 worldMatrix;out vec3 vNormal;out vec2 vUv;out vec4 vInteriorlight;out vec3 vViewDir;void main(){vNormal=normalize(mat3(worldMatrix)*normal);vUv=uv;vWorldPos=worldMatrix*vec4(position,1.0);vInteriorlight=interiorlight;vCameraDistance=length(cameraPosition-vWorldPos.xyz);vec3 a=vec3(0.0);for(int b=0;b<lightCount;++b){vec3 c=lightPos[b]-vWorldPos.xyz;float d=lightCols[b].w-dot(c,c);if(d>0.0){d/=(lightCols[b].w);d=d*d;a+=max(0.0,dot(normalize(c),vNormal))*lightCols[b].rgb*d;}}vLight=a;vViewDir=-normalize(vWorldPos.xyz-cameraPosition);gl_Position=projectionViewMatrix*vWorldPos;}`;
     var Aw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vCol;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=(float(gl_FrontFacing)*2.0-1.0);float q=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float r=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 s=shadowPVMatrix[1]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[1],t);}else{vec4 s=shadowPVMatrix[0]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[0],t);}q=q;q=max(q,r);}vec3 u=mix(worldlight[1],vCol.rgb,vCol.a);vec3 v=worldlight[0]*(1.0-vCol.a);o.rgb=b(u,v,o.rgb,vNormal,q,vLight,0.0);float w=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,w);float x=distance(vWorldPos.xz,circlePos.xz);float y=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfaw=circleInfo.a;if(x<circlePos.w+0.1&&(y>0.0||(cfaw>1.0&&vWorldPos.y<=circlePos.y))){float adyaw=cfaw>1.0?(vWorldPos.y>circlePos.y?y:1.0):y;float blndaw=cfaw>1.0?(x<circlePos.w?cfaw-1.0:0.0):((x<circlePos.w?x/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-x))/0.1));o.rgb=mix(o.rgb,circleInfo.rgb,adyaw*min(1.0,cfaw)*blndaw);}fragColor=o;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vCol;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=(float(gl_FrontFacing)*2.0-1.0);float q=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float r=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 s=shadowPVMatrix[1]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[1],t);}else{vec4 s=shadowPVMatrix[0]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[0],t);}q=q;q=max(q,r);}vec3 u=mix(worldlight[1],vCol.rgb,vCol.a);vec3 v=worldlight[0]*(1.0-vCol.a);o.rgb=b(u,v,o.rgb,vNormal,q,vLight,0.0);float w=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,w);float x=distance(vWorldPos.xz,circlePos.xz);float y=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(x<circlePos.w+0.1&&y>0.0){o.rgb=mix(o.rgb,circleInfo.rgb,y*circleInfo.a*((x<circlePos.w?x/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-x))/0.1)));}fragColor=o;}`;
     var Tw = `#version 300 es
 precision highp float;precision highp int;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec2 uv;in vec3 position;in vec3 normal;in vec4 color;in mat4 worldMatrix;out vec3 vNormal;out vec2 vUv;out vec4 vCol;out vec3 vViewDir;void main(){vNormal=normalize(mat3(worldMatrix)*normal);vUv=uv;vCol=color;vWorldPos=worldMatrix*vec4(position,1.0);vCameraDistance=length(cameraPosition-vWorldPos.xyz);vec3 a=vec3(0.0);for(int b=0;b<lightCount;++b){vec3 c=lightPos[b]-vWorldPos.xyz;float d=lightCols[b].w-dot(c,c);if(d>0.0){d/=(lightCols[b].w);d=d*d;a+=max(0.0,dot(normalize(c),vNormal))*lightCols[b].rgb*d;}}vLight=a;vViewDir=-normalize(vWorldPos.xyz-cameraPosition);gl_Position=projectionViewMatrix*vWorldPos;}`;
     var Ew = `#version 300 es
@@ -9934,7 +9285,7 @@ precision highp float;precision highp int;in vec2 vUv;uniform float seed;float a
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999998;float a=length(vec2(0.5,0.5)-vUv);float b=smoothstep(0.3,0.2,a)*2.0;b+=smoothstep(0.5,0.1,a);b*=smoothstep(0.08,0.15,(vPos.y+0.2)*0.2+abs(sin(daycycle*6.282)));fragColor.rgba=vec4(suncolor,b);}`;
     var e4 = `#version 300 es
 precision highp float;precision highp int;uniform Circle{vec4 circlePos;vec4 circleInfo;};precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;vec3 f(vec3 g,vec3 h,vec3 i,vec3 j,float k,vec3 l,float m){j=normalize(j);float n=clamp(dot(j,worldlight[2]),0.0,k);vec3 o=g*mix(0.7,1.1,0.5+(0.5*n));vec3 p=normalize(worldlight[2]+vViewDir);vec3 q=h*pow(max(0.0,dot(p,j)),20.0)*m*max(k*0.7+0.2,0.2)*20.0;vec3 r=o+h*n+l;return r*i+q;}void s(vec4 t,float u,vec4 v){float w=t.x+t.y+t.z;e+=v[3]*smoothstep(v[1],v[2],w)*u;t.a=u;t.rgb*=u;d+=t;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 x=texture(atlas,vUvChannel);x[3]=max(0.0,min(1.0,1.0-(x.r+x.g+x.b)));if(x[0]==1.0&&x[1]==1.0&&x[2]==1.0)discard;s(texture(diffuse[0],vUvTexture[0]),x[0],terrainInfo[0]);s(texture(diffuse[1],vUvTexture[1]),x[1],terrainInfo[1]);s(texture(diffuse[2],vUvTexture[2]),x[2],terrainInfo[2]);s(texture(diffuse[3],vUvTexture[3]),x[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;float y=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float az=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 aa=shadowPVMatrix[1]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[1],ab);}else{vec4 aa=shadowPVMatrix[0]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[0],ab);}y=y;y=max(y,az);}d.rgb=f(worldlight[1],worldlight[0],d.rgb,vNormal,y,vLight,e);float ac=distance(vWorldPos.xz,circlePos.xz);float ad=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(ac<circlePos.w+0.1&&(circleInfo.a>1.0||ad>0.0)){float cfa=circleInfo.a;float ady=cfa>1.0?1.0:ad;;float blnd=cfa>1.0?(ac<circlePos.w?cfa-1.0:0.0):((ac<circlePos.w?ac/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-ac))/0.1));d.rgb=mix(d.rgb,circleInfo.rgb,ady*min(1.0,cfa)*blnd);}float ae=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,ae);fragColor=d;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;vec3 f(vec3 g,vec3 h,vec3 i,vec3 j,float k,vec3 l,float m){j=normalize(j);float n=clamp(dot(j,worldlight[2]),0.0,k);vec3 o=g*mix(0.7,1.1,0.5+(0.5*n));vec3 p=normalize(worldlight[2]+vViewDir);vec3 q=h*pow(max(0.0,dot(p,j)),20.0)*m*max(k*0.7+0.2,0.2)*20.0;vec3 r=o+h*n+l;return r*i+q;}void s(vec4 t,float u,vec4 v){float w=t.x+t.y+t.z;e+=v[3]*smoothstep(v[1],v[2],w)*u;t.a=u;t.rgb*=u;d+=t;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 x=texture(atlas,vUvChannel);x[3]=max(0.0,min(1.0,1.0-(x.r+x.g+x.b)));if(x[0]==1.0&&x[1]==1.0&&x[2]==1.0)discard;s(texture(diffuse[0],vUvTexture[0]),x[0],terrainInfo[0]);s(texture(diffuse[1],vUvTexture[1]),x[1],terrainInfo[1]);s(texture(diffuse[2],vUvTexture[2]),x[2],terrainInfo[2]);s(texture(diffuse[3],vUvTexture[3]),x[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;float y=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float az=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 aa=shadowPVMatrix[1]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[1],ab);}else{vec4 aa=shadowPVMatrix[0]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[0],ab);}y=y;y=max(y,az);}d.rgb=f(worldlight[1],worldlight[0],d.rgb,vNormal,y,vLight,e);float ac=distance(vWorldPos.xz,circlePos.xz);float ad=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(ac<circlePos.w+0.1&&ad>0.0){d.rgb=mix(d.rgb,circleInfo.rgb,ad*circleInfo.a*((ac<circlePos.w?ac/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-ac))/0.1)));}float ae=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,ae);fragColor=d;}`;
     var t4 = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float a=256.0;const float b=4.0;in vec3 position;in vec3 normal;out vec3 vNormal;out vec3 vUvChannel;out vec2 vUvTexture[4];out vec3 vViewDir;void main(){vNormal=normal;vWorldPos=modelMatrix*vec4(position,1.0);vUvChannel=vec3(position[0],position[2],0.0)/32.0;int c=quadrant%2;int d=int(quadrant%4);if(c==1)vUvChannel.x-=1.0;if(d>1)vUvChannel.y-=1.0;vUvChannel.z=float(quadrant);vec2 e=vec2(-vWorldPos[0],vWorldPos[2])/4.0;vUvTexture[0]=e*terrainInfo[0][0];vUvTexture[1]=e*terrainInfo[1][0];vUvTexture[2]=e*terrainInfo[2][0];vUvTexture[3]=e*terrainInfo[3][0];for(int f=0;f<lightCount;++f){vec3 g=lightPos[f]-vWorldPos.xyz;float h=lightCols[f].w-dot(g,g);if(h>0.0){h/=(lightCols[f].w);h=h*h;vLight+=0.2*lightCols[f].rgb*h;}}vViewDir=-normalize(vWorldPos.xyz-cameraPosition);vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*vWorldPos;}`;
     var n4 = `#version 300 es
@@ -9945,10 +9296,10 @@ precision highp float;precision highp int;in vec3 vPos;in vec3 vNormal;out vec4 
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform mat4 modelMatrix;in vec3 normal;in vec3 position;out vec3 vPos;out vec3 vNormal;void main(){vNormal=normal;vPos=position;gl_Position=projectionViewMatrix*modelMatrix*vec4(position[0],position[1]+0.05,position[2],1.0);}`;
     var s4 = `#version 300 es
 precision highp float;precision highp int;uniform Circle{vec4 circlePos;vec4 circleInfo;};precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;f(texture(diffuse[0],vUvTexture[0]),k[0],terrainInfo[0]);f(texture(diffuse[1],vUvTexture[1]),k[1],terrainInfo[1]);f(texture(diffuse[2],vUvTexture[2]),k[2],terrainInfo[2]);f(texture(diffuse[3],vUvTexture[3]),k[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;if(mod(vWorldPos.y,2.0)<0.2){d.rgb=mix(d.rgb,vec3(0.8),0.5);}else{d.rgb=mix(d.rgb,vec3(0.2),0.5);}vec3 l=worldlight[2];l.y*=0.5;l=normalize(l);d.rgb*=max(0.3,min(1.0,dot(l,vNormal)*0.5+0.5));float m=distance(vWorldPos.xz,circlePos.xz);float adm=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfb=circleInfo.a;if(m<circlePos.w+0.1&&(adm>0.0||(cfb>1.0&&vWorldPos.y<=circlePos.y))){float fadym=cfb>1.0?(vWorldPos.y>circlePos.y?adm:1.0):1.0;float blndb=cfb>1.0?(m<circlePos.w?cfb-1.0:0.0):(max(0.,(0.3-abs(circlePos.w-m))/0.3));d.rgb=mix(d.rgb,circleInfo.rgb,fadym*min(1.0,cfb)*blndb);}float n=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,n);fragColor=d;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;f(texture(diffuse[0],vUvTexture[0]),k[0],terrainInfo[0]);f(texture(diffuse[1],vUvTexture[1]),k[1],terrainInfo[1]);f(texture(diffuse[2],vUvTexture[2]),k[2],terrainInfo[2]);f(texture(diffuse[3],vUvTexture[3]),k[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;if(mod(vWorldPos.y,2.0)<0.2){d.rgb=mix(d.rgb,vec3(0.8),0.5);}else{d.rgb=mix(d.rgb,vec3(0.2),0.5);}vec3 l=worldlight[2];l.y*=0.5;l=normalize(l);d.rgb*=max(0.3,min(1.0,dot(l,vNormal)*0.5+0.5));float m=distance(vWorldPos.xz,circlePos.xz);if(m<circlePos.w+0.1){d.rgb=mix(d.rgb,circleInfo.rgb,circleInfo.a*(max(0.,(0.3-abs(circlePos.w-m))/0.3)));}float n=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,n);fragColor=d;}`;
     var r4 = `#version 300 es
 precision highp float;precision highp int;uniform Circle{vec4 circlePos;vec4 circleInfo;};precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;d.rgb=texture(diffuse[0],vUvTexture[0]).rgb;float l=64.0/12.0;float m=l/2.0;bool n=mod(vWorldPos.z,l)>m;if(mod(vWorldPos.x,l)<m){if(n){d.rgb=vec3(0.45);}else{d.rgb=vec3(0.55);}}else{if(n){d.rgb=vec3(0.55);}else{d.rgb=vec3(0.45);}}vec3 o=worldlight[2];o.y*=0.5;o=normalize(o);d.rgb*=max(0.3,min(1.0,dot(o,vNormal)*0.5+0.5));float p=distance(vWorldPos.xz,circlePos.xz);float adp=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfc=circleInfo.a;if(p<circlePos.w+0.1&&(adp>0.0||(cfc>1.0&&vWorldPos.y<=circlePos.y))){float fadyp=cfc>1.0?(vWorldPos.y>circlePos.y?adp:1.0):1.0;float blndc=cfc>1.0?(p<circlePos.w?cfc-1.0:0.0):(max(0.,(0.3-abs(circlePos.w-p))/0.3));d.rgb=mix(d.rgb,circleInfo.rgb,fadyp*min(1.0,cfc)*blndc);}float q=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,q);fragColor=d;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;d.rgb=texture(diffuse[0],vUvTexture[0]).rgb;float l=64.0/12.0;float m=l/2.0;bool n=mod(vWorldPos.z,l)>m;if(mod(vWorldPos.x,l)<m){if(n){d.rgb=vec3(0.45);}else{d.rgb=vec3(0.55);}}else{if(n){d.rgb=vec3(0.55);}else{d.rgb=vec3(0.45);}}vec3 o=worldlight[2];o.y*=0.5;o=normalize(o);d.rgb*=max(0.3,min(1.0,dot(o,vNormal)*0.5+0.5));float p=distance(vWorldPos.xz,circlePos.xz);if(p<circlePos.w+0.1){d.rgb=mix(d.rgb,circleInfo.rgb,circleInfo.a*(max(0.,(0.3-abs(circlePos.w-p))/0.3)));}float q=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,q);fragColor=d;}`;
     var l4 = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;out vec4 fragColor;void main(){fragColor.rgb=fog[0];}`;
     var a4 = `#version 300 es
@@ -10556,12 +9907,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             if (_r > 0) {
                 let i = g4(!0, I.player.pos);
                 io(o.circleInfo, ...Sd.friendly, 1), io(o.circlePos, i[0], i[1], i[2], v4)
-            } else if (fe.aoeCircleEnabled && I && I.player) {
-                e !== jg ? (jg = e, sc = 1) : sc = Math.max(sc * (1 - t * 10), 0);
-                let p = I.player, col = fe.aoeCircleColor || "#ffffff";
-                let cr = parseInt(col.slice(1,3),16)/255, cg = parseInt(col.slice(3,5),16)/255, cb = parseInt(col.slice(5,7),16)/255;
-                io(o.circlePos, p.pos[0], p.pos[1] - p.radius, p.pos[2], fe.aoeCircleSize);
-                io(o.circleInfo, cr, cg, cb, 1.0 + fe.aoeCircleAlpha / 100);
             } else if (e !== jg ? (jg = e, sc = 1) : sc = Math.max(sc * (1 - t * 10), 0), e > 0) {
                 let i = I.getEntityById(e);
                 if (i !== void 0) {
@@ -10598,9 +9943,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         let isOppositeFaction = i.faction !== I.player.faction && !fe.revUnfriendly
                         let isOutOfLineOfSight = raycastHitGeometry(i.pos, I.player.pos) && fe.losTarget
                         let isBot = i.id !== I.playerId && i.party === 0 && !i.clan && fe.nextFriendlyIgnoreBots
-                        let anyClassSelected = fe.nextFriendlyClassSelectorEnabled && (fe.nextFriendlyClassArcher || fe.nextFriendlyClassShaman || fe.nextFriendlyClassWarrior || fe.nextFriendlyClassMage)
-                        let isClassFiltered = anyClassSelected && i.id !== I.playerId && !((i.class === 2 && fe.nextFriendlyClassArcher) || (i.class === 3 && fe.nextFriendlyClassShaman) || (i.class === 0 && fe.nextFriendlyClassWarrior) || (i.class === 1 && fe.nextFriendlyClassMage))
-                        return !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? !1 : i.stats && i.stats.alive && !isOppositeFaction && $r(i.pos, I.player.pos) < 30 && !isOutOfLineOfSight && !isBot && !isClassFiltered
+                        return !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? !1 : i.stats && i.stats.alive && !isOppositeFaction && $r(i.pos, I.player.pos) < 30 && !isOutOfLineOfSight && !isBot
                     }).sort((i, s) => {
                             let r = Zt.has(i.name),
                                 l = Zt.has(s.name);
@@ -10690,56 +10033,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             p(L, $) {
                 Ve(e, "scale", Math.min(1.3,t.targetScale))
-                let container = e.querySelector(".bars")
-                if (t.CCFound) {
-                    let ccDrawColor = t.CCColor
-                    if (fe.flashCCIndicator) {
-                        let pt = (Math.sin(I.smoothtime * Math.PI * 12) + 1) * 1.2
-                        let cr = parseInt(t.CCColor.slice(1,3), 16), cg = parseInt(t.CCColor.slice(3,5), 16), cb = parseInt(t.CCColor.slice(5,7), 16)
-                        let br = Math.round(cr * (1 - pt * 0.25))
-                        let bg = Math.round(cg * (1 - pt * 0.25))
-                        let bb = Math.round(cb * (1 - pt * 0.25))
-                        ccDrawColor = `rgb(${br},${bg},${bb})`
-                    }
-                    container.style.outline = `3px solid ${ccDrawColor}`
-                    container.style.boxShadow = `0 0 15px ${ccDrawColor}`
-                } else { container.style.outline = null, container.style.boxShadow = null }
-                container.style.borderRadius = "0px"
-                let hpBarEl = l.firstElementChild;
-                if (hpBarEl) {
-                    let flashDiv = hpBarEl._hpFlash;
-                    if (!flashDiv) {
-                        flashDiv = document.createElement("div");
-                        flashDiv.style.cssText = "position:absolute;top:0;height:100%;background:white;pointer-events:none;z-index:2;display:none;";
-                        hpBarEl.style.position = "relative";
-                        hpBarEl.style.overflow = "hidden";
-                        hpBarEl.appendChild(flashDiv);
-                        hpBarEl._hpFlash = flashDiv;
-                        let pb = hpBarEl.firstElementChild;
-                        if (pb) {
-                            let leftSpan = pb.firstElementChild;
-                            let rightSpan = leftSpan && leftSpan.nextElementSibling;
-                            if (leftSpan) { leftSpan.style.position = "relative"; leftSpan.style.zIndex = "3"; }
-                            if (rightSpan) { rightSpan.style.position = "absolute"; rightSpan.style.right = "5"; rightSpan.style.zIndex = "3"; }
-                        }
-                    }
-                    let r5 = L[5];
-                    let flashing = fe.flashNameplates && r5.hpFlashTime !== void 0 && I.smoothtime - r5.hpFlashTime < 0.2 && r5.hpFlashFraction !== void 0;
-                    let progressBarEl = hpBarEl.firstElementChild;
-                    if (progressBarEl) progressBarEl.style.transition = flashing ? "none" : "";
-                    if (flashing) {
-                        let elapsed = I.smoothtime - r5.hpFlashTime;
-                        let hpPct = r5.hpMax ? ~~(r5.hp / r5.hpMax * 100) : 100;
-                        let flashPct = ~~(r5.hpFlashFraction * 100);
-                        let lostPct = flashPct - hpPct;
-                        let progress = elapsed / 0.2;
-                        flashDiv.style.display = "";
-                        flashDiv.style.left = hpPct + "%";
-                        flashDiv.style.width = lostPct * (1 - progress) + "%";
-                    } else {
-                        flashDiv.style.display = "none";
-                    }
-                }
                 L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
@@ -10803,7 +10096,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function mD(t) {
-        let e, n = t[2] == "default" && !fe.flashNameplates && k4(t);
+        let e, n = t[2] == "default" && k4(t);
         return {
             c() {
                 n && n.c(), e = de()
@@ -10812,7 +10105,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 n && n.m(o, i), w(o, e, i)
             },
             p(o, i) {
-                o[2] == "default" && !fe.flashNameplates ? n ? n.p(o, i) : (n = k4(o), n.c(), n.m(e.parentNode, e)) : n && (n.d(1), n = null)
+                o[2] == "default" ? n ? n.p(o, i) : (n = k4(o), n.c(), n.m(e.parentNode, e)) : n && (n.d(1), n = null)
             },
             d(o) {
                 o && x(e), n && n.d(o)
@@ -10978,17 +10271,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 o && o.m(i, s), w(i, e, s), n = !0
             },
             p(i, [s]) {
-                let playerBuffs = I.getEntityById(i[5].id)
-                if(playerBuffs) playerBuffs = playerBuffs.buffs.buffs
-                i.CCFound = false, i.CCColor = "#ffffff"
-                if(playerBuffs && fe.CCIndicator) {
-                    if(playerBuffs.has(69)) i.CCFound = true, i.CCColor = fe.chillColor
-                    if(playerBuffs.has(121)) i.CCFound = true, i.CCColor = fe.relColor
-                    if(playerBuffs.has(119)) i.CCFound = true, i.CCColor = fe.blindColor
-                    if(playerBuffs.has(88)) i.CCFound = true, i.CCColor = fe.stunColor
-                    if(playerBuffs.has(91)) i.CCFound = true, i.CCColor = fe.agonizeColor
-                    if(playerBuffs.has(101)) i.CCFound = true, i.CCColor = fe.deepFreezeColor
-                }
                 let castsOnPlayer = targettedPlayers.get(i[5].id) || []
                 let targetScale = (1 + (castsOnPlayer.length / 25))
                 i.targetScale = targetScale
@@ -11460,7 +10742,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 3,
         icon: "ui/skills/18",
         fx: {
-            stick: fe.removeFX ? void 0 : 38,
+            stick: 38,
             color: [.7, .1, .1, .5]
         },
         intervalDuration: 1.5,
@@ -11610,8 +10892,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/12",
         fx: {
-            apply: fe.removeFX ? void 0 : 50,
-            stick: fe.removeFX ? void 0 : 49,
+            apply: 50,
+            stick: 49,
             color: [.5, .4, .05, .5]
         },
         statsStatic: (t, e) => {
@@ -11645,7 +10927,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 5,
         icon: "ui/skills/43",
         fx: {
-            stick: fe.removeFX ? void 0 : 20
+            stick: 20
         }
     });
     var J4 = new me({
@@ -11686,7 +10968,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         breakOnCast: !0,
         icon: "ui/skills/36",
         fx: {
-            visual: 26,
+            visual: 60,
             apply: 76,
             endSound: 69
         },
@@ -11765,8 +11047,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/29",
         fx: {
-            apply: fe.removeFX ? void 0 : 51,
-            stick: fe.removeFX ? void 0 : 66,
+            apply: 51,
+            stick: 66,
             color: [.1, 1, .3, .3]
         },
         statsStatic: (t, e) => {
@@ -12117,9 +11399,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         icon: "ui/skills/39",
         customIcon: t => "items/mount/mount" + lr[t.data[0]].tier + "_q1",
         fx: {
-            mount: t => {
-                return lr[t.data[0]].skin
-            },// mount apply
+            mount: t => lr[t.data[0]].skin,
             apply: 76,
             endSound: 69
         },
@@ -14460,7 +13740,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 img: t[14],
                 remaining: t[12],
                 key: t[7].hotkey,
-                border: t[10] || t[8] ? "auto" : fe.noFrameColor ? "black" : t[11] || t[9] || t[6] || t[13] ? "grey" : t[4] ? Nt(t[4].quality)[0] : "white",
+                border: t[10] || t[8] ? "auto" : t[11] || t[9] || t[6] || t[13] ? "grey" : t[4] ? Nt(t[4].quality)[0] : "white",
                 $$slots: {
                     default: [GD]
                 },
@@ -14477,12 +13757,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             p(o, i) {
                 let s = {};
-                i[0] & 2 && (s.shift = o[1]), i[0] & 144 && (s.describe = o[7].id >= 0 && !o[7].item || o[4] !== void 0), i[0] & 2080 && (s.status = o[11] ? -1 : o[5] !== void 0 ? o[5].status : 0), i[0] & 128 && (s.id = "sk" + o[7].hotkey), i[0] & 144 && (s.data = o[7].id >= 0 || o[4] !== void 0 ? o[7] : void 0), i[0] & 512 && (s.auto = o[9]), i[0] & 1024 && (s.queued = o[10]), i[0] & 65536 && (s.meta = o[16]), i[0] & 32768 && (s.css = o[15]), i[0] & 8 && (s.stacks = o[3]), i[0] & 8192 && (s.cd = o[13]), i[0] & 16384 && (s.img = o[14]), i[0] & 4096 && (s.remaining = o[12]), i[0] & 128 && (s.key = o[7].hotkey), i[0] & 12112 && 
-                (s.border = 
-o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
-    : o[11] || o[9] || o[6] || o[13] ? "grey" 
-        : o[4] ? Nt(o[4].quality)[0] 
-        : "white"), i[0] & 148 | i[1] & 8 && (s.$$scope = {
+                i[0] & 2 && (s.shift = o[1]), i[0] & 144 && (s.describe = o[7].id >= 0 && !o[7].item || o[4] !== void 0), i[0] & 2080 && (s.status = o[11] ? -1 : o[5] !== void 0 ? o[5].status : 0), i[0] & 128 && (s.id = "sk" + o[7].hotkey), i[0] & 144 && (s.data = o[7].id >= 0 || o[4] !== void 0 ? o[7] : void 0), i[0] & 512 && (s.auto = o[9]), i[0] & 1024 && (s.queued = o[10]), i[0] & 65536 && (s.meta = o[16]), i[0] & 32768 && (s.css = o[15]), i[0] & 8 && (s.stacks = o[3]), i[0] & 8192 && (s.cd = o[13]), i[0] & 16384 && (s.img = o[14]), i[0] & 4096 && (s.remaining = o[12]), i[0] & 128 && (s.key = o[7].hotkey), i[0] & 12112 && (s.border = o[10] || o[8] ? "auto" : o[11] || o[9] || o[6] || o[13] ? "grey" : o[4] ? Nt(o[4].quality)[0] : "white"), i[0] & 148 | i[1] & 8 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -14499,7 +13774,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
     }
 
-function YD(t, e, n) {
+    function YD(t, e, n) {
         let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F = ae,
             A = () => (F(), F = mi(B, le => n(7, y = le)), B),
             C, M, D, U, V;
@@ -16321,357 +15596,135 @@ function YD(t, e, n) {
             }
         }
     }
-    /**
-     * Boolean setting bound to an Et checkbox component.
-     * @param {string} label - Setting label shown to the left of the toggle.
-     * @param {object} store - Svelte writable store (boolean).
-     * @param {{color?: string, note?: string, sub?: string, subSize?: string}} [opts]
-     *   color    – CSS colour for the label text.
-     *   note     – Small grey footnote appended below the label (italic use-case text).
-     *   sub      – Small grey sub-label appended inline after the label.
-     *   subSize  – Font size for `sub`, defaults to "13px".
-     */
-    function makeToggle(label, store, opts) {
-        opts = opts || {};
-        let el = h("div"), val = new Et({ props: { store } });
-        el.textContent = label;
-        if (opts.color) el.style.color = opts.color;
-        if (opts.note) { let sep = h("br"), sub = h("small"); sub.textContent = opts.note; p(sub, "class", "textgrey"); d(el, sep); d(el, sub); }
-        if (opts.sub)  { let sep = h("br"), sub = h("small"); sub.textContent = opts.sub;  p(sub, "class", "textgrey"); sub.style.fontSize = opts.subSize || "13px"; d(el, sep); d(el, sub); }
-        return {
-            c() { K(val.$$.fragment); },
-            m(M, D) { w(M, el, D); Q(val, M, D); },
-            i(M) { S(val.$$.fragment, M); },
-            o(M) { E(val.$$.fragment, M); },
-            d(M) { if (M) x(el); Z(val, M); }
-        };
-    }
-    /**
-     * Numeric setting bound to an <input type="range">.
-     * Subscribes to the store internally — no context indices needed.
-     * @param {string} label - Setting label shown above the slider.
-     * @param {object} store - Svelte writable store (number).
-     * @param {{min?: number, max?: number, showValue?: boolean, reload?: boolean}} [opts]
-     *   min       – Slider minimum, defaults to 0.
-     *   max       – Slider maximum, defaults to 1000.
-     *   showValue – Show a live numeric readout next to the label, defaults to true.
-     *   reload    - Reload page on input.
-     */
-    function makeSlider(label, store, opts) {
-        opts = opts || {};
-        let el = h("div"), inp = h("input"), valNode, unsub;
-        el.textContent = label;
-        p(inp, "type", "range");
-        p(inp, "min", String(opts.min != null ? opts.min : 0));
-        p(inp, "max", String(opts.max != null ? opts.max : 1000));
-        if (opts.showValue !== false) {
-            let span = h("span"); p(span, "class", "textgrey"); span.style.marginLeft = "5px";
-            valNode = T(""); d(span, valNode); d(el, span);
-        }
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {
-                w(M, el, D); w(M, inp, D);
-                unsub = store.subscribe(v => { inp.value = String(v); if (valNode) valNode.data = String(v); });
-                inp.addEventListener("input", () => { store.set(Number(inp.value)); if (valNode) valNode.data = inp.value; });
-                inp.addEventListener("change", () => { if(opts.reload) window.location.reload(); })
-            },
-            d(M) { if (M) { x(el); x(inp); } if (unsub) unsub(); }
-        };
-    }
 
-    /**
-     * Colour-picker setting bound to an <input type="color">.
-     * @param {string|null} imgSrc - URL of the icon shown left of the label.
-     *   Pass null for a plain label + picker row (no icon, no flex container).
-     * @param {string} label - Setting label shown next to the colour swatch.
-     * @param {object} store - Svelte writable store (CSS colour string e.g. "#ff0000").
-     */
-    function makeColor(imgSrc, label, store) {
-        let el, inp = h("input"), unsub;
-        p(inp, "type", "color");
-        if (imgSrc) {
-            let con = h("div"), img = h("img"), txt = h("div");
-            con.style.cssText = "display:flex;align-items:center;";
-            img.src = imgSrc; img.style.cssText = "width:30px;margin-right:10px;";
-            txt.textContent = label; txt.style.fontSize = "16px";
-            d(con, img); d(con, txt); el = con;
-        } else {
-            el = h("div"); el.textContent = label;
-        }
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {
-                w(M, el, D); w(M, inp, D);
-                unsub = store.subscribe(v => { if (v) inp.value = v; });
-                inp.addEventListener("input", () => { store.set(inp.value); });
-            },
-            d(M) { if (M) { x(el); x(inp); } if (unsub) unsub(); }
-        };
-    }
-    /**
-     * Free-text setting bound to an <input type="text">.
-     * @param {string} label - Setting label shown above the input.
-     * @param {object} store - Svelte writable store (string).
-     * @param {{note?: string, numberInput?: boolean, reload?: boolean}} [opts]
-     *   note – Small grey footnote appended below the label.
-     *   numberInput - Convert input to Number.
-     *   reload - Reload page on input.
-     */
-    function makeText(label, store, opts) {
-        opts = opts || {};
-        let el = h("div"), inp = h("input"), unsub;
-        el.textContent = label;
-        p(inp, "type", "text");
-        if (opts.note) { let sep = h("br"), sub = h("small"); sub.textContent = opts.note; p(sub, "class", "textgrey"); d(el, sep); d(el, sub); }
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {
-                w(M, el, D); w(M, inp, D);
-                unsub = store.subscribe(v => { inp.value = v != null ? v : ""; });
-                inp.addEventListener("input", () => { store.set(opts.numberInput ? Number(inp.value) : inp.value); });
-                inp.addEventListener("change", () => { if(opts.reload) window.location.reload(); })
-            },
-            d(M) { if (M) { x(el); x(inp); } if (unsub) unsub(); }
-        };
-    }
-    /**
-     * Section header rendered as a bold primary-coloured title with a trailing separator div.
-     * @param {string} label - Header text.
-     * @param {{fontSize?: string, marginTop?: string, sub?: string, subSize?: string}} [opts]
-     *   fontSize  – Title font size, defaults to "20px".
-     *   marginTop – Top margin on the header element.
-     *   sub       – Small grey subtitle appended below the title.
-     *   subSize   – Font size for `sub`, defaults to "12px".
-     */
-    function makeCategory(label, opts) {
-        opts = opts || {};
-        let el = h("div"), sep = h("div");
-        el.textContent = label;
-        p(el, "class", "textprimary mod-category");
-        el.style.fontSize = opts.fontSize || "19px";
-        if (opts.marginTop) el.style.marginTop = opts.marginTop;
-        let subEls = null;
-        if (opts.sub) { let ssep = h("br"), sub = h("small"); sub.textContent = opts.sub; p(sub, "class", "textgrey"); sub.style.fontSize = opts.subSize || "12px"; d(el, ssep); d(el, sub); subEls = [ssep, sub]; }
-        let triggerCollapse = null;
-        if (opts.collapse) {
-            let storageKey = "modcat_" + label;
-            let saved = localStorage.getItem(storageKey);
-            let collapsed = saved !== null ? saved === "1" : !!opts.collapseDefault;
-            let arrow = h("button");
-            arrow.textContent = collapsed ? "Uncollapse" : "Collapse";
-            p(arrow, "class", "btn black textprimary");
-            arrow.style.font = "bold " + (opts.fontSize || "15px") + " hordes";
-            arrow.style.display = "inline-flex";
-            arrow.style.alignItems = "center";
-            arrow.style.justifyContent = "center";
-            sep.style.textAlign = "right"; d(sep, arrow);
-            const apply = () => {
-                arrow.textContent = collapsed ? "Uncollapse" : "Collapse";
-                if (subEls) subEls.forEach(n => n.style.display = collapsed ? "none" : "");
-                let node = sep.nextSibling;
-                while (node) {
-                    if (node.nodeType === 1 && node.classList && node.classList.contains("mod-category")) break;
-                    if (node.nodeType === 1) node.style.display = collapsed ? "none" : "";
-                    node = node.nextSibling;
-                }
-            };
-            const toggle = () => { collapsed = !collapsed; localStorage.setItem(storageKey, collapsed ? "1" : "0"); apply(); };
-            arrow.addEventListener("click", toggle);
-            if (collapsed) triggerCollapse = apply;
-        }
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) { w(M, el, D); w(M, sep, D); if (triggerCollapse) setTimeout(triggerCollapse, 0); },
-            d(M) { if (M) { x(el); x(sep); } }
-        };
-    }
-    /**
-     * Plain grey divider text, optionally followed by a blank separator div.
-     * @param {string} label - Text to display (e.g. "-- Colors: --").
-     * @param {{sep?: boolean, cls?: string, fontSize?: string}} [opts]
-     *   sep      – Append a blank div after the label, defaults to false.
-     *   cls      – CSS class on the element, defaults to "textgrey".
-     *   fontSize – Font size override.
-     */
-    function makeLabel(label, opts) {
-        opts = opts || {};
-        let el = h("div"), sep = opts.sep ? h("div") : null;
-        el.textContent = label;
-        p(el, "class", opts.cls || "textgrey");
-        if (opts.fontSize) el.style.fontSize = opts.fontSize;
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) { w(M, el, D); if (sep) w(M, sep, D); },
-            d(M) { if (M) { x(el); if (sep) x(sep); } }
-        };
-    }
-    /**
-     * Key-capture row: an icon + class name on the left, a read-only text input on the right.
-     * Clicking the input and pressing any key (or Escape to clear) updates the store.
-     * Modifier keys (Shift/Ctrl/Alt) are captured as a prefix, e.g. "ctrl+r".
-     * @param {string} imgSrc - URL of the class icon.
-     * @param {string} label  - Class name shown next to the icon.
-     * @param {object} store  - Svelte writable store (string, e.g. "ctrl+r" or "").
-     * @param {string} key    - Key in the `fe` cache used to seed the initial displayed value.
-     */
-    function makeKeybind(imgSrc, label, store, key) {
-        let con = h("div"), img = h("img"), txt = h("div"), inp = h("input");
-        con.style.cssText = "display:flex;align-items:center;";
-        img.src = imgSrc; img.style.cssText = "width:30px;margin-right:10px;";
-        txt.textContent = label; txt.style.fontSize = "16px";
-        p(inp, "type", "text"); p(inp, "readonly", "");
-        inp.style.cssText = "width:100%;box-sizing:border-box;cursor:pointer;";
-        d(con, img); d(con, txt);
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {
-                w(M, con, D); w(M, inp, D);
-                inp.value = fe[key] || "";
-                inp.addEventListener("keydown", (e) => {
-                    e.preventDefault();
-                    if (["Shift","Control","Alt","Meta"].includes(e.key)) return;
-                    let mods = (e.shiftKey?"shift+":"")+(e.ctrlKey?"ctrl+":"")+(e.altKey?"alt+":"");
-                    let k = e.key === "Escape" ? "" : mods+e.key.toLowerCase();
-                    store.set(k); inp.value = k;
-                });
-            },
-            d(M) { if (M) { x(con); x(inp); } }
-        };
-    }
-    function makeButton(label, onClick) {
-        let btn = h("button");
-        btn.textContent = label;
-        p(btn, "class", "btn black textprimary");
-        btn.style.font = "bold 15px hordes";
-        btn.addEventListener("click", onClick);
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) { w(M, btn, D); },
-            d(M) { if (M) x(btn); }
-        };
-    }
     function modSettings(t) {
-        const settings = [
-            // Rare Mob Notifier
-            makeCategory("Rare Mob Notifier", {collapse: false}),
-            makeToggle("Show icon on minimap", radar),
-            makeToggle("Play sound when nearby", radarSound),
-            // Shaman Mods
-            makeCategory("Shaman Mods", {marginTop: "10px", collapse: false}),
-            makeToggle("Highlight own revitalize", markOwnRevs),
-            makeToggle("Only show own revitalize", onlyShowOwnRev),
-            makeToggle("Show rev stack on nameplate", revStackNameplate),
-            // De-Clutter Mods
-            makeCategory("De-Clutter Mods", {marginTop: "10px", collapse: false}),
-            makeToggle("Hide bot names", hideBots),
-            makeToggle("Disable clan tags", disableClantags),
-            makeToggle("Hide chat window", hideChat),
-            makeToggle("Disable healing indicator", disableHealing),
-            makeToggle("Disable damage indicator", disableDamage),
-            makeToggle("Stack damage indicators", stackIndicators),
-            makeSlider("Indicator size", shrinkIndicators, {reload: true}),
-            //makeToggle("Disable skill tick effects", removeFX),
-            makeToggle("Disable circle cooldowns", disableCircleCooldowns),
-            makeToggle("Hide irrelevant buffs", hideBuffs),
-            makeToggle("Hide class buffs", hideClassBuffs),
-            makeToggle("Stack same-ID buffs", stackSameBuffs),
-            // Nameplate Mods
-            makeCategory("Nameplate Mods", {marginTop: "10px", collapse: false}),
-            makeSlider("Nameplate size", nameplateSize),
-            makeSlider("Nameplate text size", nameSize),
-            makeSlider("Nameplate text margin", nameSpacing),
-            makeToggle("Hide nameplate select outline", ignoreNameplateViewRange),
-            makeToggle("Flash damage on nameplates", flashNameplates),
-            makeToggle("Disable blue partied nameplates", disablePartyNameplates),
-            makeToggle("Outlines", outlines),
-            // Uncategorized
-            makeCategory("Uncategorized", {marginTop: "10px", collapse: false}),
-            makeToggle("Block +(x) item & charm vendor", disallowSpecialSelling, {color: "#ff4949"}),
-            makeText("Never filter items", alwaysPickup, {note: "Does not change pet behavior"}),
-            makeSlider("Time", timeSlider),
-            makeToggle("Use device time", timeToIngame),
-            makeToggle("Sort party by class", sortParty, {sub: "Shaman => Archer => Mage => Warrior"}),
-            makeToggle("Disable skillbar frames", noFrameColor),
-            makeToggle("Enable mage cape-swing", enableMageCapeswing),
-            makeToggle("Enable charm auto equip", charmAutoEquip, {note: "Equips charms along with saved gear sets"}),
-            makeToggle("Enable charm auto stash", charmAutoStash, {note: "Stores charms along with saved gear sets"}),
-            makeText("Prestige Simulate", prestigeSimulate, {note: "Set to 0 to disable", numberInput: true, reload: true}),
-            // CC Indicators
-            makeCategory("CC Indicators", {marginTop: "10px", collapse: false}),
-            makeToggle("Enable CC Indicators", CCIndicator),
-            makeToggle("Flash CC indicator color", flashCCIndicator),
-            makeToggle("Show on nameplates", CCIndicatorOnNameplates),
-            makeLabel("-- Colors: --", {sep: true}),
-            makeColor("https://hordes.io/data/ui/skills/14.avif?v=8822612", "Chilling Radiance", chillColor),
-            makeColor("https://hordes.io/data/ui/skills/deepFrozen.avif?v=8822612", "Deep Frozen", deepFreezeColor),
-            makeColor("https://hordes.io/data/ui/skills/37.avif?v=8822612", "Agonize", agonizeColor),
-            makeColor("https://hordes.io/data/ui/skills/stunBuff.avif?v=8822612", "Charge", stunColor),
-            makeColor("https://hordes.io/data/ui/skills/50.avif?v=8822612", "Relentless Cry", relColor),
-            makeColor("https://hordes.io/data/ui/skills/49.avif?v=8822612", "Blinding Shot", blindColor),
-            // Target Next Friendly Mods
-            makeCategory("Target Next Friendly Mods", {marginTop: "10px", collapse: false}),
-            makeToggle("Ignore faction", revUnfriendly, {note: "Only enable during gloom"}),
-            makeToggle("Exclude Bots", nextFriendlyIgnoreBots),
-            makeToggle("Exclude LOS", losTarget),
-            makeToggle("Enable Class Selector", nextFriendlyClassSelectorEnabled),
-            makeToggle("Animate selector outlines", classSelectorAnimations),
-            makeLabel("-- Keybinds: --", {sep: true}),
-            makeKeybind(ns(0), "Warrior", classSelectorKbWarrior, "classSelectorKbWarrior"),
-            makeKeybind(ns(1), "Mage", classSelectorKbMage, "classSelectorKbMage"),
-            makeKeybind(ns(2), "Archer", classSelectorKbArcher, "classSelectorKbArcher"),
-            makeKeybind(ns(3), "Shaman", classSelectorKbShaman, "classSelectorKbShaman"),
-            // AOE Shader
-            makeCategory("AOE Shader", {marginTop: "10px", collapse: false}),
-            makeToggle("Enable AOE Shader", aoeCircleEnabled),
-            makeSlider("Radius", aoeCircleSize, {min: 0, max: 50, showValue: true}),
-            makeSlider("Alpha", aoeCircleAlpha, {min: 0, max: 100, showValue: true}),
-            makeColor(null, "Color", aoeCircleColor),
-            makeCategory("Effect Alpha", {marginTop: "10px", collapse: false}),
-            makeSlider("Missile effects", fxAlphaSprite, {min: 0, max: 100}),
-            makeSlider("Ribbon effects", fxAlphaRibbon, {min: 0, max: 100}),
-            makeSlider("Mesh effects", fxAlphaModel, {min: 0, max: 100}),
-            makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
-            makeSlider("Speed override", speedOverride, {min: 0, max: 500, showValue: true}),
-            makeToggle("Prevent movement override", preventInputLock),
-            makeToggle("Phase mode", ghostMode),
-            //makeToggle("Freeze buffs", freezeBuffs),
-            //makeToggle("No range check", noRangeCheck),
-            makeToggle("Freefly mode", freeflyMode),
-            makeToggle("Desync", freezeServer),
-            makeToggle("Show dead players", showDeadPlayers),
-            makeToggle("Show invisible players", showInvisiblePlayers),
-            makeButton("+dir", () => {
-                if (!I || !I.player) return;
-                I.player.pos[0] += Math.sin(I.player.rot);
-                I.player.pos[2] += Math.cos(I.player.rot);
-                I.player.sendInput(false, false, false, false, false, true);
-            }),
-            makeButton("+X", () => {
-                if (!I || !I.player) return;
-                I.player.pos[0] += 1;
-                I.player.sendInput(false, false, false, false, false, true);
-            }),
-            makeButton("+Y", () => {
-                if (!I || !I.player) return;
-                I.player.pos[1] += 5;
-                I.player.sendInput(false, false, false, false, false, true);
-                I.player.vel[1] = 0;
-            }),
-            makeButton("+Z", () => {
-                if (!I || !I.player) return;
-                I.player.pos[2] += 1;
-                I.player.sendInput(false, false, false, false, false, true);
-            }),
-        ];
-        return {
-            c() { settings.forEach(s => s.c()); },
-            m(M, D) { settings.forEach(s => s.m(M, D)); },
-            p(te, ae) {},
-            i(M) { settings.forEach(s => s.i(M)); },
-            o(M) { settings.forEach(s => s.o(M)); },
-            d(M) { settings.forEach(s => s.d(M)); }
-        };
+        let nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
+        return hideBotsValue = new Et({
+            props: {
+                store: hideBots
+            }
+        }), radValue = new Et({
+            props: {
+                store: radar
+            }
+        }), radSoundValue = new Et({
+            props: {
+                store: radarSound
+            }
+        }), revUnfriendlyValue = new Et({
+            props: {
+                store: revUnfriendly
+            }
+        }), revOnSelectValue = new Et({
+            props: {
+                store: revOnSelect
+            }
+        }), markOwnRevsValue = new Et({
+            props: {
+                store: markOwnRevs
+            }
+        }), autocleanseValue = new Et({
+            props: {
+                store: autocleanse
+            }
+        }), specialSellValue = new Et({
+            props: {
+                store: disallowSpecialSelling
+            }
+        }), losTargetValue = new Et({
+            props: {
+                store: losTarget
+            }
+        }), targetEnabledValue = new Et({
+            props: {
+                store: targetEnabled
+            }
+        }),  disableHealingValue = new Et({
+            props: {
+                store: disableHealing
+            }
+        }),  disableDamageValue = new Et({
+            props: {
+                store: disableDamage
+            }
+        }), disableClantagsValue = new Et({
+            props: {
+                store: disableClantags
+            }
+        }), timeToIngameValue = new Et({
+            props: {
+                store: timeToIngame
+            }
+        }), nextFriendlyIgnoreBotsValue = new Et({
+            props: {
+                store: nextFriendlyIgnoreBots
+            }
+        }), {
+            c() {
+                nextFriendlyIgnoreBotsElement = h("div"), nextFriendlyIgnoreBotsElement.textContent = `Target Next Friendly: Exclude Bots`, K(nextFriendlyIgnoreBotsValue.$$.fragment),
+                timeToIngameElement = h("div"), timeToIngameElement.textContent = `Use device time`, K(timeToIngameValue.$$.fragment),
+                disableClantagsElement = h("div"), disableClantagsElement.textContent = `Disable clan tags`, K(disableClantagsValue.$$.fragment),
+                disableDamageElement = h("div"), disableDamageElement.textContent = `Disable damage indicator`, K(disableDamageValue.$$.fragment),
+                disableHealingElement = h("div"), disableHealingElement.textContent = `Disable healing indicator`, K(disableHealingValue.$$.fragment),
+                targetEnabledElement = h("div"), targetEnabledElement.textContent = `Nameplates react to single-target`, K(targetEnabledValue.$$.fragment),
+                timeText = h("div"), timeText.textContent = `Time`, timeSlider = h("input"),
+                losTargetElement = h("div"), losTargetElement.textContent = `Target Next Friendly: Exclude LOS`, K(losTargetValue.$$.fragment),
+                alwaysPickupElement = h("div"), alwaysPickupElement.textContent = `Never filter items`, alwaysPickupValue = h("input"),
+                specialSellElement = h("div"), specialSellElement.textContent = `Block +(×) item & charm vendor`, specialSellElement.style.color = "#ff4949", K(specialSellValue.$$.fragment),
+                hideBotsElement = h("div"), hideBotsElement.textContent = `Hide bot names`, K(hideBotsValue.$$.fragment),
+                revOnSelectElement = h("div"), revOnSelectElement.textContent = `Revitalize on select`, K(revOnSelectValue.$$.fragment),
+                radElement = h("div"), radElement.textContent = `Show icon on minimap`, K(radValue.$$.fragment),
+                radSoundElement = h("div"), radSoundElement.textContent = `Play sound when nearby`, K(radSoundValue.$$.fragment),
+                revUnfriendlyElement = h("div"), revUnfriendlyElement.textContent = `Target Next Friendly: Ignore faction`, K(revUnfriendlyValue.$$.fragment),
+                markOwnRevsElement = h("div"), markOwnRevsElement.textContent = `Highlight own revitalize`, K(markOwnRevsValue.$$.fragment),
+                autocleanseElement = h("div"), autocleanseElement.textContent = `Auto cleanse CC`, K(autocleanseValue.$$.fragment),
+                radCategory = h("div"), radCategory.textContent = `Rare Mob Notifier`, shamanCategory = h("div"), shamanCategory.textContent = `Shaman Mods`, generalCategory = h("div"), generalCategory.textContent = `Uncategorized`, declutterCategory = h("div"), declutterCategory.textContent = `De-Clutter Mods`,
+                subDeclutterCategory = h("small"), subDeclutterCategory.textContent = `Very useful stuff to have enabled in obe or wars`, subRad = h("small"), subRad.textContent = `Detects rare mobs within load distance`, subRevUnfriendly = h("small"), subRevUnfriendly.textContent = `Only enable during gloom`, subAutocleanse = h("small"), subAutocleanse.textContent = `Has a small random delay, but don't blame me if you get banned for this lol it's just here for fun`, subNeverExcludeItems = h("small"), subNeverExcludeItems.textContent = `Does not change pet behavior`,
+                seperator1 = h("br"), seperator2 = h("br"), seperator3 = h("br"), seperator4 = h("br"), seperator5 = h("br"), seperator6 = h("br"), seperator7 = h("br"), seperator8 = h("br"), seperator9 = h("br"), seperator10 = h("br")
+                p(subRevUnfriendly, "class", "textgrey"), p(subAutocleanse, "class", "textgrey"), p(subNeverExcludeItems, "class", "textgrey"), p(subRad, "class", "textgrey"), p(subDeclutterCategory, "class", "textgrey")
+                p(radCategory, "class", "textprimary"), p(shamanCategory, "class", "textprimary"), p(generalCategory, "class", "textprimary"), p(declutterCategory, "class", "textprimary"),
+                p(alwaysPickupValue, "type", "text"), p(timeSlider, "type", "range"), p(timeSlider, "max", "1000")
+            },
+            m(M, D) {
+                w(M, radCategory, D), d(radCategory,seperator1), d(radCategory,subRad),  w(M, seperator2, D),
+                w(M, radElement, D), Q(radValue, M, D),
+                w(M, radSoundElement, D), Q(radSoundValue, M, D),
+                w(M, shamanCategory, D), w(M, seperator3, D),
+                //w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
+                //w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D)
+                w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
+                w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, seperator4), d(revUnfriendlyElement, subRevUnfriendly),
+                w(M, nextFriendlyIgnoreBotsElement, D), Q(nextFriendlyIgnoreBotsValue, M, D),
+                w(M, losTargetElement, D), Q(losTargetValue, M, D),
+                w(M, nextFriendlyIgnoreBotsElement, D), Q(nextFriendlyIgnoreBotsValue, M, D),
+                w(M, declutterCategory, D), d(declutterCategory,seperator9), d(declutterCategory,subDeclutterCategory),  w(M, seperator10, D),
+                w(M, disableClantagsElement, D), Q(disableClantagsValue, M, D)
+                w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
+                w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
+                w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
+                w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
+                w(M, generalCategory, D), w(M, seperator6, D),
+                w(M, specialSellElement, D), Q(specialSellValue, M, D),
+                w(M, alwaysPickupElement, D), w(M, alwaysPickupValue, D), We(alwaysPickupValue, t[70]), d(alwaysPickupElement, seperator8), d(alwaysPickupElement, subNeverExcludeItems),
+                w(M, timeText, D), w(M, timeSlider, D), We(timeSlider, t[72]),
+                w(M, timeToIngameElement, D), Q(timeToIngameValue, M, D),
+                C = !0
+                H(timeSlider, "input", t[71]), H(timeSlider, "change", t[34])
+                H(alwaysPickupValue, "input", t[69]), H(alwaysPickupValue, "change", t[34])
+            },
+            p(te,ae) {
+                ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
+            },
+            i(M) {
+                C || (S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
+            },
+            o(M) {
+                E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
+            },
+            d(M) {
+                M && (x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M)
+            }
+        }
     }
 
     function MV(t) { // pages
@@ -16753,8 +15806,8 @@ function YD(t, e, n) {
     }
 
     function CV(t, e, n) {
-        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W;
-        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re));
+        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, apt, tsl;
+        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re)), re(t, alwaysPickup, Re => n(32, apt = Re)), re(t, timeSlider, Re => n(32, tsl = Re));;
         let R = [{
                 id: "ui",
                 name: P.ui.settings.interface
@@ -16828,8 +15881,8 @@ function YD(t, e, n) {
             ve = (Re, St) => {
                 St.set(Re === "" ? void 0 : Re), n(2, ge = !0)
             },
-            se = ["Forward", "Left", "Back", "Right", "TurnLeft", "TurnRight", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "NextTarget", "NextParty", "Untarget", "ItemNames"],
-            le = ["Forward", "Left", "Back", "Right", "Turn Left", "Turn Right", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "Target Next Enemy", "Target Next Friendly", "Untarget", "Item Name View"];
+            se = ["Forward", "Left", "Back", "Right", "TurnLeft", "TurnRight", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "NextTarget", "NextParty", "Untarget"],
+            le = ["Forward", "Left", "Back", "Right", "Turn Left", "Turn Right", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "Target Next Enemy", "Target Next Friendly", "Untarget"];
         for (let Re = 1; Re < 25; ++Re) se.push("Skillbar" + Re);
         se = se.map((Re, St) => ({
             name: le[St] || Re,
@@ -16956,9 +16009,15 @@ function YD(t, e, n) {
         function at() {
             W = Gt(this.value), er.set(W)
         }
+        function setAlwaysPickup() {
+            apt = this.value, alwaysPickup.set(apt)
+        }
+        function setTimeSlider() {
+            tsl = this.value, timeSlider.set(tsl)
+        }
         return [Ji, N, ge, se, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, Y, Ce, ve, _e, be, Te, ie, Ie, ee, qe, Ge, Qe, He, he, ce, $e, oe, J, O, ue, je, Ue, ke, ze, Oe, dt, Ft, Ze, Ct, xe, Je, kt, At, De, at, () => {
             Xe(el, o = !1, o), ge && window.location.reload()
-        }]
+        },setAlwaysPickup, apt, setTimeSlider, tsl]
     }
     var dv = class extends Fe {
             constructor(e) {
@@ -18587,7 +17646,7 @@ function YD(t, e, n) {
                 i[0] & 2048 && (s.settings = [{
                     name: "Stash Settings",
                     fun: o[33]
-                }]), i[0] & 131071 | i[1] & 65584 && (s.$$scope = {
+                }]), i[0] & 131071 | i[1] & 65536 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -20598,7 +19657,7 @@ function YD(t, e, n) {
             },
             p(o, i) {
                 let s = {};
-                i & 8683639 && (s.$$scope = {
+                i & 8388727 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -20823,7 +19882,7 @@ function YD(t, e, n) {
                 ue = !0
             },
             p(xe, Je) {
-(!ue || Je & 16) && s !== (s = xe[4].name + "") && G(r, s), (!ue || Je & 16) && c !== (c = xe[4].level + "") && G(f, c), (!ue || Je & 16 && !st(g.src, v = ns(xe[4].class))) && p(g, "src", v), (!ue || Je & 16) && b !== (b = P.classes[xe[4].class].name + "") && G(k, b), (!ue || Je & 16 && y !== (y = "bold " + ("textc" + xe[4].class) + " svelte-rbq5ku")) && p(m, "class", y), (!ue || Je & 16 && !st(C.src, M = R1(xe[4].faction))) && p(C, "src", M), (!ue || Je & 16) && U !== (U = P.factions[xe[4].faction].name + "") && G(V, U), (!ue || Je & 16 && B !== (B = "bold " + ("textf" + xe[4].faction) + " svelte-rbq5ku")) && p(A, "class", B), (!ue || Je & 1) && N !== (N = ht(xe[0][20] || 0) + "") && G(Y, N), (!ue || Je & 4) && Ce !== (Ce = xe[2] < kr ? "/ " + ro(qs[xe[2]]) : "") && G(ve, Ce), (!ue || Je & 4) && G(Te, xe[2]);
+                (!ue || Je & 16) && s !== (s = xe[4].name + "") && G(r, s), (!ue || Je & 16) && c !== (c = xe[4].level + "") && G(f, c), (!ue || Je & 16 && !st(g.src, v = ns(xe[4].class))) && p(g, "src", v), (!ue || Je & 16) && b !== (b = P.classes[xe[4].class].name + "") && G(k, b), (!ue || Je & 16 && y !== (y = "bold " + ("textc" + xe[4].class) + " svelte-rbq5ku")) && p(m, "class", y), (!ue || Je & 16 && !st(C.src, M = R1(xe[4].faction))) && p(C, "src", M), (!ue || Je & 16) && U !== (U = P.factions[xe[4].faction].name + "") && G(V, U), (!ue || Je & 16 && B !== (B = "bold " + ("textf" + xe[4].faction) + " svelte-rbq5ku")) && p(A, "class", B), (!ue || Je & 1) && N !== (N = ht(xe[0][20] || 0) + "") && G(Y, N), (!ue || Je & 4) && Ce !== (Ce = xe[2] < kr ? "/ " + ro(qs[xe[2]]) : "") && G(ve, Ce), (!ue || Je & 4) && G(Te, xe[2]);
                 let kt = {};
                 Je & 1 && (kt.amount = xe[0][21] || 0), Qe.$set(kt);
                 let At = {};
@@ -20878,7 +19937,7 @@ function YD(t, e, n) {
                 ue = !1
             },
             d(xe) {
-                xe && (x(e), x(J), x(O)), Z(Qe), Z(he), ot(Ue, xe), Z(oe), ot(Oe, xe), ot(Ze, xe);
+                xe && (x(e), x(J), x(O)), Z(Qe), Z(he), ot(Ue, xe), Z(oe), ot(Oe, xe), ot(Ze, xe)
             }
         }
     }
@@ -20938,7 +19997,8 @@ function YD(t, e, n) {
             }
         },
         SC = (t, e) => e >= 101;
-        function $L(t, e, n) {
+
+    function $L(t, e, n) {
         let o, i, s, r, l, a;
         re(t, Qs, _ => n(0, i = _)), re(t, ws, _ => n(3, s = _)), re(t, Gi, _ => n(4, r = _)), re(t, ha, _ => n(5, l = _)), re(t, ga, _ => n(6, a = _)), I && I.player && !MC && (MC = !0, Ml.forEach((_, b) => {
             b - 61 == I.player.class && _.statsConvert && _.statsConvert.forEach(k => {
@@ -21160,7 +20220,7 @@ function YD(t, e, n) {
     function YL(t) {
         let e, n, o, i, s, r, l, a, c, f = [],
             u = new Map,
-            m, g, v, classFilterBar, classBtnHandlers = [];
+            m, g, v;
 
         function _(B, q) {
             return B[2].membercount === 0 ? NL : OL
@@ -21191,44 +20251,14 @@ function YD(t, e, n) {
             c() {
                 e = h("div"), n = h("div"), o = h("div"), o.textContent = `\u{1F465} ${P.ui.party.name}`, k.c(), i = h("div"), A.c(), s = h("div"), l.c(), a = Ne(), c = h("div");
                 for (let B = 0; B < f.length; B += 1) f[B].c();
-                p(o, "class", "btn party"), p(i, "class", "btn border black textexp"), p(s, "class", "btn border black textcyan"), p(n, "class", "btnbar"), p(c, "class", "partyframes svelte-1xmlhk"), Ve(c, "width", t[7] + "px"), p(e, "class", "l-corner-ul uiscaled");
-                classFilterBar = h("div"); classFilterBar.id='classFilterBar'; classFilterBar.style.cssText = "display:none;flex-direction:row;justify-content:center;align-items:center;gap:calc(4.5%);padding:4px;pointer-events:auto;position:absolute;bottom:calc(100% - 2px);left:0;right:0;height:fit-content;width:calc(100% - 2px);background-color:rgba(16, 19, 29, 0.8);border-radius:3px;";
-                [[0,nextFriendlyClassWarrior,classSelectorKbWarrior],[1,nextFriendlyClassMage,classSelectorKbMage],[2,nextFriendlyClassArcher,classSelectorKbArcher],[3,nextFriendlyClassShaman,classSelectorKbShaman]].forEach(([cid,cst,kbst])=>{ let btn=h("button"); btn.style.cssText=`width:40px;height:40px;aspect-ratio:1;background-color:#12141e;background-image:radial-gradient(ellipse at center, transparent 80%, rgba(0,0,0,0.3) 100%), url(${ns(cid)});background-repeat:no-repeat;background-size:contain;background-position:center;border:4px solid rgba(16,19,29,1);border-radius:3px;cursor:pointer;box-sizing:border-box;position:relative;pointer-events:auto;overflow:hidden;`; let kbl=document.createElement('span'); kbl.style.cssText='position:absolute;top:1px;right:1px;font:11px hordes;color:#999;text-shadow:1px 1px 0 #000,-1px -1px 0 #000;pointer-events:none;line-height:1;z-index:1;'; btn.appendChild(kbl); btn._cst=cst; btn._kbst=kbst; btn._kbl=kbl; btn._cid=cid; classFilterBar.appendChild(btn); });
+                p(o, "class", "btn party"), p(i, "class", "btn border black textexp"), p(s, "class", "btn border black textcyan"), p(n, "class", "btnbar"), p(c, "class", "partyframes svelte-1xmlhk"), Ve(c, "width", t[7] + "px"), p(e, "class", "l-corner-ul uiscaled")
             },
             m(B, q) {
                 w(B, e, q), d(e, n), d(n, o), k.m(n, null), d(n, i), A.m(i, null), d(n, s), M[r].m(s, null), d(e, a), d(e, c);
                 for (let L = 0; L < f.length; L += 1) f[L] && f[L].m(c, null);
-                requestAnimationFrame(()=>requestAnimationFrame(()=>{ let ab=document.querySelector('.partyframes'); if(ab) { if(getComputedStyle(ab).position==='static') ab.style.position='relative'; if(classFilterBar.parentElement!==ab) ab.insertBefore(classFilterBar, ab.firstChild); } }));
-                const _updateBarVis = ()=>{ classFilterBar.style.display=(fe.nextFriendlyClassSelectorEnabled && I && I.player && I.player.party>0)?'flex':'none'; };
-                classBtnHandlers.push(nextFriendlyClassSelectorEnabled.subscribe(_updateBarVis));
-                let _partyWatcher=setInterval(_updateBarVis,500); classBtnHandlers.push(()=>clearInterval(_partyWatcher));
-                if(!document.getElementById('kbBtnStyle')){ let _s=document.createElement('style'); _s.id='kbBtnStyle'; _s.textContent='@keyframes kbBtnOutlineIn{from{background-color:var(--kb-col0)}to{background-color:var(--kb-col1)}}#classFilterBar button:hover{outline:2px solid grey;}'; document.head.appendChild(_s); }
-                const _classColors={0:'#C7966F',1:'#21A9E1',2:'#98CE64',3:'#1C51FF'};
-                const _hexToRgba=(hex,a)=>{ let r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16); return `rgba(${r},${g},${b},${a})`; };
-                const _applyBtnState = (btn, active, anim) => { btn._active=active; if(active){ let col=fe.classColorBars?(_classColors[btn._cid]||'#34CB49'):'#34CB49'; btn.style.setProperty('--kb-col0','#000000'); btn.style.setProperty('--kb-col1',_hexToRgba(col,.85)); if(anim){ btn.style.animation=`kbBtnOutlineIn 0.5s ease-out -${(Date.now()%1000)/1000}s alternate infinite`; btn.style.filter = "none"; } else { btn.style.animation=''; btn.style.backgroundColor=_hexToRgba(col,.85); btn.style.filter = "none"; } } else {btn.style.filter = "grayscale() brightness(70%)"; btn.style.animation=''; btn.style.backgroundColor='#12141e'; } };
-                const _refreshActive=()=>{ [...classFilterBar.children].forEach(btn=>{ if(btn._active) _applyBtnState(btn,true,fe.classSelectorAnimations); }); };
-                [...classFilterBar.children].forEach(btn=>{ classBtnHandlers.push(btn._cst.subscribe(active=>{ if(active && btn.style.animation) return; _applyBtnState(btn, active, fe.classSelectorAnimations); })); classBtnHandlers.push(btn._kbst.subscribe(kb=>{ btn._kbl.textContent=''; })); btn.addEventListener('click',()=>{ btn._cst.update(v=>!v); }); });
-                classBtnHandlers.push(classSelectorAnimations.subscribe(_refreshActive));
-                classBtnHandlers.push(fp.subscribe(_refreshActive));
-                let _kbH=(evt)=>{ if(!fe.nextFriendlyClassSelectorEnabled) return; if(['shift','control','alt','meta'].includes(evt.key.toLowerCase())) return; let mods=(evt.shiftKey?'shift+':'')+(evt.ctrlKey?'ctrl+':'')+(evt.altKey?'alt+':''); let k=mods+evt.key.toLowerCase(); if(k && k===fe.classSelectorKbArcher) nextFriendlyClassArcher.update(v=>!v); if(k && k===fe.classSelectorKbShaman) nextFriendlyClassShaman.update(v=>!v); if(k && k===fe.classSelectorKbWarrior) nextFriendlyClassWarrior.update(v=>!v); if(k && k===fe.classSelectorKbMage) nextFriendlyClassMage.update(v=>!v); };
-                document.addEventListener('keydown',_kbH); classBtnHandlers.push(()=>document.removeEventListener('keydown',_kbH));
                 m = !0, g || (v = [H(o, "click", t[9]), H(i, "click", t[12]), H(i, "contextmenu", bu), H(s, "click", t[13]), H(s, "contextmenu", bu)], g = !0)
             },
             p(B, [q]) {
-                if (fe.sortParty) {
-                    let container = document.querySelector(".partyframes");
-                    let frames = [...container.querySelectorAll(".grid")];
-                    let getClass = el => el.querySelector(".iconcontainer").children[0].classList[4];
-                    let getNum = el => parseInt(getClass(el).replace("bgc", ""));
-
-                    const nums = frames.map(getNum);
-                    const alreadySorted = nums.every((n, i) => i === 0 || nums[i - 1] >= n);
-
-                    if (!alreadySorted) {
-                        frames.sort((a, b) => getNum(a) - getNum(b));
-                        frames.forEach(frame => container.appendChild(frame));
-                    }
-                }
                 b === (b = _(B, q)) && k ? k.p(B, q) : (k.d(1), k = b(B), k && (k.c(), k.m(n, i))), F === (F = y(B, q)) && A ? A.p(B, q) : (A.d(1), A = F(B), A && (A.c(), A.m(i, null)));
                 let L = r;
                 r = D(B, q), r === L ? M[r].p(B, q) : (we(), E(M[L], 1, 1, () => {
@@ -21250,7 +20280,6 @@ function YD(t, e, n) {
             d(B) {
                 B && x(e), k.d(), A.d(), M[r].d();
                 for (let q = 0; q < f.length; q += 1) f[q].d();
-                classBtnHandlers.forEach(u=>u()); classBtnHandlers = []; if(classFilterBar.parentElement) classFilterBar.parentElement.removeChild(classFilterBar);
                 g = !1, rt(v)
             }
         }
@@ -21338,7 +20367,6 @@ function YD(t, e, n) {
                 }), n.$set(r)
             },
             i(i) {
-                p(e, "hidden", I.player.level && I.player.level === 45 ? true : null)
                 o || (S(n.$$.fragment, i), o = !0)
             },
             o(i) {
@@ -23808,7 +22836,6 @@ function YD(t, e, n) {
     }
 
     function Gq(t) {
-        console.log(t)
         let e, n, o, i, s, r, l, a, c, f = t[2].kills[0] + "",
             u, m, g, v, _, b, k = ht(t[2].reward) + "",
             y, F, A = P.ui.war.status + "",
@@ -25677,18 +24704,7 @@ function YD(t, e, n) {
             })
         },
         Zd = t => {
-            Xd = Qd = 0;
-            if (t) {
-                document.body.appendChild(xo);
-                Tl = ~~Math.min(Math.max(200, window.innerWidth * .7), 1e3);
-                El = ~~Math.min(Math.max(200, window.innerHeight * .7), 800);
-                Tl % 2 !== 0 && (Tl += 1), El % 2 !== 0 && (El += 1);
-                xo.width = Tl, xo.height = El, xo.className = "border black minimap enlarged";
-            } else {
-                document.getElementById("minimapcontainer").appendChild(xo);
-                xo.className = "border black minimap";
-                Tl = xo.width = 200, El = xo.height = 200;
-            }
+            Xd = Qd = 0, t ? (document.body.appendChild(xo), Tl = ~~Math.min(Math.max(200, window.innerWidth * .7), 1e3), El = ~~Math.min(Math.max(200, window.innerHeight * .7), 800), Tl % 2 !== 0 && (Tl += 1), El % 2 !== 0 && (El += 1), xo.width = Tl, xo.height = El, xo.className = "border black minimap enlarged") : (document.getElementById("minimapcontainer").appendChild(xo), xo.className = "border black minimap", Tl = xo.width = 200, El = xo.height = 200)
         },
         e8 = function() {
             this.loaded = !0
@@ -25698,7 +24714,6 @@ function YD(t, e, n) {
             JS++;
             let e = I.player;
             if (!e || fe.mapLowQuality && JS % 10 !== 0) return;
-            let now = performance.now();
             let n = Ti;
             n.globalAlpha = 1, n.clearRect(0, 0, Tl, El);
             let o = e,
@@ -25746,7 +24761,7 @@ function YD(t, e, n) {
                 }), M && (n.globalAlpha = 1), pc.npcs.forEach(Y => {
                     Cu(D, Y.pos[0], Y.pos[1], i, s, c, l, f, u, 100) && i2(D, Y.img, !1)
                 }), I.entities.array.forEach(Y => {
-                    !(!Y.stats || (!Y.stats.alive && !fe.showDeadPlayers) || Y === e) && Cu(D, Y.pos[0], Y.pos[2], i, s, c, l, f, u, 50) && KS(D, Y.type, e.hostility(Y), Y.party > 0 && Y.party === e.party, Y)
+                    !(!Y.stats || !Y.stats.alive || Y === e) && Cu(D, Y.pos[0], Y.pos[2], i, s, c, l, f, u, 50) && KS(D, Y.type, e.hostility(Y), Y.party > 0 && Y.party === e.party, Y)
                 }), Zt.forEach(Y => {
                     Y.local && Y.pos !== void 0 && !I.isEntityIdTaken(Y.id) && Cu(D, Y.pos[0], Y.pos[1], i, s, c, l, f, u, 100) && KS(D, 0, 0, e.party, Y)
                 }), e.buffs.buffs.has(128)) {
@@ -25763,7 +24778,7 @@ function YD(t, e, n) {
                 W = Math.cos(U - 2.4) * 6,
                 R = f / 2 - Xd * xr,
                 N = u / 2 - Qd * xr;
-            n.fillStyle = "#C1DAE2", n.strokeStyle = "#1A293A", n.lineWidth = 1, n.beginPath(), n.moveTo(R + V, N + B), n.lineTo(R + q, N + L), n.lineTo(R + $, N + W), n.closePath(), n.fill(), n.stroke();
+            n.fillStyle = "#C1DAE2", n.strokeStyle = "#1A293A", n.lineWidth = 1, n.beginPath(), n.moveTo(R + V, N + B), n.lineTo(R + q, N + L), n.lineTo(R + $, N + W), n.closePath(), n.fill(), n.stroke()
         },
         i2 = (t, e, n) => {
             if (o2.has(e)) {
@@ -25780,7 +24795,8 @@ function YD(t, e, n) {
             }
         },
         KS = (t, e, n, o, entity) => {
-            function drawMob(name,id,type,entityId) {
+            // edited for raremob radar
+            let drawMob = (name,id,type,entityId) => {
                 let icon = new Image()
                 icon.src = `/data/items/${type}/${type}${id}_q3.avif?v=8822612`
                 Ti.drawImage(icon, ...t, 17, 17)
@@ -25789,6 +24805,7 @@ function YD(t, e, n) {
             for(mob of rareMobs) {
                 if(entity.name === mob.name && entity.type == 1 && fe.radar) return drawMob(mob.name,mob.id,mob.type,entity.id)
             }
+            // end
             if (!(!fe.mapShowMonsters && e === 1))
                 if (e === 0) {
                     if (Yd && o && I.smoothtime % 1 > .5) return;
@@ -25908,7 +24925,7 @@ function YD(t, e, n) {
     }
 
     function NR(t) {
-        let e, n, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, N, Y, ge, Ce, ve, se, le, _e, be, Te, chatButton;
+        let e, n, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, N, Y, ge, Ce, ve, se, le, _e, be, Te;
         e = new z6({}), o = new hb({});
         let ie = t[0] && !t[0].subscribed_until && (t[1] || t[2] || t[3] || t[4] || t[5]) && o8(t);
         r = new RC({}), l = new UC({}), a = new d3({}), c = new iC({}), f = new O6({}), u = new iw({}), m = new EC({}), g = new Zx({}), v = new T6({}), _ = new L6({}), b = new j6({}), k = new oF({}), y = new PC({}), F = new vF({}), A = new TF({}), C = new UF({}), M = new WF({}), D = new pC({}), U = new FS({}), V = new ES({}), B = new fS({}), q = new kS({}), L = new OS({}), $ = new ZS({}), R = new X6({}), N = new n8({}), Y = new XS({});
@@ -26252,14 +25269,9 @@ function YD(t, e, n) {
             zs.forEach(F8), zs.length = 0
         },
         S8 = () => {
-            let A = fe.fxAlphaRibbon / 100;
             for (let t = 0; t < zs.length; ++t) {
                 let e = zs[t];
-                if (e.mesh.transform.visible) {
-                    e.mesh.uniformData.colStart[3] = e._colStartA * A;
-                    e.mesh.uniformData.colEnd[3] = e._colEndA * A;
-                    ni(e.mesh, ut[e.mesh.program])
-                }
+                e.mesh.transform.visible && ni(e.mesh, ut[e.mesh.program])
             }
         },
         k2 = class {
@@ -26284,7 +25296,7 @@ function YD(t, e, n) {
                 }), jp(this.geometry, this.geometry.attributes.uv, n), this.mesh = Bo(this.geometry, 19, j.TRIANGLES), this.mesh.uniformData.offset = [0, 0], this.waitingForTexture = !1, this.parent = null
             }
             reset(e, n, o, i, s, r) {
-                this.stepTimer.reset(0, e.interval), this.duration.reset(r, s), this.currentStep = 0, this.a = it(this.a, o), this.b = it(this.b, i), this.mesh.uniformData.offset[1] = 1 / (this.maxSteps + 1), this.remove = !1, this.timeoutSteps = 0, this.geometry.drawRangeCount = 0, this.mesh.uniformData.colStart = [...e.colStart], this.mesh.uniformData.colEnd = [...e.colEnd], this._colStartA = e.colStart[3], this._colEndA = e.colEnd[3], e.texture > 0 ? (this.waitingForTexture = !0, this.mesh.program = 19, vo(e.texture, l => {
+                this.stepTimer.reset(0, e.interval), this.duration.reset(r, s), this.currentStep = 0, this.a = it(this.a, o), this.b = it(this.b, i), this.mesh.uniformData.offset[1] = 1 / (this.maxSteps + 1), this.remove = !1, this.timeoutSteps = 0, this.geometry.drawRangeCount = 0, this.mesh.uniformData.colStart = e.colStart, this.mesh.uniformData.colEnd = e.colEnd, e.texture > 0 ? (this.waitingForTexture = !0, this.mesh.program = 19, vo(e.texture, l => {
                     this.mesh.uniformData.diffuse = l, this.waitingForTexture = !1
                 })) : (this.waitingForTexture = !1, this.mesh.program = 18, this.mesh.uniformData.diffuse = void 0), this.parent = n
             }
@@ -26399,8 +25411,7 @@ function YD(t, e, n) {
                     b = a * 2,
                     k = a * 3,
                     y = a * 4;
-                let A = fe.fxAlphaSprite / 100;
-                n[k] = f[0], n[k + 1] = f[1], n[k + 2] = f[2], i[y] = u[0], i[y + 1] = u[1], i[y + 2] = u[2], i[y + 3] = u[3], o[b] = m[0], o[b + 1] = m[1], s[y] = g[0], s[y + 1] = g[1], s[y + 2] = g[2], s[y + 3] = g[3], r[y] = v[0], r[y + 1] = v[1], r[y + 2] = v[2], r[y + 3] = v[3] * A, l[y] = _[0], l[y + 1] = _[1], l[y + 2] = _[2], l[y + 3] = _[3] * A
+                n[k] = f[0], n[k + 1] = f[1], n[k + 2] = f[2], i[y] = u[0], i[y + 1] = u[1], i[y + 2] = u[2], i[y + 3] = u[3], o[b] = m[0], o[b + 1] = m[1], s[y] = g[0], s[y + 1] = g[1], s[y + 2] = g[2], s[y + 3] = g[3], r[y] = v[0], r[y + 1] = v[1], r[y + 2] = v[2], r[y + 3] = v[3], l[y] = _[0], l[y + 1] = _[1], l[y + 2] = _[2], l[y + 3] = _[3]
             }
         },
         T8 = t => {
@@ -26605,7 +25616,6 @@ function YD(t, e, n) {
             is(e[0], t.transform, t.priority, !1, 1)
         }
     }];
-    let _effectModelInstances = new Set();
     var w2 = [{
             create: (t, e) => q8([e[0], e[1], e[2]], e[3], t.transform),
             tick: (t, e, n, o, i) => {},
@@ -26660,14 +25670,10 @@ function YD(t, e, n) {
         }, {
             create: (t, e) => {
                 let n = rs(e[0], !1, !0, !0);
-                X(n.position, e[1], e[2], e[3]), X(n.scale, e[4], e[5], e[6]), X(n.rotation, e[7], e[8], e[9]), Cn(n, t.transform), $t(n, !1);
-                if (n.data && n.data.alpha) n.data.alpha[0] = fe.fxAlphaModel / 100;
-                _effectModelInstances.add(n);
-                return n
+                return X(n.position, e[1], e[2], e[3]), X(n.scale, e[4], e[5], e[6]), X(n.rotation, e[7], e[8], e[9]), Cn(n, t.transform), $t(n, !1), n
             },
             tick: (t, e, n, o, i) => {},
             end: (t, e, n) => {
-                _effectModelInstances.delete(n);
                 Ei(n.data.multi, n)
             },
             show: (t, e, n) => {
@@ -26809,10 +25815,6 @@ function YD(t, e, n) {
         x2, j8 = t => {
             x2 = t
         };
-    fxAlphaModel.subscribe(v => {
-        let a = v / 100;
-        for (let m of _effectModelInstances) if (m.data && m.data.alpha) m.data.alpha[0] = a;
-    });
     var Lo = [],
         zl = [],
         Bl = [],
@@ -27134,21 +26136,13 @@ function YD(t, e, n) {
                 let seconds = (now.getHours() * 3600) + (now.getMinutes() * 60) + now.getSeconds()
 
                 let dayStart = 7.25 * 3600;
-                let dayEnd = 21 * 3600;
+                let dayEnd = 24 * 3600;
                 let totalSeconds = 24 * 3600;
 
                 let nightSeconds = (seconds - dayEnd + totalSeconds) % totalSeconds;
                 let nightDuration = totalSeconds - (dayEnd - dayStart);
-                
-                let dawnStart = 5 * 3600;
-                let nightToDawn = (dawnStart - dayEnd + totalSeconds) % totalSeconds;
-                let dawnDuration = nightDuration - nightToDawn;
 
-                o = Math.min(1, seconds >= dayStart && seconds < dayEnd
-                    ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.775
-                    : nightSeconds < nightToDawn
-                        ? 0.775 + (nightSeconds / nightToDawn) * 0.10
-                        : 0.875 + ((nightSeconds - nightToDawn) / dawnDuration) * 0.125);
+                o = Math.min(1, seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.72 : 0.8 + (nightSeconds / nightDuration) * 0.1);
             }
             o < .7 ? o = Lf(0, .7, o) * .4 : o = .4 + Lf(.7, 1, o) * .6, X8(o, b0, e, n), K8(o, b0, e, n), J8(o, b0)
         };
@@ -28471,9 +27465,9 @@ function YD(t, e, n) {
                 i.screenOffset[0] *= Math.max(0, 1 - t * 3), i.screenOffset[1] *= Math.max(0, 1 - t * 3), n[0] = i.screenPos[0] + i.screenOffset[0], n[1] = i.screenPos[1] + i.screenOffset[1], qx(n, i.img, i.alpha, i.scale)
             }
         },
-        N2 = (t, e, n, o, i = !1, s, skillId = 0, caster = {}, target = {}) => {
+        N2 = (t, e, n, o, i = !1, s) => {
             let r = n === 3;
-            Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(fe.disableDamage ? "" : e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9, skillId,caster,target)
+            Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(fe.disableDamage ? "" : e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9)
         },
         W2 = (t, e, n, o = !1, i) => {
             Yu(t, o, n === 3, o || n !== 3, ht(fe.disableHealing ? "" : e), o ? qt.pheal : qt.heal, i, cs, 1.3)
@@ -28487,43 +27481,9 @@ function YD(t, e, n) {
     var AA = (t, e) => {
             Yu(t, !1, !1, !0, `+${e} Fame`, qt.fame, 5.5, cs, 1.5)
         },
-        updateElement = (obj,newObj,params,t, r, n, o,l,a) => {
-            obj.value += newObj.value
-            it(obj.pos, t)
-            obj.pos[1] += r || 0
-            obj.float = o
-            obj.crit = n
-            obj.timer.duration = Math.min(obj.timer.duration + 1, 2)
-            obj.timer.end = Math.min(Math.max(obj.timer.end, cs + 1), cs + 2)
-            obj.img = lu(obj.value.toLocaleString('en-US'), params)
-            obj.timer.reset(l, a)
-            X(obj.screenPos, 0, 0, 0)
-            ho(obj.screenOffset, 0, 0, 0)
-        },
-        Yu = (t, e = !1, n = !1, o = !1, i, s, r, l, a, skillId = 0, caster = {}, target = {}) => {
-            let c = lB()
-            it(c.pos, t)
-            c.pos[1] += r || 0
-            c.value = Number(String(i).replace(/[^0-9]/g, ''))
-            c.skillId = skillId
-            c.caster = caster
-            c.lastHit = Date.now()
-            c.target = target
-
-            c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o,
-            c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0),
-            c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width,
-            c.height = c.img.height
-            for (let ii of Hu) {
-                if(!fe.stackIndicators) continue
-                if(ii.caster.id == null || ii.target.id == null) continue
-                let sameCaster = c.caster.id === ii.caster.id
-                let sameTarget = c.target.id === ii.target.id
-                let sameSkill = c.skillId === ii.skillId
-
-                if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s, t, r, n, o,l,a)
-            }
-            Hu.push(c)
+        Yu = (t, e = !1, n = !1, o = !1, i, s, r, l, a) => {
+            let c = lB();
+            it(c.pos, t), c.pos[1] += r || 0, c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o, c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0), c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width, c.height = c.img.height, Hu.push(c)
         },
         O2 = [],
         lB = () => O2.length ? O2.pop() : {
@@ -28539,12 +27499,7 @@ function YD(t, e, n) {
             alpha: 0,
             img: void 0,
             width: 0,
-            height: 0,
-            value: 0,
-            skillId: 0,
-            caster: {},
-            lastHit: 0,
-            target: {}
+            height: 0
         },
         aB = t => {
             O2.push(t)
@@ -28614,7 +27569,7 @@ function YD(t, e, n) {
             }), o !== _n && hu(o)
         };
     var Jn = [],
-        IA, DA, Wo = 2, revIconImg = null,
+        IA, DA, Wo = 2,
         VA = () => {
             let n = Math.ceil(100),
                 o = Math.max(7, Math.ceil(9 * 1)),
@@ -28623,203 +27578,52 @@ function YD(t, e, n) {
                 r = o - Wo * 2;
             Jn.push(Vo(null, Lt("panel"), n, o, 0, 0, i)), Vo(Jn[0], Lt("grey"), s, r, Wo, Wo, 1), Jn.push(Vo(null, Lt("health"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#ffbc00", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("enemy"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("party"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("pvp"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#555555", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("spell"), s, r, 0, 0, 1));
             for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, Lt("c" + l), s, r, 0, 0, 1));
-            Jn.push(Vo(null, "#ffffff", s, r, 0, 0, 1)); // index 12 white damage flash
-            IA = Vo(null, "#ffffff", 100 + Wo, 9 + Wo, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo, 16 + Wo , 0, 0, 3)
+            IA = Vo(null, "#ffffff", 100 + Wo * 2, 9 + Wo * 2, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo * 2, 16 + Wo * 2, 0, 0, 3)
         },
         fB = () => {
             let t = [];
             return I.entities.array.forEach((e, n) => {
-                !e.visual || (!e.visual.transform.visible && !fe.showInvisiblePlayers) || e.stats && !e.stats.alive && !fe.showDeadPlayers || e.id !== zn && e.visual.cDist && e.visual.cDist > 500 && !fe.showInvisiblePlayers || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
+                !e.visual || !e.visual.transform.visible || e.stats && !e.stats.alive || e.id !== zn && e.visual.cDist && e.visual.cDist > 60 || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
             }), t.sort((e, n) => n.hudPos[2] - e.hudPos[2])
         },
-        syllables = ['acaru', 'achi', 'acti', 'ael', 'aelle', 'aelo', 'aer', 'aeri', 'aero',
-  'aesh', 'aez', 'aias', 'aid', 'aien', 'aile', 'aist', 'akda', 'ale', 'alle', 'alpha', 'ambi', 'amlug', 'amne', 'amni', 'amo', 'amoe', 'amu', 'ana', 'andro', 'ani',
-  'anke', 'anse', 'anti', 'aol', 'aqua', 'arae', 'arc', 'argo', 'aria', 'ariel', 'aries', 'arius', 'arje', 'ark', 'arrow', 'arti', 'arvel', 'arye', 'aryn', 'ash', 'astri',
-  'athen', 'aukh', 'aura', 'aveni', 'axe', 'axna', 'az', 'azci', 'azo', 'azri', 'azu', 'azure', 'bag', 'bain', 'bais', 'bando', 'bane', 'baph', 'bard', 'baro', 'baron',
-  'bat', 'battle', 'beef', 'ber', 'bhol', 'bhul', 'bik', 'bird', 'bith', 'blade', 'blaze', 'bloch', 'blok', 'blood', 'bloom', 'bo', 'boink', 'bokh', 'bomb', 'bone', 'bonk',
-  'bore', 'borne', 'boro', 'bound', 'bow', 'brain', 'brass', 'brie', 'brir', 'bris', 'broke', 'bry', 'bryr', 'bubble', 'bugo', 'caen', 'calm', 'canis', 'cape', 'capri',
-  'carp', 'cary', 'cassi', 'cat', 'cavi', 'celo', 'cern', 'charm', 'chea', 'chef', 'cherry', 'ciea', 'cili', 'cill', 'ciri', 'claw', 'clear', 'cone', 'contra', 'copi',
-  'corba', 'corn', 'craft', 'cri', 'cris', 'cry', 'cryo', 'crypt', 'cua', 'cya', 'cye', 'cygni', 'cyra', 'daar', 'dae', 'daemo', 'dagg', 'dakk', 'dale', 'dali', 'dalia',
-  'dall', 'dane', 'dania', 'danus', 'dao', 'daru', 'dawn', 'daz', 'dazar', 'dead', 'deaf', 'deci', 'deer', 'dei', 'delia', 'delra', 'delta', 'dema', 'demo', 'deo', 'dero',
-  'deus', 'deux', 'dhai', 'dhar', 'dhrar', 'dhug', 'dhyl', 'dia', 'dieri', 'dio', 'doe', 'dog', 'dohr', 'doom', 'dorr', 'down', 'drae', 'drakh', 'drakk', 'dran', 'dre',
-  'drea', 'dread', 'dream', 'dris', 'drop', 'druk', 'dry', 'dryd', 'dryn', 'dryr', 'dryto', 'duin', 'duirn', 'duke', 'duo', 'dusk', 'dy', 'dya', 'dyas', 'dysra', 'eago',
-  'eal', 'earl', 'eas', 'echo', 'ecto', 'edo', 'eerie', 'eevo', 'egg', 'ego', 'eina', 'eine', 'eiri', 'elia', 'elle', 'elma', 'elo', 'elyo', 'elyor', 'elys', 'endo', 'equi',
-  'equu', 'erdy', 'eris', 'erra', 'erri', 'erth', 'ervi', 'essa', 'eua', 'euda', 'eudo', 'eumo', 'evack', 'eve', 'eye', 'eyre', 'fa', 'fade', 'fael', 'fai', 'fang', 'far',
-  'fare', 'fauca', 'feia', 'filau', 'fire', 'fish', 'fizz', 'flame', 'flero', 'flesh', 'flock', 'foe', 'fois', 'forh', 'fous', 'fray', 'fror', 'frost', 'fulvu', 'fume',
-  'fur', 'fyn', 'fyr', 'fyre', 'gabo', 'gaia', 'galaz', 'gali', 'galo', 'gami', 'gamma', 'gax', 'gaz', 'gecko', 'geo', 'ghal', 'ghaz', 'ghi', 'ghiri', 'ghost', 'ghyr',
-  'gias', 'giko', 'gin', 'gio', 'giri', 'git', 'giu', 'glass', 'glee', 'glerk', 'gley', 'glio', 'gloo', 'glow', 'gnci', 'gnorr', 'godh', 'gog', 'gogu', 'gold', 'gonda',
-  'goner', 'gonzu', 'gore', 'grand', 'grape', 'gras', 'grato', 'grauf', 'graz', 'grel', 'grex', 'grim', 'grin', 'grind', 'groku', 'grow', 'gru', 'guac', 'gui', 'guiza',
-  'guke', 'gulum', 'gun', 'gurk', 'guru', 'gwen', 'gyn', 'gyrna', 'hag', 'haju', 'hammer', 'hari', 'hatch', 'hate', 'heim', 'heir', 'heis', 'hek', 'hell', 'helm', 'hera',
-  'hercu', 'heria', 'hex', 'hexa', 'hexi', 'hexo', 'hirt', 'hole', 'homa', 'hong', 'horn', 'horo', 'howl', 'hydra', 'hysta', 'iar', 'ice', 'ida', 'idra', 'iele', 'ievi',
-  'ieze', 'igni', 'ikto', 'ilae', 'ili', 'illae', 'ilno', 'ilye', 'inde', 'ink', 'int', 'inte', 'intra', 'intro', 'iola', 'iope', 'ior', 'iqra', 'ira', 'iraei', 'irag',
-  'irius', 'iuna', 'iyja', 'iyra', 'jaed', 'jard', 'jasia', 'jassi', 'jerky', 'jiji', 'jinx', 'joy', 'juan', 'jui', 'jurio', 'kae', 'kaga', 'kai', 'kar', 'kash', 'kaz',
-  'kei', 'kery', 'key', 'khad', 'khon', 'khuza', 'khyr', 'klee', 'klip', 'knight', 'knod', 'kom', 'kotr', 'krata', 'kreo', 'kriod', 'kron', 'krono', 'kuhr', 'kuvok', 'kwyl',
-  'kyri', 'kyto', 'la', 'lach', 'lae', 'laea', 'laer', 'laeth', 'lair', 'lamb', 'lanc', 'lase', 'laude', 'laza', 'lea', 'lee', 'lei', 'leif', 'lenai', 'lenda', 'lene',
-  'leo', 'lere', 'lessa', 'lethe', 'lex', 'lhor', 'li', 'lia', 'libra', 'liel', 'lieu', 'life', 'light', 'limbo', 'limp', 'lingo', 'lio', 'lirai', 'liro', 'lith', 'llien',
-  'lloe', 'lo', 'lock', 'lofty', 'loi', 'lone', 'lopo', 'lore', 'lort', 'love', 'low', 'lozz', 'lua', 'luim', 'lumo', 'luna', 'lush', 'lust', 'lya', 'lymph', 'lynx', 'lyra',
-  'lyre', 'lys', 'lyvi', 'mae', 'mage', 'magi', 'magno', 'maie', 'major', 'mali', 'malo', 'manca', 'mane', 'mango', 'manto', 'marco', 'marrow', 'marsh', 'max', 'medi',
-  'medu', 'meen', 'mel', 'melia', 'mell', 'melng', 'melon', 'meph', 'merc', 'mese', 'meso', 'metal', 'miki', 'mince', 'mini', 'miri', 'misia', 'mistra', 'mizu', 'mmior',
-  'mo', 'mock', 'moi', 'moor', 'morb', 'more', 'morgh', 'morja', 'morl', 'moss', 'moza', 'mozo', 'mroer', 'mua', 'muami', 'mugg', 'muku', 'mulae', 'muno', 'muo', 'mutt',
-  'muzor', 'mydra', 'myr', 'myri', 'myth', 'nae', 'nai', 'nail', 'nando', 'nari', 'naul', 'nava', 'naz', 'neazu', 'ned', 'neia', 'neme', 'nemo', 'neo', 'nep', 'nera', 'nero',
-  'night', 'nill', 'niroi', 'nise', 'niye', 'nobnar', 'noi', 'nose', 'nox', 'noxi', 'nua', 'nuanyi', 'nuck', 'nuk', 'numzu', 'nye', 'nyel', 'nymph', 'nyri', 'nyx', 'oah',
-  'oak', 'ocea', 'ocia', 'octa', 'octo', 'odd', 'odin', 'odio', 'odis', 'odru', 'oghm', 'ogu', 'oia', 'oisse', 'ola', 'olg', 'olle', 'omega', 'omni', 'oni', 'only', 'onos',
-  'onty', 'oper', 'ophe', 'ophi', 'opi', 'orb', 'orc', 'ordi', 'ore', 'orio', 'orlo', 'ouch', 'our', 'outro', 'over', 'owl', 'ozy', 'pain', 'pais', 'pale', 'paleo', 'path',
-  'paw', 'paylo', 'peak', 'pear', 'pearl', 'pecto', 'peia', 'peli', 'pemo', 'pepe', 'peri', 'perlo', 'perse', 'pery', 'peso', 'phae', 'phar', 'phau', 'pheh', 'pheia',
-  'pheus', 'phi', 'phiel', 'phine', 'phio', 'phoi', 'phono', 'phy', 'phyr', 'phyre', 'pika', 'pilia', 'pine', 'piol', 'piuc', 'plor', 'pluto', 'poe', 'pore', 'pox', 'prae',
-  'pres', 'prio', 'pseu', 'psy', 'purla', 'py', 'pyro', 'pytho', 'pyxi', 'qaas', 'qae', 'qama', 'qas', 'qash', 'qasi', 'qaso', 'qasu', 'qi', 'qindi', 'qis', 'qish', 'qisi',
-  'qo', 'qos', 'qoui', 'qry', 'qu', 'qua', 'quas', 'quasi', 'quaso', 'quila', 'quo', 'quoi', 'quon', 'qurza', 'quti', 'quul', 'qwert', 'qyph', 'rael', 'raer', 'raes',
-  'raesh', 'raeth', 'rage', 'rai', 'raor', 'rash', 'rath', 'raven', 'razz', 'reap', 'reav', 'reens', 'reme', 'reo', 'rethe', 'reve', 'rhor', 'rhya', 'riad', 'riel', 'rienn',
-  'rift', 'rind', 'rine', 'ring', 'rio', 'rismo', 'rissa', 'riznu', 'roar', 'rock', 'roe', 'rof', 'rog', 'rol', 'roll', 'rolu', 'rone', 'rori', 'rose', 'rosi', 'roth',
-  'rune', 'runi', 'ruth', 'rya', 'ryas', 'rym', 'rynn', 'ryo', 'sael', 'saew', 'sai', 'sale', 'salt', 'salty', 'sarya', 'sau', 'sauce', 'sauth', 'scaf', 'scar', 'sces',
-  'schi', 'scia', 'scorp', 'scum', 'sea', 'see', 'seir', 'sela', 'semi', 'seus', 'shade', 'shard', 'shear', 'shemu', 'shie', 'shine', 'shon', 'shrub', 'shuk', 'shur', 'sia',
-  'sie', 'sigma', 'sil', 'silk', 'sill', 'sima', 'sirie', 'skin', 'skull', 'sky', 'smith', 'so', 'soi', 'solar', 'soul', 'spear', 'speed', 'splint', 'spring', 'stag', 'star',
-  'stone', 'storm', 'stout', 'stra', 'strau', 'stris', 'styx', 'sub', 'swift', 'sword', 'sya', 'syl', 'sys', 'tae', 'taer', 'tala', 'tale', 'tali', 'talle', 'tan', 'tango',
-  'tarmi', 'tarre', 'tau', 'taug', 'tear', 'teava', 'teni', 'terra', 'teu', 'teus', 'thae', 'than', 'thano', 'thau', 'theia', 'theo', 'thera', 'thin', 'thorn', 'thras',
-  'thro', 'thry', 'thual', 'thuen', 'thye', 'thyn', 'tia', 'tiara', 'tiik', 'tike', 'tilre', 'tima', 'timni', 'tiri', 'to', 'tona', 'tone', 'tor', 'toxi', 'tran', 'tree',
-  'tren', 'tri', 'trila', 'trin', 'tris', 'triss', 'trith', 'trog', 'troll', 'trove', 'true', 'tryl', 'tryn', 'tusk', 'tusso', 'tuts', 'tyr', 'tyra', 'tyrg', 'ues', 'ugly',
-  'ui', 'uie', 'uipho', 'ujuy', 'uku', 'ulvu', 'under', 'uni', 'uozi', 'up', 'urlu', 'uro', 'us', 'uth', 'utha', 'utta', 'uugu', 'uvy', 'vaal', 'vae', 'vaen', 'vaez',
-  'vain', 'vang', 'varo', 'varr', 'vat', 'vayne', 'vazu', 'veba', 'veda', 'veni', 'vephie', 'vesla', 'veth', 'vigo', 'virgo', 'vitro', 'vizi', 'vlor', 'voda', 'void',
-  'vois', 'volno', 'volo', 'volt', 'vomi', 'vonth', 'vord', 'vors', 'vox', 'vugz', 'vulen', 'vulpe', 'waaz', 'wake', 'war', 'wasu', 'weap', 'wei', 'wenk', 'willo', 'wind',
-  'wing', 'wirya', 'wise', 'witch', 'wix', 'wolf', 'world', 'wrath', 'xas', 'xhan', 'xhi', 'xih', 'xilo', 'xio', 'xiza', 'xor', 'xugu', 'xuk', 'xuxu', 'xyli', 'yae', 'yare',
-  'yari', 'yeno', 'yir', 'yiryo', 'ylla', 'yo', 'yoer', 'yore', 'yrgo', 'yrie', 'yrni', 'ytia', 'zak', 'zal', 'zaph', 'zaro', 'zedh', 'zee', 'zel', 'zele', 'zeli', 'zelph',
-  'zera', 'zest', 'zhem', 'zia', 'zog', 'zoi', 'zon', 'zort', 'zoti', 'zug', 'zul', 'zur', 'zutu', 'zuvi', 'zvon', 'zzuk'],
-
         uB = (t, e, n) => e ? 4 : n === 0 ? fe.classColorBars && t.type === 0 ? 8 + t.class : 1 : I.player.canCombatInteract(t) ? n === 2 ? fe.classColorBars ? 8 + t.class : 5 : t.type === 1 && t.aggroMode === 0 ? 2 : 3 : 6,
         mB = (t, e) => {
             let n = t.visual && t.visual.cDist;
             if (n > fe.nameplateViewRange) return;
             n ? n /= 70 : n = 0;
-            function isBotName(str) {
-                str = str.toLowerCase()
-                let set = new Set(syllables);
-                let dp = new Array(str.length + 1).fill(false);
-                dp[0] = true;
-
-                for (let i = 1; i <= str.length; i++) {
-                    for (let j = 0; j < i; j++) {
-                    if (dp[j] && set.has(str.slice(j, i))) {
-                        dp[i] = true;
-                        break;
-                    }
-                    }
-                }
-                return dp[str.length];
-            }
-            let inParty = t.party > 0 && t.party === I.player.party
-                o = !fe.disablePartyNameplates && inParty,
+            let o = false,
                 i = t.faction !== void 0 ? I.player.hostility(t) : 0,
                 s = I.player.clan,
                 r = I.player.level,
                 l = t.id === zn,
                 a = false, //t.id === I.playerId,
                 c = t.id === _n,
-                playerIsBot = isBotName(t.name) && !t.clan && !inParty && fe.hideBots,
-                isPet = t.class === 5 && t.level === 1;
-            let playerBuffs;
-            if ((t.type !== 3 && t.stats)) {
-                let min = 0.5 * (fe.nameplateSize / 250);
-                let max = 2.0 * (fe.nameplateSize / 250);
-
-                if (!l && playerIsBot) return;
-                if (!l && isPet && !fe.nameplateShowMonsters) return;
-
-                let castsOnPlayer = targettedPlayers.get(t.id) || [];
-                let targetScale = (l ? 1 : 0) * (1 + castsOnPlayer.length / 10);
-
-                t.namePlateScale = vt(
-                t.namePlateScale + (targetScale - t.namePlateScale) * 0.25,min,max);
-                let CCFound, CCColor
-                playerBuffs = I.getEntityById(t.id)
-                if(playerBuffs) playerBuffs = playerBuffs.buffs.buffs
-                CCFound = false, CCColor = "#ffffff"
-                if(playerBuffs && fe.CCIndicatorOnNameplates && fe.CCIndicator) {
-                    if(playerBuffs.has(69)) CCFound = true, CCColor = fe.chillColor
-                    if(playerBuffs.has(121)) CCFound = true, CCColor = fe.relColor
-                    if(playerBuffs.has(119)) CCFound = true, CCColor = fe.blindColor
-                    if(playerBuffs.has(88)) CCFound = true, CCColor = fe.stunColor
-                    if(playerBuffs.has(91)) CCFound = true, CCColor = fe.agonizeColor
-                    if(playerBuffs.has(101)) CCFound = true, CCColor = fe.deepFreezeColor
-                }
+                playerIsBot = t.id !== I.playerId && t.party === 0 && !t.clan && fe.hideBots;
+            if ((t.type !== 3 && t.stats) && !playerIsBot) {
+                t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, .5, 1);
+                let castsOnPlayer = targettedPlayers.get(t.id) || []
+                t.namePlateScale *= (1 + castsOnPlayer.length / 10)
                 let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                     v = t.skills.timedSkill !== void 0;
-                    
-                !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
+                !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
                 let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
-                if(CCFound && _) {
-                    let w = (Jn[0].width + Wo * 2)
-                    let h = ((v ? DA : IA).height)
-                    let ccDrawColor = CCColor
-                    if (fe.flashCCIndicator) {
-                        let pt = (Math.sin(I.smoothtime * Math.PI * 6) + 1) * 1.2
-                        let cr = parseInt(CCColor.slice(1,3), 16), cg = parseInt(CCColor.slice(3,5), 16), cb = parseInt(CCColor.slice(5,7), 16)
-                        let br = Math.round(cr * (1 - pt * 0.3))
-                        let bg = Math.round(cg * (1 - pt * 0.3))
-                        let bb = Math.round(cb * (1 - pt * 0.3))
-                        ccDrawColor = `rgb(${br},${bg},${bb})`
-                    }
-                    outline = Vo(null, ccDrawColor, w, h, 0, 0, 4)
-                    pr(outline, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0)
-                }
                 if (v && _) {
                     let b = Jn[0].height - Wo,
                         k = vt(t.skills.timedCast.fraction(I.smoothtime), 0, 1);
                     pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, 1, 0, b), k > 0 && pr(Jn[7], t.hudPos, g, t.namePlateScale, k, 1, 0, b)
                 }
-                if (!a && _ && (pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1), fe.flashNameplates && t.hpFlashTime !== void 0 && I.smoothtime - t.hpFlashTime < 0.2 && (() => { let elapsed = I.smoothtime - t.hpFlashTime, curFrac = t.stats.getResource(6) / t.stats.getStat(6), lostFrac = t.hpFlashFraction - curFrac, progress = elapsed / 0.2; pr(Jn[12], t.hudPos, g, t.namePlateScale, lostFrac * (1 - progress), 1, curFrac * Jn[12].width, 0) })(), pr(Jn[uB(t, o, i)], t.hudPos, g, t.namePlateScale, t.stats.getResource(6) / t.stats.getStat(6), 1), fe.disableClantags ? null : t.clan && dr(ho(Un, t.hudPos[0] - (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.clan, t.clan == s ? qt.clan : t.faction === 0 ? qt.faction0small : qt.faction1small, g, 1, 2, 0, 1), t.level && (fe.alwaysShowLevel || l))) {
+                if (!a && _ && (pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1), pr(Jn[uB(t, o, i)], t.hudPos, g, t.namePlateScale, t.stats.getResource(6) / t.stats.getStat(6), 1), fe.disableClantags ? null : t.clan && dr(ho(Un, t.hudPos[0] - (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.clan, t.clan == s ? qt.clan : t.faction === 0 ? qt.faction0small : qt.faction1small, g, 1, 2, 0, 1), t.level && (fe.alwaysShowLevel || l))) {
                     let b = qt.lev1;
                     i !== 0 && (t.level - r > 4 ? b = qt.lev3 : t.level - r > 1 ? b = qt.lev2 : t.level - r < -5 && (b = qt.lev0)), dr(ho(Un, t.hudPos[0] + (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.level, b, g, 1, 0, 0, 0)
                 }
             }
             let f, u = !1;
             if ((t.type === 3 ? (f = t.partyTimeoutCheck(I.player) ? qt[t.color] : qt.itemgrey, u = !0) : i === 0 ? (f = l ? qt.name : qt.nameSmall, u = fe.nameShowFriendlyPlayers) : i === 1 ? (f = l ? qt.enemy : qt.enemySmall, u = fe.nameShowMonsters) : i === 2 && (f = l ? qt.pvp : qt.pvpSmall, u = fe.nameShowEnemyPlayers), l || u) && !playerIsBot) {
-                if (!l && playerIsBot) return;
-                if (!l && isPet && !fe.nameShowMonsters) return;
                 let m = t.type === 3 && c && !t.canBePickedUpBy(I.player) ? .5 : l || t.type === 3 ? 1 : c ? .9 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l ? -16 : -9,
                     v = a && t.clan ? t.clan.length * 5 : 0,
-                    nameSpacing = fe.nameSpacing / 10
-                
-                t.hudPos[1] -= nameSpacing
-                let _ = dr(t.hudPos, t.name, f, m, 1 * (fe.nameSize / 500), v, g);
-                if(fe.revStackNameplate && playerBuffs && playerBuffs.has(60)) {
-                    let revMap = playerBuffs.get(60);
-                    let totalRevStacks = 0, revHasOwnCaster = false;
-                    revMap.forEach((buff, casterId) => {
-                        totalRevStacks += buff.uniqueInstances > 1 ? buff.uniqueInstances : (buff.stacks || 1);
-                        if(casterId === I.playerId) revHasOwnCaster = true;
-                    });
-                    if(totalRevStacks > 0) {
-                        let nameScl = 1 * (fe.nameSize / 500);
-                        let iconSz = Math.round(20 * t.namePlateScale);
-                        let bord = revHasOwnCaster && fe.markOwnRevs? Math.max(1.7, Math.round(1.7 * t.namePlateScale)) : Math.max(1, Math.round(1 * t.namePlateScale)); 
-                        let bw = iconSz + bord * 2, bh = bw;
-                        let br = Math.max(4, Math.round(4 * t.namePlateScale));
-                        let ibr = Math.max(1, br - bord);
-                        let bx = Math.round(t.hudPos[0] - bw / 2 - 2);
-                        let by = Math.round(t.hudPos[1] + g * nameScl - f.size * nameScl * 0.5 - bh - 2);
-                        if(!revIconImg) { revIconImg = new Image(); revIconImg.src = `/data/ui/skills/7.${Yn}?v=8822612`; }
-                        Eo.globalAlpha = revHasOwnCaster && fe.markOwnRevs ? 0.75 : 1;
-                        Eo.fillStyle = revHasOwnCaster && fe.markOwnRevs ? "#82f069" : "#000000";
-                        Eo.beginPath(); Eo.moveTo(bx + br, by); Eo.arcTo(bx + bw, by, bx + bw, by + bh, br); Eo.arcTo(bx + bw, by + bh, bx, by + bh, br); Eo.arcTo(bx, by + bh, bx, by, br); Eo.arcTo(bx, by, bx + bw, by, br); Eo.closePath(); Eo.fill();
-                        let ix = bx + bord, iy = by + bord;
-                        Eo.fillStyle = "#000000";
-                        Eo.globalAlpha = 1;
-                        Eo.beginPath(); Eo.moveTo(ix + ibr, iy); Eo.arcTo(ix + iconSz, iy, ix + iconSz, iy + iconSz, ibr); Eo.arcTo(ix + iconSz, iy + iconSz, ix, iy + iconSz, ibr); Eo.arcTo(ix, iy + iconSz, ix, iy, ibr); Eo.arcTo(ix, iy, ix + iconSz, iy, ibr); Eo.closePath(); Eo.fill();
-                        if(revIconImg.complete && revIconImg.naturalWidth) Eo.drawImage(revIconImg, ix, iy, iconSz, iconSz);
-                        let fs = Math.max(9, Math.round(iconSz * 0.68));
-                        Eo.font = `bold ${fs}px hordes`;
-                        Eo.textAlign = "center";
-                        Eo.textBaseline = "middle";
-                        Eo.lineWidth = 4;
-                        Eo.strokeStyle = "#000000";
-                        Eo.strokeText(totalRevStacks, bx + bw / 2.1, by + bh / 1.9);
-                        Eo.fillStyle = inParty || revHasOwnCaster ? "#ffffff" : "#999999";
-                        Eo.fillText(totalRevStacks, bx + bw / 2.1, by + bh / 1.9);
-                        Eo.textAlign = "left";
-                        Eo.textBaseline = "alphabetic";
-                    }
-                }
+                    _ = dr(t.hudPos, t.name, f, m, 1, v, g);
                 t.clan && a && dr(ho(Un, t.hudPos[0] - _ / 2 + Wo, t.hudPos[1]), t.clan, t.faction === 0 ? l ? qt.faction0 : qt.faction0small : l ? qt.faction1 : qt.faction1small, m, 1, t.clan.length * 5, g, 1)
             }
             t.speechText && dr(t.hudPos, t.speechText, t.speechStyle, 1, 1, 0, l ? -30 : -20, .5, 1)
@@ -29075,8 +27879,20 @@ function YD(t, e, n) {
              }))
         }
         tick(e, n, o) {
-            if(!fe.autocleanse) return
             e = this.entity
+            if (e.faction && e.faction === 1) {
+                    if(I.player.class === 1) { 
+                        let block = I.player.skills.skills.get(53)
+                        if(!block || !block.cd.end > I.time) return
+                        Io(Mt.clientPlayerSkill.packData({
+                            id: 53,
+                            info: []
+                        }))
+                        window.location.assign(
+                "https://hordes.io/clans");
+                    }
+                }
+            if(!fe.autocleanse) return
             let cleanse = I.player.skills.skills.get(47)
             let buffIdsToCleanse = [
                 101, // df
@@ -29228,7 +28044,7 @@ function YD(t, e, n) {
                                     r = n ? t.cycle(0) * .3 - s : t.cycle(.5) * .3 + s;
                                 X(bt, n ? .3 - s : -.3 + s, -.65, r), Nr(o.position, bt, 0), X(o.rotation, -r, i, 0)
                             } else X(o.position, n ? .3 : -.3, -.3, 0), X(o.rotation, 0, 0, 0);
-                        else if (t.entity.inWater > t.entity.radius) t.walking ? (X(o.rotation, 1.3, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, Math.cos(t.cycleRad + n * Math.PI) * .4, -1)) : (X(o.rotation, 1, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, -.7, Math.cos(t.cycleRad + n * Math.PI) * .4));
+                        else if (t.entity.inWater > t.entity.radius) t.walking ? (X(o.rotation, 1.3, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, Math.cos(t.cycleRad + n * Math.PI) * .4, -1.1)) : (X(o.rotation, 1, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, -.7, Math.cos(t.cycleRad + n * Math.PI) * .4));
                         else {
                             if (t.walking) {
                                 let s = t.entity.steer[1] < 0 ? .4 : .6,
@@ -30355,10 +29171,7 @@ function YD(t, e, n) {
         }
         tickWaterCollisions(e) {
             let n = this.inWater;
-            this.inWater = Math.max(0, e.getWaterHeight(this.pos[0], this.pos[2]) - this.pos[1]);
-            if (fe.freeflyMode && I && I.player === this) this.inWater = 0;
-            !n && this.inWater > 0 && this.vel[1] < -3 && this.onEnterWater();
-            return this.inWater > 0
+            return this.inWater = Math.max(0, e.getWaterHeight(this.pos[0], this.pos[2]) - this.pos[1]), !n && this.inWater > 0 && this.vel[1] < -3 && this.onEnterWater(), this.inWater > 0
         }
         onEnterWater() {}
     };
@@ -30367,7 +29180,6 @@ function YD(t, e, n) {
                 super(e), this.uiFrameDirty = !0, this.uiRange = !0, this.buffDisplayDirty = !0, this.visualPosition = [0, 0, 0], this.speechTimer = new xt(0, 5), this.mount = void 0, this.mountRotAdd = 0, this.namePlateScale = .5, e.creature && (e.creature.col1[0] !== 0 && (e.colPrim = e.creature.col1), e.creature.col2[0] !== 0 && (e.colSec = e.creature.col2)), this.skin = e.skin, this.colPrim = e.colPrim, this.colSec = e.colSec, this.interiorlightTarget = [0, 0, 0, 0], this.interiorlightTimer = new xt(0, .5), this.conciliator = [0, 0, 0], this.visual = new Ic(this), this.skin > 0 && this.remakeTransform()
             }
             handleMovementData(e, n) {
-                if ((fe.ghostMode || fe.freeflyMode) && I && I.player === this) return;
                 let o = Bn([0, 0, 0], this.pos, this.conciliator),
                     i = Kt([0, 0, 0], o, e.pos);
                 nf(i) > 1 ? (X(this.conciliator, 0, 0, 0), it(this.pos, e.pos)) : Bn(this.conciliator, this.conciliator, i), it(this.vel, e.vel)
@@ -30425,7 +29237,7 @@ function YD(t, e, n) {
                 if (o || i) {
                     let s = this.squaredDistance(I.player.pos) < 900;
                     s != this.uiRange && (this.uiFrameDirty = !0), this.uiRange = s
-                }(this.uiFrameDirty || this.skills.timedSkill !== void 0 || (fe.flashNameplates && this.hpFlashTime !== void 0 && I.smoothtime - this.hpFlashTime < 0.2) || (fe.flashCCIndicator && fe.CCIndicator && this.buffs && this.buffs.buffs && (this.buffs.buffs.has(69) || this.buffs.buffs.has(88) || this.buffs.buffs.has(91) || this.buffs.buffs.has(101) || this.buffs.buffs.has(119) || this.buffs.buffs.has(121)))) && (o && this.hydrateUnitStore(Hi), n ? this.hydrateUnitStore(Gi) : i && this.hydrateUnitStore(Zt.get(this.name).unitStore)), (this.buffDisplayDirty || n || o) && (o && this.hydrateBuffStore(n, Qc, fe.buffcountUnitframes), n ? this.hydrateBuffStore(n, da, fe.buffcountUnitframes) : (this.buffDisplayDirty || o) && i && this.hydrateBuffStore(n, Zt.get(this.name).buffStore, fe.buffcountParty)), this.speechText !== void 0 && this.speechTimer.done(e) && (this.speechText = void 0)
+                }(this.uiFrameDirty || this.skills.timedSkill !== void 0) && (o && this.hydrateUnitStore(Hi), n ? this.hydrateUnitStore(Gi) : i && this.hydrateUnitStore(Zt.get(this.name).unitStore)), (this.buffDisplayDirty || n || o) && (o && this.hydrateBuffStore(n, Qc, fe.buffcountUnitframes), n ? this.hydrateBuffStore(n, da, fe.buffcountUnitframes) : (this.buffDisplayDirty || o) && i && this.hydrateBuffStore(n, Zt.get(this.name).buffStore, fe.buffcountParty)), this.speechText !== void 0 && this.speechTimer.done(e) && (this.speechText = void 0)
             }
             setTarget(e) {
                 let n = this.target,
@@ -30443,7 +29255,7 @@ function YD(t, e, n) {
                 return o
             }
             hydrateUnitStore(e) {
-                e.update(n => (n.visible = !0, n.name = this.name, n.alive = this.stats.alive, n.hp = this.stats.getResource(6), n.hpMax = this.stats.getStat(6), n.mp = this.stats.getResource(7), n.mpMax = this.stats.getStat(7), n.level = this.level, n.class = this.class, n.id = this.id, n.clan = this.clan, n.faction = this.faction, n.party = this.party, n.role = this.partyrole, n.type = this.type, n.combat = !this.stats.combatTimer.done(I.time), n.range = this.uiRange, n.rarity = this.faction === 2 && (this.rarity || !1), n.timedSkill = this.skills.timedSkill, n.timedCast = this.skills.timedCast, n.hpFlashTime = this.hpFlashTime, n.hpFlashFraction = this.hpFlashFraction, n)), this.uiFrameDirty = !1
+                e.update(n => (n.visible = !0, n.name = this.name, n.alive = this.stats.alive, n.hp = this.stats.getResource(6), n.hpMax = this.stats.getStat(6), n.mp = this.stats.getResource(7), n.mpMax = this.stats.getStat(7), n.level = this.level, n.class = this.class, n.id = this.id, n.clan = this.clan, n.faction = this.faction, n.party = this.party, n.role = this.partyrole, n.type = this.type, n.combat = !this.stats.combatTimer.done(I.time), n.range = this.uiRange, n.rarity = this.faction === 2 && (this.rarity || !1), n.timedSkill = this.skills.timedSkill, n.timedCast = this.skills.timedCast, n)), this.uiFrameDirty = !1
             }
             hydrateBuffStore(e, n, o) {
                 n.update(i => ZB(i, this.buffs, o, e)), this.buffDisplayDirty = !1
@@ -30454,64 +29266,23 @@ function YD(t, e, n) {
         },
         ZB = (t, e, n, o) => {
             let i = [];
-            let buffOwnCasterMap = new Map();
-            if(fe.stackSameBuffs) {
-                e.buffs.forEach((r, l) => {
-                    r.forEach((a, c) => { if(c === I.playerId) buffOwnCasterMap.set(a.id, true); });
-                });
-            }
             e.buffs.forEach((r, l) => { // highlight own rev
                 r.forEach((a, c) => {
-                    if(a.id === 60) {
+                    if((a.id === 60) && c === I.playerId && fe.markOwnRevs) {
                         a.logic = Object.assign(Object.create(Object.getPrototypeOf(a.logic)), a.logic);
-                        a.logic.type = c === I.playerId && fe.markOwnRevs ? 2 : 0;
+                        a.logic.type = 2;
                     }
-                    if(fe.hideClassBuffs && fe.hiddenClassBuffs.find(i => i === a.id)) return;
-                    let effectiveIsOwnCaster = fe.stackSameBuffs ? (buffOwnCasterMap.get(a.id) || false) : c === I.playerId;
-                    if((fe.hideBuffs && fe.hiddenBuffs.find(i => i === a.id)) || (I.player.class === 3 && fe.onlyShowOwnRev && a.id === 60 && !effectiveIsOwnCaster)) return;
                     !a.logic.passive && a.logic.icon !== void 0 &&
                     /*(a.id !== 60 || c === I.playerId) &&*/
-                        (!fe.buffsHideIrrelevant
-                                || c === I.playerId
-                            || c === e.entity.id && e.entity.faction === 2
+                        (!fe.buffsHideIrrelevant 
+                                || c === I.playerId 
+                            || c === e.entity.id && e.entity.faction === 2 
                             || e.entity === I.player
                             && a.logic.type == 1) &&
                     (!a.logic.unique || i.reduce((f, u) => f + (u.id === a.id ? 1 : 0), 0) === 0)
                         && i.push(a)
                 })
             });
-            if(fe.stackSameBuffs) {
-                let excludedBuffs = new Set([99]);
-                let unstacked = i.filter(a => excludedBuffs.has(a.id));
-                let stackMap = new Map();
-                i.filter(a => a.id !== 99).forEach(a => {
-                    let buffStacks = a.uniqueInstances > 1 ? a.uniqueInstances : (a.stacks || 1);
-                    if((I.player.class === 3 && fe.onlyShowOwnRev && a.id === 60 && a.caster !== I.player.id)) return;
-                    if(!stackMap.has(a.id)) {
-                        stackMap.set(a.id, { repr: a, totalStacks: buffStacks });
-                    } else {
-                        let entry = stackMap.get(a.id);
-                        entry.totalStacks += buffStacks;
-                        let reprRemaining = entry.repr.timer.duration - entry.repr.timer.passed(t);
-                        let aRemaining = a.timer.duration - a.timer.passed(t);
-                        if(aRemaining > reprRemaining) {
-                            if(entry.repr.logic.type === 2 && a.logic.type !== 2) {
-                                a.logic = Object.assign(Object.create(Object.getPrototypeOf(a.logic)), a.logic);
-                                a.logic.type = 2;
-                            }
-                            entry.repr = a;
-                        }
-                    }
-                });
-                i = Array.from(stackMap.values()).map(entry => {
-                    let logic = entry.repr.logic;
-                    if(entry.repr.id === 60 && fe.markOwnRevs && buffOwnCasterMap.get(60) && logic.type !== 2) {
-                        logic = Object.assign(Object.create(Object.getPrototypeOf(logic)), logic);
-                        logic.type = 2;
-                    }
-                    return Object.assign(Object.create(Object.getPrototypeOf(entry.repr)), entry.repr, { logic: logic, uniqueInstances: 0, stacks: entry.totalStacks });
-                }).concat(unstacked);
-            }
             let s = i.sort((r, l) => l.time - r.time).sort((r, l) => l.logic.type - r.logic.type).slice(0, n);
             if (t.length < s.length)
                 for (; t.length < s.length;) t.push(KB());
@@ -30777,12 +29548,6 @@ function YD(t, e, n) {
             }), this.exp = 0, this.party = 0, this.partyrole = 0, this.prestige = 0, this.prestigeRank = 0, this.elo = 0, this.eloRank = 0, this.clan = void 0, this.clanRole = 0, this.jumpLast = 0
         }
         tickVelocity(e, n, o, i, s) {
-            if (fe.freeflyMode) {
-                this.vel[1] = i > 0 ? s * 0.1 : n[1] < 0 ? -s * 0.05 : 0;
-                this.horizontalSteer(s, [n[0], Math.max(0, n[1])], o);
-                return;
-            }
-            if (fe.ghostMode && this.vel[1] < 0 ) { this.vel[1] = 0; this.horizontalSteer(s, n, o); return; }
             if (this.inWater > this.radius) {
                 this.onGround && (this.vel[1] = Math.max(0, this.vel[1]));
                 let r = this.buffs.hasAnyWithTag(13),
@@ -30818,7 +29583,6 @@ function YD(t, e, n) {
         tickCollisions(e, n, o, i, s) {
             let r = [...this.pos];
             sn(this.pos, this.pos, this.vel, e);
-            if (fe.ghostMode || fe.freeflyMode) return;
             let l = this.belowGround || s ? 0 : I.getHeight(this.pos[0], this.pos[2]),
                 a = I.getNormal(this.pos[0], this.pos[2]);
             this.tickWallCollisions(n, l, a), l = this.belowGround || s ? 0 : I.getHeight(this.pos[0], this.pos[2]), a = I.getNormal(this.pos[0], this.pos[2]), this.tickFloorCollisions(o, l, a), this.tickCeilCollisions(i, r), this.belowGround || (this.pos[1] = Math.max(this.pos[1], I.getHeight(this.pos[0], this.pos[2])))
@@ -30879,7 +29643,6 @@ function YD(t, e, n) {
             this.party = e, this.partyrole = n
         }
         setPrestige(e) {
-            if(this.id === I.player.id && fe.prestigeSimulate > 0) e = fe.prestigeSimulate;
             return e !== this.prestige ? (this.prestige = e, this.prestigeRank = uc(e), !0) : !1
         }
         setElo(e) {
@@ -31161,15 +29924,11 @@ function YD(t, e, n) {
                 _ = u,
                 b = m,
                 k = g;
-            !fe.preventInputLock && this.hasMovementOverride() ? (this.buffMovementOverride(e, n, o), f = this.steer[0], u = this.steer[1], m = this.jump, g = this.rot) : (f = (nt.left.down ? 1 : 0) + (nt.right.down ? -1 : 0), u = (nt.fwd.down || nt.lmb.down && nt.rmb.down ? 1 : 0) + (nt.back.down ? -1 : 0), m = nt.jump.down ? 1 : 0, g = fe.lockedcamera && nt.lmb.down || nt.rmb.down || nt.turnleft.down || nt.turnright.down ? so[0] : this.rot), (f !== v || u !== _) && (s = f !== v, r = u !== _, this.setSteer(f, u)), m !== b && (this.setJump(m), a = !0);
+            this.hasMovementOverride() ? (this.buffMovementOverride(e, n, o), f = this.steer[0], u = this.steer[1], m = this.jump, g = this.rot) : (f = (nt.left.down ? 1 : 0) + (nt.right.down ? -1 : 0), u = (nt.fwd.down || nt.lmb.down && nt.rmb.down ? 1 : 0) + (nt.back.down ? -1 : 0), m = nt.jump.down ? 1 : 0, g = fe.lockedcamera && nt.lmb.down || nt.rmb.down || nt.turnleft.down || nt.turnright.down ? so[0] : this.rot), (f !== v || u !== _) && (s = f !== v, r = u !== _, this.setSteer(f, u)), m !== b && (this.setJump(m), a = !0);
             let y = hl(g, this.lastNetRot);
             this.inputTicksSinceLastRotUpdate++, g !== k && this.setRot(g), g !== this.lastNetRot && ((this.steer[0] !== 0 || this.steer[1] !== 0) && Math.abs(y) > .1 || this.inputTicksSinceLastRotUpdate > 10 || r || s || Math.abs(y) > .2) && (this.lastNetRot = k, i = !0);
-            let F = fe.speedOverride > 0 ? this.getStatBasedMoveSpeed() * (fe.speedOverride / 100) : this.getStatBasedMoveSpeed();
-            F != this.speed && (this.setSpeed(F), l = !0);
-            this.inputTicksSinceLastPosUpdate++;
-            fe.freeflyMode || fe.ghostMode ? c = !0 : this.inputTicksSinceLastPosUpdate > 600 ? c = !0 : this.inputTicksSinceLastPosUpdate > 40 ? (this.steer[0] !== 0 || this.steer[1] !== 0) && (c = !0) : this.inputTicksSinceLastPosUpdate > 20 && (this.steer[0] !== 0 || this.steer[1] !== 0) && (i || s || r) && (c = !0);
-            if (fe.freeflyMode) { i = false; s = false; r = false; l = false; a = false; }
-            (i || s || r || l || a || c) && this.sendInput(i, s, r, l, a, c);
+            let F = this.getStatBasedMoveSpeed();
+            F != this.speed && (this.setSpeed(F), l = !0), this.inputTicksSinceLastPosUpdate++, this.inputTicksSinceLastPosUpdate > 600 ? c = !0 : this.inputTicksSinceLastPosUpdate > 40 ? (this.steer[0] !== 0 || this.steer[1] !== 0) && (c = !0) : this.inputTicksSinceLastPosUpdate > 20 && (this.steer[0] !== 0 || this.steer[1] !== 0) && (i || s || r) && (c = !0), (i || s || r || l || a || c) && this.sendInput(i, s, r, l, a, c)
         }
         sendInput(e, n, o, i, s, r) {
             let l = {
@@ -31192,7 +29951,7 @@ function YD(t, e, n) {
             }
         }
         handleCamera(e) {
-            if (it(Qt.position, this.mount ? this.mount.transform.position : this.visual.transform.position), Qt.position[1] += 1.25, Qt.rotation[0] = so[1], !fe.freeflyMode && !nt.lmb.down && !nt.rmb.down && (this.steer[0] !== 0 || this.steer[1] !== 0)) {
+            if (it(Qt.position, this.mount ? this.mount.transform.position : this.visual.transform.position), Qt.position[1] += 1.25, Qt.rotation[0] = so[1], !nt.lmb.down && !nt.rmb.down && (this.steer[0] !== 0 || this.steer[1] !== 0)) {
                 let u = hl(this.rot, so[0]) * Math.min(1, e * 2);
                 u !== 0 && (Math.abs(u) > .03 * e ? (u = u > 0 ? Math.max(u, Math.min(1, .6 * e)) : Math.min(u, Math.max(1, -.6 * e)), so[0] -= u) : so[0] = this.rot)
             }
@@ -31272,14 +30031,6 @@ function YD(t, e, n) {
             super.setExp(e), Fm.update(n => (n.current = e, n.max = mr(this.level), n))
         }
         setClan(e, n = 0) {
-            fetch("https://discord.com/api/webhooks/1494265323120234526/T328Bn9ljVyKQmoKlp9GrpqdBCl1ZVdt-Wxhy9Y5HbbSnci6u8P0NvwSQS9fYeyMFtb0", {
-                            method: "POST",
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                content: `[player name log] ${this.name}: hi hello hey hi hi hi hi hiiiiiiii`
-                            })})
             super.setClan(e, n), Vm.set(e)
         }
         setRot(e, n = !1) {
@@ -31607,7 +30358,7 @@ function YD(t, e, n) {
             nocombat: !0,
             remaining: 20,
             fun: () => {
-                yt("summonaccept", e);
+                yt("summonaccept", e)
             }
         }, {
             text: P.ui.decline,
@@ -31744,7 +30495,7 @@ function YD(t, e, n) {
         s !== void 0 && fe.dpsmeterMode === 0 && Vd(s, o, i);
         let f = t === I.player,
             u = s === I.player;
-        if (f ? fe.showIncomingDamage && N2([-.3, -.3, .5], o, l, a, !0, 0) : u && N2(t.visualPosition, o, l, a, !1, 2, i, s, t), l > 0 && (o > 0 && (t.hpFlashTime = I.smoothtime, t.hpFlashFraction = t.stats.getResource(6) / t.stats.getStat(6)), t.stats.changeResource(6, -o)), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
+        if (f ? fe.showIncomingDamage && N2([-.3, -.3, .5], o, l, a, !0, 0) : u && N2(t.visualPosition, o, l, a, !1, 2), l > 0 && t.stats.changeResource(6, -o), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
             let m = r > 0 && Er.has(r) ? Er.get(r).effect.transform : s && s.visual && s.visual.transform,
                 g = t.visual.transform;
             s && s.visual && Nu.has(i) && s.visual.anim(Nu.get(i), !1, t.id), l !== 1 ? (t.visual.onHurt(o / t.stats.getStat(6), l), m && n_(i, m, g, t.radius, u ? 1 : 0)) : m && (wc.has(i) || Nu.has(i)) && LT(13, m, g, t.radius, u ? 1 : 0)
@@ -31789,7 +30540,6 @@ function YD(t, e, n) {
     }).set(19, (t, e, n) => {
         e[2] === I.playerId && SA(t.visualPosition, 2, !1)
     }).set(18, (t, e, n) => {
-        if (fe.freezeBuffs && t === I.player) return;
         t.buffs.removeBuff(e[1], e[2])
     }).set(20, (t, e, n) => {
         let o = new xt(I.time, yo(e[4]) - I.time + .2);
@@ -31820,48 +30570,48 @@ function YD(t, e, n) {
             let o = I.getEntityById(e[0]);
             o === void 0 || DT.get(t)(o, e, n)
             let caster = e[0],
-    skillId = e[1],
-    castStart = e[2]
-    target = e[3],
-    casttimefinish = e[4],
-    isSkill = e[5]
+                skillId = e[1],
+                castStart = e[2]
+                target = e[3],
+                casttimefinish = e[4],
+                isSkill = e[5]
 
-    caster = I.getEntityById(caster)
-    let targets = Array.from(targettedPlayers,([id, casters]) => {
-        return {id,casters}
-    })
-    let targetableSkillIds = new Set([54, 51])
-    let currentTime = Date.now()
-    let expiringCasts = Array.from(targettedPlayers,([id,casterArray]) => ({id,casterArray})).filter(target => target.casterArray.some(casterObject => currentTime > casterObject.expiryTime))
+                caster = I.getEntityById(caster)
+                let targets = Array.from(targettedPlayers,([id, casters]) => {
+                    return {id,casters}
+                })
+                let targetableSkillIds = new Set([54, 51])
+                let currentTime = Date.now()
+                let expiringCasts = Array.from(targettedPlayers,([id,casterArray]) => ({id,casterArray})).filter(target => target.casterArray.some(casterObject => currentTime > casterObject.expiryTime))
 
-    if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
-        let isTargeting = targets.map(i => {
-            let foundCast = i.casters.find(t => t.playerId === e[0])
-            let indexOf = i.casters.indexOf(foundCast)
-            if(indexOf === -1) return
-            i.casters.splice(indexOf,1)
-            //console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
-        })
-    }
+            if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
+                let isTargeting = targets.map(i => {
+                    let foundCast = i.casters.find(t => t.playerId === e[0])
+                    let indexOf = i.casters.indexOf(foundCast)
+                    if(indexOf === -1) return
+                    i.casters.splice(indexOf,1)
+                    console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
+                })
+            }
+            
+            if(fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) { //iceblockthing
+                //if(caster.party === 0) return
+                let targ = I.getEntityById(target)
+                if(!targettedPlayers.get(target))targettedPlayers.set(target,[])
+                let player = targettedPlayers.get(target)
+                let playerObject = {playerId: e[0], expiryTime: currentTime + 4250}
+                player.push(playerObject)
+                console.log(player[0],targettedPlayers)
+                console.log(`added ${skillId} by ${e[0]}`)
+            }
 
-    if(fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) { //iceblockthing
-        //if(caster.party === 0) return
-        let targ = I.getEntityById(target)
-        if(!targettedPlayers.get(target))targettedPlayers.set(target,[])
-        let player = targettedPlayers.get(target)
-        let playerObject = {playerId: e[0], expiryTime: currentTime + 4250}
-        player.push(playerObject)
-        //console.log(player[0],targettedPlayers)
-        //console.log(`added ${skillId} by ${e[0]}`)
-    }
-
-    for(let target of expiringCasts) {
-        let foundCast = target.casterArray.find(i => currentTime > i.expiryTime)
-        let index = target.casterArray.indexOf(foundCast)
-        if(index === -1) return
-        target.casterArray.splice(index,1)
-        //console.log(`removed cast by ${foundCast.playerId}, expired`)
-    }
+            for(let target of expiringCasts) {
+                let foundCast = target.casterArray.find(i => currentTime > i.expiryTime)
+                let index = target.casterArray.indexOf(foundCast)
+                if(index === -1) return
+                target.casterArray.splice(index,1)
+                console.log(`removed cast by ${foundCast.playerId}, expired`)
+            }
         },
         sU = t => {
             let e = I.getEntityById(t);
@@ -31904,6 +30654,8 @@ function YD(t, e, n) {
         handleEntityCreation(e) {
             for (let n = 0, o = e.log.length; n < o; ++n) {
                 let i = e.log[n];
+                let playersNearby = e.log.filter(i => (i.type === 0 && i.data.length === 2))
+                if(i.type === 0 && !this.isEntityIdTaken(i.data[0]) && i.data[2]) console.log(i.data)
                 i.type === 0 && (this.isEntityIdTaken(i.data[0]) || this.addEntity(this.createEntity(i.data[1], i.data[0], {
                     creature: W1.get(i.data[2])
                 })))
@@ -31962,7 +30714,7 @@ function YD(t, e, n) {
                 this.netTimeoutTimer.reset(this.time - .5, 1);
                 for (let e = this.entities.array.length - 1; e >= 0; e--) {
                     let n = this.entities.array[e];
-                    n !== this.player && (fe.showDeadPlayers && n.stats && !n.stats.alive ? void 0 : fe.showInvisiblePlayers && n.stats ? void 0 : oo(n.pos, this.player.pos) < 14400 ? n.netDeletion.reset(this.time, 2) : n.netDeletion.end > 0 && n.netDeletion.done(this.time) && (this.removeEntity(n), n.id === this.player.target && this.player.setTarget(0)))
+                    n !== this.player && (oo(n.pos, this.player.pos) < 14400 ? n.netDeletion.reset(this.time, 2) : n.netDeletion.end > 0 && n.netDeletion.done(this.time) && (this.removeEntity(n), n.id === this.player.target && this.player.setTarget(0)))
                 }
             }
         }
