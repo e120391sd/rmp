@@ -18558,7 +18558,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 St.set(Re === "" ? void 0 : Re), n(2, ge = !0)
             },
             se = ["Forward", "Left", "Back", "Right", "TurnLeft", "TurnRight", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "NextTarget", "NextParty", "Untarget", "ItemNames"],
-            le = ["Forward", "Left", "Back", "Right", "Turn Left", "Turn Right", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "Target Next Enemy", "Target Next Friendly", "Untarget", "Item Name View"];
+            le = ["Forward", "Left", "Back", "Right", "Turn Left", "Turn Right", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "Target Next Enemy", "Target Next Friendly", "Untarget", "Shiftkey"];
         for (let Re = 1; Re < 25; ++Re) se.push("Skillbar" + Re);
         se = se.map((Re, St) => ({
             name: le[St] || Re,
@@ -30240,7 +30240,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 ut[36].uniforms.blurStep.value = 1;
                 Gu(ssaoFb1); ni(tu, ut[36]);
 
-                // temporal accumulation
                 let histPrev = _ssaoHistIdx === 0 ? ssaoHistA : ssaoHistB;
                 let histNext = _ssaoHistIdx === 0 ? ssaoHistB : ssaoHistA;
                 qn("inputA", ssaoFb1.colorTexture, 0, ut[37]);
