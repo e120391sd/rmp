@@ -2602,7 +2602,7 @@ void main() {
         playerTransformColPrim = ne("#000000"),
         playerTransformColSec = ne("#000000"),
         customMountID = ne(0),
-        ssao = ne(true),
+        ssao = ne(false),
         ssaoRadius = ne(9),
         ssaoBias = ne(16),
         ssaoFadeDist = ne(305),
@@ -18306,13 +18306,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeSlider("Max rain windows", rainWindowMax, {min: 1, max: 10, showValue: true, suffix: "/d"}),
             makeSlider("Rain transition speed", rainEaseSpeed, {min: 10, max: 300, showValue: true}),
             makeToggle("Force rain", rainForce, {color: "#53a3f9"}),
-            makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
+            /* makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
             makeSlider("Speed override", speedOverride, {min: 0, max: 5, showValue: true}),
             makeToggle("Prevent movement override", preventInputLock),
             makeToggle("Phase mode", ghostMode),
             makeToggle("Freefly mode", freeflyMode, {sub: "Not recommended to use without desync, only for testing purposes. Freecam mode is a better version of this."}),
             makeToggle("No camera collision", noCameraCollision),
-            makeToggle("Nameplates react to ST", showDeadPlayers),
+            makeToggle("Nameplates react to ST", targetEnabled),
             makeToggle("Show dead players", showDeadPlayers),
             makeToggle("Desync", freezeServer, {sub: "While this setting is active, packets will not be sent to the server. Use with position update buttons to teleport precisely."}),
             //makeLabel("The server will correct any position deviances within a single tick of around ~4 units. To bypass it slightly, use a +7 mount + pennant + orc / egg. The deviance is calculated based on player speed, higher speed = more deviance allowed. To teleport up towers, use pennant + egg => start jumping => enable Desync => fly yourself to the position => disable desync => input any direction to update player position. If you are jumping during this, the server may make you jump forward in the direction, so you may fall off. Advised to send a couple inputs as soon as you disable desync so it corrects your position immediately.", {cls: "textgrey", sep: true}),
@@ -18391,7 +18391,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 if (!I || !I.player) return;
                 I.player.pos[2] += 1;
                 I.player.sendInput(false, false, false, false, false, true);
-            }),
+            }), */
         ];
         return {
             c() { settings.forEach(s => s.c()); },
