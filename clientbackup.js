@@ -2592,8 +2592,8 @@ void main() {
         charmAutoEquip = ne(false),
         charmAutoStash = ne(false),
         aoeCircleEnabled = ne(false),
-        aoeCircleSize = ne(75),
-        aoeCircleAlpha = ne(50),
+        aoeCircleSize = ne(0),
+        aoeCircleAlpha = ne(100),
         aoeCircleColor = ne("#000000"),
         fxAlphaSprite = ne(100),
         fxAlphaRibbon = ne(100),
@@ -2711,7 +2711,7 @@ void main() {
     function injectStyle(id, css) {
         let el = document.getElementById(id);
         if (!el) { el = document.createElement("style"); el.id = id; document.head.appendChild(el); }
-        el.textContent = css;
+        if (el.textContent !== css) el.textContent = css;
     }
     function getCCColor(buffs) {
         if (buffs.has(101)) return fe.deepFreezeColor;
@@ -2884,7 +2884,7 @@ void main() {
                 let area = areaId && Qf.get(areaId);
                 envName = (area && area.name) ? area.name : (fe.activeWorld || "");
             }
-            envBar.textContent = envName;
+            if (envBar.textContent !== envName) envBar.textContent = envName;
             Ve(envBar, "font", "bold 15px hordes");
             Ve(envBar, "color", "#34cb49");
             Ve(envBar, "display", "");
@@ -20962,7 +20962,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             },
             Ie = ee => Xe(Ro, o = !1, o);
 
-        let stashPollInterval = setInterval(function() {n(8, C = C.slice());}, 1);
+        let stashPollInterval = setInterval(function() {n(8, C = C.slice());}, 250);
         t.$$.on_destroy.push(function() {clearInterval(stashPollInterval); setHeldStashDbid(null);});
 
         return t.$$.update = () => {
