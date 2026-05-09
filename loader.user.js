@@ -4,6 +4,7 @@
 // @author       Tuna
 // @description  Hordes.io script
 // @match        https://hordes.io/play
+// @namespace    https://greasyfork.org/users/1583443
 // @grant        unsafeWindow
 // @grant        GM_addStyle
 // @license      MIT
@@ -12,6 +13,7 @@
 
 let clientUrl = "https://raw.githubusercontent.com/e120391sd/rmp/refs/heads/main/client.js"
 let kekUrl = "https://raw.githubusercontent.com/hordesmod/kek-ui/refs/heads/main/dist/kekui.user.js"
+let scriptUrl = "https://raw.githubusercontent.com/e120391sd/rmp/refs/heads/main/script.user.js"
 
 document.write('<!DOCTYPE html><html><head></head><body></body></html>');
 unsafeWindow._script = "";
@@ -23,9 +25,11 @@ unsafeWindow._script = "";
         let url = element.match(/src="(.*?)"/)[1]
         let client = await fetch(clientUrl).then(i => i.text())
         let kek = await fetch(kekUrl).then(i => i.text())
+        let userScript = await fetch(scriptUrl).then(i => i.text())
         unsafeWindow._script = client
         unsafeWindow.kek = kek
-        html = html.replace(element,`<script>eval(_script)</script><script>eval(kek)</script>`)
+        unsafeWindow.userScript = userScript
+        html = html.replace(element,`<script>eval(_script)</script><script>eval(kek)</script><script>eval(userScript)</script>`)
 
         document.open()
         document.write(html)
