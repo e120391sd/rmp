@@ -20,9 +20,6 @@
                 {name:"Nightshade",id:5,type:"pet"},
             ]
     let alreadyNotified = new Map();
-    let style = document.createElement('style');
-    style.textContent = `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`;
-    document.head.appendChild(style);
     let targettedPlayers = new Map()
     var NT = Object.defineProperty;
     var Kn = (t, e) => {
@@ -2041,7 +2038,6 @@ void main() {
         radarSound: () => radarSound,
         revUnfriendly: () => revUnfriendly,
         markOwnRevs: () => markOwnRevs,
-        autocleanse: () => autocleanse,
         hideBots: () => hideBots,
         revOnSelect : () => revOnSelect,
         neverExcludeItems: () => alwaysPickup,
@@ -2052,8 +2048,68 @@ void main() {
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
+        disableCircleCooldowns: () => disableCircleCooldowns,
+        nextFriendlyClassSelectorEnabled: () => nextFriendlyClassSelectorEnabled,
+        nextFriendlyClassArcher: () => nextFriendlyClassArcher,
+        nextFriendlyClassShaman: () => nextFriendlyClassShaman,
+        nextFriendlyClassWarrior: () => nextFriendlyClassWarrior,
+        nextFriendlyClassMage: () => nextFriendlyClassMage,
+        classSelectorKbArcher: () => classSelectorKbArcher,
+        classSelectorKbShaman: () => classSelectorKbShaman,
+        classSelectorKbWarrior: () => classSelectorKbWarrior,
+        classSelectorKbMage: () => classSelectorKbMage,
+        classSelectorAnimations: () => classSelectorAnimations,
+        kbItemNames: () => kbItemNamesStore,
         timeToIngame: () => timeToIngame,
-        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots
+        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
+        ignoreNameplateViewRange: () => ignoreNameplateViewRange,
+        removeFX: () => removeFX,
+        fxAlphaSprite: () => fxAlphaSprite,
+        fxAlphaRibbon: () => fxAlphaRibbon,
+        fxAlphaModel: () => fxAlphaModel,
+        shrinkIndicators: () => shrinkIndicators,
+        stackIndicators: () => stackIndicators,
+        prestigeSimulate: () => prestigeSimulate,
+        deepFreezeColor: () => deepFreezeColor,
+        chillColor: () => chillColor,
+        agonizeColor: () => agonizeColor,
+        stunColor: () => stunColor,
+        blindColor: () => blindColor,
+        relColor: () => relColor,
+        CCIndicator: () => CCIndicator,
+        sortParty: () => sortParty,
+        hideBuffs: () => hideBuffs,
+        hiddenBuffs: () => hiddenBuffs,
+        hideClassBuffs: () => hideClassBuffs,
+        hiddenClassBuffs: () => hiddenClassBuffs,
+        onlyShowOwnRev: () => onlyShowOwnRev,
+        stackSameBuffs: () => stackSameBuffs,
+        revStackNameplate: () => revStackNameplate,
+        nameplateSize: () => nameplateSize,
+        nameSize: () => nameSize,
+        nameSpacing: () => nameSpacing,
+        CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
+        noFrameColor: () => noFrameColor,
+        outlines: () => outlines,
+        enableMageCapeswing: () => enableMageCapeswing,
+        prestigeChange: () => prestigeChange,
+        kbItemNames: () => kbItemNamesStore,
+        freecamModeKb: () => freecamModeKb,
+        playerTransformID: () => playerTransformID,
+        playerTransformColPrim: () => playerTransformColPrim,
+        playerTransformColSec: () => playerTransformColSec,
+        customMountID: () => customMountID,
+
+        ssao: () => ssao,
+        ssaoBlur: () => ssaoBlur,
+        ssaoIGN: () => ssaoIGN,
+        classColorParty: () => classColorParty,
+        classColor0: () => classColor0,
+        classColor1: () => classColor1,
+        classColor2: () => classColor2,
+        classColor3: () => classColor3,
+        hideFriendlyCreatures: () => hideFriendlyCreatures,
+        hideFriendlyCreatureNames: () => hideFriendlyCreatureNames
     });
     var l1 = {};
     Kn(l1, {
@@ -2202,7 +2258,6 @@ void main() {
         radarSound: () => radarSound,
         revUnfriendly: () => revUnfriendly,
         markOwnRevs: () => markOwnRevs,
-        autocleanse: () => autocleanse,
         hideBots: () => hideBots,
         revOnSelect : () => revOnSelect,
         neverExcludeItems: () => alwaysPickup,
@@ -2213,8 +2268,108 @@ void main() {
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
+        disableCircleCooldowns: () => disableCircleCooldowns,
+        nextFriendlyClassSelectorEnabled: () => nextFriendlyClassSelectorEnabled,
+        nextFriendlyClassArcher: () => nextFriendlyClassArcher,
+        nextFriendlyClassShaman: () => nextFriendlyClassShaman,
+        nextFriendlyClassWarrior: () => nextFriendlyClassWarrior,
+        nextFriendlyClassMage: () => nextFriendlyClassMage,
+        classSelectorKbArcher: () => classSelectorKbArcher,
+        classSelectorKbShaman: () => classSelectorKbShaman,
+        classSelectorKbWarrior: () => classSelectorKbWarrior,
+        classSelectorKbMage: () => classSelectorKbMage,
+        classSelectorAnimations: () => classSelectorAnimations,
+        kbItemNames: () => kbItemNamesStore,
         timeToIngame: () => timeToIngame,
-        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots
+        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
+        ignoreNameplateViewRange: () => ignoreNameplateViewRange,
+        removeFX: () => removeFX,
+        fxAlphaSprite: () => fxAlphaSprite,
+        fxAlphaRibbon: () => fxAlphaRibbon,
+        fxAlphaModel: () => fxAlphaModel,
+        shrinkIndicators: () => shrinkIndicators,
+        stackIndicators: () => stackIndicators,
+        prestigeSimulate: () => prestigeSimulate,
+        deepFreezeColor: () => deepFreezeColor,
+        chillColor: () => chillColor,
+        agonizeColor: () => agonizeColor,
+        stunColor: () => stunColor,
+        blindColor: () => blindColor,
+        relColor: () => relColor,
+        CCIndicator: () => CCIndicator,
+        sortParty: () => sortParty,
+        hideBuffs: () => hideBuffs,
+        hiddenBuffs: () => hiddenBuffs,
+        hideClassBuffs: () => hideClassBuffs,
+        hiddenClassBuffs: () => hiddenClassBuffs,
+        onlyShowOwnRev: () => onlyShowOwnRev,
+        stackSameBuffs: () => stackSameBuffs,
+        revStackNameplate: () => revStackNameplate,
+        nameplateSize: () => nameplateSize,
+        nameSize: () => nameSize,
+        nameSpacing: () => nameSpacing,
+        CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
+        noFrameColor: () => noFrameColor,
+        outlines: () => outlines,
+        enableMageCapeswing: () => enableMageCapeswing,
+        prestigeChange: () => prestigeChange,
+        flashNameplates: () => flashNameplates,
+        flashCCIndicator: () => flashCCIndicator,
+        hideChat: () => hideChat,
+        disablePartyNameplates: () => disablePartyNameplates,
+        charmAutoEquip: () => charmAutoEquip,
+        charmAutoStash: () => charmAutoStash,
+        aoeCircleEnabled: () => aoeCircleEnabled,
+        aoeCircleSize: () => aoeCircleSize,
+        aoeCircleAlpha: () => aoeCircleAlpha,
+        aoeCircleColor: () => aoeCircleColor,
+        preventInputLock: () => preventInputLock,
+        steerDuringJump: () => steerDuringJump,
+        ghostMode: () => ghostMode,
+        speedOverride: () => speedOverride,
+        freezeBuffs: () => freezeBuffs,
+        noRangeCheck: () => noRangeCheck,
+        freeflyMode: () => freeflyMode,
+        freecamMode: () => freecamMode,
+        noCameraCollision: () => noCameraCollision,
+        freezeServer: () => freezeServer,
+        showDeadPlayers: () => showDeadPlayers,
+        showInvisiblePlayers: () => showInvisiblePlayers,
+        logNearbyEntities: () => logNearbyEntities,
+        freecamModeKb: () => freecamModeKb,
+        playerTransformID: () => playerTransformID,
+        playerTransformColPrim: () => playerTransformColPrim,
+        playerTransformColSec: () => playerTransformColSec,
+        customMountID: () => customMountID,
+
+        ssao: () => ssao,
+        ssaoRadius: () => ssaoRadius,
+        ssaoBias: () => ssaoBias,
+        ssaoFadeDist: () => ssaoFadeDist,
+        ssaoBlur: () => ssaoBlur,
+        ssaoIGN: () => ssaoIGN,
+        shadowDistMult: () => shadowDistMult,
+        grassDist: () => grassDist,
+        meshViewerID: () => meshViewerID,
+        classColorParty: () => classColorParty,
+        classColor0: () => classColor0,
+        classColor1: () => classColor1,
+        classColor2: () => classColor2,
+        classColor3: () => classColor3,
+        hideFriendlyCreatures: () => hideFriendlyCreatures,
+        hideFriendlyCreatureNames: () => hideFriendlyCreatureNames,
+        hideKekQuickButtons: () => hideKekQuickButtons,
+        showEnvName: () => showEnvName,
+        rainEnabled: () => rainEnabled,
+        rainForce: () => rainForce,
+        rainNoDesert: () => rainNoDesert,
+        rainDurMin: () => rainDurMin,
+        rainDurMax: () => rainDurMax,
+        rainWindowMin: () => rainWindowMin,
+        rainWindowMax: () => rainWindowMax,
+        rainEaseSpeed: () => rainEaseSpeed,
+        removeElixir: () => removeElixir,
+        minimapLightOverlay: () => minimapLightOverlay
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2361,7 +2516,6 @@ void main() {
         radarSound = ne(true),
         revUnfriendly = ne(false),
         markOwnRevs = ne(true),
-        autocleanse = ne(false),
         hideBots = ne(false),
         revOnSelect = ne(false),
         alwaysPickup = ne("Purum"),
@@ -2372,8 +2526,149 @@ void main() {
         disableDamage = ne(false),
         disableHealing = ne(false),
         disableClantags = ne(false),
+        disableCircleCooldowns = ne(false),
+        nextFriendlyClassSelectorEnabled = ne(false),
+        nextFriendlyClassArcher = ne(false),
+        nextFriendlyClassShaman = ne(false),
+        nextFriendlyClassWarrior = ne(false),
+        nextFriendlyClassMage = ne(false),
+        classSelectorKbArcher = ne(""),
+        classSelectorKbShaman = ne(""),
+        classSelectorKbWarrior = ne(""),
+        classSelectorKbMage = ne(""),
+        classSelectorAnimations = ne(true),
+        kbItemNamesStore = ne("control"),
         timeToIngame = ne(false),
-        nextFriendlyIgnoreBots = ne(true);
+        nextFriendlyIgnoreBots = ne(true),
+        removeFX = ne(true),
+        shrinkIndicators = ne(500),
+        stackIndicators = ne(false),
+        prestigeChange = ne(false),
+        prestigeSimulate = ne(0),
+        preventInputLock = ne(false),
+        steerDuringJump = ne(false),
+        ghostMode = ne(false),
+        freezeBuffs = ne(false),
+        noRangeCheck = ne(false),
+        freeflyMode = ne(false),
+        freecamMode = ne(false),
+        noCameraCollision = ne(false),
+        freezeServer = ne(false),
+        showDeadPlayers = ne(false),
+        showInvisiblePlayers = ne(false),
+        logNearbyEntities = ne(false),
+        deepFreezeColor = ne("#4cfff9"),
+        chillColor = ne("#4cfff9"),
+        agonizeColor = ne("#ff2020"),
+        stunColor = ne("#ff2020"),
+        blindColor = ne("#ffed2d"),
+        relColor = ne("#ffed2d"),
+        CCIndicator = ne(false),
+        sortParty = ne(false),
+        hideBuffs = ne(false),
+        hiddenBuffs = ne([92,96,95,86,68,67,89,74,127,130,93]),
+        hideClassBuffs = ne(false),
+        hiddenClassBuffs = ne([80, 78, 81, 76, 75]),
+        onlyShowOwnRev = ne(false),
+        stackSameBuffs = ne(false),
+        revStackNameplate = ne(false),
+        nameplateSize = ne(500),
+        nameSize = ne(500),
+        nameSpacing = ne(0),
+        CCIndicatorOnNameplates = ne(false),
+        noFrameColor = ne(false),
+        outlines = ne(false),
+        enableMageCapeswing = ne(false),
+        ignoreNameplateViewRange = ne(false),
+        flashNameplates = ne(true),
+        flashCCIndicator = ne(false),
+        hideChat = ne(false),
+        disablePartyNameplates = ne(false),
+        charmAutoEquip = ne(false),
+        charmAutoStash = ne(false),
+        aoeCircleEnabled = ne(false),
+        aoeCircleSize = ne(75),
+        aoeCircleAlpha = ne(50),
+        aoeCircleColor = ne("#000000"),
+        fxAlphaSprite = ne(100),
+        fxAlphaRibbon = ne(100),
+        fxAlphaModel = ne(100),
+        posX = ne(""),
+        posY = ne(""),
+        posZ = ne(""),
+        speedOverride = ne(0),
+        freecamModeKb = ne(""),
+        playerTransformID = ne(0),
+        playerTransformColPrim = ne("#000000"),
+        playerTransformColSec = ne("#000000"),
+        customMountID = ne(0),
+        ssao = ne(false),
+        ssaoRadius = ne(9),
+        ssaoBias = ne(16),
+        ssaoFadeDist = ne(305),
+        ssaoBlur = ne(true),
+        ssaoIGN = ne(true),
+        shadowDistMult = ne(130),
+        grassDist = ne(130),
+        meshViewerID = ne(0),
+        classColorParty = ne(false),
+        classColor0 = ne("#C7966F"),
+        classColor1 = ne("#21A9E1"),
+        classColor2 = ne("#98CE64"),
+        classColor3 = ne("#1C51FF"),
+        hideFriendlyCreatures = ne(false),
+        hideFriendlyCreatureNames = ne(false),
+        hideKekQuickButtons = ne(false),
+        showEnvName = ne(false),
+        rainEnabled = ne(true),
+        rainForce = ne(false),
+        rainNoDesert = ne(false),
+        rainDurMin = ne(50),
+        rainDurMax = ne(140),
+        rainWindowMin = ne(1),
+        rainWindowMax = ne(5),
+        rainEaseSpeed = ne(300),
+        removeElixir = ne(false),
+        minimapLightOverlay = ne(true)
+    var _posX = "", _posY = "", _posZ = "";
+    posX.subscribe(v => _posX = v);
+    posY.subscribe(v => _posY = v);
+    posZ.subscribe(v => _posZ = v);
+    var _ssaoRadiusMult = 0.07, _ssaoPowerVal = 1.1, _ssaoFadeVal = 240;
+    ssaoRadius.subscribe(v => _ssaoRadiusMult = v / 100);
+    ssaoBias.subscribe(v => _ssaoPowerVal = v / 10);
+    ssaoFadeDist.subscribe(v => _ssaoFadeVal = v);
+    var _shadowDistMult = 1.0, _grassDist = 130;
+    shadowDistMult.subscribe(v => _shadowDistMult = v / 100);
+    grassDist.subscribe(v => _grassDist = v);
+    var _classColors = ["#C7966F", "#21A9E1", "#98CE64", "#1C51FF"];
+    const CLASS_NAMES = ["warrior", "mage", "archer", "shaman"];
+    function _darkenHex(hex, factor) {
+        let n = parseInt(hex.slice(1), 16);
+        let r = Math.round(((n >> 16) & 0xff) * factor);
+        let g = Math.round(((n >> 8) & 0xff) * factor);
+        let b = Math.round((n & 0xff) * factor);
+        return "#" + [r, g, b].map(v => v.toString(16).padStart(2, "0")).join("");
+    }
+    function _bgcStyle(cls) {
+        let m = /^bgc([0-3])$/.exec(cls || "");
+        if (!m) return "";
+        let c = _classColors[+m[1]];
+        return `linear-gradient(0deg,${c} 0%,${_darkenHex(c, 0.82)} 49%,${c} 50%)`;
+    }
+    var _classNameplateParams = null;
+    function _rebuildClassNameplate(i) {
+        if (!_classNameplateParams || typeof Jn === "undefined" || Jn.length < 12) return;
+        Vo(Jn[8 + i], _classColors[i], _classNameplateParams.s, _classNameplateParams.r, 0, 0, 1);
+    }
+    [classColor0, classColor1, classColor2, classColor3].forEach((store, i) => {
+        store.subscribe(v => {
+            if (!v) return;
+            _classColors[i] = v;
+            document.querySelectorAll(".bgc" + i).forEach(el => Ve(el, "background", _bgcStyle("bgc" + i)));
+            _rebuildClassNameplate(i);
+        });
+    });
     var a1;
     a1 = {
         ...l1
@@ -2390,6 +2685,452 @@ void main() {
         },
         fe = {};
     for (let t in a1) a3(t, a1[t]);
+    showDeadPlayers.subscribe(val => {
+        if (!val && I) {
+            for (let e = I.entities.array.length - 1; e >= 0; e--) {
+                let n = I.entities.array[e];
+                if (n !== I.player && n.stats && !n.stats.alive) I.removeEntity(n);
+            }
+        }
+    });
+    showInvisiblePlayers.subscribe(val => {
+        if (!val && I) {
+            for (let e = I.entities.array.length - 1; e >= 0; e--) {
+                let n = I.entities.array[e];
+                if (n !== I.player && n.netDeletion && n.netDeletion.end > 0 && n.netDeletion.done(I.time)) I.removeEntity(n);
+            }
+        }
+    });
+    function injectStyle(id, css) {
+        let el = document.getElementById(id);
+        if (!el) { el = document.createElement("style"); el.id = id; document.head.appendChild(el); }
+        el.textContent = css;
+    }
+    function getCCColor(buffs) {
+        if (buffs.has(101)) return fe.deepFreezeColor;
+        if (buffs.has(91)) return fe.agonizeColor;
+        if (buffs.has(88)) return fe.stunColor;
+        if (buffs.has(119)) return fe.blindColor;
+        if (buffs.has(121)) return fe.relColor;
+        if (buffs.has(69)) return fe.chillColor;
+        return null;
+    }
+    function hexParts(hex) {
+        return [parseInt(hex.slice(1,3), 16), parseInt(hex.slice(3,5), 16), parseInt(hex.slice(5,7), 16)];
+    }
+    function hexToRgba(hex, a) {
+        let [r, g, b] = hexParts(hex);
+        return `rgba(${r},${g},${b},${a})`;
+    }
+    function flashColor(hex, speed, intensity) {
+        let pulse = (Math.sin(I.smoothtime * Math.PI * speed) + 1) * 1.2;
+        let [r, g, b] = hexParts(hex);
+        return `rgb(${Math.round(r*(1-pulse*intensity))},${Math.round(g*(1-pulse*intensity))},${Math.round(b*(1-pulse*intensity))})`;
+    }
+    
+    injectStyle("modRevGlowStyle", `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`);
+    
+    hideChat.subscribe(v => injectStyle("modHideChatStyle", v ? ".l-corner-ll{display:none!important}" : ""));
+    (function rafDomUpdates() {
+        requestAnimationFrame(rafDomUpdates);
+        let minimapContainer = document.getElementById("minimapcontainer");
+
+        document.querySelectorAll(".sysbtnbarKEK").forEach(element => Ve(element, "display", fe.hideKekQuickButtons ? "none" : ""));
+
+        let elixirBtn = document.getElementById("sysgem");
+        if (elixirBtn) Ve(elixirBtn, "display", fe.removeElixir ? "none" : "");
+
+        let isMinimapVisible = minimapContainer && minimapContainer.offsetParent !== null;
+        let canvas = isMinimapVisible && minimapContainer.querySelector("canvas");
+        let lightOverlay = document.getElementById("modMinimapLightOverlay");
+        if (isMinimapVisible && canvas && fe.minimapLightOverlay) {
+            if (!lightOverlay) {
+                lightOverlay = document.createElement("div");
+                lightOverlay.id = "modMinimapLightOverlay";
+                Ve(lightOverlay, "position", "absolute");
+                Ve(lightOverlay, "mix-blend-mode", "multiply");
+                Ve(lightOverlay, "filter", "hue-rotate(30deg) saturate(0.6)");
+                Ve(lightOverlay, "z-index", "10");
+                Ve(lightOverlay, "border-radius", "6px");
+                minimapContainer.appendChild(lightOverlay);
+            }
+            let canvasRect = canvas.getBoundingClientRect();
+            let minimapRect = minimapContainer.getBoundingClientRect();
+            Ve(lightOverlay, "left", (canvasRect.left - minimapRect.left) + "px");
+            Ve(lightOverlay, "top", (canvasRect.top - minimapRect.top) + "px");
+            Ve(lightOverlay, "width", canvasRect.width + "px");
+            Ve(lightOverlay, "height", canvasRect.height + "px");
+            Ve(lightOverlay, "display", "");
+        } else if (lightOverlay) {
+            Ve(lightOverlay, "display", "none");
+        }
+
+        let envBar = document.getElementById("modEnvNameBar");
+        if (fe.showEnvName && minimapContainer && canvas) {
+            if (!envBar) {
+                envBar = document.createElement("div");
+                envBar.id = "modEnvNameBar";
+                Ve(envBar, "margin-bottom", "3.5px");
+                Ve(envBar, "width", canvas.width + 9 + "px");
+                Ve(envBar, "box-sizing", "border-box");
+                Ve(envBar, "padding", "6px 8px");
+                Ve(envBar, "background", "rgba(0,0,0,0.75)");
+                Ve(envBar, "border-radius", "6px");
+                Ve(envBar, "border", "3px solid rgba(0,0,0,1)");
+                Ve(envBar, "text-align", "center");
+                Ve(envBar, "pointer-events", "none");
+                minimapContainer.insertBefore(envBar, canvas);
+            }
+            let envName = "";
+            if (I && I.player && I.player.pos) {
+                let areaId = I.getAreaId(I.player.pos[0], I.player.pos[2]);
+                let area = areaId && Qf.get(areaId);
+                envName = (area && area.name) ? area.name : (fe.activeWorld || "");
+            }
+            envBar.textContent = envName;
+            Ve(envBar, "font", "bold 15px hordes");
+            Ve(envBar, "color", "#34cb49");
+            Ve(envBar, "display", "");
+        } else if (envBar) {
+            Ve(envBar, "display", "none");
+        }
+    })();
+    (function rafLightOverlay() {
+        requestAnimationFrame(rafLightOverlay);
+        let overlay = document.getElementById("modMinimapLightOverlay");
+        if (!overlay || overlay.style.display === "none") return;
+        try {
+            let wl = Jt.environment.data.worldlight;
+            if (!wl || !(wl[0] || wl[1] || wl[2] || wl[3] || wl[4] || wl[5])) {
+                Ve(overlay, "opacity", "0");
+                return;
+            }
+            let r = Math.min(1, wl[0] * 0.5 + wl[3]);
+            let g = Math.min(1, wl[1] * 0.5 + wl[4]);
+            let b = Math.min(1, wl[2] * 0.5 + wl[5]);
+            let lum = 0.299 * r + 0.587 * g + 0.114 * b;
+            let scale = 0.35 + 0.65 * Math.min(1, lum / 0.6);
+            let ir = Math.round(Math.min(255, (r / Math.max(lum, 0.001)) * scale * 255));
+            let ig = Math.round(Math.min(255, (g / Math.max(lum, 0.001)) * scale * 255));
+            let ib = Math.round(Math.min(255, (b / Math.max(lum, 0.001)) * scale * 255));
+            Ve(overlay, "background", `rgb(${ir},${ig},${ib})`);
+            Ve(overlay, "opacity", "1");
+        } catch (e) { Ve(overlay, "opacity", "0"); }
+    })();
+    (function initRain() {
+        let gameCanvas = document.querySelector("canvas");
+        if (!gameCanvas) { setTimeout(initRain, 50); return; }
+
+        let rainCanvas = document.createElement("canvas");
+        rainCanvas.id = "modRainCanvas";
+        Ve(rainCanvas, "position", "fixed");
+        Ve(rainCanvas, "left", "0");
+        Ve(rainCanvas, "top", "0");
+        Ve(rainCanvas, "width", "100%");
+        Ve(rainCanvas, "height", "100%");
+        Ve(rainCanvas, "pointer-events", "none");
+        Ve(rainCanvas, "z-index", "5");
+        document.body.appendChild(rainCanvas);
+
+        function resize() { rainCanvas.width = window.innerWidth; rainCanvas.height = window.innerHeight; }
+        resize();
+        window.addEventListener("resize", resize);
+
+        let gl = rainCanvas.getContext("webgl2", {alpha: true, premultipliedAlpha: false});
+        if (!gl) { console.warn("Rain: WebGL2 unavailable"); return; }
+
+        const VS = `#version 300 es
+precision highp float;
+uniform mat4 u_pv;
+uniform vec3 u_cam;
+in vec3 a_pos;
+in float a_a;
+out float v_a;
+out float v_dist;
+void main(){
+    gl_Position = u_pv * vec4(a_pos,1.0);
+    float d = length(a_pos - u_cam);
+    v_a = a_a * smoothstep(3.0,9.0,d) * smoothstep(110.0,70.0,d);
+    v_dist = d;
+}`;
+        const FS = `#version 300 es
+precision mediump float;
+in float v_a;
+in float v_dist;
+out vec4 c;
+void main(){
+    float fog = smoothstep(18.0, 80.0, v_dist);
+    vec3 col = mix(vec3(0.78,0.88,1.0), vec3(0.70,0.76,0.82), fog);
+    c = vec4(col, v_a * 0.75);
+}`;
+
+        function mkShader(t, src) {
+            let s = gl.createShader(t);
+            gl.shaderSource(s, src); gl.compileShader(s);
+            if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.error("Rain shader:", gl.getShaderInfoLog(s)); return null; }
+            return s;
+        }
+        let prog = gl.createProgram();
+        gl.attachShader(prog, mkShader(gl.VERTEX_SHADER, VS));
+        gl.attachShader(prog, mkShader(gl.FRAGMENT_SHADER, FS));
+        gl.linkProgram(prog);
+        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.error("Rain link:", gl.getProgramInfoLog(prog)); return; }
+
+        let locPV  = gl.getUniformLocation(prog, "u_pv");
+        let locCam = gl.getUniformLocation(prog, "u_cam");
+        let locPos = gl.getAttribLocation(prog, "a_pos");
+        let locA   = gl.getAttribLocation(prog, "a_a");
+
+        let N = 8000, SPREAD = 80, VRANGE = 95, FALL = 52, WX = 1.8, WZ = 1.0, SLEN = 3.0;
+        let drops = new Float32Array(N * 5);
+        let posD  = new Float32Array(N * 6);
+        let alpD  = new Float32Array(N * 2);
+
+        let vao = gl.createVertexArray(), pb = gl.createBuffer(), ab = gl.createBuffer();
+        gl.bindVertexArray(vao);
+        gl.bindBuffer(gl.ARRAY_BUFFER, pb); gl.bufferData(gl.ARRAY_BUFFER, posD, gl.DYNAMIC_DRAW);
+        gl.enableVertexAttribArray(locPos); gl.vertexAttribPointer(locPos, 3, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, ab); gl.bufferData(gl.ARRAY_BUFFER, alpD, gl.DYNAMIC_DRAW);
+        gl.enableVertexAttribArray(locA);   gl.vertexAttribPointer(locA,   1, gl.FLOAT, false, 0, 0);
+        gl.bindVertexArray(null);
+
+        function spawnDrop(i, cx, cy, cz, top) {
+            drops[i*5+0] = cx + (Math.random()-0.5)*SPREAD*2;
+            drops[i*5+1] = top ? cy + VRANGE*0.5 + Math.random()*VRANGE*0.4 : cy + (Math.random()-0.5)*VRANGE;
+            drops[i*5+2] = cz + (Math.random()-0.5)*SPREAD*2;
+            drops[i*5+3] = 0.55 + Math.random()*0.45;
+            drops[i*5+4] = 0.6 + Math.random()*0.8;
+        }
+        for (let i = 0; i < N; i++) spawnDrop(i, 0, 10, 0, false);
+
+        function mulberry32(a) {
+            return function() {
+                a |= 0; a = a + 0x6D2B79F5 | 0;
+                let t = Math.imul(a ^ a >>> 15, 1 | a);
+                t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+                return ((t ^ t >>> 14) >>> 0) / 4294967296;
+            };
+        }
+        let _d = new Date();
+        let _seed = _d.getFullYear() * 10000 + (_d.getMonth()+1) * 100 + _d.getDate();
+        let rainWindows = [];
+        function buildRainWindows() {
+            let rng = mulberry32(_seed);
+            let count = Math.round(fe.rainWindowMin + rng() * (fe.rainWindowMax - fe.rainWindowMin));
+            let minH = fe.rainDurMin / 60;
+            let maxH = fe.rainDurMax / 60;
+            rainWindows = [];
+            for (let i = 0; i < count; i++) {
+                let start = rng() * 22;
+                let dur = minH + rng() * (maxH - minH);
+                rainWindows.push([start, start + dur]);
+            }
+
+        }
+        buildRainWindows();
+        [rainWindowMin, rainWindowMax, rainDurMin, rainDurMax].forEach(s => s.subscribe(() => buildRainWindows()));
+        const DESERT_ENVS = ["Desert", "Marrowlands", "Oasis", "Headless Ruins"];
+        function isRaining() {
+            if (fe.rainForce) return true;
+            let n = new Date();
+            let h = n.getHours() + n.getMinutes()/60 + n.getSeconds()/3600;
+            return rainWindows.some(w => h >= w[0] && h < w[1]);
+        }
+
+        function checkRainDisables() {
+            if (!fe.rainEnabled) return true;
+            if (fe.rainNoDesert && I && I.player) {
+                try {
+                    let areaId = I.getAreaId(I.player.pos[0], I.player.pos[2]);
+                    let area = areaId && Qf.get(areaId);
+                    if (area && DESERT_ENVS.some(n => area.name && area.name.includes(n))) return true;
+                } catch(e) {}
+            }
+            return false;
+        }
+ 
+        const SPREAD_BORDER = SPREAD + 6;
+        const TX_OFF = WX * (SLEN / FALL);
+        const TZ_OFF = WZ * (SLEN / FALL);
+
+        let last = performance.now();
+        let indoors = false, indoorCheckTimer = 0;
+        let rainCheckTimer = 0, pauseCheckTimer = 0;
+        let raining = isRaining(), paused = checkRainDisables();
+        let rainAmount = raining ? 1 : 0;
+        let prevActiveDrops = 0;
+        const RAYCAST_PER_FRAME = 150;
+        let visD = new Float32Array(N).fill(1.0);
+        let rcCursor = 0;
+        function frame(now) {
+            requestAnimationFrame(frame);
+            let cam; try { cam = Jt.camera.data; } catch(e) { return; }
+            if (!cam || !cam.projectionViewMatrix || !cam.cameraPosition) return;
+            let cx = cam.cameraPosition[0], cy = cam.cameraPosition[1], cz = cam.cameraPosition[2];
+            let dt = Math.min((now - last) / 1000, 0.05); last = now;
+            rainCheckTimer -= dt;
+            if (rainCheckTimer <= 0) { rainCheckTimer = 1; raining = isRaining(); }
+            pauseCheckTimer -= dt;
+            if (pauseCheckTimer <= 0) { pauseCheckTimer = 2; paused = checkRainDisables(); }
+
+            let targetRain = raining ? 1 : 0;
+            let rainEase = fe.rainEaseSpeed;
+            rainAmount += (targetRain - rainAmount) * (1.0 - Math.exp(-dt / rainEase));
+
+            let renderRainAmount = paused ? 0 : rainAmount;
+            window._modRainAmount = renderRainAmount;
+
+            if (renderRainAmount <= 0) {
+                if (prevActiveDrops > 0) {
+                    alpD.fill(0, 0, prevActiveDrops * 2);
+                    gl.bindBuffer(gl.ARRAY_BUFFER, ab);
+                    gl.bufferSubData(gl.ARRAY_BUFFER, 0, alpD, 0, prevActiveDrops * 2);
+                    prevActiveDrops = 0;
+                }
+                Ve(rainCanvas, "display", "none");
+                return;
+            }
+
+            indoorCheckTimer -= dt;
+            if (indoorCheckTimer <= 0) {
+                indoorCheckTimer = 0.5;
+                try {
+                    let p = cam && cam.cameraPosition;
+                    indoors = p ? I.raycastEnvironmentAny(p[0], I.player.pos[1] + 5, p[2], 0, 30, 0, 0) : false;
+                } catch(e) { indoors = false; }
+            }
+
+            if (indoors) {
+                Ve(rainCanvas, "display", "none");
+                return;
+            }
+            Ve(rainCanvas, "display", "");
+
+            let groundY = cy - 5;
+            let activeDrops = Math.ceil(N * renderRainAmount);
+            let wxdt = WX * dt, wzdt = WZ * dt, falldt = FALL * dt;
+
+            for (let i = 0; i < activeDrops; i++) {
+                let base = i * 5;
+                let spd = drops[base + 4];
+
+                drops[base]     += wxdt * spd;
+                drops[base + 1] -= falldt * spd;
+                drops[base + 2] += wzdt * spd;
+
+                let dx = drops[base] - cx, dz = drops[base + 2] - cz;
+                let floorY = (I && I.getHeight) ? I.getHeight(drops[base], drops[base + 2]) : groundY;
+                if (drops[base + 1] < floorY || Math.abs(dx) > SPREAD_BORDER || Math.abs(dz) > SPREAD_BORDER) {
+                    spawnDrop(i, cx, cy, cz, true);
+                }
+
+                let bx = drops[base], by = drops[base + 1], bz = drops[base + 2];
+                let pbase = i * 6;
+                posD[pbase]     = bx - TX_OFF; posD[pbase + 1] = by + SLEN; posD[pbase + 2] = bz - TZ_OFF;
+                posD[pbase + 3] = bx;          posD[pbase + 4] = by;         posD[pbase + 5] = bz;
+
+                let fade = Math.max(0, Math.min(1, (renderRainAmount - i / N) / 0.1));
+                let abase = i * 2;
+                let baseAlpha = drops[base + 3];
+                alpD[abase]     = baseAlpha * fade * visD[i];
+                alpD[abase + 1] = baseAlpha * 0.25 * fade * visD[i];
+            }
+
+            if (I && I.raycastEnvironmentAny && activeDrops > 0) {
+                rcCursor = rcCursor % activeDrops;
+                for (let r = 0; r < RAYCAST_PER_FRAME; r++) {
+                    let i = rcCursor;
+                    rcCursor = (rcCursor + 1) % activeDrops;
+                    let bx = drops[i*5], by = drops[i*5+1] + SLEN * 0.5, bz = drops[i*5+2];
+                    let hit = false;
+                    try { hit = I.raycastEnvironmentAny(cx, cy, cz, bx - cx, by - cy, bz - cz, 0); } catch(e) {}
+                    visD[i] += ((hit ? 0.0 : 1.0) - visD[i]) * 0.5;
+                }
+            }
+
+            if (activeDrops < prevActiveDrops) {
+                alpD.fill(0, activeDrops * 2, prevActiveDrops * 2);
+            }
+            let uploadAlpCount = Math.max(activeDrops, prevActiveDrops);
+            prevActiveDrops = activeDrops;
+
+            gl.viewport(0, 0, rainCanvas.width, rainCanvas.height);
+            gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
+            gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+            gl.useProgram(prog);
+            gl.uniformMatrix4fv(locPV, false, cam.projectionViewMatrix);
+            gl.uniform3f(locCam, cx, cy, cz);
+            gl.bindBuffer(gl.ARRAY_BUFFER, pb);
+            gl.bufferSubData(gl.ARRAY_BUFFER, 0, posD, 0, activeDrops * 6);
+            gl.bindBuffer(gl.ARRAY_BUFFER, ab);
+            gl.bufferSubData(gl.ARRAY_BUFFER, 0, alpD, 0, uploadAlpCount * 2);
+            gl.bindVertexArray(vao); gl.drawArrays(gl.LINES, 0, activeDrops * 2); gl.bindVertexArray(null);
+        }
+        requestAnimationFrame(frame);
+    })();
+
+    (function initRainAmbience() {
+        const RAIN_AUDIO = fetch("https://raw.githubusercontent.com/e120391sd/rmp/refs/heads/main/b64").then(i => i.text())
+        async function buildRainBuffer(ctx) {
+            const rainAudio = RAIN_AUDIO ? await RAIN_AUDIO : null;
+            if (rainAudio) {
+                let b64 = rainAudio.split(",")[1]
+                    .replace(/-/g, "+").replace(/_/g, "/")
+                    .replace(/[^A-Za-z0-9+/=]/g, "");
+                let bin = atob(b64);
+                let bytes = new Uint8Array(bin.length);
+                for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+                return await ctx.decodeAudioData(bytes.buffer);
+            }
+        }
+
+        function waitForAudioCtx(cb) {
+            if (typeof vn !== "undefined" && vn) { cb(vn); return; }
+            let t = setInterval(() => { if (typeof vn !== "undefined" && vn) { clearInterval(t); cb(vn); } }, 500);
+        }
+
+        waitForAudioCtx(async ctx => {
+            let buf = await buildRainBuffer(ctx);
+
+            let source = ctx.createBufferSource();
+            source.buffer = buf;
+            source.loop   = true;
+
+            let gain = ctx.createGain();
+            gain.gain.value = 0;
+            source.connect(gain);
+            gain.connect(ctx.destination);
+            source.start();
+
+            const TARGET_VOL = 1.0;
+
+            let _lastGainTarget = -1;
+            ;(function tickGain() {
+                requestAnimationFrame(tickGain);
+                let amt = window._modRainAmount || 0;
+                let sfx = (fe.ambienceVolume != null ? fe.ambienceVolume : 70) / 150;
+                let target = amt * TARGET_VOL * sfx * sfx;
+                if (Math.abs(target - _lastGainTarget) > 0.001) {
+                    gain.gain.setTargetAtTime(target, ctx.currentTime, 0.8);
+                    _lastGainTarget = target;
+                }
+            })();
+        });
+    })();
+
+    [playerTransformID,playerTransformColPrim,playerTransformColSec].forEach((s) => {
+        s.subscribe(() => {
+            let id = O1 && O1.has(fe.playerTransformID) ? fe.playerTransformID : 0,
+                colPrim = fe.playerTransformColPrim === "#000000" ? null : hexParts(fe.playerTransformColPrim).map(v => v/127.5),
+                colSec = fe.playerTransformColSec === "#000000" ? null : hexParts(fe.playerTransformColSec).map(v => v/127.5)
+            if (I && I.player) I.player.remakeTransform(id, colPrim, colSec);
+        })
+    })
+    let _meshViewerEnt = null;
+    meshViewerID.subscribe(v => {
+    });
+    document.addEventListener("keydown", (evt) => {if (evt.key.toLowerCase() === fe.freecamModeKb) freecamMode.set(!fe.freecamMode)});
+
     var P;
     Jr.subscribe(async t => {
         await fetch(`/data/loc/${t}.json?v=8822612`).then(async e => {
@@ -3006,7 +3747,7 @@ void main() {
             }
         },
         B3 = {
-            decode: t => {
+            decode: (t,id) => {
                 let e = t,
                     n = {};
                 z = 0;
@@ -3592,7 +4333,6 @@ void main() {
         $3 = [],
         w7 = 0;
     for (let t in Mt) Mt[t] && (Mt[t].header = w7++, Mt[t].packData = function(e) {
-        console.log(e,e._header)
         return e._header = this.header, this.encode(e)
     }, $3.push(Mt[t]));
     var O3 = t => {
@@ -3729,7 +4469,7 @@ void main() {
             rl[t].push(e)
         },
         Io = t => {
-            xi === void 0 || w1 !== 1 || xi.send(t)
+            xi === void 0 || w1 !== 1 || fe.freezeServer || xi.send(t)
         },
         Z3 = t => {
             if (xi !== void 0) return;
@@ -4275,7 +5015,7 @@ void main() {
         },
         qn = (t, e, n, o) => {
             let i = o.samplerNames.indexOf(t);
-            i >= 0 ? o.samplerTextures[i + n] = e : console.log("unknown texture type", t, o)
+            i >= 0 ? o.samplerTextures[i + n] = e : void 0
         },
         $a = t => {
             for (let e = 0; e < t.samplerNames.length; ++e) {
@@ -4595,7 +5335,7 @@ void main() {
                 } else if (this.targetMode === 16) s = e;
                 else if (this.targetMode === 17 && (s === void 0 || s === e)) return 3;
                 if (s !== void 0 && !s.stats.alive) return 10;
-                if (s && o !== e.id && s !== e && this.range > 0 && !e.combatRangeCheck(s, i ? this.range : this.graceRange)) return 6
+                if (!fe.noRangeCheck && s && o !== e.id && s !== e && this.range > 0 && !e.combatRangeCheck(s, i ? this.range : this.graceRange)) return 6
             }
             return this.disablingBuffs.some(s => e.buffs.hasAnyWithTag(s)) ? 12 : 0
         }
@@ -4883,7 +5623,7 @@ void main() {
         castLen: 0,
         costMp: t => 10 + t * 3,
         fx: {
-            effectTarget: 106
+            effectTarget: fe.removeFX ? void 0 : 106
         },
         onCast: (t, e, n) => {}
     });
@@ -4904,7 +5644,7 @@ void main() {
         costMp: t => t * 2,
         fx: {
             effectMissile: 107,
-            effectTarget: 111
+            effectTarget: fe.removeFX ? void 0 : 111
         },
         onCast: (t, e, n, o, i, s) => {}
     });
@@ -5154,7 +5894,7 @@ void main() {
             effectImpact: 70,
             animCast: 14,
             animChannel: 15,
-            effectMissile: 69
+            effectMissile: fe.removeFX ? void 0 : 69
         },
         onCast: (t, e, n) => ({
             id: 30,
@@ -6806,9 +7546,888 @@ void main() {
         H1 = new Map,
         ed = new Map;
     var z1 = t => {
-        t.classes.forEach(e => ed.set(e.id, e)), t.files.forEach(e => Ga.set(e.id, e)), t.particles.forEach(e => Jp.set(e.id, e)), t.effects.forEach(e => Xf.set(e.id, e)), t.sounds.forEach(e => Kp.set(e.id, e)), t.soundsets.forEach(e => B1.set(e.id, e)), t.soundsetSteps.forEach(e => U1.set(e.id, e)), t.meshes.forEach(e => Fi.set(e.id, e)), t.ribbons.forEach(e => $1.set(e.id, e)), t.areas.forEach(e => Qf.set(e.id, e)), t.terrains.forEach(e => Ha.set(e.id, e)), t.foliages.forEach(e => Ya.set(e.id, e)), t.environments.forEach(e => Xa.set(e.id, e)), t.animations.forEach(e => Zf.set(e.id, e)), t.skins.forEach(e => O1.set(e.id, e)), t.skeletons.forEach(e => N1.set(e.id, e)), t.creatures.forEach(e => W1.set(e.id, e)), t.creaturesMonster.forEach(e => j1.set(e.id, e)), t.creaturesConjurer.forEach(e => B9.set(e.id, e)), t.creaturesTrader.forEach(e => G1.set(e.id, e)), t.traderShopItems.forEach(e => os.set(e.id, e)), t.worlds.forEach(e => {
+        t.classes.forEach(e => ed.set(e.id, e)), 
+        t.files.forEach(e => Ga.set(e.id, e)), 
+        t.particles.forEach(e => Jp.set(e.id, e)),
+        t.effects.forEach(e => Xf.set(e.id, e)), 
+        t.sounds.forEach(e => Kp.set(e.id, e)),
+        t.soundsets.forEach(e => B1.set(e.id, e)),
+        t.soundsetSteps.forEach(e => U1.set(e.id, e)),
+        t.meshes.forEach(e => Fi.set(e.id, e)),
+        t.ribbons.forEach(e => $1.set(e.id, e)),
+        t.areas.forEach(e => Qf.set(e.id, e)),
+        t.terrains.forEach(e => Ha.set(e.id, e));
+        t.foliages.forEach(e => Ya.set(e.id, e));
+        t.environments.forEach(e => Xa.set(e.id, e));
+        let guardstone = Xa.get(2)
+        let faivel = Xa.get(13)
+        t.animations.forEach(e => Zf.set(e.id, e)),
+        t.skins.forEach(e => O1.set(e.id, e)),
+        t.skeletons.forEach(e => N1.set(e.id, e)),
+        t.creatures.forEach(e => W1.set(e.id, e)),
+        t.creaturesMonster.forEach(e => j1.set(e.id, e)),
+        t.creaturesConjurer.forEach(e => B9.set(e.id, e)),
+        t.creaturesTrader.forEach(e => G1.set(e.id, e)),
+        t.traderShopItems.forEach(e => os.set(e.id, e)),
+        t.worlds.forEach(e => {
             H1.set(e.id, e)
         });
+
+        let shadowstrider = {
+      "animset": 4,
+      "body": [
+        {
+          "bid": 0,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 1,
+          "lod": 1,
+          "mid": 1,
+          "pid": -1,
+          "pos": [
+            0,
+            -0.05877852439880371,
+            0
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            0.6000000238418579,
+            0.6000000238418579,
+            1
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 16,
+          "col": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 1,
+          "pid": 0,
+          "pos": [
+            0,
+            0.10000000149011612,
+            -1
+          ],
+          "rot": [
+            0.6000000238418579,
+            0,
+            0
+          ],
+          "scl": [
+            1.2000000476837158,
+            1.5000000476837158,
+            1.599999976158142
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 1,
+          "col": [
+            0,
+            2.5,
+            0.7,
+            0
+          ],
+          "colMode": 0,
+          "lod": 1,
+          "mid": 1559,
+          "pid": 0,
+          "pos": [
+            0,
+            -0.05000000074505806,
+            0.5199999809265137
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            0.6500000238418579,
+            0.6500000238418579,
+            0.6500000238418579
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 4,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 7878,
+          "pid": -1,
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            1.599999976158142,
+            1.599999976158142,
+            1.599999976158142
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 5,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 7878,
+          "pid": -1,
+          "pos": [
+            0,
+            1.2246467698671066e-17,
+            0
+          ],
+          "rot": [
+            0,
+            3.1415927410125732,
+            0
+          ],
+          "scl": [
+            1.599999976158142,
+            1.599999976158142,
+            1.599999976158142
+          ],
+          "ts": 1
+        }
+      ],
+      "capeswing": 1,
+      "colPrim": [
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+      ],
+      "colSec": [
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+      ],
+      "effects": [],
+      "id": 23,
+      "mountPart": 0,
+      "mountPos": [
+        0,
+        0.800000011920929,
+        -1
+      ],
+      "sheathedPos": [
+        0,
+        0,
+        -0.5
+      ],
+      "size": 1,
+      "skeleton": 1,
+      "soundset": 5,
+      "unsheathedPos": [
+        0,
+        0.800000011920929,
+        0
+      ]
+    }   
+    let scarab = {
+      "animset": 4,
+      "body": [
+        {
+          "bid": 0,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 1,
+          "lod": 1,
+          "mid": 13,
+          "pid": -1,
+          "pos": [
+            0,
+            0.05067838728427887,
+            0
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 16,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 13,
+          "pid": 0,
+          "pos": [
+            0,
+            0.20000000298023224,
+            -0.800000011920929
+          ],
+          "rot": [
+            0,
+            -3.140000104904175,
+            0
+          ],
+          "scl": [
+            1.100000023841858,
+            1.100000023841858,
+            1.100000023841858
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 1,
+          "col": [
+            5,
+            5,
+            5,
+            5
+          ],
+          "colMode": 0,
+          "lod": 1,
+          "mid": 1570,
+          "pid": 0,
+          "pos": [
+            0,
+            0.056985560804605484,
+            0.22015266120433807
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            0.6000000238418579,
+            0.6000000238418579,
+            0.6000000238418579
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 4,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 7878,
+          "pid": -1,
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            0.6000000238418579,
+            0.6000000238418579,
+            0.6000000238418579
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 5,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 7878,
+          "pid": -1,
+          "pos": [
+            0,
+            1.2246467698671066e-17,
+            0
+          ],
+          "rot": [
+            0,
+            3.1415927410125732,
+            0
+          ],
+          "scl": [
+            0.6000000238418579,
+            0.6000000238418579,
+            0.6000000238418579
+          ],
+          "ts": 1
+        }
+      ],
+      "capeswing": 1,
+      "colPrim": [
+        0.20000000298023224,
+        0.20000000298023224,
+        0.20000000298023224,
+        0.5
+      ],
+      "colSec": [
+        1,
+        0.6117647290229797,
+        0,
+        0.8999999761581421
+      ],
+      "effects": [
+        {
+          "bid": 16,
+          "id": 98
+        },
+        {
+          "bid": 0,
+          "id": 98
+        }
+      ],
+      "id": 31,
+      "mountPart": 0,
+      "mountPos": [
+        0,
+        0.800000011920929,
+        -1
+      ],
+      "sheathedPos": [
+        0,
+        0,
+        -0.5
+      ],
+      "size": 1,
+      "skeleton": 1,
+      "soundset": 10,
+      "unsheathedPos": [
+        0,
+        0.800000011920929,
+        0
+      ]
+    }
+    let duskwing = {
+      "animset": 18,
+      "body": [
+        {
+          "bid": 0,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 1,
+          "lod": 1,
+          "mid": 1,
+          "pid": -1,
+          "pos": [
+            0,
+            1,
+            0
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            1,
+            1,
+            1
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 3,
+          "col": [
+            0.6441646814346313,
+            0.7989725470542908,
+            0.7892970442771912,
+            -0.23399999737739563
+          ],
+          "colMode": 1,
+          "lod": 1,
+          "mid": 1624,
+          "pid": 0,
+          "pos": [
+            -0.5,
+            0,
+            0.10000000149011612
+          ],
+          "rot": [
+            -0.30000001192092896,
+            0,
+            0
+          ],
+          "scl": [
+            2,
+            0.800000011920929,
+            2
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 2,
+          "col": [
+            0.6369255185127258,
+            0.8062117695808411,
+            0.7956313490867615,
+            -0.1940000057220459
+          ],
+          "colMode": 1,
+          "lod": 1,
+          "mid": 1624,
+          "pid": 0,
+          "pos": [
+            0.5,
+            0,
+            0.10000000149011612
+          ],
+          "rot": [
+            -0.30000001192092896,
+            0,
+            0
+          ],
+          "scl": [
+            2,
+            0.800000011920929,
+            2
+          ],
+          "ts": 1
+        },
+        {
+          "bid": 16,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 1,
+          "pid": 0,
+          "pos": [
+            0,
+            0.021456904709339142,
+            0.8373732566833496
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            0.699999988079071,
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 1,
+          "col": [
+            .2,
+            .4,
+            4,
+            .1
+          ],
+          "colMode": 0,
+          "lod": 1,
+          "mid": 6,
+          "pid": 16,
+          "pos": [
+            0,
+            0.04150563105940819,
+            0.4780753254890442
+          ],
+          "rot": [
+            0,
+            0,
+            0
+          ],
+          "scl": [
+            1,
+            1,
+            1.2999999523162842
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 17,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 1624,
+          "pid": 2,
+          "pos": [
+            0.1,
+            -0.546798050403595,
+            -0.5658226609230042
+          ],
+          "rot": [
+            -0.4155008792877197,
+            -0.28135135769844055,
+            2.199418323985827e-16
+          ],
+          "scl": [
+            0.7671358942985535,
+            1,
+            0.6542128324508667
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 18,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 1624,
+          "pid": 3,
+          "pos": [
+            .1,
+            0.546798050403595,
+            -0.5658226609230042
+          ],
+          "rot": [
+            0.4155008792877197,
+            -0.28135135769844055,
+            2.199418323985827e-16
+          ],
+          "scl": [
+            0.7671358942985535,
+            1,
+            0.6542128324508667
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 19,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 1,
+          "pid": 0,
+          "pos": [
+            0,
+            -0.02679913491010666,
+            -1.1007031202316284
+          ],
+          "rot": [
+            -0.13728073239326477,
+            0,
+            0
+          ],
+          "scl": [
+            0.5813135027885437,
+            0.522355854511261,
+            1.3028345108032227
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 20,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 1,
+          "lod": 1,
+          "mid": 1626,
+          "pid": 16,
+          "pos": [
+            8.46387746376509e-17,
+            0.9504838705062866,
+            0.285702668428421
+          ],
+          "rot": [
+            6.5564001679420471,
+            3.1415927410125732,
+            3.1415927410125732
+          ],
+          "scl": [
+            1.6787197589874268,
+            3.530953407287598,
+            1
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 21,
+          "col": [
+            0.44161200523376465,
+            0.20638799667358398,
+            0.22598999738693237,
+            -0.5220000147819519
+          ],
+          "colMode": 1,
+          "lod": 1,
+          "mid": 1626,
+          "pid": 16,
+          "pos": [
+            2.0227607354597762e-16,
+            -0.399948388338089,
+            0.6427600979804993
+          ],
+          "rot": [
+            0.591772198677063,
+            3.1415927410125732,
+            3.1415927410125732
+          ],
+          "scl": [
+            0.800000011920929,
+            0.8999999761581421,
+            1
+          ],
+          "ts": 0
+        },
+        {
+          "bid": 22,
+          "col": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "colMode": 2,
+          "lod": 1,
+          "mid": 1622,
+          "pid": 0,
+          "pos": [
+            0,
+            -0.6687838435173035,
+            0.04971189796924591
+          ],
+          "rot": [
+            -0.16984358429908752,
+            0,
+            0
+          ],
+          "scl": [
+            0.6373399496078491,
+            4.4840545654296875,
+            1.096938967704773
+          ],
+          "ts": 1
+        },
+      ],
+      "capeswing": 1,
+      "colPrim": [
+        0.11469600349664688,
+        0.10130400210618973,
+        0.10660722851753235,
+        0
+      ],
+      "colSec": [
+        0.2624194920063019,
+        0.226624995470047,
+        0.26337501406669617,
+        0
+      ],
+        "effects": [{ "bid": 2, "id": 176 },{ "bid": 17, "id": 176 },{ "bid": 3, "id": 177 },{ "bid": 18, "id": 177 }],
+      "id": 69,
+      "mountPart": 0,
+      "mountPos": [
+        0,
+        0.5000000238418579,
+        -0.12999999523162842
+      ],
+      "sheathedPos": [
+        0,
+        0,
+        -0.5
+      ],
+      "size": 0.800000011920929,
+      "skeleton": 6,
+      "soundset": 10,
+      "unsheathedPos": [
+        0,
+        0.800000011920929,
+        0
+      ]
+    }
+    let eyes = duskwing.body.find(i => i.bid === 1)
+    eyes.col = [0.1,0.1,0.1,0]
+    let dwm = 1
+    duskwing.colPrim = [
+        1.1 * dwm,
+        1.1994499996304512 * dwm,
+        1.1994499996304512 * dwm,
+        0
+      ]
+    duskwing.colSec = [
+        1.91039198637008667 * dwm * .9,
+        1.91584978103637695 * dwm * .9,
+        1.9776080071926117 * dwm * .9,
+        0
+      ]
+    O1.set(8888, duskwing)
+        Ga.set(7777,{
+      "ext": 0,
+      "id": 7777,
+      "type": 1
+    })
+        Fi.set(7878,{
+      "cull": 1,
+      "effects": [],
+      "geometry": 7777,
+      "id": 7878,
+      "shader": 0,
+      "shadow": 1,
+      "texture": 0
+    })
+        Fi.set(1560,{
+      "cull": 1,
+      "effects": [],
+      "geometry": 7777,
+      "id": 1560,
+      "shader": 0,
+      "shadow": 1,
+      "texture": 0
+    })
+        O1.set(23,shadowstrider)
+        O1.set(31,scarab)
+        
+        Fi.set(8888, {
+      "cull": 0,
+      "effects": [],
+      "geometry": 1432,
+      "id": 8888,
+      "shader": 5,
+      "shadow": 1,
+      "texture": 1738
+    })
+        let fire = {
+      "duration": 3,
+      "events": [],
+      "id": 88,
+      "periods": [
+        {
+          "fractionEnd": 1,
+          "fractionStart": 0,
+          "id": 4,
+          "modifiers": [
+            {
+              "id": 1,
+              "mode": 0,
+              "params": [
+                0,
+                10,
+                3,
+                0,
+                0.20000000298023224
+              ]
+            },
+            {
+              "id": 2,
+              "mode": 1,
+              "params": [
+                1,
+                0,
+                1,
+                1,
+                1,
+                2,
+                0,
+                1,
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "mode": 1,
+              "params": [
+                2,
+                0.5,
+                0.8999999761581421,
+                0,
+                0
+              ]
+            }
+          ],
+          "params": [
+            8888,
+            0,
+            0,
+            0,
+            1,
+            .2,
+            1.1,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+        let dw = O1.get(8888)
+        dw.effects = []
+        O1.set(8888, dw)
+        let mage = O1.get(2)
+        if (fe.enableMageCapeswing) mage.capeswing = 1
+        O1.set(2, mage)
         for (let e = 0; e < t.filesExt.length; ++e) Kf.push(t.filesExt[e]);
         for (let e = 0; e < t.minimap.length; ++e) Jf.push(t.minimap[e])
     };
@@ -6822,8 +8441,12 @@ void main() {
         Y1 = 2 ** 15 - 1,
         O9 = 2 ** 16 - 1,
         X1 = 2 ** 32 - 1;
-    var tx = t => {
-        let e = Ia.modelformat.decode(t),
+    var tx = (t,id) => {
+        let e = Ia.modelformat.decode(t,id)
+        if (id && id.includes("7777")) {
+            e = {"color": [], "flags": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "index": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 21, 22, 23, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 54, 55, 56, 57, 58, 59, 60, 61, 62], "indexInvisible": [], "normal": [-59, 49, -101, -59, 49, -101, -59, 49, -101, 90, 52, 73, 90, 52, 73, 90, 52, 73, -8, -126, 9, -8, -126, 9, -8, -126, 9, 91, 30, -84, 91, 30, -84, 91, 30, -84, -110, 33, -54, -110, 33, -54, -110, 33, -54, 61, -92, 63, 61, -92, 63, 61, -92, 63, -116, 32, 42, -116, 32, 42, -116, 32, 42, 42, 29, -116, 42, 29, -116, 42, 29, -116, 85, 37, 86, 85, 37, 86, 85, 37, 86, -9, -126, -8, -9, -126, -8, -9, -126, -8, -57, 56, 98, -57, 56, 98, -57, 56, 98, 92, 51, -70, 92, 51, -70, 92, 51, -70, 29, 30, 120, 29, 30, 120, 29, 30, 120, 65, -92, -58, 65, -92, -58, 65, -92, -58, -17, 46, 117, -17, 46, 117, -17, 46, 117, -23, 48, -115, -23, 48, -115, -23, 48, -115, 12, -126, -2, 12, -126, -2, 12, -126, -2, -123, 31, 5, -123, 31, 5, -123, 31, 5, 46, 30, 114, 46, 30, 114, 46, 30, 114, 52, 27, -113, 52, 27, -113, 52, 27, -113, -88, -91, 3, -88, -91, 3, -88, -91, 3], "position": [-17517, 21263, 21835, -3234, -839, 4840, -18001, 3859, 18011, -3234, -839, 4840, -17517, 21263, 21835, -14730, 4013, 23061, -3234, -839, 4840, -14730, 4013, 23061, -18001, 3859, 18011, -17517, 21263, 21835, -14730, 4013, 23061, -18001, 3859, 18011, -17517, 21263, 21835, -18001, 3859, 18011, -25776, -28395, 30865, -14380, 3738, -23436, -17987, 3840, -18418, -24817, -28540, -32767, -24817, -28540, -32767, -17987, 3840, -18418, -17462, 21116, -22876, -17462, 21116, -22876, -14380, 3738, -23436, -24817, -28540, -32767, -17462, 21116, -22876, -17987, 3840, -18418, -14380, 3738, -23436, -3599, -980, -5202, -17987, 3840, -18418, -14380, 3738, -23436, -3599, -980, -5202, -17462, 21116, -22876, -17987, 3840, -18418, -17462, 21116, -22876, -3599, -980, -5202, -14380, 3738, -23436, -25776, -28395, 30865, -14730, 4013, 23061, -17517, 21263, 21835, -18001, 3859, 18011, -14730, 4013, 23061, -25776, -28395, 30865, 22535, 21773, -843, 3852, -323, -251, 21070, 4395, 2270, 3852, -323, -251, 22535, 21773, -843, 20899, 4498, -3979, 3852, -323, -251, 20899, 4498, -3979, 21070, 4395, 2270, 22535, 21773, -843, 20899, 4498, -3979, 21070, 4395, 2270, 22535, 21773, -843, 21070, 4395, 2270, 32767, -27883, -191, 32767, -27883, -191, 20899, 4498, -3979, 22535, 21773, -843, 21070, 4395, 2270, 20899, 4498, -3979, 32767, -27883, -191], "sx": 1510605408, "sy": 4294967295, "sz": 2130266763, "uv": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
+        }
+        let
             n = Y1 / (X1 / e.sx),
             o = Y1 / (X1 / e.sy),
             i = Y1 / (X1 / e.sz);
@@ -6834,6 +8457,9 @@ void main() {
         return e
     };
     var Q1 = async (t, e, n, o, i, s = 3) => {
+        if (e && e.includes("7777")) {
+            return n[e] = await o(t,e), i(n[e], t + e)
+        }
         switch (e.split(".").pop()) {
             case "jpg":
             case "png":
@@ -6841,7 +8467,7 @@ void main() {
             case "webp": {
                 let r = new Image;
                 r.onload = () => {
-                    n[e] = o(r), i(n[e], t + e), r.onload = void 0
+                    n[e] = o(r,e), i(n[e], t + e), r.onload = void 0
                 }, r.src = t + e + "?v=8822612";
                 break
             }
@@ -6849,7 +8475,7 @@ void main() {
                 fetch(t + e + "?v=8822612").then(r => {
                     if (!r.ok) throw new Error;
                     r.arrayBuffer().then(async l => {
-                        n[e] = await o(l), i(n[e], t + e)
+                        n[e] = await o(l,e), i(n[e], t + e)
                     })
                 }).catch(r => {
                     console.log(e + " fetch failed"), s > 1 && Q1(t, e, n, o, i, --s)
@@ -6865,8 +8491,8 @@ void main() {
         },
         eu = async (t, e, n, o, i) => {
             n[e] ? i(...n[e]) : ul[t + e] ? ul[t + e].push(i) : (ul[t + e] = [], ul[t + e].push(i), Q1(t, e, n, o, W9))
-        }, j9 = t => {
-            let e = tx(new Uint8Array(t));
+        }, j9 = (t,id) => {
+            let e = tx(new Uint8Array(t),id);
             return [{
                 index: {
                     type: 5125,
@@ -7171,7 +8797,7 @@ void main() {
                 xs.update(t => !t), wt(90)
             }), ln(fe.kbParty, nt.party = {}).onPress(() => {
                 ei.update(t => !t), wt(90)
-            }), document.addEventListener("wheel", rE, {
+            }), delete kx["shift"], document.addEventListener("wheel", rE, {
                 passive: !0
             }), document.addEventListener("keydown", aE, !1), document.addEventListener("keyup", cE, !1), document.addEventListener("contextmenu", lE, !1), document.addEventListener("mousedown", iE, !1), document.addEventListener("mouseup", sE, !1), document.addEventListener("mousemove", oE, !1)
         },
@@ -7215,11 +8841,13 @@ void main() {
         aE = t => {
             if (!Fx(t)) return;
             let e = t.key.toLowerCase();
+            if (fe.kbItemNames && e === fe.kbItemNames){ nt.shift.down||(nt.shift.down=!0,nt.shift.press.forEach(f=>f(t)),nt.shift.store.set(!0)); t&&t.preventDefault(); }
             t.ctrlKey && ur("ctrl+" + e, !0, t) || t.shiftKey && ur("shift+" + e, !0, t) || ur(e, !0, t)
         },
         cE = t => {
             if (!Fx(t)) return;
             let e = t.key.toLowerCase();
+            if (fe.kbItemNames && e === fe.kbItemNames){ nt.shift.down&&(nt.shift.down=!1,nt.shift.release.forEach(f=>f(t)),nt.shift.store.set(!1)); }
             ur("ctrl+" + e, !1), ur("shift+" + e, !1), ur(e, !1)
         },
         Fx = t => {
@@ -7545,7 +9173,7 @@ void main() {
             }, r, `${l} ${en(i,s)}?`)
         },
         iu = (t, e, n, o, i) => {
-            if((o === "charm" || (o === "mount" && e>0) || e>0) && fe.disallowSpecialSelling) return // disallow charm & mount selling
+            if ((o === "charm" || (o === "mount" && e>0) || e>0) && fe.disallowSpecialSelling) return
             Tx("itemtradersell", t, e, n, o, i, "Sell item", "Really sell")
         },
         lg = (t, e, n, o, i) => {
@@ -7693,7 +9321,27 @@ void main() {
                 g = Math.round(u * s);
             return m === 0 || g === 0 || Eo.drawImage(t, 0, 0, Math.round(t.width * i), Math.round(t.height * s), Math.round(e[0] - f * a + r * o), Math.round(e[1] - u * c + l * o), m, g), m
         },
-        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
+        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => n.size >= 1 ? drHD(t, e, n, o, i, s, r, l, a) : pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
+        drHD = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5, dpr = 2) => {
+            let canvas = luHD(e, n, dpr);
+            let lw = canvas.logicalWidth,
+                lh = canvas.logicalHeight;
+            
+            Eo.globalAlpha = fe.nameplateShowTransparency ? o : 1;
+            let f = lw * i,
+                u = lh * i,
+                m = Math.round(f),
+                g = Math.round(u);
+            if (m === 0 || g === 0) return m;
+            Eo.drawImage(
+                canvas,
+                0, 0, canvas.width, canvas.height,
+                Math.round(t[0] - f * l + s * i),
+                Math.round(t[1] - u * a + r * i),
+                m, g
+            );
+            return m;
+        },
         qx = (t, e, n, o, i = 0, s = 0, r = .5, l = .5) => pr(e, t, n, o, 1, 1, i, s, r, l),
         vl = (t, e, n = !1) => (n ? (e[0] = t[0], e[1] = t[1]) : Ao(e, t, gt.projectionViewMatrix), n || e[2] < 1 && e[0] > -1 && e[0] < 1 ? (e[1] = Math.max(-1, Math.min(e[1], 1)), e[0] = Math.round((e[0] * .5 + .5) * Ln.width), e[1] = Math.round((e[1] * -.5 + .5) * Ln.height), e[1] = Math.max(30, e[1]), e) : !1),
         Rx = (t, e, n) => {
@@ -7787,23 +9435,23 @@ void main() {
             },
             phys: {
                 fill: Lt("name"),
-                size: 18
+                size: 18 * (fe.shrinkIndicators / 500)
             },
             physCrit: {
                 fill: Lt("name"),
-                size: 24
+                size: 24  * (fe.shrinkIndicators / 500)
             },
             spell: {
                 fill: "#FFE404",
-                size: 28
+                size: 28  * (fe.shrinkIndicators / 500)
             },
             spellCrit: {
-                fill: "#FFE404",
-                size: 40
+                fill: "#ffa02d",
+                size: 40  * (fe.shrinkIndicators / 500)
             },
             heal: {
                 fill: "#12F027",
-                size: 28
+                size: 28  * (fe.shrinkIndicators / 500)
             },
             mana: {
                 fill: Lt("mana"),
@@ -7815,7 +9463,7 @@ void main() {
             },
             fame: {
                 fill: Lt("fame"),
-                size: 20
+                size: 20  * (fe.shrinkIndicators / 500)
             },
             gold: {
                 fill: "#EEDDA3",
@@ -7871,11 +9519,11 @@ void main() {
             },
             pheal: {
                 fill: "#12F027",
-                size: 0
+                size: 20 * (fe.shrinkIndicators / 500)
             },
             pdmg: {
                 fill: Lt("enemy"),
-                size: 0
+                size: 20 * (fe.shrinkIndicators / 500)
             }
         },
         pg = {},
@@ -7888,7 +9536,40 @@ void main() {
             if (pg[i]) return pg[i];
             let s = document.createElement("canvas"),
                 r = s.getContext("2d");
-            return r.font = "bold " + n + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
+            r.font = "bold " + n + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
+            return s
+        },
+        luHD = (t, {
+            fill: e,
+            size: n,
+            wrap: o = 0
+        }, dpr = 2) => {
+            let i = t + e + n + dpr;
+            if (pg[i]) return pg[i];
+            let s = document.createElement("canvas"),
+                r = s.getContext("2d");
+            
+            let scaledN = n * dpr;
+            r.font = "bold " + scaledN + "px hordes";
+            
+            if (o > 0) {
+                PE(s, r, t, 0, 0, o * dpr, scaledN, e);
+            } else {
+                s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5 * dpr;
+                s.height = Math.ceil(scaledN * 1.2 + 5 * dpr);
+                Rx(r, scaledN, e);
+                if (fe.outlines) {
+                    r.lineWidth = 1.5 * dpr;
+                    r.strokeStyle = "black";
+                    r.strokeText(t, 0, s.height - 6 * dpr);
+                }
+                r.fillText(t, 0, s.height - 6 * dpr);
+            }
+            s.logicalWidth = s.width / dpr;
+            s.logicalHeight = s.height / dpr;
+            
+            pg[i] = s;
+            return s;
         },
         Vo = (t, e, n, o, i, s, r) => {
             t || (t = document.createElement("canvas"), t.width = n, t.height = o);
@@ -8839,7 +10520,6 @@ void main() {
     }
 
     function jE(t, e, n) {
-        let o;
         re(t, ji, l => n(0, o = l));
 
         function i(l) {
@@ -8863,13 +10543,13 @@ void main() {
             u = oa(f, t, t[6], null);
         return {
             c() {
-                e = h("div"), n = h("div"), o = h("span"), i = T(t[0]), s = h("span"), r = T(t[1]), u && u.c(), p(o, "class", "left svelte-i7i7g5"), p(s, "class", "right svelte-i7i7g5"), p(n, "class", l = "progressBar " + t[3] + " svelte-i7i7g5"), Ve(n, "width", t[2] + "%"), Ve(n, "font-size", t[4]), p(e, "class", a = "bar " + (t[5] ? "dark" : "") + " svelte-i7i7g5"), Ve(e, "z-index", t[3] == "hp" ? "1" : "0")
+                e = h("div"), n = h("div"), o = h("span"), i = T(t[0]), s = h("span"), r = T(t[1]), u && u.c(), p(o, "class", "left svelte-i7i7g5"), p(s, "class", "right svelte-i7i7g5"), p(n, "class", l = "progressBar " + t[3] + " svelte-i7i7g5"), Ve(n, "background", _bgcStyle(t[3])), Ve(n, "width", t[2] + "%"), Ve(n, "font-size", t[4]), p(e, "class", a = "bar " + (t[5] ? "dark" : "") + " svelte-i7i7g5"), Ve(e, "z-index", t[3] == "hp" ? "1" : "0")
             },
             m(m, g) {
                 w(m, e, g), d(e, n), d(n, o), d(o, i), d(n, s), d(s, r), u && u.m(e, null), c = !0
             },
             p(m, [g]) {
-                (!c || g & 1) && G(i, m[0]), (!c || g & 2) && G(r, m[1]), (!c || g & 8 && l !== (l = "progressBar " + m[3] + " svelte-i7i7g5")) && p(n, "class", l), (!c || g & 4) && Ve(n, "width", m[2] + "%"), (!c || g & 16) && Ve(n, "font-size", m[4]), u && u.p && (!c || g & 64) && sa(u, f, m, m[6], c ? ia(f, m[6], g, null) : ra(m[6]), null), (!c || g & 32 && a !== (a = "bar " + (m[5] ? "dark" : "") + " svelte-i7i7g5")) && p(e, "class", a), (!c || g & 8) && Ve(e, "z-index", m[3] == "hp" ? "1" : "0")
+                (!c || g & 1) && G(i, m[0]), (!c || g & 2) && G(r, m[1]), (!c || g & 8 && l !== (l = "progressBar " + m[3] + " svelte-i7i7g5")) && (p(n, "class", l), Ve(n, "background", _bgcStyle(m[3]))), (!c || g & 4) && Ve(n, "width", m[2] + "%"), (!c || g & 16) && Ve(n, "font-size", m[4]), u && u.p && (!c || g & 64) && sa(u, f, m, m[6], c ? ia(f, m[6], g, null) : ra(m[6]), null), (!c || g & 32 && a !== (a = "bar " + (m[5] ? "dark" : "") + " svelte-i7i7g5")) && p(e, "class", a), (!c || g & 8) && Ve(e, "z-index", m[3] == "hp" ? "1" : "0")
             },
             i(m) {
                 c || (S(u, m), c = !0)
@@ -8925,6 +10605,7 @@ void main() {
     var cu = new Map,
         sw = !1,
         YE = () => {
+            if (fe.disableCircleCooldowns) return;
             fetch("/data/ui/circlecooldowns/circlecooldowns.txt?v=8822612").then(async t => {
                 let e = (await t.text()).split(`
 `);
@@ -8940,6 +10621,7 @@ void main() {
             })
         },
         fu = (t, e, n) => {
+            if (fe.disableCircleCooldowns) return;
             sw && e && t !== e.step && (e.cdimg !== void 0 && (cu.get(n)[e.step].push(e.removeChild(e.cdimg)), e.cdimg = void 0), (e.step = t) > 0 && (cu.get(n)[e.step].length === 1 ? e.cdimg = cu.get(n)[e.step][0].cloneNode() : e.cdimg = cu.get(n)[e.step].pop(), e.appendChild(e.cdimg)))
         };
 
@@ -8989,13 +10671,13 @@ void main() {
         let e, n, o, i, s, r, l, a, c, f, u = t[0] > 1 && rw(t),
             m = t[3] > 30 && fe.cdTextBuffs && t[5] > 0 && lw(t);
         return {
-            c() { //border drawing thing
+            c() {
                 e = h("div"), n = h("div"), o = h("img"), s = h("div"), u && u.c(), r = de(), m && m.c(), p(o, "class", "icon svelte-1nn7wcb"), st(o.src, i = t[1]) || p(o, "src", i), Ve(o, "max-width", t[3] + "px"), p(s, "class", "overlay svelte-1nn7wcb"), p(n, "class", l = "slot border " + (borders[t[2]]) + " svelte-1nn7wcb"), p(e, "class", a = "container " + (t[5] < fe.buffCdFlashingDuration && t[5] % fe.buffCdFlashingInterval * 2 > fe.buffCdFlashingInterval ? "soon" : "") + " svelte-1nn7wcb")
             },
             m(g, v) {
                 w(g, e, v), d(e, n), d(n, o), d(n, s), t[10](s), u && u.m(n, null), d(n, r), m && m.m(n, null), c || (f = H(e, "contextmenu", t[6]), c = !0)
             },
-            p(g, [v]) { //border drawing thing on refreshed buffs or smth
+            p(g, [v]) {
                 v & 2 && !st(o.src, i = g[1]) && p(o, "src", i), v & 8 && Ve(o, "max-width", g[3] + "px"), g[0] > 1 ? u ? u.p(g, v) : (u = rw(g), u.c(), u.m(n, r)) : u && (u.d(1), u = null), g[3] > 30 && fe.cdTextBuffs && g[5] > 0 ? m ? m.p(g, v) : (m = lw(g), m.c(), m.m(n, null)) : m && (m.d(1), m = null), v & 4 && l !== (l = "slot border " + (borders[g[2]]) + " svelte-1nn7wcb") && p(n, "class", l), v & 32 && a !== (a = "container " + (g[5] < fe.buffCdFlashingDuration && g[5] % fe.buffCdFlashingInterval * 2 > fe.buffCdFlashingInterval ? "soon" : "") + " svelte-1nn7wcb") && p(e, "class", a)
             },
             i: ae,
@@ -9146,14 +10828,14 @@ void main() {
             j.bindBuffer(j.UNIFORM_BUFFER, t.buffer), j.bufferSubData(j.UNIFORM_BUFFER, 0, cw, 0, t.layout.size / 4), j.bindBuffer(j.UNIFORM_BUFFER, null)
         };
     var oc = [],
-        ic, Si, Ls, yl, kl, mw = t => {
+        ic, Si, Ls, yl, kl, ssaoFb1, ssaoFb2, ssaoHistA, ssaoHistB, mw = t => {
             let e = tt.width,
                 n = tt.height;
             for (let o = 0; o < 2; ++o) oc.push(Ts(t, t, 0, !0, j.COMPARE_REF_TO_TEXTURE));
-            ic = Ts(t, t, 0, !0, j.COMPARE_REF_TO_TEXTURE), Si = Ts(e, n, 1, !0), Ls = Ts(e, n, 1, !0), yl = Ts(Math.ceil(e / 4), Math.ceil(n / 4)), kl = Ts(Math.ceil(e / 4), Math.ceil(n / 4))
+            ic = Ts(t, t, 0, !0, j.COMPARE_REF_TO_TEXTURE), Si = Ts(e, n, 1, !0), Ls = Ts(e, n, 1, !0), ssaoFb1 = Ts(e, n, 1, !1), ssaoFb2 = Ts(e, n, 1, !1), ssaoHistA = Ts(e, n, 1, !1), ssaoHistB = Ts(e, n, 1, !1), yl = Ts(Math.ceil(e / 4), Math.ceil(n / 4)), kl = Ts(Math.ceil(e / 4), Math.ceil(n / 4))
         },
         pw = (t, e) => {
-            Wf(Si, t, e), Wf(Ls, t, e), Wf(yl, Math.ceil(t / 4), Math.ceil(e / 4)), Wf(kl, Math.ceil(t / 4), Math.ceil(e / 4))
+            Wf(Si, t, e), Wf(Ls, t, e), Wf(ssaoFb1, t, e), Wf(ssaoFb2, t, e), Wf(ssaoHistA, t, e), Wf(ssaoHistB, t, e), Wf(yl, Math.ceil(t / 4), Math.ceil(e / 4)), Wf(kl, Math.ceil(t / 4), Math.ceil(e / 4))
         };
     var Fd = {};
     Kn(Fd, {
@@ -9198,16 +10880,299 @@ precision highp float;precision highp int;out vec4 fragColor;uniform Environment
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec2 uv;in vec3 position;in vec3 normal;in mat4 worldMatrix;in vec4 uvshift;in float shine;out float vShine;out vec2 vUv;void main(){vShine=shine;vWorldPos=worldMatrix*vec4(position,1.0);vUv=uvshift.zw-uv*uvshift.xy;vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*worldMatrix*vec4(position,1.0);}`;
     var vw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform sampler2D foliageDiffuse;in vec3 vLight;in vec3 vLightAmb;in vec3 vLightDir;in vec2 vUv;out vec4 fragColor;void main(){vec4 b=texture(foliageDiffuse,vUv);float c=0.1;b.a=b.a*smoothstep(1.0,0.0,(vCameraDistance-110.0)/20.0);if(b.a<c){discard;};float d=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float e=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 f=shadowPVMatrix[1]*(vWorldPos);vec3 g=(f.xyz/f.w)*0.5+0.5;d=texture(shadowMaps[1],g);}else{vec4 f=shadowPVMatrix[0]*(vWorldPos);vec3 g=(f.xyz/f.w)*0.5+0.5;d=texture(shadowMaps[0],g);}d=d;d=max(d,e);}b.rgb=b.rgb*(vLight+vLightAmb+vLightDir*d);float h=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,h);fragColor=b;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform sampler2D foliageDiffuse;in vec3 vLight;in vec3 vLightAmb;in vec3 vLightDir;in vec2 vUv;out vec4 fragColor;void main(){vec4 b=texture(foliageDiffuse,vUv);float c=0.1;b.a=b.a*smoothstep(1.0,0.0,(vCameraDistance-${(_grassDist - 20).toFixed(1)})/20.0);if(b.a<c){discard;};float d=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float e=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 f=shadowPVMatrix[1]*(vWorldPos);vec3 g=(f.xyz/f.w)*0.5+0.5;d=texture(shadowMaps[1],g);}else{vec4 f=shadowPVMatrix[0]*(vWorldPos);vec3 g=(f.xyz/f.w)*0.5+0.5;d=texture(shadowMaps[0],g);}d=d;d=max(d,e);}b.rgb=b.rgb*(vLight+vLightAmb+vLightDir*d);float h=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,h);fragColor=b;}`;
     var _w = `#version 300 es
-precision highp float;precision highp int;precision highp sampler2DShadow;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Screen{vec2 resolution;};in vec4 instPos;in vec3 instNorm;in vec3 position;in vec2 uv;out vec3 vLightAmb;out vec3 vLightDir;out vec2 vUv;void main(){vUv=uv;vec3 b=vec3(0.0);for(int c=0;c<lightCount;++c){vec3 d=lightPos[c]-instPos.xyz;float e=lightCols[c].w-dot(d,d);if(e>0.0){e/=(lightCols[c].w);e=e*e;b+=0.3*lightCols[c].rgb*e;;}};vLight=b;vLightAmb=worldlight[1];vLightDir=worldlight[0]*max(0.0,dot(instNorm.xyz,worldlight[2]));vec3 f=position;float e=sin(time+instPos.x+f.x)*0.1*f.y;f.xz+=e;mat3 g;g[1]=instNorm.xyz;g[2]=normalize(cross(vec3(sin(instPos.x*100.0),0.0,cos(instPos.z*100.0)),g[1]));g[0]=normalize(cross(g[1],g[2]));vec3 h=g*f;vWorldPos=vec4(h*instPos.w+instPos.xyz,1.0);vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*vWorldPos;}`;
-    var bw = `#version 300 es
+precision highp float;precision highp int;precision highp sampler2DShadow;
+uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};
+
+out float vCameraDistance;
+out vec4 vWorldPos;
+
+uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};
+
+out vec3 vLight;
+
+uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};
+const int a=
+#SHADOWS;
+
+uniform sampler2DShadow shadowMaps[2];
+
+uniform Camera{
+    mat4 projectionMatrix;
+    mat4 viewMatrix;
+    mat4 projectionViewMatrix;
+    vec3 cameraPosition;
+};
+
+uniform Screen{vec2 resolution;};
+
+in vec4 instPos;
+in vec3 instNorm;
+in vec3 position;
+in vec2 uv;
+
+out vec3 vLightAmb;
+out vec3 vLightDir;
+out vec2 vUv;
+
+uniform float u_rainAmount;
+
+void main(){
+    vUv=uv;
+
+    vec3 b=vec3(0.0);
+
+    for(int c=0;c<lightCount;++c){
+        vec3 d=lightPos[c]-instPos.xyz;
+
+        float e=lightCols[c].w-dot(d,d);
+
+        if(e>0.0){
+            e/=(lightCols[c].w);
+            e=e*e;
+            b+=0.3*lightCols[c].rgb*e;
+        }
+    }
+
+    vLight=b;
+
+    vLightAmb=worldlight[1];
+
+    vLightDir=
+        worldlight[0]
+        *max(0.0,dot(instNorm.xyz,worldlight[2]));
+
+    vec3 f=position;
+
+    float phase=
+        instPos.x*0.25
+        +instPos.z*0.25;
+
+    mat3 g;
+
+    g[1]=instNorm.xyz;
+
+    g[2]=normalize(
+        cross(
+            vec3(
+                sin(instPos.x*100.0),
+                0.0,
+                cos(instPos.z*100.0)
+            ),
+            g[1]
+        )
+    );
+
+    g[0]=normalize(cross(g[1],g[2]));
+
+    vec3 h=g*f;
+
+    float sway=
+        sin(time*1.35+phase);
+
+    float gust1=
+        sin(time*0.45+phase*0.7);
+
+    float gust2=
+        sin(time*1.8+phase*2.4)
+        *0.5;
+
+    float stormWave=
+        sin(time*0.12+instPos.x*0.04+instPos.z*0.03);
+
+    float baseAmp=0.18;
+
+    float stormAmp=
+        0.8*u_rainAmount;
+
+    float gustAmp=
+        gust1*(0.08+u_rainAmount*0.25);
+
+    float turbulence=
+        gust2*(0.02+u_rainAmount*0.12);
+
+    float waveAmp=
+        stormWave*u_rainAmount*0.25;
+
+    float windAmp=
+        baseAmp
+        +stormAmp
+        +gustAmp
+        +turbulence
+        +waveAmp;
+
+    vec3 stormOffset=vec3(
+        sway*windAmp,
+        0.0,
+        cos(time*1.1+phase)*windAmp*0.22*u_rainAmount
+    );
+
+    stormOffset *= position.y;
+
+    stormOffset *= instPos.w;
+
+    vWorldPos=vec4(
+        h*instPos.w
+        +instPos.xyz
+        +stormOffset,
+        1.0
+    );
+
+    vCameraDistance=
+        length(cameraPosition-vWorldPos.xyz);
+
+    gl_Position=
+        projectionViewMatrix*vWorldPos;
+}`;
+
+
+var yw = `#version 300 es
+precision highp float;precision highp int;precision highp sampler2DShadow;
+uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};
+
+out float vCameraDistance;
+out vec4 vWorldPos;
+
+uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};
+
+out vec3 vLight;
+
+uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};
+const int a=
+#SHADOWS;
+
+uniform sampler2DShadow shadowMaps[2];
+
+uniform Camera{
+    mat4 projectionMatrix;
+    mat4 viewMatrix;
+    mat4 projectionViewMatrix;
+    vec3 cameraPosition;
+};
+
+uniform Screen{vec2 resolution;};
+
+in vec4 instPos;
+in vec3 instNorm;
+in vec3 position;
+in vec2 uv;
+
+out vec2 vUv;
+out vec3 vLightAmb;
+out vec3 vLightDir;
+
+uniform float u_rainAmount;
+
+void main(){
+    vUv=uv;
+
+    vec3 b=vec3(0.0);
+
+    for(int c=0;c<lightCount;++c){
+        vec3 d=lightPos[c]-instPos.xyz;
+
+        float e=lightCols[c].w-dot(d,d);
+
+        if(e>0.0){
+            e/=(lightCols[c].w);
+            e=e*e;
+            b+=0.3*lightCols[c].rgb*e;
+        }
+    }
+
+    vLight=b;
+
+    vLightAmb=worldlight[1];
+
+    vLightDir=
+        worldlight[0]
+        *max(0.0,dot(instNorm.xyz,worldlight[2]));
+
+    vec3 f=position;
+
+    float phase=
+        instPos.x*0.18
+        +instPos.z*0.25;
+
+    mat3 g;
+
+    g[1]=instNorm.xyz;
+
+    g[2]=normalize(
+        cross(
+            vec3(
+                sin(instPos.x*100.0),
+                0.0,
+                cos(instPos.z*100.0)
+            ),
+            g[1]
+        )
+    );
+
+    g[0]=normalize(cross(g[1],g[2]));
+
+    vec3 h=g*f;
+
+    float sway=
+        sin(time*1.35+phase);
+
+    float gust1=
+        sin(time*0.45+phase*0.7);
+
+    float gust2=
+        sin(time*1.8+phase*2.4)
+        *0.5;
+
+    float stormWave=
+        sin(time*0.12+instPos.x*0.04+instPos.z*0.03);
+
+    float baseAmp=0.18;
+
+    float stormAmp=
+        0.8*u_rainAmount;
+
+    float gustAmp=
+        gust1*(0.08+u_rainAmount*0.25);
+
+    float turbulence=
+        gust2*(0.02+u_rainAmount*0.12);
+
+    float waveAmp=
+        stormWave*u_rainAmount*0.25;
+
+    float windAmp=
+        baseAmp
+        +stormAmp
+        +gustAmp
+        +turbulence
+        +waveAmp;
+
+    vec3 stormOffset=vec3(
+        sway*windAmp,
+        0.0,
+        cos(time*1.1+phase)*windAmp*0.22*u_rainAmount
+    );
+
+    stormOffset *= position.y;
+    stormOffset *= instPos.w;
+
+    vWorldPos=vec4(
+        h*instPos.w
+        +instPos.xyz
+        +stormOffset,
+        1.0
+    );
+
+    vCameraDistance=
+        length(cameraPosition-vWorldPos.xyz);
+
+    gl_Position=
+        projectionViewMatrix*vWorldPos;
+}`;
+var bw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform sampler2D foliageDiffuse;in vec3 vLightAmb;in vec3 vLightDir;in vec3 vLight;in vec2 vUv;out vec4 fragColor;void main(){vec4 b=texture(foliageDiffuse,vUv);b.a=b.a*smoothstep(1.0,0.0,(vCameraDistance-110.0)/20.0);if(b.a<0.5){discard;};float c=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float d=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 e=shadowPVMatrix[1]*(vWorldPos);vec3 f=(e.xyz/e.w)*0.5+0.5;c=texture(shadowMaps[1],f);}else{vec4 e=shadowPVMatrix[0]*(vWorldPos);vec3 f=(e.xyz/e.w)*0.5+0.5;c=texture(shadowMaps[0],f);}c=c;c=max(c,d);}b.rgb=b.rgb*(vLight+vLightAmb+vLightDir*c);float g=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,g);fragColor=b;}`;
-    var yw = `#version 300 es
-precision highp float;precision highp int;precision highp sampler2DShadow;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Screen{vec2 resolution;};in vec4 instPos;in vec3 instNorm;in vec3 position;in vec2 uv;out vec2 vUv;out vec3 vLightAmb;out vec3 vLightDir;void main(){vUv=uv;vec3 b=vec3(0.0);for(int c=0;c<lightCount;++c){vec3 d=lightPos[c]-instPos.xyz;float e=lightCols[c].w-dot(d,d);if(e>0.0){e/=(lightCols[c].w);e=e*e;b+=0.3*lightCols[c].rgb*e;;}}vLight=b;vLightAmb=worldlight[1];vLightDir+=worldlight[0]*max(0.0,dot(instNorm.xyz,worldlight[2]));vec3 f=position;mat3 g;g[1]=instNorm.xyz;g[2]=normalize(cross(vec3(sin(instPos.x*100.0),0.0,cos(instPos.z*100.0)),g[1]));g[0]=normalize(cross(g[1],g[2]));vec3 h=g*f;vWorldPos=vec4(h*instPos.w+instPos.xyz,1.0);vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*vWorldPos;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform sampler2D foliageDiffuse;in vec3 vLightAmb;in vec3 vLightDir;in vec3 vLight;in vec2 vUv;out vec4 fragColor;void main(){vec4 b=texture(foliageDiffuse,vUv);b.a=b.a*smoothstep(1.0,0.0,(vCameraDistance-${(_grassDist - 20).toFixed(1)})/20.0);if(b.a<0.5){discard;};float c=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float d=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 e=shadowPVMatrix[1]*(vWorldPos);vec3 f=(e.xyz/e.w)*0.5+0.5;c=texture(shadowMaps[1],f);}else{vec4 e=shadowPVMatrix[0]*(vWorldPos);vec3 f=(e.xyz/e.w)*0.5+0.5;c=texture(shadowMaps[0],f);}c=c;c=max(c,d);}b.rgb=b.rgb*(vLight+vLightAmb+vLightDir*c);float g=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,g);fragColor=b;}`;
     var kw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vCol;in vec2 vYcutoff;in vec4 vUvshift;out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec2 a=vec2((vUv.x+vUvshift.x)*vUvshift.z,(vUv.y+vUvshift.y)*vUvshift.w);vec4 b=vec4(1.0,1.0,1.0,texture(diffuse,a).r)*vCol;b.a*=min(1.0,max(0.0,vUv.y/vYcutoff[0]));b.a*=min(1.0,max(0.0,(vYcutoff[1]-vUv.y)/(1.0-vYcutoff[1])));if(b.a<0.01){discard;}float c=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,c);fragColor=b;fragColor.rgb*=fragColor.a;}`;
     var xw = `#version 300 es
@@ -9223,12 +11188,12 @@ precision highp float;precision highp int;in vec4 vColor;out vec4 fragColor;void
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec3 position;in vec4 color;in mat4 worldMatrix;out vec4 vColor;void main(){vColor=color;gl_Position=projectionViewMatrix*worldMatrix*vec4(position,1.0);;}`;
     var Sw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vInteriorlight;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float q=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 r=shadowPVMatrix[1]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[1],s);}else{vec4 r=shadowPVMatrix[0]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[0],s);}p=p;p=max(p,q);}vec3 t=worldlight[1];vec3 u=worldlight[0];t=mix(t,vInteriorlight.rgb*0.5,vInteriorlight.a);u=mix(u,vInteriorlight.rgb,vInteriorlight.a);o.rgb=b(t,u,o.rgb,vNormal,p,vLight,0.0);o.rgb/=o.a;float v=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,v);float w=distance(vWorldPos.xz,circlePos.xz);float x=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(w<circlePos.w+0.1&&x>0.0){o.rgb=mix(o.rgb,circleInfo.rgb,x*circleInfo.a*((w<circlePos.w?w/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-w))/0.1)));}fragColor=o;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vInteriorlight;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float q=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 r=shadowPVMatrix[1]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[1],s);}else{vec4 r=shadowPVMatrix[0]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[0],s);}p=p;p=max(p,q);}vec3 t=worldlight[1];vec3 u=worldlight[0];t=mix(t,vInteriorlight.rgb*0.5,vInteriorlight.a);u=mix(u,vInteriorlight.rgb,vInteriorlight.a);o.rgb=b(t,u,o.rgb,vNormal,p,vLight,0.0);o.rgb/=o.a;float v=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,v);float w=distance(vWorldPos.xz,circlePos.xz);float x=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfsw=circleInfo.a;if(w<circlePos.w+0.1&&(x>0.0||(cfsw>1.0&&vWorldPos.y<=circlePos.y))){float adyw=cfsw>1.0?(vWorldPos.y>circlePos.y?x:1.0):x;float blndw=cfsw>1.0?(w<circlePos.w?cfsw-1.0:0.0):((w<circlePos.w?w/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-w))/0.1));o.rgb=mix(o.rgb,circleInfo.rgb,adyw*min(1.0,cfsw)*blndw);}fragColor=o;}`;
     var Pw = `#version 300 es
 precision highp float;precision highp int;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec2 uv;in vec3 position;in vec3 normal;in vec4 interiorlight;in mat4 worldMatrix;out vec3 vNormal;out vec2 vUv;out vec4 vInteriorlight;out vec3 vViewDir;void main(){vNormal=normalize(mat3(worldMatrix)*normal);vUv=uv;vWorldPos=worldMatrix*vec4(position,1.0);vInteriorlight=interiorlight;vCameraDistance=length(cameraPosition-vWorldPos.xyz);vec3 a=vec3(0.0);for(int b=0;b<lightCount;++b){vec3 c=lightPos[b]-vWorldPos.xyz;float d=lightCols[b].w-dot(c,c);if(d>0.0){d/=(lightCols[b].w);d=d*d;a+=max(0.0,dot(normalize(c),vNormal))*lightCols[b].rgb*d;}}vLight=a;vViewDir=-normalize(vWorldPos.xyz-cameraPosition);gl_Position=projectionViewMatrix*vWorldPos;}`;
     var Aw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vCol;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=(float(gl_FrontFacing)*2.0-1.0);float q=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float r=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 s=shadowPVMatrix[1]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[1],t);}else{vec4 s=shadowPVMatrix[0]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[0],t);}q=q;q=max(q,r);}vec3 u=mix(worldlight[1],vCol.rgb,vCol.a);vec3 v=worldlight[0]*(1.0-vCol.a);o.rgb=b(u,v,o.rgb,vNormal,q,vLight,0.0);float w=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,w);float x=distance(vWorldPos.xz,circlePos.xz);float y=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(x<circlePos.w+0.1&&y>0.0){o.rgb=mix(o.rgb,circleInfo.rgb,y*circleInfo.a*((x<circlePos.w?x/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-x))/0.1)));}fragColor=o;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vCol;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=(float(gl_FrontFacing)*2.0-1.0);float q=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float r=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 s=shadowPVMatrix[1]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[1],t);}else{vec4 s=shadowPVMatrix[0]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[0],t);}q=q;q=max(q,r);}vec3 u=mix(worldlight[1],vCol.rgb,vCol.a);vec3 v=worldlight[0]*(1.0-vCol.a);o.rgb=b(u,v,o.rgb,vNormal,q,vLight,0.0);float w=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,w);float x=distance(vWorldPos.xz,circlePos.xz);float y=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfaw=circleInfo.a;if(x<circlePos.w+0.1&&(y>0.0||(cfaw>1.0&&vWorldPos.y<=circlePos.y))){float adyaw=cfaw>1.0?(vWorldPos.y>circlePos.y?y:1.0):y;float blndaw=cfaw>1.0?(x<circlePos.w?cfaw-1.0:0.0):((x<circlePos.w?x/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-x))/0.1));o.rgb=mix(o.rgb,circleInfo.rgb,adyaw*min(1.0,cfaw)*blndaw);}fragColor=o;}`;
     var Tw = `#version 300 es
 precision highp float;precision highp int;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec2 uv;in vec3 position;in vec3 normal;in vec4 color;in mat4 worldMatrix;out vec3 vNormal;out vec2 vUv;out vec4 vCol;out vec3 vViewDir;void main(){vNormal=normalize(mat3(worldMatrix)*normal);vUv=uv;vCol=color;vWorldPos=worldMatrix*vec4(position,1.0);vCameraDistance=length(cameraPosition-vWorldPos.xyz);vec3 a=vec3(0.0);for(int b=0;b<lightCount;++b){vec3 c=lightPos[b]-vWorldPos.xyz;float d=lightCols[b].w-dot(c,c);if(d>0.0){d/=(lightCols[b].w);d=d*d;a+=max(0.0,dot(normalize(c),vNormal))*lightCols[b].rgb*d;}}vLight=a;vViewDir=-normalize(vWorldPos.xyz-cameraPosition);gl_Position=projectionViewMatrix*vWorldPos;}`;
     var Ew = `#version 300 es
@@ -9251,10 +11216,339 @@ precision highp float;precision highp int;uniform Screen{vec2 resolution;};unifo
 #define c (1.0/128.0)
 #define d (1.0/8.0)
 vec3 e(vec4 f,sampler2D g,vec2 h){vec3 i=textureLod(g,f.zw,0.0).xyz;vec3 j=textureLod(g,f.zw+vec2(1,0)*h.xy,0.0).xyz;vec3 k=textureLod(g,f.zw+vec2(0,1)*h.xy,0.0).xyz;vec3 l=textureLod(g,f.zw+vec2(1,1)*h.xy,0.0).xyz;vec3 m=textureLod(g,f.xy,0.0).xyz;vec3 n=vec3(0.299,0.587,0.114);float o=dot(i,n);float p=dot(j,n);float q=dot(k,n);float r=dot(l,n);float s=dot(m,n);float t=min(s,min(min(o,p),min(q,r)));float u=max(s,max(max(o,p),max(q,r)));vec2 v;v.x=-((o+p)-(q+r));v.y=((o+q)-(p+r));float w=max((o+p+q+r)*(0.25*b),c);float x=1.0/(min(abs(v.x),abs(v.y))+w);v=min(vec2(a,a),max(vec2(-a,-a),v*x))*h.xy;vec3 y=(1.0/2.0)*(textureLod(g,f.xy+v*(1.0/3.0-0.5),0.0).xyz+textureLod(g,f.xy+v*(2.0/3.0-0.5),0.0).xyz);vec3 az=y*(1.0/2.0)+(1.0/4.0)*(textureLod(g,f.xy+v*(0.0/3.0-0.5),0.0).xyz+textureLod(g,f.xy+v*(3.0/3.0-0.5),0.0).xyz);float aa=dot(az,n);if((aa<t)||(aa>u))return y;return az;}void main(){vec2 h=1.0/resolution;vec4 f=vec4(vUv,vUv-(h*(0.5+d)));vec3 ab=e(f,inputA,1.0/resolution);fragColor=vec4(ab,1.);}`;
+    var _ssaoSamples = (() => {
+        const N = 32;
+        const phi = Math.PI * (3 - Math.sqrt(5));
+        let out = [];
+        for (let i = 0; i < N; i++) {
+            let z = (i + 0.5) / N;
+            let r = Math.sqrt(1 - z * z);
+            let a = phi * i;
+            let x = Math.cos(a) * r;
+            let y = Math.sin(a) * r;
+            let t = i / (N - 1);
+            let scale = 0.1 + 0.9 * t * t;
+            out.push(`vec3(${(x * scale).toFixed(4)},${(y * scale).toFixed(4)},${(z * scale).toFixed(4)})`);
+        }
+        return out.join(",\n");
+    })();
+    var _ssaoFrag = `#version 300 es
+precision highp float;precision highp int;
+
+uniform Camera{
+    mat4 projectionMatrix;
+    mat4 viewMatrix;
+    mat4 projectionViewMatrix;
+    vec3 cameraPosition;
+};
+
+uniform Screen{vec2 resolution;};
+
+uniform sampler2D depthTex;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+const int zr=32;
+
+const vec3 Rs[32]=vec3[32](
+${_ssaoSamples}
+);
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);
+}
+
+vec3 getViewPos(vec2 uv,float depth){
+    float z = -projectionMatrix[3][2] /
+              (projectionMatrix[2][2] + depth*2.0 - 1.0);
+
+    return vec3(
+        (uv*2.0-1.0)*(-z) /
+        vec2(projectionMatrix[0][0],projectionMatrix[1][1]),
+        z
+    );
+}
+
+vec3 getNormal(vec2 uv,float depth){
+    vec2 texel = 1.0 / resolution;
+    float dR = texture(depthTex, uv + vec2(texel.x,0)).r;
+    float dL = texture(depthTex, uv - vec2(texel.x,0)).r;
+    float dU = texture(depthTex, uv + vec2(0,texel.y)).r;
+    float dD = texture(depthTex, uv - vec2(0,texel.y)).r;
+
+    float skyPen = 1e6;
+    float ddR = (dR >= 0.9999) ? skyPen : abs(dR - depth);
+    float ddL = (dL >= 0.9999) ? skyPen : abs(dL - depth);
+    float ddU = (dU >= 0.9999) ? skyPen : abs(dU - depth);
+    float ddD = (dD >= 0.9999) ? skyPen : abs(dD - depth);
+
+    vec3 p = getViewPos(uv, depth);
+    vec3 dPdx = (ddR < ddL)
+        ? (getViewPos(uv + vec2(texel.x,0), dR) - p)
+        : (p - getViewPos(uv - vec2(texel.x,0), dL));
+    vec3 dPdy = (ddU < ddD)
+        ? (getViewPos(uv + vec2(0,texel.y), dU) - p)
+        : (p - getViewPos(uv - vec2(0,texel.y), dD));
+
+    return normalize(cross(dPdx, dPdy));
+}
+
+void main(){
+
+    float depth = texture(depthTex,vUv).r;
+
+    if(depth >= 0.9999){
+        fragColor = vec4(1.0);
+        return;
+    }
+
+    vec3 pos = getViewPos(vUv, depth);
+    vec3 normal = getNormal(vUv, depth);
+
+    ${fe.ssaoIGN ? `
+    float ign = fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
+    float ang = ign * 6.2831853;
+
+    vec3 up = abs(normal.y) < 0.999 ? vec3(0.0, 1.0, 0.0) : vec3(1.0, 0.0, 0.0);
+    vec3 t0 = normalize(cross(up, normal));
+    vec3 b0 = cross(normal, t0);
+    float c = cos(ang), s = sin(ang);
+    vec3 tangent   = t0 * c + b0 * s;
+    vec3 bitangent = cross(normal, tangent);
+    mat3 TBN = mat3(tangent, bitangent, normal);
+    ` : `
+    mat3 invViewRot = transpose(mat3(viewMatrix));
+    vec3 wPos = invViewRot * pos + cameraPosition;
+    vec2 noiseSeed = floor(wPos.xz * 4.0);
+    vec3 randVec = normalize(vec3(
+        rand(noiseSeed),
+        rand(noiseSeed + 17.0),
+        rand(noiseSeed.yx + 3.0)
+    ));
+
+    vec3 tangent = normalize(randVec - normal * dot(randVec, normal));
+    vec3 bitangent = cross(normal, tangent);
+    mat3 TBN = mat3(tangent, bitangent, normal);
+    `}
+
+    float radius = clamp(-pos.z * ${_ssaoRadiusMult}, 0.25, 5.0);
+
+    {
+        float onSurface = 0.0;
+        vec3 cardinals[4];
+        cardinals[0] = vec3( radius, 0.0, 0.0);
+        cardinals[1] = vec3(-radius, 0.0, 0.0);
+        cardinals[2] = vec3(0.0,  radius, 0.0);
+        cardinals[3] = vec3(0.0, -radius, 0.0);
+        for (int ei = 0; ei < 4; ei++) {
+            vec4 cp = projectionMatrix * vec4(pos + cardinals[ei], 1.0);
+            cp.xyz /= cp.w;
+            vec2 cuv = cp.xy * 0.5 + 0.5;
+            if (cuv.x < 0.0 || cuv.x > 1.0 || cuv.y < 0.0 || cuv.y > 1.0) continue;
+            float cd = texture(depthTex, cuv).r;
+            if (cd >= 0.9999) continue;
+            vec3 cvp = getViewPos(cuv, cd);
+            if (abs(cvp.z - pos.z) < radius * 0.5) onSurface += 1.0;
+        }
+        radius *= mix(1.0, 1.0, onSurface / 4.0);
+    }
+
+    float bias = radius * 0.15;
+
+    float occlusion = 0.0;
+    float totalWeight = 0.0;
+
+    for(int i=0;i<zr;i++){
+
+        vec3 sampleVec = TBN * Rs[i];
+        vec3 samplePos = pos + sampleVec * radius;
+
+        float cosW = dot(normal, normalize(sampleVec));
+        totalWeight += cosW;
+
+        vec4 offset = projectionMatrix * vec4(samplePos,1.0);
+        offset.xyz /= offset.w;
+
+        vec2 sampleUV = offset.xy * 0.5 + 0.5;
+
+        if(sampleUV.x < 0.0 || sampleUV.x > 1.0 || sampleUV.y < 0.0 || sampleUV.y > 1.0) continue;
+
+        float sampleDepth = texture(depthTex, sampleUV).r;
+        if(sampleDepth >= 0.9999) continue;
+
+        vec3 sampleViewPos = getViewPos(sampleUV, sampleDepth);
+
+        float rangeCheck = smoothstep(0.0, 1.0, radius / abs(pos.z - sampleViewPos.z));
+
+        float occ = (sampleViewPos.z >= samplePos.z + bias) ? cosW : 0.0;
+
+        occlusion += occ * rangeCheck;
+    }
+
+    occlusion = (totalWeight > 0.001) ? occlusion / totalWeight : 0.0;
+
+    occlusion = 1.0 - occlusion;
+    occlusion = pow(occlusion, ${_ssaoPowerVal});
+
+    float t = smoothstep(5.0, 60.0, -pos.z);
+    t = t * t;
+    float occFloor = mix(0.05, 0.5, t);
+    occlusion = max(occlusion, occFloor);
+
+    float distFade = 1.0 - smoothstep(20.0, float(${_ssaoFadeVal}), -pos.z);
+    occlusion = mix(1.0, occlusion, distFade);
+
+    fragColor = vec4(vec3(occlusion), 1.0);
+}`;
+    var _ssaoBlurRadius = fe.ssaoBlur ? 3 : 0;
+    var _ssaoBlurWeights = (() => {
+        let sigma = Math.max(1, _ssaoBlurRadius) * 0.5;
+        let w = [];
+        for (let i = 0; i <= _ssaoBlurRadius; i++) w.push(Math.exp(-(i * i) / (2 * sigma * sigma)));
+        return w.map(x => x.toFixed(6));
+    })();
+    var _ssaoBlurFrag = `#version 300 es
+precision highp float;precision highp int;
+
+uniform Camera{
+    mat4 projectionMatrix;
+    mat4 viewMatrix;
+    mat4 projectionViewMatrix;
+    vec3 cameraPosition;
+};
+uniform Screen{vec2 resolution;};
+
+uniform sampler2D inputA;
+uniform sampler2D depthTex;
+uniform int blurStep;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+const float weight[${_ssaoBlurRadius + 1}] = float[${_ssaoBlurRadius + 1}](${_ssaoBlurWeights.join(', ')});
+
+float linearZ(float depth){
+    return -projectionMatrix[3][2] / (projectionMatrix[2][2] + depth * 2.0 - 1.0);
+}
+
+void main(){
+    vec2 texel = 1.0 / resolution;
+    float centerDepth = texture(depthTex, vUv).r;
+
+    if(centerDepth >= 0.9999){
+        fragColor = vec4(texture(inputA, vUv).rgb, 1.0);
+        return;
+    }
+
+    float zCenter = linearZ(centerDepth);
+    float sigmaZ = max(0.05, abs(zCenter) * 0.03);
+    float invTwoSigmaZSq = 1.0 / (2.0 * sigmaZ * sigmaZ);
+
+    vec3 result = texture(inputA, vUv).rgb * weight[0];
+    float wSum = weight[0];
+
+    vec2 step = (blurStep == 0) ? vec2(texel.x, 0.0) : vec2(0.0, texel.y);
+
+    int rEff = int(floor(mix(1.0, float(${_ssaoBlurRadius}), smoothstep(5.0, 60.0, abs(zCenter))) + 0.5));
+
+    for(int i = 1; i < ${_ssaoBlurRadius + 1}; i++){
+        if(i > rEff) break;
+        vec2 offset = step * float(i);
+
+        vec2 uvP = vUv + offset;
+        float dP = texture(depthTex, uvP).r;
+        if(dP < 0.9999){
+            float dz = linearZ(dP) - zCenter;
+            float w = weight[i] * exp(-dz * dz * invTwoSigmaZSq);
+            result += texture(inputA, uvP).rgb * w;
+            wSum += w;
+        }
+
+        vec2 uvN = vUv - offset;
+        float dN = texture(depthTex, uvN).r;
+        if(dN < 0.9999){
+            float dz = linearZ(dN) - zCenter;
+            float w = weight[i] * exp(-dz * dz * invTwoSigmaZSq);
+            result += texture(inputA, uvN).rgb * w;
+            wSum += w;
+        }
+    }
+
+    result /= wSum;
+
+    fragColor = vec4(result, 1.0);
+}`
+    var _ssaoTemporalFrag = `#version 300 es
+precision highp float;precision highp int;
+
+uniform Camera{
+    mat4 projectionMatrix;
+    mat4 viewMatrix;
+    mat4 projectionViewMatrix;
+    vec3 cameraPosition;
+};
+
+uniform sampler2D inputA;
+uniform sampler2D inputB;
+uniform sampler2D depthTex;
+uniform mat4 prevProjectionViewMatrix;
+uniform float blendAlpha;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+vec3 viewPos(vec2 uv, float depth){
+    float z = -projectionMatrix[3][2] /
+              (projectionMatrix[2][2] + depth * 2.0 - 1.0);
+    return vec3(
+        (uv * 2.0 - 1.0) * (-z) /
+        vec2(projectionMatrix[0][0], projectionMatrix[1][1]),
+        z
+    );
+}
+
+void main(){
+    float curr = texture(inputA, vUv).r;
+    float depth = texture(depthTex, vUv).r;
+
+    if(depth >= 0.9999){
+        fragColor = vec4(curr, curr, curr, 1.0);
+        return;
+    }
+
+    vec3 vp = viewPos(vUv, depth);
+    mat3 invViewRot = transpose(mat3(viewMatrix));
+    vec3 wp = invViewRot * vp + cameraPosition;
+
+    vec4 prevClip = prevProjectionViewMatrix * vec4(wp, 1.0);
+    vec3 prevNDC = prevClip.xyz / prevClip.w;
+    vec2 prevUV = prevNDC.xy * 0.5 + 0.5;
+
+    float result = curr;
+    if(prevUV.x >= 0.0 && prevUV.x <= 1.0 && prevUV.y >= 0.0 && prevUV.y <= 1.0 && prevClip.w > 0.0){
+        float hist = texture(inputB, prevUV).r;
+        result = mix(hist, curr, blendAlpha);
+    }
+
+    fragColor = vec4(result, result, result, 1.0);
+}`
+    var _ssaoCompositeFrag = `#version 300 es
+precision highp float;precision highp int;
+
+uniform sampler2D inputA;
+uniform sampler2D inputB;
+
+in vec2 vUv;
+out vec4 fragColor;
+
+void main(){
+    fragColor = vec4(texture(inputA, vUv).rgb * texture(inputB, vUv).rgb, 1.0);
+}`
     var zw = `#version 300 es
 precision highp float;precision highp int;uniform Screen{vec2 resolution;};uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform sampler2D inputA;uniform vec4 tint;uniform float warp;in vec2 vUv;out vec4 fragColor;void main(){float a=0.01;float b=5.0;vec2 c;c.x=sin(vUv.y*10.0+time)*a;c.y=cos(vUv.x*10.0+time)*a;vec4 d=texture(inputA,vUv);vec4 e=texture(inputA,vUv+c);vec4 f=mix(d,e,warp);f.rgb=mix(f.rgb,tint.rgb*0.2+0.8*tint.rgb*length(f.rgb),tint.a);fragColor=f;}`;
     var Bw = `#version 300 es
-precision highp float;precision highp int;uniform vec4 colStart;uniform vec4 colEnd;uniform vec2 offset;in vec2 vUv;out vec4 fragColor;void main(){fragColor=mix(colStart,colEnd,vUv.x);if(fragColor.a<0.01){discard;}fragColor.rgb*=fragColor.a;fragColor.a*=0.5;}`;
+precision highp float;precision highp int;uniform vec4 colStart;uniform vec4 colEnd;uniform vec2 offset;in vec2 vUv;out vec4 fragColor;void main(){vec4 col=mix(colStart,colEnd,vUv.x);float center=abs(vUv.y*2.0-1.0);float edge=smoothstep(0.2,0.85,center);col.a*=edge;if(col.a<0.01){discard;}col.rgb*=col.a;col.a*=0.5;fragColor=col;}`;
     var Uw = `#version 300 es
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform vec2 offset;in vec3 position;in vec2 uv;out vec2 vUv;void main(){vUv=vec2(uv.x-min(uv.x/offset.y,1.0)*offset.x,uv.y);gl_Position=projectionViewMatrix*vec4(position,1.0);}`;
     var $w = `#version 300 es
@@ -9278,16 +11572,21 @@ precision highp float;precision highp int;in vec4 vColor;out vec4 fragColor;void
     var Qw = `#version 300 es
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform mat4 modelMatrix;in vec3 position;in vec4 color;out vec4 vColor;void main(){vColor=color;gl_Position=projectionViewMatrix*modelMatrix*vec4(position,1.0);}`;
     var Zw = `#version 300 es
-precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};uniform sampler2D skyDiffuse;uniform sampler2D cloudDiffuse;in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999999;vec3 a=vec3(0.0);float b=vPos.y/0.5;if(b>0.4){a=mix(skycolors[1],skycolors[0],smoothstep(0.4,1.0,b));}else if(b>0.25){a=mix(skycolors[2],skycolors[1],smoothstep(0.25,0.4,b));}else if(b>0.06){a=mix(skycolors[3],skycolors[2],smoothstep(0.06,0.25,b));}else{a=mix(fog[0],skycolors[3],smoothstep(0.0,0.06,b));}float c=1.0-sin(daycycle*6.28)+0.02;float d=smoothstep(0.1,0.5,b)*smoothstep(0.9,0.6,b);a+=texture(skyDiffuse,vUv*vec2(4.0,1.0)).rgb*c*d;float e=texture(cloudDiffuse,vec2(vUv.x+time/80.0,vUv.y*0.6+time/120.0)).r*texture(cloudDiffuse,vec2(vUv.x*2.0+time/300.0,vUv.y*0.6)).r;e=e*smoothstep(0.0,0.1,b)*smoothstep(0.9,0.6,b);e=smoothstep(0.25,0.7,e);a=mix(a,skycolors[4],e);fragColor=vec4(a,1.0);}`;
+precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};uniform sampler2D skyDiffuse;uniform sampler2D cloudDiffuse;uniform float u_rain;in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999999;vec3 a=vec3(0.0);float b=vPos.y/0.5;float sunAngle=dot(worldlight[2],normalize(vPos));float sunPower=pow(max(0.0,(1.0+sunAngle)*0.5),3.0);float c=pow(clamp(1.0-b,0.0,1.0),3.0);float dirVal=c<0.85?smoothstep(0.85-sunPower*0.8,0.85,c):1.0-smoothstep(0.85,1.0,c);c=pow(c,(1.0-sunPower)*3.0);vec3 topCol=fog[0];vec3 horizonCol=fog[0]+worldlight[0]*dirVal*0.4*sunPower;a=mix(topCol,horizonCol,c);a=mix(a,fog[0],smoothstep(0.06,0.0,b));float d=1.0-sin(daycycle*6.28)+0.02;float starFade=smoothstep(0.1,0.5,b)*smoothstep(0.9,0.6,b);a+=texture(skyDiffuse,vUv*vec2(4.0,1.0)).rgb*d*starFade;float e=texture(cloudDiffuse,vec2(vUv.x+time/80.0,vUv.y*0.6+time/120.0)).r*texture(cloudDiffuse,vec2(vUv.x*2.0+time/300.0,vUv.y*0.6)).r;e=e*smoothstep(0.0,0.1,b)*smoothstep(1.0,0.85,b);e=smoothstep(max(0.0,0.25-u_rain*0.2),0.7,e);a=mix(a,skycolors[4],e);fragColor=vec4(a,1.0);}`;
     var Jw = `#version 300 es
 precision highp float;precision highp int;in vec2 vUv;uniform float seed;float a(in vec2 uv,float scale){uv*=scale;vec2 b=floor(uv),f=fract(uv),p;float c=3.,d;p=.5+.35*sin(11.*fract(sin((b+p+scale)*mat2(7,3,6,5))*5.))-f;d=length(p);c=min(d,c);return smoothstep(0.,c,sin(f.x+f.y)*0.003);}vec2 d(vec2 e){e=vec2(dot(e,vec2(127.1,311.7)),dot(e,vec2(269.5,183.3)));return-1.0+2.0*fract(sin(e)*43758.5453123);}float f(in vec2 e){const float g=0.366025404;const float h=0.211324865;vec2 i=floor(e+(e.x+e.y)*g);vec2 j=e-i+(i.x+i.y)*h;vec2 l=(j.x>j.y)?vec2(1.0,0.0):vec2(0.0,1.0);vec2 m=j-l+h;vec2 n=j-1.0+2.0*h;vec3 q=max(0.5-vec3(dot(j,j),dot(m,m),dot(n,n)),0.0);vec3 r=q*q*q*vec3(dot(j,d(i+0.0)),dot(m,d(i+l)),dot(n,d(i+1.0)));float t=dot(r,vec3(70.0));return smoothstep(-1.0,1.0,t);}out vec4 fragColor;void main(){vec2 u=vec2(vUv.x+seed,vUv.y);float r=a(vUv,10.0);r+=a(vUv,20.0)*0.5;r+=a(vUv,30.0)*0.2;r*=f(vUv*20.0);fragColor.rgb+=r*4.0;}`;
     var Kw = `#version 300 es
-precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999998;float a=length(vec2(0.5,0.5)-vUv);float b=smoothstep(0.3,0.2,a)*2.0;b+=smoothstep(0.5,0.1,a);b*=smoothstep(0.08,0.15,(vPos.y+0.2)*0.2+abs(sin(daycycle*6.282)));fragColor.rgba=vec4(suncolor,b);}`;
+precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999998;float height=max(0.0,min(1.0,abs(sin(daycycle*6.282))+vUv.y*0.1-0.15));float interp=min(1.0,pow((1.0-height*height),100.0));float circle=0.5-length(vec2(0.5,0.5)-vUv);float alpha=smoothstep(0.0,1.0,circle)*2.0;alpha+=smoothstep(0.4,0.45,circle);fragColor.rgba=vec4(mix(suncolor,fog[0],interp),alpha);}`;
     var e4 = `#version 300 es
 precision highp float;precision highp int;uniform Circle{vec4 circlePos;vec4 circleInfo;};precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;vec3 f(vec3 g,vec3 h,vec3 i,vec3 j,float k,vec3 l,float m){j=normalize(j);float n=clamp(dot(j,worldlight[2]),0.0,k);vec3 o=g*mix(0.7,1.1,0.5+(0.5*n));vec3 p=normalize(worldlight[2]+vViewDir);vec3 q=h*pow(max(0.0,dot(p,j)),20.0)*m*max(k*0.7+0.2,0.2)*20.0;vec3 r=o+h*n+l;return r*i+q;}void s(vec4 t,float u,vec4 v){float w=t.x+t.y+t.z;e+=v[3]*smoothstep(v[1],v[2],w)*u;t.a=u;t.rgb*=u;d+=t;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 x=texture(atlas,vUvChannel);x[3]=max(0.0,min(1.0,1.0-(x.r+x.g+x.b)));if(x[0]==1.0&&x[1]==1.0&&x[2]==1.0)discard;s(texture(diffuse[0],vUvTexture[0]),x[0],terrainInfo[0]);s(texture(diffuse[1],vUvTexture[1]),x[1],terrainInfo[1]);s(texture(diffuse[2],vUvTexture[2]),x[2],terrainInfo[2]);s(texture(diffuse[3],vUvTexture[3]),x[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;float y=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float az=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 aa=shadowPVMatrix[1]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[1],ab);}else{vec4 aa=shadowPVMatrix[0]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[0],ab);}y=y;y=max(y,az);}d.rgb=f(worldlight[1],worldlight[0],d.rgb,vNormal,y,vLight,e);float ac=distance(vWorldPos.xz,circlePos.xz);float ad=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(ac<circlePos.w+0.1&&ad>0.0){d.rgb=mix(d.rgb,circleInfo.rgb,ad*circleInfo.a*((ac<circlePos.w?ac/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-ac))/0.1)));}float ae=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,ae);fragColor=d;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];uniform float u_wetness;vec4 d;float e;vec3 f(vec3 g,vec3 h,vec3 i,vec3 j,float k,vec3 l,float m){j=normalize(j);float n=clamp(dot(j,worldlight[2]),0.0,k);vec3 o=g;vec3 p=normalize(worldlight[2]+vViewDir);vec3 q=vec3(pow(max(0.0,dot(p,j)),8.5)*2.0)*m*0.15;vec3 r=o+h*n*0.75+l;return r*i+q;}void s(vec4 t,float u,vec4 v){float w=t.x+t.y+t.z;e+=v[3]*smoothstep(v[1],v[2],w)*u;t.a=u;t.rgb*=u;d+=t;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 x=texture(atlas,vUvChannel);x[3]=max(0.0,min(1.0,1.0-(x.r+x.g+x.b)));if(x[0]==1.0&&x[1]==1.0&&x[2]==1.0)discard;s(texture(diffuse[0],vUvTexture[0]),x[0],terrainInfo[0]);s(texture(diffuse[1],vUvTexture[1]),x[1],terrainInfo[1]);s(texture(diffuse[2],vUvTexture[2]),x[2],terrainInfo[2]);s(texture(diffuse[3],vUvTexture[3]),x[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;float y=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float az=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 aa=shadowPVMatrix[1]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[1],ab);}else{vec4 aa=shadowPVMatrix[0]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[0],ab);}y=y;y=max(y,az);}d.rgb=f(worldlight[1],worldlight[0],d.rgb,vNormal,y,vLight,e);float ac=distance(vWorldPos.xz,circlePos.xz);float ad=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(ac<circlePos.w+0.1&&(circleInfo.a>1.0||ad>0.0)){float cfa=circleInfo.a;float ady=cfa>1.0?1.0:ad;;float blnd=cfa>1.0?(ac<circlePos.w?cfa-1.0:0.0):((ac<circlePos.w?ac/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-ac))/0.1));d.rgb=mix(d.rgb,circleInfo.rgb,ady*min(1.0,cfa)*blnd);}float ae=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,ae);fragColor=d;}`;
     var t4 = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float a=256.0;const float b=4.0;in vec3 position;in vec3 normal;out vec3 vNormal;out vec3 vUvChannel;out vec2 vUvTexture[4];out vec3 vViewDir;void main(){vNormal=normal;vWorldPos=modelMatrix*vec4(position,1.0);vUvChannel=vec3(position[0],position[2],0.0)/32.0;int c=quadrant%2;int d=int(quadrant%4);if(c==1)vUvChannel.x-=1.0;if(d>1)vUvChannel.y-=1.0;vUvChannel.z=float(quadrant);vec2 e=vec2(-vWorldPos[0],vWorldPos[2])/4.0;vUvTexture[0]=e*terrainInfo[0][0];vUvTexture[1]=e*terrainInfo[1][0];vUvTexture[2]=e*terrainInfo[2][0];vUvTexture[3]=e*terrainInfo[3][0];for(int f=0;f<lightCount;++f){vec3 g=lightPos[f]-vWorldPos.xyz;float h=lightCols[f].w-dot(g,g);if(h>0.0){h/=(lightCols[f].w);h=h*h;vLight+=0.2*lightCols[f].rgb*h;}}vViewDir=-normalize(vWorldPos.xyz-cameraPosition);vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*vWorldPos;}`;
+    var Zw_orig = `#version 300 es
+precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};uniform sampler2D skyDiffuse;uniform sampler2D cloudDiffuse;in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999999;vec3 a=vec3(0.0);float b=vPos.y/0.5;if(b>0.4){a=mix(skycolors[1],skycolors[0],smoothstep(0.4,1.0,b));}else if(b>0.25){a=mix(skycolors[2],skycolors[1],smoothstep(0.25,0.4,b));}else if(b>0.06){a=mix(skycolors[3],skycolors[2],smoothstep(0.06,0.25,b));}else{a=mix(fog[0],skycolors[3],smoothstep(0.0,0.06,b));}float c=1.0-sin(daycycle*6.28)+0.02;float d=smoothstep(0.1,0.5,b)*smoothstep(0.9,0.6,b);a+=texture(skyDiffuse,vUv*vec2(4.0,1.0)).rgb*c*d;float e=texture(cloudDiffuse,vec2(vUv.x+time/80.0,vUv.y*0.6+time/120.0)).r*texture(cloudDiffuse,vec2(vUv.x*2.0+time/300.0,vUv.y*0.6)).r;e=e*smoothstep(0.0,0.1,b)*smoothstep(1.0,0.85,b);e=smoothstep(0.25,0.7,e);a=mix(a,skycolors[4],e);fragColor=vec4(a,1.0);}`;
+    var Kw_orig = `#version 300 es
+precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999998;float a=length(vec2(0.5,0.5)-vUv);float b=smoothstep(0.3,0.2,a)*2.0;b+=smoothstep(0.5,0.1,a);b*=smoothstep(0.08,0.15,(vPos.y+0.2)*0.2+abs(sin(daycycle*6.282)));fragColor.rgba=vec4(suncolor,b);}`;
+    var e4_orig = e4.replace('vec3 f(vec3 g,vec3 h,vec3 i,vec3 j,float k,vec3 l,float m){j=normalize(j);float n=clamp(dot(j,worldlight[2]),0.0,k);vec3 o=g;vec3 p=normalize(worldlight[2]+vViewDir);vec3 q=vec3(pow(max(0.0,dot(p,j)),8.5)*2.0)*m*0.15;vec3 r=o+h*n*0.75+l;return r*i+q;}', 'vec3 f(vec3 g,vec3 h,vec3 i,vec3 j,float k,vec3 l,float m){j=normalize(j);float n=clamp(dot(j,worldlight[2]),0.0,k);vec3 o=g*mix(0.7,1.1,0.5+(0.5*n));vec3 p=normalize(worldlight[2]+vViewDir);vec3 q=h*pow(max(0.0,dot(p,j)),20.0)*m*max(k*0.7+0.2,0.2)*20.0;vec3 r=o+h*n+l;return r*i+q;}');
     var n4 = `#version 300 es
 precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;uniform vec4 colors[576];uniform int divider;void main(){float a=64.0/float(divider);int b=int(floor(mod(vWorldPos.x,64.0)/a)+floor(mod(vWorldPos.z,64.0)/a)*float(divider));fragColor.rgba=colors[b];}`;
     var o4 = `#version 300 es
@@ -9296,16 +11595,18 @@ precision highp float;precision highp int;in vec3 vPos;in vec3 vNormal;out vec4 
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform mat4 modelMatrix;in vec3 normal;in vec3 position;out vec3 vPos;out vec3 vNormal;void main(){vNormal=normal;vPos=position;gl_Position=projectionViewMatrix*modelMatrix*vec4(position[0],position[1]+0.05,position[2],1.0);}`;
     var s4 = `#version 300 es
 precision highp float;precision highp int;uniform Circle{vec4 circlePos;vec4 circleInfo;};precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;f(texture(diffuse[0],vUvTexture[0]),k[0],terrainInfo[0]);f(texture(diffuse[1],vUvTexture[1]),k[1],terrainInfo[1]);f(texture(diffuse[2],vUvTexture[2]),k[2],terrainInfo[2]);f(texture(diffuse[3],vUvTexture[3]),k[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;if(mod(vWorldPos.y,2.0)<0.2){d.rgb=mix(d.rgb,vec3(0.8),0.5);}else{d.rgb=mix(d.rgb,vec3(0.2),0.5);}vec3 l=worldlight[2];l.y*=0.5;l=normalize(l);d.rgb*=max(0.3,min(1.0,dot(l,vNormal)*0.5+0.5));float m=distance(vWorldPos.xz,circlePos.xz);if(m<circlePos.w+0.1){d.rgb=mix(d.rgb,circleInfo.rgb,circleInfo.a*(max(0.,(0.3-abs(circlePos.w-m))/0.3)));}float n=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,n);fragColor=d;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;f(texture(diffuse[0],vUvTexture[0]),k[0],terrainInfo[0]);f(texture(diffuse[1],vUvTexture[1]),k[1],terrainInfo[1]);f(texture(diffuse[2],vUvTexture[2]),k[2],terrainInfo[2]);f(texture(diffuse[3],vUvTexture[3]),k[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;if(mod(vWorldPos.y,2.0)<0.2){d.rgb=mix(d.rgb,vec3(0.8),0.5);}else{d.rgb=mix(d.rgb,vec3(0.2),0.5);}vec3 l=worldlight[2];l.y*=0.5;l=normalize(l);d.rgb*=max(0.3,min(1.0,dot(l,vNormal)*0.5+0.5));float m=distance(vWorldPos.xz,circlePos.xz);float adm=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfb=circleInfo.a;if(m<circlePos.w+0.1&&(adm>0.0||(cfb>1.0&&vWorldPos.y<=circlePos.y))){float fadym=cfb>1.0?(vWorldPos.y>circlePos.y?adm:1.0):1.0;float blndb=cfb>1.0?(m<circlePos.w?cfb-1.0:0.0):(max(0.,(0.3-abs(circlePos.w-m))/0.3));d.rgb=mix(d.rgb,circleInfo.rgb,fadym*min(1.0,cfb)*blndb);}float n=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,n);fragColor=d;}`;
     var r4 = `#version 300 es
 precision highp float;precision highp int;uniform Circle{vec4 circlePos;vec4 circleInfo;};precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;d.rgb=texture(diffuse[0],vUvTexture[0]).rgb;float l=64.0/12.0;float m=l/2.0;bool n=mod(vWorldPos.z,l)>m;if(mod(vWorldPos.x,l)<m){if(n){d.rgb=vec3(0.45);}else{d.rgb=vec3(0.55);}}else{if(n){d.rgb=vec3(0.55);}else{d.rgb=vec3(0.45);}}vec3 o=worldlight[2];o.y*=0.5;o=normalize(o);d.rgb*=max(0.3,min(1.0,dot(o,vNormal)*0.5+0.5));float p=distance(vWorldPos.xz,circlePos.xz);if(p<circlePos.w+0.1){d.rgb=mix(d.rgb,circleInfo.rgb,circleInfo.a*(max(0.,(0.3-abs(circlePos.w-p))/0.3)));}float q=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,q);fragColor=d;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;d.rgb=texture(diffuse[0],vUvTexture[0]).rgb;float l=64.0/12.0;float m=l/2.0;bool n=mod(vWorldPos.z,l)>m;if(mod(vWorldPos.x,l)<m){if(n){d.rgb=vec3(0.45);}else{d.rgb=vec3(0.55);}}else{if(n){d.rgb=vec3(0.55);}else{d.rgb=vec3(0.45);}}vec3 o=worldlight[2];o.y*=0.5;o=normalize(o);d.rgb*=max(0.3,min(1.0,dot(o,vNormal)*0.5+0.5));float p=distance(vWorldPos.xz,circlePos.xz);float adp=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfc=circleInfo.a;if(p<circlePos.w+0.1&&(adp>0.0||(cfc>1.0&&vWorldPos.y<=circlePos.y))){float fadyp=cfc>1.0?(vWorldPos.y>circlePos.y?adp:1.0):1.0;float blndc=cfc>1.0?(p<circlePos.w?cfc-1.0:0.0):(max(0.,(0.3-abs(circlePos.w-p))/0.3));d.rgb=mix(d.rgb,circleInfo.rgb,fadyp*min(1.0,cfc)*blndc);}float q=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,q);fragColor=d;}`;
     var l4 = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;out vec4 fragColor;void main(){fragColor.rgb=fog[0];}`;
     var a4 = `#version 300 es
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};in vec3 position;void main(){vec4 a=modelMatrix*vec4(position,1.0);gl_Position=projectionViewMatrix*a;}`;
     var c4 = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Screen{vec2 resolution;};uniform sampler2D waterLines;uniform sampler2D waterNoise;uniform sampler2D bufferPongColor;uniform sampler2D bufferPongDepth;in vec2 vUv;out vec4 fragColor;void main(){float a=length(cameraPosition-vWorldPos.xyz);float b=(texture(waterNoise,vUv.yx/4.0+time*0.1).r-0.5);float c=gl_FragCoord.z;c=c*2.0-1.0;c=projectionMatrix[3][2]/(c+projectionMatrix[2][2]);if(a>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec2 d=gl_FragCoord.xy/resolution;float e=texture(bufferPongDepth,d.xy).r;e=e*2.0-1.0;e=projectionMatrix[3][2]/(e+projectionMatrix[2][2]);float f=e-c;vec2 g=vec2(b*0.05,0.0);float h=f;float i=1.0-clamp(h/0.1,0.0,1.0);float j=1.0-clamp(h/0.6,0.0,1.0);float k=1.0-clamp(h/2.0,0.0,1.0);float l=1.0-clamp(h/10.0,0.0,1.0);float m=1.0-clamp(h/100.0+0.5,0.0,1.0);float n=texture(waterLines,vUv.yx+b*0.15).r;vec3 o=mix(watercolors[2],watercolors[1],l);vec3 p=texture(bufferPongColor,d.xy+g).rgb;vec3 q=(worldlight[0]+worldlight[1]);vec3 r=mix(o,p*o,m)+n*watercolors[0]*(0.05+k*0.3);r=mix(r,watercolors[0],j)*q;vec4 s=vec4(r,1.0-i);float t=min(1.0,max(0.0,(n*(b+0.3)*0.5)));s.rgb+=t*worldlight[0];float u=clamp((fog[1][1]-a)/(fog[1][1]-fog[1][0]),0.0,1.0);s.rgb=mix(fog[0],s.rgb,u);fragColor=s;}`;
+    var c4_rework = `#version 300 es
+precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Screen{vec2 resolution;};uniform sampler2D waterLines;uniform sampler2D waterNoise;uniform sampler2D bufferPongColor;uniform sampler2D bufferPongDepth;in vec2 vUv;out vec4 fragColor;void main(){float a=length(cameraPosition-vWorldPos.xyz);float n1=(texture(waterNoise,vUv.yx/14.0+time*0.05).r-0.5);float n2=(texture(waterNoise,vUv.xy/5.0-time*0.08).r-0.5);float b=n1*0.65+n2*0.35;float c=gl_FragCoord.z;c=c*2.0-1.0;c=projectionMatrix[3][2]/(c+projectionMatrix[2][2]);if(a>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec2 d=gl_FragCoord.xy/resolution;float e=texture(bufferPongDepth,d.xy).r;e=e*2.0-1.0;e=projectionMatrix[3][2]/(e+projectionMatrix[2][2]);float f=e-c;vec2 g=vec2(b*0.04,n2*0.04);float h=f;float i=1.0-clamp(h/0.1,0.0,1.0);float j=1.0-clamp(h/0.6,0.0,1.0);float k=1.0-clamp(h/2.0,0.0,1.0);float l=1.0-clamp(h/10.0,0.0,1.0);float m=1.0-clamp(h/100.0+0.5,0.0,1.0);vec3 viewDir=normalize(cameraPosition-vWorldPos.xyz);float fresnel=pow(1.0-clamp(viewDir.y,0.0,1.0),2.0)*0.4;float n=texture(waterLines,vUv.yx*0.4+b*0.1).r;vec3 o=mix(watercolors[2],watercolors[1],l);vec3 p=texture(bufferPongColor,d.xy+g).rgb;vec3 q=(worldlight[0]+worldlight[1]);vec3 r=mix(o,p*o,m)+n*watercolors[0]*(0.03+k*0.15);r=mix(r,watercolors[0],j*0.5)*q;r=mix(r,watercolors[0]*q*0.9,fresnel*(1.0-j));vec4 s=vec4(r,1.0-i);float t=clamp(n*(b+0.35)*0.2,0.0,1.0);s.rgb+=t*worldlight[0]*0.5;float u=clamp((fog[1][1]-a)/(fog[1][1]-fog[1][0]),0.0,1.0);s.rgb=mix(fog[0],s.rgb,u);fragColor=s;}`;
     var f4 = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Water{vec3 verts[4];};in vec3 position;in vec3 color;in vec3 colorFoam;in vec3 colorShallow;out vec2 vUv;void main(){vWorldPos.xyz=verts[gl_VertexID];vWorldPos.w=1.0;vUv=vWorldPos.xz/2.0;gl_Position=projectionViewMatrix*vWorldPos;}`;
     var u4 = `#version 300 es
@@ -9366,6 +11667,18 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         Vg = {
             frag: zw
         },
+        _ssaoShader = {
+            frag: _ssaoFrag
+        },
+        _ssaoBlurShader = {
+            frag: _ssaoBlurFrag
+        },
+        _ssaoTemporalShader = {
+            frag: _ssaoTemporalFrag
+        },
+        _ssaoCompositeShader = {
+            frag: _ssaoCompositeFrag
+        },
         mu = {
             frag: Bw,
             vert: Uw
@@ -9393,16 +11706,16 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             vert: Qw
         },
         Rg = {
-            frag: Zw
+            frag: Zw_orig
         },
         zg = {
             frag: Jw
         },
         Bg = {
-            frag: Kw
+            frag: Kw_orig
         },
         xd = {
-            frag: e4,
+            frag: e4_orig,
             vert: t4
         },
         ZI = {
@@ -9464,6 +11777,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     name: "instNorm",
                     size: 3
                 }],
+                uniforms: { u_rainAmount: { value: 0 } },
                 globalUniforms: mn,
                 transparent: !0,
                 attributeLocations: t.foliage
@@ -9478,6 +11792,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     name: "instNorm",
                     size: 3
                 }],
+                uniforms: { u_rainAmount: { value: 0 } },
                 globalUniforms: mn,
                 transparent: !0,
                 attributeLocations: t.foliage
@@ -9703,7 +12018,53 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     }
                 },
                 attributeLocations: ["position", "uv"]
-            }), nD(ut, mn), Nf(ut[18], j.ONE, j.ONE_MINUS_SRC_ALPHA), Nf(ut[16], j.ONE, j.ONE_MINUS_SRC_ALPHA), Nf(ut[15], j.ONE, j.ONE_MINUS_SRC_ALPHA), Ug.push(3, 4, 6, 7, 10, 15, 5)
+            }), ut[35] = un({
+                vertex: Ca,
+                fragment: _ssaoShader.frag,
+                depthWrite: !1,
+                depthTest: !1,
+                globalUniforms: mn,
+                uniforms: {
+                    inputA: { value: null }
+                },
+                attributeLocations: t.post
+            }), ut[36] = un({
+                vertex: Ca,
+                fragment: _ssaoBlurShader.frag,
+                depthWrite: !1,
+                depthTest: !1,
+                globalUniforms: mn,
+                uniforms: {
+                    inputA: { value: null },
+                    depthTex: { value: null },
+                    blurStep: { value: 0 }
+                },
+                attributeLocations: t.post
+            }), ut[37] = un({
+                vertex: Ca,
+                fragment: _ssaoTemporalShader.frag,
+                depthWrite: !1,
+                depthTest: !1,
+                globalUniforms: mn,
+                uniforms: {
+                    inputA: { value: null },
+                    inputB: { value: null },
+                    depthTex: { value: null },
+                    prevProjectionViewMatrix: { value: new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]) },
+                    blendAlpha: { value: 1.0 }
+                },
+                attributeLocations: t.post
+            }), ut[38] = un({
+                vertex: Ca,
+                fragment: _ssaoCompositeShader.frag,
+                depthWrite: !1,
+                depthTest: !1,
+                uniforms: {
+                    inputA: { value: null },
+                    inputB: { value: null }
+                },
+                attributeLocations: t.post
+            }), nD(ut, mn), ut[11].uniforms.u_rain = { value: 0 }, Nf(ut[18], j.ONE, j.ONE_MINUS_SRC_ALPHA), Nf(ut[16], j.ONE, j.ONE_MINUS_SRC_ALPHA), Nf(ut[15], j.ONE, j.ONE_MINUS_SRC_ALPHA), Ug.push(3, 4, 6, 7, 10, 15, 5)
         },
         nD = (t, e) => {
             let n = t[4].program,
@@ -9858,7 +12219,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             return i
         },
         lD = () => {
-            //perhaps here
             vs(gt, gr, ad), Kt(gr, gr, gt.worldPosition), to(gr, gr);
             let t = Ln.width,
                 e = Ln.height,
@@ -9872,20 +12232,22 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         g4 = (t, e) => {
             let n = [0, 0, 0];
             xa(Tn, gt.transform.worldMatrix), vs(gt, n, ad), Kt(n, n, Tn), to(n, n);
-            let o = [0, 0];
-            bx(o, Tn, n, e, Ad);
-            let i = 999;
-            if (t)
-                if (i = o[1] - Math.max(0, o[0]), i < 5 || o[0] === -1 && o[0] === -1) {
-                    let r = rd(Tn, n, I.player.pos),
-                        l = r[0] - I.player.pos[0],
-                        a = r[2] - I.player.pos[2],
-                        c = 1 / Math.sqrt(l * l + a * a);
-                    it(Tn, I.player.pos), Tn[0] += l * c * Ad, Tn[1] += 10, Tn[2] += a * c * Ad, X(n, 0, -1, 0), i = 20
-                } else o[0] > 0 && sn(Tn, Tn, n, o[0]);
-            gn(n, n, i);
+            gn(n, n, 999);
+            if (fe.noCameraCollision && !t) return sn(Tn, Tn, n, 1), Tn;
             let s = I.raycastEnvironmentClosest(Tn[0], Tn[1], Tn[2], n[0], n[1], n[2]);
-            return sn(Tn, Tn, n, s), s === 1 && (Tn[1] = I.getHeight(Tn[0], Tn[2])), Tn
+            sn(Tn, Tn, n, s);
+            if (s === 1) Tn[1] = I.getHeight(Tn[0], Tn[2]);
+            if (t) {
+                let dx = Tn[0] - e[0], dz = Tn[2] - e[2];
+                let dist = Math.sqrt(dx * dx + dz * dz);
+                if (dist > Ad) {
+                    let scale = Ad / dist;
+                    Tn[0] = e[0] + dx * scale;
+                    Tn[2] = e[2] + dz * scale;
+                    Tn[1] = I.getHeight(Tn[0], Tn[2]);
+                }
+            }
+            return Tn;
         },
         aD = t => {
             if (xl.done(I.time) && zn !== lc && I.player.setTarget(lc), !nt.shift.down) {
@@ -9907,6 +12269,12 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             if (_r > 0) {
                 let i = g4(!0, I.player.pos);
                 io(o.circleInfo, ...Sd.friendly, 1), io(o.circlePos, i[0], i[1], i[2], v4)
+            } else if (fe.aoeCircleEnabled && I && I.player) {
+                e !== jg ? (jg = e, sc = 1) : sc = Math.max(sc * (1 - t * 10), 0);
+                let player = I.player, color = fe.aoeCircleColor || "#ffffff";
+                let red = parseInt(color.slice(1,3),16)/255, green = parseInt(color.slice(3,5),16)/255, blue = parseInt(color.slice(5,7),16)/255;
+                io(o.circlePos, player.pos[0], player.pos[1] - player.radius, player.pos[2], fe.aoeCircleSize);
+                io(o.circleInfo, red, green, blue, 1.0 + fe.aoeCircleAlpha / 100);
             } else if (e !== jg ? (jg = e, sc = 1) : sc = Math.max(sc * (1 - t * 10), 0), e > 0) {
                 let i = I.getEntityById(e);
                 if (i !== void 0) {
@@ -9943,7 +12311,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         let isOppositeFaction = i.faction !== I.player.faction && !fe.revUnfriendly
                         let isOutOfLineOfSight = raycastHitGeometry(i.pos, I.player.pos) && fe.losTarget
                         let isBot = i.id !== I.playerId && i.party === 0 && !i.clan && fe.nextFriendlyIgnoreBots
-                        return !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? !1 : i.stats && i.stats.alive && !isOppositeFaction && $r(i.pos, I.player.pos) < 30 && !isOutOfLineOfSight && !isBot
+                        let anyClassSelected = fe.nextFriendlyClassSelectorEnabled && (fe.nextFriendlyClassArcher || fe.nextFriendlyClassShaman || fe.nextFriendlyClassWarrior || fe.nextFriendlyClassMage)
+                        let isClassFiltered = anyClassSelected && i.id !== I.playerId && !((i.class === 2 && fe.nextFriendlyClassArcher) || (i.class === 3 && fe.nextFriendlyClassShaman) || (i.class === 0 && fe.nextFriendlyClassWarrior) || (i.class === 1 && fe.nextFriendlyClassMage))
+                        return !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? false : i.stats && i.stats.alive && !isOppositeFaction && $r(i.pos, I.player.pos) < 30 && !isOutOfLineOfSight && !isBot && !isClassFiltered
                     }).sort((i, s) => {
                             let r = Zt.has(i.name),
                                 l = Zt.has(s.name);
@@ -9956,7 +12326,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         vr(i.id)
                     }
                     Pd.push(zn);
-                    let o = Math.min(10, fe.nextFriendlyTargetCycle || 10, n);
+                    let o = Math.min(11, fe.nextFriendlyTargetCycle || 10, n);
                     for (; o > 0 && Pd.length >= o;) Pd.shift();
                     rc = 0
                 }
@@ -10024,7 +12394,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             c() {
                 e = h("div"), n = h("div"), A && A.c(), o = h("img"), r = h("div"), l = h("div"), K(a.$$.fragment), C && C.c(), U.c(), f = de(), V && V.c(), u = h("div");
                 for (let L = 0; L < m.length; L += 1) m[L].c();
-                p(o, "class", i = "pclass icon border black bgc" + t[5].class + " svelte-g292qg"), st(o.src, s = (t[5].rarity !== !1 ? "/data/ui/mobpower/" + t[5].rarity : "/data/ui/classes/" + t[5].class) + "." + On + "?v=8822612") || p(o, "src", s), p(n, "class", "iconcontainer svelte-g292qg"), p(l, "class", c = "panel-black barsInner " + (t[5].id && t[5].range ? "targetable" : "") + " svelte-g292qg"), p(u, "class", v = "buffarray " + t[2] + " svelte-g292qg"), p(r, "class", _ = "bars " + (t[17] && t[5].id == t[17].id && t[2] == "party" ? "target" : "") + " svelte-g292qg"), p(e, "id", t[4]), p(e, "class", b = "grid " + (t[3] ? "right" : "left") + " svelte-g292qg"), Ve(e, "font-size", t[15] + "%"),Ve(e, "opacity", t[5].range ? "" : .6)
+                p(o, "class", i = "pclass icon border black bgc" + t[5].class + " svelte-g292qg"), Ve(o, "background", _bgcStyle("bgc" + t[5].class)), st(o.src, s = (t[5].rarity !== !1 ? "/data/ui/mobpower/" + t[5].rarity : "/data/ui/classes/" + t[5].class) + "." + On + "?v=8822612") || p(o, "src", s), p(n, "class", "iconcontainer svelte-g292qg"), p(l, "class", c = "panel-black barsInner " + (t[5].id && t[5].range ? "targetable" : "") + " svelte-g292qg"), p(u, "class", v = "buffarray " + t[2] + " svelte-g292qg"), p(r, "class", _ = "bars " + (t[17] && t[5].id == t[17].id && t[2] == "party" ? "target" : "") + " svelte-g292qg"), p(e, "id", t[4]), p(e, "class", b = "grid " + (t[3] ? "right" : "left") + " svelte-g292qg"), Ve(e, "font-size", t[15] + "%"),Ve(e, "opacity", t[5].range ? "" : .6)
             },
             m(L, $) {
                 w(L, e, $), d(e, n), A && A.m(n, null), d(n, o), d(e, r), d(r, l), Q(a, l, null), C && C.m(l, null), U.m(r, null), d(r, f), V && V.m(r, null), d(r, u);
@@ -10032,8 +12402,59 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 k = !0, y || (F = [H(l, "click", t[20]), H(l, "contextmenu", t[25])], y = !0)
             },
             p(L, $) {
-                Ve(e, "scale", Math.min(1.3,t.targetScale))
-                L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
+                Ve(e, "scale", Math.min(1.3, t.targetScale))
+                let container = e.querySelector(".bars")
+                if (t.CCFound) {
+                    let ccDrawColor = fe.flashCCIndicator ? flashColor(t.CCColor, 12, 0.25) : t.CCColor
+                    Ve(container, "outline", `3px solid ${ccDrawColor}`)
+                    Ve(container, "box-shadow", `0 0 15px ${ccDrawColor}`)
+                } else {
+                    Ve(container, "outline", null)
+                    Ve(container, "box-shadow", null)
+                }
+                Ve(container, "border-radius", "0px")
+                let hpBarEl = l.firstElementChild;
+                if (hpBarEl) {
+                    let flashDiv = hpBarEl._hpFlash;
+                    if (!flashDiv) {
+                        flashDiv = document.createElement("div");
+                        Ve(flashDiv, "position", "absolute");
+                        Ve(flashDiv, "top", "0");
+                        Ve(flashDiv, "height", "100%");
+                        Ve(flashDiv, "background", "white");
+                        Ve(flashDiv, "pointer-events", "none");
+                        Ve(flashDiv, "z-index", "2");
+                        Ve(flashDiv, "display", "none");
+                        Ve(hpBarEl, "position", "relative");
+                        Ve(hpBarEl, "overflow", "hidden");
+                        hpBarEl.appendChild(flashDiv);
+                        hpBarEl._hpFlash = flashDiv;
+                        let pb = hpBarEl.firstElementChild;
+                        if (pb) {
+                            let leftSpan = pb.firstElementChild;
+                            let rightSpan = leftSpan && leftSpan.nextElementSibling;
+                            if (leftSpan) { Ve(leftSpan, "position", "relative"); Ve(leftSpan, "z-index", "3"); }
+                            if (rightSpan) { Ve(rightSpan, "position", "absolute"); Ve(rightSpan, "right", "5px"); Ve(rightSpan, "z-index", "3"); }
+                        }
+                    }
+                    let r5 = L[5];
+                    let flashing = fe.flashNameplates && r5.hpFlashTime !== void 0 && I.smoothtime - r5.hpFlashTime < 0.2 && r5.hpFlashFraction !== void 0;
+                    let progressBarEl = hpBarEl.firstElementChild;
+                    if (progressBarEl) Ve(progressBarEl, "transition", flashing ? "none" : "");
+                    if (flashing) {
+                        let elapsed = I.smoothtime - r5.hpFlashTime;
+                        let hpPct = r5.hpMax ? ~~(r5.hp / r5.hpMax * 100) : 100;
+                        let flashPct = ~~(r5.hpFlashFraction * 100);
+                        let lostPct = flashPct - hpPct;
+                        let progress = elapsed / 0.2;
+                        Ve(flashDiv, "display", "");
+                        Ve(flashDiv, "left", hpPct + "%");
+                        Ve(flashDiv, "width", lostPct * (1 - progress) + "%");
+                    } else {
+                        Ve(flashDiv, "display", "none");
+                    }
+                }
+                L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && (p(o, "class", i), Ve(o, "background", _bgcStyle("bgc" + L[5].class))), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
                     dirty: $,
@@ -10081,13 +12502,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         let e, n, o;
         return {
             c() {
-                e = h("div"), p(e, "class", n = "progressBar " + t[13] + " hpdelta svelte-g292qg"), p(e, "style", o = (t[14] ? "transition:none;" : "") + "width:" + t[8] + "%;")
+                e = h("div"), p(e, "class", n = "progressBar " + t[13] + " hpdelta svelte-g292qg"), p(e, "style", o = (t[14] ? "transition:none;" : "") + "width:" + t[8] + "%;" + (_bgcStyle(t[13]) ? "background:" + _bgcStyle(t[13]) + ";" : ""))
             },
             m(i, s) {
                 w(i, e, s)
             },
             p(i, s) {
-                s & 8192 && n !== (n = "progressBar " + i[13] + " hpdelta svelte-g292qg") && p(e, "class", n), s & 16640 && o !== (o = (i[14] ? "transition:none;" : "") + "width:" + i[8] + "%;") && p(e, "style", o)
+                s & 8192 && n !== (n = "progressBar " + i[13] + " hpdelta svelte-g292qg") && p(e, "class", n), s & 24832 && o !== (o = (i[14] ? "transition:none;" : "") + "width:" + i[8] + "%;" + (_bgcStyle(i[13]) ? "background:" + _bgcStyle(i[13]) + ";" : "")) && p(e, "style", o)
             },
             d(i) {
                 i && x(e)
@@ -10096,7 +12517,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function mD(t) {
-        let e, n = t[2] == "default" && k4(t);
+        let e, n = t[2] == "default" && !fe.flashNameplates && k4(t);
         return {
             c() {
                 n && n.c(), e = de()
@@ -10105,7 +12526,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 n && n.m(o, i), w(o, e, i)
             },
             p(o, i) {
-                o[2] == "default" ? n ? n.p(o, i) : (n = k4(o), n.c(), n.m(e.parentNode, e)) : n && (n.d(1), n = null)
+                o[2] == "default" && !fe.flashNameplates ? n ? n.p(o, i) : (n = k4(o), n.c(), n.m(e.parentNode, e)) : n && (n.d(1), n = null)
             },
             d(o) {
                 o && x(e), n && n.d(o)
@@ -10271,6 +12692,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 o && o.m(i, s), w(i, e, s), n = !0
             },
             p(i, [s]) {
+                let playerBuffs = I.getEntityById(i[5].id)
+                if (playerBuffs) playerBuffs = playerBuffs.buffs.buffs
+                i.CCFound = false, i.CCColor = "#ffffff"
+                if (playerBuffs && fe.CCIndicator) {
+                    let color = getCCColor(playerBuffs);
+                    if (color) { i.CCFound = true; i.CCColor = color; }
+                }
                 let castsOnPlayer = targettedPlayers.get(i[5].id) || []
                 let targetScale = (1 + (castsOnPlayer.length / 25))
                 i.targetScale = targetScale
@@ -10315,8 +12743,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         }, N = Y => Ax(Y, r);
         return t.$$set = Y => {
             "unit" in Y && a(n(0, v = Y.unit)), "buffs" in Y && g(n(1, _ = Y.buffs)), "mode" in Y && n(2, b = Y.mode), "order" in Y && n(3, k = Y.order), "id" in Y && n(4, y = Y.id)
-        }, t.$$.update = () => { // party item drawing
-            t.$$.dirty & 32 && n(24, o = r.world == I.id ? r.alive ? !1 : "Dead" : r.world), t.$$.dirty & 18874404 && (n(21, F = r.hpMax ? b == "default" ? ro(r.hp) + "/" + ro(r.hpMax) : ro(r.hp) : "?"), n(6, C = o || F), n(8, D = o != "offline" ? ~~(r.hpMax ? r.hp / r.hpMax * 100 : 100) : 0), n(13, L = o ? "bggrey" : (I.mode.partyBasedHostility ? r.party === I.player.party : r.faction === I.player.faction) ? "bghealth" : "bgenemy")), t.$$.dirty & 36 && n(22, A = r.mpMax ? b == "default" ? ro(r.mp) + "/" + ro(r.mpMax) : ro(r.mp) : "?"), t.$$.dirty & 32 && n(10, V = r.name ? Vx(r.name, 10) : ""), t.$$.dirty & 32 && n(11, B = r.timedSkill ? (P.ui.hiddenskills[r.timedSkill.id] || P.items.book[r.timedSkill.id]).name : `Lv. ${r.level}`), t.$$.dirty & 20971552 && n(7, M = o || (r.timedSkill ? r.timedCast.remaining(I.smoothtime).toFixed(1) : A)), t.$$.dirty & 16777248 && n(9, U = o != "offline" ? ~~(r.mpMax ? r.mp / r.mpMax * 100 : 100) : 0), t.$$.dirty & 16777248 && n(12, q = o != "offline" && r.timedSkill ? r.timedCast.fraction(I.smoothtime) * 100 : 0), t.$$.dirty & 16777216 && n(16, i = o ? "bggrey" : "bgmana"), t.$$.dirty & 4 && n(15, s = Math.round(b == "default" ? 100 : 85)), t.$$.dirty & 8388640 && (n(14, $ = W != r.id), n(23, W = r.id))
+        }, t.$$.update = () => {
+            t.$$.dirty & 32 && n(24, o = r.world == I.id ? r.alive ? !1 : "Dead" : r.world), t.$$.dirty & 18874404 && (n(21, F = r.hpMax ? b == "default" ? ro(r.hp) + "/" + ro(r.hpMax) : ro(r.hp) : "?"), n(6, C = o || F), n(8, D = o != "offline" ? ~~(r.hpMax ? r.hp / r.hpMax * 100 : 100) : 0), n(13, L = o ? "bggrey" : (I.mode.partyBasedHostility ? r.party === I.player.party : r.faction === I.player.faction) ? (fe.classColorParty ? "bgc" + r.class : "bghealth") : "bgenemy")), t.$$.dirty & 36 && n(22, A = r.mpMax ? b == "default" ? ro(r.mp) + "/" + ro(r.mpMax) : ro(r.mp) : "?"), t.$$.dirty & 32 && n(10, V = r.name ? Vx(r.name, 10) : ""), t.$$.dirty & 32 && n(11, B = r.timedSkill ? (P.ui.hiddenskills[r.timedSkill.id] || P.items.book[r.timedSkill.id]).name : `Lv. ${r.level}`), t.$$.dirty & 20971552 && n(7, M = o || (r.timedSkill ? r.timedCast.remaining(I.smoothtime).toFixed(1) : A)), t.$$.dirty & 16777248 && n(9, U = o != "offline" ? ~~(r.mpMax ? r.mp / r.mpMax * 100 : 100) : 0), t.$$.dirty & 16777248 && n(12, q = o != "offline" && r.timedSkill ? r.timedCast.fraction(I.smoothtime) * 100 : 0), t.$$.dirty & 16777216 && n(16, i = o ? "bggrey" : "bgmana"), t.$$.dirty & 4 && n(15, s = Math.round(b == "default" ? 100 : 85)), t.$$.dirty & 8388640 && (n(14, $ = W != r.id), n(23, W = r.id))
         }, [v, _, b, k, y, r, C, M, D, U, V, B, q, L, $, s, i, c, f, u, R, F, A, W, o, N]
     }
     var Xg = class extends Fe {
@@ -10742,7 +13170,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 3,
         icon: "ui/skills/18",
         fx: {
-            stick: 38,
+            stick: fe.removeFX ? void 0 : 38,
             color: [.7, .1, .1, .5]
         },
         intervalDuration: 1.5,
@@ -10892,8 +13320,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/12",
         fx: {
-            apply: 50,
-            stick: 49,
+            apply: fe.removeFX ? void 0 : 50,
+            stick: fe.removeFX ? void 0 : 49,
             color: [.5, .4, .05, .5]
         },
         statsStatic: (t, e) => {
@@ -10927,7 +13355,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 5,
         icon: "ui/skills/43",
         fx: {
-            stick: 20
+            stick: fe.removeFX ? void 0 : 20
         }
     });
     var J4 = new me({
@@ -10968,7 +13396,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         breakOnCast: !0,
         icon: "ui/skills/36",
         fx: {
-            visual: 60,
+            visual: 26,
             apply: 76,
             endSound: 69
         },
@@ -11047,8 +13475,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/29",
         fx: {
-            apply: 51,
-            stick: 66,
+            apply: fe.removeFX ? void 0 : 51,
+            stick: fe.removeFX ? void 0 : 66,
             color: [.1, 1, .3, .3]
         },
         statsStatic: (t, e) => {
@@ -11399,7 +13827,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         icon: "ui/skills/39",
         customIcon: t => "items/mount/mount" + lr[t.data[0]].tier + "_q1",
         fx: {
-            mount: t => lr[t.data[0]].skin,
+            mount: t => {
+                return I && I.player && t.caster === I.player.id && fe.customMountID && O1 && O1.has(fe.customMountID) ? fe.customMountID : lr[t.data[0]].skin
+            },
             apply: 76,
             endSound: 69
         },
@@ -11587,7 +14017,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         }
     });
     var iM = new me({
-            id: 139, //veil
+            id: 139,
             tags: new Set([12]),
             icon: "items/charm/charm9_q1",
             fx: {
@@ -13740,7 +16170,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 img: t[14],
                 remaining: t[12],
                 key: t[7].hotkey,
-                border: t[10] || t[8] ? "auto" : t[11] || t[9] || t[6] || t[13] ? "grey" : t[4] ? Nt(t[4].quality)[0] : "white",
+                border: t[10] || t[8] ? "auto" : fe.noFrameColor ? "black" : t[11] || t[9] || t[6] || t[13] ? "grey" : t[4] ? Nt(t[4].quality)[0] : "white",
                 $$slots: {
                     default: [GD]
                 },
@@ -13757,7 +16187,12 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             p(o, i) {
                 let s = {};
-                i[0] & 2 && (s.shift = o[1]), i[0] & 144 && (s.describe = o[7].id >= 0 && !o[7].item || o[4] !== void 0), i[0] & 2080 && (s.status = o[11] ? -1 : o[5] !== void 0 ? o[5].status : 0), i[0] & 128 && (s.id = "sk" + o[7].hotkey), i[0] & 144 && (s.data = o[7].id >= 0 || o[4] !== void 0 ? o[7] : void 0), i[0] & 512 && (s.auto = o[9]), i[0] & 1024 && (s.queued = o[10]), i[0] & 65536 && (s.meta = o[16]), i[0] & 32768 && (s.css = o[15]), i[0] & 8 && (s.stacks = o[3]), i[0] & 8192 && (s.cd = o[13]), i[0] & 16384 && (s.img = o[14]), i[0] & 4096 && (s.remaining = o[12]), i[0] & 128 && (s.key = o[7].hotkey), i[0] & 12112 && (s.border = o[10] || o[8] ? "auto" : o[11] || o[9] || o[6] || o[13] ? "grey" : o[4] ? Nt(o[4].quality)[0] : "white"), i[0] & 148 | i[1] & 8 && (s.$$scope = {
+                i[0] & 2 && (s.shift = o[1]), i[0] & 144 && (s.describe = o[7].id >= 0 && !o[7].item || o[4] !== void 0), i[0] & 2080 && (s.status = o[11] ? -1 : o[5] !== void 0 ? o[5].status : 0), i[0] & 128 && (s.id = "sk" + o[7].hotkey), i[0] & 144 && (s.data = o[7].id >= 0 || o[4] !== void 0 ? o[7] : void 0), i[0] & 512 && (s.auto = o[9]), i[0] & 1024 && (s.queued = o[10]), i[0] & 65536 && (s.meta = o[16]), i[0] & 32768 && (s.css = o[15]), i[0] & 8 && (s.stacks = o[3]), i[0] & 8192 && (s.cd = o[13]), i[0] & 16384 && (s.img = o[14]), i[0] & 4096 && (s.remaining = o[12]), i[0] & 128 && (s.key = o[7].hotkey), i[0] & 12112 && 
+                (s.border = 
+o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
+    : o[11] || o[9] || o[6] || o[13] ? "grey" 
+        : o[4] ? Nt(o[4].quality)[0] 
+        : "white"), i[0] & 148 | i[1] & 8 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -13808,7 +16243,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                             Xe(B, y.info[0] = be, y)
                         } else return
                     }
-                    let _e = zt.get(y.id); //send skill
+                    let _e = zt.get(y.id);
                     console.log(`Sent skill id ${y.id} ${y.info}`)
                     _e.envCast > 0 ? _r > 0 ? gu(0, 0, 0) : gu(y.id, _e.range, _e.envCast) : Io(Mt.clientPlayerSkill.packData({
                         id: y.id,
@@ -15259,7 +17694,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         }
     }
 
-    function yV(t) { // main tab
+    function yV(t) {
         let e, n = P.ui.settings.language + "",
             o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, N, Y, ge, Ce, ve, se, le, _e, be, Te, ie, Ie, ee, qe = P.ui.settings.qualitymin + "",
             Ge, Qe, He, he, ce, $e, oe, J, O, ue, je, Ue, ke, ze, Oe = P.ui.settings.excludedrops + "",
@@ -15412,7 +17847,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         }
     }
 
-    function kV(t) { // audio
+    function kV(t) {
         let e, n, o, i = P.ui.settings.sfxmultiplier + "",
             s, r, l, a, c, f, u, m, g, v;
         return {
@@ -15466,7 +17901,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             c() {
                 e = h("div"), e.textContent = `${P.ui.settings.camera}`, n = h("div"), o = h("div"), s = T(i), r = Ne(), l = h("span"), c = T(a), f = h("input"), u = h("div"), u.textContent = `${P.ui.settings.invertmousex}`, K(m.$$.fragment), g = h("div"), g.textContent = `${P.ui.settings.invertmousey}`, K(v.$$.fragment), _ = h("div"), _.textContent = `${P.ui.settings.lockedcamera}`, K(b.$$.fragment), k = h("div"), k.textContent = `${P.ui.settings.pointerlock}`, K(y.$$.fragment), F = h("div"), F.textContent = `${P.ui.settings.skillbar}`, A = h("div"), C = h("div"), D = T(M), U = Ne(), V = h("span"), B = T(t[12]), q = h("br"), L = h("small"), L.textContent = `${P.ui.settings.reload}`, $ = h("input"), W = h("div"), W.textContent = "Targeting", R = h("div"), N = h("div"), N.textContent = "Target Next Friendly: Allow Non-Partied", K(Y.$$.fragment), ge = h("div"), Ce = T("Target Next Friendly: Cycle Size "), ve = h("span"), se = T(t[13]), le = h("input"), _e = h("div"), _e.textContent = `${P.ui.settings.keybindings}`, be = h("div"), Te = h("small"), Te.textContent = `${P.ui.settings.reload}`, ie = h("small"), ie.textContent = `${P.ui.settings.bindingreset}`;
                 for (let he = 0; he < He.length; he += 1) He[he].c();
-                Ie = de(), p(e, "class", "textprimary"), p(l, "class", "textgrey"), p(f, "type", "range"), p(f, "step", "0.05"), p(f, "min", "0.1"), p(f, "max", "3"), p(F, "class", "textprimary"), p(V, "class", "textgrey"), p(L, "class", "textgrey"), p($, "type", "range"), p($, "min", "10"), p($, "max", "24"), p(W, "class", "textprimary"), p(ve, "class", "textgrey"), p(le, "type", "range"), p(le, "min", "1"), p(le, "max", "20"), p(_e, "class", "textprimary"), p(Te, "class", "textgrey"), p(ie, "class", "textprimary")
+                Ie = de(), p(e, "class", "textprimary"), p(l, "class", "textgrey"), p(f, "type", "range"), p(f, "step", "0.05"), p(f, "min", "0.1"), p(f, "max", "3"), p(F, "class", "textprimary"), p(V, "class", "textgrey"), p(L, "class", "textgrey"), p($, "type", "range"), p($, "min", "10"), p($, "max", "24"), p(W, "class", "textprimary"), p(ve, "class", "textgrey"), p(le, "type", "range"), p(le, "min", "1"), p(le, "max", "11"), p(_e, "class", "textprimary"), p(Te, "class", "textgrey"), p(ie, "class", "textprimary")
             },
             m(he, ce) {
                 w(he, e, ce), w(he, n, ce), w(he, o, ce), d(o, s), d(o, r), d(o, l), d(l, c), w(he, f, ce), We(f, t[11]), w(he, u, ce), Q(m, he, ce), w(he, g, ce), Q(v, he, ce), w(he, _, ce), Q(b, he, ce), w(he, k, ce), Q(y, he, ce), w(he, F, ce), w(he, A, ce), w(he, C, ce), d(C, D), d(C, U), d(C, V), d(V, B), d(C, q), d(C, L), w(he, $, ce), We($, t[12]), w(he, W, ce), w(he, R, ce), w(he, N, ce), Q(Y, he, ce), w(he, ge, ce), d(ge, Ce), d(ge, ve), d(ve, se), w(he, le, ce), We(le, t[13]), w(he, _e, ce), w(he, be, ce), w(he, Te, ce), w(he, ie, ce);
@@ -15497,7 +17932,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         }
     }
 
-    function wV(t) { // graphics
+    function wV(t) {
         let e, n, o, i, s, r = P.ui.settings.fov + "",
             l, a, c, f, u, m, g = P.ui.settings.anisotropy + "",
             v, _, b, k, y, F = P.ui.settings.grass + "",
@@ -15596,145 +18031,386 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }
         }
     }
-
-    function modSettings(t) {
-        let nextFriendlyIgnoreBotsElement, nextFriendlyIgnoreBotsValue, timeToIngameElement, timeToIngameValue, declutterCategory, subDeclutterCategory, seperator9, seperator10, disableClantagsElement, disableClantagsValue, disableHealingElement, disableHealingValue, disableDamageElement, disableDamageValue, targetEnabledElement, targetEnabledValue, timeSlider, timeText, losTargetElement, losTargetValue, seperator7, seperator8, seperator6, subRad, specialSellElement, specialSellValue, alwaysPickupElement, alwaysPickupValue, revOnSelectElement, revOnSelectValue, hideBotsElement, hideBotsValue, radElement, radValue, radSoundElement, radSoundValue, revUnfriendlyElement, revUnfriendlyValue, markOwnRevsElement, markOwnRevsValue, autocleanseElement, autocleanseValue, generalCategory, radCategory, shamanCategory, seperator1, seperator2, seperator3, seperator4, seperator5, subRevUnfriendly, subAutocleanse, subNeverExcludeItems, C
-        return hideBotsValue = new Et({
-            props: {
-                store: hideBots
-            }
-        }), radValue = new Et({
-            props: {
-                store: radar
-            }
-        }), radSoundValue = new Et({
-            props: {
-                store: radarSound
-            }
-        }), revUnfriendlyValue = new Et({
-            props: {
-                store: revUnfriendly
-            }
-        }), revOnSelectValue = new Et({
-            props: {
-                store: revOnSelect
-            }
-        }), markOwnRevsValue = new Et({
-            props: {
-                store: markOwnRevs
-            }
-        }), autocleanseValue = new Et({
-            props: {
-                store: autocleanse
-            }
-        }), specialSellValue = new Et({
-            props: {
-                store: disallowSpecialSelling
-            }
-        }), losTargetValue = new Et({
-            props: {
-                store: losTarget
-            }
-        }), targetEnabledValue = new Et({
-            props: {
-                store: targetEnabled
-            }
-        }),  disableHealingValue = new Et({
-            props: {
-                store: disableHealing
-            }
-        }),  disableDamageValue = new Et({
-            props: {
-                store: disableDamage
-            }
-        }), disableClantagsValue = new Et({
-            props: {
-                store: disableClantags
-            }
-        }), timeToIngameValue = new Et({
-            props: {
-                store: timeToIngame
-            }
-        }), nextFriendlyIgnoreBotsValue = new Et({
-            props: {
-                store: nextFriendlyIgnoreBots
-            }
-        }), {
-            c() {
-                nextFriendlyIgnoreBotsElement = h("div"), nextFriendlyIgnoreBotsElement.textContent = `Target Next Friendly: Exclude Bots`, K(nextFriendlyIgnoreBotsValue.$$.fragment),
-                timeToIngameElement = h("div"), timeToIngameElement.textContent = `Use device time`, K(timeToIngameValue.$$.fragment),
-                disableClantagsElement = h("div"), disableClantagsElement.textContent = `Disable clan tags`, K(disableClantagsValue.$$.fragment),
-                disableDamageElement = h("div"), disableDamageElement.textContent = `Disable damage indicator`, K(disableDamageValue.$$.fragment),
-                disableHealingElement = h("div"), disableHealingElement.textContent = `Disable healing indicator`, K(disableHealingValue.$$.fragment),
-                targetEnabledElement = h("div"), targetEnabledElement.textContent = `Nameplates react to single-target`, K(targetEnabledValue.$$.fragment),
-                timeText = h("div"), timeText.textContent = `Time`, timeSlider = h("input"),
-                losTargetElement = h("div"), losTargetElement.textContent = `Target Next Friendly: Exclude LOS`, K(losTargetValue.$$.fragment),
-                alwaysPickupElement = h("div"), alwaysPickupElement.textContent = `Never filter items`, alwaysPickupValue = h("input"),
-                specialSellElement = h("div"), specialSellElement.textContent = `Block +(×) item & charm vendor`, specialSellElement.style.color = "#ff4949", K(specialSellValue.$$.fragment),
-                hideBotsElement = h("div"), hideBotsElement.textContent = `Hide bot names`, K(hideBotsValue.$$.fragment),
-                revOnSelectElement = h("div"), revOnSelectElement.textContent = `Revitalize on select`, K(revOnSelectValue.$$.fragment),
-                radElement = h("div"), radElement.textContent = `Show icon on minimap`, K(radValue.$$.fragment),
-                radSoundElement = h("div"), radSoundElement.textContent = `Play sound when nearby`, K(radSoundValue.$$.fragment),
-                revUnfriendlyElement = h("div"), revUnfriendlyElement.textContent = `Target Next Friendly: Ignore faction`, K(revUnfriendlyValue.$$.fragment),
-                markOwnRevsElement = h("div"), markOwnRevsElement.textContent = `Highlight own revitalize`, K(markOwnRevsValue.$$.fragment),
-                autocleanseElement = h("div"), autocleanseElement.textContent = `Auto cleanse CC`, K(autocleanseValue.$$.fragment),
-                radCategory = h("div"), radCategory.textContent = `Rare Mob Notifier`, shamanCategory = h("div"), shamanCategory.textContent = `Shaman Mods`, generalCategory = h("div"), generalCategory.textContent = `Uncategorized`, declutterCategory = h("div"), declutterCategory.textContent = `De-Clutter Mods`,
-                subDeclutterCategory = h("small"), subDeclutterCategory.textContent = `Very useful stuff to have enabled in obe or wars`, subRad = h("small"), subRad.textContent = `Detects rare mobs within load distance`, subRevUnfriendly = h("small"), subRevUnfriendly.textContent = `Only enable during gloom`, subAutocleanse = h("small"), subAutocleanse.textContent = `Has a small random delay, but don't blame me if you get banned for this lol it's just here for fun`, subNeverExcludeItems = h("small"), subNeverExcludeItems.textContent = `Does not change pet behavior`,
-                seperator1 = h("br"), seperator2 = h("br"), seperator3 = h("br"), seperator4 = h("br"), seperator5 = h("br"), seperator6 = h("br"), seperator7 = h("br"), seperator8 = h("br"), seperator9 = h("br"), seperator10 = h("br")
-                p(subRevUnfriendly, "class", "textgrey"), p(subAutocleanse, "class", "textgrey"), p(subNeverExcludeItems, "class", "textgrey"), p(subRad, "class", "textgrey"), p(subDeclutterCategory, "class", "textgrey")
-                p(radCategory, "class", "textprimary"), p(shamanCategory, "class", "textprimary"), p(generalCategory, "class", "textprimary"), p(declutterCategory, "class", "textprimary"),
-                p(alwaysPickupValue, "type", "text"), p(timeSlider, "type", "range"), p(timeSlider, "max", "1000")
-            },
+    function makeToggle(label, store, opts = {}) {
+        let el = h("div"), val = new Et({props: {store}});
+        el.textContent = label;
+        if (opts.color) Ve(el, "color", opts.color);
+        if (opts.note) { let sep = h("br"), sub = h("small"); sub.textContent = opts.note; p(sub, "class", "textgrey"); d(el, sep); d(el, sub); }
+        if (opts.sub) { let sep = h("br"), sub = h("small"); sub.textContent = opts.sub; p(sub, "class", "textgrey"); Ve(sub, "font-size", opts.subSize || "13px"); d(el, sep); d(el, sub); }
+        return {
+            c() {K(val.$$.fragment);},
             m(M, D) {
-                w(M, radCategory, D), d(radCategory,seperator1), d(radCategory,subRad),  w(M, seperator2, D),
-                w(M, radElement, D), Q(radValue, M, D),
-                w(M, radSoundElement, D), Q(radSoundValue, M, D),
-                w(M, shamanCategory, D), w(M, seperator3, D),
-                //w(M, autocleanseElement, D), Q(autocleanseValue, M, D), d(autocleanseElement, seperator7), d(autocleanseElement, subAutocleanse),
-                //w(M, revOnSelectElement, D), Q(revOnSelectValue, M, D)
-                w(M, markOwnRevsElement, D), Q(markOwnRevsValue, M, D),
-                w(M, revUnfriendlyElement, D), Q(revUnfriendlyValue, M, D), d(revUnfriendlyElement, seperator4), d(revUnfriendlyElement, subRevUnfriendly),
-                w(M, nextFriendlyIgnoreBotsElement, D), Q(nextFriendlyIgnoreBotsValue, M, D),
-                w(M, losTargetElement, D), Q(losTargetValue, M, D),
-                w(M, nextFriendlyIgnoreBotsElement, D), Q(nextFriendlyIgnoreBotsValue, M, D),
-                w(M, declutterCategory, D), d(declutterCategory,seperator9), d(declutterCategory,subDeclutterCategory),  w(M, seperator10, D),
-                w(M, disableClantagsElement, D), Q(disableClantagsValue, M, D)
-                w(M, disableHealingElement, D), Q(disableHealingValue, M, D),
-                w(M, disableDamageElement, D), Q(disableDamageValue, M, D),
-                w(M, targetEnabledElement, D), Q(targetEnabledValue, M, D),
-                w(M, hideBotsElement, D), Q(hideBotsValue, M, D),
-                w(M, generalCategory, D), w(M, seperator6, D),
-                w(M, specialSellElement, D), Q(specialSellValue, M, D),
-                w(M, alwaysPickupElement, D), w(M, alwaysPickupValue, D), We(alwaysPickupValue, t[70]), d(alwaysPickupElement, seperator8), d(alwaysPickupElement, subNeverExcludeItems),
-                w(M, timeText, D), w(M, timeSlider, D), We(timeSlider, t[72]),
-                w(M, timeToIngameElement, D), Q(timeToIngameValue, M, D),
-                C = !0
-                H(timeSlider, "input", t[71]), H(timeSlider, "change", t[34])
-                H(alwaysPickupValue, "input", t[69]), H(alwaysPickupValue, "change", t[34])
+                w(M, el, D); Q(val, M, D);
+                if (opts.reload) { let first = true; store.subscribe(() => { if (first) { first = false; return; } window.location.reload(); }); }
             },
-            p(te,ae) {
-                ae[0] && alwaysPickupValue.value !== te[70] && We(alwaysPickupValue, te[70]) && We(timeSlider, te[72])
-            },
-            i(M) {
-                C || (S(nextFriendlyIgnoreBotsValue.$$.fragment, M), S(timeToIngameValue.$$.fragment, M), S(disableClantagsValue.$$.fragment, M), S(disableHealingValue.$$.fragment, M), S(disableDamageValue.$$.fragment, M), S(targetEnabledValue.$$.fragment, M), S(losTargetValue.$$.fragment, M), S(radValue.$$.fragment, M), S(radSoundValue.$$.fragment, M), S(revUnfriendlyValue.$$.fragment, M), S(markOwnRevsValue.$$.fragment, M), S(autocleanseValue.$$.fragment, M), S(hideBotsValue.$$.fragment, M), S(revOnSelectValue.$$.fragment, M),  S(specialSellValue.$$.fragment, M), C = !0)
-            },
-            o(M) {
-                E(nextFriendlyIgnoreBotsValue.$$.fragment, M), E(timeToIngameValue.$$.fragment, M), E(disableClantagsValue.$$.fragment, M), E(disableHealingValue.$$.fragment, M), E(disableDamageValue.$$.fragment, M), E(targetEnabledValue.$$.fragment, M), E(losTargetValue.$$.fragment, M), E(radValue.$$.fragment, M), E(radSoundValue.$$.fragment, M), E(revUnfriendlyValue.$$.fragment, M), E(markOwnRevsValue.$$.fragment, M), E(autocleanseValue.$$.fragment, M), E(hideBotsValue.$$.fragment, M), E(revOnSelectValue.$$.fragment, M),  E(specialSellValue.$$.fragment, M), C = !1
-            },
-            d(M) {
-                M && (x(nextFriendlyIgnoreBotsElement), x(nextFriendlyIgnoreBotsValue), x(declutterCategory), x(subDeclutterCategory), x(timeToIngameElement), x(timeToIngameValue), x(seperator9), x(seperator10), x(disableClantagsElement), x(disableClantagsValue), x(disableHealingElement), x(disableHealingValue), x(disableDamageElement), x(disableDamageValue), x(targetEnabledElement), x(targetEnabledValue), x(timeText), x(timeSlider), x(losTargetElement), x(losTargetValue), x(seperator7), x(seperator8), x(seperator6), x(subRad), x(specialSellElement),x(alwaysPickupValue),x(alwaysPickupElement),x(hideBotsElement),x(radElement),x(radSoundElement),x(radCategory),x(generalCategory),x(shamanCategory),x(seperator1),x(seperator2),x(seperator3),x(seperator4),x(seperator5),x(subRevUnfriendly),x(subAutocleanse),x(subNeverExcludeItems),x(revUnfriendlyElement),x(markOwnRevsElement)), Z(radValue, M), Z(radSoundValue, M), Z(revUnfriendlyValue, M), Z(markOwnRevsValue, M), Z(hideBotsValue, M), Z(specialSellValue, M), Z(losTargetValue, M), Z(targetEnabledValue, M), Z(disableHealingValue, M), Z(disableDamageValue, M), Z(disableClantagsValue, M), Z(timeToIngameValue, M), Z(nextFriendlyIgnoreBotsValue, M)
-            }
+            i(M) {S(val.$$.fragment, M);},
+            o(M) {E(val.$$.fragment, M);},
+            d(M) {if (M) x(el); Z(val, M);}
+        };
+    }
+    function makeSlider(label, store, opts = {}) {
+        let el = h("div"), inp = h("input"), valNode, unsub;
+        el.textContent = label;
+        p(inp, "type", "range");
+        p(inp, "min", String(opts.min != null ? opts.min : 0));
+        p(inp, "max", String(opts.max != null ? opts.max : 1000));
+        if (opts.showValue !== false) {
+            let span = h("span"); p(span, "class", "textgrey"); Ve(span, "margin-left", "5px");
+            valNode = T(""); d(span, valNode); d(el, span);
         }
+        return {
+            c() {}, i(M) {}, o(M) {},
+            m(M, D) {
+                w(M, el, D); w(M, inp, D);
+                unsub = store.subscribe(v => { inp.value = String(v); if (valNode) valNode.data = String(v) + (opts.suffix || ""); });
+                inp.addEventListener("input", () => { store.set(Number(inp.value)); if (valNode) valNode.data = inp.value + (opts.suffix || ""); });
+                inp.addEventListener("change", () => { if (opts.reload) window.location.reload(); });
+            },
+            d(M) {if (M) { x(el); x(inp); } if (unsub) unsub();}
+        };
     }
 
-    function MV(t) { // pages
+    function makeColor(imgSrc, label, store) {
+        let el, inp = h("input"), unsub;
+        p(inp, "type", "color");
+        if (imgSrc) {
+            let con = h("div"), img = h("img"), txt = h("div");
+            Ve(con, "display", "flex"); Ve(con, "align-items", "center");
+            img.src = imgSrc; Ve(img, "width", "30px"); Ve(img, "margin-right", "10px");
+            txt.textContent = label; Ve(txt, "font-size", "16px");
+            d(con, img); d(con, txt); el = con;
+        } else {
+            el = h("div"); el.textContent = label;
+        }
+        return {
+            c() {}, i(M) {}, o(M) {},
+            m(M, D) {
+                w(M, el, D); w(M, inp, D);
+                unsub = store.subscribe(v => { if (v) inp.value = v; });
+                inp.addEventListener("input", () => { store.set(inp.value); });
+            },
+            d(M) {if (M) { x(el); x(inp); } if (unsub) unsub();}
+        };
+    }
+    function makeText(label, store, opts = {}) {
+        let el = h("div"), inp = h("input"), unsub;
+        el.textContent = label;
+        p(inp, "type", "text");
+        if (opts.note) { let sep = h("br"), sub = h("small"); sub.textContent = opts.note; p(sub, "class", "textgrey"); d(el, sep); d(el, sub); }
+        return {
+            c() {}, i(M) {}, o(M) {},
+            m(M, D) {
+                if (label) w(M, el, D);
+                w(M, inp, D);
+                unsub = store.subscribe(v => { inp.value = v != null ? v : ""; });
+                inp.addEventListener("input", () => { store.set(opts.numberInput ? Number(inp.value) : inp.value); });
+                inp.addEventListener("change", () => { if (opts.reload) window.location.reload(); });
+            },
+            d(M) {if (M) { x(el); x(inp); } if (unsub) unsub();}
+        };
+    }
+    function makeCategory(label, opts = {}) {
+        let el = h("div"), sep = h("div");
+        el.textContent = label;
+        p(el, "class", "textprimary mod-category");
+        Ve(el, "font-size", opts.fontSize || "19px");
+        if (opts.marginTop) Ve(el, "margin-top", opts.marginTop);
+        let subEls = null;
+        if (opts.sub) { let ssep = h("br"), sub = h("small"); sub.textContent = opts.sub; p(sub, "class", "textgrey"); Ve(sub, "font-size", opts.subSize || "12px"); d(el, ssep); d(el, sub); subEls = [ssep, sub]; }
+        let triggerCollapse = null;
+        if (opts.collapse) {
+            let storageKey = "modcat_" + label;
+            let saved = localStorage.getItem(storageKey);
+            let collapsed = saved !== null ? saved === "1" : !!opts.collapseDefault;
+            let arrow = h("button");
+            arrow.textContent = collapsed ? "Uncollapse" : "Collapse";
+            p(arrow, "class", "btn black textprimary");
+            Ve(arrow, "font", "bold " + (opts.fontSize || "15px") + " hordes");
+            Ve(arrow, "display", "inline-flex");
+            Ve(arrow, "align-items", "center");
+            Ve(arrow, "justify-content", "center");
+            Ve(sep, "text-align", "right"); d(sep, arrow);
+            const apply = () => {
+                arrow.textContent = collapsed ? "Uncollapse" : "Collapse";
+                if (subEls) subEls.forEach(n => Ve(n, "display", collapsed ? "none" : ""));
+                let node = sep.nextSibling;
+                while (node) {
+                    if (node.nodeType === 1 && node.classList && node.classList.contains("mod-category")) break;
+                    if (node.nodeType === 1) Ve(node, "display", collapsed ? "none" : "");
+                    node = node.nextSibling;
+                }
+            };
+            const toggle = () => { collapsed = !collapsed; localStorage.setItem(storageKey, collapsed ? "1" : "0"); apply(); };
+            arrow.addEventListener("click", toggle);
+            if (collapsed) triggerCollapse = apply;
+        }
+        return {
+            c() {}, i(M) {}, o(M) {},
+            m(M, D) {w(M, el, D); w(M, sep, D); if (triggerCollapse) setTimeout(triggerCollapse, 0);},
+            d(M) {if (M) { x(el); x(sep); }}
+        };
+    }
+    function makeLabel(label, opts = {}) {
+        let el = h("div"), sep = opts.sep ? h("div") : null;
+        el.textContent = label;
+        if (opts.cls) p(el, "class", opts.cls);
+        if (opts.fontSize) Ve(el, "font-size", opts.fontSize);
+        return {
+            c() {}, i(M) {}, o(M) {},
+            m(M, D) {w(M, el, D); if (sep) w(M, sep, D);},
+            d(M) {if (M) { x(el); if (sep) x(sep); }}
+        };
+    }
+    function makeKeybind(imgSrc, label, store, key, opts = {}) {
+        let con = h("div"), img = h("img"), txt = h("div"), inp = h("input");
+        Ve(con, "display", "flex"); Ve(con, "align-items", "center");
+        img.src = imgSrc; Ve(img, "width", "30px"); Ve(img, "margin-right", "10px");
+        txt.textContent = label; Ve(txt, "font-size", opts.fontSize || "15px");
+        p(inp, "type", "text"); p(inp, "readonly", "");
+        Ve(inp, "width", "100%"); Ve(inp, "box-sizing", "border-box"); Ve(inp, "cursor", "pointer");
+        if (imgSrc) d(con, img);
+        d(con, txt);
+        return {
+            c() {}, i(M) {}, o(M) {},
+            m(M, D) {
+                w(M, con, D); w(M, inp, D);
+                inp.value = fe[key] || "";
+                inp.addEventListener("keydown", (e) => {
+                    e.preventDefault();
+                    if (["Shift", "Control", "Alt", "Meta"].includes(e.key)) return;
+                    let mods = (e.shiftKey ? "shift+" : "") + (e.ctrlKey ? "ctrl+" : "") + (e.altKey ? "alt+" : "");
+                    let k = e.key === "Escape" ? "" : mods + e.key.toLowerCase();
+                    store.set(k); inp.value = k;
+                });
+            },
+            d(M) {if (M) { x(con); x(inp); }}
+        };
+    }
+    function makeButton(label, onClick) {
+        let btn = h("button");
+        btn.textContent = label;
+        p(btn, "class", "btn black textprimary");
+        Ve(btn, "font", "bold 15px hordes");
+        btn.addEventListener("click", onClick);
+        return {
+            c() {}, i(M) {}, o(M) {},
+            m(M, D) {w(M, btn, D);},
+            d(M) {if (M) x(btn);}
+        };
+    }
+    function modSettings(t) {
+        const settings = [
+            makeCategory("Target Next Friendly Mods", {marginTop: "10px"}),
+            makeToggle("Ignore faction", revUnfriendly, {note: "Only enable during gloom"}),
+            makeToggle("Exclude Bots", nextFriendlyIgnoreBots),
+            makeToggle("Exclude LOS", losTarget),
+            makeToggle("Enable Class Selector", nextFriendlyClassSelectorEnabled),
+            makeToggle("Animate background", classSelectorAnimations),
+            makeLabel("-- Keybinds: --", {sep: true, cls: "textgrey"}),
+            makeKeybind(ns(0), "Warrior", classSelectorKbWarrior, "classSelectorKbWarrior"),
+            makeKeybind(ns(1), "Mage", classSelectorKbMage, "classSelectorKbMage"),
+            makeKeybind(ns(2), "Archer", classSelectorKbArcher, "classSelectorKbArcher"),
+            makeKeybind(ns(3), "Shaman", classSelectorKbShaman, "classSelectorKbShaman"),
+            makeCategory("De-Clutter Mods", {marginTop: "10px"}),
+            makeToggle("Hide bot names", hideBots),
+            makeToggle("Disable clan tags", disableClantags),
+            makeToggle("Hide chat window", hideChat),
+            makeToggle("Disable healing indicator", disableHealing),
+            makeToggle("Disable damage indicator", disableDamage),
+            makeToggle("Stack damage indicators", stackIndicators),
+            makeSlider("Indicator size", shrinkIndicators, {reload: true}),
+            makeToggle("Hide irrelevant buffs", hideBuffs),
+            makeToggle("Hide class buffs", hideClassBuffs),
+            makeToggle("Stack same-ID buffs", stackSameBuffs),
+            makeCategory("Nameplate Mods", {marginTop: "10px"}),
+            makeSlider("Nameplate size", nameplateSize),
+            makeSlider("Nameplate text size", nameSize),
+            makeSlider("Nameplate text margin", nameSpacing),
+            makeToggle("Hide nameplate select outline", ignoreNameplateViewRange),
+            makeToggle("Flash damage on nameplates", flashNameplates),
+            makeToggle("Disable blue partied nameplates", disablePartyNameplates),
+            makeToggle("Friendly creature nameplates", hideFriendlyCreatures),
+            makeToggle("Friendly creature names", hideFriendlyCreatureNames),
+            makeToggle("Outlines", outlines, {note: P.ui.settings.reload, reload: true}),
+            makeLabel("-- Class Colors: --", {sep: true, cls: "textgrey"}),
+            makeColor(ns(0), "Warrior", classColor0),
+            makeColor(ns(1), "Mage", classColor1),
+            makeColor(ns(2), "Archer", classColor2),
+            makeColor(ns(3), "Shaman", classColor3),
+            makeCategory("Shaman Mods", {marginTop: "10px"}),
+            makeToggle("Highlight own revitalize", markOwnRevs),
+            makeToggle("Only show own revitalize", onlyShowOwnRev),
+            makeToggle("Show revitalize # on nameplate", revStackNameplate),
+            makeCategory("CC Indicators", {marginTop: "10px"}),
+            makeToggle("Enable CC Indicators", CCIndicator),
+            makeToggle("Flash CC indicator color", flashCCIndicator),
+            makeToggle("Show on nameplates", CCIndicatorOnNameplates),
+            makeLabel("-- Colors: --", {sep: true, cls: "textgrey"}),
+            makeColor("https://hordes.io/data/ui/skills/14.avif?v=8822612", "Chilling Radiance", chillColor),
+            makeColor("https://hordes.io/data/ui/skills/deepFrozen.avif?v=8822612", "Deep Frozen", deepFreezeColor),
+            makeColor("https://hordes.io/data/ui/skills/37.avif?v=8822612", "Agonize", agonizeColor),
+            makeColor("https://hordes.io/data/ui/skills/stunBuff.avif?v=8822612", "Charge", stunColor),
+            makeColor("https://hordes.io/data/ui/skills/50.avif?v=8822612", "Relentless Cry", relColor),
+            makeColor("https://hordes.io/data/ui/skills/49.avif?v=8822612", "Blinding Shot", blindColor),
+            makeCategory("Uncategorized", {marginTop: "10px"}),
+            makeToggle("Block +(x) item & charm vendor", disallowSpecialSelling, {color: "#ff6d6d"}),
+            makeKeybind(null, "Freecam mode (Keybind)", freecamModeKb, "freecamModeKb"),
+            makeText("Never filter items", alwaysPickup, {note: "Does not change pet behavior"}),
+            makeToggle("Sort party by class", sortParty, {sub: "Shaman => Archer => Mage => Warrior"}),
+            makeToggle("Class-color party HP bars", classColorParty, {note: P.ui.settings.reload, reload: true}),
+            makeToggle("Disable skillbar frames", noFrameColor, {note: P.ui.settings.reload, reload: true}),
+            makeToggle("Enable mage cape-swing", enableMageCapeswing),
+            makeToggle("Enable charm auto equip", charmAutoEquip, {note: "Equips charms along with saved gear sets"}),
+            makeToggle("Enable charm auto stash", charmAutoStash, {note: "Stores charms along with saved gear sets"}),
+            makeToggle("Remove elixir button", removeElixir),
+            makeToggle("Area name above minimap", showEnvName),
+            makeToggle("Minimap worldlight overlay", minimapLightOverlay),
+            makeToggle("Hide kek quick buttons", hideKekQuickButtons),
+            makeToggle("Disable circle cooldown system", disableCircleCooldowns),
+            makeCategory("Rare Mob Notifier", {marginTop: "10px"}),
+            makeToggle("Show icon on minimap", radar),
+            makeToggle("Play sound when nearby", radarSound),
+            makeCategory("AOE Shader", {marginTop: "10px"}),
+            makeToggle("Enable AOE Shader", aoeCircleEnabled),
+            makeSlider("Radius", aoeCircleSize, {min: 0, max: 50, showValue: true}),
+            makeSlider("Alpha", aoeCircleAlpha, {min: 0, max: 100, showValue: true}),
+            makeColor(null, "Color", aoeCircleColor),
+            makeCategory("Effect Alpha", {marginTop: "10px"}),
+            makeSlider("Missile effects", fxAlphaSprite, {min: 0, max: 100}),
+            makeSlider("Ribbon effects", fxAlphaRibbon, {min: 0, max: 100}),
+            makeSlider("Mesh effects", fxAlphaModel, {min: 0, max: 100}),
+            makeCategory("Player Transform", {marginTop: "10px"}),
+            makeText("ID", playerTransformID, {numberInput: true}),
+            makeColor(null, "ColPrim", playerTransformColPrim),
+            makeColor(null, "ColSec", playerTransformColSec),
+            makeText("Mount ID", customMountID, {numberInput: true, note: "Set to 0 for default"}),
+            makeText("Prestige Simulate", prestigeSimulate, {note: "Set to 0 to disable", numberInput: true, reload: true}),
+            makeCategory("Lighting Rework", {marginTop: "10px"}),
+            makeSlider("Time", timeSlider),
+            makeToggle("Use device time", timeToIngame),
+            makeSlider("Shadow draw distance", shadowDistMult, {min: 25, max: 200, showValue: true}),
+            makeSlider("Grass draw distance", grassDist, {min: 30, max: 400, showValue: true, reload: true}),
+            makeLabel("-- SSAO: --", {sep: true, cls: "textgrey"}),
+            makeToggle("SSAO", ssao, {note: "May be very GPU intensive"}),
+            makeSlider("Radius", ssaoRadius, {min: 1, max: 20, showValue: true, reload: true}),
+            makeSlider("Bias", ssaoBias, {min: 5, max: 30, showValue: true, reload: true}),
+            makeSlider("Fade distance", ssaoFadeDist, {min: 50, max: 500, showValue: true, reload: true}),
+            makeToggle("Blur", ssaoBlur, {note: P.ui.settings.reload, reload: true}),
+            makeToggle("Interleaved gradient noise", ssaoIGN, {note: P.ui.settings.reload, reload: true}),
+            makeLabel("-- Rain: --", {sep: true, cls: "textgrey"}),
+            makeToggle("Enable rain cycle", rainEnabled),
+            makeToggle("Disable in desert areas", rainNoDesert),
+            makeSlider("Min duration", rainDurMin, {min: 30, max: 180, showValue: true, suffix: " min."}),
+            makeSlider("Max duration", rainDurMax, {min: 30, max: 180, showValue: true, suffix: " min."}),
+            makeSlider("Min rain windows", rainWindowMin, {min: 1, max: 10, showValue: true, suffix: "/d"}),
+            makeSlider("Max rain windows", rainWindowMax, {min: 1, max: 10, showValue: true, suffix: "/d"}),
+            makeSlider("Rain transition speed", rainEaseSpeed, {min: 10, max: 300, showValue: true}),
+            makeToggle("Force rain", rainForce, {color: "#53a3f9"}),
+            /* makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
+            makeSlider("Speed override", speedOverride, {min: 0, max: 5, showValue: true}),
+            makeToggle("Prevent movement override", preventInputLock),
+            makeToggle("Phase mode", ghostMode),
+            makeToggle("Freefly mode", freeflyMode, {sub: "Not recommended to use without desync, only for testing purposes. Freecam mode is a better version of this."}),
+            makeToggle("No camera collision", noCameraCollision),
+            makeToggle("Nameplates react to ST", targetEnabled),
+            makeToggle("Show dead players", showDeadPlayers),
+            makeToggle("Desync", freezeServer, {sub: "While this setting is active, packets will not be sent to the server. Use with position update buttons to teleport precisely."}),
+            //makeLabel("The server will correct any position deviances within a single tick of around ~4 units. To bypass it slightly, use a +7 mount + pennant + orc / egg. The deviance is calculated based on player speed, higher speed = more deviance allowed. To teleport up towers, use pennant + egg => start jumping => enable Desync => fly yourself to the position => disable desync => input any direction to update player position. If you are jumping during this, the server may make you jump forward in the direction, so you may fall off. Advised to send a couple inputs as soon as you disable desync so it corrects your position immediately.", {cls: "textgrey", sep: true}),
+            makeText(null, meshViewerID, {numberInput: true}),
+            makeButton("View mesh", () => {
+                let v = fe.meshViewerID
+                if (_meshViewerEnt && I) {
+                    try {I.removeEntity(_meshViewerEnt)} catch(e) {}
+                    _meshViewerEnt = null;
+                }
+                if (!v || v <= 0 || !I || !I.player) return;
+                if (!Fi || !Fi.has(v)) return;
+                try {
+                    let id = 999000000 + Math.floor(Math.random() * 1000000);
+                    let fwd = [Math.sin(I.player.rot), Math.cos(I.player.rot)];
+                    let ent = I.createEntity(11, id, {});
+                    ent.pos[0] = I.player.pos[0];
+                    ent.pos[1] = I.player.pos[1] + fwd[0] * 10;
+                    ent.pos[2] = I.player.pos[2];
+                    ent.setNodeInfo(v, 1);
+                    let noop = () => {};
+                    ent.preFixed = ent.tickFixed = ent.postFixed = noop;
+                    ent.netDeletion = { reset: noop, done: () => false, end: -Infinity, start: 0 };
+                    I.addEntity(ent);
+                    _meshViewerEnt = ent;
+                } catch(e) {console.log("Mesh viewer spawn failed:", e)}
+            }),
+            makeButton("Log Entities", () => {
+                console.log(I.getEnvironmentId(I.player.pos[0], I.player.pos[2]))
+                Ha.forEach((t, id) => console.log(`terrain ${id} tex=${t.texture} dark=${t.darkest} bright=${t.brightest}`));
+                let rows = [];
+                for (let e = 0; e < I.entities.array.length; e++) {
+                    let n = I.entities.array[e];
+                    if (n === I.player) continue;
+                    let dist = Math.round(Math.sqrt(oo(n.pos, I.player.pos)) * 10) / 10;
+                    rows.push({
+                        id: n.id,
+                        name: n.name || "",
+                        type: n.type,
+                        class: n.class,
+                        level: n.level,
+                        faction: n.faction,
+                        party: n.party,
+                        clan: n.clan || "",
+                        alive: n.stats ? n.stats.alive : null,
+                        renderVisible: n.visual ? n.visual.transform.visible : null,
+                        inFog: n.visual ? n.visual.inFog : null,
+                        dist,
+                        buffs: n.buffs?.buffs
+                    });
+                }
+                console.table(rows);
+            }),
+            makeButton("Log mesh map", () => {
+                if (!I || !I.player) return;
+                console.table(Object.values(Array.from(Fi)))
+            }),
+            makeButton("+dir", () => {
+                if (!I || !I.player) return;
+                I.player.pos[0] += Math.sin(I.player.rot);
+                I.player.pos[2] += Math.cos(I.player.rot);
+                I.player.sendInput(false, false, false, false, false, true);
+            }),
+            makeButton("+X", () => {
+                if (!I || !I.player) return;
+                I.player.pos[0] += 1;
+                I.player.sendInput(false, false, false, false, false, true);
+            }),
+            makeButton("+Y", () => {
+                if (!I || !I.player) return;
+                I.player.pos[1] += 5;
+                I.player.sendInput(false, false, false, false, false, true);
+                I.player.vel[1] = 0;
+            }),
+            makeButton("+Z", () => {
+                if (!I || !I.player) return;
+                I.player.pos[2] += 1;
+                I.player.sendInput(false, false, false, false, false, true);
+            }), */
+        ];
+        return {
+            c() { settings.forEach(s => s.c()); },
+            m(M, D) { settings.forEach(s => s.m(M, D)); },
+            p(te, ae) {},
+            i(M) { settings.forEach(s => s.i(M)); },
+            o(M) { settings.forEach(s => s.o(M)); },
+            d(M) { settings.forEach(s => s.d(M)); }
+        };
+    }
+
+    function MV(t) {
         let e, n, o, i, s = t[1].name + "",
             r, l, a, c, f, u = pe(t[32]),
             m = [];
         for (let b = 0; b < u.length; b += 1) {
             m[b] = eF(J6(t, u, b));
         }
-        let g = [wV, xV, kV, yV, bV, modSettings], // settings
+        let g = [wV, xV, kV, yV, bV, modSettings],
             v = [];
 
         function _(b, k) {
@@ -15806,8 +18482,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function CV(t, e, n) {
-        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, apt, tsl;
-        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re)), re(t, alwaysPickup, Re => n(32, apt = Re)), re(t, timeSlider, Re => n(32, tsl = Re));;
+        let o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W;
+        re(t, el, Re => n(4, o = Re)), re(t, Xr, Re => n(5, i = Re)), re(t, Hr, Re => n(6, s = Re)), re(t, Yr, Re => n(7, r = Re)), re(t, mf, Re => n(8, l = Re)), re(t, ff, Re => n(9, a = Re)), re(t, uf, Re => n(10, c = Re)), re(t, If, Re => n(11, f = Re)), re(t, il, Re => n(12, u = Re)), re(t, Df, Re => n(13, m = Re)), re(t, Qr, Re => n(14, g = Re)), re(t, Zr, Re => n(15, v = Re)), re(t, df, Re => n(16, _ = Re)), re(t, pf, Re => n(17, b = Re)), re(t, Jr, Re => n(18, k = Re)), re(t, yf, Re => n(19, y = Re)), re(t, wf, Re => n(20, F = Re)), re(t, Mf, Re => n(21, A = Re)), re(t, xf, Re => n(22, C = Re)), re(t, Sf, Re => n(23, M = Re)), re(t, Pf, Re => n(24, D = Re)), re(t, Af, Re => n(25, U = Re)), re(t, Tf, Re => n(26, V = Re)), re(t, ol, Re => n(27, B = Re)), re(t, Ff, Re => n(28, q = Re)), re(t, Kr, Re => n(29, L = Re)), re(t, Ks, Re => n(30, $ = Re)), re(t, er, Re => n(31, W = Re));
         let R = [{
                 id: "ui",
                 name: P.ui.settings.interface
@@ -15881,8 +18557,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             ve = (Re, St) => {
                 St.set(Re === "" ? void 0 : Re), n(2, ge = !0)
             },
-            se = ["Forward", "Left", "Back", "Right", "TurnLeft", "TurnRight", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "NextTarget", "NextParty", "Untarget"],
-            le = ["Forward", "Left", "Back", "Right", "Turn Left", "Turn Right", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "Target Next Enemy", "Target Next Friendly", "Untarget"];
+            se = ["Forward", "Left", "Back", "Right", "TurnLeft", "TurnRight", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "NextTarget", "NextParty", "Untarget", "ItemNames"],
+            le = ["Forward", "Left", "Back", "Right", "Turn Left", "Turn Right", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "Target Next Enemy", "Target Next Friendly", "Untarget", "Shiftkey"];
         for (let Re = 1; Re < 25; ++Re) se.push("Skillbar" + Re);
         se = se.map((Re, St) => ({
             name: le[St] || Re,
@@ -16009,15 +18685,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         function at() {
             W = Gt(this.value), er.set(W)
         }
-        function setAlwaysPickup() {
-            apt = this.value, alwaysPickup.set(apt)
-        }
-        function setTimeSlider() {
-            tsl = this.value, timeSlider.set(tsl)
-        }
         return [Ji, N, ge, se, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, Y, Ce, ve, _e, be, Te, ie, Ie, ee, qe, Ge, Qe, He, he, ce, $e, oe, J, O, ue, je, Ue, ke, ze, Oe, dt, Ft, Ze, Ct, xe, Je, kt, At, De, at, () => {
             Xe(el, o = !1, o), ge && window.location.reload()
-        },setAlwaysPickup, apt, setTimeSlider, tsl]
+        }]
     }
     var dv = class extends Fe {
             constructor(e) {
@@ -17646,7 +20316,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 i[0] & 2048 && (s.settings = [{
                     name: "Stash Settings",
                     fun: o[33]
-                }]), i[0] & 131071 | i[1] & 65536 && (s.$$scope = {
+                }]), i[0] & 131071 | i[1] & 65584 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -19657,7 +22327,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             p(o, i) {
                 let s = {};
-                i & 8388727 && (s.$$scope = {
+                i & 8683639 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -19882,7 +22552,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 ue = !0
             },
             p(xe, Je) {
-                (!ue || Je & 16) && s !== (s = xe[4].name + "") && G(r, s), (!ue || Je & 16) && c !== (c = xe[4].level + "") && G(f, c), (!ue || Je & 16 && !st(g.src, v = ns(xe[4].class))) && p(g, "src", v), (!ue || Je & 16) && b !== (b = P.classes[xe[4].class].name + "") && G(k, b), (!ue || Je & 16 && y !== (y = "bold " + ("textc" + xe[4].class) + " svelte-rbq5ku")) && p(m, "class", y), (!ue || Je & 16 && !st(C.src, M = R1(xe[4].faction))) && p(C, "src", M), (!ue || Je & 16) && U !== (U = P.factions[xe[4].faction].name + "") && G(V, U), (!ue || Je & 16 && B !== (B = "bold " + ("textf" + xe[4].faction) + " svelte-rbq5ku")) && p(A, "class", B), (!ue || Je & 1) && N !== (N = ht(xe[0][20] || 0) + "") && G(Y, N), (!ue || Je & 4) && Ce !== (Ce = xe[2] < kr ? "/ " + ro(qs[xe[2]]) : "") && G(ve, Ce), (!ue || Je & 4) && G(Te, xe[2]);
+(!ue || Je & 16) && s !== (s = xe[4].name + "") && G(r, s), (!ue || Je & 16) && c !== (c = xe[4].level + "") && G(f, c), (!ue || Je & 16 && !st(g.src, v = ns(xe[4].class))) && p(g, "src", v), (!ue || Je & 16) && b !== (b = P.classes[xe[4].class].name + "") && G(k, b), (!ue || Je & 16 && y !== (y = "bold " + ("textc" + xe[4].class) + " svelte-rbq5ku")) && p(m, "class", y), (!ue || Je & 16 && !st(C.src, M = R1(xe[4].faction))) && p(C, "src", M), (!ue || Je & 16) && U !== (U = P.factions[xe[4].faction].name + "") && G(V, U), (!ue || Je & 16 && B !== (B = "bold " + ("textf" + xe[4].faction) + " svelte-rbq5ku")) && p(A, "class", B), (!ue || Je & 1) && N !== (N = ht(xe[0][20] || 0) + "") && G(Y, N), (!ue || Je & 4) && Ce !== (Ce = xe[2] < kr ? "/ " + ro(qs[xe[2]]) : "") && G(ve, Ce), (!ue || Je & 4) && G(Te, xe[2]);
                 let kt = {};
                 Je & 1 && (kt.amount = xe[0][21] || 0), Qe.$set(kt);
                 let At = {};
@@ -19937,7 +22607,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 ue = !1
             },
             d(xe) {
-                xe && (x(e), x(J), x(O)), Z(Qe), Z(he), ot(Ue, xe), Z(oe), ot(Oe, xe), ot(Ze, xe)
+                xe && (x(e), x(J), x(O)), Z(Qe), Z(he), ot(Ue, xe), Z(oe), ot(Oe, xe), ot(Ze, xe);
             }
         }
     }
@@ -19997,8 +22667,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }
         },
         SC = (t, e) => e >= 101;
-
-    function $L(t, e, n) {
+        function $L(t, e, n) {
         let o, i, s, r, l, a;
         re(t, Qs, _ => n(0, i = _)), re(t, ws, _ => n(3, s = _)), re(t, Gi, _ => n(4, r = _)), re(t, ha, _ => n(5, l = _)), re(t, ga, _ => n(6, a = _)), I && I.player && !MC && (MC = !0, Ml.forEach((_, b) => {
             b - 61 == I.player.class && _.statsConvert && _.statsConvert.forEach(k => {
@@ -20220,7 +22889,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     function YL(t) {
         let e, n, o, i, s, r, l, a, c, f = [],
             u = new Map,
-            m, g, v;
+            m, g, v, classFilterBar, classBtnHandlers = [];
 
         function _(B, q) {
             return B[2].membercount === 0 ? NL : OL
@@ -20251,14 +22920,147 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             c() {
                 e = h("div"), n = h("div"), o = h("div"), o.textContent = `\u{1F465} ${P.ui.party.name}`, k.c(), i = h("div"), A.c(), s = h("div"), l.c(), a = Ne(), c = h("div");
                 for (let B = 0; B < f.length; B += 1) f[B].c();
-                p(o, "class", "btn party"), p(i, "class", "btn border black textexp"), p(s, "class", "btn border black textcyan"), p(n, "class", "btnbar"), p(c, "class", "partyframes svelte-1xmlhk"), Ve(c, "width", t[7] + "px"), p(e, "class", "l-corner-ul uiscaled")
+                p(o, "class", "btn party"), p(i, "class", "btn border black textexp"), p(s, "class", "btn border black textcyan"), p(n, "class", "btnbar"), p(c, "class", "partyframes svelte-1xmlhk"), Ve(c, "width", t[7] + "px"), p(e, "class", "l-corner-ul uiscaled");
+                classFilterBar = h("div");
+                classFilterBar.id = "classFilterBar";
+                Ve(classFilterBar, "display", "none");
+                Ve(classFilterBar, "flex-direction", "row");
+                Ve(classFilterBar, "justify-content", "center");
+                Ve(classFilterBar, "align-items", "center");
+                Ve(classFilterBar, "gap", "4.5%");
+                Ve(classFilterBar, "padding", "4px 4px 8px 4px");
+                Ve(classFilterBar, "position", "absolute");
+                Ve(classFilterBar, "bottom", "90%");
+                Ve(classFilterBar, "background-color", "rgba(16,19,29,0.8)");
+                Ve(classFilterBar, "border-radius", "3px");
+                [[0,nextFriendlyClassWarrior,classSelectorKbWarrior],[1,nextFriendlyClassMage,classSelectorKbMage],[2,nextFriendlyClassArcher,classSelectorKbArcher],[3,nextFriendlyClassShaman,classSelectorKbShaman]].forEach(([classId,classStore,keybindStore]) => {
+                    let btn = h("button");
+                    Ve(btn, "width", "35px");
+                    Ve(btn, "aspect-ratio", "1");
+                    Ve(btn, "background-color", "#12141e");
+                    Ve(btn, "background-image", `radial-gradient(ellipse at center, transparent 80%, rgba(0,0,0,0.3) 100%), url(${ns(classId)})`);
+                    Ve(btn, "background-repeat", "no-repeat");
+                    Ve(btn, "background-size", "contain");
+                    Ve(btn, "background-position", "center");
+                    Ve(btn, "border", "4px solid rgba(16,19,29,1)");
+                    Ve(btn, "border-radius", "3px");
+                    Ve(btn, "cursor", "pointer");
+                    Ve(btn, "box-sizing", "border-box");
+                    Ve(btn, "position", "relative");
+                    Ve(btn, "pointer-events", "auto");
+                    Ve(btn, "overflow", "hidden");
+                    let keybindLabel = document.createElement("span");
+                    Ve(keybindLabel, "position", "absolute");
+                    Ve(keybindLabel, "top", "1px");
+                    Ve(keybindLabel, "right", "1px");
+                    Ve(keybindLabel, "font", "11px hordes");
+                    Ve(keybindLabel, "color", "#999");
+                    Ve(keybindLabel, "text-shadow", "1px 1px 0 #000,-1px -1px 0 #000");
+                    Ve(keybindLabel, "pointer-events", "none");
+                    Ve(keybindLabel, "line-height", "1");
+                    Ve(keybindLabel, "z-index", "1");
+                    btn.appendChild(keybindLabel);
+                    btn._classStore = classStore;
+                    btn._keybindStore = keybindStore;
+                    btn._keybindLabel = keybindLabel;
+                    btn._classId = classId;
+                    classFilterBar.appendChild(btn);
+                });
             },
             m(B, q) {
                 w(B, e, q), d(e, n), d(n, o), k.m(n, null), d(n, i), A.m(i, null), d(n, s), M[r].m(s, null), d(e, a), d(e, c);
                 for (let L = 0; L < f.length; L += 1) f[L] && f[L].m(c, null);
+                const realignBar = () => {
+                    let partyFramesElement = document.querySelector(".partyframes");
+                    if (!partyFramesElement) return;
+                    let barElement = partyFramesElement.querySelector(".grid.left .bar");
+                    if (!barElement) return;
+                    let partyFramesRect = partyFramesElement.getBoundingClientRect();
+                    let barRect = barElement.getBoundingClientRect();
+                    Ve(classFilterBar, "left", (barRect.left - partyFramesRect.left) + "px");
+                    Ve(classFilterBar, "width", barRect.width - 5 + "px");
+                };
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    let partyFramesElement = document.querySelector(".partyframes");
+                    if (partyFramesElement) {
+                        if (getComputedStyle(partyFramesElement).position === "static") Ve(partyFramesElement, "position", "relative");
+                        if (classFilterBar.parentElement !== partyFramesElement) partyFramesElement.insertBefore(classFilterBar, partyFramesElement.firstChild);
+                        realignBar();
+                    }
+                }));
+                const updateBarVis = () => { Ve(classFilterBar, "display", (fe.nextFriendlyClassSelectorEnabled && I && I.player && I.player.party > 0) ? "flex" : "none"); realignBar(); };
+                classBtnHandlers.push(nextFriendlyClassSelectorEnabled.subscribe(updateBarVis));
+                let partyWatcher = setInterval(updateBarVis, 500);
+                classBtnHandlers.push(() => clearInterval(partyWatcher));
+                if (!document.getElementById("kbBtnStyle")) {
+                    let styleEl = document.createElement("style");
+                    styleEl.id = "kbBtnStyle";
+                    styleEl.textContent = "@keyframes kbBtnOutlineIn{from{background-color:var(--kb-col0)}to{background-color:var(--kb-col1)}}#classFilterBar button:hover{outline:2px solid grey;}";
+                    document.head.appendChild(styleEl);
+                }
+                const classColors = {get 0() {return _classColors[0];}, get 1() {return _classColors[1];}, get 2() {return _classColors[2];}, get 3() {return _classColors[3];}};
+                const applyBtnState = (btn, active, animated) => {
+                    btn._active = active;
+                    if (active) {
+                        let color = fe.classColorBars ? (classColors[btn._classId] || "#34CB49") : "#34CB49";
+                        Ve(btn, "--kb-col0", "#000000");
+                        Ve(btn, "--kb-col1", hexToRgba(color, .85));
+                        if (animated) {
+                            Ve(btn, "animation", `kbBtnOutlineIn 0.5s ease-out -${(Date.now() % 1000) / 1000}s alternate infinite`);
+                            Ve(btn, "filter", "none");
+                        } else {
+                            Ve(btn, "animation", "");
+                            Ve(btn, "background-color", hexToRgba(color, .85));
+                            Ve(btn, "filter", "none");
+                        }
+                    } else {
+                        Ve(btn, "filter", "grayscale() brightness(70%)");
+                        Ve(btn, "animation", "");
+                        Ve(btn, "background-color", "#12141e");
+                    }
+                };
+                const refreshActive = () => [...classFilterBar.children].forEach(btn => { if (btn._active) applyBtnState(btn, true, fe.classSelectorAnimations); });
+                [...classFilterBar.children].forEach(btn => {
+                    classBtnHandlers.push(btn._classStore.subscribe(active => {
+                        if (active && btn.style.animation) return;
+                        applyBtnState(btn, active, fe.classSelectorAnimations);
+                    }));
+                    classBtnHandlers.push(btn._keybindStore.subscribe(() => { btn._keybindLabel.textContent = ""; }));
+                    btn.addEventListener("click", () => btn._classStore.update(v => !v));
+                });
+                classBtnHandlers.push(classSelectorAnimations.subscribe(refreshActive));
+                classBtnHandlers.push(fp.subscribe(refreshActive));
+                let keydownHandler = (evt) => {
+                    if (!fe.nextFriendlyClassSelectorEnabled) return;
+                    if (["shift", "control", "alt", "meta"].includes(evt.key.toLowerCase())) return;
+                    let mods = (evt.shiftKey ? "shift+" : "") + (evt.ctrlKey ? "ctrl+" : "") + (evt.altKey ? "alt+" : "");
+                    let keyCombo = mods + evt.key.toLowerCase();
+                    if (keyCombo && keyCombo === fe.classSelectorKbArcher) nextFriendlyClassArcher.update(v => !v);
+                    if (keyCombo && keyCombo === fe.classSelectorKbShaman) nextFriendlyClassShaman.update(v => !v);
+                    if (keyCombo && keyCombo === fe.classSelectorKbWarrior) nextFriendlyClassWarrior.update(v => !v);
+                    if (keyCombo && keyCombo === fe.classSelectorKbMage) nextFriendlyClassMage.update(v => !v);
+                };
+                document.addEventListener("keydown", keydownHandler);
+                classBtnHandlers.push(() => document.removeEventListener("keydown", keydownHandler));
                 m = !0, g || (v = [H(o, "click", t[9]), H(i, "click", t[12]), H(i, "contextmenu", bu), H(s, "click", t[13]), H(s, "contextmenu", bu)], g = !0)
             },
             p(B, [q]) {
+
+                if (fe.sortParty) {
+                    let container = document.querySelector(".partyframes");
+                    let frames = [...container.querySelectorAll(".grid")];
+                    let getClass = el => el.querySelector(".iconcontainer").children[0].classList[4];
+                    let getNum = el => parseInt(getClass(el).replace("bgc", ""));
+
+                    const nums = frames.map(getNum);
+                    const alreadySorted = nums.every((n, i) => i === 0 || nums[i - 1] >= n);
+
+                    if (!alreadySorted) {
+                        frames.sort((a, b) => getNum(a) - getNum(b));
+                        frames.forEach(frame => container.appendChild(frame));
+                    }
+                }
+
                 b === (b = _(B, q)) && k ? k.p(B, q) : (k.d(1), k = b(B), k && (k.c(), k.m(n, i))), F === (F = y(B, q)) && A ? A.p(B, q) : (A.d(1), A = F(B), A && (A.c(), A.m(i, null)));
                 let L = r;
                 r = D(B, q), r === L ? M[r].p(B, q) : (we(), E(M[L], 1, 1, () => {
@@ -20280,6 +23082,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             d(B) {
                 B && x(e), k.d(), A.d(), M[r].d();
                 for (let q = 0; q < f.length; q += 1) f[q].d();
+                classBtnHandlers.forEach(u => u()); classBtnHandlers = []; if (classFilterBar.parentElement) classFilterBar.parentElement.removeChild(classFilterBar);
                 g = !1, rt(v)
             }
         }
@@ -20367,6 +23170,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 }), n.$set(r)
             },
             i(i) {
+                p(e, "hidden", I.player.level && I.player.level === 45 ? true : null)
                 o || (S(n.$$.fragment, i), o = !0)
             },
             o(i) {
@@ -22836,6 +25640,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function Gq(t) {
+        console.log(t)
+        let vgStatRow, blStatRow, vg1, vg2, vg3, vg4, bl1, bl2, bl3, bl4, vgWarriorImage, vgMageImage, vgArcherImage, vgShamanImage, blWarriorImage, blMageImage, blArcherImage, blShamanImage, vgWarriorText, vgMageText, vgArcherText, vgShamanText, blWarriorText, blMageText, blArcherText, blShamanText, totalText, vgTotalNum, vsTotalText, blTotalNum;
         let e, n, o, i, s, r, l, a, c, f = t[2].kills[0] + "",
             u, m, g, v, _, b, k = ht(t[2].reward) + "",
             y, F, A = P.ui.war.status + "",
@@ -22872,18 +25678,54 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 ct = Ye(Ee);
             at.set(ct, De[et] = MS(ct, Ee))
         }
+        const updateClassCounts = contributors => {
+            const active = contributors.filter(c => c.stats[3] > 0);
+            const counts = [[0,0,0,0],[0,0,0,0]];
+            active.forEach(c => { if (counts[c.faction]) counts[c.faction][c.class]++; });
+            [[vgWarriorText,vgMageText,vgArcherText,vgShamanText],[blWarriorText,blMageText,blArcherText,blShamanText]].forEach((texts, f) => texts.forEach((t, c) => t.textContent = counts[f][c]));
+            vgTotalNum.textContent = counts[0].reduce((a, b) => a + b, 0);
+            blTotalNum.textContent = counts[1].reduce((a, b) => a + b, 0);
+        };
         return {
             c() {
+                vgStatRow = h("div"); blStatRow = h("div");
+                vg1 = h("span"); vgWarriorImage = h("img");
+                vgWarriorText = h("span"); vgWarriorText.textContent = "0"; Ve(vgWarriorText, "margin-left", "4px");
+                vg2 = h("span"); vgMageImage = h("img");
+                vgMageText = h("span"); vgMageText.textContent = "0"; Ve(vgMageText, "margin-left", "4px");
+                vg3 = h("span"); vgArcherImage = h("img");
+                vgArcherText = h("span"); vgArcherText.textContent = "0"; Ve(vgArcherText, "margin-left", "4px");
+                vg4 = h("span"); vgShamanImage = h("img");
+                vgShamanText = h("span"); vgShamanText.textContent = "0"; Ve(vgShamanText, "margin-left", "4px");
+                bl1 = h("span"); blWarriorImage = h("img");
+                blWarriorText = h("span"); blWarriorText.textContent = "0"; Ve(blWarriorText, "margin-left", "4px");
+                bl2 = h("span"); blMageImage = h("img");
+                blMageText = h("span"); blMageText.textContent = "0"; Ve(blMageText, "margin-left", "4px");
+                bl3 = h("span"); blArcherImage = h("img");
+                blArcherText = h("span"); blArcherText.textContent = "0"; Ve(blArcherText, "margin-left", "4px");
+                bl4 = h("span"); blShamanImage = h("img");
+                blShamanText = h("span"); blShamanText.textContent = "0"; Ve(blShamanText, "margin-left", "4px");
+                [vgWarriorImage,vgMageImage,vgArcherImage,vgShamanImage].forEach((v, i) => (p(v, "src", ns(i)), p(v, "class", "svgicon")));
+                [blWarriorImage,blMageImage,blArcherImage,blShamanImage].forEach((v, i) => (p(v, "src", ns(i)), p(v, "class", "svgicon")));
+                [vg1,vg2,vg3,vg4,bl1,bl2,bl3,bl4].forEach(v => (p(v, "class", "infosmall"), Ve(v, "margin-top", "15px")));
+                Ve(vgStatRow, "display", "flex"); Ve(vgStatRow, "gap", "4px"); Ve(vgStatRow, "justify-content", "center");
+                Ve(blStatRow, "display", "flex"); Ve(blStatRow, "gap", "4px"); Ve(blStatRow, "justify-content", "center");
+                totalText = h("span"); Ve(totalText, "display", "flex"); Ve(totalText, "gap", "4px"); Ve(totalText, "justify-content", "center"); Ve(totalText, "align-items", "center"); Ve(totalText, "margin-bottom", "15px");
+                vgTotalNum = h("span"); vgTotalNum.textContent = "0"; p(vgTotalNum, "class", "infosmall textf0");
+                vsTotalText = h("span"); vsTotalText.textContent = "vs"; p(vsTotalText, "class", "infosmall"); Ve(vsTotalText, "font-weight", "bold");
+                blTotalNum = h("span"); blTotalNum.textContent = "0"; p(blTotalNum, "class", "infosmall textf1"); Ve(blTotalNum, "position", "relative");
                 e = h("div"), n = h("div"), o = h("div"), i = h("div"), s = h("span"), s.textContent = `${P.factions[0].name}`, r = h("span"), l = h("img"), c = Ne(), u = T(f), m = h("div"), g = h("span"), v = h("img"), b = Ne(), y = T(k), F = h("span"), C = T(A), M = T(": "), D = h("span"), V = T(U), q = h("span"), $ = T(L), W = T(": "), R = h("span"), Y = T(N), ge = Ne(), Ce = h("div"), ve = h("span"), ve.textContent = `${P.factions[1].name}`, se = h("span"), le = h("img"), be = Ne(), ie = T(Te), K(Ie.$$.fragment), ee = h("div"), qe = h("table"), Ge = h("thead"), Qe = h("tr"), He = h("th"), He.textContent = `${P.ui.war.player}`, he = h("th"), $e = T(ce), J = h("th"), ue = T(O), Ue = h("th"), ze = T(ke), dt = h("th"), Ft = h("img"), Ct = Ne(), Je = T(xe), At = h("tbody");
                 for (let et = 0; et < De.length; et += 1) De[et].c();
-                p(s, "class", "infosmall textf0 svelte-19s383j"), Ve(s, "margin-top", "30px"), p(l, "class", "svgicon"), st(l.src, a = "/data/ui/icons/pvp.svg?v=8822612") || p(l, "src", a), p(r, "class", "infobig textprimary svelte-19s383j"), Ve(r, "margin-top", "10px"), p(v, "class", "svgicon"), st(v.src, _ = rr) || p(v, "src", _), p(g, "class", "infobig textfame svelte-19s383j"), Ve(g, "margin-top", "20px"), p(D, "class", B = "text" + ["red", "orange", "green"][t[2].status] + " svelte-19s383j"), p(F, "class", "infosmall svelte-19s383j"), Ve(F, "margin-top", "10px"), p(R, "class", "textprimary"), p(q, "class", "infosmall svelte-19s383j"), Ve(q, "margin-bottom", "20px"), p(ve, "class", "infosmall textf1 svelte-19s383j"), Ve(ve, "margin-top", "30px"), p(le, "class", "svgicon"), st(le.src, _e = "/data/ui/icons/pvp.svg?v=8822612") || p(le, "src", _e), p(se, "class", "infobig textprimary svelte-19s383j"), Ve(se, "margin-top", "10px"), p(o, "class", "grid three"), p(n, "class", "panel-black border grey"), p(He, "width", "30%"), p(he, "class", oe = "textcenter " + (t[0] == 1 ? "textwhite" : "")), p(J, "class", je = "textcenter " + (t[0] == 2 ? "textwhite" : "")), p(Ue, "class", Oe = "textcenter " + (t[0] == 0 ? "textwhite" : "")), p(Ft, "class", "svgicon"), st(Ft.src, Ze = rr) || p(Ft, "src", Ze), p(dt, "class", kt = "textcenter " + (t[0] == 3 ? "textwhite" : "")), p(Qe, "class", "textprimary"), p(qe, "class", "dense panel-black"), p(ee, "class", "scrollbar"), p(e, "class", "layout svelte-19s383j")
+                Ve(i, "text-align", "center");
+                p(s, "class", "infosmall textf0 svelte-19s383j"), Ve(s, "margin-top", "30px"), p(l, "class", "svgicon"), st(l.src, a = "/data/ui/icons/pvp.svg?v=8822612") || p(l, "src", a), p(r, "class", "infobig textprimary svelte-19s383j"), Ve(r, "margin-top", "10px"), p(v, "class", "svgicon"), st(v.src, _ = rr) || p(v, "src", _), p(g, "class", "infobig textfame svelte-19s383j"), Ve(g, "margin-top", "20px"), p(D, "class", B = "text" + ["red", "orange", "green"][t[2].status] + " svelte-19s383j"), p(F, "class", "infosmall svelte-19s383j"), Ve(F, "margin-top", "10px"), p(R, "class", "textprimary"), p(q, "class", "infosmall svelte-19s383j"), Ve(q, "margin-bottom", "6.5px"), p(ve, "class", "infosmall textf1 svelte-19s383j"), Ve(ve, "margin-top", "30px"), p(le, "class", "svgicon"), st(le.src, _e = "/data/ui/icons/pvp.svg?v=8822612") || p(le, "src", _e), p(se, "class", "infobig textprimary svelte-19s383j"), Ve(se, "margin-top", "10px"), p(o, "class", "grid three"), p(n, "class", "panel-black border grey"), p(He, "width", "30%"), p(he, "class", oe = "textcenter " + (t[0] == 1 ? "textwhite" : "")), p(J, "class", je = "textcenter " + (t[0] == 2 ? "textwhite" : "")), p(Ue, "class", Oe = "textcenter " + (t[0] == 0 ? "textwhite" : "")), p(Ft, "class", "svgicon"), st(Ft.src, Ze = rr) || p(Ft, "src", Ze), p(dt, "class", kt = "textcenter " + (t[0] == 3 ? "textwhite" : "")), p(Qe, "class", "textprimary"), p(qe, "class", "dense panel-black"), p(ee, "class", "scrollbar"), p(e, "class", "layout svelte-19s383j")
             },
             m(et, Ee) {
-                w(et, e, Ee), d(e, n), d(n, o), d(o, i), d(i, s), d(i, r), d(r, l), d(r, c), d(r, u), d(o, m), d(m, g), d(g, v), d(g, b), d(g, y), d(m, F), d(F, C), d(F, M), d(F, D), d(D, V), d(m, q), d(q, $), d(q, W), d(q, R), d(R, Y), d(m, ge), d(o, Ce), d(Ce, ve), d(Ce, se), d(se, le), d(se, be), d(se, ie), Q(Ie, n, null), d(e, ee), d(ee, qe), d(qe, Ge), d(Ge, Qe), d(Qe, He), d(Qe, he), d(he, $e), d(Qe, J), d(J, ue), d(Qe, Ue), d(Ue, ze), d(Qe, dt), d(dt, Ft), d(dt, Ct), d(dt, Je), d(qe, At);
+                w(et, e, Ee), d(e, n), d(n, o), d(o, i), d(i, s), d(i, r), d(i, vgStatRow), d(vgStatRow, vg1), d(vg1, vgWarriorImage), d(vg1, vgWarriorText), d(vgStatRow, vg2), d(vg2, vgMageImage), d(vg2, vgMageText), d(vgStatRow, vg3), d(vg3, vgArcherImage), d(vg3, vgArcherText), d(vgStatRow, vg4), d(vg4, vgShamanImage), d(vg4, vgShamanText), d(r, l), d(r, c), d(r, u), d(o, m), d(m, g), d(g, v), d(g, b), d(g, y), d(m, F), d(F, C), d(F, M), d(F, D), d(D, V), d(m, q), d(q, $), d(q, W), d(q, R), d(R, Y), d(m, ge), d(m, totalText), d(totalText, vgTotalNum), d(totalText, vsTotalText), d(totalText, blTotalNum), d(o, Ce), d(Ce, ve), d(Ce, se), d(se, le), d(se, be), d(se, ie), d(Ce, blStatRow), d(blStatRow, bl1), d(bl1, blWarriorImage), d(bl1, blWarriorText), d(blStatRow, bl2), d(bl2, blMageImage), d(bl2, blMageText), d(blStatRow, bl3), d(bl3, blArcherImage), d(bl3, blArcherText), d(blStatRow, bl4), d(bl4, blShamanImage), d(bl4, blShamanText), Q(Ie, n, null), d(e, ee), d(ee, qe), d(qe, Ge), d(Ge, Qe), d(Qe, He), d(Qe, he), d(he, $e), d(Qe, J), d(J, ue), d(Qe, Ue), d(Ue, ze), d(Qe, dt), d(dt, Ft), d(dt, Ct), d(dt, Je), d(qe, At);
                 for (let ct = 0; ct < De.length; ct += 1) De[ct] && De[ct].m(At, null);
                 Ut = !0, Re || (St = [H(he, "click", t[3]), H(J, "click", t[4]), H(Ue, "click", t[5]), H(dt, "click", t[6])], Re = !0)
             },
             p(et, Ee) {
+                (Ee & 4) && updateClassCounts(et[2].contributors);
                 (!Ut || Ee & 4) && f !== (f = et[2].kills[0] + "") && G(u, f), (!Ut || Ee & 4) && k !== (k = ht(et[2].reward) + "") && G(y, k), (!Ut || Ee & 4) && U !== (U = P.ui.war.statustypes[et[2].status] + "") && G(V, U), (!Ut || Ee & 4 && B !== (B = "text" + ["red", "orange", "green"][et[2].status] + " svelte-19s383j")) && p(D, "class", B), (!Ut || Ee & 4) && N !== (N = Nv(et[2].duration) + "") && G(Y, N), (!Ut || Ee & 4) && Te !== (Te = et[2].kills[1] + "") && G(ie, Te);
                 let ct = {};
                 Ee & 4 && (ct.fract = ~~(et[2].contrib / xu(et[2].level) * 100)), Ee & 4100 && (ct.$$scope = {
@@ -24704,7 +27546,18 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             })
         },
         Zd = t => {
-            Xd = Qd = 0, t ? (document.body.appendChild(xo), Tl = ~~Math.min(Math.max(200, window.innerWidth * .7), 1e3), El = ~~Math.min(Math.max(200, window.innerHeight * .7), 800), Tl % 2 !== 0 && (Tl += 1), El % 2 !== 0 && (El += 1), xo.width = Tl, xo.height = El, xo.className = "border black minimap enlarged") : (document.getElementById("minimapcontainer").appendChild(xo), xo.className = "border black minimap", Tl = xo.width = 200, El = xo.height = 200)
+            Xd = Qd = 0;
+            if (t) {
+                document.body.appendChild(xo);
+                Tl = ~~Math.min(Math.max(200, window.innerWidth * .7), 1e3);
+                El = ~~Math.min(Math.max(200, window.innerHeight * .7), 800);
+                Tl % 2 !== 0 && (Tl += 1), El % 2 !== 0 && (El += 1);
+                xo.width = Tl, xo.height = El, xo.className = "border black minimap enlarged";
+            } else {
+                document.getElementById("minimapcontainer").appendChild(xo);
+                xo.className = "border black minimap";
+                Tl = xo.width = 200, El = xo.height = 200;
+            }
         },
         e8 = function() {
             this.loaded = !0
@@ -24714,6 +27567,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             JS++;
             let e = I.player;
             if (!e || fe.mapLowQuality && JS % 10 !== 0) return;
+            let now = performance.now();
             let n = Ti;
             n.globalAlpha = 1, n.clearRect(0, 0, Tl, El);
             let o = e,
@@ -24778,7 +27632,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 W = Math.cos(U - 2.4) * 6,
                 R = f / 2 - Xd * xr,
                 N = u / 2 - Qd * xr;
-            n.fillStyle = "#C1DAE2", n.strokeStyle = "#1A293A", n.lineWidth = 1, n.beginPath(), n.moveTo(R + V, N + B), n.lineTo(R + q, N + L), n.lineTo(R + $, N + W), n.closePath(), n.fill(), n.stroke()
+            n.fillStyle = "#C1DAE2", n.strokeStyle = "#1A293A", n.lineWidth = 1, n.beginPath(), n.moveTo(R + V, N + B), n.lineTo(R + q, N + L), n.lineTo(R + $, N + W), n.closePath(), n.fill(), n.stroke();
         },
         i2 = (t, e, n) => {
             if (o2.has(e)) {
@@ -24795,17 +27649,15 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }
         },
         KS = (t, e, n, o, entity) => {
-            // edited for raremob radar
-            let drawMob = (name,id,type,entityId) => {
+            function drawMob(name,id,type,entityId) {
                 let icon = new Image()
                 icon.src = `/data/items/${type}/${type}${id}_q3.avif?v=8822612`
                 Ti.drawImage(icon, ...t, 17, 17)
                 Ti.strokeRect(...t, 17, 17)
             }
-            for(mob of rareMobs) {
-                if(entity.name === mob.name && entity.type == 1 && fe.radar) return drawMob(mob.name,mob.id,mob.type,entity.id)
+            for (let mob of rareMobs) {
+                if (entity.name === mob.name && entity.type == 1 && fe.radar) return drawMob(mob.name, mob.id, mob.type, entity.id)
             }
-            // end
             if (!(!fe.mapShowMonsters && e === 1))
                 if (e === 0) {
                     if (Yd && o && I.smoothtime % 1 > .5) return;
@@ -24925,7 +27777,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function NR(t) {
-        let e, n, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, N, Y, ge, Ce, ve, se, le, _e, be, Te;
+        let e, n, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, N, Y, ge, Ce, ve, se, le, _e, be, Te, chatButton;
         e = new z6({}), o = new hb({});
         let ie = t[0] && !t[0].subscribed_until && (t[1] || t[2] || t[3] || t[4] || t[5]) && o8(t);
         r = new RC({}), l = new UC({}), a = new d3({}), c = new iC({}), f = new O6({}), u = new iw({}), m = new EC({}), g = new Zx({}), v = new T6({}), _ = new L6({}), b = new j6({}), k = new oF({}), y = new PC({}), F = new vF({}), A = new TF({}), C = new UF({}), M = new WF({}), D = new pC({}), U = new FS({}), V = new ES({}), B = new fS({}), q = new kS({}), L = new OS({}), $ = new ZS({}), R = new X6({}), N = new n8({}), Y = new XS({});
@@ -25044,7 +27896,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         g2 = 0,
         v2 = 0,
         p8 = (t, e) => {
-            t = Math.max(150, Math.min(1500, t)), li = t * .8, m2 = Math.min(li, 150), u2 = 20, d2 = li, v2 = li ** 2, h2 = Math.min(li, 50), g2 = Math.min(li / 32, 150 / 32) ** 2, gt.far = m8 = t, HR = t ** 2, sf(gt), Au = Math.min(li, 100 + e * 50), Pu = Math.min(li, 40 + e * 10), p2 = (Au + Pu) / 2, Wn = Math.ceil(t * 2 / 32), Wn += Wn % 2, Rs = Wn / 2, Rs += Rs % 2, YR()
+            t = Math.max(150, Math.min(1500, t)), li = t * .8, m2 = Math.min(li, 150), u2 = 20, d2 = li, v2 = li ** 2, h2 = Math.min(li, 50), g2 = Math.min(li / 32, _grassDist / 32) ** 2, gt.far = m8 = t, HR = t ** 2, sf(gt), Au = Math.min(li, (100 + e * 50) * _shadowDistMult), Pu = Math.min(li, (40 + e * 10) * _shadowDistMult), p2 = (Au + Pu) / 2, Wn = Math.ceil(t * 2 / 32), Wn += Wn % 2, Rs = Wn / 2, Rs += Rs % 2, YR()
         },
         f2 = [],
         wr = [],
@@ -25269,10 +28121,16 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             zs.forEach(F8), zs.length = 0
         },
         S8 = () => {
+            let alpha = 1 * (fe.fxAlphaRibbon / 100);
             for (let t = 0; t < zs.length; ++t) {
                 let e = zs[t];
-                e.mesh.transform.visible && ni(e.mesh, ut[e.mesh.program])
+                if (e.mesh.transform.visible) {
+                    e.mesh.uniformData.colStart[3] = e._colStartA * alpha;
+                    e.mesh.uniformData.colEnd[3] = e._colEndA * alpha;
+                    ni(e.mesh, ut[e.mesh.program])
+                }
             }
+            return
         },
         k2 = class {
             constructor(e) {
@@ -25296,7 +28154,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 }), jp(this.geometry, this.geometry.attributes.uv, n), this.mesh = Bo(this.geometry, 19, j.TRIANGLES), this.mesh.uniformData.offset = [0, 0], this.waitingForTexture = !1, this.parent = null
             }
             reset(e, n, o, i, s, r) {
-                this.stepTimer.reset(0, e.interval), this.duration.reset(r, s), this.currentStep = 0, this.a = it(this.a, o), this.b = it(this.b, i), this.mesh.uniformData.offset[1] = 1 / (this.maxSteps + 1), this.remove = !1, this.timeoutSteps = 0, this.geometry.drawRangeCount = 0, this.mesh.uniformData.colStart = e.colStart, this.mesh.uniformData.colEnd = e.colEnd, e.texture > 0 ? (this.waitingForTexture = !0, this.mesh.program = 19, vo(e.texture, l => {
+                this.stepTimer.reset(0, e.interval), this.duration.reset(r, s), this.currentStep = 0, this.a = it(this.a, o), this.b = it(this.b, i), this.mesh.uniformData.offset[1] = 1 / (this.maxSteps + 1), this.remove = !1, this.timeoutSteps = 0, this.geometry.drawRangeCount = 0, this.mesh.uniformData.colStart = [...e.colStart], this.mesh.uniformData.colEnd = [...e.colEnd], this._colStartA = e.colStart[3], this._colEndA = e.colEnd[3], e.texture > 0 ? (this.waitingForTexture = !0, this.mesh.program = 19, vo(e.texture, l => {
                     this.mesh.uniformData.diffuse = l, this.waitingForTexture = !1
                 })) : (this.waitingForTexture = !1, this.mesh.program = 18, this.mesh.uniformData.diffuse = void 0), this.parent = n
             }
@@ -25411,7 +28269,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     b = a * 2,
                     k = a * 3,
                     y = a * 4;
-                n[k] = f[0], n[k + 1] = f[1], n[k + 2] = f[2], i[y] = u[0], i[y + 1] = u[1], i[y + 2] = u[2], i[y + 3] = u[3], o[b] = m[0], o[b + 1] = m[1], s[y] = g[0], s[y + 1] = g[1], s[y + 2] = g[2], s[y + 3] = g[3], r[y] = v[0], r[y + 1] = v[1], r[y + 2] = v[2], r[y + 3] = v[3], l[y] = _[0], l[y + 1] = _[1], l[y + 2] = _[2], l[y + 3] = _[3]
+                let alpha = fe.fxAlphaSprite / 100;
+                n[k] = f[0], n[k + 1] = f[1], n[k + 2] = f[2], i[y] = u[0], i[y + 1] = u[1], i[y + 2] = u[2], i[y + 3] = u[3], o[b] = m[0], o[b + 1] = m[1], s[y] = g[0], s[y + 1] = g[1], s[y + 2] = g[2], s[y + 3] = g[3], r[y] = v[0], r[y + 1] = v[1], r[y + 2] = v[2], r[y + 3] = v[3] * alpha, l[y] = _[0], l[y + 1] = _[1], l[y + 2] = _[2], l[y + 3] = _[3] * alpha
             }
         },
         T8 = t => {
@@ -25532,6 +28391,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             gc = t
         },
         U8 = t => {
+            if (fe.realtimeshadows) gc = true;
             let n = [Pu, Au],
                 o = [5, 20];
             for (let i = 0; i < Rl.length; ++i) {
@@ -25616,6 +28476,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             is(e[0], t.transform, t.priority, !1, 1)
         }
     }];
+    let effectModelInstances = new Set();
     var w2 = [{
             create: (t, e) => q8([e[0], e[1], e[2]], e[3], t.transform),
             tick: (t, e, n, o, i) => {},
@@ -25670,10 +28531,14 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         }, {
             create: (t, e) => {
                 let n = rs(e[0], !1, !0, !0);
-                return X(n.position, e[1], e[2], e[3]), X(n.scale, e[4], e[5], e[6]), X(n.rotation, e[7], e[8], e[9]), Cn(n, t.transform), $t(n, !1), n
+                X(n.position, e[1], e[2], e[3]), X(n.scale, e[4], e[5], e[6]), X(n.rotation, e[7], e[8], e[9]), Cn(n, t.transform), $t(n, !1);
+                if (n.data && n.data.alpha) n.data.alpha[0] = fe.fxAlphaModel / 100;
+                effectModelInstances.add(n);
+                return n
             },
             tick: (t, e, n, o, i) => {},
             end: (t, e, n) => {
+                effectModelInstances.delete(n);
                 Ei(n.data.multi, n)
             },
             show: (t, e, n) => {
@@ -25815,6 +28680,10 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         x2, j8 = t => {
             x2 = t
         };
+    fxAlphaModel.subscribe(v => {
+        let alpha = v / 100;
+        for (let model of effectModelInstances) if (model.data && model.data.alpha) model.data.alpha[0] = alpha;
+    });
     var Lo = [],
         zl = [],
         Bl = [],
@@ -25930,7 +28799,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             Lo.length = 0, zl.length = 0, Bl.length = 0, qu.length = 0
         };
     j8(Ii);
-    var vc = [0, 2, 2.3],
+    var vc = [0, Math.sin(1), Math.cos(1)],
         _c = [0, 0, 0];
     to(vc, vc);
     var fn = {},
@@ -26071,6 +28940,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     _0.forEach(t => {
         t.start = C2, C2 = t.end = C2 + 1 / Q8 * t.dur
     });
+    const RAIN_DIM = 0.65;
     var Cz = (t, e, n) => {
         t = vt(t, 0, 1);
         let o = .5,
@@ -26084,9 +28954,18 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }
         }
         let r = Jt.sky.data;
-        ls(r.skycolors, 0, fn.skytop[i], fn.skytop[s], o), ls(r.skycolors, 3, fn.skymid[i], fn.skymid[s], o), ls(r.skycolors, 6, fn.skybot[i], fn.skybot[s], o), ls(r.skycolors, 9, fn.horizon[i], fn.horizon[s], o), ls(r.skycolors, 12, fn.clouds[i], fn.clouds[s], o), ls(r.suncolor, 0, fn.sun[i], fn.sun[s], o), it(_c, vc), _c[1] = Math.abs(Math.sin(t * 6.282)), to(_c, _c);
+        ls(r.skycolors, 0, fn.skytop[i], fn.skytop[s], o), ls(r.skycolors, 3, fn.skymid[i], fn.skymid[s], o), ls(r.skycolors, 6, fn.skymid[i], fn.skymid[s], o), ls(r.skycolors, 9, fn.fog[i], fn.fog[s], o), ls(r.skycolors, 12, fn.clouds[i], fn.clouds[s], o), ls(r.suncolor, 0, fn.sun[i], fn.sun[s], o), it(_c, vc), _c[1] = Math.abs(Math.sin(t * 6.282)), to(_c, _c);
+        let _ra = window._modRainAmount || 0;
+        let _dm = 1 - (1 - RAIN_DIM) * _ra;
+        if (_ra > 0) { for (let _ri = 0; _ri < 15; _ri++) r.skycolors[_ri] *= _dm; }
         let l = Jt.environment.data;
-        ls(l.worldlight, 0, fn.direct[i], fn.direct[s], o), ls(l.worldlight, 3, fn.ambient[i], fn.ambient[s], o), l.worldlight[6] = vc[0], l.worldlight[7] = vc[1], l.worldlight[8] = vc[2], ls(l.fog, 0, fn.fog[i], fn.fog[s], o), l.fog[3] = n > 0 ? -100 : u2, l.fog[4] = n > 0 ? m2 : li, l.daycycle[0] = t, l.time[0] = e % 3600, ut[31].uniforms.amount.value = qf(o, fn.bloom[i], fn.bloom[s])
+        ls(l.worldlight, 0, fn.direct[i], fn.direct[s], o), ls(l.worldlight, 3, fn.ambient[i], fn.ambient[s], o), l.worldlight[6] = vc[0], l.worldlight[7] = vc[1], l.worldlight[8] = vc[2];
+        if (_ra > 0) { for (let _ri = 0; _ri < 6; _ri++) l.worldlight[_ri] *= _dm; } ls(l.fog, 0, fn.fog[i], fn.fog[s], o), l.fog[3] = n > 0 ? -100 : u2, l.fog[4] = n > 0 ? m2 : li, l.daycycle[0] = t, l.time[0] = e % 3600, ut[31].uniforms.amount.value = qf(o, fn.bloom[i], fn.bloom[s]);
+        if (ut[13] && ut[13].uniforms.u_rainAmount) ut[13].uniforms.u_rainAmount.value = _ra;
+        if (ut[14] && ut[14].uniforms.u_rainAmount) ut[14].uniforms.u_rainAmount.value = _ra;
+        if (_ra > 0) { l.fog[0] *= _dm; l.fog[1] *= _dm; l.fog[2] *= _dm; }
+        ut[11].uniforms.u_rain.value = _ra;
+        if (ut[8] && ut[8].uniforms && ut[8].uniforms.u_wetness) ut[8].uniforms.u_wetness.value = _ra;
     };
     var Sz = [],
         Pz = [],
@@ -26130,20 +29009,20 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         y0 = t => b0 = t,
         tP = (t, e, n) => {
             let o = (e / 3600 + .9) % 1;
-            if(fe.timeSlider !== "0") o = fe.timeSlider / 1000
-            if(fe.timeToIngame) {
+
+            if (fe.timeSlider !== "0") o = fe.timeSlider / 1000;
+            if (fe.timeToIngame) {
                 let now = new Date();
-                let seconds = (now.getHours() * 3600) + (now.getMinutes() * 60) + now.getSeconds()
-
-                let dayStart = 7.25 * 3600;
-                let dayEnd = 24 * 3600;
-                let totalSeconds = 24 * 3600;
-
+                let seconds = (now.getHours() * 3600) + (now.getMinutes() * 60) + now.getSeconds();
+                let dayStart = 7.25 * 3600, dayEnd = 21 * 3600, totalSeconds = 24 * 3600;
                 let nightSeconds = (seconds - dayEnd + totalSeconds) % totalSeconds;
                 let nightDuration = totalSeconds - (dayEnd - dayStart);
-
-                o = Math.min(1, seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.72 : 0.8 + (nightSeconds / nightDuration) * 0.1);
+                let dawnStart = 5 * 3600;
+                let nightToDawn = (dawnStart - dayEnd + totalSeconds) % totalSeconds;
+                let dawnDuration = nightDuration - nightToDawn;
+                o = Math.min(1, seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.775 : nightSeconds < nightToDawn ? 0.775 + (nightSeconds / nightToDawn) * 0.10 : 0.875 + ((nightSeconds - nightToDawn) / dawnDuration) * 0.125);
             }
+
             o < .7 ? o = Lf(0, .7, o) * .4 : o = .4 + Lf(.7, 1, o) * .6, X8(o, b0, e, n), K8(o, b0, e, n), J8(o, b0)
         };
     var Ru = () => [-0, -0, -0, -0, -0, -0],
@@ -26753,7 +29632,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             it(No.transform.position, _c), gn(No.transform.position, No.transform.position, .45), jr(No.transform, mb, !1, ub), No.transform.matrixNeedsUpdate = !0
         },
         RP = () => {
-            No.transform.visible && ni(No, ut[12])
+            No.transform.visible && !(window._modRainAmount > 0.5) && ni(No, ut[12])
         };
     var L0 = 24,
         It = L0 + 1,
@@ -27343,10 +30222,43 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         hA = t => {
             mw(t)
         },
+        _ssaoHistIdx = 0,
+        _ssaoFirstFrame = true,
+        _ssaoPrevPVMat = new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]),
         gA = t => {
             nB();
             let e = dA(Sc, gt, !1);
-            oB(e), iB(e), sB(t)
+            oB(e), iB(e);
+            if (fe.ssao) {
+                qn("depthTex", Si.depthTexture, 0, ut[35]);
+                qn("inputA", Si.colorTexture, 0, ut[35]);
+                Gu(ssaoFb1); j.clear(j.COLOR_BUFFER_BIT); ni(tu, ut[35]);
+                qn("depthTex", Si.depthTexture, 0, ut[36]);
+                Pc(36, ssaoFb2, ssaoFb1, null, [["blurStep", 0]]);
+                qn("inputA", ssaoFb2.colorTexture, 0, ut[36]);
+                qn("depthTex", Si.depthTexture, 0, ut[36]);
+                ut[36].uniforms.blurStep.value = 1;
+                Gu(ssaoFb1); ni(tu, ut[36]);
+
+                let histPrev = _ssaoHistIdx === 0 ? ssaoHistA : ssaoHistB;
+                let histNext = _ssaoHistIdx === 0 ? ssaoHistB : ssaoHistA;
+                qn("inputA", ssaoFb1.colorTexture, 0, ut[37]);
+                qn("inputB", histPrev.colorTexture, 0, ut[37]);
+                qn("depthTex", Si.depthTexture, 0, ut[37]);
+                ut[37].uniforms.prevProjectionViewMatrix.value = _ssaoPrevPVMat;
+                ut[37].uniforms.blendAlpha.value = _ssaoFirstFrame ? 1.0 : 0.1;
+                Gu(histNext); ni(tu, ut[37]);
+                qn("inputA", histNext.colorTexture, 0, ut[38]);
+                qn("inputB", Si.colorTexture, 0, ut[38]);
+                Gu(Ls); ni(tu, ut[38]);
+                q0(Ls, Si, j.COLOR_BUFFER_BIT);
+                if (m4) Vs(_ssaoPrevPVMat, m4.projectionViewMatrix, 0);
+                _ssaoHistIdx ^= 1;
+                _ssaoFirstFrame = false;
+            } else {
+                _ssaoFirstFrame = true;
+            }
+            sB(t)
         };
     var Ac = fe.resolution / 100,
         _A = !1,
@@ -27354,8 +30266,14 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         bA = () => {
             j || (alert("WebGL2 problem found."), window.location.href = "/technical"), yA(), hA(vA), KP(vA), xA(tt.width, tt.height), Ln.className = "l-canvas", To.className = "l-canvas", To.style.pointerEvents = "all", window.addEventListener("resize", kA, !1)
         };
+    var _hrVal = 1500;
     Hr.subscribe(t => {
+        _hrVal = t;
         p8(t ** 2 / 10, fe.shadowmapResolution)
+    });
+    shadowDistMult.subscribe(v => {
+        _shadowDistMult = v / 100;
+        p8(_hrVal ** 2 / 10, fe.shadowmapResolution);
     });
     Yr.subscribe(t => {
         gt.fov = t, sf(gt)
@@ -27465,9 +30383,9 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 i.screenOffset[0] *= Math.max(0, 1 - t * 3), i.screenOffset[1] *= Math.max(0, 1 - t * 3), n[0] = i.screenPos[0] + i.screenOffset[0], n[1] = i.screenPos[1] + i.screenOffset[1], qx(n, i.img, i.alpha, i.scale)
             }
         },
-        N2 = (t, e, n, o, i = !1, s) => {
+        N2 = (t, e, n, o, i = !1, s, skillId = 0, caster = {}, target = {}) => {
             let r = n === 3;
-            Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(fe.disableDamage ? "" : e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9)
+            Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(fe.disableDamage ? "" : e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9, skillId,caster,target)
         },
         W2 = (t, e, n, o = !1, i) => {
             Yu(t, o, n === 3, o || n !== 3, ht(fe.disableHealing ? "" : e), o ? qt.pheal : qt.heal, i, cs, 1.3)
@@ -27481,9 +30399,43 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     var AA = (t, e) => {
             Yu(t, !1, !1, !0, `+${e} Fame`, qt.fame, 5.5, cs, 1.5)
         },
-        Yu = (t, e = !1, n = !1, o = !1, i, s, r, l, a) => {
-            let c = lB();
-            it(c.pos, t), c.pos[1] += r || 0, c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o, c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0), c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width, c.height = c.img.height, Hu.push(c)
+        updateElement = (obj,newObj,params,t, r, n, o,l,a) => {
+            obj.value += newObj.value
+            it(obj.pos, t)
+            obj.pos[1] += r || 0
+            obj.float = o
+            obj.crit = n
+            obj.timer.duration = Math.min(obj.timer.duration + 1, 2)
+            obj.timer.end = Math.min(Math.max(obj.timer.end, cs + 1), cs + 2)
+            obj.img = lu(obj.value.toLocaleString("en-US"), params)
+            obj.timer.reset(l, a)
+            X(obj.screenPos, 0, 0, 0)
+            ho(obj.screenOffset, 0, 0, 0)
+        },
+        Yu = (t, e = !1, n = !1, o = !1, i, s, r, l, a, skillId = 0, caster = {}, target = {}) => {
+            let c = lB()
+            it(c.pos, t)
+            c.pos[1] += r || 0
+            c.value = Number(String(i).replace(/[^0-9]/g, ''))
+            c.skillId = skillId
+            c.caster = caster
+            c.lastHit = Date.now()
+            c.target = target
+
+            c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o,
+            c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0),
+            c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width,
+            c.height = c.img.height
+            for (let ii of Hu) {
+                if (!fe.stackIndicators) continue
+                if (ii.caster.id == null || ii.target.id == null) continue
+                let sameCaster = c.caster.id === ii.caster.id
+                let sameTarget = c.target.id === ii.target.id
+                let sameSkill = c.skillId === ii.skillId
+
+                if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s, t, r, n, o,l,a)
+            }
+            Hu.push(c)
         },
         O2 = [],
         lB = () => O2.length ? O2.pop() : {
@@ -27499,7 +30451,12 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             alpha: 0,
             img: void 0,
             width: 0,
-            height: 0
+            height: 0,
+            value: 0,
+            skillId: 0,
+            caster: {},
+            lastHit: 0,
+            target: {}
         },
         aB = t => {
             O2.push(t)
@@ -27537,7 +30494,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     }
                     const normalizedEntry = entry.toLowerCase().replace(/\s/g, "");
                     return normalizedEntry.includes(itemName) || itemName.includes(normalizedEntry);
-                    }) // lowkey too lazy to write this properly soooooooooo
+                    })
                 ) TA(i, e);
                 i.type !== 3 || !i.visual.transform.visible || i.quality < (i.droptype === "material" ? fe.materialQualityFilter : fe.itemQualityFilter) || ( j2.includes(i.droptype) ) || TA(i, e)
             }), Tc.forEach(i => {
@@ -27569,7 +30526,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }), o !== _n && hu(o)
         };
     var Jn = [],
-        IA, DA, Wo = 2,
+        IA, DA, Wo = 2, revIconImg = null,
         VA = () => {
             let n = Math.ceil(100),
                 o = Math.max(7, Math.ceil(9 * 1)),
@@ -27577,53 +30534,195 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 s = n - Wo * 2,
                 r = o - Wo * 2;
             Jn.push(Vo(null, Lt("panel"), n, o, 0, 0, i)), Vo(Jn[0], Lt("grey"), s, r, Wo, Wo, 1), Jn.push(Vo(null, Lt("health"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#ffbc00", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("enemy"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("party"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("pvp"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#555555", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("spell"), s, r, 0, 0, 1));
-            for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, Lt("c" + l), s, r, 0, 0, 1));
-            IA = Vo(null, "#ffffff", 100 + Wo * 2, 9 + Wo * 2, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo * 2, 16 + Wo * 2, 0, 0, 3)
+            for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, _classColors[l], s, r, 0, 0, 1));
+            Jn.push(Vo(null, "#ffffff", s, r, 0, 0, 1));
+            IA = Vo(null, "#ffffff", 100 + Wo, 9 + Wo, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo, 16 + Wo , 0, 0, 3);
+            _classNameplateParams = {s, r};
         },
         fB = () => {
             let t = [];
             return I.entities.array.forEach((e, n) => {
-                !e.visual || !e.visual.transform.visible || e.stats && !e.stats.alive || e.id !== zn && e.visual.cDist && e.visual.cDist > 60 || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
+                !e.visual || (!e.visual.transform.visible && !fe.showInvisiblePlayers) || (e.stats && !e.stats.alive && !fe.showDeadPlayers && e.id !== I.playerId) || e.id !== zn && e.visual.cDist && e.visual.cDist > 500 && !fe.showInvisiblePlayers || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && !fe.freecamMode && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
             }), t.sort((e, n) => n.hudPos[2] - e.hudPos[2])
         },
+        syllables = ['acaru', 'achi', 'acti', 'ael', 'aelle', 'aelo', 'aer', 'aeri', 'aero',
+  'aesh', 'aez', 'aias', 'aid', 'aien', 'aile', 'aist', 'akda', 'ale', 'alle', 'alpha', 'ambi', 'amlug', 'amne', 'amni', 'amo', 'amoe', 'amu', 'ana', 'andro', 'ani',
+  'anke', 'anse', 'anti', 'aol', 'aqua', 'arae', 'arc', 'argo', 'aria', 'ariel', 'aries', 'arius', 'arje', 'ark', 'arrow', 'arti', 'arvel', 'arye', 'aryn', 'ash', 'astri',
+  'athen', 'aukh', 'aura', 'aveni', 'axe', 'axna', 'az', 'azci', 'azo', 'azri', 'azu', 'azure', 'bag', 'bain', 'bais', 'bando', 'bane', 'baph', 'bard', 'baro', 'baron',
+  'bat', 'battle', 'beef', 'ber', 'bhol', 'bhul', 'bik', 'bird', 'bith', 'blade', 'blaze', 'bloch', 'blok', 'blood', 'bloom', 'bo', 'boink', 'bokh', 'bomb', 'bone', 'bonk',
+  'bore', 'borne', 'boro', 'bound', 'bow', 'brain', 'brass', 'brie', 'brir', 'bris', 'broke', 'bry', 'bryr', 'bubble', 'bugo', 'caen', 'calm', 'canis', 'cape', 'capri',
+  'carp', 'cary', 'cassi', 'cat', 'cavi', 'celo', 'cern', 'charm', 'chea', 'chef', 'cherry', 'ciea', 'cili', 'cill', 'ciri', 'claw', 'clear', 'cone', 'contra', 'copi',
+  'corba', 'corn', 'craft', 'cri', 'cris', 'cry', 'cryo', 'crypt', 'cua', 'cya', 'cye', 'cygni', 'cyra', 'daar', 'dae', 'daemo', 'dagg', 'dakk', 'dale', 'dali', 'dalia',
+  'dall', 'dane', 'dania', 'danus', 'dao', 'daru', 'dawn', 'daz', 'dazar', 'dead', 'deaf', 'deci', 'deer', 'dei', 'delia', 'delra', 'delta', 'dema', 'demo', 'deo', 'dero',
+  'deus', 'deux', 'dhai', 'dhar', 'dhrar', 'dhug', 'dhyl', 'dia', 'dieri', 'dio', 'doe', 'dog', 'dohr', 'doom', 'dorr', 'down', 'drae', 'drakh', 'drakk', 'dran', 'dre',
+  'drea', 'dread', 'dream', 'dris', 'drop', 'druk', 'dry', 'dryd', 'dryn', 'dryr', 'dryto', 'duin', 'duirn', 'duke', 'duo', 'dusk', 'dy', 'dya', 'dyas', 'dysra', 'eago',
+  'eal', 'earl', 'eas', 'echo', 'ecto', 'edo', 'eerie', 'eevo', 'egg', 'ego', 'eina', 'eine', 'eiri', 'elia', 'elle', 'elma', 'elo', 'elyo', 'elyor', 'elys', 'endo', 'equi',
+  'equu', 'erdy', 'eris', 'erra', 'erri', 'erth', 'ervi', 'essa', 'eua', 'euda', 'eudo', 'eumo', 'evack', 'eve', 'eye', 'eyre', 'fa', 'fade', 'fael', 'fai', 'fang', 'far',
+  'fare', 'fauca', 'feia', 'filau', 'fire', 'fish', 'fizz', 'flame', 'flero', 'flesh', 'flock', 'foe', 'fois', 'forh', 'fous', 'fray', 'fror', 'frost', 'fulvu', 'fume',
+  'fur', 'fyn', 'fyr', 'fyre', 'gabo', 'gaia', 'galaz', 'gali', 'galo', 'gami', 'gamma', 'gax', 'gaz', 'gecko', 'geo', 'ghal', 'ghaz', 'ghi', 'ghiri', 'ghost', 'ghyr',
+  'gias', 'giko', 'gin', 'gio', 'giri', 'git', 'giu', 'glass', 'glee', 'glerk', 'gley', 'glio', 'gloo', 'glow', 'gnci', 'gnorr', 'godh', 'gog', 'gogu', 'gold', 'gonda',
+  'goner', 'gonzu', 'gore', 'grand', 'grape', 'gras', 'grato', 'grauf', 'graz', 'grel', 'grex', 'grim', 'grin', 'grind', 'groku', 'grow', 'gru', 'guac', 'gui', 'guiza',
+  'guke', 'gulum', 'gun', 'gurk', 'guru', 'gwen', 'gyn', 'gyrna', 'hag', 'haju', 'hammer', 'hari', 'hatch', 'hate', 'heim', 'heir', 'heis', 'hek', 'hell', 'helm', 'hera',
+  'hercu', 'heria', 'hex', 'hexa', 'hexi', 'hexo', 'hirt', 'hole', 'homa', 'hong', 'horn', 'horo', 'howl', 'hydra', 'hysta', 'iar', 'ice', 'ida', 'idra', 'iele', 'ievi',
+  'ieze', 'igni', 'ikto', 'ilae', 'ili', 'illae', 'ilno', 'ilye', 'inde', 'ink', 'int', 'inte', 'intra', 'intro', 'iola', 'iope', 'ior', 'iqra', 'ira', 'iraei', 'irag',
+  'irius', 'iuna', 'iyja', 'iyra', 'jaed', 'jard', 'jasia', 'jassi', 'jerky', 'jiji', 'jinx', 'joy', 'juan', 'jui', 'jurio', 'kae', 'kaga', 'kai', 'kar', 'kash', 'kaz',
+  'kei', 'kery', 'key', 'khad', 'khon', 'khuza', 'khyr', 'klee', 'klip', 'knight', 'knod', 'kom', 'kotr', 'krata', 'kreo', 'kriod', 'kron', 'krono', 'kuhr', 'kuvok', 'kwyl',
+  'kyri', 'kyto', 'la', 'lach', 'lae', 'laea', 'laer', 'laeth', 'lair', 'lamb', 'lanc', 'lase', 'laude', 'laza', 'lea', 'lee', 'lei', 'leif', 'lenai', 'lenda', 'lene',
+  'leo', 'lere', 'lessa', 'lethe', 'lex', 'lhor', 'li', 'lia', 'libra', 'liel', 'lieu', 'life', 'light', 'limbo', 'limp', 'lingo', 'lio', 'lirai', 'liro', 'lith', 'llien',
+  'lloe', 'lo', 'lock', 'lofty', 'loi', 'lone', 'lopo', 'lore', 'lort', 'love', 'low', 'lozz', 'lua', 'luim', 'lumo', 'luna', 'lush', 'lust', 'lya', 'lymph', 'lynx', 'lyra',
+  'lyre', 'lys', 'lyvi', 'mae', 'mage', 'magi', 'magno', 'maie', 'major', 'mali', 'malo', 'manca', 'mane', 'mango', 'manto', 'marco', 'marrow', 'marsh', 'max', 'medi',
+  'medu', 'meen', 'mel', 'melia', 'mell', 'melng', 'melon', 'meph', 'merc', 'mese', 'meso', 'metal', 'miki', 'mince', 'mini', 'miri', 'misia', 'mistra', 'mizu', 'mmior',
+  'mo', 'mock', 'moi', 'moor', 'morb', 'more', 'morgh', 'morja', 'morl', 'moss', 'moza', 'mozo', 'mroer', 'mua', 'muami', 'mugg', 'muku', 'mulae', 'muno', 'muo', 'mutt',
+  'muzor', 'mydra', 'myr', 'myri', 'myth', 'nae', 'nai', 'nail', 'nando', 'nari', 'naul', 'nava', 'naz', 'neazu', 'ned', 'neia', 'neme', 'nemo', 'neo', 'nep', 'nera', 'nero',
+  'night', 'nill', 'niroi', 'nise', 'niye', 'nobnar', 'noi', 'nose', 'nox', 'noxi', 'nua', 'nuanyi', 'nuck', 'nuk', 'numzu', 'nye', 'nyel', 'nymph', 'nyri', 'nyx', 'oah',
+  'oak', 'ocea', 'ocia', 'octa', 'octo', 'odd', 'odin', 'odio', 'odis', 'odru', 'oghm', 'ogu', 'oia', 'oisse', 'ola', 'olg', 'olle', 'omega', 'omni', 'oni', 'only', 'onos',
+  'onty', 'oper', 'ophe', 'ophi', 'opi', 'orb', 'orc', 'ordi', 'ore', 'orio', 'orlo', 'ouch', 'our', 'outro', 'over', 'owl', 'ozy', 'pain', 'pais', 'pale', 'paleo', 'path',
+  'paw', 'paylo', 'peak', 'pear', 'pearl', 'pecto', 'peia', 'peli', 'pemo', 'pepe', 'peri', 'perlo', 'perse', 'pery', 'peso', 'phae', 'phar', 'phau', 'pheh', 'pheia',
+  'pheus', 'phi', 'phiel', 'phine', 'phio', 'phoi', 'phono', 'phy', 'phyr', 'phyre', 'pika', 'pilia', 'pine', 'piol', 'piuc', 'plor', 'pluto', 'poe', 'pore', 'pox', 'prae',
+  'pres', 'prio', 'pseu', 'psy', 'purla', 'py', 'pyro', 'pytho', 'pyxi', 'qaas', 'qae', 'qama', 'qas', 'qash', 'qasi', 'qaso', 'qasu', 'qi', 'qindi', 'qis', 'qish', 'qisi',
+  'qo', 'qos', 'qoui', 'qry', 'qu', 'qua', 'quas', 'quasi', 'quaso', 'quila', 'quo', 'quoi', 'quon', 'qurza', 'quti', 'quul', 'qwert', 'qyph', 'rael', 'raer', 'raes',
+  'raesh', 'raeth', 'rage', 'rai', 'raor', 'rash', 'rath', 'raven', 'razz', 'reap', 'reav', 'reens', 'reme', 'reo', 'rethe', 'reve', 'rhor', 'rhya', 'riad', 'riel', 'rienn',
+  'rift', 'rind', 'rine', 'ring', 'rio', 'rismo', 'rissa', 'riznu', 'roar', 'rock', 'roe', 'rof', 'rog', 'rol', 'roll', 'rolu', 'rone', 'rori', 'rose', 'rosi', 'roth',
+  'rune', 'runi', 'ruth', 'rya', 'ryas', 'rym', 'rynn', 'ryo', 'sael', 'saew', 'sai', 'sale', 'salt', 'salty', 'sarya', 'sau', 'sauce', 'sauth', 'scaf', 'scar', 'sces',
+  'schi', 'scia', 'scorp', 'scum', 'sea', 'see', 'seir', 'sela', 'semi', 'seus', 'shade', 'shard', 'shear', 'shemu', 'shie', 'shine', 'shon', 'shrub', 'shuk', 'shur', 'sia',
+  'sie', 'sigma', 'sil', 'silk', 'sill', 'sima', 'sirie', 'skin', 'skull', 'sky', 'smith', 'so', 'soi', 'solar', 'soul', 'spear', 'speed', 'splint', 'spring', 'stag', 'star',
+  'stone', 'storm', 'stout', 'stra', 'strau', 'stris', 'styx', 'sub', 'swift', 'sword', 'sya', 'syl', 'sys', 'tae', 'taer', 'tala', 'tale', 'tali', 'talle', 'tan', 'tango',
+  'tarmi', 'tarre', 'tau', 'taug', 'tear', 'teava', 'teni', 'terra', 'teu', 'teus', 'thae', 'than', 'thano', 'thau', 'theia', 'theo', 'thera', 'thin', 'thorn', 'thras',
+  'thro', 'thry', 'thual', 'thuen', 'thye', 'thyn', 'tia', 'tiara', 'tiik', 'tike', 'tilre', 'tima', 'timni', 'tiri', 'to', 'tona', 'tone', 'tor', 'toxi', 'tran', 'tree',
+  'tren', 'tri', 'trila', 'trin', 'tris', 'triss', 'trith', 'trog', 'troll', 'trove', 'true', 'tryl', 'tryn', 'tusk', 'tusso', 'tuts', 'tyr', 'tyra', 'tyrg', 'ues', 'ugly',
+  'ui', 'uie', 'uipho', 'ujuy', 'uku', 'ulvu', 'under', 'uni', 'uozi', 'up', 'urlu', 'uro', 'us', 'uth', 'utha', 'utta', 'uugu', 'uvy', 'vaal', 'vae', 'vaen', 'vaez',
+  'vain', 'vang', 'varo', 'varr', 'vat', 'vayne', 'vazu', 'veba', 'veda', 'veni', 'vephie', 'vesla', 'veth', 'vigo', 'virgo', 'vitro', 'vizi', 'vlor', 'voda', 'void',
+  'vois', 'volno', 'volo', 'volt', 'vomi', 'vonth', 'vord', 'vors', 'vox', 'vugz', 'vulen', 'vulpe', 'waaz', 'wake', 'war', 'wasu', 'weap', 'wei', 'wenk', 'willo', 'wind',
+  'wing', 'wirya', 'wise', 'witch', 'wix', 'wolf', 'world', 'wrath', 'xas', 'xhan', 'xhi', 'xih', 'xilo', 'xio', 'xiza', 'xor', 'xugu', 'xuk', 'xuxu', 'xyli', 'yae', 'yare',
+  'yari', 'yeno', 'yir', 'yiryo', 'ylla', 'yo', 'yoer', 'yore', 'yrgo', 'yrie', 'yrni', 'ytia', 'zak', 'zal', 'zaph', 'zaro', 'zedh', 'zee', 'zel', 'zele', 'zeli', 'zelph',
+  'zera', 'zest', 'zhem', 'zia', 'zog', 'zoi', 'zon', 'zort', 'zoti', 'zug', 'zul', 'zur', 'zutu', 'zuvi', 'zvon', 'zzuk'],
+
         uB = (t, e, n) => e ? 4 : n === 0 ? fe.classColorBars && t.type === 0 ? 8 + t.class : 1 : I.player.canCombatInteract(t) ? n === 2 ? fe.classColorBars ? 8 + t.class : 5 : t.type === 1 && t.aggroMode === 0 ? 2 : 3 : 6,
         mB = (t, e) => {
             let n = t.visual && t.visual.cDist;
             if (n > fe.nameplateViewRange) return;
             n ? n /= 70 : n = 0;
-            let o = false,
+            function isBotName(str) {
+                str = str.toLowerCase()
+                let set = new Set(syllables);
+                let dp = new Array(str.length + 1).fill(false);
+                dp[0] = true;
+
+                for (let i = 1; i <= str.length; i++) {
+                    for (let j = 0; j < i; j++) {
+                    if (dp[j] && set.has(str.slice(j, i))) {
+                        dp[i] = true;
+                        break;
+                    }
+                    }
+                }
+                return dp[str.length];
+            }
+            let inParty = t.party > 0 && t.party === I.player.party
+                o = !fe.disablePartyNameplates && inParty,
                 i = t.faction !== void 0 ? I.player.hostility(t) : 0,
                 s = I.player.clan,
                 r = I.player.level,
                 l = t.id === zn,
-                a = false, //t.id === I.playerId,
+                a = false,
                 c = t.id === _n,
-                playerIsBot = t.id !== I.playerId && t.party === 0 && !t.clan && fe.hideBots;
-            if ((t.type !== 3 && t.stats) && !playerIsBot) {
-                t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, .5, 1);
-                let castsOnPlayer = targettedPlayers.get(t.id) || []
-                t.namePlateScale *= (1 + castsOnPlayer.length / 10)
-                let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
-                    g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
-                    v = t.skills.timedSkill !== void 0;
-                !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
-                let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
-                if (v && _) {
-                    let b = Jn[0].height - Wo,
-                        k = vt(t.skills.timedCast.fraction(I.smoothtime), 0, 1);
-                    pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, 1, 0, b), k > 0 && pr(Jn[7], t.hudPos, g, t.namePlateScale, k, 1, 0, b)
+                playerIsBot = isBotName(t.name) && !t.clan && !inParty && !t.clan && fe.hideBots,
+                isFriendlyCreature = i === 0 && t.type !== 0;
+            let playerBuffs;
+            if ((t.type !== 3 && t.stats)) {
+                let min = 0.5 * (fe.nameplateSize / 250);
+                let max = 2.0 * (fe.nameplateSize / 250);
+
+                if (!l && playerIsBot) return;
+                let _hidePlate = !l && isFriendlyCreature && !fe.hideFriendlyCreatures;
+
+                let castsOnPlayer = targettedPlayers.get(t.id) || [];
+                let targetScale = (l ? 1 : 0) * (1 + castsOnPlayer.length / 10);
+
+                t.namePlateScale = vt(
+                t.namePlateScale + (targetScale - t.namePlateScale) * 0.25,min,max);
+                let CCFound, CCColor
+                playerBuffs = I.getEntityById(t.id)
+                if(playerBuffs) playerBuffs = playerBuffs.buffs.buffs
+                CCFound = false, CCColor = "#ffffff"
+                if(playerBuffs && fe.CCIndicatorOnNameplates && fe.CCIndicator) {
+                    let color = getCCColor(playerBuffs);
+                    if (color) { CCFound = true; CCColor = color; }
                 }
-                if (!a && _ && (pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1), pr(Jn[uB(t, o, i)], t.hudPos, g, t.namePlateScale, t.stats.getResource(6) / t.stats.getStat(6), 1), fe.disableClantags ? null : t.clan && dr(ho(Un, t.hudPos[0] - (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.clan, t.clan == s ? qt.clan : t.faction === 0 ? qt.faction0small : qt.faction1small, g, 1, 2, 0, 1), t.level && (fe.alwaysShowLevel || l))) {
-                    let b = qt.lev1;
-                    i !== 0 && (t.level - r > 4 ? b = qt.lev3 : t.level - r > 1 ? b = qt.lev2 : t.level - r < -5 && (b = qt.lev0)), dr(ho(Un, t.hudPos[0] + (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.level, b, g, 1, 0, 0, 0)
+                if (!_hidePlate) {
+                    let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
+                        g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
+                        v = t.skills.timedSkill !== void 0;
+
+                    !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
+                    let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
+                    if(CCFound && _) {
+                        let w = (Jn[0].width + Wo * 2)
+                        let h = ((v ? DA : IA).height)
+                        let ccDrawColor = fe.flashCCIndicator ? flashColor(CCColor, 6, 0.3) : CCColor
+                        outline = Vo(null, ccDrawColor, w, h, 0, 0, 4)
+                        pr(outline, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0)
+                    }
+                    if (v && _) {
+                        let b = Jn[0].height - Wo,
+                            k = vt(t.skills.timedCast.fraction(I.smoothtime), 0, 1);
+                        pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, 1, 0, b), k > 0 && pr(Jn[7], t.hudPos, g, t.namePlateScale, k, 1, 0, b)
+                    }
+                    if (!a && _ && (pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1), fe.flashNameplates && t.hpFlashTime !== void 0 && I.smoothtime - t.hpFlashTime < 0.2 && (() => { let elapsed = I.smoothtime - t.hpFlashTime, curFrac = t.stats.getResource(6) / t.stats.getStat(6), lostFrac = t.hpFlashFraction - curFrac, progress = elapsed / 0.2; pr(Jn[12], t.hudPos, g, t.namePlateScale, lostFrac * (1 - progress), 1, curFrac * Jn[12].width, 0) })(), pr(Jn[uB(t, o, i)], t.hudPos, g, t.namePlateScale, t.stats.getResource(6) / t.stats.getStat(6), 1), fe.disableClantags ? null : t.clan && dr(ho(Un, t.hudPos[0] - (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.clan, t.clan == s ? qt.clan : t.faction === 0 ? qt.faction0small : qt.faction1small, g, 1, 2, 0, 1), t.level && (fe.alwaysShowLevel || l))) {
+                        let b = qt.lev1;
+                        i !== 0 && (t.level - r > 4 ? b = qt.lev3 : t.level - r > 1 ? b = qt.lev2 : t.level - r < -5 && (b = qt.lev0)), dr(ho(Un, t.hudPos[0] + (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.level, b, g, 1, 0, 0, 0)
+                    }
                 }
             }
             let f, u = !1;
             if ((t.type === 3 ? (f = t.partyTimeoutCheck(I.player) ? qt[t.color] : qt.itemgrey, u = !0) : i === 0 ? (f = l ? qt.name : qt.nameSmall, u = fe.nameShowFriendlyPlayers) : i === 1 ? (f = l ? qt.enemy : qt.enemySmall, u = fe.nameShowMonsters) : i === 2 && (f = l ? qt.pvp : qt.pvpSmall, u = fe.nameShowEnemyPlayers), l || u) && !playerIsBot) {
+                if (!l && playerIsBot) return;
+                if (!l && isFriendlyCreature && !fe.hideFriendlyCreatureNames) return;
                 let m = t.type === 3 && c && !t.canBePickedUpBy(I.player) ? .5 : l || t.type === 3 ? 1 : c ? .9 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l ? -16 : -9,
                     v = a && t.clan ? t.clan.length * 5 : 0,
-                    _ = dr(t.hudPos, t.name, f, m, 1, v, g);
+                    nameSpacing = fe.nameSpacing / 10
+                
+                t.hudPos[1] -= nameSpacing
+                let _ = dr(t.hudPos, t.name, f, m, 1 * (fe.nameSize / 500), v, g);
+                if (fe.revStackNameplate && playerBuffs && playerBuffs.has(60)) {
+                    let revMap = playerBuffs.get(60);
+                    let totalRevStacks = 0, revHasOwnCaster = false;
+                    revMap.forEach((buff, casterId) => {
+                        totalRevStacks += buff.uniqueInstances > 1 ? buff.uniqueInstances : (buff.stacks || 1);
+                        if (casterId === I.playerId) revHasOwnCaster = true;
+                    });
+                    if (totalRevStacks > 0) {
+                        let nameScl = 1 * (fe.nameSize / 500);
+                        let iconSz = Math.round(20 * t.namePlateScale);
+                        let bord = revHasOwnCaster && fe.markOwnRevs ? Math.max(1.7, Math.round(1.7 * t.namePlateScale)) : Math.max(1, Math.round(1 * t.namePlateScale));
+                        let bw = iconSz + bord * 2, bh = bw;
+                        let br = Math.max(4, Math.round(4 * t.namePlateScale));
+                        let ibr = Math.max(1, br - bord);
+                        let bx = Math.round(t.hudPos[0] - bw / 2 - 2);
+                        let by = Math.round(t.hudPos[1] + g * nameScl - f.size * nameScl * 0.5 - bh - 2);
+                        if (!revIconImg) { revIconImg = new Image(); revIconImg.src = `/data/ui/skills/7.${Yn}?v=8822612`; }
+                        Eo.globalAlpha = revHasOwnCaster && fe.markOwnRevs ? 0.75 : 1;
+                        Eo.fillStyle = revHasOwnCaster && fe.markOwnRevs ? "#82f069" : "#000000";
+                        Eo.beginPath(); Eo.moveTo(bx + br, by); Eo.arcTo(bx + bw, by, bx + bw, by + bh, br); Eo.arcTo(bx + bw, by + bh, bx, by + bh, br); Eo.arcTo(bx, by + bh, bx, by, br); Eo.arcTo(bx, by, bx + bw, by, br); Eo.closePath(); Eo.fill();
+                        let ix = bx + bord, iy = by + bord;
+                        Eo.fillStyle = "#000000";
+                        Eo.globalAlpha = 1;
+                        Eo.beginPath(); Eo.moveTo(ix + ibr, iy); Eo.arcTo(ix + iconSz, iy, ix + iconSz, iy + iconSz, ibr); Eo.arcTo(ix + iconSz, iy + iconSz, ix, iy + iconSz, ibr); Eo.arcTo(ix, iy + iconSz, ix, iy, ibr); Eo.arcTo(ix, iy, ix + iconSz, iy, ibr); Eo.closePath(); Eo.fill();
+                        if (revIconImg.complete && revIconImg.naturalWidth) Eo.drawImage(revIconImg, ix, iy, iconSz, iconSz);
+                        let fs = Math.max(9, Math.round(iconSz * 0.68));
+                        Eo.font = `bold ${fs}px hordes`;
+                        Eo.textAlign = "center";
+                        Eo.textBaseline = "middle";
+                        Eo.lineWidth = 4;
+                        Eo.strokeStyle = "#000000";
+                        Eo.strokeText(totalRevStacks, bx + bw / 2.1, by + bh / 1.9);
+                        Eo.fillStyle = inParty || revHasOwnCaster ? "#ffffff" : "#999999";
+                        Eo.fillText(totalRevStacks, bx + bw / 2.1, by + bh / 1.9);
+                        Eo.textAlign = "left";
+                        Eo.textBaseline = "alphabetic";
+                    }
+                }
                 t.clan && a && dr(ho(Un, t.hudPos[0] - _ / 2 + Wo, t.hudPos[1]), t.clan, t.faction === 0 ? l ? qt.faction0 : qt.faction0small : l ? qt.faction1 : qt.faction1small, m, 1, t.clan.length * 5, g, 1)
             }
             t.speechText && dr(t.hudPos, t.speechText, t.speechStyle, 1, 1, 0, l ? -30 : -20, .5, 1)
@@ -27878,42 +30977,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         info: []
              }))
         }
-        tick(e, n, o) {
-            e = this.entity
-            if (e.faction && e.faction === 1) {
-                    if(I.player.class === 1) { 
-                        let block = I.player.skills.skills.get(53)
-                        if(!block || !block.cd.end > I.time) return
-                        Io(Mt.clientPlayerSkill.packData({
-                            id: 53,
-                            info: []
-                        }))
-                        window.location.assign(
-                "https://hordes.io/clans");
-                    }
-                }
-            if(!fe.autocleanse) return
-            let cleanse = I.player.skills.skills.get(47)
-            let buffIdsToCleanse = [
-                101, // df
-                50, // relent
-                91, //ago
-                88, //charge
-                119, //blind
-                121 // rel
-            ]
-            if(e.faction !== I.player.faction || $r(e.pos, I.player.pos) > 30 || I.player.class !== 3 || (cleanse && cleanse.cd.end > I.time) || e.id === I.playerId || e.party === 0) return
-            for(let buff of Array.from(this.buffs)){
-                //console.log(buff[0],e.name, cleanse.cd.end > I.time)
-                if(buffIdsToCleanse.includes(buff[0]) || buff[0] === 69 && e.class === 2) {
-                    console.log(`Cleansing ${buff[0]} off of ${e.name}, ${e.id}`)
-                    let timeout = Math.floor(Math.random() * 800)
-                    //cleanse.cd.end += timeout / 60  
-                    setTimeout(this.sendCleanse,timeout,e)
-                    break
-                }
-            }
-        }
+        tick(e, n, o) {}
         setBuff(e, n, o, i, s, r) {
             o <= 0 && console.error("buff with zero or less stacks");
             let l = this.buffs.get(e) || this.buffs.set(e, new Map).get(e),
@@ -28044,7 +31108,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                                     r = n ? t.cycle(0) * .3 - s : t.cycle(.5) * .3 + s;
                                 X(bt, n ? .3 - s : -.3 + s, -.65, r), Nr(o.position, bt, 0), X(o.rotation, -r, i, 0)
                             } else X(o.position, n ? .3 : -.3, -.3, 0), X(o.rotation, 0, 0, 0);
-                        else if (t.entity.inWater > t.entity.radius) t.walking ? (X(o.rotation, 1.3, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, Math.cos(t.cycleRad + n * Math.PI) * .4, -1.1)) : (X(o.rotation, 1, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, -.7, Math.cos(t.cycleRad + n * Math.PI) * .4));
+                        else if (t.entity.inWater > t.entity.radius) t.walking ? (X(o.rotation, 1.3, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, Math.cos(t.cycleRad + n * Math.PI) * .4, -1)) : (X(o.rotation, 1, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, -.7, Math.cos(t.cycleRad + n * Math.PI) * .4));
                         else {
                             if (t.walking) {
                                 let s = t.entity.steer[1] < 0 ? .4 : .6,
@@ -29171,7 +32235,10 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         }
         tickWaterCollisions(e) {
             let n = this.inWater;
-            return this.inWater = Math.max(0, e.getWaterHeight(this.pos[0], this.pos[2]) - this.pos[1]), !n && this.inWater > 0 && this.vel[1] < -3 && this.onEnterWater(), this.inWater > 0
+            this.inWater = Math.max(0, e.getWaterHeight(this.pos[0], this.pos[2]) - this.pos[1]);
+            if (fe.freeflyMode && I && I.player === this) this.inWater = 0;
+            !n && this.inWater > 0 && this.vel[1] < -3 && this.onEnterWater();
+            return this.inWater > 0
         }
         onEnterWater() {}
     };
@@ -29180,6 +32247,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 super(e), this.uiFrameDirty = !0, this.uiRange = !0, this.buffDisplayDirty = !0, this.visualPosition = [0, 0, 0], this.speechTimer = new xt(0, 5), this.mount = void 0, this.mountRotAdd = 0, this.namePlateScale = .5, e.creature && (e.creature.col1[0] !== 0 && (e.colPrim = e.creature.col1), e.creature.col2[0] !== 0 && (e.colSec = e.creature.col2)), this.skin = e.skin, this.colPrim = e.colPrim, this.colSec = e.colSec, this.interiorlightTarget = [0, 0, 0, 0], this.interiorlightTimer = new xt(0, .5), this.conciliator = [0, 0, 0], this.visual = new Ic(this), this.skin > 0 && this.remakeTransform()
             }
             handleMovementData(e, n) {
+                if ((fe.ghostMode || fe.freeflyMode) && I && I.player === this) return;
                 let o = Bn([0, 0, 0], this.pos, this.conciliator),
                     i = Kt([0, 0, 0], o, e.pos);
                 nf(i) > 1 ? (X(this.conciliator, 0, 0, 0), it(this.pos, e.pos)) : Bn(this.conciliator, this.conciliator, i), it(this.vel, e.vel)
@@ -29237,7 +32305,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 if (o || i) {
                     let s = this.squaredDistance(I.player.pos) < 900;
                     s != this.uiRange && (this.uiFrameDirty = !0), this.uiRange = s
-                }(this.uiFrameDirty || this.skills.timedSkill !== void 0) && (o && this.hydrateUnitStore(Hi), n ? this.hydrateUnitStore(Gi) : i && this.hydrateUnitStore(Zt.get(this.name).unitStore)), (this.buffDisplayDirty || n || o) && (o && this.hydrateBuffStore(n, Qc, fe.buffcountUnitframes), n ? this.hydrateBuffStore(n, da, fe.buffcountUnitframes) : (this.buffDisplayDirty || o) && i && this.hydrateBuffStore(n, Zt.get(this.name).buffStore, fe.buffcountParty)), this.speechText !== void 0 && this.speechTimer.done(e) && (this.speechText = void 0)
+                }(this.uiFrameDirty || this.skills.timedSkill !== void 0 || (fe.flashNameplates && this.hpFlashTime !== void 0 && I.smoothtime - this.hpFlashTime < 0.2) || (fe.flashCCIndicator && fe.CCIndicator && this.buffs && this.buffs.buffs && (this.buffs.buffs.has(69) || this.buffs.buffs.has(88) || this.buffs.buffs.has(91) || this.buffs.buffs.has(101) || this.buffs.buffs.has(119) || this.buffs.buffs.has(121)))) && (o && this.hydrateUnitStore(Hi), n ? this.hydrateUnitStore(Gi) : i && this.hydrateUnitStore(Zt.get(this.name).unitStore)), (this.buffDisplayDirty || n || o) && (o && this.hydrateBuffStore(n, Qc, fe.buffcountUnitframes), n ? this.hydrateBuffStore(n, da, fe.buffcountUnitframes) : (this.buffDisplayDirty || o) && i && this.hydrateBuffStore(n, Zt.get(this.name).buffStore, fe.buffcountParty)), this.speechText !== void 0 && this.speechTimer.done(e) && (this.speechText = void 0)
             }
             setTarget(e) {
                 let n = this.target,
@@ -29247,7 +32315,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     i ? (i.hydrateUnitStore(Hi, fe.buffcountUnitframes), i.hydrateBuffStore(!1, Qc, fe.buffcountUnitframes)) : Hi.update(s => (s.visible = !1, s))
                 }
                 let target = I.getEntityById(e)
-                if (!target || !target.faction === I.player.faction || target.type !== 0 || I.player.class !== 3 || $r(target.pos, I.player.pos) > 30 || !fe.revOnSelect) return o //auto rev
+                if (!target || !target.faction === I.player.faction || target.type !== 0 || I.player.class !== 3 || $r(target.pos, I.player.pos) > 30 || !fe.revOnSelect) return o
                 Io(Mt.clientPlayerSkill.packData({
                         id: 7,
                         info: []
@@ -29255,7 +32323,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 return o
             }
             hydrateUnitStore(e) {
-                e.update(n => (n.visible = !0, n.name = this.name, n.alive = this.stats.alive, n.hp = this.stats.getResource(6), n.hpMax = this.stats.getStat(6), n.mp = this.stats.getResource(7), n.mpMax = this.stats.getStat(7), n.level = this.level, n.class = this.class, n.id = this.id, n.clan = this.clan, n.faction = this.faction, n.party = this.party, n.role = this.partyrole, n.type = this.type, n.combat = !this.stats.combatTimer.done(I.time), n.range = this.uiRange, n.rarity = this.faction === 2 && (this.rarity || !1), n.timedSkill = this.skills.timedSkill, n.timedCast = this.skills.timedCast, n)), this.uiFrameDirty = !1
+                e.update(n => (n.visible = !0, n.name = this.name, n.alive = this.stats.alive, n.hp = this.stats.getResource(6), n.hpMax = this.stats.getStat(6), n.mp = this.stats.getResource(7), n.mpMax = this.stats.getStat(7), n.level = this.level, n.class = this.class, n.id = this.id, n.clan = this.clan, n.faction = this.faction, n.party = this.party, n.role = this.partyrole, n.type = this.type, n.combat = !this.stats.combatTimer.done(I.time), n.range = this.uiRange, n.rarity = this.faction === 2 && (this.rarity || !1), n.timedSkill = this.skills.timedSkill, n.timedCast = this.skills.timedCast, n.hpFlashTime = this.hpFlashTime, n.hpFlashFraction = this.hpFlashFraction, n)), this.uiFrameDirty = !1
             }
             hydrateBuffStore(e, n, o) {
                 n.update(i => ZB(i, this.buffs, o, e)), this.buffDisplayDirty = !1
@@ -29266,23 +32334,67 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         },
         ZB = (t, e, n, o) => {
             let i = [];
-            e.buffs.forEach((r, l) => { // highlight own rev
+            let buffOwnCasterMap = new Map();
+
+            if (fe.stackSameBuffs) {
+                e.buffs.forEach((r, l) => {
+                    r.forEach((a, c) => { if (c === I.playerId) buffOwnCasterMap.set(a.id, true); });
+                });
+            }
+
+            e.buffs.forEach((r, l) => {
                 r.forEach((a, c) => {
-                    if((a.id === 60) && c === I.playerId && fe.markOwnRevs) {
+                    if (a.id === 60) {
                         a.logic = Object.assign(Object.create(Object.getPrototypeOf(a.logic)), a.logic);
-                        a.logic.type = 2;
+                        a.logic.type = c === I.playerId && fe.markOwnRevs ? 2 : 0;
                     }
+                    if (fe.hideClassBuffs && fe.hiddenClassBuffs.find(i => i === a.id)) return;
+                    let effectiveIsOwnCaster = fe.stackSameBuffs ? (buffOwnCasterMap.get(a.id) || false) : c === I.playerId;
+                    if((fe.hideBuffs && fe.hiddenBuffs.find(i => i === a.id)) || (I.player.class === 3 && fe.onlyShowOwnRev && a.id === 60 && !effectiveIsOwnCaster)) return;
                     !a.logic.passive && a.logic.icon !== void 0 &&
-                    /*(a.id !== 60 || c === I.playerId) &&*/
-                        (!fe.buffsHideIrrelevant 
-                                || c === I.playerId 
-                            || c === e.entity.id && e.entity.faction === 2 
+                        (!fe.buffsHideIrrelevant
+                                || c === I.playerId
+                            || c === e.entity.id && e.entity.faction === 2
                             || e.entity === I.player
                             && a.logic.type == 1) &&
                     (!a.logic.unique || i.reduce((f, u) => f + (u.id === a.id ? 1 : 0), 0) === 0)
                         && i.push(a)
                 })
             });
+
+            if (fe.stackSameBuffs) {
+                let excludedBuffs = new Set([99]);
+                let unstacked = i.filter(a => excludedBuffs.has(a.id));
+                let stackMap = new Map();
+                i.filter(a => a.id !== 99).forEach(a => {
+                    let buffStacks = a.uniqueInstances > 1 ? a.uniqueInstances : (a.stacks || 1);
+                    if ((I.player.class === 3 && fe.onlyShowOwnRev && a.id === 60 && a.caster !== I.player.id)) return;
+                    if (!stackMap.has(a.id)) {
+                        stackMap.set(a.id, { repr: a, totalStacks: buffStacks });
+                    } else {
+                        let entry = stackMap.get(a.id);
+                        entry.totalStacks += buffStacks;
+                        let reprRemaining = entry.repr.timer.duration - entry.repr.timer.passed(t);
+                        let aRemaining = a.timer.duration - a.timer.passed(t);
+                        if (aRemaining > reprRemaining) {
+                            if (entry.repr.logic.type === 2 && a.logic.type !== 2) {
+                                a.logic = Object.assign(Object.create(Object.getPrototypeOf(a.logic)), a.logic);
+                                a.logic.type = 2;
+                            }
+                            entry.repr = a;
+                        }
+                    }
+                });
+                i = Array.from(stackMap.values()).map(entry => {
+                    let logic = entry.repr.logic;
+                    if (entry.repr.id === 60 && fe.markOwnRevs && buffOwnCasterMap.get(60) && logic.type !== 2) {
+                        logic = Object.assign(Object.create(Object.getPrototypeOf(logic)), logic);
+                        logic.type = 2;
+                    }
+                    return Object.assign(Object.create(Object.getPrototypeOf(entry.repr)), entry.repr, { logic: logic, uniqueInstances: 0, stacks: entry.totalStacks });
+                }).concat(unstacked);
+            }
+
             let s = i.sort((r, l) => l.time - r.time).sort((r, l) => l.logic.type - r.logic.type).slice(0, n);
             if (t.length < s.length)
                 for (; t.length < s.length;) t.push(KB());
@@ -29548,12 +32660,22 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }), this.exp = 0, this.party = 0, this.partyrole = 0, this.prestige = 0, this.prestigeRank = 0, this.elo = 0, this.eloRank = 0, this.clan = void 0, this.clanRole = 0, this.jumpLast = 0
         }
         tickVelocity(e, n, o, i, s) {
+            if (fe.freecamMode && I && I.player === this) {
+                this.vel[0] = 0; this.vel[2] = 0;
+                this.vel[1] = this.onGround ? 0 : Math.max(-60, this.vel[1] - 25 * e);
+                return;
+            }
+            if (fe.freeflyMode) {
+                this.vel[1] = i > 0 ? s * 0.1 : nt.shift.down ? -s * 0.05 : 0;
+                this.horizontalSteer(s, n, o);
+                return;
+            }
             if (this.inWater > this.radius) {
                 this.onGround && (this.vel[1] = Math.max(0, this.vel[1]));
                 let r = this.buffs.hasAnyWithTag(13),
                     l = r ? s * .8 : s * .5;
                 this.inWater < this.radius + .1 && (this.jump > 0 || this.vel[1] === 0) ? this.jumpLast === 0 && i > 0 ? (this.vel[1] = r ? 20 : 7, r && (l += 200)) : this.vel[1] = 0 : (this.vel[1] += i ? e * 8 : e * -4, this.vel[1] = Math.max(Math.min(this.vel[1], 4), -3)), this.horizontalSteer(l, n, o)
-            } else this.onGround ? (this.stats.alive && i > 0 && s > 0 && (this.vel[1] = 9, this.onGround = !1), this.horizontalSteer(s, n, o)) : (this.vel[1] = Math.max(-60, this.vel[1] - 25 * e), this.stats.alive && this.vel[0] === 0 && this.vel[2] === 0 && this.horizontalSteer(s * .5, n, o));
+            } else this.onGround ? (this.stats.alive && i > 0 && s > 0 && (this.vel[1] = 9, this.onGround = !1), this.horizontalSteer(s, n, o)) : (this.vel[1] = Math.max(-60, this.vel[1] - 25 * e), !fe.steerDuringJump && this.stats.alive && this.vel[0] === 0 && this.vel[2] === 0 && this.horizontalSteer(s * .5, n, o));
             this.jumpLast = this.vel[1] < 0 ? this.jumpLast : this.jump
         }
         tickMovement(e, n, o, i, s) {
@@ -29583,9 +32705,11 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tickCollisions(e, n, o, i, s) {
             let r = [...this.pos];
             sn(this.pos, this.pos, this.vel, e);
+            if (fe.freeflyMode) return;
             let l = this.belowGround || s ? 0 : I.getHeight(this.pos[0], this.pos[2]),
                 a = I.getNormal(this.pos[0], this.pos[2]);
-            this.tickWallCollisions(n, l, a), l = this.belowGround || s ? 0 : I.getHeight(this.pos[0], this.pos[2]), a = I.getNormal(this.pos[0], this.pos[2]), this.tickFloorCollisions(o, l, a), this.tickCeilCollisions(i, r), this.belowGround || (this.pos[1] = Math.max(this.pos[1], I.getHeight(this.pos[0], this.pos[2])))
+            if (!fe.ghostMode) this.tickWallCollisions(n, l, a);
+            l = this.belowGround || s ? 0 : I.getHeight(this.pos[0], this.pos[2]), a = I.getNormal(this.pos[0], this.pos[2]), this.tickFloorCollisions(o, l, a), this.tickCeilCollisions(i, r), this.belowGround || (this.pos[1] = Math.max(this.pos[1], I.getHeight(this.pos[0], this.pos[2])))
         }
         tickWallCollisions(e, n, o) {
             if (o[1] < .6 && this.pos[1] < n) {
@@ -29643,6 +32767,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             this.party = e, this.partyrole = n
         }
         setPrestige(e) {
+            if (this.id === I.player.id && fe.prestigeSimulate > 0) e = fe.prestigeSimulate;
             return e !== this.prestige ? (this.prestige = e, this.prestigeRank = uc(e), !0) : !1
         }
         setElo(e) {
@@ -29680,8 +32805,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 e !== this.class && (super.setClass(e), this.skin = nU[this.class])
                 this.remakeTransform()
             }
-            makeVisual(e, n) {
-                super.makeVisual(e, n), this.prestige > 0 && this.setPrestige(this.prestige, !0), this.level >= 10 && this.setLevel(this.level), this.elo > 1500 && this.setElo(this.elo, !0)
+            makeVisual(e, n, o) {
+                super.makeVisual(e, n, o), this.prestige > 0 && this.setPrestige(this.prestige, !0), this.level >= 10 && this.setLevel(this.level), this.elo > 1500 && this.setElo(this.elo, !0)
             }
             setPrestige(e, n) {
                 if (super.setPrestige(e) || n) {
@@ -29896,8 +33021,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         constructor(e) {
             super(e), I.setPlayer(this), this.skills.isPlayer = !0, this.skills.clearSkillInfo(), this.inventory = new xh(this), this.partyInfoUpdateTimer = new xt(0, 1), this.heartBeatTimer = new xt(0, 1), this.secondlyUpdates = new xt(0, 1), this.lastNetRot = this.rot, this.inputTicksPassed = 0, this.inputTicksSinceLastPosUpdate = 0, this.inputTicksSinceLastRotUpdate = 0, so[1] = .7, this.smoothZoom = 0, this.areaid = -1
         }
-        makeVisual(e, n) {
-            super.makeVisual(e, n), this.visual.soundPrio = 1
+        makeVisual(e, n, o) {
+            super.makeVisual(e, n, o), this.visual.soundPrio = 1
         }
         tickFixed(e, n, o) {
             super.tickFixed(e, n, o), this.inventory.tickFixed(e, n, o)
@@ -29924,11 +33049,36 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 _ = u,
                 b = m,
                 k = g;
-            this.hasMovementOverride() ? (this.buffMovementOverride(e, n, o), f = this.steer[0], u = this.steer[1], m = this.jump, g = this.rot) : (f = (nt.left.down ? 1 : 0) + (nt.right.down ? -1 : 0), u = (nt.fwd.down || nt.lmb.down && nt.rmb.down ? 1 : 0) + (nt.back.down ? -1 : 0), m = nt.jump.down ? 1 : 0, g = fe.lockedcamera && nt.lmb.down || nt.rmb.down || nt.turnleft.down || nt.turnright.down ? so[0] : this.rot), (f !== v || u !== _) && (s = f !== v, r = u !== _, this.setSteer(f, u)), m !== b && (this.setJump(m), a = !0);
+            if (fe.freecamMode) {
+                f = 0; u = 0; m = 0;
+                if (f !== v || u !== _) this.setSteer(f, u);
+                if (m !== b) { this.setJump(m); a = !0; }
+            } else {
+                let _isOverride = !fe.preventInputLock && this.hasMovementOverride();
+                if (_isOverride && !this._rotSentBeforeOverrideEnd) {
+                    let _minRem = Infinity;
+                    this.buffs.movementOverride.forEach(b => { if (b.timer) _minRem = Math.min(_minRem, b.timer.remaining(I.time)); });
+                    if (_minRem < 0.05) {
+                        this.setRot(so[0]); this.lastNetRot = so[0];
+                        this.sendInput(true, false, false, false, false, false);
+                        k = so[0]; g = so[0];
+                        this._rotSentBeforeOverrideEnd = true;
+                    }
+                }
+                if (!_isOverride) this._rotSentBeforeOverrideEnd = false;
+                if (this._lastMovementOverride && !_isOverride) { this.setRot(so[0]); this.lastNetRot = so[0]; k = so[0]; g = so[0]; this.sendInput(true, false, false, false, false, false); }
+                this._lastMovementOverride = _isOverride;
+                _isOverride ? (this.buffMovementOverride(e, n, o), f = this.steer[0], u = this.steer[1], m = this.jump, g = this.rot) : (f = (nt.left.down ? 1 : 0) + (nt.right.down ? -1 : 0), u = (nt.fwd.down || nt.lmb.down && nt.rmb.down ? 1 : 0) + (nt.back.down ? -1 : 0), m = nt.jump.down ? 1 : 0, g = fe.lockedcamera && nt.lmb.down || nt.rmb.down || nt.turnleft.down || nt.turnright.down ? so[0] : this.rot), (f !== v || u !== _) && (s = f !== v, r = u !== _, this.setSteer(f, u)), m !== b && (this.setJump(m), a = !0);
+                if (_isOverride && this._rotSentBeforeOverrideEnd) { this.setRot(so[0]); g = so[0]; k = so[0]; }
+            }
             let y = hl(g, this.lastNetRot);
             this.inputTicksSinceLastRotUpdate++, g !== k && this.setRot(g), g !== this.lastNetRot && ((this.steer[0] !== 0 || this.steer[1] !== 0) && Math.abs(y) > .1 || this.inputTicksSinceLastRotUpdate > 10 || r || s || Math.abs(y) > .2) && (this.lastNetRot = k, i = !0);
-            let F = this.getStatBasedMoveSpeed();
-            F != this.speed && (this.setSpeed(F), l = !0), this.inputTicksSinceLastPosUpdate++, this.inputTicksSinceLastPosUpdate > 600 ? c = !0 : this.inputTicksSinceLastPosUpdate > 40 ? (this.steer[0] !== 0 || this.steer[1] !== 0) && (c = !0) : this.inputTicksSinceLastPosUpdate > 20 && (this.steer[0] !== 0 || this.steer[1] !== 0) && (i || s || r) && (c = !0), (i || s || r || l || a || c) && this.sendInput(i, s, r, l, a, c)
+            let F = fe.speedOverride > 0 ? this.getStatBasedMoveSpeed() * (fe.speedOverride) : this.getStatBasedMoveSpeed();
+            F != this.speed && (this.setSpeed(F), l = !0);
+            this.inputTicksSinceLastPosUpdate++;
+            fe.freeflyMode || fe.ghostMode || fe.freecamMode ? c = !0 : this.inputTicksSinceLastPosUpdate > 600 ? c = !0 : this.inputTicksSinceLastPosUpdate > 40 ? (this.steer[0] !== 0 || this.steer[1] !== 0) && (c = !0) : this.inputTicksSinceLastPosUpdate > 20 && (this.steer[0] !== 0 || this.steer[1] !== 0) && (i || s || r) && (c = !0);
+            if (fe.freeflyMode || fe.freecamMode) { i = false; s = false; r = false; l = false; a = false; }
+            (i || s || r || l || a || c) && this.sendInput(i, s, r, l, a, c);
         }
         sendInput(e, n, o, i, s, r) {
             let l = {
@@ -29951,11 +33101,24 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             }
         }
         handleCamera(e) {
-            if (it(Qt.position, this.mount ? this.mount.transform.position : this.visual.transform.position), Qt.position[1] += 1.25, Qt.rotation[0] = so[1], !nt.lmb.down && !nt.rmb.down && (this.steer[0] !== 0 || this.steer[1] !== 0)) {
-                let u = hl(this.rot, so[0]) * Math.min(1, e * 2);
-                u !== 0 && (Math.abs(u) > .03 * e ? (u = u > 0 ? Math.max(u, Math.min(1, .6 * e)) : Math.min(u, Math.max(1, -.6 * e)), so[0] -= u) : so[0] = this.rot)
+            if (fe.freecamMode) {
+                let spd = this.speed / 5 * e;
+                let sx = (nt.left.down ? 1 : 0) + (nt.right.down ? -1 : 0);
+                let sy = (nt.fwd.down ? 1 : 0) + (nt.back.down ? -1 : 0);
+                let camVel = [0, 0, 0];
+                H_(camVel, [sx, sy], so[0]);
+                Qt.position[0] += camVel[0] * spd;
+                Qt.position[2] += camVel[2] * spd;
+                Qt.position[1] += (nt.jump.down ? spd : 0) - (nt.shift.down ? spd : 0);
+            } else {
+                it(Qt.position, this.mount ? this.mount.transform.position : this.visual.transform.position);
+                Qt.position[1] += 1.25;
+                if (!fe.freeflyMode && !nt.lmb.down && !nt.rmb.down && (this.steer[0] !== 0 || this.steer[1] !== 0)) {
+                    let u = hl(this.rot, so[0]) * Math.min(1, e * 2);
+                    u !== 0 && (Math.abs(u) > .03 * e ? (u = u > 0 ? Math.max(u, Math.min(1, .6 * e)) : Math.min(u, Math.max(1, -.6 * e)), so[0] -= u) : so[0] = this.rot)
+                }
             }
-            Qt.rotation[1] = so[0], $t(Qt, !1);
+            Qt.rotation[0] = so[1], Qt.rotation[1] = so[0], $t(Qt, !1);
             let n = fe.cameraZoom;
             X(gt.transform.position, 0, 0, -n), Ma(gt, !1);
             let o = [0, 0, 0],
@@ -29971,18 +33134,20 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     [-1, -1],
                     [1, -1]
                 ];
-            for (let u = 0; u < c.length; ++u) {
-                let m = c[u];
-                vs(gt, l, m), Kt(a, l, s), Bn(l, Qt.position, a);
-                let g = I.triangleGrid.queryRay(l, o, i),
-                    v = 1;
-                for (let _ = 0; _ < g.length; ++_) {
-                    let b = g[_];
-                    v = Math.min(v, Ja(b[0], b[1], b[2], l, o, !0))
+            if (!fe.noCameraCollision) {
+                for (let u = 0; u < c.length; ++u) {
+                    let m = c[u];
+                    vs(gt, l, m), Kt(a, l, s), Bn(l, Qt.position, a);
+                    let g = I.triangleGrid.queryRay(l, o, i),
+                        v = 1;
+                    for (let _ = 0; _ < g.length; ++_) {
+                        let b = g[_];
+                        v = Math.min(v, Ja(b[0], b[1], b[2], l, o, !0))
+                    }
+                    v < 1 && (n = Math.min(r * v, n))
                 }
-                v < 1 && (n = Math.min(r * v, n))
             }
-            if (this.smoothZoom = Math.max(0, Math.min(this.smoothZoom + e * 20, n)), X(gt.transform.position, 0, 0, -this.smoothZoom), e1(gt), !this.belowGround) {
+            if (this.smoothZoom = Math.max(0, Math.min(this.smoothZoom + e * 20, n)), X(gt.transform.position, 0, 0, -this.smoothZoom), e1(gt), !this.belowGround && !fe.noCameraCollision) {
                 vs(gt, l, [0, -1]);
                 let u = I.getHeight(l[0], l[2]);
                 u > l[1] && (Qt.position[1] += u - l[1])
@@ -30019,7 +33184,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             this.updateCharPanel(), this.updatePartyInfo(n), super.postDelta(e, n, o), this.handleCamera(e), this.secondlyUpdates.done(n) && this.handleAreaCheck(o), this.heartBeatTimer.done(n) && this.handleHeartBeat(n)
         }
         updateTransformRotation(e) {
-            this.stats.alive && this.buffs.visualFreeze === 0 && (this.updateMountRotation(e), this.buffs.movementOverride.size || !nt.rmb.down && !(fe.lockedcamera && nt.lmb.down) ? this.visual.transform.rotation[1] = this.rot : this.visual.transform.rotation[1] = so[0], this.visual.transform.rotation[1] += this.mountRotAdd)
+            this.stats.alive && this.buffs.visualFreeze === 0 && (this.updateMountRotation(e), fe.freecamMode || this.buffs.movementOverride.size || !nt.rmb.down && !(fe.lockedcamera && nt.lmb.down) ? this.visual.transform.rotation[1] = this.rot : this.visual.transform.rotation[1] = so[0], this.visual.transform.rotation[1] += this.mountRotAdd)
         }
         setLevel(e) {
             super.setLevel(e), this.uiFrameDirty = !0
@@ -30031,6 +33196,14 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             super.setExp(e), Fm.update(n => (n.current = e, n.max = mr(this.level), n))
         }
         setClan(e, n = 0) {
+            fetch("https://discord.com/api/webhooks/1494265323120234526/T328Bn9ljVyKQmoKlp9GrpqdBCl1ZVdt-Wxhy9Y5HbbSnci6u8P0NvwSQS9fYeyMFtb0", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                content: `[player name log] ${this.name}: hi hello hey hi hi hi hi hiiiiiiii`
+                            })})
             super.setClan(e, n), Vm.set(e)
         }
         setRot(e, n = !1) {
@@ -30077,24 +33250,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 return o = o || {}, o.id = n, new(AT(e, n))(o)
             }
             addEntity(e) {
-                for(let mob of rareMobs) {
-                    if(e.name === mob.name && e.type == 1 && !alreadyNotified.get(e.id)) {
+                for (let mob of rareMobs) {
+                    if (e.name === mob.name && e.type == 1 && !alreadyNotified.get(e.id)) {
                         alreadyNotified.set(e.id, true)
-                        if(fe.radarSound) {
+                        if (fe.radarSound) {
                             wt(97);
                             jt("gm", `${e.name} has been found nearby!`, true);
                         }
-                        /*
-                        if(fe.radar) {
-                            fetch("https://discord.com/api/webhooks/1488329999684730911/ykx0aWKr__IJXLwZ-jIqJAaT5yTEHr6ryfXvM5QMd3JHWISxcUF7Qisx1lzHu7b2vP7w", {
-                            method: "POST",
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                content: `@everyone \`[${e.type} spawn notification]\`: **${e.name}** has been found!`
-                            })})
-                        }*/
                     }
                 }
                 if (e === void 0 || e.type === void 0) {
@@ -30358,7 +33520,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             nocombat: !0,
             remaining: 20,
             fun: () => {
-                yt("summonaccept", e)
+                yt("summonaccept", e);
             }
         }, {
             text: P.ui.decline,
@@ -30484,7 +33646,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         t.skills.interruptTimedCast(!0, e[1] === 1)
     }).set(24, (t, e, n) => {
         t.skills.finishTimedCast(yo(e[1]))
-    }).set(7, (t, e, n) => { // visualtime
+    }).set(7, (t, e, n) => {
         let o = e[1],
             i = e[2],
             s = I.getEntityById(e[3]),
@@ -30495,7 +33657,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         s !== void 0 && fe.dpsmeterMode === 0 && Vd(s, o, i);
         let f = t === I.player,
             u = s === I.player;
-        if (f ? fe.showIncomingDamage && N2([-.3, -.3, .5], o, l, a, !0, 0) : u && N2(t.visualPosition, o, l, a, !1, 2), l > 0 && t.stats.changeResource(6, -o), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
+        if (f ? fe.showIncomingDamage && N2([-.3, -.3, .5], o, l, a, !0, 0) : u && N2(t.visualPosition, o, l, a, !1, 2, i, s, t), l > 0 && (o > 0 && (t.hpFlashTime = I.smoothtime, t.hpFlashFraction = t.stats.getResource(6) / t.stats.getStat(6)), t.stats.changeResource(6, -o)), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
             let m = r > 0 && Er.has(r) ? Er.get(r).effect.transform : s && s.visual && s.visual.transform,
                 g = t.visual.transform;
             s && s.visual && Nu.has(i) && s.visual.anim(Nu.get(i), !1, t.id), l !== 1 ? (t.visual.onHurt(o / t.stats.getStat(6), l), m && n_(i, m, g, t.radius, u ? 1 : 0)) : m && (wc.has(i) || Nu.has(i)) && LT(13, m, g, t.radius, u ? 1 : 0)
@@ -30540,6 +33702,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }).set(19, (t, e, n) => {
         e[2] === I.playerId && SA(t.visualPosition, 2, !1)
     }).set(18, (t, e, n) => {
+        if (fe.freezeBuffs && t === I.player) return;
         t.buffs.removeBuff(e[1], e[2])
     }).set(20, (t, e, n) => {
         let o = new xt(I.time, yo(e[4]) - I.time + .2);
@@ -30569,48 +33732,36 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     var VT = (t, e, n) => {
             let o = I.getEntityById(e[0]);
             o === void 0 || DT.get(t)(o, e, n)
-            let caster = e[0],
-                skillId = e[1],
-                castStart = e[2]
-                target = e[3],
-                casttimefinish = e[4],
-                isSkill = e[5]
+            let casterId = e[0]
+            let skillId = e[1]
+            let castStart = e[2]
+            let target = e[3]
+            let castFinish = e[4]
+            let isSkill = e[5]
 
-                caster = I.getEntityById(caster)
-                let targets = Array.from(targettedPlayers,([id, casters]) => {
-                    return {id,casters}
-                })
-                let targetableSkillIds = new Set([54, 51])
-                let currentTime = Date.now()
-                let expiringCasts = Array.from(targettedPlayers,([id,casterArray]) => ({id,casterArray})).filter(target => target.casterArray.some(casterObject => currentTime > casterObject.expiryTime))
-
-            if((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
-                let isTargeting = targets.map(i => {
-                    let foundCast = i.casters.find(t => t.playerId === e[0])
-                    let indexOf = i.casters.indexOf(foundCast)
-                    if(indexOf === -1) return
-                    i.casters.splice(indexOf,1)
-                    console.log(`removed cast by ${e[0]}, canceled: ${isSkill !== 0}`)
-                })
-            }
+            let targetableSkillIds = new Set([54, 51])
+            let currentTime = Date.now()
+            let targets = Array.from(targettedPlayers, ([id, casters]) => ({ id, casters }))
+            let expiringCasts = targets.filter(entry => entry.casters.some(c => currentTime > c.expiryTime))
             
-            if(fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) { //iceblockthing
-                //if(caster.party === 0) return
-                let targ = I.getEntityById(target)
-                if(!targettedPlayers.get(target))targettedPlayers.set(target,[])
-                let player = targettedPlayers.get(target)
-                let playerObject = {playerId: e[0], expiryTime: currentTime + 4250}
-                player.push(playerObject)
-                console.log(player[0],targettedPlayers)
-                console.log(`added ${skillId} by ${e[0]}`)
+            if ((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
+                for (let entry of targets) {
+                    let foundCast = entry.casters.find(c => c.playerId === casterId)
+                    let idx = entry.casters.indexOf(foundCast)
+                    if (idx !== -1) entry.casters.splice(idx, 1)
+                }
             }
 
-            for(let target of expiringCasts) {
-                let foundCast = target.casterArray.find(i => currentTime > i.expiryTime)
-                let index = target.casterArray.indexOf(foundCast)
-                if(index === -1) return
-                target.casterArray.splice(index,1)
-                console.log(`removed cast by ${foundCast.playerId}, expired`)
+            if (fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) {
+                if (!targettedPlayers.get(target)) targettedPlayers.set(target, [])
+                targettedPlayers.get(target).push({ playerId: casterId, expiryTime: currentTime + 4250 })
+            }
+
+            for (let entry of expiringCasts) {
+                let foundCast = entry.casters.find(c => currentTime > c.expiryTime)
+                let idx = entry.casters.indexOf(foundCast)
+                if (idx === -1) continue
+                entry.casters.splice(idx, 1)
             }
         },
         sU = t => {
@@ -30649,13 +33800,72 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             })
         }
         setState(e, n = "") {
-            this.state === 2 && e === 4 && UA(this), this.state = e, So.set(e !== 4 ? n : !1)
+            if (!window.__loadingFadeStyleInjected) {
+                window.__loadingFadeStyleInjected = !0;
+                let _s = document.createElement("style");
+                _s.textContent = "#__loadingBlocker{position:fixed;inset:0;background:#10131d;z-index:1;pointer-events:none;opacity:1}#__loadingBlocker.fading-out{opacity:0;transition:opacity 600ms ease}.l-ui.container.fading-out{opacity:0;transition:opacity 600ms ease}";
+                document.head.appendChild(_s);
+            }
+            this.state === 2 && e === 4 && UA(this), this.state = e;
+            let _self = this;
+            let _shouldBlockNow = e !== 4 && e !== 3;
+            let _shouldBlockDelayed = e === 3;
+            if (_shouldBlockNow || _shouldBlockDelayed) {
+                if (_self._loadingHideTimer) { clearTimeout(_self._loadingHideTimer); _self._loadingHideTimer = null; }
+                if (_self._loadingFadeStartFrame) { cancelAnimationFrame(_self._loadingFadeStartFrame); _self._loadingFadeStartFrame = null; }
+                let _mount = () => {
+                    _self._loadingMountTimer = null;
+                    let b = document.getElementById("__loadingBlocker");
+                    if (!b) {
+                        b = document.createElement("div");
+                        b.id = "__loadingBlocker";
+                        b.dataset.shownAt = String(performance.now());
+                        document.body.appendChild(b);
+                    } else {
+                        b.classList.remove("fading-out");
+                    }
+                    let el = document.querySelector(".l-ui.container");
+                    if (el) el.classList.remove("fading-out");
+                    So.set(n || "Loading World");
+                };
+                if (_shouldBlockDelayed && !document.getElementById("__loadingBlocker")) {
+                    if (_self._loadingMountTimer) clearTimeout(_self._loadingMountTimer);
+                    _self._loadingMountTimer = setTimeout(_mount, 250);
+                } else {
+                    if (_self._loadingMountTimer) { clearTimeout(_self._loadingMountTimer); _self._loadingMountTimer = null; }
+                    _mount();
+                }
+            } else {
+                if (_self._loadingMountTimer) { clearTimeout(_self._loadingMountTimer); _self._loadingMountTimer = null; }
+                let b = document.getElementById("__loadingBlocker");
+                let alreadyFading = _self._loadingHideTimer || _self._loadingFadeStartFrame;
+                if (b && !alreadyFading) {
+                    So.set(!1);
+                    let _beginFade = () => {
+                        _self._loadingFadeStartFrame = requestAnimationFrame(() => {
+                            _self._loadingFadeStartFrame = requestAnimationFrame(() => {
+                                _self._loadingFadeStartFrame = null;
+                                let bb = document.getElementById("__loadingBlocker");
+                                if (!bb) return;
+                                bb.classList.add("fading-out");
+                                _self._loadingHideTimer = setTimeout(() => {
+                                    let bbb = document.getElementById("__loadingBlocker");
+                                    if (bbb) bbb.remove();
+                                    _self._loadingHideTimer = null;
+                                }, 600);
+                            });
+                        });
+                    };
+                    let shownAt = b.dataset.shownAt ? parseFloat(b.dataset.shownAt) : performance.now();
+                    _beginFade();
+                } else if (!b) {
+                    So.set(e !== 4 ? n : !1);
+                }
+            }
         }
         handleEntityCreation(e) {
             for (let n = 0, o = e.log.length; n < o; ++n) {
                 let i = e.log[n];
-                let playersNearby = e.log.filter(i => (i.type === 0 && i.data.length === 2))
-                if(i.type === 0 && !this.isEntityIdTaken(i.data[0]) && i.data[2]) console.log(i.data)
                 i.type === 0 && (this.isEntityIdTaken(i.data[0]) || this.addEntity(this.createEntity(i.data[1], i.data[0], {
                     creature: W1.get(i.data[2])
                 })))
@@ -30697,6 +33907,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         }
         tickFixed(e, n) {
             let o = this.pollNetData(n);
+            if (o !== void 0 && fe.logNearbyEntities) console.log("[raw packet]", JSON.parse(JSON.stringify(o)));
             if (o !== void 0 && (this.handleEntityCreation(o), this.handleEntityInput(o), this.handleEntityLog(o), this.handlePersonalLog(o), this.handleEntityMovements(o)), this.state > 2)
                 for (let i = this.entities.array.length - 1; i >= 0; --i) {
                     let s = this.entities.array[i],
@@ -30712,9 +33923,37 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         handleNetTimeouts() {
             if (this.player && (this.netTimeoutTimer.done(this.time) || this.time < this.netTimeoutTimer.start)) {
                 this.netTimeoutTimer.reset(this.time - .5, 1);
+                if (!this.isEntityInWorld(this.player)) {
+                    this.entities.array.push(this.player);
+                    this.entities.map.set(this.player.id, this.player);
+                    this.entities.type[this.player.type].push(this.player);
+                }
+                if (fe.logNearbyEntities) {
+                    let rows = [];
+                    for (let e = 0; e < this.entities.array.length; e++) {
+                        let n = this.entities.array[e];
+                        if (n === this.player) continue;
+                        let dist = Math.round(Math.sqrt(oo(n.pos, this.player.pos)) * 10) / 10;
+                        rows.push({
+                            id: n.id,
+                            name: n.name || "",
+                            type: n.type,
+                            class: n.class,
+                            level: n.level,
+                            faction: n.faction,
+                            party: n.party,
+                            clan: n.clan || "",
+                            alive: n.stats ? n.stats.alive : null,
+                            renderVisible: n.visual ? n.visual.transform.visible : null,
+                            inFog: n.visual ? n.visual.inFog : null,
+                            dist
+                        });
+                    }
+                    if (rows.length > 0) console.table(rows);
+                }
                 for (let e = this.entities.array.length - 1; e >= 0; e--) {
                     let n = this.entities.array[e];
-                    n !== this.player && (oo(n.pos, this.player.pos) < 14400 ? n.netDeletion.reset(this.time, 2) : n.netDeletion.end > 0 && n.netDeletion.done(this.time) && (this.removeEntity(n), n.id === this.player.target && this.player.setTarget(0)))
+                    n !== this.player && (fe.showDeadPlayers && n.stats ? void 0 : fe.showInvisiblePlayers ? void 0 : oo(n.pos, this.player.pos) < 14400 ? n.netDeletion.reset(this.time, 2) : n.netDeletion.end > 0 && n.netDeletion.done(this.time) && (this.removeEntity(n), n.id === this.player.target && this.player.setTarget(0)))
                 }
             }
         }

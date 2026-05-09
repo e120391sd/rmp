@@ -8,7 +8,6 @@
 // ==/UserScript==
 
 (function () {
-    console.log("[Gear set manager]: Loaded")
     const clientCmdHeader = 5;
     const serverEntityDeltaHeader = 7;
     const savedGearSetsKey = "savedGearSets";
@@ -601,13 +600,5 @@
         }
     });
 
-    let observedRoot = null;
-    function reinitObserver() {
-        if (observedRoot === document.documentElement) return;
-        mutationObserver.disconnect();
-        observedRoot = document.documentElement;
-        mutationObserver.observe(observedRoot, {childList: true, subtree: true});
-    }
-    window.addEventListener("DOMContentLoaded", reinitObserver, true);
-    reinitObserver();
+    mutationObserver.observe(document.documentElement, {childList: true, subtree: true});
 })();
