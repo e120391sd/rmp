@@ -587,9 +587,7 @@
             stashSlots.clear();
         }
         if (_formelements) {
-            let stash = _formelements.parentElement
-            let panel = stash.querySelectorAll(".panel-black.marg-top")[1]
-            let formelements = panel.querySelector(".formelements")
+            let formelements = document.querySelector(".panel-black.marg-top > .marg-top.formelements");
             if (formelements && !document.getElementById(stashUIRowId)) {
                 injectStashUI(formelements);
             }

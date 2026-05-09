@@ -2369,7 +2369,9 @@ void main() {
         rainWindowMax: () => rainWindowMax,
         rainEaseSpeed: () => rainEaseSpeed,
         removeElixir: () => removeElixir,
-        minimapLightOverlay: () => minimapLightOverlay
+        minimapLightOverlay: () => minimapLightOverlay,
+        stashCategories: () => stashCategories,
+        saveCategoriesToPlayer: () => saveCategoriesToPlayer,
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2395,7 +2397,10 @@ void main() {
         er = ne(300),
         Sa = ne(2),
         hf = ne(!1),
+        stashCategories = ne([]),
+        saveCategoriesToPlayer = ne(false),
         Kr = ne(5),
+
         _s = ne(!1),
         el = ne(!1),
         bs = ne(!1),
@@ -2685,6 +2690,8 @@ void main() {
         },
         fe = {};
     for (let t in a1) a3(t, a1[t]);
+    let categoriesPlayerName = null;
+    saveCategoriesToPlayer.subscribe(() => stashCategories.update(cats => cats));
     showDeadPlayers.subscribe(val => {
         if (!val && I) {
             for (let e = I.entities.array.length - 1; e >= 0; e--) {
@@ -2704,7 +2711,7 @@ void main() {
     function injectStyle(id, css) {
         let el = document.getElementById(id);
         if (!el) { el = document.createElement("style"); el.id = id; document.head.appendChild(el); }
-        el.textContent = css;
+        if (el.textContent !== css) el.textContent = css;
     }
     function getCCColor(buffs) {
         if (buffs.has(101)) return fe.deepFreezeColor;
@@ -2729,10 +2736,100 @@ void main() {
     }
     
     injectStyle("modRevGlowStyle", `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`);
+
+    let stashSelectCategoryCallbacks = [];
+    function onStashCategorySelect(callback) {
+        stashSelectCategoryCallbacks.push(callback);
+        return function() {stashSelectCategoryCallbacks = stashSelectCategoryCallbacks.filter(function(cb) {return cb !== callback;});};
+    }
+    function fireStashCategorySelect(name) {
+        stashSelectCategoryCallbacks.forEach(function(cb) {cb(name);});
+    }
+
+    function buildCustomGroups(ctx) {
+        let allItems = ctx[8] || [];
+        let allCategories = ctx[35] || [];
+        let visibleCategories = fe.saveCategoriesToPlayer && categoriesPlayerName
+            ? allCategories.filter(function(cat) {return cat.pname === categoriesPlayerName;})
+            : allCategories;
+        let allAssignedIds = [].concat(...visibleCategories.map(function(cat) {return cat.data || [];}));
+        let groups = visibleCategories.map(function(cat) {
+            let stores = allItems.filter(function(store) {return store.temp && (cat.data || []).includes(store.temp.dbid + "");});
+            return {stores: stores, name: cat.name, isCategory: true};
+        });
+        let ungroupedStores = allItems.filter(function(store) {return !store.temp || !allAssignedIds.includes(store.temp.dbid + "");});
+        groups.push({stores: ungroupedStores, name: "Ungrouped", isCategory: true});
+        return groups;
+    }
+
+    let heldStashDbid = null;
+    let heldStashElement = null;
+    let heldStashClone = null;
+    let heldStashMoveCleanup = null;
+
+    function setHeldStashDbid(dbid, element, clientX, clientY) {
+        if (heldStashElement) Ve(heldStashElement, "display", "");
+        if (heldStashClone && heldStashClone.parentNode) heldStashClone.parentNode.removeChild(heldStashClone);
+        heldStashClone = null;
+        if (heldStashMoveCleanup) { heldStashMoveCleanup(); heldStashMoveCleanup = null; }
+
+        heldStashDbid = dbid;
+        heldStashElement = dbid ? (element || null) : null;
+
+        if (heldStashElement) {
+            let rect = heldStashElement.getBoundingClientRect();
+            let w = rect.width, h = rect.height;
+            heldStashClone = heldStashElement.cloneNode(true);
+            Ve(heldStashElement, "display", "none");
+            Ve(heldStashClone, "position", "fixed");
+            Ve(heldStashClone, "pointer-events", "none");
+            Ve(heldStashClone, "z-index", "99999");
+            Ve(heldStashClone, "left", ((clientX || rect.left) - w / 2) + "px");
+            Ve(heldStashClone, "top", ((clientY || rect.top) - h / 2) + "px");
+            document.body.appendChild(heldStashClone);
+            let moveHandler = function(e) {
+                if (!heldStashClone) return;
+                Ve(heldStashClone, "left", (e.clientX - w / 2) + "px");
+                Ve(heldStashClone, "top", (e.clientY - h / 2) + "px");
+            };
+            let cancelHandler = function(e) { if (e.button === 2) setHeldStashDbid(null); };
+            document.addEventListener("pointermove", moveHandler);
+            document.addEventListener("pointerup", cancelHandler);
+            heldStashMoveCleanup = function() {
+                document.removeEventListener("pointermove", moveHandler);
+                document.removeEventListener("pointerup", cancelHandler);
+            };
+        }
+
+        Ve(document.body, "cursor", dbid ? "grabbing" : "");
+        document.body.classList.toggle("stash-dragging", !!dbid);
+    }
+
+    let heldCategoryName = null;
+    let heldCategoryElement = null;
+
+    function setHeldCategory(categoryName, categoryElement) {
+        if(heldCategoryElement) Ve(heldCategoryElement, "opacity", "");
+        heldCategoryName = categoryName;
+        heldCategoryElement = categoryName ? (categoryElement || null) : null;
+        if(heldCategoryElement) Ve(heldCategoryElement, "opacity", "0.5");
+    }
+
+    injectStyle("modStashCategoryDrop", `
+        .stash-drop-target { transition: outline 0.1s; }
+        .stash-dragging .stash-drop-target:hover { border-radius: 2px; outline: 2px solid #f90; background: rgba(255,153,0,0.08); }
+    `);
     
     hideChat.subscribe(v => injectStyle("modHideChatStyle", v ? ".l-corner-ll{display:none!important}" : ""));
     (function rafDomUpdates() {
         requestAnimationFrame(rafDomUpdates);
+        {
+            let currentPlayerName = I && I.player ? I.player.name : null;
+            if(currentPlayerName !== categoriesPlayerName) {
+                categoriesPlayerName = currentPlayerName;
+                stashCategories.update(cats => cats);
+            }
+        }
         let minimapContainer = document.getElementById("minimapcontainer");
 
         document.querySelectorAll(".sysbtnbarKEK").forEach(element => Ve(element, "display", fe.hideKekQuickButtons ? "none" : ""));
@@ -2787,7 +2884,7 @@ void main() {
                 let area = areaId && Qf.get(areaId);
                 envName = (area && area.name) ? area.name : (fe.activeWorld || "");
             }
-            envBar.textContent = envName;
+            if (envBar.textContent !== envName) envBar.textContent = envName;
             Ve(envBar, "font", "bold 15px hordes");
             Ve(envBar, "color", "#34cb49");
             Ve(envBar, "display", "");
@@ -18262,6 +18359,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeToggle("Enable mage cape-swing", enableMageCapeswing),
             makeToggle("Enable charm auto equip", charmAutoEquip, {note: "Equips charms along with saved gear sets"}),
             makeToggle("Enable charm auto stash", charmAutoStash, {note: "Stores charms along with saved gear sets"}),
+            makeToggle("Stash categories save to player", saveCategoriesToPlayer),
             makeToggle("Remove elixir button", removeElixir),
             makeToggle("Area name above minimap", showEnvName),
             makeToggle("Minimap worldlight overlay", minimapLightOverlay),
@@ -20334,19 +20432,115 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function VF(t) {
-        let e, n, o, i, s, r, l, a = ["Ungrouped", "Grouped", "Groups + Titles"][t[14]] + "",
+        let e, n, o, i, s, r, l, a = ["Ungrouped", "Grouped", "Groups + Titles", "Group Editor"][t[14]] + "",
             c, f, u, m;
+
+        let categoryRow, categoryLabel, categoryInput, addButton, removeButton, categoryInputValue = "", selectCleanup;
+
+        function updateCategoryButtons() {
+            let currentCategories = t[35] || [];
+            let isRegistered = currentCategories.some(function(cat) {return cat.name === categoryInputValue;});
+            addButton.disabled = !categoryInputValue || isRegistered;
+            removeButton.disabled = !isRegistered;
+        }
+
+        function createCategoryRow() {
+            categoryRow = h("div");
+            Ve(categoryRow, "font", "bold 15px hordes");
+            categoryLabel = h("small");
+            categoryLabel.textContent = "Category: ";
+            categoryInput = h("input");
+            addButton = h("button");
+            addButton.textContent = "Add";
+            Ve(addButton, "font", "bold 13px hordes");
+            removeButton = h("button");
+            removeButton.textContent = "Remove";
+            Ve(removeButton, "font", "bold 13px hordes");
+
+            Ve(categoryRow, "display", "inline-flex");
+            Ve(categoryRow, "align-items", "center");
+            Ve(categoryRow, "gap", "2px");
+            p(categoryLabel, "class", "textprimary");
+            p(categoryInput, "type", "text");
+            Ve(categoryInput, "color", "#fff");
+            Ve(categoryInput, "background-color", "#293c40");
+            Ve(categoryInput, "padding", "2px 4px");
+            Ve(categoryInput, "border-radius", "3px");
+            Ve(categoryInput, "width", "160px");
+            Ve(categoryInput, "margin-left", "7.5px");
+            p(addButton, "class", "btn grey textwhite");
+            p(removeButton, "class", "btn grey textwhite");
+        }
+
         return {
             c() {
-                e = h("div"), n = h("small"), n.textContent = "Width", o = h("input"), i = h("small"), i.textContent = "Height", s = h("input"), r = h("div"), l = h("small"), c = T(a), p(n, "class", "btn textsecondary"), p(o, "type", "range"), p(o, "min", "7"), p(o, "max", "20"), p(i, "class", "btn textsecondary"), p(s, "type", "range"), p(s, "min", "50"), p(s, "max", "500"), p(l, "class", f = "btn grey text" + ["white", "green", "cyan"][t[14]] + " svelte-gou6xs"), p(e, "class", "panel-black bar-top-config svelte-gou6xs")
+                e = h("div"), n = h("small"), n.textContent = "Width", o = h("input"), i = h("small"), i.textContent = "Height", s = h("input"), r = h("div"), l = h("small"), c = T(a), p(n, "class", "btn textsecondary"), p(o, "type", "range"), p(o, "min", "7"), p(o, "max", "20"), p(i, "class", "btn textsecondary"), p(s, "type", "range"), p(s, "min", "50"), p(s, "max", "500"), p(l, "class", f = "btn grey text" + ["white", "green", "cyan", "orange"][t[14]] + " svelte-gou6xs"), p(e, "class", "panel-black bar-top-config svelte-gou6xs");
+                createCategoryRow();
             },
             m(g, v) {
-                w(g, e, v), d(e, n), d(e, o), We(o, t[12]), d(e, i), d(e, s), We(s, t[13]), d(e, r), d(e, l), d(l, c), u || (m = [H(o, "change", t[25]), H(o, "input", t[25]), H(s, "change", t[26]), H(s, "input", t[26]), H(l, "click", t[27])], u = !0)
+                w(g, e, v), d(e, n), d(e, o), We(o, t[12]), d(e, i), d(e, s), We(s, t[13]), d(e, r);
+
+                d(e, categoryRow);
+                d(categoryRow, categoryLabel);
+                d(categoryRow, categoryInput);
+                d(categoryRow, addButton);
+                d(categoryRow, removeButton);
+                Ve(l, "margin-left", "150px");
+                d(categoryRow, l);
+                d(l, c);
+                let isMode3 = t[14] === 3;
+                Ve(categoryLabel, "display", isMode3 ? "" : "none");
+                Ve(categoryInput, "display", isMode3 ? "" : "none");
+                Ve(addButton, "display", isMode3 ? "" : "none");
+                Ve(removeButton, "display", isMode3 ? "" : "none");
+                updateCategoryButtons();
+
+                selectCleanup = onStashCategorySelect(function(name) {
+                    categoryInput.value = name;
+                    categoryInputValue = name;
+                    updateCategoryButtons();
+                });
+
+                u || (m = [
+                    H(o, "change", t[25]), H(o, "input", t[25]),
+                    H(s, "change", t[26]), H(s, "input", t[26]),
+                    H(l, "click", t[27]),
+
+                    H(categoryInput, "input", function() {
+                        categoryInputValue = categoryInput.value.trim();
+                        updateCategoryButtons();
+                    }),
+                    H(addButton, "click", function() {
+                        let currentCategories = t[35] || [];
+                        let playerName = I && I.player ? I.player.name : "";
+                        if(categoryInputValue && !currentCategories.some(function(cat) {return cat.name === categoryInputValue;})) {
+                            let newCat = {name: categoryInputValue, data: [], pname: playerName};
+                            let next = [...currentCategories, newCat].sort(function(a, b) {return a.name.localeCompare(b.name);});
+                            stashCategories.set(next);
+                            addButton.disabled = true;
+                            removeButton.disabled = false;
+                        }
+                    }),
+                    H(removeButton, "click", function() {
+                        let currentCategories = t[35] || [];
+                        let name = categoryInputValue;
+                        if(currentCategories.some(function(cat) {return cat.name === name;})) {
+                            stashCategories.set(currentCategories.filter(function(cat) {return cat.name !== name;}));
+                            addButton.disabled = !name;
+                            removeButton.disabled = true;
+                        }
+                    }),
+                ], u = !0)
             },
             p(g, v) {
-                v[0] & 4096 && We(o, g[12]), v[0] & 8192 && We(s, g[13]), v[0] & 16384 && a !== (a = ["Ungrouped", "Grouped", "Groups + Titles"][g[14]] + "") && G(c, a), v[0] & 16384 && f !== (f = "btn grey text" + ["white", "green", "cyan"][g[14]] + " svelte-gou6xs") && p(l, "class", f)
+                t = g;
+                v[0] & 4096 && We(o, g[12]), v[0] & 8192 && We(s, g[13]), v[0] & 16384 && a !== (a = ["Ungrouped", "Grouped", "Groups + Titles", "Group Editor"][g[14]] + "") && G(c, a), v[0] & 16384 && f !== (f = "btn grey text" + ["white", "green", "cyan", "orange"][g[14]] + " svelte-gou6xs") && p(l, "class", f);
+                if (v[0] & 16384) {let m3 = g[14] === 3 ? "" : "none"; Ve(categoryLabel, "display", m3); Ve(categoryInput, "display", m3); Ve(addButton, "display", m3); Ve(removeButton, "display", m3);}
+
+                v[1] & 8 && updateCategoryButtons();
             },
             d(g) {
+                if (selectCleanup) selectCleanup();
                 g && x(e), u = !1, rt(m)
             }
         }
@@ -20354,25 +20548,55 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
 
     function LF(t) {
         let e, n = t[41].name + "",
-            o;
+            o, titleClickCleanup, catDragCleanup;
         return {
             c() {
-                e = h("small"), o = T(n), p(e, "class", "textprimary"), Ve(e, "display", "block"), Ve(e, "font-size", "10px"), Ve(e, "text-transform", "uppercase"), Ve(e, "letter-spacing", "0.1em")
+                e = h("small"), o = T(n), p(e, "class", "textprimary"), Ve(e, "display", "block"), Ve(e, "font-size", "10px"), Ve(e, "text-transform", "uppercase"), Ve(e, "letter-spacing", "0.1em"), Ve(e, "cursor", "pointer")
             },
             m(i, s) {
-                w(i, e, s), d(e, o)
+                w(i, e, s), d(e, o);
+                titleClickCleanup = H(e, "click", function() {fireStashCategorySelect(n);});
+                H(e, "mouseenter", function() { if(t[14] === 3) Ve(e, "filter", "brightness(1.3)"); });
+                H(e, "mouseleave", function() { Ve(e, "filter", ""); });
+                function categoryContextMenu(event) {
+                    if(t[14] !== 3) return;
+                    event.preventDefault();
+                    event.stopPropagation();
+                    if(heldCategoryName === null) {
+                        setHeldCategory(t[41].name, e);
+                        return;
+                    }
+                    let fromCategory = heldCategoryName, toCategory = t[41].name;
+                    setHeldCategory(null);
+                    if(fromCategory === toCategory) return;
+                    stashCategories.update(function(categories) {
+                        let fromIndex = categories.findIndex(function(cat) {return cat.name === fromCategory;});
+                        let toIndex = categories.findIndex(function(cat) {return cat.name === toCategory;});
+                        if(fromIndex < 0 || toIndex < 0) return categories;
+                        let result = categories.slice();
+                        let moved = result.splice(fromIndex, 1)[0];
+                        result.splice(toIndex, 0, moved);
+                        return result;
+                    });
+                }
+                e.addEventListener("contextmenu", categoryContextMenu, true);
+                catDragCleanup = function() { e.removeEventListener("contextmenu", categoryContextMenu, true); };
             },
             p(i, s) {
+                t = i;
                 s[0] & 16864 && n !== (n = i[41].name + "") && G(o, n)
             },
             d(i) {
+                if(titleClickCleanup) titleClickCleanup();
+                if(catDragCleanup) catDragCleanup();
+                if(heldCategoryElement === e) setHeldCategory(null);
                 i && x(e)
             }
         }
     }
 
     function qF(t) {
-        let e, n;
+        let e, n, wrapperEl, middleClickCleanup;
         return e = new ko({
             props: {
                 descPos: "left:100%;top:0;",
@@ -20383,14 +20607,30 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 item: t[44],
                 filter: !t[9] || (!t[44].temp || t[44].temp.getStashTime() > t[4] || "") || t[6].includes(t[44]) ? !0 : ""
             }
-        }), e.$on("click", function() {
+        }), e.$on("click", function(event) {
+            if (t[14] === 3 && heldStashDbid !== null) return;
             Ni(t[6].includes(t[44]) ? void 0 : t[20]) && (t[6].includes(t[44]) ? void 0 : t[20]).apply(this, arguments)
         }), {
             c() {
+                wrapperEl = h("div");
+                Ve(wrapperEl, "display", "contents");
                 K(e.$$.fragment)
             },
             m(o, i) {
-                Q(e, o, i), n = !0
+                w(o, wrapperEl, i);
+                Q(e, wrapperEl, null);
+                function pointerdownCapture(event) {
+                    if (event.button !== 2 || t[14] !== 3) return;
+                    event.stopPropagation();
+                    event.preventDefault();
+                    if (!t[44].temp || heldStashDbid !== null) return;
+                    let dbid = t[44].temp.dbid + "";
+                    let itemEl = wrapperEl.firstChild;
+                    setHeldStashDbid(dbid, itemEl, event.clientX, event.clientY);
+                }
+                wrapperEl.addEventListener("pointerdown", pointerdownCapture, true);
+                middleClickCleanup = function() {wrapperEl.removeEventListener("pointerdown", pointerdownCapture, true);};
+                n = !0
             },
             p(o, i) {
                 t = o;
@@ -20404,13 +20644,15 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 E(e.$$.fragment, o), n = !1
             },
             d(o) {
-                Z(e, o)
+                if (middleClickCleanup) middleClickCleanup();
+                if (o) x(wrapperEl);
+                Z(e)
             }
         }
     }
 
     function RF(t) {
-        let e, n, o = t[14] === 2 && t[41].stores.length > 0 && LF(t),
+        let e, n, groupWrapper, o = (t[14] === 2 && (t[41].isCategory || t[41].stores.length > 0) || t[14] === 3) && LF(t),
             i = pe(t[41].stores),
             s = [];
         for (let l = 0; l < i.length; l += 1) s[l] = qF(IF(t, i, l));
@@ -20419,17 +20661,47 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         });
         return {
             c() {
+                groupWrapper = h("div");
+                p(groupWrapper, "class", "stash-drop-target");
+                Ve(groupWrapper, "display", "inline-flex");
+                Ve(groupWrapper, "flex-direction", "column");
+                Ve(groupWrapper, "vertical-align", "top");
                 o && o.c(), e = h("div");
                 for (let l = 0; l < s.length; l += 1) s[l].c();
-                p(e, "class", "slotcontainer svelte-gou6xs"), Ve(e, "width", t[8].length ? "fit-content" : "auto"), Ve(e, "grid-template-columns", "repeat(" + Math.min(t[8].length, t[12]) + ", auto)")
+                p(e, "class", "slotcontainer svelte-gou6xs"), Ve(e, "min-height", "32px"), Ve(e, "width", t[8].length ? "fit-content" : "auto"), Ve(e, "grid-template-columns", "repeat(" + Math.min(t[8].length, t[12]) + ", auto)")
             },
             m(l, a) {
-                o && o.m(l, a), w(l, e, a);
+                w(l, groupWrapper, a);
+                d(groupWrapper, e);
+                o && o.m(groupWrapper, e);
                 for (let c = 0; c < s.length; c += 1) s[c] && s[c].m(e, null);
+
+                function dropHandler() {
+                    if(t[14] !== 3 || heldStashDbid === null) return;
+                    let categoryName = t[41].name;
+                    let dbid = heldStashDbid;
+                    stashCategories.update(function(categories) {
+                        return categories.map(function(cat) {
+                            let filtered = (cat.data || []).filter(function(id) {return id !== dbid;});
+                            if(cat.name === categoryName) return Object.assign({}, cat, {data: [...filtered, dbid]});
+                            return Object.assign({}, cat, {data: filtered});
+                        });
+                    });
+                    setHeldStashDbid(null);
+                }
+                function groupPointerup(event) {
+                    if (event.button !== 2 || heldStashDbid === null) return;
+                    event.stopPropagation();
+                    dropHandler();
+                }
+                groupWrapper.addEventListener("pointerup", groupPointerup);
+                groupWrapper._dropCleanup = function() {groupWrapper.removeEventListener("pointerup", groupPointerup);};
+
                 n = !0
             },
             p(l, a) {
-                if (l[14] === 2 && l[41].stores.length > 0 ? o ? o.p(l, a) : (o = LF(l), o.c(), o.m(e.parentNode, e)) : o && (o.d(1), o = null), a[0] & 1623032) {
+                t = l;
+                if ((l[14] === 2 && (l[41].isCategory || l[41].stores.length > 0) || l[14] === 3) ? o ? o.p(l, a) : (o = LF(l), o.c(), o.m(e.parentNode, e)) : o && (o.d(1), o = null), a[0] & 1623032) {
                     i = pe(l[41].stores);
                     let c;
                     for (c = 0; c < i.length; c += 1) {
@@ -20452,7 +20724,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 n = !1
             },
             d(l) {
-                l && x(e), o && o.d(l), ot(s, l)
+                if (groupWrapper._dropCleanup) groupWrapper._dropCleanup();
+                l && x(groupWrapper);
+                o && o.d(l);
+                ot(s, l)
             }
         }
     }
@@ -20509,19 +20784,17 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let e, n, o, i, s = t[8].length + "",
             r, l, a = (t[10].subscribed_until ? Nn[1].stash : Nn[0].stash) + "",
             c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V = t[11] && VF(t),
-            B = pe(t[14] < 1 ? [{
-                stores: t[8],
-                name: ""
-            }] : [{
-                stores: t[5],
-                name: I.player.name
-            }, {
-                stores: t[7],
-                name: "Account Wide"
-            }, {
-                stores: t[6],
-                name: "Other characters"
-            }]),
+            B = pe(t[14] === 3 ? buildCustomGroups(t) :
+                t[14] < 1 ? [{stores: t[8], name: ""}] : [{
+                    stores: t[5],
+                    name: I.player.name
+                }, {
+                    stores: t[7],
+                    name: "Account Wide"
+                }, {
+                    stores: t[6],
+                    name: "Other characters"
+                }]),
             q = [];
         for (let R = 0; R < B.length; R += 1) q[R] = RF(EF(t, B, R));
         let L = R => E(q[R], 1, 1, () => {
@@ -20546,11 +20819,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 t[28](e), w(R, n, N), d(n, o), d(o, i), d(i, r), d(i, l), d(i, c), $ && $.m(i, null), d(n, u), Q(m, u, null), d(n, g), d(g, v), d(n, k), d(k, y), W && W.m(R, N), w(R, C, N), M = !0, D || (U = [H(e, "pointerup", t[18]), H(g, "click", t[30]), H(k, "click", t[31])], D = !0)
             },
             p(R, N) {
-                if (R[11] ? V ? V.p(R, N) : (V = VF(R), V.c(), V.m(e.parentNode, e)) : V && (V.d(1), V = null), N[0] & 1627128) {
-                    B = pe(R[14] < 1 ? [{
-                        stores: R[8],
-                        name: ""
-                    }] : [{
+                if (R[11] ? V ? V.p(R, N) : (V = VF(R), V.c(), V.m(e.parentNode, e)) : V && (V.d(1), V = null), N[0] & 1627128 || N[1] & 8 || N[1] & 16) {
+                    B = pe(R[14] === 3 ? buildCustomGroups(R) :
+                        R[14] < 1 ? [{stores: R[8], name: ""}] : [{
                         stores: R[5],
                         name: I.player.name
                     }, {
@@ -20560,6 +20831,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         stores: R[6],
                         name: "Other characters"
                     }]);
+
                     let ge;
                     for (ge = 0; ge < B.length; ge += 1) {
                         let Ce = EF(R, B, ge);
@@ -20617,8 +20889,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function nL(t, e, n) {
-        let o, i, s, r, l, a, c, f, u, m, g;
-        re(t, Ro, ee => n(2, o = ee)), re(t, Zo, ee => n(23, i = ee)), re(t, Dn, ee => n(37, s = ee)), re(t, Em, ee => n(24, r = ee)), re(t, ya, ee => n(10, l = ee)), re(t, hf, ee => n(11, a = ee)), re(t, Ks, ee => n(12, c = ee)), re(t, er, ee => n(13, f = ee)), re(t, Sa, ee => n(14, u = ee)), re(t, zo, ee => n(16, g = ee));
+        let o, i, s, r, l, a, c, f, u, m, g, categories, categoryItems;
+        re(t, Ro, ee => n(2, o = ee)), re(t, Zo, ee => n(23, i = ee)), re(t, Dn, ee => n(37, s = ee)), re(t, Em, ee => n(24, r = ee)), re(t, ya, ee => n(10, l = ee)), re(t, hf, ee => n(11, a = ee)), re(t, Ks, ee => n(12, c = ee)), re(t, er, ee => n(13, f = ee)), re(t, Sa, ee => n(14, u = ee)), re(t, zo, ee => n(16, g = ee)), re(t, stashCategories, ee => { n(35, categories = ee); let derived = {}; (ee || []).forEach(function(cat) { derived[cat.name] = cat.data || []; }); n(36, categoryItems = derived); });
         let v = nt.shift.store;
         re(t, v, ee => n(15, m = ee));
         let _, b, k = {},
@@ -20671,7 +20943,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         function Ce() {
             f = Gt(this.value), er.set(f)
         }
-        let ve = ee => Xe(Sa, u = Xe(Sa, ++u, u) % 3, u);
+        let ve = ee => { setHeldStashDbid(null); Xe(Sa, u = Xe(Sa, ++u, u) % 4, u); };
 
         function se(ee) {
             Bt[ee ? "unshift" : "push"](() => {
@@ -20689,9 +20961,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 Xe(hf, a = !a, a)
             },
             Ie = ee => Xe(Ro, o = !1, o);
+
+        let stashPollInterval = setInterval(function() {n(8, C = C.slice());}, 250);
+        t.$$.on_destroy.push(function() {clearInterval(stashPollInterval); setHeldStashDbid(null);});
+
         return t.$$.update = () => {
             t.$$.dirty[0] & 16777216 && U(), t.$$.dirty[0] & 8388615 && n(1, R = o ? Math.min(W === 1 ? i : o.gold, R) : 0)
-        }, [W, R, o, _, b, y, F, A, C, M, l, a, c, f, u, m, g, v, V, B, q, L, $, i, r, ge, Ce, ve, se, le, _e, be, Te, ie, Ie]
+        }, [W, R, o, _, b, y, F, A, C, M, l, a, c, f, u, m, g, v, V, B, q, L, $, i, r, ge, Ce, ve, se, le, _e, be, Te, ie, Ie, categories, categoryItems]
     }
     var _v = class extends Fe {
             constructor(e) {
