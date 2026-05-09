@@ -20,9 +20,6 @@
                 {name:"Nightshade",id:5,type:"pet"},
             ]
     let alreadyNotified = new Map();
-    let style = document.createElement("style");
-    style.textContent = `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`;
-    document.head.appendChild(style);
     let targettedPlayers = new Map()
     var NT = Object.defineProperty;
     var Kn = (t, e) => {
@@ -2102,7 +2099,7 @@ void main() {
         playerTransformColPrim: () => playerTransformColPrim,
         playerTransformColSec: () => playerTransformColSec,
         customMountID: () => customMountID,
-        lightingrework: () => lightingrework,
+
         ssao: () => ssao,
         ssaoBlur: () => ssaoBlur,
         ssaoIGN: () => ssaoIGN,
@@ -2344,7 +2341,7 @@ void main() {
         playerTransformColPrim: () => playerTransformColPrim,
         playerTransformColSec: () => playerTransformColSec,
         customMountID: () => customMountID,
-        lightingrework: () => lightingrework,
+
         ssao: () => ssao,
         ssaoRadius: () => ssaoRadius,
         ssaoBias: () => ssaoBias,
@@ -2364,11 +2361,13 @@ void main() {
         hideKekQuickButtons: () => hideKekQuickButtons,
         showEnvName: () => showEnvName,
         rainEnabled: () => rainEnabled,
+        rainForce: () => rainForce,
         rainNoDesert: () => rainNoDesert,
         rainDurMin: () => rainDurMin,
         rainDurMax: () => rainDurMax,
         rainWindowMin: () => rainWindowMin,
         rainWindowMax: () => rainWindowMax,
+        rainEaseSpeed: () => rainEaseSpeed,
         removeElixir: () => removeElixir,
         minimapLightOverlay: () => minimapLightOverlay
     });
@@ -2603,14 +2602,13 @@ void main() {
         playerTransformColPrim = ne("#000000"),
         playerTransformColSec = ne("#000000"),
         customMountID = ne(0),
-        lightingrework = ne(false),
-        ssao = ne(true),
+        ssao = ne(false),
         ssaoRadius = ne(9),
         ssaoBias = ne(16),
         ssaoFadeDist = ne(305),
         ssaoBlur = ne(true),
         ssaoIGN = ne(true),
-        shadowDistMult = ne(100),
+        shadowDistMult = ne(130),
         grassDist = ne(130),
         meshViewerID = ne(0),
         classColorParty = ne(false),
@@ -2623,11 +2621,13 @@ void main() {
         hideKekQuickButtons = ne(false),
         showEnvName = ne(false),
         rainEnabled = ne(true),
-        rainNoDesert = ne(true),
-        rainDurMin = ne(60),
-        rainDurMax = ne(120),
+        rainForce = ne(false),
+        rainNoDesert = ne(false),
+        rainDurMin = ne(50),
+        rainDurMax = ne(140),
         rainWindowMin = ne(1),
         rainWindowMax = ne(5),
+        rainEaseSpeed = ne(300),
         removeElixir = ne(false),
         minimapLightOverlay = ne(true)
     var _posX = "", _posY = "", _posZ = "";
@@ -2642,6 +2642,7 @@ void main() {
     shadowDistMult.subscribe(v => _shadowDistMult = v / 100);
     grassDist.subscribe(v => _grassDist = v);
     var _classColors = ["#C7966F", "#21A9E1", "#98CE64", "#1C51FF"];
+    const CLASS_NAMES = ["warrior", "mage", "archer", "shaman"];
     function _darkenHex(hex, factor) {
         let n = parseInt(hex.slice(1), 16);
         let r = Math.round(((n >> 16) & 0xff) * factor);
@@ -2664,8 +2665,6 @@ void main() {
         store.subscribe(v => {
             if (!v) return;
             _classColors[i] = v;
-            Ve(document.body, "--c" + i, v);
-            if (typeof mg !== "undefined") mg["c" + i] = v;
             document.querySelectorAll(".bgc" + i).forEach(el => Ve(el, "background", _bgcStyle("bgc" + i)));
             _rebuildClassNameplate(i);
         });
@@ -2728,19 +2727,23 @@ void main() {
         let [r, g, b] = hexParts(hex);
         return `rgb(${Math.round(r*(1-pulse*intensity))},${Math.round(g*(1-pulse*intensity))},${Math.round(b*(1-pulse*intensity))})`;
     }
+    
+    injectStyle("modRevGlowStyle", `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`);
+    
     hideChat.subscribe(v => injectStyle("modHideChatStyle", v ? ".l-corner-ll{display:none!important}" : ""));
-    setInterval(() => {
-        let mm = document.getElementById("minimapcontainer");
+    (function rafDomUpdates() {
+        requestAnimationFrame(rafDomUpdates);
+        let minimapContainer = document.getElementById("minimapcontainer");
 
-        document.querySelectorAll(".sysbtnbarKEK").forEach(el => Ve(el, "display", fe.hideKekQuickButtons ? "none" : ""));
+        document.querySelectorAll(".sysbtnbarKEK").forEach(element => Ve(element, "display", fe.hideKekQuickButtons ? "none" : ""));
 
         let elixirBtn = document.getElementById("sysgem");
         if (elixirBtn) Ve(elixirBtn, "display", fe.removeElixir ? "none" : "");
 
-        let mmVisible = mm && mm.offsetParent !== null;
-        let canvas = mmVisible && mm.querySelector("canvas");
+        let isMinimapVisible = minimapContainer && minimapContainer.offsetParent !== null;
+        let canvas = isMinimapVisible && minimapContainer.querySelector("canvas");
         let lightOverlay = document.getElementById("modMinimapLightOverlay");
-        if (mmVisible && canvas && fe.minimapLightOverlay) {
+        if (isMinimapVisible && canvas && fe.minimapLightOverlay) {
             if (!lightOverlay) {
                 lightOverlay = document.createElement("div");
                 lightOverlay.id = "modMinimapLightOverlay";
@@ -2749,23 +2752,21 @@ void main() {
                 Ve(lightOverlay, "filter", "hue-rotate(30deg) saturate(0.6)");
                 Ve(lightOverlay, "z-index", "10");
                 Ve(lightOverlay, "border-radius", "6px");
-                Ve(mm, "position", mm.style.position || "relative");
-                Ve(mm, "isolation", "isolate");
-                mm.appendChild(lightOverlay);
+                minimapContainer.appendChild(lightOverlay);
             }
-            let cr = canvas.getBoundingClientRect();
-            let mr = mm.getBoundingClientRect();
-            Ve(lightOverlay, "left", (cr.left - mr.left) + "px");
-            Ve(lightOverlay, "top", (cr.top - mr.top) + "px");
-            Ve(lightOverlay, "width", cr.width + "px");
-            Ve(lightOverlay, "height", cr.height + "px");
+            let canvasRect = canvas.getBoundingClientRect();
+            let minimapRect = minimapContainer.getBoundingClientRect();
+            Ve(lightOverlay, "left", (canvasRect.left - minimapRect.left) + "px");
+            Ve(lightOverlay, "top", (canvasRect.top - minimapRect.top) + "px");
+            Ve(lightOverlay, "width", canvasRect.width + "px");
+            Ve(lightOverlay, "height", canvasRect.height + "px");
             Ve(lightOverlay, "display", "");
         } else if (lightOverlay) {
             Ve(lightOverlay, "display", "none");
         }
 
         let envBar = document.getElementById("modEnvNameBar");
-        if (fe.showEnvName && mm && canvas) {
+        if (fe.showEnvName && minimapContainer && canvas) {
             if (!envBar) {
                 envBar = document.createElement("div");
                 envBar.id = "modEnvNameBar";
@@ -2778,7 +2779,7 @@ void main() {
                 Ve(envBar, "border", "3px solid rgba(0,0,0,1)");
                 Ve(envBar, "text-align", "center");
                 Ve(envBar, "pointer-events", "none");
-                mm.insertBefore(envBar, canvas);
+                minimapContainer.insertBefore(envBar, canvas);
             }
             let envName = "";
             if (I && I.player && I.player.pos) {
@@ -2793,7 +2794,7 @@ void main() {
         } else if (envBar) {
             Ve(envBar, "display", "none");
         }
-    });
+    })();
     (function rafLightOverlay() {
         requestAnimationFrame(rafLightOverlay);
         let overlay = document.getElementById("modMinimapLightOverlay");
@@ -2880,7 +2881,7 @@ void main(){
         let locPos = gl.getAttribLocation(prog, "a_pos");
         let locA   = gl.getAttribLocation(prog, "a_a");
 
-        let N = 8000, SPREAD = 80, VRANGE = 95, FALL = 40, WX = 1.8, WZ = 1.0, SLEN = 3.0;
+        let N = 8000, SPREAD = 80, VRANGE = 95, FALL = 52, WX = 1.8, WZ = 1.0, SLEN = 3.0;
         let drops = new Float32Array(N * 5);
         let posD  = new Float32Array(N * 6);
         let alpD  = new Float32Array(N * 2);
@@ -2930,6 +2931,7 @@ void main(){
         [rainWindowMin, rainWindowMax, rainDurMin, rainDurMax].forEach(s => s.subscribe(() => buildRainWindows()));
         const DESERT_ENVS = ["Desert", "Marrowlands", "Oasis", "Headless Ruins"];
         function isRaining() {
+            if (fe.rainForce) return true;
             let n = new Date();
             let h = n.getHours() + n.getMinutes()/60 + n.getSeconds()/3600;
             return rainWindows.some(w => h >= w[0] && h < w[1]);
@@ -2957,6 +2959,9 @@ void main(){
         let raining = isRaining(), paused = checkRainDisables();
         let rainAmount = raining ? 1 : 0;
         let prevActiveDrops = 0;
+        const RAYCAST_PER_FRAME = 150;
+        let visD = new Float32Array(N).fill(1.0);
+        let rcCursor = 0;
         function frame(now) {
             requestAnimationFrame(frame);
             let cam; try { cam = Jt.camera.data; } catch(e) { return; }
@@ -2968,8 +2973,9 @@ void main(){
             pauseCheckTimer -= dt;
             if (pauseCheckTimer <= 0) { pauseCheckTimer = 2; paused = checkRainDisables(); }
 
-            let speed = raining ? 300 : 30;
-            rainAmount = Math.max(0, Math.min(1, rainAmount + (raining ? 1 : -1) * dt / speed));
+            let targetRain = raining ? 1 : 0;
+            let rainEase = fe.rainEaseSpeed;
+            rainAmount += (targetRain - rainAmount) * (1.0 - Math.exp(-dt / rainEase));
 
             let renderRainAmount = paused ? 0 : rainAmount;
             window._modRainAmount = renderRainAmount;
@@ -3026,8 +3032,20 @@ void main(){
                 let fade = Math.max(0, Math.min(1, (renderRainAmount - i / N) / 0.1));
                 let abase = i * 2;
                 let baseAlpha = drops[base + 3];
-                alpD[abase]     = baseAlpha * fade;
-                alpD[abase + 1] = baseAlpha * 0.25 * fade;
+                alpD[abase]     = baseAlpha * fade * visD[i];
+                alpD[abase + 1] = baseAlpha * 0.25 * fade * visD[i];
+            }
+
+            if (I && I.raycastEnvironmentAny && activeDrops > 0) {
+                rcCursor = rcCursor % activeDrops;
+                for (let r = 0; r < RAYCAST_PER_FRAME; r++) {
+                    let i = rcCursor;
+                    rcCursor = (rcCursor + 1) % activeDrops;
+                    let bx = drops[i*5], by = drops[i*5+1] + SLEN * 0.5, bz = drops[i*5+2];
+                    let hit = false;
+                    try { hit = I.raycastEnvironmentAny(cx, cy, cz, bx - cx, by - cy, bz - cz, 0); } catch(e) {}
+                    visD[i] += ((hit ? 0.0 : 1.0) - visD[i]) * 0.5;
+                }
             }
 
             if (activeDrops < prevActiveDrops) {
@@ -10864,14 +10882,297 @@ precision highp float;precision highp int;uniform Environment{vec3 worldlight[3]
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
 #SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform sampler2D foliageDiffuse;in vec3 vLight;in vec3 vLightAmb;in vec3 vLightDir;in vec2 vUv;out vec4 fragColor;void main(){vec4 b=texture(foliageDiffuse,vUv);float c=0.1;b.a=b.a*smoothstep(1.0,0.0,(vCameraDistance-${(_grassDist - 20).toFixed(1)})/20.0);if(b.a<c){discard;};float d=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float e=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 f=shadowPVMatrix[1]*(vWorldPos);vec3 g=(f.xyz/f.w)*0.5+0.5;d=texture(shadowMaps[1],g);}else{vec4 f=shadowPVMatrix[0]*(vWorldPos);vec3 g=(f.xyz/f.w)*0.5+0.5;d=texture(shadowMaps[0],g);}d=d;d=max(d,e);}b.rgb=b.rgb*(vLight+vLightAmb+vLightDir*d);float h=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,h);fragColor=b;}`;
     var _w = `#version 300 es
-precision highp float;precision highp int;precision highp sampler2DShadow;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Screen{vec2 resolution;};in vec4 instPos;in vec3 instNorm;in vec3 position;in vec2 uv;out vec3 vLightAmb;out vec3 vLightDir;out vec2 vUv;void main(){vUv=uv;vec3 b=vec3(0.0);for(int c=0;c<lightCount;++c){vec3 d=lightPos[c]-instPos.xyz;float e=lightCols[c].w-dot(d,d);if(e>0.0){e/=(lightCols[c].w);e=e*e;b+=0.3*lightCols[c].rgb*e;;}};vLight=b;vLightAmb=worldlight[1];vLightDir=worldlight[0]*max(0.0,dot(instNorm.xyz,worldlight[2]));vec3 f=position;float e=sin(time+instPos.x+f.x)*0.1*f.y;f.xz+=e;mat3 g;g[1]=instNorm.xyz;g[2]=normalize(cross(vec3(sin(instPos.x*100.0),0.0,cos(instPos.z*100.0)),g[1]));g[0]=normalize(cross(g[1],g[2]));vec3 h=g*f;vWorldPos=vec4(h*instPos.w+instPos.xyz,1.0);vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*vWorldPos;}`;
-    var bw = `#version 300 es
+precision highp float;precision highp int;precision highp sampler2DShadow;
+uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};
+
+out float vCameraDistance;
+out vec4 vWorldPos;
+
+uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};
+
+out vec3 vLight;
+
+uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};
+const int a=
+#SHADOWS;
+
+uniform sampler2DShadow shadowMaps[2];
+
+uniform Camera{
+    mat4 projectionMatrix;
+    mat4 viewMatrix;
+    mat4 projectionViewMatrix;
+    vec3 cameraPosition;
+};
+
+uniform Screen{vec2 resolution;};
+
+in vec4 instPos;
+in vec3 instNorm;
+in vec3 position;
+in vec2 uv;
+
+out vec3 vLightAmb;
+out vec3 vLightDir;
+out vec2 vUv;
+
+uniform float u_rainAmount;
+
+void main(){
+    vUv=uv;
+
+    vec3 b=vec3(0.0);
+
+    for(int c=0;c<lightCount;++c){
+        vec3 d=lightPos[c]-instPos.xyz;
+
+        float e=lightCols[c].w-dot(d,d);
+
+        if(e>0.0){
+            e/=(lightCols[c].w);
+            e=e*e;
+            b+=0.3*lightCols[c].rgb*e;
+        }
+    }
+
+    vLight=b;
+
+    vLightAmb=worldlight[1];
+
+    vLightDir=
+        worldlight[0]
+        *max(0.0,dot(instNorm.xyz,worldlight[2]));
+
+    vec3 f=position;
+
+    float phase=
+        instPos.x*0.25
+        +instPos.z*0.25;
+
+    mat3 g;
+
+    g[1]=instNorm.xyz;
+
+    g[2]=normalize(
+        cross(
+            vec3(
+                sin(instPos.x*100.0),
+                0.0,
+                cos(instPos.z*100.0)
+            ),
+            g[1]
+        )
+    );
+
+    g[0]=normalize(cross(g[1],g[2]));
+
+    vec3 h=g*f;
+
+    float sway=
+        sin(time*1.35+phase);
+
+    float gust1=
+        sin(time*0.45+phase*0.7);
+
+    float gust2=
+        sin(time*1.8+phase*2.4)
+        *0.5;
+
+    float stormWave=
+        sin(time*0.12+instPos.x*0.04+instPos.z*0.03);
+
+    float baseAmp=0.18;
+
+    float stormAmp=
+        0.8*u_rainAmount;
+
+    float gustAmp=
+        gust1*(0.08+u_rainAmount*0.25);
+
+    float turbulence=
+        gust2*(0.02+u_rainAmount*0.12);
+
+    float waveAmp=
+        stormWave*u_rainAmount*0.25;
+
+    float windAmp=
+        baseAmp
+        +stormAmp
+        +gustAmp
+        +turbulence
+        +waveAmp;
+
+    vec3 stormOffset=vec3(
+        sway*windAmp,
+        0.0,
+        cos(time*1.1+phase)*windAmp*0.22*u_rainAmount
+    );
+
+    stormOffset *= position.y;
+
+    stormOffset *= instPos.w;
+
+    vWorldPos=vec4(
+        h*instPos.w
+        +instPos.xyz
+        +stormOffset,
+        1.0
+    );
+
+    vCameraDistance=
+        length(cameraPosition-vWorldPos.xyz);
+
+    gl_Position=
+        projectionViewMatrix*vWorldPos;
+}`;
+
+
+var yw = `#version 300 es
+precision highp float;precision highp int;precision highp sampler2DShadow;
+uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};
+
+out float vCameraDistance;
+out vec4 vWorldPos;
+
+uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};
+
+out vec3 vLight;
+
+uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};
+const int a=
+#SHADOWS;
+
+uniform sampler2DShadow shadowMaps[2];
+
+uniform Camera{
+    mat4 projectionMatrix;
+    mat4 viewMatrix;
+    mat4 projectionViewMatrix;
+    vec3 cameraPosition;
+};
+
+uniform Screen{vec2 resolution;};
+
+in vec4 instPos;
+in vec3 instNorm;
+in vec3 position;
+in vec2 uv;
+
+out vec2 vUv;
+out vec3 vLightAmb;
+out vec3 vLightDir;
+
+uniform float u_rainAmount;
+
+void main(){
+    vUv=uv;
+
+    vec3 b=vec3(0.0);
+
+    for(int c=0;c<lightCount;++c){
+        vec3 d=lightPos[c]-instPos.xyz;
+
+        float e=lightCols[c].w-dot(d,d);
+
+        if(e>0.0){
+            e/=(lightCols[c].w);
+            e=e*e;
+            b+=0.3*lightCols[c].rgb*e;
+        }
+    }
+
+    vLight=b;
+
+    vLightAmb=worldlight[1];
+
+    vLightDir=
+        worldlight[0]
+        *max(0.0,dot(instNorm.xyz,worldlight[2]));
+
+    vec3 f=position;
+
+    float phase=
+        instPos.x*0.18
+        +instPos.z*0.25;
+
+    mat3 g;
+
+    g[1]=instNorm.xyz;
+
+    g[2]=normalize(
+        cross(
+            vec3(
+                sin(instPos.x*100.0),
+                0.0,
+                cos(instPos.z*100.0)
+            ),
+            g[1]
+        )
+    );
+
+    g[0]=normalize(cross(g[1],g[2]));
+
+    vec3 h=g*f;
+
+    float sway=
+        sin(time*1.35+phase);
+
+    float gust1=
+        sin(time*0.45+phase*0.7);
+
+    float gust2=
+        sin(time*1.8+phase*2.4)
+        *0.5;
+
+    float stormWave=
+        sin(time*0.12+instPos.x*0.04+instPos.z*0.03);
+
+    float baseAmp=0.18;
+
+    float stormAmp=
+        0.8*u_rainAmount;
+
+    float gustAmp=
+        gust1*(0.08+u_rainAmount*0.25);
+
+    float turbulence=
+        gust2*(0.02+u_rainAmount*0.12);
+
+    float waveAmp=
+        stormWave*u_rainAmount*0.25;
+
+    float windAmp=
+        baseAmp
+        +stormAmp
+        +gustAmp
+        +turbulence
+        +waveAmp;
+
+    vec3 stormOffset=vec3(
+        sway*windAmp,
+        0.0,
+        cos(time*1.1+phase)*windAmp*0.22*u_rainAmount
+    );
+
+    stormOffset *= position.y;
+    stormOffset *= instPos.w;
+
+    vWorldPos=vec4(
+        h*instPos.w
+        +instPos.xyz
+        +stormOffset,
+        1.0
+    );
+
+    vCameraDistance=
+        length(cameraPosition-vWorldPos.xyz);
+
+    gl_Position=
+        projectionViewMatrix*vWorldPos;
+}`;
+var bw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
 #SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform sampler2D foliageDiffuse;in vec3 vLightAmb;in vec3 vLightDir;in vec3 vLight;in vec2 vUv;out vec4 fragColor;void main(){vec4 b=texture(foliageDiffuse,vUv);b.a=b.a*smoothstep(1.0,0.0,(vCameraDistance-${(_grassDist - 20).toFixed(1)})/20.0);if(b.a<0.5){discard;};float c=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float d=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 e=shadowPVMatrix[1]*(vWorldPos);vec3 f=(e.xyz/e.w)*0.5+0.5;c=texture(shadowMaps[1],f);}else{vec4 e=shadowPVMatrix[0]*(vWorldPos);vec3 f=(e.xyz/e.w)*0.5+0.5;c=texture(shadowMaps[0],f);}c=c;c=max(c,d);}b.rgb=b.rgb*(vLight+vLightAmb+vLightDir*c);float g=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,g);fragColor=b;}`;
-    var yw = `#version 300 es
-precision highp float;precision highp int;precision highp sampler2DShadow;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Screen{vec2 resolution;};in vec4 instPos;in vec3 instNorm;in vec3 position;in vec2 uv;out vec2 vUv;out vec3 vLightAmb;out vec3 vLightDir;void main(){vUv=uv;vec3 b=vec3(0.0);for(int c=0;c<lightCount;++c){vec3 d=lightPos[c]-instPos.xyz;float e=lightCols[c].w-dot(d,d);if(e>0.0){e/=(lightCols[c].w);e=e*e;b+=0.3*lightCols[c].rgb*e;;}}vLight=b;vLightAmb=worldlight[1];vLightDir+=worldlight[0]*max(0.0,dot(instNorm.xyz,worldlight[2]));vec3 f=position;mat3 g;g[1]=instNorm.xyz;g[2]=normalize(cross(vec3(sin(instPos.x*100.0),0.0,cos(instPos.z*100.0)),g[1]));g[0]=normalize(cross(g[1],g[2]));vec3 h=g*f;vWorldPos=vec4(h*instPos.w+instPos.xyz,1.0);vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*vWorldPos;}`;
     var kw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vCol;in vec2 vYcutoff;in vec4 vUvshift;out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec2 a=vec2((vUv.x+vUvshift.x)*vUvshift.z,(vUv.y+vUvshift.y)*vUvshift.w);vec4 b=vec4(1.0,1.0,1.0,texture(diffuse,a).r)*vCol;b.a*=min(1.0,max(0.0,vUv.y/vYcutoff[0]));b.a*=min(1.0,max(0.0,(vYcutoff[1]-vUv.y)/(1.0-vYcutoff[1])));if(b.a<0.01){discard;}float c=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,c);fragColor=b;fragColor.rgb*=fragColor.a;}`;
     var xw = `#version 300 es
@@ -11405,16 +11706,16 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             vert: Qw
         },
         Rg = {
-            frag: fe.lightingrework ? Zw : Zw_orig
+            frag: Zw_orig
         },
         zg = {
             frag: Jw
         },
         Bg = {
-            frag: fe.lightingrework ? Kw : Kw_orig
+            frag: Kw_orig
         },
         xd = {
-            frag: fe.lightingrework ? e4 : e4_orig,
+            frag: e4_orig,
             vert: t4
         },
         ZI = {
@@ -11476,6 +11777,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     name: "instNorm",
                     size: 3
                 }],
+                uniforms: { u_rainAmount: { value: 0 } },
                 globalUniforms: mn,
                 transparent: !0,
                 attributeLocations: t.foliage
@@ -11490,6 +11792,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     name: "instNorm",
                     size: 3
                 }],
+                uniforms: { u_rainAmount: { value: 0 } },
                 globalUniforms: mn,
                 transparent: !0,
                 attributeLocations: t.foliage
@@ -17987,7 +18290,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeToggle("Use device time", timeToIngame),
             makeSlider("Shadow draw distance", shadowDistMult, {min: 25, max: 200, showValue: true}),
             makeSlider("Grass draw distance", grassDist, {min: 30, max: 400, showValue: true, reload: true}),
-            makeToggle("Remove ground specular + sky gradient", lightingrework, {note: P.ui.settings.reload, reload: true}),
             makeLabel("-- SSAO: --", {sep: true, cls: "textgrey"}),
             makeToggle("SSAO", ssao, {note: "May be very GPU intensive"}),
             makeSlider("Radius", ssaoRadius, {min: 1, max: 20, showValue: true, reload: true}),
@@ -17998,18 +18300,22 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeLabel("-- Rain: --", {sep: true, cls: "textgrey"}),
             makeToggle("Enable rain cycle", rainEnabled),
             makeToggle("Disable in desert areas", rainNoDesert),
-            makeSlider("Min duration", rainDurMin, {min: 30, max: 180, showValue: true, suffix: "m"}),
-            makeSlider("Max duration", rainDurMax, {min: 30, max: 180, showValue: true, suffix: "m"}),
+            makeSlider("Min duration", rainDurMin, {min: 30, max: 180, showValue: true, suffix: " min."}),
+            makeSlider("Max duration", rainDurMax, {min: 30, max: 180, showValue: true, suffix: " min."}),
             makeSlider("Min rain windows", rainWindowMin, {min: 1, max: 10, showValue: true, suffix: "/d"}),
             makeSlider("Max rain windows", rainWindowMax, {min: 1, max: 10, showValue: true, suffix: "/d"}),
-            makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
+            makeSlider("Rain transition speed", rainEaseSpeed, {min: 10, max: 300, showValue: true}),
+            makeToggle("Force rain", rainForce, {color: "#53a3f9"}),
+            /* makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
             makeSlider("Speed override", speedOverride, {min: 0, max: 5, showValue: true}),
             makeToggle("Prevent movement override", preventInputLock),
             makeToggle("Phase mode", ghostMode),
-            makeToggle("Freefly mode", freeflyMode),
+            makeToggle("Freefly mode", freeflyMode, {sub: "Not recommended to use without desync, only for testing purposes. Freecam mode is a better version of this."}),
             makeToggle("No camera collision", noCameraCollision),
-            makeToggle("Desync", freezeServer),
+            makeToggle("Nameplates react to ST", targetEnabled),
             makeToggle("Show dead players", showDeadPlayers),
+            makeToggle("Desync", freezeServer, {sub: "While this setting is active, packets will not be sent to the server. Use with position update buttons to teleport precisely."}),
+            //makeLabel("The server will correct any position deviances within a single tick of around ~4 units. To bypass it slightly, use a +7 mount + pennant + orc / egg. The deviance is calculated based on player speed, higher speed = more deviance allowed. To teleport up towers, use pennant + egg => start jumping => enable Desync => fly yourself to the position => disable desync => input any direction to update player position. If you are jumping during this, the server may make you jump forward in the direction, so you may fall off. Advised to send a couple inputs as soon as you disable desync so it corrects your position immediately.", {cls: "textgrey", sep: true}),
             makeText(null, meshViewerID, {numberInput: true}),
             makeButton("View mesh", () => {
                 let v = fe.meshViewerID
@@ -18085,7 +18391,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 if (!I || !I.player) return;
                 I.player.pos[2] += 1;
                 I.player.sendInput(false, false, false, false, false, true);
-            }),
+            }), */
         ];
         return {
             c() { settings.forEach(s => s.c()); },
@@ -18252,7 +18558,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 St.set(Re === "" ? void 0 : Re), n(2, ge = !0)
             },
             se = ["Forward", "Left", "Back", "Right", "TurnLeft", "TurnRight", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "NextTarget", "NextParty", "Untarget", "ItemNames"],
-            le = ["Forward", "Left", "Back", "Right", "Turn Left", "Turn Right", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "Target Next Enemy", "Target Next Friendly", "Untarget", "Item Name View"];
+            le = ["Forward", "Left", "Back", "Right", "Turn Left", "Turn Right", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "Target Next Enemy", "Target Next Friendly", "Untarget", "Shiftkey"];
         for (let Re = 1; Re < 25; ++Re) se.push("Skillbar" + Re);
         se = se.map((Re, St) => ({
             name: le[St] || Re,
@@ -22622,17 +22928,17 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 Ve(classFilterBar, "justify-content", "center");
                 Ve(classFilterBar, "align-items", "center");
                 Ve(classFilterBar, "gap", "4.5%");
-                Ve(classFilterBar, "padding", "4px");
+                Ve(classFilterBar, "padding", "4px 4px 8px 4px");
                 Ve(classFilterBar, "position", "absolute");
-                Ve(classFilterBar, "bottom", "100%");
+                Ve(classFilterBar, "bottom", "90%");
                 Ve(classFilterBar, "background-color", "rgba(16,19,29,0.8)");
                 Ve(classFilterBar, "border-radius", "3px");
-                [[0,nextFriendlyClassWarrior,classSelectorKbWarrior],[1,nextFriendlyClassMage,classSelectorKbMage],[2,nextFriendlyClassArcher,classSelectorKbArcher],[3,nextFriendlyClassShaman,classSelectorKbShaman]].forEach(([cid,cst,kbst]) => {
+                [[0,nextFriendlyClassWarrior,classSelectorKbWarrior],[1,nextFriendlyClassMage,classSelectorKbMage],[2,nextFriendlyClassArcher,classSelectorKbArcher],[3,nextFriendlyClassShaman,classSelectorKbShaman]].forEach(([classId,classStore,keybindStore]) => {
                     let btn = h("button");
                     Ve(btn, "width", "35px");
                     Ve(btn, "aspect-ratio", "1");
                     Ve(btn, "background-color", "#12141e");
-                    Ve(btn, "background-image", `radial-gradient(ellipse at center, transparent 80%, rgba(0,0,0,0.3) 100%), url(${ns(cid)})`);
+                    Ve(btn, "background-image", `radial-gradient(ellipse at center, transparent 80%, rgba(0,0,0,0.3) 100%), url(${ns(classId)})`);
                     Ve(btn, "background-repeat", "no-repeat");
                     Ve(btn, "background-size", "contain");
                     Ve(btn, "background-position", "center");
@@ -22643,21 +22949,21 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     Ve(btn, "position", "relative");
                     Ve(btn, "pointer-events", "auto");
                     Ve(btn, "overflow", "hidden");
-                    let kbl = document.createElement("span");
-                    Ve(kbl, "position", "absolute");
-                    Ve(kbl, "top", "1px");
-                    Ve(kbl, "right", "1px");
-                    Ve(kbl, "font", "11px hordes");
-                    Ve(kbl, "color", "#999");
-                    Ve(kbl, "text-shadow", "1px 1px 0 #000,-1px -1px 0 #000");
-                    Ve(kbl, "pointer-events", "none");
-                    Ve(kbl, "line-height", "1");
-                    Ve(kbl, "z-index", "1");
-                    btn.appendChild(kbl);
-                    btn._cst = cst;
-                    btn._kbst = kbst;
-                    btn._kbl = kbl;
-                    btn._cid = cid;
+                    let keybindLabel = document.createElement("span");
+                    Ve(keybindLabel, "position", "absolute");
+                    Ve(keybindLabel, "top", "1px");
+                    Ve(keybindLabel, "right", "1px");
+                    Ve(keybindLabel, "font", "11px hordes");
+                    Ve(keybindLabel, "color", "#999");
+                    Ve(keybindLabel, "text-shadow", "1px 1px 0 #000,-1px -1px 0 #000");
+                    Ve(keybindLabel, "pointer-events", "none");
+                    Ve(keybindLabel, "line-height", "1");
+                    Ve(keybindLabel, "z-index", "1");
+                    btn.appendChild(keybindLabel);
+                    btn._classStore = classStore;
+                    btn._keybindStore = keybindStore;
+                    btn._keybindLabel = keybindLabel;
+                    btn._classId = classId;
                     classFilterBar.appendChild(btn);
                 });
             },
@@ -22665,20 +22971,20 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 w(B, e, q), d(e, n), d(n, o), k.m(n, null), d(n, i), A.m(i, null), d(n, s), M[r].m(s, null), d(e, a), d(e, c);
                 for (let L = 0; L < f.length; L += 1) f[L] && f[L].m(c, null);
                 const realignBar = () => {
-                    let ab = document.querySelector(".partyframes");
-                    if (!ab) return;
-                    let ref = ab.querySelector(".grid.left .bars");
-                    if (!ref) return;
-                    let abRect = ab.getBoundingClientRect();
-                    let refRect = ref.getBoundingClientRect();
-                    Ve(classFilterBar, "left", (refRect.left - abRect.left) + "px");
-                    Ve(classFilterBar, "width", refRect.width + "px");
+                    let partyFramesElement = document.querySelector(".partyframes");
+                    if (!partyFramesElement) return;
+                    let barElement = partyFramesElement.querySelector(".grid.left .bar");
+                    if (!barElement) return;
+                    let partyFramesRect = partyFramesElement.getBoundingClientRect();
+                    let barRect = barElement.getBoundingClientRect();
+                    Ve(classFilterBar, "left", (barRect.left - partyFramesRect.left) + "px");
+                    Ve(classFilterBar, "width", barRect.width - 5 + "px");
                 };
                 requestAnimationFrame(() => requestAnimationFrame(() => {
-                    let ab = document.querySelector(".partyframes");
-                    if (ab) {
-                        if (getComputedStyle(ab).position === "static") Ve(ab, "position", "relative");
-                        if (classFilterBar.parentElement !== ab) ab.insertBefore(classFilterBar, ab.firstChild);
+                    let partyFramesElement = document.querySelector(".partyframes");
+                    if (partyFramesElement) {
+                        if (getComputedStyle(partyFramesElement).position === "static") Ve(partyFramesElement, "position", "relative");
+                        if (classFilterBar.parentElement !== partyFramesElement) partyFramesElement.insertBefore(classFilterBar, partyFramesElement.firstChild);
                         realignBar();
                     }
                 }));
@@ -22693,18 +22999,18 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     document.head.appendChild(styleEl);
                 }
                 const classColors = {get 0() {return _classColors[0];}, get 1() {return _classColors[1];}, get 2() {return _classColors[2];}, get 3() {return _classColors[3];}};
-                const applyBtnState = (btn, active, anim) => {
+                const applyBtnState = (btn, active, animated) => {
                     btn._active = active;
                     if (active) {
-                        let col = fe.classColorBars ? (classColors[btn._cid] || "#34CB49") : "#34CB49";
+                        let color = fe.classColorBars ? (classColors[btn._classId] || "#34CB49") : "#34CB49";
                         Ve(btn, "--kb-col0", "#000000");
-                        Ve(btn, "--kb-col1", hexToRgba(col, .85));
-                        if (anim) {
+                        Ve(btn, "--kb-col1", hexToRgba(color, .85));
+                        if (animated) {
                             Ve(btn, "animation", `kbBtnOutlineIn 0.5s ease-out -${(Date.now() % 1000) / 1000}s alternate infinite`);
                             Ve(btn, "filter", "none");
                         } else {
                             Ve(btn, "animation", "");
-                            Ve(btn, "background-color", hexToRgba(col, .85));
+                            Ve(btn, "background-color", hexToRgba(color, .85));
                             Ve(btn, "filter", "none");
                         }
                     } else {
@@ -22715,27 +23021,27 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 };
                 const refreshActive = () => [...classFilterBar.children].forEach(btn => { if (btn._active) applyBtnState(btn, true, fe.classSelectorAnimations); });
                 [...classFilterBar.children].forEach(btn => {
-                    classBtnHandlers.push(btn._cst.subscribe(active => {
+                    classBtnHandlers.push(btn._classStore.subscribe(active => {
                         if (active && btn.style.animation) return;
                         applyBtnState(btn, active, fe.classSelectorAnimations);
                     }));
-                    classBtnHandlers.push(btn._kbst.subscribe(() => { btn._kbl.textContent = ""; }));
-                    btn.addEventListener("click", () => btn._cst.update(v => !v));
+                    classBtnHandlers.push(btn._keybindStore.subscribe(() => { btn._keybindLabel.textContent = ""; }));
+                    btn.addEventListener("click", () => btn._classStore.update(v => !v));
                 });
                 classBtnHandlers.push(classSelectorAnimations.subscribe(refreshActive));
                 classBtnHandlers.push(fp.subscribe(refreshActive));
-                let kbH = (evt) => {
+                let keydownHandler = (evt) => {
                     if (!fe.nextFriendlyClassSelectorEnabled) return;
                     if (["shift", "control", "alt", "meta"].includes(evt.key.toLowerCase())) return;
                     let mods = (evt.shiftKey ? "shift+" : "") + (evt.ctrlKey ? "ctrl+" : "") + (evt.altKey ? "alt+" : "");
-                    let k = mods + evt.key.toLowerCase();
-                    if (k && k === fe.classSelectorKbArcher) nextFriendlyClassArcher.update(v => !v);
-                    if (k && k === fe.classSelectorKbShaman) nextFriendlyClassShaman.update(v => !v);
-                    if (k && k === fe.classSelectorKbWarrior) nextFriendlyClassWarrior.update(v => !v);
-                    if (k && k === fe.classSelectorKbMage) nextFriendlyClassMage.update(v => !v);
+                    let keyCombo = mods + evt.key.toLowerCase();
+                    if (keyCombo && keyCombo === fe.classSelectorKbArcher) nextFriendlyClassArcher.update(v => !v);
+                    if (keyCombo && keyCombo === fe.classSelectorKbShaman) nextFriendlyClassShaman.update(v => !v);
+                    if (keyCombo && keyCombo === fe.classSelectorKbWarrior) nextFriendlyClassWarrior.update(v => !v);
+                    if (keyCombo && keyCombo === fe.classSelectorKbMage) nextFriendlyClassMage.update(v => !v);
                 };
-                document.addEventListener("keydown", kbH);
-                classBtnHandlers.push(() => document.removeEventListener("keydown", kbH));
+                document.addEventListener("keydown", keydownHandler);
+                classBtnHandlers.push(() => document.removeEventListener("keydown", keydownHandler));
                 m = !0, g || (v = [H(o, "click", t[9]), H(i, "click", t[12]), H(i, "contextmenu", bu), H(s, "click", t[13]), H(s, "contextmenu", bu)], g = !0)
             },
             p(B, [q]) {
@@ -27811,10 +28117,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         F8 = t => {
             o0.has(t.maxSteps) || o0.set(t.maxSteps, []), o0.get(t.maxSteps).push(t), t.onCache()
         },
-        _ghostVAO = null, _ghostProg = null, _ghostModelMatLoc = null, _ghostColorLoc = null,
-        _ghostIndexCount = 0, _ghostIndexType = 0, _ghostDrawStart = 0, _ghostTimer = 0,
-        _ghostBids = [2, 3, 17, 18], _ghostMax = 14, _ghostTmpMat = new Float32Array(16),
-        _ghostFrames = {2:[],3:[],17:[],18:[]},
         C8 = t => {
             zs.forEach(F8), zs.length = 0
         },
@@ -27829,97 +28131,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }
             }
             return
-            if (!(I && I.player && I.player.mount && I.player.mount.skin && I.player.mount.skin === O1.get(8888))) {
-                _ghostFrames[2].length = 0; _ghostFrames[3].length = 0; _ghostFrames[17].length = 0; _ghostFrames[18].length = 0;
-            } else if (I.player.mount.body) {
-                const vis = I.player.mount;
-                const bone2 = vis.body[2];
-                if (bone2 && bone2.geometry && bone2.geometry.attributes && bone2.geometry.attributes.index && bone2.geometry.attributes.position) {
-                    const geom = bone2.geometry;
-                    if (!_ghostVAO) {
-                        _ghostVAO = j.createVertexArray();
-                        _ghostIndexCount = geom.drawRangeCount;
-                        _ghostIndexType = geom.attributes.index.type;
-                        _ghostDrawStart = geom.drawRangeStart || 0;
-                        j.bindVertexArray(_ghostVAO);
-                        j.bindBuffer(j.ARRAY_BUFFER, geom.attributes.position.buffer);
-                        j.enableVertexAttribArray(0);
-                        j.vertexAttribPointer(0, geom.attributes.position.size || 3, j.FLOAT, false, 0, 0);
-                        if (geom.attributes.uv) {
-                            j.bindBuffer(j.ARRAY_BUFFER, geom.attributes.uv.buffer);
-                            j.enableVertexAttribArray(1);
-                            j.vertexAttribPointer(1, geom.attributes.uv.size || 2, j.FLOAT, false, 0, 0);
-                        }
-                        j.bindBuffer(j.ELEMENT_ARRAY_BUFFER, geom.attributes.index.buffer);
-                        j.bindVertexArray(null);
-                    }
-                    if (!_ghostProg) {
-                        const vs = `#version 300 es
-precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform mat4 modelMatrix;in vec3 position;in vec2 uv;out vec2 vUv;void main(){vUv=uv;gl_Position=projectionViewMatrix*modelMatrix*vec4(position,1.0);}`;
-                        const fs = `#version 300 es
-precision highp float;precision highp int;uniform vec4 ghostColor;in vec2 vUv;out vec4 fragColor;void main(){fragColor=ghostColor;}`;
-                        const vsh = j.createShader(j.VERTEX_SHADER);
-                        const fsh = j.createShader(j.FRAGMENT_SHADER);
-                        j.shaderSource(vsh, vs); j.compileShader(vsh);
-                        j.shaderSource(fsh, fs); j.compileShader(fsh);
-                        _ghostProg = j.createProgram();
-                        j.bindAttribLocation(_ghostProg, 0, "position");
-                        j.bindAttribLocation(_ghostProg, 1, "uv");
-                        j.attachShader(_ghostProg, vsh); j.attachShader(_ghostProg, fsh);
-                        j.linkProgram(_ghostProg);
-                        j.deleteShader(vsh); j.deleteShader(fsh);
-                        _ghostModelMatLoc = j.getUniformLocation(_ghostProg, "modelMatrix");
-                        _ghostColorLoc = j.getUniformLocation(_ghostProg, "ghostColor");
-                        const camIdx = j.getUniformBlockIndex(_ghostProg, "Camera");
-                        if (camIdx !== j.INVALID_INDEX) j.uniformBlockBinding(_ghostProg, camIdx, 1);
-                    }
-                    for (const bid of _ghostBids) {
-                        const bone = vis.body[bid];
-                        if (bone && bone.worldMatrix) {
-                            _ghostFrames[bid].unshift(new Float32Array(bone.worldMatrix));
-                            if (_ghostFrames[bid].length > _ghostMax) _ghostFrames[bid].pop();
-                        }
-                    }
-                    if (_ghostFrames[2].length > 0 && _ghostProg && _ghostVAO) {
-                        j.useProgram(_ghostProg);
-                        tt.currentProgram = -1;
-                        lf(j.BLEND);
-                        sb(j.SRC_ALPHA, j.ONE_MINUS_SRC_ALPHA);
-                        o1(!1);
-                        Hm(j.CULL_FACE);
-                        j.bindVertexArray(_ghostVAO);
-                        const _ISTEPS = 82;
-                        const _eyeCol = vis.body[1] && vis.body[1].data && vis.body[1].data.color;
-                        for (const bid of _ghostBids) {
-                            const frames = _ghostFrames[bid];
-                            if (frames.length === 0) continue;
-                            const total = (frames.length - 1) * _ISTEPS + 1;
-                            for (let gi = 0; gi < frames.length - 1; gi++) {
-                                const f0 = frames[gi], f1 = frames[gi + 1];
-                                for (let s = 0; s < _ISTEPS; s++) {
-                                    const t = s / _ISTEPS;
-                                    const idx = gi * _ISTEPS + s;
-                                    const fade = idx / total;
-                                    const ga = (1 - fade) * 0.05;
-                                    for (let k = 0; k < 16; k++) _ghostTmpMat[k] = f0[k] + (f1[k] - f0[k]) * t;
-                                    j.uniformMatrix4fv(_ghostModelMatLoc, false, _ghostTmpMat);
-                                    if (_eyeCol && false) {
-                                        const cf = fade < 0 ? 0 : (fade - 0) * 2;
-                                        j.uniform4f(_ghostColorLoc, _eyeCol[0] * cf, _eyeCol[1] * cf, _eyeCol[2] * cf, ga);
-                                    } else {
-                                        j.uniform4f(_ghostColorLoc, 3.91039198637008667, 3.91584978103637695, 3.9776080071926117, ga);
-                                    }
-                                    j.drawElements(j.TRIANGLES, _ghostIndexCount, _ghostIndexType, _ghostDrawStart);
-                                }
-                            }
-                        }
-                        j.bindVertexArray(null);
-                        tt.currentGeometry = -1;
-                        o1(!0);
-                        lf(j.CULL_FACE);
-                    }
-                }
-            }
         },
         k2 = class {
             constructor(e) {
@@ -28750,6 +28961,8 @@ precision highp float;precision highp int;uniform vec4 ghostColor;in vec2 vUv;ou
         let l = Jt.environment.data;
         ls(l.worldlight, 0, fn.direct[i], fn.direct[s], o), ls(l.worldlight, 3, fn.ambient[i], fn.ambient[s], o), l.worldlight[6] = vc[0], l.worldlight[7] = vc[1], l.worldlight[8] = vc[2];
         if (_ra > 0) { for (let _ri = 0; _ri < 6; _ri++) l.worldlight[_ri] *= _dm; } ls(l.fog, 0, fn.fog[i], fn.fog[s], o), l.fog[3] = n > 0 ? -100 : u2, l.fog[4] = n > 0 ? m2 : li, l.daycycle[0] = t, l.time[0] = e % 3600, ut[31].uniforms.amount.value = qf(o, fn.bloom[i], fn.bloom[s]);
+        if (ut[13] && ut[13].uniforms.u_rainAmount) ut[13].uniforms.u_rainAmount.value = _ra;
+        if (ut[14] && ut[14].uniforms.u_rainAmount) ut[14].uniforms.u_rainAmount.value = _ra;
         if (_ra > 0) { l.fog[0] *= _dm; l.fog[1] *= _dm; l.fog[2] *= _dm; }
         ut[11].uniforms.u_rain.value = _ra;
         if (ut[8] && ut[8].uniforms && ut[8].uniforms.u_wetness) ut[8].uniforms.u_wetness.value = _ra;
@@ -30027,7 +30240,6 @@ precision highp float;precision highp int;uniform vec4 ghostColor;in vec2 vUv;ou
                 ut[36].uniforms.blurStep.value = 1;
                 Gu(ssaoFb1); ni(tu, ut[36]);
 
-                // temporal accumulation
                 let histPrev = _ssaoHistIdx === 0 ? ssaoHistA : ssaoHistB;
                 let histNext = _ssaoHistIdx === 0 ? ssaoHistB : ssaoHistA;
                 qn("inputA", ssaoFb1.colorTexture, 0, ut[37]);
@@ -30322,7 +30534,7 @@ precision highp float;precision highp int;uniform vec4 ghostColor;in vec2 vUv;ou
                 s = n - Wo * 2,
                 r = o - Wo * 2;
             Jn.push(Vo(null, Lt("panel"), n, o, 0, 0, i)), Vo(Jn[0], Lt("grey"), s, r, Wo, Wo, 1), Jn.push(Vo(null, Lt("health"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#ffbc00", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("enemy"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("party"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("pvp"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#555555", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("spell"), s, r, 0, 0, 1));
-            for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, _classColors[l] || Lt("c" + l), s, r, 0, 0, 1));
+            for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, _classColors[l], s, r, 0, 0, 1));
             Jn.push(Vo(null, "#ffffff", s, r, 0, 0, 1));
             IA = Vo(null, "#ffffff", 100 + Wo, 9 + Wo, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo, 16 + Wo , 0, 0, 3);
             _classNameplateParams = {s, r};

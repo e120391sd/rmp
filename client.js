@@ -1,29 +1,7 @@
 (() => {
-    let rareMobs = [
-                {name:"Ghost",id:15,type:"mount"},
-                {name:"Keiler",id:16,type:"mount"},
-                {name:"Mireshell",id:17,type:"mount"},
-                {name:"Desert Scarab",id:18,type:"mount"},
-                {name:"Glimworm",id:19,type:"mount"},
-                {name:"Mudlasher",id:20,type:"mount"},
-                {name:"Sandpaw",id:21,type:"mount"},
-                {name:"Oakmane",id:22,type:"mount"},
-                {name:"Moonhowler",id:23,type:"mount"},
-                {name:"Silkrunner",id:24,type:"mount"},
-                {name:"Shimmerbranch",id:25,type:"mount"},
-
-                {name:"Coal Golem",id:3,type:"pet"},
-                {name:"Bandit Leader",id:7,type:"pet"},
-                {name:"Pirate Captain",id:4,type:"pet"},
-                {name:"Bonemother",id:6,type:"pet"},
-                {name:"Undead Necromancer",id:2,type:"pet"},
-                {name:"Nightshade",id:5,type:"pet"},
-            ]
-    let alreadyNotified = new Map();
-    let targettedPlayers = new Map()
-    var NT = Object.defineProperty;
+    var N9 = Object.defineProperty;
     var Kn = (t, e) => {
-        for (var n in e) NT(t, n, {
+        for (var n in e) N9(t, n, {
             get: e[n],
             enumerable: !0
         })
@@ -66,7 +44,7 @@
         return t != t ? e == e : t !== e
     }
 
-    function v_(t) {
+    function v2(t) {
         return Object.keys(t).length === 0
     }
 
@@ -85,12 +63,12 @@
 
     function oa(t, e, n, o) {
         if (t) {
-            let i = __(t, e, n, o);
+            let i = _2(t, e, n, o);
             return t[0](i)
         }
     }
 
-    function __(t, e, n, o) {
+    function _2(t, e, n, o) {
         return t[1] && o ? na(n.ctx.slice(), t[1](o(e))) : n.ctx
     }
 
@@ -111,7 +89,7 @@
 
     function sa(t, e, n, o, i, s) {
         if (i) {
-            let r = __(e, n, o, s);
+            let r = _2(e, n, o, s);
             t.p(r, i)
         }
     }
@@ -133,20 +111,20 @@
     function Xe(t, e, n) {
         return t.set(n), e
     }
-    var b_ = typeof window < "u",
-        mm = b_ ? () => window.performance.now() : () => Date.now(),
-        $c = b_ ? t => requestAnimationFrame(t) : ae;
+    var b2 = typeof window < "u",
+        mm = b2 ? () => window.performance.now() : () => Date.now(),
+        $c = b2 ? t => requestAnimationFrame(t) : ae;
     var la = new Set;
 
-    function y_(t) {
+    function y2(t) {
         la.forEach(e => {
             e.c(t) || (la.delete(e), e.f())
-        }), la.size !== 0 && $c(y_)
+        }), la.size !== 0 && $c(y2)
     }
 
     function pm(t) {
         let e;
-        return la.size === 0 && $c(y_), {
+        return la.size === 0 && $c(y2), {
             promise: new Promise(n => {
                 la.add(e = {
                     c: t,
@@ -178,14 +156,14 @@
         }
     };
     dm.entries = "WeakMap" in Oc ? new WeakMap : void 0;
-    var k_ = !1;
+    var k2 = !1;
 
-    function x_() {
-        k_ = !0
+    function x2() {
+        k2 = !0
     }
 
-    function w_() {
-        k_ = !1
+    function w2() {
+        k2 = !1
     }
 
     function d(t, e) {
@@ -198,12 +176,12 @@
         return e && e.host ? e : t.ownerDocument
     }
 
-    function M_(t) {
+    function M2(t) {
         let e = h("style");
-        return e.textContent = "/* empty */", jT(zh(t), e), e.sheet
+        return e.textContent = "/* empty */", j9(zh(t), e), e.sheet
     }
 
-    function jT(t, e) {
+    function j9(t, e) {
         return d(t.head || t, e), e.sheet
     }
 
@@ -223,7 +201,7 @@
         return document.createElement(t)
     }
 
-    function GT(t) {
+    function G9(t) {
         return document.createElementNS("http://www.w3.org/2000/svg", t)
     }
 
@@ -243,7 +221,7 @@
         return t.addEventListener(e, n, o), () => t.removeEventListener(e, n, o)
     }
 
-    function F_(t) {
+    function F2(t) {
         return function(e) {
             e.target === this && t.call(this, e)
         }
@@ -257,7 +235,7 @@
         return t === "" ? null : +t
     }
 
-    function C_(t) {
+    function C2(t) {
         return Array.from(t.childNodes)
     }
 
@@ -315,7 +293,7 @@
             this.h(e)
         }
         m(e, n, o = null) {
-            this.e || (this.is_svg ? this.e = GT(n.nodeName) : this.e = h(n.nodeType === 11 ? "TEMPLATE" : n.nodeName), this.t = n.tagName !== "TEMPLATE" ? n : n.content, this.c(e)), this.i(o)
+            this.e || (this.is_svg ? this.e = G9(n.nodeName) : this.e = h(n.nodeType === 11 ? "TEMPLATE" : n.nodeName), this.t = n.tagName !== "TEMPLATE" ? n : n.content, this.c(e)), this.i(o)
         }
         h(e) {
             this.e.innerHTML = e, this.n = Array.from(this.e.nodeName === "TEMPLATE" ? this.e.content.childNodes : this.e.childNodes)
@@ -331,7 +309,7 @@
         }
     };
 
-    function S_(t) {
+    function S2(t) {
         let e = {};
         return t.childNodes.forEach(n => {
             e[n.slot || "default"] = !0
@@ -340,16 +318,16 @@
     var gm = new Map,
         vm = 0;
 
-    function HT(t) {
+    function H9(t) {
         let e = 5381,
             n = t.length;
         for (; n--;) e = (e << 5) - e ^ t.charCodeAt(n);
         return e >>> 0
     }
 
-    function YT(t, e) {
+    function Y9(t, e) {
         let n = {
-            stylesheet: M_(e),
+            stylesheet: M2(e),
             rules: {}
         };
         return gm.set(t, n), n
@@ -366,12 +344,12 @@
         }
         let f = c + `100% {${r(n,1-n)}}
 }`,
-            u = `__svelte_${HT(f)}_${l}`,
+            u = `__svelte_${H9(f)}_${l}`,
             m = zh(t),
             {
                 stylesheet: g,
                 rules: v
-            } = gm.get(m) || YT(m, t);
+            } = gm.get(m) || Y9(m, t);
         v[u] || (v[u] = !0, g.insertRule(`@keyframes ${u} ${f}`, g.cssRules.length));
         let _ = t.style.animation || "";
         return t.style.animation = `${_?`${_}, `:""}${u} ${o}ms linear ${i}ms 1 both`, vm += 1, u
@@ -381,10 +359,10 @@
         let n = (t.style.animation || "").split(", "),
             o = n.filter(e ? s => s.indexOf(e) < 0 : s => s.indexOf("__svelte") === -1),
             i = n.length - o.length;
-        i && (t.style.animation = o.join(", "), vm -= i, vm || XT())
+        i && (t.style.animation = o.join(", "), vm -= i, vm || X9())
     }
 
-    function XT() {
+    function X9() {
         $c(() => {
             vm || (gm.forEach(t => {
                 let {
@@ -447,15 +425,15 @@
     var Bt = [],
         fa = [],
         $h = [],
-        P_ = Promise.resolve(),
+        P2 = Promise.resolve(),
         Oh = !1;
 
     function Nh() {
-        Oh || (Oh = !0, P_.then(bm))
+        Oh || (Oh = !0, P2.then(bm))
     }
 
     function Wh() {
-        return Nh(), P_
+        return Nh(), P2
     }
 
     function yn(t) {
@@ -475,7 +453,7 @@
             try {
                 for (; ca < qr.length;) {
                     let e = qr[ca];
-                    ca++, fs(e), QT(e.$$)
+                    ca++, fs(e), Q9(e.$$)
                 }
             } catch (e) {
                 throw qr.length = 0, ca = 0, e
@@ -491,7 +469,7 @@
         Oh = !1, Uh.clear(), fs(t)
     }
 
-    function QT(t) {
+    function Q9(t) {
         if (t.fragment !== null) {
             t.update(), rt(t.before_update);
             let e = t.dirty;
@@ -499,14 +477,14 @@
         }
     }
 
-    function A_(t) {
+    function A2(t) {
         let e = [],
             n = [];
         fa.forEach(o => t.indexOf(o) === -1 ? e.push(o) : n.push(o)), n.forEach(o => o()), fa = e
     }
     var Gc;
 
-    function T_() {
+    function T2() {
         return Gc || (Gc = Promise.resolve(), Gc.then(() => {
             Gc = null
         })), Gc
@@ -542,11 +520,11 @@
             }), t.o(e)
         } else o && o()
     }
-    var E_ = {
+    var E2 = {
         duration: 0
     };
 
-    function I_(t, e, n) {
+    function I2(t, e, n) {
         let o = {
                 direction: "out"
             },
@@ -563,7 +541,7 @@
                 easing: m = Lr,
                 tick: g = ae,
                 css: v
-            } = i || E_;
+            } = i || E2;
             v && (r = Wc(t, 1, 0, u, f, m, v));
             let _ = mm() + f,
                 b = _ + u;
@@ -578,7 +556,7 @@
                 return s
             })
         }
-        return Ni(i) ? T_().then(() => {
+        return Ni(i) ? T2().then(() => {
             i = i(o), c()
         }) : c(), {
             end(f) {
@@ -621,7 +599,7 @@
                 easing: k = Lr,
                 tick: y = ae,
                 css: F
-            } = s || E_, A = {
+            } = s || E2, A = {
                 start: mm() + _,
                 b: v
             };
@@ -638,7 +616,7 @@
         }
         return {
             run(v) {
-                Ni(s) ? T_().then(() => {
+                Ni(s) ? T2().then(() => {
                     s = s({
                         direction: v ? "in" : "out"
                     }), g(v)
@@ -654,7 +632,7 @@
         return t?.length !== void 0 ? t : Array.from(t)
     }
 
-    function D_(t, e) {
+    function D2(t, e) {
         t.d(1), e.delete(t.key)
     }
 
@@ -725,8 +703,8 @@
     function xm(t) {
         return typeof t == "object" && t !== null ? t : {}
     }
-    var ZT = ["mod", "allowfullscreen", "allowpaymentrequest", "async", "autofocus", "autoplay", "checked", "controls", "default", "defer", "disabled", "formnovalidate", "hidden", "inert", "ismap", "loop", "multiple", "muted", "nomodule", "novalidate", "open", "playsinline", "readonly", "required", "reversed", "selected"],
-        JT = new Set([...ZT]);
+    var Z9 = ["allowfullscreen", "allowpaymentrequest", "async", "autofocus", "autoplay", "checked", "controls", "default", "defer", "disabled", "formnovalidate", "hidden", "inert", "ismap", "loop", "multiple", "muted", "nomodule", "novalidate", "open", "playsinline", "readonly", "required", "reversed", "selected"],
+        J9 = new Set([...Z9]);
 
     function di(t, e, n) {
         let o = t.$$.props[e];
@@ -750,10 +728,10 @@
 
     function Z(t, e) {
         let n = t.$$;
-        n.fragment !== null && (A_(n.after_update), rt(n.on_destroy), n.fragment && n.fragment.d(e), n.on_destroy = n.fragment = null, n.ctx = [])
+        n.fragment !== null && (A2(n.after_update), rt(n.on_destroy), n.fragment && n.fragment.d(e), n.on_destroy = n.fragment = null, n.ctx = [])
     }
 
-    function e7(t, e) {
+    function eT(t, e) {
         t.$$.dirty[0] === -1 && (qr.push(t), Nh(), t.$$.dirty.fill(0)), t.$$.dirty[e / 31 | 0] |= 1 << e % 31
     }
 
@@ -782,19 +760,19 @@
         let f = !1;
         if (c.ctx = n ? n(t, e.props || {}, (u, m, ...g) => {
                 let v = g.length ? g[0] : m;
-                return c.ctx && i(c.ctx[u], c.ctx[u] = v) && (!c.skip_bound && c.bound[u] && c.bound[u](v), f && e7(t, u)), m
+                return c.ctx && i(c.ctx[u], c.ctx[u] = v) && (!c.skip_bound && c.bound[u] && c.bound[u](v), f && eT(t, u)), m
             }) : [], c.update(), f = !0, rt(c.before_update), c.fragment = o ? o(c.ctx) : !1, e.target) {
             if (e.hydrate) {
-                x_();
-                let u = C_(e.target);
+                x2();
+                let u = C2(e.target);
                 c.fragment && c.fragment.l(u), u.forEach(x)
             } else c.fragment && c.fragment.c();
-            e.intro && S(t.$$.fragment), Q(t, e.target, e.anchor), w_(), bm()
+            e.intro && S(t.$$.fragment), Q(t, e.target, e.anchor), w2(), bm()
         }
         fs(a)
     }
-    var t7;
-    typeof HTMLElement == "function" && (t7 = class extends HTMLElement {
+    var tT;
+    typeof HTMLElement == "function" && (tT = class extends HTMLElement {
         $$ctor;
         $$s;
         $$c;
@@ -842,7 +820,7 @@
                 };
                 if (await Promise.resolve(), !this.$$cn) return;
                 let e = {},
-                    n = S_(this);
+                    n = S2(this);
                 for (let i of this.$$s) i in n && (e[i] = [t(i)]);
                 for (let i of this.attributes) {
                     let s = this.$$g_p(i.name);
@@ -931,13 +909,13 @@
             }
         }
         $set(e) {
-            this.$$set && !v_(e) && (this.$$.skip_bound = !0, this.$$set(e), this.$$.skip_bound = !1)
+            this.$$set && !v2(e) && (this.$$.skip_bound = !0, this.$$set(e), this.$$.skip_bound = !1)
         }
     };
-    var V_ = "4";
+    var V2 = "4";
     typeof window < "u" && (window.__svelte || (window.__svelte = {
         v: new Set
-    })).v.add(V_);
+    })).v.add(V2);
     var ua = [];
 
     function ne(t, e = ae) {
@@ -998,8 +976,8 @@
         Rr = ne({}),
         ji = ne(),
         wm = ne(!1),
-        L_ = ne(),
-        q_ = ne(!1),
+        L2 = ne(),
+        q2 = ne(!1),
         So = ne("Loading World"),
         Xc = ne([]),
         qo = ne(""),
@@ -1058,7 +1036,7 @@
         Br = ne(),
         hs = ne(!1);
 
-    function n7(t) {
+    function nT(t) {
         let e;
         return {
             c() {
@@ -1077,10 +1055,10 @@
     }
     var Hh = class extends Fe {
             constructor(e) {
-                super(), Pe(this, e, null, n7, kn, {})
+                super(), Pe(this, e, null, nT, kn, {})
             }
         },
-        R_ = Hh;
+        R2 = Hh;
 
     function Lm(t, {
         delay: e = 0,
@@ -1096,11 +1074,11 @@
         }
     }
 
-    function z_(t) {
+    function z2(t) {
         let e, n, o, i, s, r;
-        return n = new R_({}), {
+        return n = new R2({}), {
             c() {
-                e = h("div"), K(n.$$.fragment), o = h("h2"), i = T(t[0]), s = h("small"), s.innerHTML = '<img alt="Hordes.io" class="svgicon" src="/data/ui/icon.svg?v=8822612"/> 0.51.8822 Live', Ve(o, "margin-top", "100px"), p(s, "class", "version textgrey textcenter svelte-aoht7k"), p(e, "class", "l-ui container svelte-aoht7k")
+                e = h("div"), K(n.$$.fragment), o = h("h2"), i = T(t[0]), s = h("small"), s.innerHTML = '<img alt="Hordes.io" class="svgicon" src="/data/ui/icon.svg?v=8829640"/> 0.51.8829 Live', Ve(o, "margin-top", "100px"), p(s, "class", "version textgrey textcenter svelte-aoht7k"), p(e, "class", "l-ui container svelte-aoht7k")
             },
             m(l, a) {
                 w(l, e, a), Q(n, e, null), d(e, o), d(o, i), d(e, s), r = !0
@@ -1120,8 +1098,8 @@
         }
     }
 
-    function o7(t) {
-        let e, n, o = t[0] && z_(t);
+    function oT(t) {
+        let e, n, o = t[0] && z2(t);
         return {
             c() {
                 o && o.c(), e = de()
@@ -1130,7 +1108,7 @@
                 o && o.m(i, s), w(i, e, s), n = !0
             },
             p(i, [s]) {
-                i[0] ? o ? (o.p(i, s), s & 1 && S(o, 1)) : (o = z_(i), o.c(), S(o, 1), o.m(e.parentNode, e)) : o && (we(), E(o, 1, 1, () => {
+                i[0] ? o ? (o.p(i, s), s & 1 && S(o, 1)) : (o = z2(i), o.c(), S(o, 1), o.m(e.parentNode, e)) : o && (we(), E(o, 1, 1, () => {
                     o = null
                 }), Me())
             },
@@ -1146,7 +1124,7 @@
         }
     }
 
-    function i7(t, e, n) {
+    function iT(t, e, n) {
         let {
             active: o
         } = e;
@@ -1156,18 +1134,18 @@
     }
     var Yh = class extends Fe {
             constructor(e) {
-                super(), Pe(this, e, i7, o7, Be, {
+                super(), Pe(this, e, iT, oT, Be, {
                     active: 0
                 })
             }
         },
-        B_ = Yh;
+        B2 = Yh;
 
     function vi() {
         return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
     }
 
-    function U_(t, e) {
+    function U2(t, e) {
         return t[0] = e[0], t[1] = e[1], t[2] = e[2], t[3] = e[3], t[4] = e[4], t[5] = e[5], t[6] = e[6], t[7] = e[7], t[8] = e[8], t[9] = e[9], t[10] = e[10], t[11] = e[11], t[12] = e[12], t[13] = e[13], t[14] = e[14], t[15] = e[15], t
     }
 
@@ -1232,7 +1210,7 @@
         return t[0] = e[12], t[1] = e[13], t[2] = e[14], t
     }
 
-    function $_(t, e) {
+    function $2(t, e) {
         let n = e[0],
             o = e[1],
             i = e[2],
@@ -1245,7 +1223,7 @@
         return t[0] = Math.sqrt(n * n + o * o + i * i), t[1] = Math.sqrt(s * s + r * r + l * l), t[2] = Math.sqrt(a * a + c * c + f * f), t
     }
 
-    function O_(t) {
+    function O2(t) {
         let e = t[0],
             n = t[1],
             o = t[2],
@@ -1290,13 +1268,13 @@
         return t[0] = (1 - (v + b)) * A, t[1] = (m + F) * A, t[2] = (g - y) * A, t[3] = 0, t[4] = (m - F) * C, t[5] = (1 - (u + b)) * C, t[6] = (_ + k) * C, t[7] = 0, t[8] = (g + y) * M, t[9] = (_ - k) * M, t[10] = (1 - (u + v)) * M, t[11] = 0, t[12] = n[0], t[13] = n[1], t[14] = n[2], t[15] = 1, t
     }
 
-    function N_(t, e, n, o, i) {
+    function N2(t, e, n, o, i) {
         let s = 1 / Math.tan(e / 2),
             r = 1 / (o - i);
         return t[0] = s / n, t[1] = 0, t[2] = 0, t[3] = 0, t[4] = 0, t[5] = s, t[6] = 0, t[7] = 0, t[8] = 0, t[9] = 0, t[10] = (i + o) * r, t[11] = -1, t[12] = 0, t[13] = 0, t[14] = 2 * i * o * r, t[15] = 0, t
     }
 
-    function W_(t, e, n, o, i, s, r) {
+    function W2(t, e, n, o, i, s, r) {
         let l = 1 / (e - n),
             a = 1 / (o - i),
             c = 1 / (s - r);
@@ -1321,7 +1299,7 @@
         return g = v * v + _ * _ + b * b, g > 0 && (g = 1 / Math.sqrt(g), v *= g, _ *= g, b *= g), t[0] = v, t[1] = _, t[2] = b, t[3] = 0, t[4] = u * b - m * _, t[5] = m * v - f * b, t[6] = f * _ - u * v, t[7] = 0, t[8] = f, t[9] = u, t[10] = m, t[11] = 0, t[12] = i, t[13] = s, t[14] = r, t[15] = 1, t
     }
 
-    function j_(t, e) {
+    function j2(t, e) {
         return t[0] = Math.asin(-Math.min(Math.max(e[9], -1), 1)), Math.abs(e[9]) < .99999 ? (t[1] = Math.atan2(e[8], e[10]), t[2] = Math.atan2(e[1], e[5])) : (t[1] = Math.atan2(-e[2], e[0]), t[2] = 0), t
     }
 
@@ -1461,7 +1439,7 @@
         }
     }();
 
-    function G_(t, e) {
+    function G2(t, e) {
         return t[0] === e[0] && t[1] === e[1] && t[2] === e[2]
     }
 
@@ -1471,7 +1449,7 @@
         return t[0] = e[2] * o + e[0] * i, t[1] = e[1], t[2] = e[2] * i - e[0] * o, t
     }
 
-    function H_(t, e, n) {
+    function H2(t, e, n) {
         let o = Math.sin(n),
             i = Math.cos(n);
         return t[0] = e[1] * o + e[0] * i, t[2] = e[1] * i - e[0] * o, t
@@ -1485,7 +1463,7 @@
         return t[0] = e, t[1] = n, t[2] = o, t[3] = i, t
     }
 
-    function Y_(t, e) {
+    function Y2(t, e) {
         let n = e[0],
             o = e[1],
             i = e[2],
@@ -1494,7 +1472,7 @@
         return r > 0 && (r = 1 / Math.sqrt(r)), t[0] = n * r, t[1] = o * r, t[2] = i * r, t[3] = s * r, t
     }
 
-    function r7(t, e, n) {
+    function rT(t, e, n) {
         n = n * .5;
         let o = Math.sin(n);
         return t[0] = o * e[0], t[1] = o * e[1], t[2] = o * e[2], t[3] = Math.cos(n), t
@@ -1513,7 +1491,7 @@
         return g = i * a + s * c + r * f + l * u, g < 0 && (g = -g, a = -a, c = -c, f = -f, u = -u), 1 - g > 1e-6 ? (m = Math.acos(g), v = Math.sin(m), _ = Math.sin((1 - o) * m) / v, b = Math.sin(o * m) / v) : (_ = 1 - o, b = o), t[0] = _ * i + b * a, t[1] = _ * s + b * c, t[2] = _ * r + b * f, t[3] = _ * l + b * u, t
     }
 
-    function l7(t, e) {
+    function lT(t, e) {
         let n = e[0] + e[4] + e[8],
             o;
         if (n > 0) o = Math.sqrt(n + 1), t[3] = .5 * o, o = .5 / o, t[0] = (e[5] - e[7]) * o, t[1] = (e[6] - e[2]) * o, t[2] = (e[1] - e[3]) * o;
@@ -1536,14 +1514,14 @@
             l = Math.cos(e[2] * .5);
         return t[0] = n * s * l + o * i * r, t[1] = o * i * l - n * s * r, t[2] = o * s * r - n * i * l, t[3] = o * s * l + n * i * r, t
     }
-    var X_ = Y_;
+    var X2 = Y2;
     var EO = function() {
             let t = [0, 0, 0],
                 e = [1, 0, 0],
                 n = [0, 1, 0];
             return function(o, i, s) {
                 let r = dn(i, s);
-                return r < -.999999 ? (Ko(t, e, i), uo(t) < 1e-6 && Ko(t, n, i), to(t, t), r7(o, t, Math.PI), o) : r > .999999 ? (o[0] = 0, o[1] = 0, o[2] = 0, o[3] = 1, o) : (Ko(t, i, s), o[0] = t[0], o[1] = t[1], o[2] = t[2], o[3] = 1 + r, X_(o, o))
+                return r < -.999999 ? (Ko(t, e, i), uo(t) < 1e-6 && Ko(t, n, i), to(t, t), rT(o, t, Math.PI), o) : r > .999999 ? (o[0] = 0, o[1] = 0, o[2] = 0, o[3] = 1, o) : (Ko(t, i, s), o[0] = t[0], o[1] = t[1], o[2] = t[2], o[3] = 1 + r, X2(o, o))
             }
         }(),
         IO = function() {
@@ -1556,11 +1534,11 @@
         DO = function() {
             let t = [1, 0, 0, 0, 1, 0, 0, 0, 1];
             return function(e, n, o, i) {
-                return t[0] = o[0], t[3] = o[1], t[6] = o[2], t[1] = i[0], t[4] = i[1], t[7] = i[2], t[2] = -n[0], t[5] = -n[1], t[8] = -n[2], X_(e, l7(e, t))
+                return t[0] = o[0], t[3] = o[1], t[6] = o[2], t[1] = i[0], t[4] = i[1], t[7] = i[2], t[2] = -n[0], t[5] = -n[1], t[8] = -n[2], X2(e, lT(e, t))
             }
         }();
     var Kh = vi(),
-        a7 = () => ({
+        aT = () => ({
             parent: null,
             children: [],
             visible: !0,
@@ -1576,37 +1554,37 @@
             data: {}
         }),
         Cn = (t, e, n = !0) => {
-            n && t.parent !== null && e !== t.parent && f7(t.parent, t, !1), t.parent = e, t.matrixNeedsUpdate = !0, n && e && c7(e, t, !1)
+            n && t.parent !== null && e !== t.parent && fT(t.parent, t, !1), t.parent = e, t.matrixNeedsUpdate = !0, n && e && cT(e, t, !1)
         },
-        c7 = (t, e, n = !0) => {
+        cT = (t, e, n = !0) => {
             ~t.children.indexOf(e) || t.children.push(e), n && Cn(e, t, !1)
         },
-        f7 = (t, e, n = !0) => {
+        fT = (t, e, n = !0) => {
             ~t.children.indexOf(e) && t.children.splice(t.children.indexOf(e), 1), n && Cn(e, null, !1)
         },
         $t = (t, e) => {
             if (!t.visible) return;
             let n = gs(t),
-                o = u7(t, e, n);
+                o = uT(t, e, n);
             t.children.forEach(i => {
                 i.visible && $t(i, o)
             })
         },
         gs = t => !t.matrixAutoUpdate && !t.matrixNeedsUpdate ? !1 : (t.matrixNeedsUpdate = !1, $m(t.quaternion, t.rotation), zm(t.matrix, t.quaternion, t.position, t.scale), !0),
-        u7 = (t, e, n) => t.parent !== null ? e || n ? (qm(t.worldMatrix, t.parent.worldMatrix, t.matrix), !0) : !1 : n ? (U_(t.worldMatrix, t.matrix), !0) : !1,
+        uT = (t, e, n) => t.parent !== null ? e || n ? (qm(t.worldMatrix, t.parent.worldMatrix, t.matrix), !0) : !1 : n ? (U2(t.worldMatrix, t.matrix), !0) : !1,
         Nm = (t, e, n, o) => {
             let i = Kt([0, 0, 0], n.position, e.position);
             to(i, i), sn(t.position, e.position, i, o), t.rotation[0] = 0, t.rotation[1] = Math.atan2(i[0], i[2]) + 1.5, t.rotation[2] = Math.sin(-i[1]) + 1.5, $t(t, !1)
         },
         jr = (t, e, n = !1, o) => {
-            n ? Qh(Kh, t.position, e, o) : Qh(Kh, e, t.position, o), j_(t.rotation, Kh)
+            n ? Qh(Kh, t.position, e, o) : Qh(Kh, e, t.position, o), j2(t.rotation, Kh)
         },
         Om = [],
-        rn = () => Om.length > 0 ? Om.pop() : a7(),
+        rn = () => Om.length > 0 ? Om.pop() : aT(),
         _i = t => {
-            m7(t), Om.indexOf(t) < 0 ? Om.push(t) : console.log("tried returning transform that is already known")
+            mT(t), Om.indexOf(t) < 0 ? Om.push(t) : console.log("tried returning transform that is already known")
         },
-        m7 = t => {
+        mT = t => {
             t.data = {}, t.geometry = void 0, t.visible = !0, t.matrixAutoUpdate = !1, X(t.position, 0, 0, 0), X(t.scale, 1, 1, 1), X(t.rotation, 0, 0, 0), Cn(t, null, !0);
             for (let e = 0; e < t.children.length; ++e) Cn(t.children[e], null);
             t.children.length = 0
@@ -1637,10 +1615,10 @@
             return i.transform.matrixAutoUpdate = !0, i
         },
         sf = t => {
-            N_(t.projectionMatrix, t.fov * (Math.PI / 180), t.aspect, t.near, t.far)
+            N2(t.projectionMatrix, t.fov * (Math.PI / 180), t.aspect, t.near, t.far)
         },
-        Z_ = (t, e, n, o, i) => {
-            W_(t.projectionMatrix, e, n, o, i, t.near, t.far)
+        Z2 = (t, e, n, o, i) => {
+            W2(t.projectionMatrix, e, n, o, i, t.near, t.far)
         },
         e1 = t => {
             xa(t.worldPosition, t.transform.worldMatrix)
@@ -1664,9 +1642,9 @@
                 gn(o, o, i), t.frustumConstants[n] *= i
             }
         },
-        J_ = (t, e, n) => {
+        J2 = (t, e, n) => {
             it(Wm, e.bounds.center), Ao(Wm, Wm, n.worldMatrix);
-            let o = e.bounds.radius * O_(n.worldMatrix);
+            let o = e.bounds.radius * O2(n.worldMatrix);
             return t1(t, Wm, o)
         },
         t1 = (t, e, n) => {
@@ -1693,7 +1671,7 @@
         tb = j.drawElementsInstanced.bind(j),
         nb = j.createVertexArray.bind(j),
         Gm = j.bindVertexArray.bind(j),
-        p7 = j.deleteVertexArray.bind(j),
+        pT = j.deleteVertexArray.bind(j),
         n1 = j.getExtension("EXT_texture_filter_anisotropic"),
         ob = j.getExtension("WEBGL_compressed_texture_s3tc"),
         tt = {
@@ -1759,14 +1737,14 @@
         af = t => {
             tt.activeTextureUnit !== t && (tt.activeTextureUnit = t, j.activeTexture(j.TEXTURE0 + t))
         },
-        K_ = ({
+        K2 = ({
             target: t = j.FRAMEBUFFER,
             buffer: e = null
         } = {}) => {
             tt.framebuffer !== e && (tt.framebuffer = e, j.bindFramebuffer(t, e))
         },
         fb = t => {
-            t ? (K_(t), rf(t.width, t.height)) : (K_(), rf(tt.width, tt.height))
+            t ? (K2(t), rf(t.width, t.height)) : (K2(), rf(tt.width, tt.height))
         },
         i1 = t => {
             (!t || !t.depth) && (lf(j.DEPTH_TEST), o1(!0)), j.clear(j.COLOR_BUFFER_BIT | j.DEPTH_BUFFER_BIT)
@@ -1788,7 +1766,7 @@ void main() {
     gt.transform.rotation[1] = Math.PI;
     Qt.matrixAutoUpdate = !0;
 
-    function d7(t) {
+    function dT(t) {
         let e;
         return {
             c() {
@@ -1808,7 +1786,7 @@ void main() {
         }
     }
 
-    function h7(t, e, n) {
+    function hT(t, e, n) {
         let o;
         re(t, Mm, r => n(1, o = r));
         let i;
@@ -1825,7 +1803,7 @@ void main() {
     }
     var s1 = class extends Fe {
             constructor(e) {
-                super(), Pe(this, e, h7, d7, Be, {})
+                super(), Pe(this, e, hT, dT, Be, {})
             }
         },
         pb = s1;
@@ -1848,7 +1826,7 @@ void main() {
         }
     }
 
-    function g7(t) {
+    function gT(t) {
         let e, n = t[2] && t[0] && t[1] && db(t);
         return {
             c() {
@@ -1868,7 +1846,7 @@ void main() {
         }
     }
 
-    function v7(t, e, n) {
+    function vT(t, e, n) {
         let o;
         re(t, Dn, l => n(2, o = l));
         let i, s, r = l => {
@@ -1882,7 +1860,7 @@ void main() {
     }
     var r1 = class extends Fe {
             constructor(e) {
-                super(), Pe(this, e, v7, g7, Be, {})
+                super(), Pe(this, e, vT, gT, Be, {})
             }
         },
         hb = r1;
@@ -2033,83 +2011,7 @@ void main() {
         tutprogress: () => Fs,
         twitchOpen: () => Pa,
         viewRange: () => Hr,
-        windowSettings: () => Cf,
-        radar: () => radar,
-        radarSound: () => radarSound,
-        revUnfriendly: () => revUnfriendly,
-        markOwnRevs: () => markOwnRevs,
-        hideBots: () => hideBots,
-        revOnSelect : () => revOnSelect,
-        neverExcludeItems: () => alwaysPickup,
-        disallowSpecialSelling: () => disallowSpecialSelling,
-        losTarget: () => losTarget,
-        timeSlider: () => timeSlider,
-        targetEnabled: () => targetEnabled,
-        disableDamage: () => disableDamage,
-        disableHealing: () => disableHealing,
-        disableClantags: () => disableClantags,
-        disableCircleCooldowns: () => disableCircleCooldowns,
-        nextFriendlyClassSelectorEnabled: () => nextFriendlyClassSelectorEnabled,
-        nextFriendlyClassArcher: () => nextFriendlyClassArcher,
-        nextFriendlyClassShaman: () => nextFriendlyClassShaman,
-        nextFriendlyClassWarrior: () => nextFriendlyClassWarrior,
-        nextFriendlyClassMage: () => nextFriendlyClassMage,
-        classSelectorKbArcher: () => classSelectorKbArcher,
-        classSelectorKbShaman: () => classSelectorKbShaman,
-        classSelectorKbWarrior: () => classSelectorKbWarrior,
-        classSelectorKbMage: () => classSelectorKbMage,
-        classSelectorAnimations: () => classSelectorAnimations,
-        kbItemNames: () => kbItemNamesStore,
-        timeToIngame: () => timeToIngame,
-        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
-        ignoreNameplateViewRange: () => ignoreNameplateViewRange,
-        removeFX: () => removeFX,
-        fxAlphaSprite: () => fxAlphaSprite,
-        fxAlphaRibbon: () => fxAlphaRibbon,
-        fxAlphaModel: () => fxAlphaModel,
-        shrinkIndicators: () => shrinkIndicators,
-        stackIndicators: () => stackIndicators,
-        prestigeSimulate: () => prestigeSimulate,
-        deepFreezeColor: () => deepFreezeColor,
-        chillColor: () => chillColor,
-        agonizeColor: () => agonizeColor,
-        stunColor: () => stunColor,
-        blindColor: () => blindColor,
-        relColor: () => relColor,
-        CCIndicator: () => CCIndicator,
-        sortParty: () => sortParty,
-        hideBuffs: () => hideBuffs,
-        hiddenBuffs: () => hiddenBuffs,
-        hideClassBuffs: () => hideClassBuffs,
-        hiddenClassBuffs: () => hiddenClassBuffs,
-        onlyShowOwnRev: () => onlyShowOwnRev,
-        stackSameBuffs: () => stackSameBuffs,
-        revStackNameplate: () => revStackNameplate,
-        nameplateSize: () => nameplateSize,
-        nameSize: () => nameSize,
-        nameSpacing: () => nameSpacing,
-        CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
-        noFrameColor: () => noFrameColor,
-        outlines: () => outlines,
-        enableMageCapeswing: () => enableMageCapeswing,
-        prestigeChange: () => prestigeChange,
-        kbItemNames: () => kbItemNamesStore,
-        freecamModeKb: () => freecamModeKb,
-        playerTransformID: () => playerTransformID,
-        playerTransformColPrim: () => playerTransformColPrim,
-        playerTransformColSec: () => playerTransformColSec,
-        customMountID: () => customMountID,
-
-        ssao: () => ssao,
-        ssaoBlur: () => ssaoBlur,
-        ssaoIGN: () => ssaoIGN,
-        classColorParty: () => classColorParty,
-        classColor0: () => classColor0,
-        classColor1: () => classColor1,
-        classColor2: () => classColor2,
-        classColor3: () => classColor3,
-        hideFriendlyCreatures: () => hideFriendlyCreatures,
-        hideFriendlyCreatureNames: () => hideFriendlyCreatureNames
+        windowSettings: () => Cf
     });
     var l1 = {};
     Kn(l1, {
@@ -2253,123 +2155,7 @@ void main() {
         tutprogress: () => Fs,
         twitchOpen: () => Pa,
         viewRange: () => Hr,
-        windowSettings: () => Cf,
-        radar: () => radar,
-        radarSound: () => radarSound,
-        revUnfriendly: () => revUnfriendly,
-        markOwnRevs: () => markOwnRevs,
-        hideBots: () => hideBots,
-        revOnSelect : () => revOnSelect,
-        neverExcludeItems: () => alwaysPickup,
-        disallowSpecialSelling: () => disallowSpecialSelling,
-        losTarget: () => losTarget,
-        timeSlider: () => timeSlider,
-        targetEnabled: () => targetEnabled,
-        disableDamage: () => disableDamage,
-        disableHealing: () => disableHealing,
-        disableClantags: () => disableClantags,
-        disableCircleCooldowns: () => disableCircleCooldowns,
-        nextFriendlyClassSelectorEnabled: () => nextFriendlyClassSelectorEnabled,
-        nextFriendlyClassArcher: () => nextFriendlyClassArcher,
-        nextFriendlyClassShaman: () => nextFriendlyClassShaman,
-        nextFriendlyClassWarrior: () => nextFriendlyClassWarrior,
-        nextFriendlyClassMage: () => nextFriendlyClassMage,
-        classSelectorKbArcher: () => classSelectorKbArcher,
-        classSelectorKbShaman: () => classSelectorKbShaman,
-        classSelectorKbWarrior: () => classSelectorKbWarrior,
-        classSelectorKbMage: () => classSelectorKbMage,
-        classSelectorAnimations: () => classSelectorAnimations,
-        kbItemNames: () => kbItemNamesStore,
-        timeToIngame: () => timeToIngame,
-        nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
-        ignoreNameplateViewRange: () => ignoreNameplateViewRange,
-        removeFX: () => removeFX,
-        fxAlphaSprite: () => fxAlphaSprite,
-        fxAlphaRibbon: () => fxAlphaRibbon,
-        fxAlphaModel: () => fxAlphaModel,
-        shrinkIndicators: () => shrinkIndicators,
-        stackIndicators: () => stackIndicators,
-        prestigeSimulate: () => prestigeSimulate,
-        deepFreezeColor: () => deepFreezeColor,
-        chillColor: () => chillColor,
-        agonizeColor: () => agonizeColor,
-        stunColor: () => stunColor,
-        blindColor: () => blindColor,
-        relColor: () => relColor,
-        CCIndicator: () => CCIndicator,
-        sortParty: () => sortParty,
-        hideBuffs: () => hideBuffs,
-        hiddenBuffs: () => hiddenBuffs,
-        hideClassBuffs: () => hideClassBuffs,
-        hiddenClassBuffs: () => hiddenClassBuffs,
-        onlyShowOwnRev: () => onlyShowOwnRev,
-        stackSameBuffs: () => stackSameBuffs,
-        revStackNameplate: () => revStackNameplate,
-        nameplateSize: () => nameplateSize,
-        nameSize: () => nameSize,
-        nameSpacing: () => nameSpacing,
-        CCIndicatorOnNameplates: () => CCIndicatorOnNameplates,
-        noFrameColor: () => noFrameColor,
-        outlines: () => outlines,
-        enableMageCapeswing: () => enableMageCapeswing,
-        prestigeChange: () => prestigeChange,
-        flashNameplates: () => flashNameplates,
-        flashCCIndicator: () => flashCCIndicator,
-        hideChat: () => hideChat,
-        disablePartyNameplates: () => disablePartyNameplates,
-        charmAutoEquip: () => charmAutoEquip,
-        charmAutoStash: () => charmAutoStash,
-        aoeCircleEnabled: () => aoeCircleEnabled,
-        aoeCircleSize: () => aoeCircleSize,
-        aoeCircleAlpha: () => aoeCircleAlpha,
-        aoeCircleColor: () => aoeCircleColor,
-        preventInputLock: () => preventInputLock,
-        steerDuringJump: () => steerDuringJump,
-        ghostMode: () => ghostMode,
-        speedOverride: () => speedOverride,
-        freezeBuffs: () => freezeBuffs,
-        noRangeCheck: () => noRangeCheck,
-        freeflyMode: () => freeflyMode,
-        freecamMode: () => freecamMode,
-        noCameraCollision: () => noCameraCollision,
-        freezeServer: () => freezeServer,
-        showDeadPlayers: () => showDeadPlayers,
-        showInvisiblePlayers: () => showInvisiblePlayers,
-        logNearbyEntities: () => logNearbyEntities,
-        freecamModeKb: () => freecamModeKb,
-        playerTransformID: () => playerTransformID,
-        playerTransformColPrim: () => playerTransformColPrim,
-        playerTransformColSec: () => playerTransformColSec,
-        customMountID: () => customMountID,
-
-        ssao: () => ssao,
-        ssaoRadius: () => ssaoRadius,
-        ssaoBias: () => ssaoBias,
-        ssaoFadeDist: () => ssaoFadeDist,
-        ssaoBlur: () => ssaoBlur,
-        ssaoIGN: () => ssaoIGN,
-        shadowDistMult: () => shadowDistMult,
-        grassDist: () => grassDist,
-        meshViewerID: () => meshViewerID,
-        classColorParty: () => classColorParty,
-        classColor0: () => classColor0,
-        classColor1: () => classColor1,
-        classColor2: () => classColor2,
-        classColor3: () => classColor3,
-        hideFriendlyCreatures: () => hideFriendlyCreatures,
-        hideFriendlyCreatureNames: () => hideFriendlyCreatureNames,
-        hideKekQuickButtons: () => hideKekQuickButtons,
-        showEnvName: () => showEnvName,
-        rainEnabled: () => rainEnabled,
-        rainForce: () => rainForce,
-        rainNoDesert: () => rainNoDesert,
-        rainDurMin: () => rainDurMin,
-        rainDurMax: () => rainDurMax,
-        rainWindowMin: () => rainWindowMin,
-        rainWindowMax: () => rainWindowMax,
-        rainEaseSpeed: () => rainEaseSpeed,
-        removeElixir: () => removeElixir,
-        minimapLightOverlay: () => minimapLightOverlay
+        windowSettings: () => Cf
     });
     var Gr = ne(""),
         cf = ne(0),
@@ -2511,164 +2297,7 @@ void main() {
         s3 = ne(""),
         r3 = ne(""),
         l3 = ne(""),
-        il = ne(12),
-        radar = ne(true),
-        radarSound = ne(true),
-        revUnfriendly = ne(false),
-        markOwnRevs = ne(true),
-        hideBots = ne(false),
-        revOnSelect = ne(false),
-        alwaysPickup = ne("Purum"),
-        disallowSpecialSelling = ne(true),
-        losTarget = ne(true),
-        timeSlider = ne(0),
-        targetEnabled = ne(true),
-        disableDamage = ne(false),
-        disableHealing = ne(false),
-        disableClantags = ne(false),
-        disableCircleCooldowns = ne(false),
-        nextFriendlyClassSelectorEnabled = ne(false),
-        nextFriendlyClassArcher = ne(false),
-        nextFriendlyClassShaman = ne(false),
-        nextFriendlyClassWarrior = ne(false),
-        nextFriendlyClassMage = ne(false),
-        classSelectorKbArcher = ne(""),
-        classSelectorKbShaman = ne(""),
-        classSelectorKbWarrior = ne(""),
-        classSelectorKbMage = ne(""),
-        classSelectorAnimations = ne(true),
-        kbItemNamesStore = ne("control"),
-        timeToIngame = ne(false),
-        nextFriendlyIgnoreBots = ne(true),
-        removeFX = ne(true),
-        shrinkIndicators = ne(500),
-        stackIndicators = ne(false),
-        prestigeChange = ne(false),
-        prestigeSimulate = ne(0),
-        preventInputLock = ne(false),
-        steerDuringJump = ne(false),
-        ghostMode = ne(false),
-        freezeBuffs = ne(false),
-        noRangeCheck = ne(false),
-        freeflyMode = ne(false),
-        freecamMode = ne(false),
-        noCameraCollision = ne(false),
-        freezeServer = ne(false),
-        showDeadPlayers = ne(false),
-        showInvisiblePlayers = ne(false),
-        logNearbyEntities = ne(false),
-        deepFreezeColor = ne("#4cfff9"),
-        chillColor = ne("#4cfff9"),
-        agonizeColor = ne("#ff2020"),
-        stunColor = ne("#ff2020"),
-        blindColor = ne("#ffed2d"),
-        relColor = ne("#ffed2d"),
-        CCIndicator = ne(false),
-        sortParty = ne(false),
-        hideBuffs = ne(false),
-        hiddenBuffs = ne([92,96,95,86,68,67,89,74,127,130,93]),
-        hideClassBuffs = ne(false),
-        hiddenClassBuffs = ne([80, 78, 81, 76, 75]),
-        onlyShowOwnRev = ne(false),
-        stackSameBuffs = ne(false),
-        revStackNameplate = ne(false),
-        nameplateSize = ne(500),
-        nameSize = ne(500),
-        nameSpacing = ne(0),
-        CCIndicatorOnNameplates = ne(false),
-        noFrameColor = ne(false),
-        outlines = ne(false),
-        enableMageCapeswing = ne(false),
-        ignoreNameplateViewRange = ne(false),
-        flashNameplates = ne(true),
-        flashCCIndicator = ne(false),
-        hideChat = ne(false),
-        disablePartyNameplates = ne(false),
-        charmAutoEquip = ne(false),
-        charmAutoStash = ne(false),
-        aoeCircleEnabled = ne(false),
-        aoeCircleSize = ne(75),
-        aoeCircleAlpha = ne(50),
-        aoeCircleColor = ne("#000000"),
-        fxAlphaSprite = ne(100),
-        fxAlphaRibbon = ne(100),
-        fxAlphaModel = ne(100),
-        posX = ne(""),
-        posY = ne(""),
-        posZ = ne(""),
-        speedOverride = ne(0),
-        freecamModeKb = ne(""),
-        playerTransformID = ne(0),
-        playerTransformColPrim = ne("#000000"),
-        playerTransformColSec = ne("#000000"),
-        customMountID = ne(0),
-        ssao = ne(false),
-        ssaoRadius = ne(9),
-        ssaoBias = ne(16),
-        ssaoFadeDist = ne(305),
-        ssaoBlur = ne(true),
-        ssaoIGN = ne(true),
-        shadowDistMult = ne(130),
-        grassDist = ne(130),
-        meshViewerID = ne(0),
-        classColorParty = ne(false),
-        classColor0 = ne("#C7966F"),
-        classColor1 = ne("#21A9E1"),
-        classColor2 = ne("#98CE64"),
-        classColor3 = ne("#1C51FF"),
-        hideFriendlyCreatures = ne(false),
-        hideFriendlyCreatureNames = ne(false),
-        hideKekQuickButtons = ne(false),
-        showEnvName = ne(false),
-        rainEnabled = ne(true),
-        rainForce = ne(false),
-        rainNoDesert = ne(false),
-        rainDurMin = ne(50),
-        rainDurMax = ne(140),
-        rainWindowMin = ne(1),
-        rainWindowMax = ne(5),
-        rainEaseSpeed = ne(300),
-        removeElixir = ne(false),
-        minimapLightOverlay = ne(true)
-    var _posX = "", _posY = "", _posZ = "";
-    posX.subscribe(v => _posX = v);
-    posY.subscribe(v => _posY = v);
-    posZ.subscribe(v => _posZ = v);
-    var _ssaoRadiusMult = 0.07, _ssaoPowerVal = 1.1, _ssaoFadeVal = 240;
-    ssaoRadius.subscribe(v => _ssaoRadiusMult = v / 100);
-    ssaoBias.subscribe(v => _ssaoPowerVal = v / 10);
-    ssaoFadeDist.subscribe(v => _ssaoFadeVal = v);
-    var _shadowDistMult = 1.0, _grassDist = 130;
-    shadowDistMult.subscribe(v => _shadowDistMult = v / 100);
-    grassDist.subscribe(v => _grassDist = v);
-    var _classColors = ["#C7966F", "#21A9E1", "#98CE64", "#1C51FF"];
-    const CLASS_NAMES = ["warrior", "mage", "archer", "shaman"];
-    function _darkenHex(hex, factor) {
-        let n = parseInt(hex.slice(1), 16);
-        let r = Math.round(((n >> 16) & 0xff) * factor);
-        let g = Math.round(((n >> 8) & 0xff) * factor);
-        let b = Math.round((n & 0xff) * factor);
-        return "#" + [r, g, b].map(v => v.toString(16).padStart(2, "0")).join("");
-    }
-    function _bgcStyle(cls) {
-        let m = /^bgc([0-3])$/.exec(cls || "");
-        if (!m) return "";
-        let c = _classColors[+m[1]];
-        return `linear-gradient(0deg,${c} 0%,${_darkenHex(c, 0.82)} 49%,${c} 50%)`;
-    }
-    var _classNameplateParams = null;
-    function _rebuildClassNameplate(i) {
-        if (!_classNameplateParams || typeof Jn === "undefined" || Jn.length < 12) return;
-        Vo(Jn[8 + i], _classColors[i], _classNameplateParams.s, _classNameplateParams.r, 0, 0, 1);
-    }
-    [classColor0, classColor1, classColor2, classColor3].forEach((store, i) => {
-        store.subscribe(v => {
-            if (!v) return;
-            _classColors[i] = v;
-            document.querySelectorAll(".bgc" + i).forEach(el => Ve(el, "background", _bgcStyle("bgc" + i)));
-            _rebuildClassNameplate(i);
-        });
-    });
+        il = ne(12);
     var a1;
     a1 = {
         ...l1
@@ -2685,455 +2314,9 @@ void main() {
         },
         fe = {};
     for (let t in a1) a3(t, a1[t]);
-    showDeadPlayers.subscribe(val => {
-        if (!val && I) {
-            for (let e = I.entities.array.length - 1; e >= 0; e--) {
-                let n = I.entities.array[e];
-                if (n !== I.player && n.stats && !n.stats.alive) I.removeEntity(n);
-            }
-        }
-    });
-    showInvisiblePlayers.subscribe(val => {
-        if (!val && I) {
-            for (let e = I.entities.array.length - 1; e >= 0; e--) {
-                let n = I.entities.array[e];
-                if (n !== I.player && n.netDeletion && n.netDeletion.end > 0 && n.netDeletion.done(I.time)) I.removeEntity(n);
-            }
-        }
-    });
-    function injectStyle(id, css) {
-        let el = document.getElementById(id);
-        if (!el) { el = document.createElement("style"); el.id = id; document.head.appendChild(el); }
-        el.textContent = css;
-    }
-    function getCCColor(buffs) {
-        if (buffs.has(101)) return fe.deepFreezeColor;
-        if (buffs.has(91)) return fe.agonizeColor;
-        if (buffs.has(88)) return fe.stunColor;
-        if (buffs.has(119)) return fe.blindColor;
-        if (buffs.has(121)) return fe.relColor;
-        if (buffs.has(69)) return fe.chillColor;
-        return null;
-    }
-    function hexParts(hex) {
-        return [parseInt(hex.slice(1,3), 16), parseInt(hex.slice(3,5), 16), parseInt(hex.slice(5,7), 16)];
-    }
-    function hexToRgba(hex, a) {
-        let [r, g, b] = hexParts(hex);
-        return `rgba(${r},${g},${b},${a})`;
-    }
-    function flashColor(hex, speed, intensity) {
-        let pulse = (Math.sin(I.smoothtime * Math.PI * speed) + 1) * 1.2;
-        let [r, g, b] = hexParts(hex);
-        return `rgb(${Math.round(r*(1-pulse*intensity))},${Math.round(g*(1-pulse*intensity))},${Math.round(b*(1-pulse*intensity))})`;
-    }
-    
-    injectStyle("modRevGlowStyle", `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`);
-    
-    hideChat.subscribe(v => injectStyle("modHideChatStyle", v ? ".l-corner-ll{display:none!important}" : ""));
-    (function rafDomUpdates() {
-        requestAnimationFrame(rafDomUpdates);
-        let minimapContainer = document.getElementById("minimapcontainer");
-
-        document.querySelectorAll(".sysbtnbarKEK").forEach(element => Ve(element, "display", fe.hideKekQuickButtons ? "none" : ""));
-
-        let elixirBtn = document.getElementById("sysgem");
-        if (elixirBtn) Ve(elixirBtn, "display", fe.removeElixir ? "none" : "");
-
-        let isMinimapVisible = minimapContainer && minimapContainer.offsetParent !== null;
-        let canvas = isMinimapVisible && minimapContainer.querySelector("canvas");
-        let lightOverlay = document.getElementById("modMinimapLightOverlay");
-        if (isMinimapVisible && canvas && fe.minimapLightOverlay) {
-            if (!lightOverlay) {
-                lightOverlay = document.createElement("div");
-                lightOverlay.id = "modMinimapLightOverlay";
-                Ve(lightOverlay, "position", "absolute");
-                Ve(lightOverlay, "mix-blend-mode", "multiply");
-                Ve(lightOverlay, "filter", "hue-rotate(30deg) saturate(0.6)");
-                Ve(lightOverlay, "z-index", "10");
-                Ve(lightOverlay, "border-radius", "6px");
-                minimapContainer.appendChild(lightOverlay);
-            }
-            let canvasRect = canvas.getBoundingClientRect();
-            let minimapRect = minimapContainer.getBoundingClientRect();
-            Ve(lightOverlay, "left", (canvasRect.left - minimapRect.left) + "px");
-            Ve(lightOverlay, "top", (canvasRect.top - minimapRect.top) + "px");
-            Ve(lightOverlay, "width", canvasRect.width + "px");
-            Ve(lightOverlay, "height", canvasRect.height + "px");
-            Ve(lightOverlay, "display", "");
-        } else if (lightOverlay) {
-            Ve(lightOverlay, "display", "none");
-        }
-
-        let envBar = document.getElementById("modEnvNameBar");
-        if (fe.showEnvName && minimapContainer && canvas) {
-            if (!envBar) {
-                envBar = document.createElement("div");
-                envBar.id = "modEnvNameBar";
-                Ve(envBar, "margin-bottom", "3.5px");
-                Ve(envBar, "width", canvas.width + 9 + "px");
-                Ve(envBar, "box-sizing", "border-box");
-                Ve(envBar, "padding", "6px 8px");
-                Ve(envBar, "background", "rgba(0,0,0,0.75)");
-                Ve(envBar, "border-radius", "6px");
-                Ve(envBar, "border", "3px solid rgba(0,0,0,1)");
-                Ve(envBar, "text-align", "center");
-                Ve(envBar, "pointer-events", "none");
-                minimapContainer.insertBefore(envBar, canvas);
-            }
-            let envName = "";
-            if (I && I.player && I.player.pos) {
-                let areaId = I.getAreaId(I.player.pos[0], I.player.pos[2]);
-                let area = areaId && Qf.get(areaId);
-                envName = (area && area.name) ? area.name : (fe.activeWorld || "");
-            }
-            envBar.textContent = envName;
-            Ve(envBar, "font", "bold 15px hordes");
-            Ve(envBar, "color", "#34cb49");
-            Ve(envBar, "display", "");
-        } else if (envBar) {
-            Ve(envBar, "display", "none");
-        }
-    })();
-    (function rafLightOverlay() {
-        requestAnimationFrame(rafLightOverlay);
-        let overlay = document.getElementById("modMinimapLightOverlay");
-        if (!overlay || overlay.style.display === "none") return;
-        try {
-            let wl = Jt.environment.data.worldlight;
-            if (!wl || !(wl[0] || wl[1] || wl[2] || wl[3] || wl[4] || wl[5])) {
-                Ve(overlay, "opacity", "0");
-                return;
-            }
-            let r = Math.min(1, wl[0] * 0.5 + wl[3]);
-            let g = Math.min(1, wl[1] * 0.5 + wl[4]);
-            let b = Math.min(1, wl[2] * 0.5 + wl[5]);
-            let lum = 0.299 * r + 0.587 * g + 0.114 * b;
-            let scale = 0.35 + 0.65 * Math.min(1, lum / 0.6);
-            let ir = Math.round(Math.min(255, (r / Math.max(lum, 0.001)) * scale * 255));
-            let ig = Math.round(Math.min(255, (g / Math.max(lum, 0.001)) * scale * 255));
-            let ib = Math.round(Math.min(255, (b / Math.max(lum, 0.001)) * scale * 255));
-            Ve(overlay, "background", `rgb(${ir},${ig},${ib})`);
-            Ve(overlay, "opacity", "1");
-        } catch (e) { Ve(overlay, "opacity", "0"); }
-    })();
-    (function initRain() {
-        let gameCanvas = document.querySelector("canvas");
-        if (!gameCanvas) { setTimeout(initRain, 50); return; }
-
-        let rainCanvas = document.createElement("canvas");
-        rainCanvas.id = "modRainCanvas";
-        Ve(rainCanvas, "position", "fixed");
-        Ve(rainCanvas, "left", "0");
-        Ve(rainCanvas, "top", "0");
-        Ve(rainCanvas, "width", "100%");
-        Ve(rainCanvas, "height", "100%");
-        Ve(rainCanvas, "pointer-events", "none");
-        Ve(rainCanvas, "z-index", "5");
-        document.body.appendChild(rainCanvas);
-
-        function resize() { rainCanvas.width = window.innerWidth; rainCanvas.height = window.innerHeight; }
-        resize();
-        window.addEventListener("resize", resize);
-
-        let gl = rainCanvas.getContext("webgl2", {alpha: true, premultipliedAlpha: false});
-        if (!gl) { console.warn("Rain: WebGL2 unavailable"); return; }
-
-        const VS = `#version 300 es
-precision highp float;
-uniform mat4 u_pv;
-uniform vec3 u_cam;
-in vec3 a_pos;
-in float a_a;
-out float v_a;
-out float v_dist;
-void main(){
-    gl_Position = u_pv * vec4(a_pos,1.0);
-    float d = length(a_pos - u_cam);
-    v_a = a_a * smoothstep(3.0,9.0,d) * smoothstep(110.0,70.0,d);
-    v_dist = d;
-}`;
-        const FS = `#version 300 es
-precision mediump float;
-in float v_a;
-in float v_dist;
-out vec4 c;
-void main(){
-    float fog = smoothstep(18.0, 80.0, v_dist);
-    vec3 col = mix(vec3(0.78,0.88,1.0), vec3(0.70,0.76,0.82), fog);
-    c = vec4(col, v_a * 0.75);
-}`;
-
-        function mkShader(t, src) {
-            let s = gl.createShader(t);
-            gl.shaderSource(s, src); gl.compileShader(s);
-            if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.error("Rain shader:", gl.getShaderInfoLog(s)); return null; }
-            return s;
-        }
-        let prog = gl.createProgram();
-        gl.attachShader(prog, mkShader(gl.VERTEX_SHADER, VS));
-        gl.attachShader(prog, mkShader(gl.FRAGMENT_SHADER, FS));
-        gl.linkProgram(prog);
-        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.error("Rain link:", gl.getProgramInfoLog(prog)); return; }
-
-        let locPV  = gl.getUniformLocation(prog, "u_pv");
-        let locCam = gl.getUniformLocation(prog, "u_cam");
-        let locPos = gl.getAttribLocation(prog, "a_pos");
-        let locA   = gl.getAttribLocation(prog, "a_a");
-
-        let N = 8000, SPREAD = 80, VRANGE = 95, FALL = 52, WX = 1.8, WZ = 1.0, SLEN = 3.0;
-        let drops = new Float32Array(N * 5);
-        let posD  = new Float32Array(N * 6);
-        let alpD  = new Float32Array(N * 2);
-
-        let vao = gl.createVertexArray(), pb = gl.createBuffer(), ab = gl.createBuffer();
-        gl.bindVertexArray(vao);
-        gl.bindBuffer(gl.ARRAY_BUFFER, pb); gl.bufferData(gl.ARRAY_BUFFER, posD, gl.DYNAMIC_DRAW);
-        gl.enableVertexAttribArray(locPos); gl.vertexAttribPointer(locPos, 3, gl.FLOAT, false, 0, 0);
-        gl.bindBuffer(gl.ARRAY_BUFFER, ab); gl.bufferData(gl.ARRAY_BUFFER, alpD, gl.DYNAMIC_DRAW);
-        gl.enableVertexAttribArray(locA);   gl.vertexAttribPointer(locA,   1, gl.FLOAT, false, 0, 0);
-        gl.bindVertexArray(null);
-
-        function spawnDrop(i, cx, cy, cz, top) {
-            drops[i*5+0] = cx + (Math.random()-0.5)*SPREAD*2;
-            drops[i*5+1] = top ? cy + VRANGE*0.5 + Math.random()*VRANGE*0.4 : cy + (Math.random()-0.5)*VRANGE;
-            drops[i*5+2] = cz + (Math.random()-0.5)*SPREAD*2;
-            drops[i*5+3] = 0.55 + Math.random()*0.45;
-            drops[i*5+4] = 0.6 + Math.random()*0.8;
-        }
-        for (let i = 0; i < N; i++) spawnDrop(i, 0, 10, 0, false);
-
-        function mulberry32(a) {
-            return function() {
-                a |= 0; a = a + 0x6D2B79F5 | 0;
-                let t = Math.imul(a ^ a >>> 15, 1 | a);
-                t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-                return ((t ^ t >>> 14) >>> 0) / 4294967296;
-            };
-        }
-        let _d = new Date();
-        let _seed = _d.getFullYear() * 10000 + (_d.getMonth()+1) * 100 + _d.getDate();
-        let rainWindows = [];
-        function buildRainWindows() {
-            let rng = mulberry32(_seed);
-            let count = Math.round(fe.rainWindowMin + rng() * (fe.rainWindowMax - fe.rainWindowMin));
-            let minH = fe.rainDurMin / 60;
-            let maxH = fe.rainDurMax / 60;
-            rainWindows = [];
-            for (let i = 0; i < count; i++) {
-                let start = rng() * 22;
-                let dur = minH + rng() * (maxH - minH);
-                rainWindows.push([start, start + dur]);
-            }
-            console.log("rainWindows adjusted: => " + rainWindows);
-        }
-        buildRainWindows();
-        [rainWindowMin, rainWindowMax, rainDurMin, rainDurMax].forEach(s => s.subscribe(() => buildRainWindows()));
-        const DESERT_ENVS = ["Desert", "Marrowlands", "Oasis", "Headless Ruins"];
-        function isRaining() {
-            if (fe.rainForce) return true;
-            let n = new Date();
-            let h = n.getHours() + n.getMinutes()/60 + n.getSeconds()/3600;
-            return rainWindows.some(w => h >= w[0] && h < w[1]);
-        }
-
-        function checkRainDisables() {
-            if (!fe.rainEnabled) return true;
-            if (fe.rainNoDesert && I && I.player) {
-                try {
-                    let areaId = I.getAreaId(I.player.pos[0], I.player.pos[2]);
-                    let area = areaId && Qf.get(areaId);
-                    if (area && DESERT_ENVS.some(n => area.name && area.name.includes(n))) return true;
-                } catch(e) {}
-            }
-            return false;
-        }
- 
-        const SPREAD_BORDER = SPREAD + 6;
-        const TX_OFF = WX * (SLEN / FALL);
-        const TZ_OFF = WZ * (SLEN / FALL);
-
-        let last = performance.now();
-        let indoors = false, indoorCheckTimer = 0;
-        let rainCheckTimer = 0, pauseCheckTimer = 0;
-        let raining = isRaining(), paused = checkRainDisables();
-        let rainAmount = raining ? 1 : 0;
-        let prevActiveDrops = 0;
-        const RAYCAST_PER_FRAME = 150;
-        let visD = new Float32Array(N).fill(1.0);
-        let rcCursor = 0;
-        function frame(now) {
-            requestAnimationFrame(frame);
-            let cam; try { cam = Jt.camera.data; } catch(e) { return; }
-            if (!cam || !cam.projectionViewMatrix || !cam.cameraPosition) return;
-            let cx = cam.cameraPosition[0], cy = cam.cameraPosition[1], cz = cam.cameraPosition[2];
-            let dt = Math.min((now - last) / 1000, 0.05); last = now;
-            rainCheckTimer -= dt;
-            if (rainCheckTimer <= 0) { rainCheckTimer = 1; raining = isRaining(); }
-            pauseCheckTimer -= dt;
-            if (pauseCheckTimer <= 0) { pauseCheckTimer = 2; paused = checkRainDisables(); }
-
-            let targetRain = raining ? 1 : 0;
-            let rainEase = fe.rainEaseSpeed;
-            rainAmount += (targetRain - rainAmount) * (1.0 - Math.exp(-dt / rainEase));
-
-            let renderRainAmount = paused ? 0 : rainAmount;
-            window._modRainAmount = renderRainAmount;
-
-            if (renderRainAmount <= 0) {
-                if (prevActiveDrops > 0) {
-                    alpD.fill(0, 0, prevActiveDrops * 2);
-                    gl.bindBuffer(gl.ARRAY_BUFFER, ab);
-                    gl.bufferSubData(gl.ARRAY_BUFFER, 0, alpD, 0, prevActiveDrops * 2);
-                    prevActiveDrops = 0;
-                }
-                Ve(rainCanvas, "display", "none");
-                return;
-            }
-
-            indoorCheckTimer -= dt;
-            if (indoorCheckTimer <= 0) {
-                indoorCheckTimer = 0.5;
-                try {
-                    let p = cam && cam.cameraPosition;
-                    indoors = p ? I.raycastEnvironmentAny(p[0], I.player.pos[1] + 5, p[2], 0, 30, 0, 0) : false;
-                } catch(e) { indoors = false; }
-            }
-
-            if (indoors) {
-                Ve(rainCanvas, "display", "none");
-                return;
-            }
-            Ve(rainCanvas, "display", "");
-
-            let groundY = cy - 5;
-            let activeDrops = Math.ceil(N * renderRainAmount);
-            let wxdt = WX * dt, wzdt = WZ * dt, falldt = FALL * dt;
-
-            for (let i = 0; i < activeDrops; i++) {
-                let base = i * 5;
-                let spd = drops[base + 4];
-
-                drops[base]     += wxdt * spd;
-                drops[base + 1] -= falldt * spd;
-                drops[base + 2] += wzdt * spd;
-
-                let dx = drops[base] - cx, dz = drops[base + 2] - cz;
-                let floorY = (I && I.getHeight) ? I.getHeight(drops[base], drops[base + 2]) : groundY;
-                if (drops[base + 1] < floorY || Math.abs(dx) > SPREAD_BORDER || Math.abs(dz) > SPREAD_BORDER) {
-                    spawnDrop(i, cx, cy, cz, true);
-                }
-
-                let bx = drops[base], by = drops[base + 1], bz = drops[base + 2];
-                let pbase = i * 6;
-                posD[pbase]     = bx - TX_OFF; posD[pbase + 1] = by + SLEN; posD[pbase + 2] = bz - TZ_OFF;
-                posD[pbase + 3] = bx;          posD[pbase + 4] = by;         posD[pbase + 5] = bz;
-
-                let fade = Math.max(0, Math.min(1, (renderRainAmount - i / N) / 0.1));
-                let abase = i * 2;
-                let baseAlpha = drops[base + 3];
-                alpD[abase]     = baseAlpha * fade * visD[i];
-                alpD[abase + 1] = baseAlpha * 0.25 * fade * visD[i];
-            }
-
-            if (I && I.raycastEnvironmentAny && activeDrops > 0) {
-                rcCursor = rcCursor % activeDrops;
-                for (let r = 0; r < RAYCAST_PER_FRAME; r++) {
-                    let i = rcCursor;
-                    rcCursor = (rcCursor + 1) % activeDrops;
-                    let bx = drops[i*5], by = drops[i*5+1] + SLEN * 0.5, bz = drops[i*5+2];
-                    let hit = false;
-                    try { hit = I.raycastEnvironmentAny(cx, cy, cz, bx - cx, by - cy, bz - cz, 0); } catch(e) {}
-                    visD[i] += ((hit ? 0.0 : 1.0) - visD[i]) * 0.5;
-                }
-            }
-
-            if (activeDrops < prevActiveDrops) {
-                alpD.fill(0, activeDrops * 2, prevActiveDrops * 2);
-            }
-            let uploadAlpCount = Math.max(activeDrops, prevActiveDrops);
-            prevActiveDrops = activeDrops;
-
-            gl.viewport(0, 0, rainCanvas.width, rainCanvas.height);
-            gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
-            gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-            gl.useProgram(prog);
-            gl.uniformMatrix4fv(locPV, false, cam.projectionViewMatrix);
-            gl.uniform3f(locCam, cx, cy, cz);
-            gl.bindBuffer(gl.ARRAY_BUFFER, pb);
-            gl.bufferSubData(gl.ARRAY_BUFFER, 0, posD, 0, activeDrops * 6);
-            gl.bindBuffer(gl.ARRAY_BUFFER, ab);
-            gl.bufferSubData(gl.ARRAY_BUFFER, 0, alpD, 0, uploadAlpCount * 2);
-            gl.bindVertexArray(vao); gl.drawArrays(gl.LINES, 0, activeDrops * 2); gl.bindVertexArray(null);
-        }
-        requestAnimationFrame(frame);
-    })();
-
-    (function initRainAmbience() {
-        const RAIN_AUDIO = fetch("https://raw.githubusercontent.com/e120391sd/rmp/refs/heads/main/b64").then(i => i.text())
-        async function buildRainBuffer(ctx) {
-            const rainAudio = RAIN_AUDIO ? await RAIN_AUDIO : null;
-            if (rainAudio) {
-                let b64 = rainAudio.split(",")[1]
-                    .replace(/-/g, "+").replace(/_/g, "/")
-                    .replace(/[^A-Za-z0-9+/=]/g, "");
-                let bin = atob(b64);
-                let bytes = new Uint8Array(bin.length);
-                for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-                return await ctx.decodeAudioData(bytes.buffer);
-            }
-        }
-
-        function waitForAudioCtx(cb) {
-            if (typeof vn !== "undefined" && vn) { cb(vn); return; }
-            let t = setInterval(() => { if (typeof vn !== "undefined" && vn) { clearInterval(t); cb(vn); } }, 500);
-        }
-
-        waitForAudioCtx(async ctx => {
-            let buf = await buildRainBuffer(ctx);
-
-            let source = ctx.createBufferSource();
-            source.buffer = buf;
-            source.loop   = true;
-
-            let gain = ctx.createGain();
-            gain.gain.value = 0;
-            source.connect(gain);
-            gain.connect(ctx.destination);
-            source.start();
-
-            const TARGET_VOL = 1.0;
-
-            let _lastGainTarget = -1;
-            ;(function tickGain() {
-                requestAnimationFrame(tickGain);
-                let amt = window._modRainAmount || 0;
-                let sfx = (fe.ambienceVolume != null ? fe.ambienceVolume : 70) / 150;
-                let target = amt * TARGET_VOL * sfx * sfx;
-                if (Math.abs(target - _lastGainTarget) > 0.001) {
-                    gain.gain.setTargetAtTime(target, ctx.currentTime, 0.8);
-                    _lastGainTarget = target;
-                }
-            })();
-        });
-    })();
-
-    [playerTransformID,playerTransformColPrim,playerTransformColSec].forEach((s) => {
-        s.subscribe(() => {
-            let id = O1 && O1.has(fe.playerTransformID) ? fe.playerTransformID : 0,
-                colPrim = fe.playerTransformColPrim === "#000000" ? null : hexParts(fe.playerTransformColPrim).map(v => v/127.5),
-                colSec = fe.playerTransformColSec === "#000000" ? null : hexParts(fe.playerTransformColSec).map(v => v/127.5)
-            if (I && I.player) I.player.remakeTransform(id, colPrim, colSec);
-        })
-    })
-    let _meshViewerEnt = null;
-    meshViewerID.subscribe(v => {
-    });
-    document.addEventListener("keydown", (evt) => {if (evt.key.toLowerCase() === fe.freecamModeKb) freecamMode.set(!fe.freecamMode)});
-
     var P;
     Jr.subscribe(async t => {
-        await fetch(`/data/loc/${t}.json?v=8822612`).then(async e => {
+        await fetch(`/data/loc/${t}.json?v=8829640`).then(async e => {
             P = await e.json(), wm.set(!0)
         })
     });
@@ -3200,13 +2383,13 @@ void main(){
         let e, n;
         return {
             c() {
-                e = h("img"), p(e, "class", "svgicon"), st(e.src, n = "/data/ui/icons/" + t[8].icon + ".svg?v=8822612") || p(e, "src", n)
+                e = h("img"), p(e, "class", "svgicon"), st(e.src, n = "/data/ui/icons/" + t[8].icon + ".svg?v=8829640") || p(e, "src", n)
             },
             m(o, i) {
                 w(o, e, i)
             },
             p(o, i) {
-                i & 2 && !st(e.src, n = "/data/ui/icons/" + o[8].icon + ".svg?v=8822612") && p(e, "src", n)
+                i & 2 && !st(e.src, n = "/data/ui/icons/" + o[8].icon + ".svg?v=8829640") && p(e, "src", n)
             },
             d(o) {
                 o && x(e)
@@ -3237,7 +2420,7 @@ void main(){
         }
     }
 
-    function _7(t) {
+    function _T(t) {
         let e, n = t[1] && f3(t);
         return {
             c() {
@@ -3257,7 +2440,7 @@ void main(){
         }
     }
 
-    function b7(t, e, n) {
+    function bT(t, e, n) {
         let o, i, s;
         re(t, pn, u => n(1, s = u));
         let r, l = u => {
@@ -3284,7 +2467,7 @@ void main(){
     }
     var f1 = class extends Fe {
             constructor(e) {
-                super(), Pe(this, e, b7, _7, Be, {
+                super(), Pe(this, e, bT, _T, Be, {
                     opt: 0
                 })
             }
@@ -3300,7 +2483,7 @@ void main(){
                 return ti(e) + e
             },
             varuint: t => ti(t),
-            varint: t => y7(t),
+            varint: t => yT(t),
             buffer8: t => {
                 let e = t.length;
                 return ti(e) + e
@@ -3323,9 +2506,9 @@ void main(){
             t[z++] = e & 127
         },
         ti = t => t <= 0 ? 1 : Math.floor(Math.log(t) / Math.log(128)) + 1,
-        y7 = t => ti(t << 1 ^ t >> 31),
+        yT = t => ti(t << 1 ^ t >> 31),
         bi = t => t[z] & 128 ? (255 - t[z] + 1) * -1 : t[z],
-        k7 = (t, e) => {
+        kT = (t, e) => {
             e < 0 && (e = 255 + e + 1), t[z] = e & 255, z += 1
         },
         Le = t => t[z],
@@ -3418,7 +2601,7 @@ void main(){
                 z = 0, Ki(l, e._header), tr(l, n.length);
                 for (let a = 0; a < n.length; a++) b3(l, n[a]);
                 tr(l, o.length);
-                for (let a = 0; a < o.length; a++) k7(l, o[a]);
+                for (let a = 0; a < o.length; a++) kT(l, o[a]);
                 tr(l, i.length);
                 for (let a = 0; a < i.length; a++) u1(l, i[a]);
                 tr(l, s.length);
@@ -3747,7 +2930,7 @@ void main(){
             }
         },
         B3 = {
-            decode: (t,id) => {
+            decode: t => {
                 let e = t,
                     n = {};
                 z = 0;
@@ -4331,8 +3514,8 @@ void main(){
             modelformat: B3
         },
         $3 = [],
-        w7 = 0;
-    for (let t in Mt) Mt[t] && (Mt[t].header = w7++, Mt[t].packData = function(e) {
+        wT = 0;
+    for (let t in Mt) Mt[t] && (Mt[t].header = wT++, Mt[t].packData = function(e) {
         return e._header = this.header, this.encode(e)
     }, $3.push(Mt[t]));
     var O3 = t => {
@@ -4358,11 +3541,11 @@ void main(){
         W3 = t => Ss = t;
     var k1 = {};
     Kn(k1, {
-        onWorldEnter: () => F7,
+        onWorldEnter: () => FT,
         parseBandwidth: () => b1,
         parseFrameDelta: () => j3,
         parseLatency: () => y1,
-        tick: () => M7
+        tick: () => MT
     });
     var vt = (t, e, n) => Math.min(Math.max(t, e), n),
         Da = (t, e) => (t % e + e) % e,
@@ -4427,14 +3610,14 @@ void main(){
         },
         h1 = 0,
         _1 = new xt(0, .05),
-        M7 = t => {
+        MT = t => {
             j3(t), fe.showFpsPing && _1.done(I.time) && (d1 = (d1 * 10 + G3) / 11, h1 = (h1 * 5 + I.netData.length) / 6, _1.reset(I.time), Am.update(e => (e[0] = vt(v1 >> 0, 1, 999), e[1] = (1 / g1).toFixed(1), e[2] = (d1 / 1e3).toFixed(1), e[3] = I.player ? `${~~I.player.pos[0]} ${~~I.player.pos[1]} ${~~I.player.pos[2]}` : "-", e[4] = h1.toFixed(1), e)))
         },
-        F7 = t => {
+        FT = t => {
             _1.reset(t.time)
         };
-    var C7 = performance,
-        Rf = () => C7.now();
+    var CT = performance,
+        Rf = () => CT.now();
     var xi, w1 = 0,
         H3 = 0,
         Q3 = (t, e) => {
@@ -4449,17 +3632,17 @@ void main(){
             close: []
         };
     for (let t in Mt) rl[Mt[t].header] = [];
-    var S7 = t => {},
-        P7 = t => {
+    var ST = t => {},
+        PT = t => {
             console.log("Connected"), w1 = 1;
             for (let e = 0, n = rl.open.length; e < n; ++e) rl.open[e](t)
         },
-        A7 = t => {
+        AT = t => {
             console.log("Connection closed:", t.reason, t.code), w1 = 0, xi.close(), xi = void 0;
             for (let e = 0, n = rl.close.length; e < n; ++e) rl.close[e](t)
         },
-        T7 = t => {
-            E7(t.data.byteLength), t = new Uint8Array(t.data);
+        TT = t => {
+            ET(t.data.byteLength), t = new Uint8Array(t.data);
             let e = O3(t),
                 n = e && rl[e.header];
             if (n)
@@ -4469,20 +3652,20 @@ void main(){
             rl[t].push(e)
         },
         Io = t => {
-            xi === void 0 || w1 !== 1 || fe.freezeServer || xi.send(t)
+            xi === void 0 || w1 !== 1 || xi.send(t)
         },
         Z3 = t => {
             if (xi !== void 0) return;
             let e = "game1.hordes.io";
-            xi = new WebSocket(`wss://${e}:` + t + "/play"), xi.binaryType = "arraybuffer", xi.onerror = S7, xi.onopen = P7, xi.onclose = A7, xi.onmessage = T7
+            xi = new WebSocket(`wss://${e}:` + t + "/play"), xi.binaryType = "arraybuffer", xi.onerror = ST, xi.onopen = PT, xi.onclose = AT, xi.onmessage = TT
         };
     var Y3 = 0,
         x1 = 0,
-        E7 = t => {
+        ET = t => {
             x1 += t, Ss - Y3 > 1e3 / 4 && (H3 = x1 * 4, x1 = 0, Y3 = Ss, b1(H3))
         },
         J3 = () => {
-            fe.showFpsPing && Ss - X3 > (Bf.length < 10 ? 100 : 2e3) && (X3 = Ss, I7())
+            fe.showFpsPing && Ss - X3 > (Bf.length < 10 ? 100 : 2e3) && (X3 = Ss, IT())
         },
         K3 = t => {
             if (Bf[t.id]) {
@@ -4496,7 +3679,7 @@ void main(){
         zf = 0,
         X3 = 0,
         Bf = [],
-        I7 = () => {
+        IT = () => {
             zf > 254 && (zf = 0), Bf[zf] = Rf(), Io(Mt.ping.packData({
                 id: zf
             })), zf++
@@ -4627,22 +3810,22 @@ void main(){
     Kn(C1, {
         addRequest: () => La,
         confirmationBasedCallback: () => Up,
-        onWorldDestroy: () => L7,
-        onWorldEnter: () => V7,
-        postTick: () => D7,
+        onWorldDestroy: () => LT,
+        onWorldEnter: () => VT,
+        postTick: () => DT,
         removeTopRequest: () => F1
     });
     var M1 = new xt(0, 1),
         ts = [],
-        D7 = (t, e) => {
+        DT = (t, e) => {
             M1.done(e.time) && (M1.reset(e.time), ts.length && (ts.forEach(n => {
                 ty(n, 1)
             }), ps.set(ts)))
         },
-        V7 = t => {
+        VT = t => {
             M1.reset(0)
         },
-        L7 = t => {
+        LT = t => {
             ts.length = 0, ps.set(ts)
         },
         La = (t, e, n) => {
@@ -4683,21 +3866,21 @@ void main(){
         };
     var Op = {};
     Kn(Op, {
-        init: () => R7,
+        init: () => RT,
         onRemoveEntity: () => P1,
-        onWorldDestroy: () => B7,
+        onWorldDestroy: () => BT,
         party: () => Zt,
-        postTick: () => z7,
+        postTick: () => zT,
         setListed: () => S1
     });
-    var $p, q7 = 0,
+    var $p, qT = 0,
         Uf = 0,
         ny = !1,
         S1 = t => {
             ny = t
         },
         Zt = new Map,
-        R7 = () => {
+        RT = () => {
             $n(Mt.serverPartyUpdate.header, t => {
                 $p = t
             }), $n(Mt.serverPartyPositions.header, t => {
@@ -4707,7 +3890,7 @@ void main(){
                 })
             })
         },
-        z7 = (t, e) => {
+        zT = (t, e) => {
             if (e.player !== void 0) {
                 if ($p) {
                     Zt.forEach(o => {
@@ -4751,7 +3934,7 @@ void main(){
                         n.party === e.player.party && (n.buffDisplayDirty = !0)
                     });
                     else {
-                        let n = Array.from(Zt.values())[q7++ % Zt.size];
+                        let n = Array.from(Zt.values())[qT++ % Zt.size];
                         if (n) {
                             let o = e.entity(n.id);
                             o !== void 0 && o.id !== e.playerId && (o.buffDisplayDirty = !0)
@@ -4766,7 +3949,7 @@ void main(){
                 e.unitStore.update(n => (n.timedSkill = void 0, n.timedCast = void 0, n.alive = !0, n.range = !1, n.mp = n.hp = n.hpMax = n.mpMax = 0, n)), e.buffStore.set([])
             }
         },
-        B7 = () => {
+        BT = () => {
             Zt.clear(), Uf = 0
         };
     var rg = {};
@@ -4838,22 +4021,22 @@ void main(){
             } else X(e, 0, 0, 0), X(n, -0, -0, -0);
             Kt(i, n, e), gn(o, Bn(o, e, n), .5)
         },
-        U7 = t => {
+        UT = t => {
             ly(t.attributes.position.data, t.bounds.min, t.bounds.max, t.bounds.center, t.bounds.scale), t.bounds.initiated = !0
         },
-        $7 = t => {
+        $T = t => {
             let e = 0;
             for (let n = 0, o = t.attributes.position.data.length; n < o; n += 3) Wp[0] = t.attributes.position.data[n], Wp[1] = t.attributes.position.data[n + 1], Wp[2] = t.attributes.position.data[n + 2], e = Math.max(e, oo(t.bounds.center, Wp));
             t.bounds.radius = Math.sqrt(e)
         },
         ay = t => {
-            t.bounds.initiated || U7(t), $7(t)
+            t.bounds.initiated || UT(t), $T(t)
         };
-    var O7 = 1,
-        N7 = 1,
+    var OT = 1,
+        NT = 1,
         Pn = t => {
             let e = {
-                id: O7++,
+                id: OT++,
                 vao: nb(),
                 vaoNeedsUpdate: !0,
                 attributes: t,
@@ -4881,10 +4064,10 @@ void main(){
             let o = n * e.size;
             e.bufferLen < o ? (e.bufferLen = o, j.bufferData(e.target, e.data, e.bufferMode, 0, o)) : j.bufferSubData(e.target, 0, e.data, 0, o)
         },
-        W7 = (t, e, n) => {
-            n.id = N7++, n.size = n.size || 1, n.type = n.type || (n.data.constructor === Float32Array ? j.FLOAT : n.data.constructor === Uint16Array ? j.UNSIGNED_SHORT : j.UNSIGNED_INT), n.target = e === "index" ? j.ELEMENT_ARRAY_BUFFER : j.ARRAY_BUFFER, n.normalize = n.normalize || !1, n.count = n.data.length / n.size, n.divisor = n.instanced ? typeof n.instanced == "number" ? n.instanced : 1 : 0, n.bufferMode = n.bufferMode || j.STATIC_DRAW, n.bufferLen = 0, n.buffer || (n.buffer = j.createBuffer()), go(t, n)
+        WT = (t, e, n) => {
+            n.id = NT++, n.size = n.size || 1, n.type = n.type || (n.data.constructor === Float32Array ? j.FLOAT : n.data.constructor === Uint16Array ? j.UNSIGNED_SHORT : j.UNSIGNED_INT), n.target = e === "index" ? j.ELEMENT_ARRAY_BUFFER : j.ARRAY_BUFFER, n.normalize = n.normalize || !1, n.count = n.data.length / n.size, n.divisor = n.instanced ? typeof n.instanced == "number" ? n.instanced : 1 : 0, n.bufferMode = n.bufferMode || j.STATIC_DRAW, n.bufferLen = 0, n.buffer || (n.buffer = j.createBuffer()), go(t, n)
         },
-        j7 = (t, e, n) => {
+        jT = (t, e, n) => {
             if (t.attributes[e] = n, n.divisor) {
                 if (t.isInstanced = !0, t.instancedCount && t.instancedCount !== n.count * n.divisor) return t.instancedCount = Math.min(t.instancedCount, n.count * n.divisor);
                 t.instancedCount = n.count * n.divisor
@@ -4892,7 +4075,7 @@ void main(){
         },
         T1 = (t, e) => {
             Gm(null), tt.currentGeometry = -1;
-            for (let n in e) e[n].id === void 0 && W7(t, n, e[n]), j7(t, n, e[n]);
+            for (let n in e) e[n].id === void 0 && WT(t, n, e[n]), jT(t, n, e[n]);
             t.attributes.position && ay(t)
         },
         fy = (t, e, n) => {
@@ -4901,7 +4084,7 @@ void main(){
         Gp = (t, e) => {
             t.instancedCount = e
         },
-        G7 = (t, e) => {
+        GT = (t, e) => {
             Gm(t.vao);
             for (let n = 0; n < e.attributeLocations.length; ++n) {
                 let o = e.attributeLocations[n];
@@ -4917,12 +4100,12 @@ void main(){
             t.attributes.index && j.bindBuffer(j.ELEMENT_ARRAY_BUFFER, t.attributes.index.buffer), t.vaoNeedsUpdate = !1
         },
         za = (t, e) => {
-            tt.currentGeometry !== t.id && (t.vaoNeedsUpdate && G7(t, e), Gm(t.vao), tt.currentGeometry = t.id)
+            tt.currentGeometry !== t.id && (t.vaoNeedsUpdate && GT(t, e), Gm(t.vao), tt.currentGeometry = t.id)
         },
         Ba = (t, e, n) => {
             za(t, e), t.isInstanced ? t.attributes.index ? tb(n, t.drawRangeCount, t.attributes.index.type, t.drawRangeStart, t.instancedCount) : eb(n, t.drawRangeStart, t.drawRangeCount, t.instancedCount) : t.attributes.index ? j.drawElements(n, t.drawRangeCount, t.attributes.index.type, t.drawRangeStart) : j.drawArrays(n, t.drawRangeStart, t.drawRangeCount)
         };
-    var H7 = 1,
+    var HT = 1,
         un = ({
             vertex: t,
             fragment: e,
@@ -4939,7 +4122,7 @@ void main(){
             attributeLocations: m
         }) => {
             let g = {
-                id: H7++,
+                id: HT++,
                 program: j.createProgram(),
                 active: i,
                 transparent: s,
@@ -4989,7 +4172,7 @@ void main(){
                     }
                     m === 1 ? j.uniform1i(l, g[0]) : j.uniform1iv(l, g)
                 } else {
-                    e[a] ? t.uniforms[a] || (t.uniforms[a] = e[a]) : t.uniforms[a] || (Q7.has(a) || t.autoUniforms.push(a), t.uniforms[a] = {
+                    e[a] ? t.uniforms[a] || (t.uniforms[a] = e[a]) : t.uniforms[a] || (QT.has(a) || t.autoUniforms.push(a), t.uniforms[a] = {
                         value: void 0
                     });
                     let m = {
@@ -4997,7 +4180,7 @@ void main(){
                         location: l,
                         type: c,
                         data: t.uniforms[a],
-                        fun: X7(c, t.uniforms[a].value)
+                        fun: XT(c, t.uniforms[a].value)
                     };
                     t.uniformArray.push(m)
                 }
@@ -5015,7 +4198,7 @@ void main(){
         },
         qn = (t, e, n, o) => {
             let i = o.samplerNames.indexOf(t);
-            i >= 0 ? o.samplerTextures[i + n] = e : void 0
+            i >= 0 ? o.samplerTextures[i + n] = e : console.log("unknown texture type", t, o)
         },
         $a = t => {
             for (let e = 0; e < t.samplerNames.length; ++e) {
@@ -5053,10 +4236,10 @@ void main(){
         I1 = t => {
             for (let e = 0; e < t.length; ++e) {
                 let n = t[e];
-                Y7(j, n.fun, n.location, n.data.value)
+                YT(j, n.fun, n.location, n.data.value)
             }
         };
-    var Y7 = (t, e, n, o) => {
+    var YT = (t, e, n, o) => {
             switch (e) {
                 case 12:
                     return t.uniformMatrix4fv(n, !1, o);
@@ -5086,7 +4269,7 @@ void main(){
                     return t.uniformMatrix3fv(n, !1, o)
             }
         },
-        X7 = (t, e) => {
+        XT = (t, e) => {
             switch (t) {
                 case 5126:
                     return Array.isArray(e) ? 6 : 5;
@@ -5120,10 +4303,10 @@ void main(){
                     return 12
             }
         };
-    var Q7 = new Set(["projectionViewMatrix", "shadowPVMatrix", "modelMatrix", "viewMatrix", "projectionMatrix", "cameraPosition"]);
-    var Z7 = 0,
+    var QT = new Set(["projectionViewMatrix", "shadowPVMatrix", "modelMatrix", "viewMatrix", "projectionMatrix", "cameraPosition"]);
+    var ZT = 0,
         Bo = (t, e, n, o = rn(), i = 0) => ({
-            id: Z7++,
+            id: ZT++,
             uniformData: {},
             transform: o,
             geometry: t,
@@ -5156,36 +4339,36 @@ void main(){
     }
     var gy = 33777,
         vy = 33778,
-        J7 = 131072,
-        K7 = 31,
-        e9 = 1,
-        t9 = 2,
-        n9 = 3,
-        o9 = 4,
-        i9 = 7,
-        s9 = 21,
-        r9 = dy("DXT1"),
-        l9 = dy("DXT3");
+        JT = 131072,
+        KT = 31,
+        e7 = 1,
+        t7 = 2,
+        n7 = 3,
+        o7 = 4,
+        i7 = 7,
+        s7 = 21,
+        r7 = dy("DXT1"),
+        l7 = dy("DXT3");
 
     function _y(t) {
-        let e = new Int32Array(t, 0, K7),
-            n = e[s9],
+        let e = new Int32Array(t, 0, KT),
+            n = e[s7],
             o;
         switch (n) {
-            case r9:
+            case r7:
                 o = gy;
                 break;
-            case l9:
+            case l7:
                 o = vy;
                 break;
             default:
                 console.error("Unsupported texture" + n)
         }
         let i = 1;
-        e[t9] & J7 && (i = Math.max(1, e[i9]));
-        let s = e[o9],
-            r = e[n9],
-            l = e[e9] + 4;
+        e[t7] & JT && (i = Math.max(1, e[i7]));
+        let s = e[o7],
+            r = e[n7],
+            l = e[e7] + 4;
         return {
             data: new Uint8Array(t, l),
             width: s,
@@ -5194,7 +4377,7 @@ void main(){
             internalFormat: o
         }
     }
-    var c9 = 1,
+    var c7 = 1,
         ir = function({
             image: t,
             buffer: e,
@@ -5216,7 +4399,7 @@ void main(){
             anisotropy: k = 1
         }) {
             return {
-                id: c9++,
+                id: c7++,
                 image: t,
                 buffer: e,
                 target: n,
@@ -5335,7 +4518,7 @@ void main(){
                 } else if (this.targetMode === 16) s = e;
                 else if (this.targetMode === 17 && (s === void 0 || s === e)) return 3;
                 if (s !== void 0 && !s.stats.alive) return 10;
-                if (!fe.noRangeCheck && s && o !== e.id && s !== e && this.range > 0 && !e.combatRangeCheck(s, i ? this.range : this.graceRange)) return 6
+                if (s && o !== e.id && s !== e && this.range > 0 && !e.combatRangeCheck(s, i ? this.range : this.graceRange)) return 6
             }
             return this.disablingBuffs.some(s => e.buffs.hasAnyWithTag(s)) ? 12 : 0
         }
@@ -5435,7 +4618,7 @@ void main(){
         })
     });
     var My = t => .7 + t * .2,
-        f9 = t => My(t) + 30 / (250 / 20),
+        f7 = t => My(t) + 30 / (250 / 20),
         Fy = new Se({
             id: 33,
             targetMode: 17,
@@ -5447,7 +4630,7 @@ void main(){
             costMp: t => 12,
             custom: [
                 [My, "s stunned at min range"],
-                [f9, "s stunned at max range"]
+                [f7, "s stunned at max range"]
             ],
             onCast: (t, e, n) => {}
         });
@@ -5531,7 +4714,7 @@ void main(){
             }
         })
     });
-    var u9 = t => t * 8,
+    var u7 = t => t * 8,
         Ey = new Se({
             id: 1,
             targetMode: 4096,
@@ -5539,7 +4722,7 @@ void main(){
             cd: 1,
             range: 2,
             custom: [
-                [u9, "% chance to daze target for 3 seconds"]
+                [u7, "% chance to daze target for 3 seconds"]
             ],
             costMp: t => 1 + t,
             fx: {
@@ -5558,7 +4741,7 @@ void main(){
             }
         });
     var Iy = t => 1e4 + t * 1e4,
-        m9 = (t, e) => {
+        m7 = (t, e) => {
             if (e.type === 1) {
                 let n = 0;
                 e.aggroValues.forEach((o, i) => {
@@ -5588,7 +4771,7 @@ void main(){
                 [Iy, " aggro generation"]
             ],
             onCast: (t, e, n) => ({
-                custom: m9,
+                custom: m7,
                 id: 89,
                 mode: 4,
                 stacks: 1,
@@ -5623,7 +4806,7 @@ void main(){
         castLen: 0,
         costMp: t => 10 + t * 3,
         fx: {
-            effectTarget: fe.removeFX ? void 0 : 106
+            effectTarget: 106
         },
         onCast: (t, e, n) => {}
     });
@@ -5644,7 +4827,7 @@ void main(){
         costMp: t => t * 2,
         fx: {
             effectMissile: 107,
-            effectTarget: fe.removeFX ? void 0 : 111
+            effectTarget: 111
         },
         onCast: (t, e, n, o, i, s) => {}
     });
@@ -5815,7 +4998,7 @@ void main(){
             noBlock: !0
         })
     });
-    var p9 = () => 12,
+    var p7 = () => 12,
         Yy = new Se({
             id: 32,
             targetMode: 1,
@@ -5829,7 +5012,7 @@ void main(){
                 animCast: 32
             },
             custom: [
-                [p9, "m distance"]
+                [p7, "m distance"]
             ],
             onCast: (t, e, n) => {}
         });
@@ -5894,7 +5077,7 @@ void main(){
             effectImpact: 70,
             animCast: 14,
             animChannel: 15,
-            effectMissile: fe.removeFX ? void 0 : 69
+            effectMissile: 69
         },
         onCast: (t, e, n) => ({
             id: 30,
@@ -5964,17 +5147,17 @@ void main(){
             }
         }
     });
-    var d9 = t => 1 + t * 2,
-        h9 = t => 1 + t * 2,
+    var d7 = t => 1 + t * 2,
+        h7 = t => 1 + t * 2,
         nk = new Se(Na(43, 106, 3, [
-            [d9, "% haste per stack"],
-            [h9, " jumps"]
+            [d7, "% haste per stack"],
+            [h7, " jumps"]
         ]));
     var ok = new Se(Zp(7, 60, 3, 0, 0, 12, t => 2 + t * 2, 5, {
         animCast: 9
     }));
-    var g9 = t => Math.round(t * 1.3),
-        v9 = t => t * 2,
+    var g7 = t => Math.round(t * 1.3),
+        v7 = t => t * 2,
         ik = new Se({
             id: 42,
             targetMode: 1,
@@ -5983,8 +5166,8 @@ void main(){
             castLen: 0,
             range: 30 - 5,
             custom: [
-                [g9, " mana gained per soul"],
-                [v9, " extended Decay duration"]
+                [g7, " mana gained per soul"],
+                [v7, " extended Decay duration"]
             ],
             costMp: t => 1 + t * 3,
             fx: {
@@ -6096,7 +5279,7 @@ void main(){
         })
     });
     var fk = new Se(Na(26, 82, 15));
-    var _9 = t => 3 + t * 5,
+    var _7 = t => 3 + t * 5,
         uk = new Se({
             id: 11,
             targetMode: 16,
@@ -6107,7 +5290,7 @@ void main(){
                 animCast: 6
             },
             custom: [
-                [_9, "% of max mp recovered"]
+                [_7, "% of max mp recovered"]
             ],
             onCast: (t, e, n) => ({
                 id: 66,
@@ -6214,7 +5397,7 @@ void main(){
         fx: {
             animCast: 36,
             effectDirImpact: 115,
-            effectMissile: 48,
+            effectMissile: 113,
             animChannel: 28
         },
         custom: [
@@ -6253,12 +5436,12 @@ void main(){
         },
         onCast: (t, e, n) => {}
     });
-    var b9 = {
+    var b7 = {
             medalValue: 1e3,
             goldValue: 8e4,
             buyElo: 1600
         },
-        y9 = {
+        y7 = {
             goldValue: 125e4
         },
         D1 = [{
@@ -6328,7 +5511,7 @@ void main(){
         xk = t => {
             D1.forEach((e, n) => {
                 t["charm" + n] = {
-                    ...n <= 4 ? b9 : y9,
+                    ...n <= 4 ? b7 : y7,
                     ...e,
                     quality: 90,
                     level: 45,
@@ -6492,7 +5675,7 @@ void main(){
         cd: 0,
         onPermanent: t => t.class + 61
     });
-    var k9 = {
+    var k7 = {
             ...Pk,
             hellspawn_missile: Vk,
             conjurer_obeliskport: Dk,
@@ -6510,7 +5693,7 @@ void main(){
             boss_flamepits: Ek,
             useGeneric: Fk
         },
-        x9 = {
+        x7 = {
             relentlessCry: Ty,
             whirlwind: qy,
             temper: Vy,
@@ -6525,7 +5708,7 @@ void main(){
             crescentStrike: Py,
             crescentBleed: Sy
         },
-        w9 = {
+        w7 = {
             frostcall: By,
             iceblock: Oy,
             shatterfrost: Hy,
@@ -6538,7 +5721,7 @@ void main(){
             icebolt: Ny,
             icicle: Gy
         },
-        M9 = {
+        M7 = {
             vampiricarrowReturn: yk,
             boneshot: ck,
             blindingshot: ak,
@@ -6554,7 +5737,7 @@ void main(){
             swiftshot: vk,
             cranialpunctures: fk
         },
-        F9 = {
+        F7 = {
             mimirscleanse: tk,
             soulharvestReturn: sk,
             plaguespreader: nk,
@@ -6570,7 +5753,7 @@ void main(){
             spiritanimal: rk
         },
         zt = new Map;
-    [x9, w9, M9, F9, k9].forEach((t, e) => {
+    [x7, w7, M7, F7, k7].forEach((t, e) => {
         for (let n in t) e <= 3 && (t[n].class = e), zt.set(t[n].id, t[n])
     });
     zt.set(64, new Se({
@@ -6584,13 +5767,13 @@ void main(){
                 if (Uk[e] > t) return e;
             return Math.max(0, Bk)
         },
-        C9 = 10,
-        S9 = 30,
-        P9 = 240,
-        A9 = -.0015,
-        T9 = 930,
-        E9 = 100,
-        jf = t => C9 + Math.round(Math.max(t / S9, P9 * (1 - Math.exp(A9 * (t - T9))) - E9));
+        C7 = 10,
+        S7 = 30,
+        P7 = 240,
+        A7 = -.0015,
+        T7 = 930,
+        E7 = 100,
+        jf = t => C7 + Math.round(Math.max(t / S7, P7 * (1 - Math.exp(A7 * (t - T7))) - E7));
     var On = "webp",
         Yn = "webp",
         V1 = "webp",
@@ -6605,19 +5788,19 @@ void main(){
             console.log("Avif not supported", navigator.userAgent)
         });
     L1();
-    var I9 = [0, 0, 1, 1, 2, 3],
-        q1 = (t, e) => "book" + (e !== void 0 ? e : "") + I9[t % 5],
-        sr = (t, e, n, o) => `/data/items/${t}/${t=="book"?q1(e,n):t+e}_q${o}.${Yn}?v=8822612`,
-        Gf = t => `/data/ui/skills/${t}.${Yn}?v=8822612`,
-        $k = t => `/data/ui/slotbg/${t}.${On}?v=8822612`,
-        Ok = (t, e, n) => `/data/world/${t}/map/${e}/${n}.${Yn}?v=8822612`,
-        ns = t => `/data/ui/classes/${t}.${On}?v=8822612`,
-        R1 = t => `/data/ui/factions/${t}.${On}?v=8822612`,
-        Nk = t => `/data/ui/elo/${Wa(t)}.svg?v=8822612`,
-        Wk = "/data/ui/currency/medal.svg?v=8822612",
-        ja = "/data/ui/currency/prestige.svg?v=8822612",
-        rr = "/data/ui/currency/fame.svg?v=8822612",
-        jk = t => `/data/ui/rank/rank${t}.svg?v=8822612`;
+    var I7 = [0, 0, 1, 1, 2, 3],
+        q1 = (t, e) => "book" + (e !== void 0 ? e : "") + I7[t % 5],
+        sr = (t, e, n, o) => `/data/items/${t}/${t=="book"?q1(e,n):t+e}_q${o}.${Yn}?v=8829640`,
+        Gf = t => `/data/ui/skills/${t}.${Yn}?v=8829640`,
+        $k = t => `/data/ui/slotbg/${t}.${On}?v=8829640`,
+        Ok = (t, e, n) => `/data/world/${t}/map/${e}/${n}.${Yn}?v=8829640`,
+        ns = t => `/data/ui/classes/${t}.${On}?v=8829640`,
+        R1 = t => `/data/ui/factions/${t}.${On}?v=8829640`,
+        Nk = t => `/data/ui/elo/${Wa(t)}.svg?v=8829640`,
+        Wk = "/data/ui/currency/medal.svg?v=8829640",
+        ja = "/data/ui/currency/prestige.svg?v=8829640",
+        rr = "/data/ui/currency/fame.svg?v=8829640",
+        jk = t => `/data/ui/rank/rank${t}.svg?v=8829640`;
     var Gk = t => {
         zt.forEach(e => {
             if (!e.engineOnly)
@@ -6639,7 +5822,7 @@ void main(){
                 }
         })
     };
-    var D9 = [{
+    var D7 = [{
             id: 0,
             storeValue: 300,
             quality: 90,
@@ -6664,7 +5847,7 @@ void main(){
             custom: ["Used to upgrade rare pets, allowing them to pick up items."]
         }],
         Hk = t => {
-            D9.forEach(e => {
+            D7.forEach(e => {
                 t["box" + e.id] = {
                     ...e,
                     type: "box",
@@ -7251,18 +6434,18 @@ void main(){
             for (let e in An)
                 if (An[e].tiers) {
                     let n = An[e];
-                    for (let o = 0; o < n.tiers; ++o) L9({
+                    for (let o = 0; o < n.tiers; ++o) L7({
                         type: e,
                         tier: o,
                         stats: n.stats,
-                        level: V9(e, o),
+                        level: V7(e, o),
                         class: n.class,
                         quality: n.quality
                     }, t)
                 }
         },
-        V9 = (t, e) => An[t].baselvl + Math.floor(e / An[t].tiers * 100),
-        L9 = (t, e) => {
+        V7 = (t, e) => An[t].baselvl + Math.floor(e / An[t].tiers * 100),
+        L7 = (t, e) => {
             let n = {
                 level: t.level,
                 type: t.type,
@@ -7279,7 +6462,7 @@ void main(){
                 })
             }), e[t.type + t.tier] = n
         };
-    var q9 = [250, 100, 500, 200, 1e3, 300],
+    var q7 = [250, 100, 500, 200, 1e3, 300],
         Zk = t => {
             for (let e = 0; e < 6; ++e) {
                 let n = Math.floor(e / 2),
@@ -7290,12 +6473,12 @@ void main(){
                     level: 1 + n * 20,
                     goldValue: [2, 10, 30][n],
                     quality: 15,
-                    custom: ["" + q9[e] + (o ? " HP recovered" : " MP recovered")],
+                    custom: ["" + q7[e] + (o ? " HP recovered" : " MP recovered")],
                     useSkill: 100
                 }
             }
         };
-    var R9 = [{
+    var R7 = [{
             lvl: 30,
             g: 1e4,
             qual: 50,
@@ -7461,7 +6644,7 @@ void main(){
             skin: t.skin
         })),
         Jk = t => {
-            R9.forEach((e, n) => {
+            R7.forEach((e, n) => {
                 t["mount" + n] = {
                     ...e,
                     type: "mount",
@@ -7471,9 +6654,9 @@ void main(){
                 }
             })
         };
-    var z9 = [1919, 1920, 1944, 1945, 1946, 1947, 1948, 1960, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975],
+    var z7 = [1919, 1920, 1944, 1945, 1946, 1947, 1948, 1960, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975],
         Kk = t => {
-            z9.forEach((e, n) => {
+            z7.forEach((e, n) => {
                 t["pet" + n] = {
                     level: 10,
                     unsellable: !0,
@@ -7538,7 +6721,7 @@ void main(){
         N1 = new Map,
         W1 = new Map,
         j1 = new Map,
-        B9 = new Map,
+        B7 = new Map,
         G1 = new Map,
         os = new Map,
         Jf = [],
@@ -7546,888 +6729,9 @@ void main(){
         H1 = new Map,
         ed = new Map;
     var z1 = t => {
-        t.classes.forEach(e => ed.set(e.id, e)), 
-        t.files.forEach(e => Ga.set(e.id, e)), 
-        t.particles.forEach(e => Jp.set(e.id, e)),
-        t.effects.forEach(e => Xf.set(e.id, e)), 
-        t.sounds.forEach(e => Kp.set(e.id, e)),
-        t.soundsets.forEach(e => B1.set(e.id, e)),
-        t.soundsetSteps.forEach(e => U1.set(e.id, e)),
-        t.meshes.forEach(e => Fi.set(e.id, e)),
-        t.ribbons.forEach(e => $1.set(e.id, e)),
-        t.areas.forEach(e => Qf.set(e.id, e)),
-        t.terrains.forEach(e => Ha.set(e.id, e));
-        t.foliages.forEach(e => Ya.set(e.id, e));
-        t.environments.forEach(e => Xa.set(e.id, e));
-        let guardstone = Xa.get(2)
-        let faivel = Xa.get(13)
-        t.animations.forEach(e => Zf.set(e.id, e)),
-        t.skins.forEach(e => O1.set(e.id, e)),
-        t.skeletons.forEach(e => N1.set(e.id, e)),
-        t.creatures.forEach(e => W1.set(e.id, e)),
-        t.creaturesMonster.forEach(e => j1.set(e.id, e)),
-        t.creaturesConjurer.forEach(e => B9.set(e.id, e)),
-        t.creaturesTrader.forEach(e => G1.set(e.id, e)),
-        t.traderShopItems.forEach(e => os.set(e.id, e)),
-        t.worlds.forEach(e => {
+        t.classes.forEach(e => ed.set(e.id, e)), t.files.forEach(e => Ga.set(e.id, e)), t.particles.forEach(e => Jp.set(e.id, e)), t.effects.forEach(e => Xf.set(e.id, e)), t.sounds.forEach(e => Kp.set(e.id, e)), t.soundsets.forEach(e => B1.set(e.id, e)), t.soundsetSteps.forEach(e => U1.set(e.id, e)), t.meshes.forEach(e => Fi.set(e.id, e)), t.ribbons.forEach(e => $1.set(e.id, e)), t.areas.forEach(e => Qf.set(e.id, e)), t.terrains.forEach(e => Ha.set(e.id, e)), t.foliages.forEach(e => Ya.set(e.id, e)), t.environments.forEach(e => Xa.set(e.id, e)), t.animations.forEach(e => Zf.set(e.id, e)), t.skins.forEach(e => O1.set(e.id, e)), t.skeletons.forEach(e => N1.set(e.id, e)), t.creatures.forEach(e => W1.set(e.id, e)), t.creaturesMonster.forEach(e => j1.set(e.id, e)), t.creaturesConjurer.forEach(e => B7.set(e.id, e)), t.creaturesTrader.forEach(e => G1.set(e.id, e)), t.traderShopItems.forEach(e => os.set(e.id, e)), t.worlds.forEach(e => {
             H1.set(e.id, e)
         });
-
-        let shadowstrider = {
-      "animset": 4,
-      "body": [
-        {
-          "bid": 0,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 1,
-          "lod": 1,
-          "mid": 1,
-          "pid": -1,
-          "pos": [
-            0,
-            -0.05877852439880371,
-            0
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.6000000238418579,
-            0.6000000238418579,
-            1
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 16,
-          "col": [
-            0,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 1,
-          "pid": 0,
-          "pos": [
-            0,
-            0.10000000149011612,
-            -1
-          ],
-          "rot": [
-            0.6000000238418579,
-            0,
-            0
-          ],
-          "scl": [
-            1.2000000476837158,
-            1.5000000476837158,
-            1.599999976158142
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 1,
-          "col": [
-            0,
-            2.5,
-            0.7,
-            0
-          ],
-          "colMode": 0,
-          "lod": 1,
-          "mid": 1559,
-          "pid": 0,
-          "pos": [
-            0,
-            -0.05000000074505806,
-            0.5199999809265137
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.6500000238418579,
-            0.6500000238418579,
-            0.6500000238418579
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 4,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 7878,
-          "pid": -1,
-          "pos": [
-            0,
-            0,
-            0
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            1.599999976158142,
-            1.599999976158142,
-            1.599999976158142
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 5,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 7878,
-          "pid": -1,
-          "pos": [
-            0,
-            1.2246467698671066e-17,
-            0
-          ],
-          "rot": [
-            0,
-            3.1415927410125732,
-            0
-          ],
-          "scl": [
-            1.599999976158142,
-            1.599999976158142,
-            1.599999976158142
-          ],
-          "ts": 1
-        }
-      ],
-      "capeswing": 1,
-      "colPrim": [
-        0.1,
-        0.1,
-        0.1,
-        0.1,
-      ],
-      "colSec": [
-        0.1,
-        0.1,
-        0.1,
-        0.1,
-      ],
-      "effects": [],
-      "id": 23,
-      "mountPart": 0,
-      "mountPos": [
-        0,
-        0.800000011920929,
-        -1
-      ],
-      "sheathedPos": [
-        0,
-        0,
-        -0.5
-      ],
-      "size": 1,
-      "skeleton": 1,
-      "soundset": 5,
-      "unsheathedPos": [
-        0,
-        0.800000011920929,
-        0
-      ]
-    }   
-    let scarab = {
-      "animset": 4,
-      "body": [
-        {
-          "bid": 0,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 1,
-          "lod": 1,
-          "mid": 13,
-          "pid": -1,
-          "pos": [
-            0,
-            0.05067838728427887,
-            0
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.800000011920929,
-            0.800000011920929,
-            0.800000011920929
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 16,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 13,
-          "pid": 0,
-          "pos": [
-            0,
-            0.20000000298023224,
-            -0.800000011920929
-          ],
-          "rot": [
-            0,
-            -3.140000104904175,
-            0
-          ],
-          "scl": [
-            1.100000023841858,
-            1.100000023841858,
-            1.100000023841858
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 1,
-          "col": [
-            5,
-            5,
-            5,
-            5
-          ],
-          "colMode": 0,
-          "lod": 1,
-          "mid": 1570,
-          "pid": 0,
-          "pos": [
-            0,
-            0.056985560804605484,
-            0.22015266120433807
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.6000000238418579,
-            0.6000000238418579,
-            0.6000000238418579
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 4,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 7878,
-          "pid": -1,
-          "pos": [
-            0,
-            0,
-            0
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.6000000238418579,
-            0.6000000238418579,
-            0.6000000238418579
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 5,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 7878,
-          "pid": -1,
-          "pos": [
-            0,
-            1.2246467698671066e-17,
-            0
-          ],
-          "rot": [
-            0,
-            3.1415927410125732,
-            0
-          ],
-          "scl": [
-            0.6000000238418579,
-            0.6000000238418579,
-            0.6000000238418579
-          ],
-          "ts": 1
-        }
-      ],
-      "capeswing": 1,
-      "colPrim": [
-        0.20000000298023224,
-        0.20000000298023224,
-        0.20000000298023224,
-        0.5
-      ],
-      "colSec": [
-        1,
-        0.6117647290229797,
-        0,
-        0.8999999761581421
-      ],
-      "effects": [
-        {
-          "bid": 16,
-          "id": 98
-        },
-        {
-          "bid": 0,
-          "id": 98
-        }
-      ],
-      "id": 31,
-      "mountPart": 0,
-      "mountPos": [
-        0,
-        0.800000011920929,
-        -1
-      ],
-      "sheathedPos": [
-        0,
-        0,
-        -0.5
-      ],
-      "size": 1,
-      "skeleton": 1,
-      "soundset": 10,
-      "unsheathedPos": [
-        0,
-        0.800000011920929,
-        0
-      ]
-    }
-    let duskwing = {
-      "animset": 18,
-      "body": [
-        {
-          "bid": 0,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 1,
-          "lod": 1,
-          "mid": 1,
-          "pid": -1,
-          "pos": [
-            0,
-            1,
-            0
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            1,
-            1,
-            1
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 3,
-          "col": [
-            0.6441646814346313,
-            0.7989725470542908,
-            0.7892970442771912,
-            -0.23399999737739563
-          ],
-          "colMode": 1,
-          "lod": 1,
-          "mid": 1624,
-          "pid": 0,
-          "pos": [
-            -0.5,
-            0,
-            0.10000000149011612
-          ],
-          "rot": [
-            -0.30000001192092896,
-            0,
-            0
-          ],
-          "scl": [
-            2,
-            0.800000011920929,
-            2
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 2,
-          "col": [
-            0.6369255185127258,
-            0.8062117695808411,
-            0.7956313490867615,
-            -0.1940000057220459
-          ],
-          "colMode": 1,
-          "lod": 1,
-          "mid": 1624,
-          "pid": 0,
-          "pos": [
-            0.5,
-            0,
-            0.10000000149011612
-          ],
-          "rot": [
-            -0.30000001192092896,
-            0,
-            0
-          ],
-          "scl": [
-            2,
-            0.800000011920929,
-            2
-          ],
-          "ts": 1
-        },
-        {
-          "bid": 16,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 1,
-          "pid": 0,
-          "pos": [
-            0,
-            0.021456904709339142,
-            0.8373732566833496
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            0.699999988079071,
-            0.699999988079071,
-            0.699999988079071
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 1,
-          "col": [
-            .2,
-            .4,
-            4,
-            .1
-          ],
-          "colMode": 0,
-          "lod": 1,
-          "mid": 6,
-          "pid": 16,
-          "pos": [
-            0,
-            0.04150563105940819,
-            0.4780753254890442
-          ],
-          "rot": [
-            0,
-            0,
-            0
-          ],
-          "scl": [
-            1,
-            1,
-            1.2999999523162842
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 17,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 1624,
-          "pid": 2,
-          "pos": [
-            0.1,
-            -0.546798050403595,
-            -0.5658226609230042
-          ],
-          "rot": [
-            -0.4155008792877197,
-            -0.28135135769844055,
-            2.199418323985827e-16
-          ],
-          "scl": [
-            0.7671358942985535,
-            1,
-            0.6542128324508667
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 18,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 1624,
-          "pid": 3,
-          "pos": [
-            .1,
-            0.546798050403595,
-            -0.5658226609230042
-          ],
-          "rot": [
-            0.4155008792877197,
-            -0.28135135769844055,
-            2.199418323985827e-16
-          ],
-          "scl": [
-            0.7671358942985535,
-            1,
-            0.6542128324508667
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 19,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 1,
-          "pid": 0,
-          "pos": [
-            0,
-            -0.02679913491010666,
-            -1.1007031202316284
-          ],
-          "rot": [
-            -0.13728073239326477,
-            0,
-            0
-          ],
-          "scl": [
-            0.5813135027885437,
-            0.522355854511261,
-            1.3028345108032227
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 20,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 1,
-          "lod": 1,
-          "mid": 1626,
-          "pid": 16,
-          "pos": [
-            8.46387746376509e-17,
-            0.9504838705062866,
-            0.285702668428421
-          ],
-          "rot": [
-            6.5564001679420471,
-            3.1415927410125732,
-            3.1415927410125732
-          ],
-          "scl": [
-            1.6787197589874268,
-            3.530953407287598,
-            1
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 21,
-          "col": [
-            0.44161200523376465,
-            0.20638799667358398,
-            0.22598999738693237,
-            -0.5220000147819519
-          ],
-          "colMode": 1,
-          "lod": 1,
-          "mid": 1626,
-          "pid": 16,
-          "pos": [
-            2.0227607354597762e-16,
-            -0.399948388338089,
-            0.6427600979804993
-          ],
-          "rot": [
-            0.591772198677063,
-            3.1415927410125732,
-            3.1415927410125732
-          ],
-          "scl": [
-            0.800000011920929,
-            0.8999999761581421,
-            1
-          ],
-          "ts": 0
-        },
-        {
-          "bid": 22,
-          "col": [
-            1,
-            0,
-            0,
-            1
-          ],
-          "colMode": 2,
-          "lod": 1,
-          "mid": 1622,
-          "pid": 0,
-          "pos": [
-            0,
-            -0.6687838435173035,
-            0.04971189796924591
-          ],
-          "rot": [
-            -0.16984358429908752,
-            0,
-            0
-          ],
-          "scl": [
-            0.6373399496078491,
-            4.4840545654296875,
-            1.096938967704773
-          ],
-          "ts": 1
-        },
-      ],
-      "capeswing": 1,
-      "colPrim": [
-        0.11469600349664688,
-        0.10130400210618973,
-        0.10660722851753235,
-        0
-      ],
-      "colSec": [
-        0.2624194920063019,
-        0.226624995470047,
-        0.26337501406669617,
-        0
-      ],
-        "effects": [{ "bid": 2, "id": 176 },{ "bid": 17, "id": 176 },{ "bid": 3, "id": 177 },{ "bid": 18, "id": 177 }],
-      "id": 69,
-      "mountPart": 0,
-      "mountPos": [
-        0,
-        0.5000000238418579,
-        -0.12999999523162842
-      ],
-      "sheathedPos": [
-        0,
-        0,
-        -0.5
-      ],
-      "size": 0.800000011920929,
-      "skeleton": 6,
-      "soundset": 10,
-      "unsheathedPos": [
-        0,
-        0.800000011920929,
-        0
-      ]
-    }
-    let eyes = duskwing.body.find(i => i.bid === 1)
-    eyes.col = [0.1,0.1,0.1,0]
-    let dwm = 1
-    duskwing.colPrim = [
-        1.1 * dwm,
-        1.1994499996304512 * dwm,
-        1.1994499996304512 * dwm,
-        0
-      ]
-    duskwing.colSec = [
-        1.91039198637008667 * dwm * .9,
-        1.91584978103637695 * dwm * .9,
-        1.9776080071926117 * dwm * .9,
-        0
-      ]
-    O1.set(8888, duskwing)
-        Ga.set(7777,{
-      "ext": 0,
-      "id": 7777,
-      "type": 1
-    })
-        Fi.set(7878,{
-      "cull": 1,
-      "effects": [],
-      "geometry": 7777,
-      "id": 7878,
-      "shader": 0,
-      "shadow": 1,
-      "texture": 0
-    })
-        Fi.set(1560,{
-      "cull": 1,
-      "effects": [],
-      "geometry": 7777,
-      "id": 1560,
-      "shader": 0,
-      "shadow": 1,
-      "texture": 0
-    })
-        O1.set(23,shadowstrider)
-        O1.set(31,scarab)
-        
-        Fi.set(8888, {
-      "cull": 0,
-      "effects": [],
-      "geometry": 1432,
-      "id": 8888,
-      "shader": 5,
-      "shadow": 1,
-      "texture": 1738
-    })
-        let fire = {
-      "duration": 3,
-      "events": [],
-      "id": 88,
-      "periods": [
-        {
-          "fractionEnd": 1,
-          "fractionStart": 0,
-          "id": 4,
-          "modifiers": [
-            {
-              "id": 1,
-              "mode": 0,
-              "params": [
-                0,
-                10,
-                3,
-                0,
-                0.20000000298023224
-              ]
-            },
-            {
-              "id": 2,
-              "mode": 1,
-              "params": [
-                1,
-                0,
-                1,
-                1,
-                1,
-                2,
-                0,
-                1,
-                1
-              ]
-            },
-            {
-              "id": 1,
-              "mode": 1,
-              "params": [
-                2,
-                0.5,
-                0.8999999761581421,
-                0,
-                0
-              ]
-            }
-          ],
-          "params": [
-            8888,
-            0,
-            0,
-            0,
-            1,
-            .2,
-            1.1,
-            0,
-            0,
-            0
-          ]
-        }
-      ]
-    }
-        let dw = O1.get(8888)
-        dw.effects = []
-        O1.set(8888, dw)
-        let mage = O1.get(2)
-        if (fe.enableMageCapeswing) mage.capeswing = 1
-        O1.set(2, mage)
         for (let e = 0; e < t.filesExt.length; ++e) Kf.push(t.filesExt[e]);
         for (let e = 0; e < t.minimap.length; ++e) Jf.push(t.minimap[e])
     };
@@ -8436,30 +6740,23 @@ void main(){
         let n = Ga.get(t);
         return `${t}.${e||Kf[n.ext]}`
     };
-    var U9 = 127,
-        $9 = 254,
+    var U7 = 127,
+        $7 = 254,
         Y1 = 2 ** 15 - 1,
-        O9 = 2 ** 16 - 1,
+        O7 = 2 ** 16 - 1,
         X1 = 2 ** 32 - 1;
-    var tx = (t,id) => {
-        let e = Ia.modelformat.decode(t,id)
-        if (id && id.includes("7777")) {
-            e = {"color": [], "flags": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "index": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 21, 22, 23, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 54, 55, 56, 57, 58, 59, 60, 61, 62], "indexInvisible": [], "normal": [-59, 49, -101, -59, 49, -101, -59, 49, -101, 90, 52, 73, 90, 52, 73, 90, 52, 73, -8, -126, 9, -8, -126, 9, -8, -126, 9, 91, 30, -84, 91, 30, -84, 91, 30, -84, -110, 33, -54, -110, 33, -54, -110, 33, -54, 61, -92, 63, 61, -92, 63, 61, -92, 63, -116, 32, 42, -116, 32, 42, -116, 32, 42, 42, 29, -116, 42, 29, -116, 42, 29, -116, 85, 37, 86, 85, 37, 86, 85, 37, 86, -9, -126, -8, -9, -126, -8, -9, -126, -8, -57, 56, 98, -57, 56, 98, -57, 56, 98, 92, 51, -70, 92, 51, -70, 92, 51, -70, 29, 30, 120, 29, 30, 120, 29, 30, 120, 65, -92, -58, 65, -92, -58, 65, -92, -58, -17, 46, 117, -17, 46, 117, -17, 46, 117, -23, 48, -115, -23, 48, -115, -23, 48, -115, 12, -126, -2, 12, -126, -2, 12, -126, -2, -123, 31, 5, -123, 31, 5, -123, 31, 5, 46, 30, 114, 46, 30, 114, 46, 30, 114, 52, 27, -113, 52, 27, -113, 52, 27, -113, -88, -91, 3, -88, -91, 3, -88, -91, 3], "position": [-17517, 21263, 21835, -3234, -839, 4840, -18001, 3859, 18011, -3234, -839, 4840, -17517, 21263, 21835, -14730, 4013, 23061, -3234, -839, 4840, -14730, 4013, 23061, -18001, 3859, 18011, -17517, 21263, 21835, -14730, 4013, 23061, -18001, 3859, 18011, -17517, 21263, 21835, -18001, 3859, 18011, -25776, -28395, 30865, -14380, 3738, -23436, -17987, 3840, -18418, -24817, -28540, -32767, -24817, -28540, -32767, -17987, 3840, -18418, -17462, 21116, -22876, -17462, 21116, -22876, -14380, 3738, -23436, -24817, -28540, -32767, -17462, 21116, -22876, -17987, 3840, -18418, -14380, 3738, -23436, -3599, -980, -5202, -17987, 3840, -18418, -14380, 3738, -23436, -3599, -980, -5202, -17462, 21116, -22876, -17987, 3840, -18418, -17462, 21116, -22876, -3599, -980, -5202, -14380, 3738, -23436, -25776, -28395, 30865, -14730, 4013, 23061, -17517, 21263, 21835, -18001, 3859, 18011, -14730, 4013, 23061, -25776, -28395, 30865, 22535, 21773, -843, 3852, -323, -251, 21070, 4395, 2270, 3852, -323, -251, 22535, 21773, -843, 20899, 4498, -3979, 3852, -323, -251, 20899, 4498, -3979, 21070, 4395, 2270, 22535, 21773, -843, 20899, 4498, -3979, 21070, 4395, 2270, 22535, 21773, -843, 21070, 4395, 2270, 32767, -27883, -191, 32767, -27883, -191, 20899, 4498, -3979, 22535, 21773, -843, 21070, 4395, 2270, 20899, 4498, -3979, 32767, -27883, -191], "sx": 1510605408, "sy": 4294967295, "sz": 2130266763, "uv": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
-        }
-        let
+    var tx = t => {
+        let e = Ia.modelformat.decode(t),
             n = Y1 / (X1 / e.sx),
             o = Y1 / (X1 / e.sy),
             i = Y1 / (X1 / e.sz);
         for (let s = 0; s < e.position.length; s += 3) e.position[s + 0] = e.position[s + 0] / n, e.position[s + 1] = e.position[s + 1] / o, e.position[s + 2] = e.position[s + 2] / i;
-        for (let s = 0; s < e.uv.length; ++s) e.uv[s] /= O9;
-        for (let s = 0; s < e.color.length; ++s) e.color[s] /= $9;
-        for (let s = 0, r = e.normal.length; s < r; s++) e.normal[s] = e.normal[s] / U9;
+        for (let s = 0; s < e.uv.length; ++s) e.uv[s] /= O7;
+        for (let s = 0; s < e.color.length; ++s) e.color[s] /= $7;
+        for (let s = 0, r = e.normal.length; s < r; s++) e.normal[s] = e.normal[s] / U7;
         return e
     };
     var Q1 = async (t, e, n, o, i, s = 3) => {
-        if (e && e.includes("7777")) {
-            return n[e] = await o(t,e), i(n[e], t + e)
-        }
         switch (e.split(".").pop()) {
             case "jpg":
             case "png":
@@ -8467,15 +6764,15 @@ void main(){
             case "webp": {
                 let r = new Image;
                 r.onload = () => {
-                    n[e] = o(r,e), i(n[e], t + e), r.onload = void 0
-                }, r.src = t + e + "?v=8822612";
+                    n[e] = o(r), i(n[e], t + e), r.onload = void 0
+                }, r.src = t + e + "?v=8829640";
                 break
             }
             default: {
-                fetch(t + e + "?v=8822612").then(r => {
+                fetch(t + e + "?v=8829640").then(r => {
                     if (!r.ok) throw new Error;
                     r.arrayBuffer().then(async l => {
-                        n[e] = await o(l,e), i(n[e], t + e)
+                        n[e] = await o(l), i(n[e], t + e)
                     })
                 }).catch(r => {
                     console.log(e + " fetch failed"), s > 1 && Q1(t, e, n, o, i, --s)
@@ -8485,14 +6782,14 @@ void main(){
         }
     };
     var ul = {},
-        W9 = (t, e) => {
+        W7 = (t, e) => {
             for (let n = 0, o = ul[e].length; n < o; ++n) ul[e][n](...t);
             ul[e] = void 0
         },
         eu = async (t, e, n, o, i) => {
-            n[e] ? i(...n[e]) : ul[t + e] ? ul[t + e].push(i) : (ul[t + e] = [], ul[t + e].push(i), Q1(t, e, n, o, W9))
-        }, j9 = (t,id) => {
-            let e = tx(new Uint8Array(t),id);
+            n[e] ? i(...n[e]) : ul[t + e] ? ul[t + e].push(i) : (ul[t + e] = [], ul[t + e].push(i), Q1(t, e, n, o, W7))
+        }, j7 = t => {
+            let e = tx(new Uint8Array(t));
             return [{
                 index: {
                     type: 5125,
@@ -8515,8 +6812,8 @@ void main(){
                     data: new Float32Array(e.color)
                 }
             }, e]
-        }, G9 = {}, ar = (t, e) => {
-            eu("data/assets/", td(t), G9, j9, e)
+        }, G7 = {}, ar = (t, e) => {
+            eu("data/assets/", td(t), G7, j7, e)
         };
     var tu, Is, nx = () => {
             tu = Bo(Pn({
@@ -8528,12 +6825,12 @@ void main(){
                     size: 2,
                     data: new Float32Array([0, 0, 2, 0, 0, 2])
                 }
-            }), 0, j.TRIANGLES), fetch("/data/items/atlas.json?v=8822612").then(async t => {
+            }), 0, j.TRIANGLES), fetch("/data/items/atlas.json?v=8829640").then(async t => {
                 Is = await t.json();
                 for (let e in Is) e != "s" && (Is[e] = Is[e].map(n => n / Is.s))
             })
         },
-        H9 = t => {
+        H7 = t => {
             let e = ir({
                 image: t,
                 wrapS: j.REPEAT,
@@ -8543,7 +6840,7 @@ void main(){
             });
             return oi(e), [e]
         },
-        Y9 = t => {
+        Y7 = t => {
             let e = _y(t),
                 n = ir({
                     buffer: e,
@@ -8562,12 +6859,12 @@ void main(){
         vo = (t, e) => {
             Ga.has(t) || console.log("unknown file id: " + t);
             let n = Ga.get(t);
-            n.ext === 3 && ob ? eu("data/assets/", `${t}.${Kf[n.ext]}`, Z1, Y9, e) : eu("data/assets/", `${t}.${V1||Kf[n.ext]}`, Z1, H9, e)
+            n.ext === 3 && ob ? eu("data/assets/", `${t}.${Kf[n.ext]}`, Z1, Y7, e) : eu("data/assets/", `${t}.${V1||Kf[n.ext]}`, Z1, H7, e)
         },
         ox, ix = (t, e, n) => {
-            ox = e, eu("data/assets/", t + ".ogg", Z1, X9, n)
+            ox = e, eu("data/assets/", t + ".ogg", Z1, X7, n)
         },
-        X9 = async t => [await ox.decodeAudioData(t)];
+        X7 = async t => [await ox.decodeAudioData(t)];
     var nn = (t, e) => t + Math.random() * (e - t),
         J1 = (t, e) => Math.floor(Math.random() * (e - t + 1)) + t;
     var sx = t => K1(t, Math.random()),
@@ -8577,17 +6874,17 @@ void main(){
         Ds = new Map,
         nd = new Set,
         ax = t => {
-            vn && (Q9(), Z9(t), nd.clear())
+            vn && (Q7(), Z7(t), nd.clear())
         },
-        Q9 = () => {
+        Q7 = () => {
             cx(vn.listener, gt.transform.worldMatrix), Rm(Cs, Qt.worldMatrix), X(bt, 0, 0, 1), Zh(bt, bt, Cs), X(xn, 0, 1, 0), Zh(xn, xn, Cs), vn.listener.setOrientation(bt[0], bt[1], bt[2], xn[0], xn[1], xn[2])
         },
-        Z9 = t => {
+        Z7 = t => {
             let e = 0,
                 n = 0;
             for (; n < fr.length;) {
                 let o = fr[n];
-                o.ended ? J9(o.id) : (fr[e] = o, e++), ++n
+                o.ended ? J7(o.id) : (fr[e] = o, e++), ++n
             }
             fr.length = e
         },
@@ -8597,7 +6894,7 @@ void main(){
         fx = function() {
             this.ended = !0
         },
-        J9 = t => {
+        J7 = t => {
             Ds.set(t, Math.max(0, Ds.get(t) - 1))
         },
         rx = (t, e) => {
@@ -8657,7 +6954,7 @@ void main(){
                 cr.get(1).gain.gain.value = (s / 150) ** 2
             }), Zr.subscribe(s => {
                 cr.get(0).in.gain.value = s / 100
-            }), q_.set(!0), document.removeEventListener("click", mx)
+            }), q2.set(!0), document.removeEventListener("click", mx)
         },
         lx = !1,
         px = (t, e) => {
@@ -8781,7 +7078,7 @@ void main(){
         },
         ln = (t, e) => (e.press || (e.down = !1, e.onPress = tE, e.onRelease = nE, e.press = [], e.release = [], e.mappings = [], e.store || (e.store = ne(!1))), t = Array.isArray(t) ? t : [t], t.forEach(n => {
             kx[n] = e, e.mappings.push(n)
-        }), L_.set(nt), e),
+        }), L2.set(nt), e),
         xx = () => {
             ln(fe.kbForward, nt.fwd = {}), ln(fe.kbLeft, nt.left = {}), ln(fe.kbBack, nt.back = {}), ln(fe.kbRight, nt.right = {}), ln(fe.kbNextTarget, nt.nextTarget = {}), ln(fe.kbNextParty, nt.nextParty = {}), ln(fe.kbUntarget, nt.untarget = {}), ln(" ", nt.jump = {}), ln(fe.kbAltForward, nt.fwd), ln(fe.kbAltBack, nt.back), ln(fe.kbTurnRight, nt.turnright = {}), ln(fe.kbTurnLeft, nt.turnleft = {}), ln("shift", nt.shift = {}), ln("m0", nt.lmb = {}), ln("m2", nt.rmb = {}), ln("control", nt.ctrl = {}), ln("alt", nt.alt = {}), ln(fe.kbMap, nt.map = {}), ln(fe.kbSkills, nt.skills = {}).onPress(() => {
                 bs.update(t => !t), wt(89)
@@ -8797,7 +7094,7 @@ void main(){
                 xs.update(t => !t), wt(90)
             }), ln(fe.kbParty, nt.party = {}).onPress(() => {
                 ei.update(t => !t), wt(90)
-            }), delete kx["shift"], document.addEventListener("wheel", rE, {
+            }), document.addEventListener("wheel", rE, {
                 passive: !0
             }), document.addEventListener("keydown", aE, !1), document.addEventListener("keyup", cE, !1), document.addEventListener("contextmenu", lE, !1), document.addEventListener("mousedown", iE, !1), document.addEventListener("mouseup", sE, !1), document.addEventListener("mousemove", oE, !1)
         },
@@ -8841,13 +7138,11 @@ void main(){
         aE = t => {
             if (!Fx(t)) return;
             let e = t.key.toLowerCase();
-            if (fe.kbItemNames && e === fe.kbItemNames){ nt.shift.down||(nt.shift.down=!0,nt.shift.press.forEach(f=>f(t)),nt.shift.store.set(!0)); t&&t.preventDefault(); }
             t.ctrlKey && ur("ctrl+" + e, !0, t) || t.shiftKey && ur("shift+" + e, !0, t) || ur(e, !0, t)
         },
         cE = t => {
             if (!Fx(t)) return;
             let e = t.key.toLowerCase();
-            if (fe.kbItemNames && e === fe.kbItemNames){ nt.shift.down&&(nt.shift.down=!1,nt.shift.release.forEach(f=>f(t)),nt.shift.store.set(!1)); }
             ur("ctrl+" + e, !1), ur("shift+" + e, !1), ur(e, !1)
         },
         Fx = t => {
@@ -9173,7 +7468,6 @@ void main(){
             }, r, `${l} ${en(i,s)}?`)
         },
         iu = (t, e, n, o, i) => {
-            if ((o === "charm" || (o === "mount" && e>0) || e>0) && fe.disallowSpecialSelling) return
             Tx("itemtradersell", t, e, n, o, i, "Sell item", "Really sell")
         },
         lg = (t, e, n, o, i) => {
@@ -9184,7 +7478,7 @@ void main(){
         let e, n;
         return {
             c() {
-                e = h("img"), p(e, "class", "icon svelte-erbdzy"), st(e.src, n = "/data/ui/icons/gem.svg?v=8822612") || p(e, "src", n)
+                e = h("img"), p(e, "class", "icon svelte-erbdzy"), st(e.src, n = "/data/ui/icons/gem.svg?v=8829640") || p(e, "src", n)
             },
             m(o, i) {
                 w(o, e, i)
@@ -9289,19 +7583,19 @@ void main(){
     var _E = t => t.replace(/\$c(\d)/g, (e, n) => `<img class=texticon src='${ns(n)}'>`),
         bE = t => t.replace(/\$l(\d+)/g, (e, n) => `<span class=textwhite>${n}</span>`),
         yE = t => t.replace(/\$f(\d)(\w*)/g, (e, n, o) => `<span class=textf${n}>${o}</span>`),
-        kE = t => t.replace(/\$gt/g, (e, n) => '<img class="svgicon" src="/data/ui/icons/check.svg?v=8822612">'),
+        kE = t => t.replace(/\$gt/g, (e, n) => '<img class="svgicon" src="/data/ui/icons/check.svg?v=8829640">'),
         xE = t => t.replace(/\$e(\d+)/g, (e, n) => su(n, !1)),
         wE = t => t.replace(/\$g(\d+)/g, (e, n) => cg(n, !1)),
         ME = t => t.replace(/\$m(\d+)/g, (e, n) => fg(n, !1)),
-        FE = t => t.replace(/\$sp(\d+)/g, (e, n) => "<img class=texticon src=/data/ui/icons/gem.svg?v=8822612/>" + n),
-        CE = t => t.replace(/\$fm(\d+)/g, (e, n) => `<span class=textfame><img class=svgicon src='/data/ui/currency/fame.svg?v=8822612'> ${n}</span>`),
+        FE = t => t.replace(/\$sp(\d+)/g, (e, n) => "<img class=texticon src=/data/ui/icons/gem.svg?v=8829640/>" + n),
+        CE = t => t.replace(/\$fm(\d+)/g, (e, n) => `<span class=textfame><img class=svgicon src='/data/ui/currency/fame.svg?v=8829640'> ${n}</span>`),
         cg = (t, e = !1) => {
             let {
                 c: n,
                 s: o,
                 g: i
             } = Ix(t), s = "<span/>";
-            return i != "" && (s += `<span class=${e?"textred":"textgold"}>${i}</span> <img class=texticon src='/data/ui/currency/gold.${On}?v=8822612'/>`), o != "" && (s += `<span class=${e?"textred":"textsilver"}>${o}</span> <img class=texticon src='/data/ui/currency/silver.${On}?v=8822612'/>`), n != "" && (s += `<span class=${e?"textred":"textcopper"}>${n}</span> <img class=texticon src='/data/ui/currency/copper.${On}?v=8822612'/>`), s + "</span>"
+            return i != "" && (s += `<span class=${e?"textred":"textgold"}>${i}</span> <img class=texticon src='/data/ui/currency/gold.${On}?v=8829640'/>`), o != "" && (s += `<span class=${e?"textred":"textsilver"}>${o}</span> <img class=texticon src='/data/ui/currency/silver.${On}?v=8829640'/>`), n != "" && (s += `<span class=${e?"textred":"textcopper"}>${n}</span> <img class=texticon src='/data/ui/currency/copper.${On}?v=8829640'/>`), s + "</span>"
         };
     var fg = (t, e = !1) => `<span class='${e?"textred":"textgold"}'><img class='svgicon' src='${Wk}'> ${ht(t)}</span>`,
         su = t => `<span class='bold textpvp'><img class='svgicon' src='${Nk(t)}'> ${ht(t)}</span>`,
@@ -9321,27 +7615,7 @@ void main(){
                 g = Math.round(u * s);
             return m === 0 || g === 0 || Eo.drawImage(t, 0, 0, Math.round(t.width * i), Math.round(t.height * s), Math.round(e[0] - f * a + r * o), Math.round(e[1] - u * c + l * o), m, g), m
         },
-        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => n.size >= 1 ? drHD(t, e, n, o, i, s, r, l, a) : pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
-        drHD = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5, dpr = 2) => {
-            let canvas = luHD(e, n, dpr);
-            let lw = canvas.logicalWidth,
-                lh = canvas.logicalHeight;
-            
-            Eo.globalAlpha = fe.nameplateShowTransparency ? o : 1;
-            let f = lw * i,
-                u = lh * i,
-                m = Math.round(f),
-                g = Math.round(u);
-            if (m === 0 || g === 0) return m;
-            Eo.drawImage(
-                canvas,
-                0, 0, canvas.width, canvas.height,
-                Math.round(t[0] - f * l + s * i),
-                Math.round(t[1] - u * a + r * i),
-                m, g
-            );
-            return m;
-        },
+        dr = (t, e, n, o, i, s = 0, r = 0, l = .5, a = .5) => pr(lu(e, n), t, o, i, 1, 1, s, r, l, a),
         qx = (t, e, n, o, i = 0, s = 0, r = .5, l = .5) => pr(e, t, n, o, 1, 1, i, s, r, l),
         vl = (t, e, n = !1) => (n ? (e[0] = t[0], e[1] = t[1]) : Ao(e, t, gt.projectionViewMatrix), n || e[2] < 1 && e[0] > -1 && e[0] < 1 ? (e[1] = Math.max(-1, Math.min(e[1], 1)), e[0] = Math.round((e[0] * .5 + .5) * Ln.width), e[1] = Math.round((e[1] * -.5 + .5) * Ln.height), e[1] = Math.max(30, e[1]), e) : !1),
         Rx = (t, e, n) => {
@@ -9435,23 +7709,23 @@ void main(){
             },
             phys: {
                 fill: Lt("name"),
-                size: 18 * (fe.shrinkIndicators / 500)
+                size: 18
             },
             physCrit: {
                 fill: Lt("name"),
-                size: 24  * (fe.shrinkIndicators / 500)
+                size: 24
             },
             spell: {
                 fill: "#FFE404",
-                size: 28  * (fe.shrinkIndicators / 500)
+                size: 28
             },
             spellCrit: {
-                fill: "#ffa02d",
-                size: 40  * (fe.shrinkIndicators / 500)
+                fill: "#FFE404",
+                size: 40
             },
             heal: {
                 fill: "#12F027",
-                size: 28  * (fe.shrinkIndicators / 500)
+                size: 28
             },
             mana: {
                 fill: Lt("mana"),
@@ -9463,7 +7737,7 @@ void main(){
             },
             fame: {
                 fill: Lt("fame"),
-                size: 20  * (fe.shrinkIndicators / 500)
+                size: 20
             },
             gold: {
                 fill: "#EEDDA3",
@@ -9519,11 +7793,11 @@ void main(){
             },
             pheal: {
                 fill: "#12F027",
-                size: 20 * (fe.shrinkIndicators / 500)
+                size: 20
             },
             pdmg: {
                 fill: Lt("enemy"),
-                size: 20 * (fe.shrinkIndicators / 500)
+                size: 20
             }
         },
         pg = {},
@@ -9536,40 +7810,7 @@ void main(){
             if (pg[i]) return pg[i];
             let s = document.createElement("canvas"),
                 r = s.getContext("2d");
-            r.font = "bold " + n + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
-            return s
-        },
-        luHD = (t, {
-            fill: e,
-            size: n,
-            wrap: o = 0
-        }, dpr = 2) => {
-            let i = t + e + n + dpr;
-            if (pg[i]) return pg[i];
-            let s = document.createElement("canvas"),
-                r = s.getContext("2d");
-            
-            let scaledN = n * dpr;
-            r.font = "bold " + scaledN + "px hordes";
-            
-            if (o > 0) {
-                PE(s, r, t, 0, 0, o * dpr, scaledN, e);
-            } else {
-                s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5 * dpr;
-                s.height = Math.ceil(scaledN * 1.2 + 5 * dpr);
-                Rx(r, scaledN, e);
-                if (fe.outlines) {
-                    r.lineWidth = 1.5 * dpr;
-                    r.strokeStyle = "black";
-                    r.strokeText(t, 0, s.height - 6 * dpr);
-                }
-                r.fillText(t, 0, s.height - 6 * dpr);
-            }
-            s.logicalWidth = s.width / dpr;
-            s.logicalHeight = s.height / dpr;
-            
-            pg[i] = s;
-            return s;
+            return r.font = "bold " + n + "px hordes", o > 0 ? PE(s, r, t, 0, 0, o, n, e) : (s.width = Math.max(1, Math.ceil(r.measureText(t).width)) + 5, s.height = Math.ceil(n * 1.2 + 5), Rx(r, n, e), r.fillText(t, 0, s.height - 6)), pg[i] = s, s
         },
         Vo = (t, e, n, o, i, s, r) => {
             t || (t = document.createElement("canvas"), t.width = n, t.height = o);
@@ -10202,13 +8443,13 @@ void main(){
         let e, n;
         return {
             c() {
-                e = h("img"), st(e.src, n = "/data/ui/icons/" + t[1] + ".svg?v=8822612") || p(e, "src", n), p(e, "class", "titleicon svgicon svelte-1f1v3u3")
+                e = h("img"), st(e.src, n = "/data/ui/icons/" + t[1] + ".svg?v=8829640") || p(e, "src", n), p(e, "class", "titleicon svgicon svelte-1f1v3u3")
             },
             m(o, i) {
                 w(o, e, i)
             },
             p(o, i) {
-                i[0] & 2 && !st(e.src, n = "/data/ui/icons/" + o[1] + ".svg?v=8822612") && p(e, "src", n)
+                i[0] & 2 && !st(e.src, n = "/data/ui/icons/" + o[1] + ".svg?v=8829640") && p(e, "src", n)
             },
             d(o) {
                 o && x(e)
@@ -10220,7 +8461,7 @@ void main(){
         let e, n, o, i;
         return {
             c() {
-                e = h("img"), st(e.src, n = "/data/ui/icons/cog.svg?v=8822612") || p(e, "src", n), p(e, "class", "btn black svgicon")
+                e = h("img"), st(e.src, n = "/data/ui/icons/cog.svg?v=8829640") || p(e, "src", n), p(e, "class", "btn black svgicon")
             },
             m(s, r) {
                 w(s, e, r), o || (i = H(e, "click", t[13]), o = !0)
@@ -10236,7 +8477,7 @@ void main(){
         let e, n, o, i;
         return {
             c() {
-                e = h("img"), st(e.src, n = "/data/ui/icons/cross.svg?v=8822612") || p(e, "src", n), p(e, "class", "btn black svgicon")
+                e = h("img"), st(e.src, n = "/data/ui/icons/cross.svg?v=8829640") || p(e, "src", n), p(e, "class", "btn black svgicon")
             },
             m(s, r) {
                 w(s, e, r), o || (i = H(e, "click", t[20]), o = !0)
@@ -10259,7 +8500,7 @@ void main(){
                 e = h("div"), n = h("div"), o = h("div"), _ && _.c(), i = h("div"), s = h("div"), r = T(t[0]), b && b.c(), l = de(), k && k.c(), c = h("div"), F && F.c(), p(i, "class", "textprimary title svelte-1f1v3u3"), p(o, "class", "titleframe svelte-1f1v3u3"), p(o, "style", a = t[7] ? "" : "cursor: pointer;"), p(c, "class", f = "slot " + (t[4] ? "scrollbar" : "") + " svelte-1f1v3u3"), p(n, "class", "window panel-black svelte-1f1v3u3"), p(e, "class", "window-pos"), p(e, "style", u = "z-index: " + t[5] + "; position: absolute; " + t[10] + ": " + Math.round(t[8][0]) + "px; " + t[11] + ": " + Math.round(t[8][1]) + "px;")
             },
             m(A, C) {
-                w(A, e, C), d(e, n), d(n, o), _ && _.m(o, null), d(o, i), d(i, s), d(s, r), b && b.m(o, null), d(o, l), k && k.m(o, null), d(n, c), F && F.m(c, null), t[21](n), m = !0, g || (v = H(o, "mousedown", F_(t[12])), g = !0)
+                w(A, e, C), d(e, n), d(n, o), _ && _.m(o, null), d(o, i), d(i, s), d(s, r), b && b.m(o, null), d(o, l), k && k.m(o, null), d(n, c), F && F.m(c, null), t[21](n), m = !0, g || (v = H(o, "mousedown", F2(t[12])), g = !0)
             },
             p(A, C) {
                 A[1] ? _ ? _.p(A, C) : (_ = Jx(A), _.c(), _.m(o, i)) : _ && (_.d(1), _ = null), (!m || C[0] & 1) && G(r, A[0]), A[3] ? b ? b.p(A, C) : (b = Kx(A), b.c(), b.m(o, l)) : b && (b.d(1), b = null), A[2] ? k ? k.p(A, C) : (k = ew(A), k.c(), k.m(o, null)) : k && (k.d(1), k = null), (!m || C[0] & 128 && a !== (a = A[7] ? "" : "cursor: pointer;")) && p(o, "style", a), F && F.p && (!m || C[0] & 262144) && sa(F, y, A, A[18], m ? ia(y, A[18], C, null) : ra(A[18]), null), (!m || C[0] & 16 && f !== (f = "slot " + (A[4] ? "scrollbar" : "") + " svelte-1f1v3u3")) && p(c, "class", f), (!m || C[0] & 288 && u !== (u = "z-index: " + A[5] + "; position: absolute; " + A[10] + ": " + Math.round(A[8][0]) + "px; " + A[11] + ": " + Math.round(A[8][1]) + "px;")) && p(e, "style", u)
@@ -10520,6 +8761,7 @@ void main(){
     }
 
     function jE(t, e, n) {
+        let o;
         re(t, ji, l => n(0, o = l));
 
         function i(l) {
@@ -10543,13 +8785,13 @@ void main(){
             u = oa(f, t, t[6], null);
         return {
             c() {
-                e = h("div"), n = h("div"), o = h("span"), i = T(t[0]), s = h("span"), r = T(t[1]), u && u.c(), p(o, "class", "left svelte-i7i7g5"), p(s, "class", "right svelte-i7i7g5"), p(n, "class", l = "progressBar " + t[3] + " svelte-i7i7g5"), Ve(n, "background", _bgcStyle(t[3])), Ve(n, "width", t[2] + "%"), Ve(n, "font-size", t[4]), p(e, "class", a = "bar " + (t[5] ? "dark" : "") + " svelte-i7i7g5"), Ve(e, "z-index", t[3] == "hp" ? "1" : "0")
+                e = h("div"), n = h("div"), o = h("span"), i = T(t[0]), s = h("span"), r = T(t[1]), u && u.c(), p(o, "class", "left svelte-i7i7g5"), p(s, "class", "right svelte-i7i7g5"), p(n, "class", l = "progressBar " + t[3] + " svelte-i7i7g5"), Ve(n, "width", t[2] + "%"), Ve(n, "font-size", t[4]), p(e, "class", a = "bar " + (t[5] ? "dark" : "") + " svelte-i7i7g5"), Ve(e, "z-index", t[3] == "hp" ? "1" : "0")
             },
             m(m, g) {
                 w(m, e, g), d(e, n), d(n, o), d(o, i), d(n, s), d(s, r), u && u.m(e, null), c = !0
             },
             p(m, [g]) {
-                (!c || g & 1) && G(i, m[0]), (!c || g & 2) && G(r, m[1]), (!c || g & 8 && l !== (l = "progressBar " + m[3] + " svelte-i7i7g5")) && (p(n, "class", l), Ve(n, "background", _bgcStyle(m[3]))), (!c || g & 4) && Ve(n, "width", m[2] + "%"), (!c || g & 16) && Ve(n, "font-size", m[4]), u && u.p && (!c || g & 64) && sa(u, f, m, m[6], c ? ia(f, m[6], g, null) : ra(m[6]), null), (!c || g & 32 && a !== (a = "bar " + (m[5] ? "dark" : "") + " svelte-i7i7g5")) && p(e, "class", a), (!c || g & 8) && Ve(e, "z-index", m[3] == "hp" ? "1" : "0")
+                (!c || g & 1) && G(i, m[0]), (!c || g & 2) && G(r, m[1]), (!c || g & 8 && l !== (l = "progressBar " + m[3] + " svelte-i7i7g5")) && p(n, "class", l), (!c || g & 4) && Ve(n, "width", m[2] + "%"), (!c || g & 16) && Ve(n, "font-size", m[4]), u && u.p && (!c || g & 64) && sa(u, f, m, m[6], c ? ia(f, m[6], g, null) : ra(m[6]), null), (!c || g & 32 && a !== (a = "bar " + (m[5] ? "dark" : "") + " svelte-i7i7g5")) && p(e, "class", a), (!c || g & 8) && Ve(e, "z-index", m[3] == "hp" ? "1" : "0")
             },
             i(m) {
                 c || (S(u, m), c = !0)
@@ -10605,8 +8847,7 @@ void main(){
     var cu = new Map,
         sw = !1,
         YE = () => {
-            if (fe.disableCircleCooldowns) return;
-            fetch("/data/ui/circlecooldowns/circlecooldowns.txt?v=8822612").then(async t => {
+            fetch("/data/ui/circlecooldowns/circlecooldowns.txt?v=8829640").then(async t => {
                 let e = (await t.text()).split(`
 `);
                 for (let n = 0; n < 3; ++n) {
@@ -10621,7 +8862,6 @@ void main(){
             })
         },
         fu = (t, e, n) => {
-            if (fe.disableCircleCooldowns) return;
             sw && e && t !== e.step && (e.cdimg !== void 0 && (cu.get(n)[e.step].push(e.removeChild(e.cdimg)), e.cdimg = void 0), (e.step = t) > 0 && (cu.get(n)[e.step].length === 1 ? e.cdimg = cu.get(n)[e.step][0].cloneNode() : e.cdimg = cu.get(n)[e.step].pop(), e.appendChild(e.cdimg)))
         };
 
@@ -10663,22 +8903,17 @@ void main(){
     }
 
     function XE(t) {
-        let borders = [
-            "positive",
-            "negative",
-            "glow"
-        ]
         let e, n, o, i, s, r, l, a, c, f, u = t[0] > 1 && rw(t),
             m = t[3] > 30 && fe.cdTextBuffs && t[5] > 0 && lw(t);
         return {
             c() {
-                e = h("div"), n = h("div"), o = h("img"), s = h("div"), u && u.c(), r = de(), m && m.c(), p(o, "class", "icon svelte-1nn7wcb"), st(o.src, i = t[1]) || p(o, "src", i), Ve(o, "max-width", t[3] + "px"), p(s, "class", "overlay svelte-1nn7wcb"), p(n, "class", l = "slot border " + (borders[t[2]]) + " svelte-1nn7wcb"), p(e, "class", a = "container " + (t[5] < fe.buffCdFlashingDuration && t[5] % fe.buffCdFlashingInterval * 2 > fe.buffCdFlashingInterval ? "soon" : "") + " svelte-1nn7wcb")
+                e = h("div"), n = h("div"), o = h("img"), s = h("div"), u && u.c(), r = de(), m && m.c(), p(o, "class", "icon svelte-1nn7wcb"), st(o.src, i = t[1]) || p(o, "src", i), Ve(o, "max-width", t[3] + "px"), p(s, "class", "overlay svelte-1nn7wcb"), p(n, "class", l = "slot border " + (t[2] === 1 ? "negative" : "positive") + " svelte-1nn7wcb"), p(e, "class", a = "container " + (t[5] < fe.buffCdFlashingDuration && t[5] % fe.buffCdFlashingInterval * 2 > fe.buffCdFlashingInterval ? "soon" : "") + " svelte-1nn7wcb")
             },
             m(g, v) {
                 w(g, e, v), d(e, n), d(n, o), d(n, s), t[10](s), u && u.m(n, null), d(n, r), m && m.m(n, null), c || (f = H(e, "contextmenu", t[6]), c = !0)
             },
             p(g, [v]) {
-                v & 2 && !st(o.src, i = g[1]) && p(o, "src", i), v & 8 && Ve(o, "max-width", g[3] + "px"), g[0] > 1 ? u ? u.p(g, v) : (u = rw(g), u.c(), u.m(n, r)) : u && (u.d(1), u = null), g[3] > 30 && fe.cdTextBuffs && g[5] > 0 ? m ? m.p(g, v) : (m = lw(g), m.c(), m.m(n, null)) : m && (m.d(1), m = null), v & 4 && l !== (l = "slot border " + (borders[g[2]]) + " svelte-1nn7wcb") && p(n, "class", l), v & 32 && a !== (a = "container " + (g[5] < fe.buffCdFlashingDuration && g[5] % fe.buffCdFlashingInterval * 2 > fe.buffCdFlashingInterval ? "soon" : "") + " svelte-1nn7wcb") && p(e, "class", a)
+                v & 2 && !st(o.src, i = g[1]) && p(o, "src", i), v & 8 && Ve(o, "max-width", g[3] + "px"), g[0] > 1 ? u ? u.p(g, v) : (u = rw(g), u.c(), u.m(n, r)) : u && (u.d(1), u = null), g[3] > 30 && fe.cdTextBuffs && g[5] > 0 ? m ? m.p(g, v) : (m = lw(g), m.c(), m.m(n, null)) : m && (m.d(1), m = null), v & 4 && l !== (l = "slot border " + (g[2] === 1 ? "negative" : "positive") + " svelte-1nn7wcb") && p(n, "class", l), v & 32 && a !== (a = "container " + (g[5] < fe.buffCdFlashingDuration && g[5] % fe.buffCdFlashingInterval * 2 > fe.buffCdFlashingInterval ? "soon" : "") + " svelte-1nn7wcb") && p(e, "class", a)
             },
             i: ae,
             o: ae,
@@ -10828,14 +9063,14 @@ void main(){
             j.bindBuffer(j.UNIFORM_BUFFER, t.buffer), j.bufferSubData(j.UNIFORM_BUFFER, 0, cw, 0, t.layout.size / 4), j.bindBuffer(j.UNIFORM_BUFFER, null)
         };
     var oc = [],
-        ic, Si, Ls, yl, kl, ssaoFb1, ssaoFb2, ssaoHistA, ssaoHistB, mw = t => {
+        ic, Si, Ls, yl, kl, mw = t => {
             let e = tt.width,
                 n = tt.height;
             for (let o = 0; o < 2; ++o) oc.push(Ts(t, t, 0, !0, j.COMPARE_REF_TO_TEXTURE));
-            ic = Ts(t, t, 0, !0, j.COMPARE_REF_TO_TEXTURE), Si = Ts(e, n, 1, !0), Ls = Ts(e, n, 1, !0), ssaoFb1 = Ts(e, n, 1, !1), ssaoFb2 = Ts(e, n, 1, !1), ssaoHistA = Ts(e, n, 1, !1), ssaoHistB = Ts(e, n, 1, !1), yl = Ts(Math.ceil(e / 4), Math.ceil(n / 4)), kl = Ts(Math.ceil(e / 4), Math.ceil(n / 4))
+            ic = Ts(t, t, 0, !0, j.COMPARE_REF_TO_TEXTURE), Si = Ts(e, n, 1, !0), Ls = Ts(e, n, 1, !0), yl = Ts(Math.ceil(e / 4), Math.ceil(n / 4)), kl = Ts(Math.ceil(e / 4), Math.ceil(n / 4))
         },
         pw = (t, e) => {
-            Wf(Si, t, e), Wf(Ls, t, e), Wf(ssaoFb1, t, e), Wf(ssaoFb2, t, e), Wf(ssaoHistA, t, e), Wf(ssaoHistB, t, e), Wf(yl, Math.ceil(t / 4), Math.ceil(e / 4)), Wf(kl, Math.ceil(t / 4), Math.ceil(e / 4))
+            Wf(Si, t, e), Wf(Ls, t, e), Wf(yl, Math.ceil(t / 4), Math.ceil(e / 4)), Wf(kl, Math.ceil(t / 4), Math.ceil(e / 4))
         };
     var Fd = {};
     Kn(Fd, {
@@ -10880,299 +9115,16 @@ precision highp float;precision highp int;out vec4 fragColor;uniform Environment
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec2 uv;in vec3 position;in vec3 normal;in mat4 worldMatrix;in vec4 uvshift;in float shine;out float vShine;out vec2 vUv;void main(){vShine=shine;vWorldPos=worldMatrix*vec4(position,1.0);vUv=uvshift.zw-uv*uvshift.xy;vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*worldMatrix*vec4(position,1.0);}`;
     var vw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform sampler2D foliageDiffuse;in vec3 vLight;in vec3 vLightAmb;in vec3 vLightDir;in vec2 vUv;out vec4 fragColor;void main(){vec4 b=texture(foliageDiffuse,vUv);float c=0.1;b.a=b.a*smoothstep(1.0,0.0,(vCameraDistance-${(_grassDist - 20).toFixed(1)})/20.0);if(b.a<c){discard;};float d=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float e=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 f=shadowPVMatrix[1]*(vWorldPos);vec3 g=(f.xyz/f.w)*0.5+0.5;d=texture(shadowMaps[1],g);}else{vec4 f=shadowPVMatrix[0]*(vWorldPos);vec3 g=(f.xyz/f.w)*0.5+0.5;d=texture(shadowMaps[0],g);}d=d;d=max(d,e);}b.rgb=b.rgb*(vLight+vLightAmb+vLightDir*d);float h=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,h);fragColor=b;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform sampler2D foliageDiffuse;in vec3 vLight;in vec3 vLightAmb;in vec3 vLightDir;in vec2 vUv;out vec4 fragColor;void main(){vec4 b=texture(foliageDiffuse,vUv);float c=0.1;b.a=b.a*smoothstep(1.0,0.0,(vCameraDistance-110.0)/20.0);if(b.a<c){discard;};float d=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float e=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 f=shadowPVMatrix[1]*(vWorldPos);vec3 g=(f.xyz/f.w)*0.5+0.5;d=texture(shadowMaps[1],g);}else{vec4 f=shadowPVMatrix[0]*(vWorldPos);vec3 g=(f.xyz/f.w)*0.5+0.5;d=texture(shadowMaps[0],g);}d=d;d=max(d,e);}b.rgb=b.rgb*(vLight+vLightAmb+vLightDir*d);float h=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,h);fragColor=b;}`;
     var _w = `#version 300 es
-precision highp float;precision highp int;precision highp sampler2DShadow;
-uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};
-
-out float vCameraDistance;
-out vec4 vWorldPos;
-
-uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};
-
-out vec3 vLight;
-
-uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};
-const int a=
-#SHADOWS;
-
-uniform sampler2DShadow shadowMaps[2];
-
-uniform Camera{
-    mat4 projectionMatrix;
-    mat4 viewMatrix;
-    mat4 projectionViewMatrix;
-    vec3 cameraPosition;
-};
-
-uniform Screen{vec2 resolution;};
-
-in vec4 instPos;
-in vec3 instNorm;
-in vec3 position;
-in vec2 uv;
-
-out vec3 vLightAmb;
-out vec3 vLightDir;
-out vec2 vUv;
-
-uniform float u_rainAmount;
-
-void main(){
-    vUv=uv;
-
-    vec3 b=vec3(0.0);
-
-    for(int c=0;c<lightCount;++c){
-        vec3 d=lightPos[c]-instPos.xyz;
-
-        float e=lightCols[c].w-dot(d,d);
-
-        if(e>0.0){
-            e/=(lightCols[c].w);
-            e=e*e;
-            b+=0.3*lightCols[c].rgb*e;
-        }
-    }
-
-    vLight=b;
-
-    vLightAmb=worldlight[1];
-
-    vLightDir=
-        worldlight[0]
-        *max(0.0,dot(instNorm.xyz,worldlight[2]));
-
-    vec3 f=position;
-
-    float phase=
-        instPos.x*0.25
-        +instPos.z*0.25;
-
-    mat3 g;
-
-    g[1]=instNorm.xyz;
-
-    g[2]=normalize(
-        cross(
-            vec3(
-                sin(instPos.x*100.0),
-                0.0,
-                cos(instPos.z*100.0)
-            ),
-            g[1]
-        )
-    );
-
-    g[0]=normalize(cross(g[1],g[2]));
-
-    vec3 h=g*f;
-
-    float sway=
-        sin(time*1.35+phase);
-
-    float gust1=
-        sin(time*0.45+phase*0.7);
-
-    float gust2=
-        sin(time*1.8+phase*2.4)
-        *0.5;
-
-    float stormWave=
-        sin(time*0.12+instPos.x*0.04+instPos.z*0.03);
-
-    float baseAmp=0.18;
-
-    float stormAmp=
-        0.8*u_rainAmount;
-
-    float gustAmp=
-        gust1*(0.08+u_rainAmount*0.25);
-
-    float turbulence=
-        gust2*(0.02+u_rainAmount*0.12);
-
-    float waveAmp=
-        stormWave*u_rainAmount*0.25;
-
-    float windAmp=
-        baseAmp
-        +stormAmp
-        +gustAmp
-        +turbulence
-        +waveAmp;
-
-    vec3 stormOffset=vec3(
-        sway*windAmp,
-        0.0,
-        cos(time*1.1+phase)*windAmp*0.22*u_rainAmount
-    );
-
-    stormOffset *= position.y;
-
-    stormOffset *= instPos.w;
-
-    vWorldPos=vec4(
-        h*instPos.w
-        +instPos.xyz
-        +stormOffset,
-        1.0
-    );
-
-    vCameraDistance=
-        length(cameraPosition-vWorldPos.xyz);
-
-    gl_Position=
-        projectionViewMatrix*vWorldPos;
-}`;
-
-
-var yw = `#version 300 es
-precision highp float;precision highp int;precision highp sampler2DShadow;
-uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};
-
-out float vCameraDistance;
-out vec4 vWorldPos;
-
-uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};
-
-out vec3 vLight;
-
-uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};
-const int a=
-#SHADOWS;
-
-uniform sampler2DShadow shadowMaps[2];
-
-uniform Camera{
-    mat4 projectionMatrix;
-    mat4 viewMatrix;
-    mat4 projectionViewMatrix;
-    vec3 cameraPosition;
-};
-
-uniform Screen{vec2 resolution;};
-
-in vec4 instPos;
-in vec3 instNorm;
-in vec3 position;
-in vec2 uv;
-
-out vec2 vUv;
-out vec3 vLightAmb;
-out vec3 vLightDir;
-
-uniform float u_rainAmount;
-
-void main(){
-    vUv=uv;
-
-    vec3 b=vec3(0.0);
-
-    for(int c=0;c<lightCount;++c){
-        vec3 d=lightPos[c]-instPos.xyz;
-
-        float e=lightCols[c].w-dot(d,d);
-
-        if(e>0.0){
-            e/=(lightCols[c].w);
-            e=e*e;
-            b+=0.3*lightCols[c].rgb*e;
-        }
-    }
-
-    vLight=b;
-
-    vLightAmb=worldlight[1];
-
-    vLightDir=
-        worldlight[0]
-        *max(0.0,dot(instNorm.xyz,worldlight[2]));
-
-    vec3 f=position;
-
-    float phase=
-        instPos.x*0.18
-        +instPos.z*0.25;
-
-    mat3 g;
-
-    g[1]=instNorm.xyz;
-
-    g[2]=normalize(
-        cross(
-            vec3(
-                sin(instPos.x*100.0),
-                0.0,
-                cos(instPos.z*100.0)
-            ),
-            g[1]
-        )
-    );
-
-    g[0]=normalize(cross(g[1],g[2]));
-
-    vec3 h=g*f;
-
-    float sway=
-        sin(time*1.35+phase);
-
-    float gust1=
-        sin(time*0.45+phase*0.7);
-
-    float gust2=
-        sin(time*1.8+phase*2.4)
-        *0.5;
-
-    float stormWave=
-        sin(time*0.12+instPos.x*0.04+instPos.z*0.03);
-
-    float baseAmp=0.18;
-
-    float stormAmp=
-        0.8*u_rainAmount;
-
-    float gustAmp=
-        gust1*(0.08+u_rainAmount*0.25);
-
-    float turbulence=
-        gust2*(0.02+u_rainAmount*0.12);
-
-    float waveAmp=
-        stormWave*u_rainAmount*0.25;
-
-    float windAmp=
-        baseAmp
-        +stormAmp
-        +gustAmp
-        +turbulence
-        +waveAmp;
-
-    vec3 stormOffset=vec3(
-        sway*windAmp,
-        0.0,
-        cos(time*1.1+phase)*windAmp*0.22*u_rainAmount
-    );
-
-    stormOffset *= position.y;
-    stormOffset *= instPos.w;
-
-    vWorldPos=vec4(
-        h*instPos.w
-        +instPos.xyz
-        +stormOffset,
-        1.0
-    );
-
-    vCameraDistance=
-        length(cameraPosition-vWorldPos.xyz);
-
-    gl_Position=
-        projectionViewMatrix*vWorldPos;
-}`;
-var bw = `#version 300 es
+precision highp float;precision highp int;precision highp sampler2DShadow;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Screen{vec2 resolution;};in vec4 instPos;in vec3 instNorm;in vec3 position;in vec2 uv;out vec3 vLightAmb;out vec3 vLightDir;out vec2 vUv;void main(){vUv=uv;vec3 b=vec3(0.0);for(int c=0;c<lightCount;++c){vec3 d=lightPos[c]-instPos.xyz;float e=lightCols[c].w-dot(d,d);if(e>0.0){e/=(lightCols[c].w);e=e*e;b+=0.3*lightCols[c].rgb*e;;}};vLight=b;vLightAmb=worldlight[1];vLightDir=worldlight[0]*max(0.0,dot(instNorm.xyz,worldlight[2]));vec3 f=position;float e=sin(time+instPos.x+f.x)*0.1*f.y;f.xz+=e;mat3 g;g[1]=instNorm.xyz;g[2]=normalize(cross(vec3(sin(instPos.x*100.0),0.0,cos(instPos.z*100.0)),g[1]));g[0]=normalize(cross(g[1],g[2]));vec3 h=g*f;vWorldPos=vec4(h*instPos.w+instPos.xyz,1.0);vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*vWorldPos;}`;
+    var bw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform sampler2D foliageDiffuse;in vec3 vLightAmb;in vec3 vLightDir;in vec3 vLight;in vec2 vUv;out vec4 fragColor;void main(){vec4 b=texture(foliageDiffuse,vUv);b.a=b.a*smoothstep(1.0,0.0,(vCameraDistance-${(_grassDist - 20).toFixed(1)})/20.0);if(b.a<0.5){discard;};float c=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float d=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 e=shadowPVMatrix[1]*(vWorldPos);vec3 f=(e.xyz/e.w)*0.5+0.5;c=texture(shadowMaps[1],f);}else{vec4 e=shadowPVMatrix[0]*(vWorldPos);vec3 f=(e.xyz/e.w)*0.5+0.5;c=texture(shadowMaps[0],f);}c=c;c=max(c,d);}b.rgb=b.rgb*(vLight+vLightAmb+vLightDir*c);float g=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,g);fragColor=b;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform sampler2D foliageDiffuse;in vec3 vLightAmb;in vec3 vLightDir;in vec3 vLight;in vec2 vUv;out vec4 fragColor;void main(){vec4 b=texture(foliageDiffuse,vUv);b.a=b.a*smoothstep(1.0,0.0,(vCameraDistance-110.0)/20.0);if(b.a<0.5){discard;};float c=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float d=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 e=shadowPVMatrix[1]*(vWorldPos);vec3 f=(e.xyz/e.w)*0.5+0.5;c=texture(shadowMaps[1],f);}else{vec4 e=shadowPVMatrix[0]*(vWorldPos);vec3 f=(e.xyz/e.w)*0.5+0.5;c=texture(shadowMaps[0],f);}c=c;c=max(c,d);}b.rgb=b.rgb*(vLight+vLightAmb+vLightDir*c);float g=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,g);fragColor=b;}`;
+    var yw = `#version 300 es
+precision highp float;precision highp int;precision highp sampler2DShadow;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Screen{vec2 resolution;};in vec4 instPos;in vec3 instNorm;in vec3 position;in vec2 uv;out vec2 vUv;out vec3 vLightAmb;out vec3 vLightDir;void main(){vUv=uv;vec3 b=vec3(0.0);for(int c=0;c<lightCount;++c){vec3 d=lightPos[c]-instPos.xyz;float e=lightCols[c].w-dot(d,d);if(e>0.0){e/=(lightCols[c].w);e=e*e;b+=0.3*lightCols[c].rgb*e;;}}vLight=b;vLightAmb=worldlight[1];vLightDir+=worldlight[0]*max(0.0,dot(instNorm.xyz,worldlight[2]));vec3 f=position;mat3 g;g[1]=instNorm.xyz;g[2]=normalize(cross(vec3(sin(instPos.x*100.0),0.0,cos(instPos.z*100.0)),g[1]));g[0]=normalize(cross(g[1],g[2]));vec3 h=g*f;vWorldPos=vec4(h*instPos.w+instPos.xyz,1.0);vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*vWorldPos;}`;
     var kw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vCol;in vec2 vYcutoff;in vec4 vUvshift;out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec2 a=vec2((vUv.x+vUvshift.x)*vUvshift.z,(vUv.y+vUvshift.y)*vUvshift.w);vec4 b=vec4(1.0,1.0,1.0,texture(diffuse,a).r)*vCol;b.a*=min(1.0,max(0.0,vUv.y/vYcutoff[0]));b.a*=min(1.0,max(0.0,(vYcutoff[1]-vUv.y)/(1.0-vYcutoff[1])));if(b.a<0.01){discard;}float c=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);b.rgb=mix(fog[0],b.rgb,c);fragColor=b;fragColor.rgb*=fragColor.a;}`;
     var xw = `#version 300 es
@@ -11188,12 +9140,12 @@ precision highp float;precision highp int;in vec4 vColor;out vec4 fragColor;void
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec3 position;in vec4 color;in mat4 worldMatrix;out vec4 vColor;void main(){vColor=color;gl_Position=projectionViewMatrix*worldMatrix*vec4(position,1.0);;}`;
     var Sw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vInteriorlight;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float q=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 r=shadowPVMatrix[1]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[1],s);}else{vec4 r=shadowPVMatrix[0]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[0],s);}p=p;p=max(p,q);}vec3 t=worldlight[1];vec3 u=worldlight[0];t=mix(t,vInteriorlight.rgb*0.5,vInteriorlight.a);u=mix(u,vInteriorlight.rgb,vInteriorlight.a);o.rgb=b(t,u,o.rgb,vNormal,p,vLight,0.0);o.rgb/=o.a;float v=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,v);float w=distance(vWorldPos.xz,circlePos.xz);float x=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfsw=circleInfo.a;if(w<circlePos.w+0.1&&(x>0.0||(cfsw>1.0&&vWorldPos.y<=circlePos.y))){float adyw=cfsw>1.0?(vWorldPos.y>circlePos.y?x:1.0):x;float blndw=cfsw>1.0?(w<circlePos.w?cfsw-1.0:0.0):((w<circlePos.w?w/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-w))/0.1));o.rgb=mix(o.rgb,circleInfo.rgb,adyw*min(1.0,cfsw)*blndw);}fragColor=o;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vInteriorlight;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float q=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 r=shadowPVMatrix[1]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[1],s);}else{vec4 r=shadowPVMatrix[0]*(vWorldPos);vec3 s=(r.xyz/r.w)*0.5+0.5;p=texture(shadowMaps[0],s);}p=p;p=max(p,q);}vec3 t=worldlight[1];vec3 u=worldlight[0];t=mix(t,vInteriorlight.rgb*0.5,vInteriorlight.a);u=mix(u,vInteriorlight.rgb,vInteriorlight.a);o.rgb=b(t,u,o.rgb,vNormal,p,vLight,0.0);o.rgb/=o.a;float v=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,v);float w=distance(vWorldPos.xz,circlePos.xz);float x=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(w<circlePos.w+0.1&&x>0.0){o.rgb=mix(o.rgb,circleInfo.rgb,x*circleInfo.a*((w<circlePos.w?w/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-w))/0.1)));}fragColor=o;}`;
     var Pw = `#version 300 es
 precision highp float;precision highp int;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec2 uv;in vec3 position;in vec3 normal;in vec4 interiorlight;in mat4 worldMatrix;out vec3 vNormal;out vec2 vUv;out vec4 vInteriorlight;out vec3 vViewDir;void main(){vNormal=normalize(mat3(worldMatrix)*normal);vUv=uv;vWorldPos=worldMatrix*vec4(position,1.0);vInteriorlight=interiorlight;vCameraDistance=length(cameraPosition-vWorldPos.xyz);vec3 a=vec3(0.0);for(int b=0;b<lightCount;++b){vec3 c=lightPos[b]-vWorldPos.xyz;float d=lightCols[b].w-dot(c,c);if(d>0.0){d/=(lightCols[b].w);d=d*d;a+=max(0.0,dot(normalize(c),vNormal))*lightCols[b].rgb*d;}}vLight=a;vViewDir=-normalize(vWorldPos.xyz-cameraPosition);gl_Position=projectionViewMatrix*vWorldPos;}`;
     var Aw = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vCol;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=(float(gl_FrontFacing)*2.0-1.0);float q=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float r=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 s=shadowPVMatrix[1]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[1],t);}else{vec4 s=shadowPVMatrix[0]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[0],t);}q=q;q=max(q,r);}vec3 u=mix(worldlight[1],vCol.rgb,vCol.a);vec3 v=worldlight[0]*(1.0-vCol.a);o.rgb=b(u,v,o.rgb,vNormal,q,vLight,0.0);float w=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,w);float x=distance(vWorldPos.xz,circlePos.xz);float y=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfaw=circleInfo.a;if(x<circlePos.w+0.1&&(y>0.0||(cfaw>1.0&&vWorldPos.y<=circlePos.y))){float adyaw=cfaw>1.0?(vWorldPos.y>circlePos.y?y:1.0):y;float blndaw=cfaw>1.0?(x<circlePos.w?cfaw-1.0:0.0):((x<circlePos.w?x/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-x))/0.1));o.rgb=mix(o.rgb,circleInfo.rgb,adyaw*min(1.0,cfaw)*blndaw);}fragColor=o;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Circle{vec4 circlePos;vec4 circleInfo;};in vec3 vLight;uniform sampler2D diffuse;in vec3 vNormal;in vec2 vUv;in vec4 vCol;in vec3 vViewDir;vec3 b(vec3 c,vec3 d,vec3 e,vec3 f,float g,vec3 h,float i){f=normalize(f);float j=clamp(dot(f,worldlight[2]),0.0,g);vec3 k=c*mix(0.7,1.1,0.5+(0.5*j));vec3 l=normalize(worldlight[2]+vViewDir);vec3 m=d*pow(max(0.0,dot(l,f)),20.0)*i*max(g*0.7+0.2,0.2)*20.0;vec3 n=k+d*j+h;return n*e+m;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 o=texture(diffuse,vUv);if(o.a<0.5)discard;float p=(float(gl_FrontFacing)*2.0-1.0);float q=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float r=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 s=shadowPVMatrix[1]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[1],t);}else{vec4 s=shadowPVMatrix[0]*(vWorldPos);vec3 t=(s.xyz/s.w)*0.5+0.5;q=texture(shadowMaps[0],t);}q=q;q=max(q,r);}vec3 u=mix(worldlight[1],vCol.rgb,vCol.a);vec3 v=worldlight[0]*(1.0-vCol.a);o.rgb=b(u,v,o.rgb,vNormal,q,vLight,0.0);float w=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);o.rgb=mix(fog[0],o.rgb,w);float x=distance(vWorldPos.xz,circlePos.xz);float y=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(x<circlePos.w+0.1&&y>0.0){o.rgb=mix(o.rgb,circleInfo.rgb,y*circleInfo.a*((x<circlePos.w?x/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-x))/0.1)));}fragColor=o;}`;
     var Tw = `#version 300 es
 precision highp float;precision highp int;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};in vec2 uv;in vec3 position;in vec3 normal;in vec4 color;in mat4 worldMatrix;out vec3 vNormal;out vec2 vUv;out vec4 vCol;out vec3 vViewDir;void main(){vNormal=normalize(mat3(worldMatrix)*normal);vUv=uv;vCol=color;vWorldPos=worldMatrix*vec4(position,1.0);vCameraDistance=length(cameraPosition-vWorldPos.xyz);vec3 a=vec3(0.0);for(int b=0;b<lightCount;++b){vec3 c=lightPos[b]-vWorldPos.xyz;float d=lightCols[b].w-dot(c,c);if(d>0.0){d/=(lightCols[b].w);d=d*d;a+=max(0.0,dot(normalize(c),vNormal))*lightCols[b].rgb*d;}}vLight=a;vViewDir=-normalize(vWorldPos.xyz-cameraPosition);gl_Position=projectionViewMatrix*vWorldPos;}`;
     var Ew = `#version 300 es
@@ -11216,339 +9168,10 @@ precision highp float;precision highp int;uniform Screen{vec2 resolution;};unifo
 #define c (1.0/128.0)
 #define d (1.0/8.0)
 vec3 e(vec4 f,sampler2D g,vec2 h){vec3 i=textureLod(g,f.zw,0.0).xyz;vec3 j=textureLod(g,f.zw+vec2(1,0)*h.xy,0.0).xyz;vec3 k=textureLod(g,f.zw+vec2(0,1)*h.xy,0.0).xyz;vec3 l=textureLod(g,f.zw+vec2(1,1)*h.xy,0.0).xyz;vec3 m=textureLod(g,f.xy,0.0).xyz;vec3 n=vec3(0.299,0.587,0.114);float o=dot(i,n);float p=dot(j,n);float q=dot(k,n);float r=dot(l,n);float s=dot(m,n);float t=min(s,min(min(o,p),min(q,r)));float u=max(s,max(max(o,p),max(q,r)));vec2 v;v.x=-((o+p)-(q+r));v.y=((o+q)-(p+r));float w=max((o+p+q+r)*(0.25*b),c);float x=1.0/(min(abs(v.x),abs(v.y))+w);v=min(vec2(a,a),max(vec2(-a,-a),v*x))*h.xy;vec3 y=(1.0/2.0)*(textureLod(g,f.xy+v*(1.0/3.0-0.5),0.0).xyz+textureLod(g,f.xy+v*(2.0/3.0-0.5),0.0).xyz);vec3 az=y*(1.0/2.0)+(1.0/4.0)*(textureLod(g,f.xy+v*(0.0/3.0-0.5),0.0).xyz+textureLod(g,f.xy+v*(3.0/3.0-0.5),0.0).xyz);float aa=dot(az,n);if((aa<t)||(aa>u))return y;return az;}void main(){vec2 h=1.0/resolution;vec4 f=vec4(vUv,vUv-(h*(0.5+d)));vec3 ab=e(f,inputA,1.0/resolution);fragColor=vec4(ab,1.);}`;
-    var _ssaoSamples = (() => {
-        const N = 32;
-        const phi = Math.PI * (3 - Math.sqrt(5));
-        let out = [];
-        for (let i = 0; i < N; i++) {
-            let z = (i + 0.5) / N;
-            let r = Math.sqrt(1 - z * z);
-            let a = phi * i;
-            let x = Math.cos(a) * r;
-            let y = Math.sin(a) * r;
-            let t = i / (N - 1);
-            let scale = 0.1 + 0.9 * t * t;
-            out.push(`vec3(${(x * scale).toFixed(4)},${(y * scale).toFixed(4)},${(z * scale).toFixed(4)})`);
-        }
-        return out.join(",\n");
-    })();
-    var _ssaoFrag = `#version 300 es
-precision highp float;precision highp int;
-
-uniform Camera{
-    mat4 projectionMatrix;
-    mat4 viewMatrix;
-    mat4 projectionViewMatrix;
-    vec3 cameraPosition;
-};
-
-uniform Screen{vec2 resolution;};
-
-uniform sampler2D depthTex;
-
-in vec2 vUv;
-out vec4 fragColor;
-
-const int zr=32;
-
-const vec3 Rs[32]=vec3[32](
-${_ssaoSamples}
-);
-
-float rand(vec2 co){
-    return fract(sin(dot(co.xy,vec2(12.9898,78.233)))*43758.5453);
-}
-
-vec3 getViewPos(vec2 uv,float depth){
-    float z = -projectionMatrix[3][2] /
-              (projectionMatrix[2][2] + depth*2.0 - 1.0);
-
-    return vec3(
-        (uv*2.0-1.0)*(-z) /
-        vec2(projectionMatrix[0][0],projectionMatrix[1][1]),
-        z
-    );
-}
-
-vec3 getNormal(vec2 uv,float depth){
-    vec2 texel = 1.0 / resolution;
-    float dR = texture(depthTex, uv + vec2(texel.x,0)).r;
-    float dL = texture(depthTex, uv - vec2(texel.x,0)).r;
-    float dU = texture(depthTex, uv + vec2(0,texel.y)).r;
-    float dD = texture(depthTex, uv - vec2(0,texel.y)).r;
-
-    float skyPen = 1e6;
-    float ddR = (dR >= 0.9999) ? skyPen : abs(dR - depth);
-    float ddL = (dL >= 0.9999) ? skyPen : abs(dL - depth);
-    float ddU = (dU >= 0.9999) ? skyPen : abs(dU - depth);
-    float ddD = (dD >= 0.9999) ? skyPen : abs(dD - depth);
-
-    vec3 p = getViewPos(uv, depth);
-    vec3 dPdx = (ddR < ddL)
-        ? (getViewPos(uv + vec2(texel.x,0), dR) - p)
-        : (p - getViewPos(uv - vec2(texel.x,0), dL));
-    vec3 dPdy = (ddU < ddD)
-        ? (getViewPos(uv + vec2(0,texel.y), dU) - p)
-        : (p - getViewPos(uv - vec2(0,texel.y), dD));
-
-    return normalize(cross(dPdx, dPdy));
-}
-
-void main(){
-
-    float depth = texture(depthTex,vUv).r;
-
-    if(depth >= 0.9999){
-        fragColor = vec4(1.0);
-        return;
-    }
-
-    vec3 pos = getViewPos(vUv, depth);
-    vec3 normal = getNormal(vUv, depth);
-
-    ${fe.ssaoIGN ? `
-    float ign = fract(52.9829189 * fract(dot(gl_FragCoord.xy, vec2(0.06711056, 0.00583715))));
-    float ang = ign * 6.2831853;
-
-    vec3 up = abs(normal.y) < 0.999 ? vec3(0.0, 1.0, 0.0) : vec3(1.0, 0.0, 0.0);
-    vec3 t0 = normalize(cross(up, normal));
-    vec3 b0 = cross(normal, t0);
-    float c = cos(ang), s = sin(ang);
-    vec3 tangent   = t0 * c + b0 * s;
-    vec3 bitangent = cross(normal, tangent);
-    mat3 TBN = mat3(tangent, bitangent, normal);
-    ` : `
-    mat3 invViewRot = transpose(mat3(viewMatrix));
-    vec3 wPos = invViewRot * pos + cameraPosition;
-    vec2 noiseSeed = floor(wPos.xz * 4.0);
-    vec3 randVec = normalize(vec3(
-        rand(noiseSeed),
-        rand(noiseSeed + 17.0),
-        rand(noiseSeed.yx + 3.0)
-    ));
-
-    vec3 tangent = normalize(randVec - normal * dot(randVec, normal));
-    vec3 bitangent = cross(normal, tangent);
-    mat3 TBN = mat3(tangent, bitangent, normal);
-    `}
-
-    float radius = clamp(-pos.z * ${_ssaoRadiusMult}, 0.25, 5.0);
-
-    {
-        float onSurface = 0.0;
-        vec3 cardinals[4];
-        cardinals[0] = vec3( radius, 0.0, 0.0);
-        cardinals[1] = vec3(-radius, 0.0, 0.0);
-        cardinals[2] = vec3(0.0,  radius, 0.0);
-        cardinals[3] = vec3(0.0, -radius, 0.0);
-        for (int ei = 0; ei < 4; ei++) {
-            vec4 cp = projectionMatrix * vec4(pos + cardinals[ei], 1.0);
-            cp.xyz /= cp.w;
-            vec2 cuv = cp.xy * 0.5 + 0.5;
-            if (cuv.x < 0.0 || cuv.x > 1.0 || cuv.y < 0.0 || cuv.y > 1.0) continue;
-            float cd = texture(depthTex, cuv).r;
-            if (cd >= 0.9999) continue;
-            vec3 cvp = getViewPos(cuv, cd);
-            if (abs(cvp.z - pos.z) < radius * 0.5) onSurface += 1.0;
-        }
-        radius *= mix(1.0, 1.0, onSurface / 4.0);
-    }
-
-    float bias = radius * 0.15;
-
-    float occlusion = 0.0;
-    float totalWeight = 0.0;
-
-    for(int i=0;i<zr;i++){
-
-        vec3 sampleVec = TBN * Rs[i];
-        vec3 samplePos = pos + sampleVec * radius;
-
-        float cosW = dot(normal, normalize(sampleVec));
-        totalWeight += cosW;
-
-        vec4 offset = projectionMatrix * vec4(samplePos,1.0);
-        offset.xyz /= offset.w;
-
-        vec2 sampleUV = offset.xy * 0.5 + 0.5;
-
-        if(sampleUV.x < 0.0 || sampleUV.x > 1.0 || sampleUV.y < 0.0 || sampleUV.y > 1.0) continue;
-
-        float sampleDepth = texture(depthTex, sampleUV).r;
-        if(sampleDepth >= 0.9999) continue;
-
-        vec3 sampleViewPos = getViewPos(sampleUV, sampleDepth);
-
-        float rangeCheck = smoothstep(0.0, 1.0, radius / abs(pos.z - sampleViewPos.z));
-
-        float occ = (sampleViewPos.z >= samplePos.z + bias) ? cosW : 0.0;
-
-        occlusion += occ * rangeCheck;
-    }
-
-    occlusion = (totalWeight > 0.001) ? occlusion / totalWeight : 0.0;
-
-    occlusion = 1.0 - occlusion;
-    occlusion = pow(occlusion, ${_ssaoPowerVal});
-
-    float t = smoothstep(5.0, 60.0, -pos.z);
-    t = t * t;
-    float occFloor = mix(0.05, 0.5, t);
-    occlusion = max(occlusion, occFloor);
-
-    float distFade = 1.0 - smoothstep(20.0, float(${_ssaoFadeVal}), -pos.z);
-    occlusion = mix(1.0, occlusion, distFade);
-
-    fragColor = vec4(vec3(occlusion), 1.0);
-}`;
-    var _ssaoBlurRadius = fe.ssaoBlur ? 3 : 0;
-    var _ssaoBlurWeights = (() => {
-        let sigma = Math.max(1, _ssaoBlurRadius) * 0.5;
-        let w = [];
-        for (let i = 0; i <= _ssaoBlurRadius; i++) w.push(Math.exp(-(i * i) / (2 * sigma * sigma)));
-        return w.map(x => x.toFixed(6));
-    })();
-    var _ssaoBlurFrag = `#version 300 es
-precision highp float;precision highp int;
-
-uniform Camera{
-    mat4 projectionMatrix;
-    mat4 viewMatrix;
-    mat4 projectionViewMatrix;
-    vec3 cameraPosition;
-};
-uniform Screen{vec2 resolution;};
-
-uniform sampler2D inputA;
-uniform sampler2D depthTex;
-uniform int blurStep;
-
-in vec2 vUv;
-out vec4 fragColor;
-
-const float weight[${_ssaoBlurRadius + 1}] = float[${_ssaoBlurRadius + 1}](${_ssaoBlurWeights.join(', ')});
-
-float linearZ(float depth){
-    return -projectionMatrix[3][2] / (projectionMatrix[2][2] + depth * 2.0 - 1.0);
-}
-
-void main(){
-    vec2 texel = 1.0 / resolution;
-    float centerDepth = texture(depthTex, vUv).r;
-
-    if(centerDepth >= 0.9999){
-        fragColor = vec4(texture(inputA, vUv).rgb, 1.0);
-        return;
-    }
-
-    float zCenter = linearZ(centerDepth);
-    float sigmaZ = max(0.05, abs(zCenter) * 0.03);
-    float invTwoSigmaZSq = 1.0 / (2.0 * sigmaZ * sigmaZ);
-
-    vec3 result = texture(inputA, vUv).rgb * weight[0];
-    float wSum = weight[0];
-
-    vec2 step = (blurStep == 0) ? vec2(texel.x, 0.0) : vec2(0.0, texel.y);
-
-    int rEff = int(floor(mix(1.0, float(${_ssaoBlurRadius}), smoothstep(5.0, 60.0, abs(zCenter))) + 0.5));
-
-    for(int i = 1; i < ${_ssaoBlurRadius + 1}; i++){
-        if(i > rEff) break;
-        vec2 offset = step * float(i);
-
-        vec2 uvP = vUv + offset;
-        float dP = texture(depthTex, uvP).r;
-        if(dP < 0.9999){
-            float dz = linearZ(dP) - zCenter;
-            float w = weight[i] * exp(-dz * dz * invTwoSigmaZSq);
-            result += texture(inputA, uvP).rgb * w;
-            wSum += w;
-        }
-
-        vec2 uvN = vUv - offset;
-        float dN = texture(depthTex, uvN).r;
-        if(dN < 0.9999){
-            float dz = linearZ(dN) - zCenter;
-            float w = weight[i] * exp(-dz * dz * invTwoSigmaZSq);
-            result += texture(inputA, uvN).rgb * w;
-            wSum += w;
-        }
-    }
-
-    result /= wSum;
-
-    fragColor = vec4(result, 1.0);
-}`
-    var _ssaoTemporalFrag = `#version 300 es
-precision highp float;precision highp int;
-
-uniform Camera{
-    mat4 projectionMatrix;
-    mat4 viewMatrix;
-    mat4 projectionViewMatrix;
-    vec3 cameraPosition;
-};
-
-uniform sampler2D inputA;
-uniform sampler2D inputB;
-uniform sampler2D depthTex;
-uniform mat4 prevProjectionViewMatrix;
-uniform float blendAlpha;
-
-in vec2 vUv;
-out vec4 fragColor;
-
-vec3 viewPos(vec2 uv, float depth){
-    float z = -projectionMatrix[3][2] /
-              (projectionMatrix[2][2] + depth * 2.0 - 1.0);
-    return vec3(
-        (uv * 2.0 - 1.0) * (-z) /
-        vec2(projectionMatrix[0][0], projectionMatrix[1][1]),
-        z
-    );
-}
-
-void main(){
-    float curr = texture(inputA, vUv).r;
-    float depth = texture(depthTex, vUv).r;
-
-    if(depth >= 0.9999){
-        fragColor = vec4(curr, curr, curr, 1.0);
-        return;
-    }
-
-    vec3 vp = viewPos(vUv, depth);
-    mat3 invViewRot = transpose(mat3(viewMatrix));
-    vec3 wp = invViewRot * vp + cameraPosition;
-
-    vec4 prevClip = prevProjectionViewMatrix * vec4(wp, 1.0);
-    vec3 prevNDC = prevClip.xyz / prevClip.w;
-    vec2 prevUV = prevNDC.xy * 0.5 + 0.5;
-
-    float result = curr;
-    if(prevUV.x >= 0.0 && prevUV.x <= 1.0 && prevUV.y >= 0.0 && prevUV.y <= 1.0 && prevClip.w > 0.0){
-        float hist = texture(inputB, prevUV).r;
-        result = mix(hist, curr, blendAlpha);
-    }
-
-    fragColor = vec4(result, result, result, 1.0);
-}`
-    var _ssaoCompositeFrag = `#version 300 es
-precision highp float;precision highp int;
-
-uniform sampler2D inputA;
-uniform sampler2D inputB;
-
-in vec2 vUv;
-out vec4 fragColor;
-
-void main(){
-    fragColor = vec4(texture(inputA, vUv).rgb * texture(inputB, vUv).rgb, 1.0);
-}`
     var zw = `#version 300 es
 precision highp float;precision highp int;uniform Screen{vec2 resolution;};uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform sampler2D inputA;uniform vec4 tint;uniform float warp;in vec2 vUv;out vec4 fragColor;void main(){float a=0.01;float b=5.0;vec2 c;c.x=sin(vUv.y*10.0+time)*a;c.y=cos(vUv.x*10.0+time)*a;vec4 d=texture(inputA,vUv);vec4 e=texture(inputA,vUv+c);vec4 f=mix(d,e,warp);f.rgb=mix(f.rgb,tint.rgb*0.2+0.8*tint.rgb*length(f.rgb),tint.a);fragColor=f;}`;
     var Bw = `#version 300 es
-precision highp float;precision highp int;uniform vec4 colStart;uniform vec4 colEnd;uniform vec2 offset;in vec2 vUv;out vec4 fragColor;void main(){vec4 col=mix(colStart,colEnd,vUv.x);float center=abs(vUv.y*2.0-1.0);float edge=smoothstep(0.2,0.85,center);col.a*=edge;if(col.a<0.01){discard;}col.rgb*=col.a;col.a*=0.5;fragColor=col;}`;
+precision highp float;precision highp int;uniform vec4 colStart;uniform vec4 colEnd;uniform vec2 offset;in vec2 vUv;out vec4 fragColor;void main(){fragColor=mix(colStart,colEnd,vUv.x);if(fragColor.a<0.01){discard;}fragColor.rgb*=fragColor.a;fragColor.a*=0.5;}`;
     var Uw = `#version 300 es
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform vec2 offset;in vec3 position;in vec2 uv;out vec2 vUv;void main(){vUv=vec2(uv.x-min(uv.x/offset.y,1.0)*offset.x,uv.y);gl_Position=projectionViewMatrix*vec4(position,1.0);}`;
     var $w = `#version 300 es
@@ -11572,21 +9195,16 @@ precision highp float;precision highp int;in vec4 vColor;out vec4 fragColor;void
     var Qw = `#version 300 es
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform mat4 modelMatrix;in vec3 position;in vec4 color;out vec4 vColor;void main(){vColor=color;gl_Position=projectionViewMatrix*modelMatrix*vec4(position,1.0);}`;
     var Zw = `#version 300 es
-precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};uniform sampler2D skyDiffuse;uniform sampler2D cloudDiffuse;uniform float u_rain;in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999999;vec3 a=vec3(0.0);float b=vPos.y/0.5;float sunAngle=dot(worldlight[2],normalize(vPos));float sunPower=pow(max(0.0,(1.0+sunAngle)*0.5),3.0);float c=pow(clamp(1.0-b,0.0,1.0),3.0);float dirVal=c<0.85?smoothstep(0.85-sunPower*0.8,0.85,c):1.0-smoothstep(0.85,1.0,c);c=pow(c,(1.0-sunPower)*3.0);vec3 topCol=fog[0];vec3 horizonCol=fog[0]+worldlight[0]*dirVal*0.4*sunPower;a=mix(topCol,horizonCol,c);a=mix(a,fog[0],smoothstep(0.06,0.0,b));float d=1.0-sin(daycycle*6.28)+0.02;float starFade=smoothstep(0.1,0.5,b)*smoothstep(0.9,0.6,b);a+=texture(skyDiffuse,vUv*vec2(4.0,1.0)).rgb*d*starFade;float e=texture(cloudDiffuse,vec2(vUv.x+time/80.0,vUv.y*0.6+time/120.0)).r*texture(cloudDiffuse,vec2(vUv.x*2.0+time/300.0,vUv.y*0.6)).r;e=e*smoothstep(0.0,0.1,b)*smoothstep(1.0,0.85,b);e=smoothstep(max(0.0,0.25-u_rain*0.2),0.7,e);a=mix(a,skycolors[4],e);fragColor=vec4(a,1.0);}`;
+precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};uniform sampler2D skyDiffuse;uniform sampler2D cloudDiffuse;in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999999;vec3 a=vec3(0.0);float b=vPos.y/0.5;if(b>0.4){a=mix(skycolors[1],skycolors[0],smoothstep(0.4,1.0,b));}else if(b>0.25){a=mix(skycolors[2],skycolors[1],smoothstep(0.25,0.4,b));}else if(b>0.06){a=mix(skycolors[3],skycolors[2],smoothstep(0.06,0.25,b));}else{a=mix(fog[0],skycolors[3],smoothstep(0.0,0.06,b));}float c=1.0-sin(daycycle*6.28)+0.02;float d=smoothstep(0.1,0.5,b)*smoothstep(0.9,0.6,b);a+=texture(skyDiffuse,vUv*vec2(4.0,1.0)).rgb*c*d;float e=texture(cloudDiffuse,vec2(vUv.x+time/80.0,vUv.y*0.6+time/120.0)).r*texture(cloudDiffuse,vec2(vUv.x*2.0+time/300.0,vUv.y*0.6)).r;e=e*smoothstep(0.0,0.1,b)*smoothstep(0.9,0.6,b);e=smoothstep(0.25,0.7,e);a=mix(a,skycolors[4],e);fragColor=vec4(a,1.0);}`;
     var Jw = `#version 300 es
 precision highp float;precision highp int;in vec2 vUv;uniform float seed;float a(in vec2 uv,float scale){uv*=scale;vec2 b=floor(uv),f=fract(uv),p;float c=3.,d;p=.5+.35*sin(11.*fract(sin((b+p+scale)*mat2(7,3,6,5))*5.))-f;d=length(p);c=min(d,c);return smoothstep(0.,c,sin(f.x+f.y)*0.003);}vec2 d(vec2 e){e=vec2(dot(e,vec2(127.1,311.7)),dot(e,vec2(269.5,183.3)));return-1.0+2.0*fract(sin(e)*43758.5453123);}float f(in vec2 e){const float g=0.366025404;const float h=0.211324865;vec2 i=floor(e+(e.x+e.y)*g);vec2 j=e-i+(i.x+i.y)*h;vec2 l=(j.x>j.y)?vec2(1.0,0.0):vec2(0.0,1.0);vec2 m=j-l+h;vec2 n=j-1.0+2.0*h;vec3 q=max(0.5-vec3(dot(j,j),dot(m,m),dot(n,n)),0.0);vec3 r=q*q*q*vec3(dot(j,d(i+0.0)),dot(m,d(i+l)),dot(n,d(i+1.0)));float t=dot(r,vec3(70.0));return smoothstep(-1.0,1.0,t);}out vec4 fragColor;void main(){vec2 u=vec2(vUv.x+seed,vUv.y);float r=a(vUv,10.0);r+=a(vUv,20.0)*0.5;r+=a(vUv,30.0)*0.2;r*=f(vUv*20.0);fragColor.rgb+=r*4.0;}`;
     var Kw = `#version 300 es
-precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999998;float height=max(0.0,min(1.0,abs(sin(daycycle*6.282))+vUv.y*0.1-0.15));float interp=min(1.0,pow((1.0-height*height),100.0));float circle=0.5-length(vec2(0.5,0.5)-vUv);float alpha=smoothstep(0.0,1.0,circle)*2.0;alpha+=smoothstep(0.4,0.45,circle);fragColor.rgba=vec4(mix(suncolor,fog[0],interp),alpha);}`;
+precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999998;float a=length(vec2(0.5,0.5)-vUv);float b=smoothstep(0.3,0.2,a)*2.0;b+=smoothstep(0.5,0.1,a);b*=smoothstep(0.08,0.15,(vPos.y+0.2)*0.2+abs(sin(daycycle*6.282)));fragColor.rgba=vec4(suncolor,b);}`;
     var e4 = `#version 300 es
 precision highp float;precision highp int;uniform Circle{vec4 circlePos;vec4 circleInfo;};precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];uniform float u_wetness;vec4 d;float e;vec3 f(vec3 g,vec3 h,vec3 i,vec3 j,float k,vec3 l,float m){j=normalize(j);float n=clamp(dot(j,worldlight[2]),0.0,k);vec3 o=g;vec3 p=normalize(worldlight[2]+vViewDir);vec3 q=vec3(pow(max(0.0,dot(p,j)),8.5)*2.0)*m*0.15;vec3 r=o+h*n*0.75+l;return r*i+q;}void s(vec4 t,float u,vec4 v){float w=t.x+t.y+t.z;e+=v[3]*smoothstep(v[1],v[2],w)*u;t.a=u;t.rgb*=u;d+=t;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 x=texture(atlas,vUvChannel);x[3]=max(0.0,min(1.0,1.0-(x.r+x.g+x.b)));if(x[0]==1.0&&x[1]==1.0&&x[2]==1.0)discard;s(texture(diffuse[0],vUvTexture[0]),x[0],terrainInfo[0]);s(texture(diffuse[1],vUvTexture[1]),x[1],terrainInfo[1]);s(texture(diffuse[2],vUvTexture[2]),x[2],terrainInfo[2]);s(texture(diffuse[3],vUvTexture[3]),x[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;float y=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float az=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 aa=shadowPVMatrix[1]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[1],ab);}else{vec4 aa=shadowPVMatrix[0]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[0],ab);}y=y;y=max(y,az);}d.rgb=f(worldlight[1],worldlight[0],d.rgb,vNormal,y,vLight,e);float ac=distance(vWorldPos.xz,circlePos.xz);float ad=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(ac<circlePos.w+0.1&&(circleInfo.a>1.0||ad>0.0)){float cfa=circleInfo.a;float ady=cfa>1.0?1.0:ad;;float blnd=cfa>1.0?(ac<circlePos.w?cfa-1.0:0.0):((ac<circlePos.w?ac/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-ac))/0.1));d.rgb=mix(d.rgb,circleInfo.rgb,ady*min(1.0,cfa)*blnd);}float ae=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,ae);fragColor=d;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;vec3 f(vec3 g,vec3 h,vec3 i,vec3 j,float k,vec3 l,float m){j=normalize(j);float n=clamp(dot(j,worldlight[2]),0.0,k);vec3 o=g*mix(0.7,1.1,0.5+(0.5*n));vec3 p=normalize(worldlight[2]+vViewDir);vec3 q=h*pow(max(0.0,dot(p,j)),20.0)*m*max(k*0.7+0.2,0.2)*20.0;vec3 r=o+h*n+l;return r*i+q;}void s(vec4 t,float u,vec4 v){float w=t.x+t.y+t.z;e+=v[3]*smoothstep(v[1],v[2],w)*u;t.a=u;t.rgb*=u;d+=t;}out vec4 fragColor;void main(){if(vCameraDistance>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec4 x=texture(atlas,vUvChannel);x[3]=max(0.0,min(1.0,1.0-(x.r+x.g+x.b)));if(x[0]==1.0&&x[1]==1.0&&x[2]==1.0)discard;s(texture(diffuse[0],vUvTexture[0]),x[0],terrainInfo[0]);s(texture(diffuse[1],vUvTexture[1]),x[1],terrainInfo[1]);s(texture(diffuse[2],vUvTexture[2]),x[2],terrainInfo[2]);s(texture(diffuse[3],vUvTexture[3]),x[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;float y=1.0;if(a==1&&vCameraDistance<shadowRange[2]){float az=smoothstep(shadowRange[1],shadowRange[2],vCameraDistance);if(vCameraDistance>shadowRange[0]){vec4 aa=shadowPVMatrix[1]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[1],ab);}else{vec4 aa=shadowPVMatrix[0]*(vWorldPos);vec3 ab=(aa.xyz/aa.w)*0.5+0.5;y=texture(shadowMaps[0],ab);}y=y;y=max(y,az);}d.rgb=f(worldlight[1],worldlight[0],d.rgb,vNormal,y,vLight,e);float ac=distance(vWorldPos.xz,circlePos.xz);float ad=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));if(ac<circlePos.w+0.1&&ad>0.0){d.rgb=mix(d.rgb,circleInfo.rgb,ad*circleInfo.a*((ac<circlePos.w?ac/circlePos.w*0.5:0.0)+max(0.,(0.1-abs(circlePos.w-ac))/0.1)));}float ae=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,ae);fragColor=d;}`;
     var t4 = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Pointlights{vec4 lightCols[16];vec3 lightPos[16];int lightCount;};out vec3 vLight;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float a=256.0;const float b=4.0;in vec3 position;in vec3 normal;out vec3 vNormal;out vec3 vUvChannel;out vec2 vUvTexture[4];out vec3 vViewDir;void main(){vNormal=normal;vWorldPos=modelMatrix*vec4(position,1.0);vUvChannel=vec3(position[0],position[2],0.0)/32.0;int c=quadrant%2;int d=int(quadrant%4);if(c==1)vUvChannel.x-=1.0;if(d>1)vUvChannel.y-=1.0;vUvChannel.z=float(quadrant);vec2 e=vec2(-vWorldPos[0],vWorldPos[2])/4.0;vUvTexture[0]=e*terrainInfo[0][0];vUvTexture[1]=e*terrainInfo[1][0];vUvTexture[2]=e*terrainInfo[2][0];vUvTexture[3]=e*terrainInfo[3][0];for(int f=0;f<lightCount;++f){vec3 g=lightPos[f]-vWorldPos.xyz;float h=lightCols[f].w-dot(g,g);if(h>0.0){h/=(lightCols[f].w);h=h*h;vLight+=0.2*lightCols[f].rgb*h;}}vViewDir=-normalize(vWorldPos.xyz-cameraPosition);vCameraDistance=length(cameraPosition-vWorldPos.xyz);gl_Position=projectionViewMatrix*vWorldPos;}`;
-    var Zw_orig = `#version 300 es
-precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};uniform sampler2D skyDiffuse;uniform sampler2D cloudDiffuse;in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999999;vec3 a=vec3(0.0);float b=vPos.y/0.5;if(b>0.4){a=mix(skycolors[1],skycolors[0],smoothstep(0.4,1.0,b));}else if(b>0.25){a=mix(skycolors[2],skycolors[1],smoothstep(0.25,0.4,b));}else if(b>0.06){a=mix(skycolors[3],skycolors[2],smoothstep(0.06,0.25,b));}else{a=mix(fog[0],skycolors[3],smoothstep(0.0,0.06,b));}float c=1.0-sin(daycycle*6.28)+0.02;float d=smoothstep(0.1,0.5,b)*smoothstep(0.9,0.6,b);a+=texture(skyDiffuse,vUv*vec2(4.0,1.0)).rgb*c*d;float e=texture(cloudDiffuse,vec2(vUv.x+time/80.0,vUv.y*0.6+time/120.0)).r*texture(cloudDiffuse,vec2(vUv.x*2.0+time/300.0,vUv.y*0.6)).r;e=e*smoothstep(0.0,0.1,b)*smoothstep(1.0,0.85,b);e=smoothstep(0.25,0.7,e);a=mix(a,skycolors[4],e);fragColor=vec4(a,1.0);}`;
-    var Kw_orig = `#version 300 es
-precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Sky{vec3 skycolors[5];vec3 suncolor;};in vec2 vUv;in vec3 vPos;out vec4 fragColor;void main(){gl_FragDepth=0.999998;float a=length(vec2(0.5,0.5)-vUv);float b=smoothstep(0.3,0.2,a)*2.0;b+=smoothstep(0.5,0.1,a);b*=smoothstep(0.08,0.15,(vPos.y+0.2)*0.2+abs(sin(daycycle*6.282)));fragColor.rgba=vec4(suncolor,b);}`;
-    var e4_orig = e4.replace('vec3 f(vec3 g,vec3 h,vec3 i,vec3 j,float k,vec3 l,float m){j=normalize(j);float n=clamp(dot(j,worldlight[2]),0.0,k);vec3 o=g;vec3 p=normalize(worldlight[2]+vViewDir);vec3 q=vec3(pow(max(0.0,dot(p,j)),8.5)*2.0)*m*0.15;vec3 r=o+h*n*0.75+l;return r*i+q;}', 'vec3 f(vec3 g,vec3 h,vec3 i,vec3 j,float k,vec3 l,float m){j=normalize(j);float n=clamp(dot(j,worldlight[2]),0.0,k);vec3 o=g*mix(0.7,1.1,0.5+(0.5*n));vec3 p=normalize(worldlight[2]+vViewDir);vec3 q=h*pow(max(0.0,dot(p,j)),20.0)*m*max(k*0.7+0.2,0.2)*20.0;vec3 r=o+h*n+l;return r*i+q;}');
     var n4 = `#version 300 es
 precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;uniform vec4 colors[576];uniform int divider;void main(){float a=64.0/float(divider);int b=int(floor(mod(vWorldPos.x,64.0)/a)+floor(mod(vWorldPos.z,64.0)/a)*float(divider));fragColor.rgba=colors[b];}`;
     var o4 = `#version 300 es
@@ -11595,18 +9213,16 @@ precision highp float;precision highp int;in vec3 vPos;in vec3 vNormal;out vec4 
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform mat4 modelMatrix;in vec3 normal;in vec3 position;out vec3 vPos;out vec3 vNormal;void main(){vNormal=normal;vPos=position;gl_Position=projectionViewMatrix*modelMatrix*vec4(position[0],position[1]+0.05,position[2],1.0);}`;
     var s4 = `#version 300 es
 precision highp float;precision highp int;uniform Circle{vec4 circlePos;vec4 circleInfo;};precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;f(texture(diffuse[0],vUvTexture[0]),k[0],terrainInfo[0]);f(texture(diffuse[1],vUvTexture[1]),k[1],terrainInfo[1]);f(texture(diffuse[2],vUvTexture[2]),k[2],terrainInfo[2]);f(texture(diffuse[3],vUvTexture[3]),k[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;if(mod(vWorldPos.y,2.0)<0.2){d.rgb=mix(d.rgb,vec3(0.8),0.5);}else{d.rgb=mix(d.rgb,vec3(0.2),0.5);}vec3 l=worldlight[2];l.y*=0.5;l=normalize(l);d.rgb*=max(0.3,min(1.0,dot(l,vNormal)*0.5+0.5));float m=distance(vWorldPos.xz,circlePos.xz);float adm=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfb=circleInfo.a;if(m<circlePos.w+0.1&&(adm>0.0||(cfb>1.0&&vWorldPos.y<=circlePos.y))){float fadym=cfb>1.0?(vWorldPos.y>circlePos.y?adm:1.0):1.0;float blndb=cfb>1.0?(m<circlePos.w?cfb-1.0:0.0):(max(0.,(0.3-abs(circlePos.w-m))/0.3));d.rgb=mix(d.rgb,circleInfo.rgb,fadym*min(1.0,cfb)*blndb);}float n=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,n);fragColor=d;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;f(texture(diffuse[0],vUvTexture[0]),k[0],terrainInfo[0]);f(texture(diffuse[1],vUvTexture[1]),k[1],terrainInfo[1]);f(texture(diffuse[2],vUvTexture[2]),k[2],terrainInfo[2]);f(texture(diffuse[3],vUvTexture[3]),k[3],terrainInfo[3]);d.rgb/=d.a;e/=d.a;d.a=1.0;if(mod(vWorldPos.y,2.0)<0.2){d.rgb=mix(d.rgb,vec3(0.8),0.5);}else{d.rgb=mix(d.rgb,vec3(0.2),0.5);}vec3 l=worldlight[2];l.y*=0.5;l=normalize(l);d.rgb*=max(0.3,min(1.0,dot(l,vNormal)*0.5+0.5));float m=distance(vWorldPos.xz,circlePos.xz);if(m<circlePos.w+0.1){d.rgb=mix(d.rgb,circleInfo.rgb,circleInfo.a*(max(0.,(0.3-abs(circlePos.w-m))/0.3)));}float n=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,n);fragColor=d;}`;
     var r4 = `#version 300 es
 precision highp float;precision highp int;uniform Circle{vec4 circlePos;vec4 circleInfo;};precision highp sampler2DShadow;uniform Shadows{uniform mat4 shadowPVMatrix[2];uniform vec3 shadowRange;};const int a=
-#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;d.rgb=texture(diffuse[0],vUvTexture[0]).rgb;float l=64.0/12.0;float m=l/2.0;bool n=mod(vWorldPos.z,l)>m;if(mod(vWorldPos.x,l)<m){if(n){d.rgb=vec3(0.45);}else{d.rgb=vec3(0.55);}}else{if(n){d.rgb=vec3(0.55);}else{d.rgb=vec3(0.45);}}vec3 o=worldlight[2];o.y*=0.5;o=normalize(o);d.rgb*=max(0.3,min(1.0,dot(o,vNormal)*0.5+0.5));float p=distance(vWorldPos.xz,circlePos.xz);float adp=min(1.0,max(0.0,4.0-abs(vWorldPos.y-circlePos.y)));float cfc=circleInfo.a;if(p<circlePos.w+0.1&&(adp>0.0||(cfc>1.0&&vWorldPos.y<=circlePos.y))){float fadyp=cfc>1.0?(vWorldPos.y>circlePos.y?adp:1.0):1.0;float blndc=cfc>1.0?(p<circlePos.w?cfc-1.0:0.0):(max(0.,(0.3-abs(circlePos.w-p))/0.3));d.rgb=mix(d.rgb,circleInfo.rgb,fadyp*min(1.0,cfc)*blndc);}float q=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,q);fragColor=d;}`;
+#SHADOWS;uniform sampler2DShadow shadowMaps[2];uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};const float b=256.0;const float c=4.0;precision highp sampler2DArray;uniform sampler2DArray atlas;uniform sampler2D diffuse[4];in vec3 vLight;in vec3 vNormal;in vec3 vViewDir;in vec3 vUvChannel;in vec2 vUvTexture[4];vec4 d;float e;void f(vec4 g,float h,vec4 i){float j=g.x+g.y+g.z;e+=i[3]*smoothstep(i[1],i[2],j)*h;g.a=h;g.rgb*=h;d+=g;}out vec4 fragColor;void main(){vec4 k=texture(atlas,vUvChannel);k[3]=max(0.0,min(1.0,1.0-(k.r+k.g+k.b)));if(k[0]==1.0&&k[1]==1.0&&k[2]==1.0)discard;d.rgb=texture(diffuse[0],vUvTexture[0]).rgb;float l=64.0/12.0;float m=l/2.0;bool n=mod(vWorldPos.z,l)>m;if(mod(vWorldPos.x,l)<m){if(n){d.rgb=vec3(0.45);}else{d.rgb=vec3(0.55);}}else{if(n){d.rgb=vec3(0.55);}else{d.rgb=vec3(0.45);}}vec3 o=worldlight[2];o.y*=0.5;o=normalize(o);d.rgb*=max(0.3,min(1.0,dot(o,vNormal)*0.5+0.5));float p=distance(vWorldPos.xz,circlePos.xz);if(p<circlePos.w+0.1){d.rgb=mix(d.rgb,circleInfo.rgb,circleInfo.a*(max(0.,(0.3-abs(circlePos.w-p))/0.3)));}float q=clamp((fog[1][1]-vCameraDistance)/(fog[1][1]-fog[1][0]),0.0,1.0);d.rgb=mix(fog[0],d.rgb,q);fragColor=d;}`;
     var l4 = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;out vec4 fragColor;void main(){fragColor.rgb=fog[0];}`;
     var a4 = `#version 300 es
 precision highp float;precision highp int;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform MeshTerrain{mat4 modelMatrix;vec4 terrainInfo[4];int quadrant;};in vec3 position;void main(){vec4 a=modelMatrix*vec4(position,1.0);gl_Position=projectionViewMatrix*a;}`;
     var c4 = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Screen{vec2 resolution;};uniform sampler2D waterLines;uniform sampler2D waterNoise;uniform sampler2D bufferPongColor;uniform sampler2D bufferPongDepth;in vec2 vUv;out vec4 fragColor;void main(){float a=length(cameraPosition-vWorldPos.xyz);float b=(texture(waterNoise,vUv.yx/4.0+time*0.1).r-0.5);float c=gl_FragCoord.z;c=c*2.0-1.0;c=projectionMatrix[3][2]/(c+projectionMatrix[2][2]);if(a>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec2 d=gl_FragCoord.xy/resolution;float e=texture(bufferPongDepth,d.xy).r;e=e*2.0-1.0;e=projectionMatrix[3][2]/(e+projectionMatrix[2][2]);float f=e-c;vec2 g=vec2(b*0.05,0.0);float h=f;float i=1.0-clamp(h/0.1,0.0,1.0);float j=1.0-clamp(h/0.6,0.0,1.0);float k=1.0-clamp(h/2.0,0.0,1.0);float l=1.0-clamp(h/10.0,0.0,1.0);float m=1.0-clamp(h/100.0+0.5,0.0,1.0);float n=texture(waterLines,vUv.yx+b*0.15).r;vec3 o=mix(watercolors[2],watercolors[1],l);vec3 p=texture(bufferPongColor,d.xy+g).rgb;vec3 q=(worldlight[0]+worldlight[1]);vec3 r=mix(o,p*o,m)+n*watercolors[0]*(0.05+k*0.3);r=mix(r,watercolors[0],j)*q;vec4 s=vec4(r,1.0-i);float t=min(1.0,max(0.0,(n*(b+0.3)*0.5)));s.rgb+=t*worldlight[0];float u=clamp((fog[1][1]-a)/(fog[1][1]-fog[1][0]),0.0,1.0);s.rgb=mix(fog[0],s.rgb,u);fragColor=s;}`;
-    var c4_rework = `#version 300 es
-precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};in float vCameraDistance;in vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Screen{vec2 resolution;};uniform sampler2D waterLines;uniform sampler2D waterNoise;uniform sampler2D bufferPongColor;uniform sampler2D bufferPongDepth;in vec2 vUv;out vec4 fragColor;void main(){float a=length(cameraPosition-vWorldPos.xyz);float n1=(texture(waterNoise,vUv.yx/14.0+time*0.05).r-0.5);float n2=(texture(waterNoise,vUv.xy/5.0-time*0.08).r-0.5);float b=n1*0.65+n2*0.35;float c=gl_FragCoord.z;c=c*2.0-1.0;c=projectionMatrix[3][2]/(c+projectionMatrix[2][2]);if(a>fog[1][1]){fragColor=vec4(fog[0],1.0);return;}vec2 d=gl_FragCoord.xy/resolution;float e=texture(bufferPongDepth,d.xy).r;e=e*2.0-1.0;e=projectionMatrix[3][2]/(e+projectionMatrix[2][2]);float f=e-c;vec2 g=vec2(b*0.04,n2*0.04);float h=f;float i=1.0-clamp(h/0.1,0.0,1.0);float j=1.0-clamp(h/0.6,0.0,1.0);float k=1.0-clamp(h/2.0,0.0,1.0);float l=1.0-clamp(h/10.0,0.0,1.0);float m=1.0-clamp(h/100.0+0.5,0.0,1.0);vec3 viewDir=normalize(cameraPosition-vWorldPos.xyz);float fresnel=pow(1.0-clamp(viewDir.y,0.0,1.0),2.0)*0.4;float n=texture(waterLines,vUv.yx*0.4+b*0.1).r;vec3 o=mix(watercolors[2],watercolors[1],l);vec3 p=texture(bufferPongColor,d.xy+g).rgb;vec3 q=(worldlight[0]+worldlight[1]);vec3 r=mix(o,p*o,m)+n*watercolors[0]*(0.03+k*0.15);r=mix(r,watercolors[0],j*0.5)*q;r=mix(r,watercolors[0]*q*0.9,fresnel*(1.0-j));vec4 s=vec4(r,1.0-i);float t=clamp(n*(b+0.35)*0.2,0.0,1.0);s.rgb+=t*worldlight[0]*0.5;float u=clamp((fog[1][1]-a)/(fog[1][1]-fog[1][0]),0.0,1.0);s.rgb=mix(fog[0],s.rgb,u);fragColor=s;}`;
     var f4 = `#version 300 es
 precision highp float;precision highp int;uniform Environment{vec3 worldlight[3];vec3 fog[2];vec3 watercolors[3];float time;float daycycle;};out float vCameraDistance;out vec4 vWorldPos;uniform Camera{mat4 projectionMatrix;mat4 viewMatrix;mat4 projectionViewMatrix;vec3 cameraPosition;};uniform Water{vec3 verts[4];};in vec3 position;in vec3 color;in vec3 colorFoam;in vec3 colorShallow;out vec2 vUv;void main(){vWorldPos.xyz=verts[gl_VertexID];vWorldPos.w=1.0;vUv=vWorldPos.xz/2.0;gl_Position=projectionViewMatrix*vWorldPos;}`;
     var u4 = `#version 300 es
@@ -11667,18 +9283,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         Vg = {
             frag: zw
         },
-        _ssaoShader = {
-            frag: _ssaoFrag
-        },
-        _ssaoBlurShader = {
-            frag: _ssaoBlurFrag
-        },
-        _ssaoTemporalShader = {
-            frag: _ssaoTemporalFrag
-        },
-        _ssaoCompositeShader = {
-            frag: _ssaoCompositeFrag
-        },
         mu = {
             frag: Bw,
             vert: Uw
@@ -11706,16 +9310,16 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             vert: Qw
         },
         Rg = {
-            frag: Zw_orig
+            frag: Zw
         },
         zg = {
             frag: Jw
         },
         Bg = {
-            frag: Kw_orig
+            frag: Kw
         },
         xd = {
-            frag: e4_orig,
+            frag: e4,
             vert: t4
         },
         ZI = {
@@ -11777,7 +9381,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     name: "instNorm",
                     size: 3
                 }],
-                uniforms: { u_rainAmount: { value: 0 } },
                 globalUniforms: mn,
                 transparent: !0,
                 attributeLocations: t.foliage
@@ -11792,7 +9395,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     name: "instNorm",
                     size: 3
                 }],
-                uniforms: { u_rainAmount: { value: 0 } },
                 globalUniforms: mn,
                 transparent: !0,
                 attributeLocations: t.foliage
@@ -12018,53 +9620,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     }
                 },
                 attributeLocations: ["position", "uv"]
-            }), ut[35] = un({
-                vertex: Ca,
-                fragment: _ssaoShader.frag,
-                depthWrite: !1,
-                depthTest: !1,
-                globalUniforms: mn,
-                uniforms: {
-                    inputA: { value: null }
-                },
-                attributeLocations: t.post
-            }), ut[36] = un({
-                vertex: Ca,
-                fragment: _ssaoBlurShader.frag,
-                depthWrite: !1,
-                depthTest: !1,
-                globalUniforms: mn,
-                uniforms: {
-                    inputA: { value: null },
-                    depthTex: { value: null },
-                    blurStep: { value: 0 }
-                },
-                attributeLocations: t.post
-            }), ut[37] = un({
-                vertex: Ca,
-                fragment: _ssaoTemporalShader.frag,
-                depthWrite: !1,
-                depthTest: !1,
-                globalUniforms: mn,
-                uniforms: {
-                    inputA: { value: null },
-                    inputB: { value: null },
-                    depthTex: { value: null },
-                    prevProjectionViewMatrix: { value: new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]) },
-                    blendAlpha: { value: 1.0 }
-                },
-                attributeLocations: t.post
-            }), ut[38] = un({
-                vertex: Ca,
-                fragment: _ssaoCompositeShader.frag,
-                depthWrite: !1,
-                depthTest: !1,
-                uniforms: {
-                    inputA: { value: null },
-                    inputB: { value: null }
-                },
-                attributeLocations: t.post
-            }), nD(ut, mn), ut[11].uniforms.u_rain = { value: 0 }, Nf(ut[18], j.ONE, j.ONE_MINUS_SRC_ALPHA), Nf(ut[16], j.ONE, j.ONE_MINUS_SRC_ALPHA), Nf(ut[15], j.ONE, j.ONE_MINUS_SRC_ALPHA), Ug.push(3, 4, 6, 7, 10, 15, 5)
+            }), nD(ut, mn), Nf(ut[18], j.ONE, j.ONE_MINUS_SRC_ALPHA), Nf(ut[16], j.ONE, j.ONE_MINUS_SRC_ALPHA), Nf(ut[15], j.ONE, j.ONE_MINUS_SRC_ALPHA), Ug.push(3, 4, 6, 7, 10, 15, 5)
         },
         nD = (t, e) => {
             let n = t[4].program,
@@ -12232,22 +9788,20 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         g4 = (t, e) => {
             let n = [0, 0, 0];
             xa(Tn, gt.transform.worldMatrix), vs(gt, n, ad), Kt(n, n, Tn), to(n, n);
-            gn(n, n, 999);
-            if (fe.noCameraCollision && !t) return sn(Tn, Tn, n, 1), Tn;
+            let o = [0, 0];
+            bx(o, Tn, n, e, Ad);
+            let i = 999;
+            if (t)
+                if (i = o[1] - Math.max(0, o[0]), i < 5 || o[0] === -1 && o[0] === -1) {
+                    let r = rd(Tn, n, I.player.pos),
+                        l = r[0] - I.player.pos[0],
+                        a = r[2] - I.player.pos[2],
+                        c = 1 / Math.sqrt(l * l + a * a);
+                    it(Tn, I.player.pos), Tn[0] += l * c * Ad, Tn[1] += 10, Tn[2] += a * c * Ad, X(n, 0, -1, 0), i = 20
+                } else o[0] > 0 && sn(Tn, Tn, n, o[0]);
+            gn(n, n, i);
             let s = I.raycastEnvironmentClosest(Tn[0], Tn[1], Tn[2], n[0], n[1], n[2]);
-            sn(Tn, Tn, n, s);
-            if (s === 1) Tn[1] = I.getHeight(Tn[0], Tn[2]);
-            if (t) {
-                let dx = Tn[0] - e[0], dz = Tn[2] - e[2];
-                let dist = Math.sqrt(dx * dx + dz * dz);
-                if (dist > Ad) {
-                    let scale = Ad / dist;
-                    Tn[0] = e[0] + dx * scale;
-                    Tn[2] = e[2] + dz * scale;
-                    Tn[1] = I.getHeight(Tn[0], Tn[2]);
-                }
-            }
-            return Tn;
+            return sn(Tn, Tn, n, s), s === 1 && (Tn[1] = I.getHeight(Tn[0], Tn[2])), Tn
         },
         aD = t => {
             if (xl.done(I.time) && zn !== lc && I.player.setTarget(lc), !nt.shift.down) {
@@ -12269,12 +9823,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             if (_r > 0) {
                 let i = g4(!0, I.player.pos);
                 io(o.circleInfo, ...Sd.friendly, 1), io(o.circlePos, i[0], i[1], i[2], v4)
-            } else if (fe.aoeCircleEnabled && I && I.player) {
-                e !== jg ? (jg = e, sc = 1) : sc = Math.max(sc * (1 - t * 10), 0);
-                let player = I.player, color = fe.aoeCircleColor || "#ffffff";
-                let red = parseInt(color.slice(1,3),16)/255, green = parseInt(color.slice(3,5),16)/255, blue = parseInt(color.slice(5,7),16)/255;
-                io(o.circlePos, player.pos[0], player.pos[1] - player.radius, player.pos[2], fe.aoeCircleSize);
-                io(o.circleInfo, red, green, blue, 1.0 + fe.aoeCircleAlpha / 100);
             } else if (e !== jg ? (jg = e, sc = 1) : sc = Math.max(sc * (1 - t * 10), 0), e > 0) {
                 let i = I.getEntityById(e);
                 if (i !== void 0) {
@@ -12288,13 +9836,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         Pd = [],
         rc = 0,
         Hg = t => {
-            let raycastHitGeometry = (targetpos,originpos) => {
-                    let vector = [targetpos[0] - originpos[0], targetpos[1] - originpos[1], targetpos[2] - originpos[2]]
-                    let vectorInverse = [1 / vector[0], 1 / vector[1], 1 / vector[2]];
-                    let editedOrigin = [originpos[0],originpos[1]+1,originpos[2]]
-                    let hits = I.triangleGrid.queryRay(editedOrigin, vector, vectorInverse);
-                    return hits.length > 0
-            }
             if (I.player) {
                 if (rc === 1) {
                     let e = 0,
@@ -12307,14 +9848,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                     }
                     e === 0 && n !== 0 && (e = n), vr(e), rc = 0
                 } else if (rc === 2) {
-                    let e = I.entities.type[0].filter(i => {
-                        let isOppositeFaction = i.faction !== I.player.faction && !fe.revUnfriendly
-                        let isOutOfLineOfSight = raycastHitGeometry(i.pos, I.player.pos) && fe.losTarget
-                        let isBot = i.id !== I.playerId && i.party === 0 && !i.clan && fe.nextFriendlyIgnoreBots
-                        let anyClassSelected = fe.nextFriendlyClassSelectorEnabled && (fe.nextFriendlyClassArcher || fe.nextFriendlyClassShaman || fe.nextFriendlyClassWarrior || fe.nextFriendlyClassMage)
-                        let isClassFiltered = anyClassSelected && i.id !== I.playerId && !((i.class === 2 && fe.nextFriendlyClassArcher) || (i.class === 3 && fe.nextFriendlyClassShaman) || (i.class === 0 && fe.nextFriendlyClassWarrior) || (i.class === 1 && fe.nextFriendlyClassMage))
-                        return !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? false : i.stats && i.stats.alive && !isOppositeFaction && $r(i.pos, I.player.pos) < 30 && !isOutOfLineOfSight && !isBot && !isClassFiltered
-                    }).sort((i, s) => {
+                    let e = I.entities.type[0].filter(i => !fe.nextFriendlyTargetAllowNonParty && !Zt.has(i.name) ? !1 : i.stats && i.stats.alive && i.faction === I.player.faction && $r(i.pos, I.player.pos) < 30).sort((i, s) => {
                             let r = Zt.has(i.name),
                                 l = Zt.has(s.name);
                             return r && !l ? -1 : !r && l ? 1 : 0
@@ -12326,7 +9860,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                         vr(i.id)
                     }
                     Pd.push(zn);
-                    let o = Math.min(11, fe.nextFriendlyTargetCycle || 10, n);
+                    let o = Math.min(10, fe.nextFriendlyTargetCycle || 10, n);
                     for (; o > 0 && Pd.length >= o;) Pd.shift();
                     rc = 0
                 }
@@ -12394,7 +9928,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             c() {
                 e = h("div"), n = h("div"), A && A.c(), o = h("img"), r = h("div"), l = h("div"), K(a.$$.fragment), C && C.c(), U.c(), f = de(), V && V.c(), u = h("div");
                 for (let L = 0; L < m.length; L += 1) m[L].c();
-                p(o, "class", i = "pclass icon border black bgc" + t[5].class + " svelte-g292qg"), Ve(o, "background", _bgcStyle("bgc" + t[5].class)), st(o.src, s = (t[5].rarity !== !1 ? "/data/ui/mobpower/" + t[5].rarity : "/data/ui/classes/" + t[5].class) + "." + On + "?v=8822612") || p(o, "src", s), p(n, "class", "iconcontainer svelte-g292qg"), p(l, "class", c = "panel-black barsInner " + (t[5].id && t[5].range ? "targetable" : "") + " svelte-g292qg"), p(u, "class", v = "buffarray " + t[2] + " svelte-g292qg"), p(r, "class", _ = "bars " + (t[17] && t[5].id == t[17].id && t[2] == "party" ? "target" : "") + " svelte-g292qg"), p(e, "id", t[4]), p(e, "class", b = "grid " + (t[3] ? "right" : "left") + " svelte-g292qg"), Ve(e, "font-size", t[15] + "%"),Ve(e, "opacity", t[5].range ? "" : .6)
+                p(o, "class", i = "pclass icon border black bgc" + t[5].class + " svelte-g292qg"), st(o.src, s = (t[5].rarity !== !1 ? "/data/ui/mobpower/" + t[5].rarity : "/data/ui/classes/" + t[5].class) + "." + On + "?v=8829640") || p(o, "src", s), p(n, "class", "iconcontainer svelte-g292qg"), p(l, "class", c = "panel-black barsInner " + (t[5].id && t[5].range ? "targetable" : "") + " svelte-g292qg"), p(u, "class", v = "buffarray " + t[2] + " svelte-g292qg"), p(r, "class", _ = "bars " + (t[17] && t[5].id == t[17].id && t[2] == "party" ? "target" : "") + " svelte-g292qg"), p(e, "id", t[4]), p(e, "class", b = "grid " + (t[3] ? "right" : "left") + " svelte-g292qg"), Ve(e, "font-size", t[15] + "%"), Ve(e, "opacity", t[5].range ? "" : .6)
             },
             m(L, $) {
                 w(L, e, $), d(e, n), A && A.m(n, null), d(n, o), d(e, r), d(r, l), Q(a, l, null), C && C.m(l, null), U.m(r, null), d(r, f), V && V.m(r, null), d(r, u);
@@ -12402,59 +9936,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 k = !0, y || (F = [H(l, "click", t[20]), H(l, "contextmenu", t[25])], y = !0)
             },
             p(L, $) {
-                Ve(e, "scale", Math.min(1.3, t.targetScale))
-                let container = e.querySelector(".bars")
-                if (t.CCFound) {
-                    let ccDrawColor = fe.flashCCIndicator ? flashColor(t.CCColor, 12, 0.25) : t.CCColor
-                    Ve(container, "outline", `3px solid ${ccDrawColor}`)
-                    Ve(container, "box-shadow", `0 0 15px ${ccDrawColor}`)
-                } else {
-                    Ve(container, "outline", null)
-                    Ve(container, "box-shadow", null)
-                }
-                Ve(container, "border-radius", "0px")
-                let hpBarEl = l.firstElementChild;
-                if (hpBarEl) {
-                    let flashDiv = hpBarEl._hpFlash;
-                    if (!flashDiv) {
-                        flashDiv = document.createElement("div");
-                        Ve(flashDiv, "position", "absolute");
-                        Ve(flashDiv, "top", "0");
-                        Ve(flashDiv, "height", "100%");
-                        Ve(flashDiv, "background", "white");
-                        Ve(flashDiv, "pointer-events", "none");
-                        Ve(flashDiv, "z-index", "2");
-                        Ve(flashDiv, "display", "none");
-                        Ve(hpBarEl, "position", "relative");
-                        Ve(hpBarEl, "overflow", "hidden");
-                        hpBarEl.appendChild(flashDiv);
-                        hpBarEl._hpFlash = flashDiv;
-                        let pb = hpBarEl.firstElementChild;
-                        if (pb) {
-                            let leftSpan = pb.firstElementChild;
-                            let rightSpan = leftSpan && leftSpan.nextElementSibling;
-                            if (leftSpan) { Ve(leftSpan, "position", "relative"); Ve(leftSpan, "z-index", "3"); }
-                            if (rightSpan) { Ve(rightSpan, "position", "absolute"); Ve(rightSpan, "right", "5px"); Ve(rightSpan, "z-index", "3"); }
-                        }
-                    }
-                    let r5 = L[5];
-                    let flashing = fe.flashNameplates && r5.hpFlashTime !== void 0 && I.smoothtime - r5.hpFlashTime < 0.2 && r5.hpFlashFraction !== void 0;
-                    let progressBarEl = hpBarEl.firstElementChild;
-                    if (progressBarEl) Ve(progressBarEl, "transition", flashing ? "none" : "");
-                    if (flashing) {
-                        let elapsed = I.smoothtime - r5.hpFlashTime;
-                        let hpPct = r5.hpMax ? ~~(r5.hp / r5.hpMax * 100) : 100;
-                        let flashPct = ~~(r5.hpFlashFraction * 100);
-                        let lostPct = flashPct - hpPct;
-                        let progress = elapsed / 0.2;
-                        Ve(flashDiv, "display", "");
-                        Ve(flashDiv, "left", hpPct + "%");
-                        Ve(flashDiv, "width", lostPct * (1 - progress) + "%");
-                    } else {
-                        Ve(flashDiv, "display", "none");
-                    }
-                }
-                L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && (p(o, "class", i), Ve(o, "background", _bgcStyle("bgc" + L[5].class))), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8822612")) && p(o, "src", s);
+                L[2] == "default" ? A || (A = y4(L), A.c(), A.m(n, o)) : A && (A.d(1), A = null), (!k || $ & 32 && i !== (i = "pclass icon border black bgc" + L[5].class + " svelte-g292qg")) && p(o, "class", i), (!k || $ & 32 && !st(o.src, s = (L[5].rarity !== !1 ? "/data/ui/mobpower/" + L[5].rarity : "/data/ui/classes/" + L[5].class) + "." + On + "?v=8829640")) && p(o, "src", s);
                 let W = {};
                 $ & 256 && (W.fract = L[8]), $ & 8192 && (W.barcol = L[13]), $ & 1024 && (W.left = L[10]), $ & 64 && (W.right = L[6]), $ & 536895748 && (W.$$scope = {
                     dirty: $,
@@ -12502,13 +9984,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         let e, n, o;
         return {
             c() {
-                e = h("div"), p(e, "class", n = "progressBar " + t[13] + " hpdelta svelte-g292qg"), p(e, "style", o = (t[14] ? "transition:none;" : "") + "width:" + t[8] + "%;" + (_bgcStyle(t[13]) ? "background:" + _bgcStyle(t[13]) + ";" : ""))
+                e = h("div"), p(e, "class", n = "progressBar " + t[13] + " hpdelta svelte-g292qg"), p(e, "style", o = (t[14] ? "transition:none;" : "") + "width:" + t[8] + "%;")
             },
             m(i, s) {
                 w(i, e, s)
             },
             p(i, s) {
-                s & 8192 && n !== (n = "progressBar " + i[13] + " hpdelta svelte-g292qg") && p(e, "class", n), s & 24832 && o !== (o = (i[14] ? "transition:none;" : "") + "width:" + i[8] + "%;" + (_bgcStyle(i[13]) ? "background:" + _bgcStyle(i[13]) + ";" : "")) && p(e, "style", o)
+                s & 8192 && n !== (n = "progressBar " + i[13] + " hpdelta svelte-g292qg") && p(e, "class", n), s & 16640 && o !== (o = (i[14] ? "transition:none;" : "") + "width:" + i[8] + "%;") && p(e, "style", o)
             },
             d(i) {
                 i && x(e)
@@ -12517,7 +9999,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
     }
 
     function mD(t) {
-        let e, n = t[2] == "default" && !fe.flashNameplates && k4(t);
+        let e, n = t[2] == "default" && k4(t);
         return {
             c() {
                 n && n.c(), e = de()
@@ -12526,7 +10008,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 n && n.m(o, i), w(o, e, i)
             },
             p(o, i) {
-                o[2] == "default" && !fe.flashNameplates ? n ? n.p(o, i) : (n = k4(o), n.c(), n.m(e.parentNode, e)) : n && (n.d(1), n = null)
+                o[2] == "default" ? n ? n.p(o, i) : (n = k4(o), n.c(), n.m(e.parentNode, e)) : n && (n.d(1), n = null)
             },
             d(o) {
                 o && x(e), n && n.d(o)
@@ -12599,13 +10081,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         let e, n, o;
         return {
             c() {
-                e = h("img"), p(e, "class", n = "tag icon border black bgf" + t[5].faction + " round svelte-g292qg"), st(e.src, o = "/data/ui/factions/" + t[5].faction + "." + On + "?v=8822612") || p(e, "src", o)
+                e = h("img"), p(e, "class", n = "tag icon border black bgf" + t[5].faction + " round svelte-g292qg"), st(e.src, o = "/data/ui/factions/" + t[5].faction + "." + On + "?v=8829640") || p(e, "src", o)
             },
             m(i, s) {
                 w(i, e, s)
             },
             p(i, s) {
-                s & 32 && n !== (n = "tag icon border black bgf" + i[5].faction + " round svelte-g292qg") && p(e, "class", n), s & 32 && !st(e.src, o = "/data/ui/factions/" + i[5].faction + "." + On + "?v=8822612") && p(e, "src", o)
+                s & 32 && n !== (n = "tag icon border black bgf" + i[5].faction + " round svelte-g292qg") && p(e, "class", n), s & 32 && !st(e.src, o = "/data/ui/factions/" + i[5].faction + "." + On + "?v=8829640") && p(e, "src", o)
             },
             d(i) {
                 i && x(e)
@@ -12617,13 +10099,13 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         let e, n;
         return {
             c() {
-                e = h("img"), p(e, "class", "tag icon border black bgblack round svelte-g292qg"), st(e.src, n = "/data/ui/icons/" + (t[5].role == 2 ? "star" : "starsilver") + "." + On + "?v=8822612") || p(e, "src", n)
+                e = h("img"), p(e, "class", "tag icon border black bgblack round svelte-g292qg"), st(e.src, n = "/data/ui/icons/" + (t[5].role == 2 ? "star" : "starsilver") + "." + On + "?v=8829640") || p(e, "src", n)
             },
             m(o, i) {
                 w(o, e, i)
             },
             p(o, i) {
-                i & 32 && !st(e.src, n = "/data/ui/icons/" + (o[5].role == 2 ? "star" : "starsilver") + "." + On + "?v=8822612") && p(e, "src", n)
+                i & 32 && !st(e.src, n = "/data/ui/icons/" + (o[5].role == 2 ? "star" : "starsilver") + "." + On + "?v=8829640") && p(e, "src", n)
             },
             d(o) {
                 o && x(e)
@@ -12692,16 +10174,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 o && o.m(i, s), w(i, e, s), n = !0
             },
             p(i, [s]) {
-                let playerBuffs = I.getEntityById(i[5].id)
-                if (playerBuffs) playerBuffs = playerBuffs.buffs.buffs
-                i.CCFound = false, i.CCColor = "#ffffff"
-                if (playerBuffs && fe.CCIndicator) {
-                    let color = getCCColor(playerBuffs);
-                    if (color) { i.CCFound = true; i.CCColor = color; }
-                }
-                let castsOnPlayer = targettedPlayers.get(i[5].id) || []
-                let targetScale = (1 + (castsOnPlayer.length / 25))
-                i.targetScale = targetScale
                 i[5].visible ? o ? (o.p(i, s), s & 32 && S(o, 1)) : (o = b4(i), o.c(), S(o, 1), o.m(e.parentNode, e)) : o && (we(), E(o, 1, 1, () => {
                     o = null
                 }), Me())
@@ -12744,7 +10216,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         return t.$$set = Y => {
             "unit" in Y && a(n(0, v = Y.unit)), "buffs" in Y && g(n(1, _ = Y.buffs)), "mode" in Y && n(2, b = Y.mode), "order" in Y && n(3, k = Y.order), "id" in Y && n(4, y = Y.id)
         }, t.$$.update = () => {
-            t.$$.dirty & 32 && n(24, o = r.world == I.id ? r.alive ? !1 : "Dead" : r.world), t.$$.dirty & 18874404 && (n(21, F = r.hpMax ? b == "default" ? ro(r.hp) + "/" + ro(r.hpMax) : ro(r.hp) : "?"), n(6, C = o || F), n(8, D = o != "offline" ? ~~(r.hpMax ? r.hp / r.hpMax * 100 : 100) : 0), n(13, L = o ? "bggrey" : (I.mode.partyBasedHostility ? r.party === I.player.party : r.faction === I.player.faction) ? (fe.classColorParty ? "bgc" + r.class : "bghealth") : "bgenemy")), t.$$.dirty & 36 && n(22, A = r.mpMax ? b == "default" ? ro(r.mp) + "/" + ro(r.mpMax) : ro(r.mp) : "?"), t.$$.dirty & 32 && n(10, V = r.name ? Vx(r.name, 10) : ""), t.$$.dirty & 32 && n(11, B = r.timedSkill ? (P.ui.hiddenskills[r.timedSkill.id] || P.items.book[r.timedSkill.id]).name : `Lv. ${r.level}`), t.$$.dirty & 20971552 && n(7, M = o || (r.timedSkill ? r.timedCast.remaining(I.smoothtime).toFixed(1) : A)), t.$$.dirty & 16777248 && n(9, U = o != "offline" ? ~~(r.mpMax ? r.mp / r.mpMax * 100 : 100) : 0), t.$$.dirty & 16777248 && n(12, q = o != "offline" && r.timedSkill ? r.timedCast.fraction(I.smoothtime) * 100 : 0), t.$$.dirty & 16777216 && n(16, i = o ? "bggrey" : "bgmana"), t.$$.dirty & 4 && n(15, s = Math.round(b == "default" ? 100 : 85)), t.$$.dirty & 8388640 && (n(14, $ = W != r.id), n(23, W = r.id))
+            t.$$.dirty & 32 && n(24, o = r.world == I.id ? r.alive ? !1 : "Dead" : r.world), t.$$.dirty & 18874404 && (n(21, F = r.hpMax ? b == "default" ? ro(r.hp) + "/" + ro(r.hpMax) : ro(r.hp) : "?"), n(6, C = o || F), n(8, D = o != "offline" ? ~~(r.hpMax ? r.hp / r.hpMax * 100 : 100) : 0), n(13, L = o ? "bggrey" : (I.mode.partyBasedHostility ? r.party === I.player.party : r.faction === I.player.faction) ? "bghealth" : "bgenemy")), t.$$.dirty & 36 && n(22, A = r.mpMax ? b == "default" ? ro(r.mp) + "/" + ro(r.mpMax) : ro(r.mp) : "?"), t.$$.dirty & 32 && n(10, V = r.name ? Vx(r.name, 10) : ""), t.$$.dirty & 32 && n(11, B = r.timedSkill ? (P.ui.hiddenskills[r.timedSkill.id] || P.items.book[r.timedSkill.id]).name : `Lv. ${r.level}`), t.$$.dirty & 20971552 && n(7, M = o || (r.timedSkill ? r.timedCast.remaining(I.smoothtime).toFixed(1) : A)), t.$$.dirty & 16777248 && n(9, U = o != "offline" ? ~~(r.mpMax ? r.mp / r.mpMax * 100 : 100) : 0), t.$$.dirty & 16777248 && n(12, q = o != "offline" && r.timedSkill ? r.timedCast.fraction(I.smoothtime) * 100 : 0), t.$$.dirty & 16777216 && n(16, i = o ? "bggrey" : "bgmana"), t.$$.dirty & 4 && n(15, s = Math.round(b == "default" ? 100 : 85)), t.$$.dirty & 8388640 && (n(14, $ = W != r.id), n(23, W = r.id))
         }, [v, _, b, k, y, r, C, M, D, U, V, B, q, L, $, s, i, c, f, u, R, F, A, W, o, N]
     }
     var Xg = class extends Fe {
@@ -13018,7 +10490,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         return t.$$set = ie => {
             "data" in ie && n(0, c = ie.data), "key" in ie && n(1, f = ie.key), "stacks" in ie && n(2, u = ie.stacks), "cd" in ie && n(3, m = ie.cd), "remaining" in ie && n(4, g = ie.remaining), "border" in ie && n(5, v = ie.border), "img" in ie && n(22, _ = ie.img), "meta" in ie && n(23, b = ie.meta), "css" in ie && n(6, k = ie.css), "id" in ie && n(7, y = ie.id), "describe" in ie && n(8, F = ie.describe), "queued" in ie && n(24, A = ie.queued), "pickable" in ie && n(25, C = ie.pickable), "descRoot" in ie && n(26, M = ie.descRoot), "descPos" in ie && n(9, D = ie.descPos), "auto" in ie && n(10, U = ie.auto), "status" in ie && n(27, V = ie.status), "clickToUse" in ie && n(28, B = ie.clickToUse), "shift" in ie && n(29, q = ie.shift), "$$scope" in ie && n(30, a = ie.$$scope)
         }, t.$$.update = () => {
-            t.$$.dirty[0] & 16392 && n(14, o = o || m > 0), t.$$.dirty[0] & 138446856 && n(17, i = _ ? r && L || m > 0 || V == -1 ? _.replace(".", "_grey.").replace(/_q[0-9]/g, "") : _ : `/data/ui/slotbg/bg.${Yn}?v=8822612`), t.$$.dirty[0] & 150995968 && n(16, s = W(U || A, V)), t.$$.dirty[0] & 67112960 && R && M && M.appendChild(R), t.$$.dirty[0] & 8200 && fu(Math.floor(m || 0), _e, 40)
+            t.$$.dirty[0] & 16392 && n(14, o = o || m > 0), t.$$.dirty[0] & 138446856 && n(17, i = _ ? r && L || m > 0 || V == -1 ? _.replace(".", "_grey.").replace(/_q[0-9]/g, "") : _ : `/data/ui/slotbg/bg.${Yn}?v=8829640`), t.$$.dirty[0] & 150995968 && n(16, s = W(U || A, V)), t.$$.dirty[0] & 67112960 && R && M && M.appendChild(R), t.$$.dirty[0] & 8200 && fu(Math.floor(m || 0), _e, 40)
         }, [c, f, u, m, g, v, k, y, F, D, U, L, R, _e, o, r, s, i, N, Y, ge, ve, _, b, A, C, M, V, B, q, a, l, be, Te]
     }
     var Zg = class extends Fe {
@@ -13170,7 +10642,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 3,
         icon: "ui/skills/18",
         fx: {
-            stick: fe.removeFX ? void 0 : 38,
+            stick: 38,
             color: [.7, .1, .1, .5]
         },
         intervalDuration: 1.5,
@@ -13320,8 +10792,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/12",
         fx: {
-            apply: fe.removeFX ? void 0 : 50,
-            stick: fe.removeFX ? void 0 : 49,
+            apply: 50,
+            stick: 49,
             color: [.5, .4, .05, .5]
         },
         statsStatic: (t, e) => {
@@ -13355,7 +10827,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         maxStacks: 5,
         icon: "ui/skills/43",
         fx: {
-            stick: fe.removeFX ? void 0 : 20
+            stick: 20
         }
     });
     var J4 = new me({
@@ -13475,8 +10947,8 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         tags: new Set([3, 1]),
         icon: "ui/skills/29",
         fx: {
-            apply: fe.removeFX ? void 0 : 51,
-            stick: fe.removeFX ? void 0 : 66,
+            apply: 51,
+            stick: 66,
             color: [.1, 1, .3, .3]
         },
         statsStatic: (t, e) => {
@@ -13827,9 +11299,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         icon: "ui/skills/39",
         customIcon: t => "items/mount/mount" + lr[t.data[0]].tier + "_q1",
         fx: {
-            mount: t => {
-                return I && I.player && t.caster === I.player.id && fe.customMountID && O1 && O1.has(fe.customMountID) ? fe.customMountID : lr[t.data[0]].skin
-            },
+            mount: t => lr[t.data[0]].skin,
             apply: 76,
             endSound: 69
         },
@@ -14024,14 +11494,14 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 stick: 162,
                 endSound: 69,
                 color: [.4, 1.2, .2, .5],
-                alpha: [1]
+                alpha: [.7]
             }
         }),
         sM = new me({
             id: 140,
             icon: "items/charm/charm9_q1",
             fx: {
-                alpha: [.65]
+                alpha: [.05]
             }
         });
     var rM = new me({
@@ -15146,7 +12616,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
         let e, n, o, i, s, r;
         return {
             c() {
-                e = h("span"), n = h("img"), i = h("span"), s = T(t[0]), p(n, "class", "svgicon texticon"), st(n.src, o = "/data/ui/icons/gem.svg?v=8822612") || p(n, "src", o), p(i, "class", r = !t[1] || t[0] < t[2] ? "textprimary" : "textred")
+                e = h("span"), n = h("img"), i = h("span"), s = T(t[0]), p(n, "class", "svgicon texticon"), st(n.src, o = "/data/ui/icons/gem.svg?v=8829640") || p(n, "src", o), p(i, "class", r = !t[1] || t[0] < t[2] ? "textprimary" : "textred")
             },
             m(l, a) {
                 w(l, e, a), d(e, n), d(e, i), d(i, s)
@@ -16170,7 +13640,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
                 img: t[14],
                 remaining: t[12],
                 key: t[7].hotkey,
-                border: t[10] || t[8] ? "auto" : fe.noFrameColor ? "black" : t[11] || t[9] || t[6] || t[13] ? "grey" : t[4] ? Nt(t[4].quality)[0] : "white",
+                border: t[10] || t[8] ? "auto" : t[11] || t[9] || t[6] || t[13] ? "grey" : t[4] ? Nt(t[4].quality)[0] : "white",
                 $$slots: {
                     default: [GD]
                 },
@@ -16187,12 +13657,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             },
             p(o, i) {
                 let s = {};
-                i[0] & 2 && (s.shift = o[1]), i[0] & 144 && (s.describe = o[7].id >= 0 && !o[7].item || o[4] !== void 0), i[0] & 2080 && (s.status = o[11] ? -1 : o[5] !== void 0 ? o[5].status : 0), i[0] & 128 && (s.id = "sk" + o[7].hotkey), i[0] & 144 && (s.data = o[7].id >= 0 || o[4] !== void 0 ? o[7] : void 0), i[0] & 512 && (s.auto = o[9]), i[0] & 1024 && (s.queued = o[10]), i[0] & 65536 && (s.meta = o[16]), i[0] & 32768 && (s.css = o[15]), i[0] & 8 && (s.stacks = o[3]), i[0] & 8192 && (s.cd = o[13]), i[0] & 16384 && (s.img = o[14]), i[0] & 4096 && (s.remaining = o[12]), i[0] & 128 && (s.key = o[7].hotkey), i[0] & 12112 && 
-                (s.border = 
-o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
-    : o[11] || o[9] || o[6] || o[13] ? "grey" 
-        : o[4] ? Nt(o[4].quality)[0] 
-        : "white"), i[0] & 148 | i[1] & 8 && (s.$$scope = {
+                i[0] & 2 && (s.shift = o[1]), i[0] & 144 && (s.describe = o[7].id >= 0 && !o[7].item || o[4] !== void 0), i[0] & 2080 && (s.status = o[11] ? -1 : o[5] !== void 0 ? o[5].status : 0), i[0] & 128 && (s.id = "sk" + o[7].hotkey), i[0] & 144 && (s.data = o[7].id >= 0 || o[4] !== void 0 ? o[7] : void 0), i[0] & 512 && (s.auto = o[9]), i[0] & 1024 && (s.queued = o[10]), i[0] & 65536 && (s.meta = o[16]), i[0] & 32768 && (s.css = o[15]), i[0] & 8 && (s.stacks = o[3]), i[0] & 8192 && (s.cd = o[13]), i[0] & 16384 && (s.img = o[14]), i[0] & 4096 && (s.remaining = o[12]), i[0] & 128 && (s.key = o[7].hotkey), i[0] & 12112 && (s.border = o[10] || o[8] ? "auto" : o[11] || o[9] || o[6] || o[13] ? "grey" : o[4] ? Nt(o[4].quality)[0] : "white"), i[0] & 148 | i[1] & 8 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -16244,7 +13709,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         } else return
                     }
                     let _e = zt.get(y.id);
-                    console.log(`Sent skill id ${y.id} ${y.info}`)
                     _e.envCast > 0 ? _r > 0 ? gu(0, 0, 0) : gu(y.id, _e.range, _e.envCast) : Io(Mt.clientPlayerSkill.packData({
                         id: y.id,
                         info: y.info
@@ -17097,7 +14561,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 s || (i && i.end(1), s = !0)
             },
             o(r) {
-                r && (i = I_(e, Lm, {})), s = !1
+                r && (i = I2(e, Lm, {})), s = !1
             },
             d(r) {
                 r && x(e), r && i && i.end()
@@ -17403,7 +14867,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         return {
             c() {
-                e = h("div"), n = h("img"), p(n, "class", "svgicon"), st(n.src, o = "/data/ui/icons/" + t[5].img + ".svg?v=8822612") || p(n, "src", o), p(e, "id", i = "sys" + t[5].img), p(e, "class", "btn border black")
+                e = h("div"), n = h("img"), p(n, "class", "svgicon"), st(n.src, o = "/data/ui/icons/" + t[5].img + ".svg?v=8829640") || p(n, "src", o), p(e, "id", i = "sys" + t[5].img), p(e, "class", "btn border black")
             },
             m(c, f) {
                 w(c, e, f), d(e, n), s || (r = [H(e, "mouseenter", l), H(e, "mouseleave", t[3]), H(e, "click", a)], s = !0)
@@ -17702,12 +15166,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             Ke, mt, hn, wo, jn, Mo, pt, Vt, Fo, Vr = P.ui.settings.flashinterval + "",
             fi, Nl, Vi, Li = t[23].toFixed(1) + "",
             $s, bn, Tt, Xt, Dc = P.ui.settings.flashduration + "",
-            o_, i_, Vc, Qu = t[24].toFixed(1) + "",
-            Ch, s_, ui, Zu, qi, Ju, Ri, Ku, Wl, Lc, Sh, em, jl, tm, Gl, nm, Hl, om, zi, qc, Ph, im, Yl, sm, Xl, Rc, Ah, Ql, BT = P.ui.settings.protectedquality + "",
-            r_, l_, zc, Th, a_, Bi, Zl, UT = P.ui.settings.invwidth + "",
-            c_, f_, rm, Eh, Ui, Bc, Ih, Jl, $T = P.ui.settings.stashwidth + "",
-            u_, m_, lm, Dh, $i, Kl, OT = P.ui.settings.stashheight + "",
-            p_, d_, am, Vh, Oi, Uc, Lh, cm, ea, Xo, qh, h_, ta = pe(t[33]),
+            o2, i2, Vc, Qu = t[24].toFixed(1) + "",
+            Ch, s2, ui, Zu, qi, Ju, Ri, Ku, Wl, Lc, Sh, em, jl, tm, Gl, nm, Hl, om, zi, qc, Ph, im, Yl, sm, Xl, Rc, Ah, Ql, B9 = P.ui.settings.protectedquality + "",
+            r2, l2, zc, Th, a2, Bi, Zl, U9 = P.ui.settings.invwidth + "",
+            c2, f2, rm, Eh, Ui, Bc, Ih, Jl, $9 = P.ui.settings.stashwidth + "",
+            u2, m2, lm, Dh, $i, Kl, O9 = P.ui.settings.stashheight + "",
+            p2, d2, am, Vh, Oi, Uc, Lh, cm, ea, Xo, qh, h2, ta = pe(t[33]),
             fo = [];
         for (let te = 0; te < ta.length; te += 1) fo[te] = tF(Q6(t, ta, te));
         return k = new Et({
@@ -17815,20 +15279,20 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             c() {
                 e = h("div"), o = T(n), i = Ne(), s = h("br"), r = h("small"), r.textContent = `${P.ui.settings.reload}`, l = h("select");
                 for (let te = 0; te < fo.length; te += 1) fo[te].c();
-                a = h("div"), a.textContent = `${P.ui.settings.tutorial}`, c = h("div"), f = h("div"), f.textContent = `${P.ui.reset}`, u = h("div"), u.textContent = `${P.ui.settings.resettutorial}`, m = h("div"), m.textContent = `${P.ui.disable}`, g = h("div"), g.textContent = `${P.ui.settings.disabletutorial}`, v = h("div"), v.textContent = `${P.ui.settings.fpsping}`, _ = h("div"), b = h("div"), b.textContent = `${P.ui.settings.showfps}`, K(k.$$.fragment), y = h("div"), y.textContent = `${P.ui.settings.nameplates}`, F = h("div"), A = h("div"), A.textContent = `${P.ui.settings.drawrange}`, C = h("input"), M = h("div"), M.textContent = `${P.ui.settings.monsterbars}`, K(D.$$.fragment), U = h("div"), U.textContent = `${P.ui.settings.monsternames}`, K(V.$$.fragment), B = h("div"), B.textContent = `${P.ui.settings.friendlyplayerbars}`, K(q.$$.fragment), L = h("div"), L.textContent = `${P.ui.settings.friendlyplayernames}`, K($.$$.fragment), W = h("div"), W.textContent = `${P.ui.settings.enemyplayerbars}`, K(R.$$.fragment), N = h("div"), N.textContent = `${P.ui.settings.enemyplayernames}`, K(Y.$$.fragment), ge = h("div"), ge.textContent = `${P.ui.settings.showlevel}`, K(Ce.$$.fragment), ve = h("div"), ve.textContent = `${P.ui.settings.classcolors}`, K(se.$$.fragment), le = h("div"), le.textContent = `Transparency`, K(_e.$$.fragment), be = h("div"), be.textContent = `${P.ui.settings.drops}`, Te = h("div"), ie = h("div"), ie.textContent = `${P.ui.settings.showquality}`, K(Ie.$$.fragment), ee = h("div"), Ge = T(qe), Qe = h("br"), He = h("small"), he = T(t[20]), ce = T("%"), $e = h("input"), oe = h("div"), J = T("Material Quality% Minimum"), O = h("br"), ue = h("small"), je = T(t[21]), Ue = T("%"), ke = h("input"), ze = h("div"), dt = T(Oe), Ft = h("br"), Ze = h("small"), Ze.textContent = `${P.ui.settings.reload}`, Ct = h("input"), xe = h("div"), xe.textContent = `${P.ui.settings.damagehealing}`, Je = h("div"), kt = h("div"), kt.textContent = `${P.ui.settings.incomingdamage}`, K(At.$$.fragment), De = h("div"), De.textContent = `${P.ui.settings.incominghealing}`, K(at.$$.fragment), Ut = h("div"), Ut.textContent = `${P.ui.settings.incomingmana}`, K(Re.$$.fragment), St = h("div"), St.textContent = `${P.ui.settings.preventoverlap}`, K(Rt.$$.fragment), Ye = h("div"), Ye.textContent = `${P.ui.settings.icons}`, et = h("div"), Ee = h("div"), Ke = T(ct), mt = h("br"), hn = h("small"), hn.textContent = `${P.ui.settings.reload}`, K(wo.$$.fragment), jn = h("div"), jn.textContent = `${P.ui.settings.buffcdtext}`, K(Mo.$$.fragment), pt = h("div"), pt.textContent = `${P.ui.settings.selfbuffsonly}`, K(Vt.$$.fragment), Fo = h("div"), fi = T(Vr), Nl = h("br"), Vi = h("small"), $s = T(Li), bn = T("s"), Tt = h("input"), Xt = h("div"), o_ = T(Dc), i_ = h("br"), Vc = h("small"), Ch = T(Qu), s_ = T("s"), ui = h("input"), Zu = h("div"), Zu.textContent = `${P.ui.settings.buffmax}`, qi = h("input"), Ju = h("div"), Ju.textContent = `${P.ui.settings.buffmaxparty}`, Ri = h("input"), Ku = h("div"), Ku.textContent = `${P.ui.settings.updateratelimit}`, K(Wl.$$.fragment), Lc = h("div"), Lc.textContent = "Party", Sh = h("div"), em = h("div"), em.textContent = "Leave party if empty", K(jl.$$.fragment), tm = h("div"), tm.textContent = `${P.ui.settings.showselfparty}`, K(Gl.$$.fragment), nm = h("div"), nm.textContent = `${P.ui.settings.partymana}`, K(Hl.$$.fragment), om = h("div"), om.textContent = `${P.ui.settings.partyframewidth}`, zi = h("input"), qc = h("div"), qc.textContent = `${P.ui.settings.map}`, Ph = h("div"), im = h("div"), im.textContent = `${P.ui.settings.mapshowmonsters}`, K(Yl.$$.fragment), sm = h("div"), sm.textContent = `${P.ui.settings.maplowqual}`, K(Xl.$$.fragment), Rc = h("div"), Rc.textContent = `${P.ui.inventory.name}`, Ah = h("div"), Ql = h("div"), r_ = T(BT), l_ = h("br"), zc = h("small"), Th = T(t[28]), a_ = T("%"), Bi = h("input"), Zl = h("div"), c_ = T(UT), f_ = h("br"), rm = h("small"), Eh = T(t[29]), Ui = h("input"), Bc = h("div"), Bc.textContent = `${P.ui.stash.name}`, Ih = h("div"), Jl = h("div"), u_ = T($T), m_ = h("br"), lm = h("small"), Dh = T(t[30]), $i = h("input"), Kl = h("div"), p_ = T(OT), d_ = h("br"), am = h("small"), Vh = T(t[31]), Oi = h("input"), Uc = h("div"), Uc.textContent = "Social", Lh = h("div"), cm = h("div"), cm.textContent = "Twitch Streams", K(ea.$$.fragment), p(r, "class", "textgrey"), t[18] === void 0 && yn(() => t[52].call(l)), p(a, "class", "textprimary"), p(u, "class", "btn blue"), p(g, "class", "btn orange"), p(v, "class", "textprimary"), p(y, "class", "textprimary"), p(C, "type", "range"), p(be, "class", "textprimary"), p(He, "class", "textgrey"), p($e, "type", "range"), p($e, "min", "0"), p($e, "max", "100"), p(ue, "class", "textgrey"), p(ke, "type", "range"), p(ke, "min", "0"), p(ke, "max", "100"), p(Ze, "class", "textgrey"), p(Ct, "type", "text"), p(Ct, "placeholder", "misc, gold, ..."), p(xe, "class", "textprimary"), p(Ye, "class", "textprimary"), p(hn, "class", "textgrey"), p(Vi, "class", "textgrey"), p(Tt, "type", "range"), p(Tt, "min", "0"), p(Tt, "max", "1"), p(Tt, "step", "0.1"), p(Vc, "class", "textgrey"), p(ui, "type", "range"), p(ui, "min", "0"), p(ui, "max", "5"), p(ui, "step", "0.1"), p(qi, "placeholder", "14"), p(qi, "type", "number"), p(qi, "min", "0"), p(Ri, "placeholder", "8"), p(Ri, "type", "number"), p(Ri, "min", "0"), p(Lc, "class", "textprimary"), p(zi, "type", "range"), p(zi, "min", "50"), p(zi, "max", "400"), p(qc, "class", "textprimary"), p(Rc, "class", "textprimary"), p(zc, "class", "textgrey"), p(Bi, "type", "range"), p(Bi, "min", "0"), p(Bi, "max", "110"), p(rm, "class", "textgrey"), p(Ui, "type", "range"), p(Ui, "min", "4"), p(Ui, "max", "10"), p(Bc, "class", "textprimary"), p(lm, "class", "textgrey"), p($i, "type", "range"), p($i, "min", "7"), p($i, "max", "20"), p(am, "class", "textgrey"), p(Oi, "type", "range"), p(Oi, "min", "50"), p(Oi, "max", "500"), p(Uc, "class", "textprimary")
+                a = h("div"), a.textContent = `${P.ui.settings.tutorial}`, c = h("div"), f = h("div"), f.textContent = `${P.ui.reset}`, u = h("div"), u.textContent = `${P.ui.settings.resettutorial}`, m = h("div"), m.textContent = `${P.ui.disable}`, g = h("div"), g.textContent = `${P.ui.settings.disabletutorial}`, v = h("div"), v.textContent = `${P.ui.settings.fpsping}`, _ = h("div"), b = h("div"), b.textContent = `${P.ui.settings.showfps}`, K(k.$$.fragment), y = h("div"), y.textContent = `${P.ui.settings.nameplates}`, F = h("div"), A = h("div"), A.textContent = `${P.ui.settings.drawrange}`, C = h("input"), M = h("div"), M.textContent = `${P.ui.settings.monsterbars}`, K(D.$$.fragment), U = h("div"), U.textContent = `${P.ui.settings.monsternames}`, K(V.$$.fragment), B = h("div"), B.textContent = `${P.ui.settings.friendlyplayerbars}`, K(q.$$.fragment), L = h("div"), L.textContent = `${P.ui.settings.friendlyplayernames}`, K($.$$.fragment), W = h("div"), W.textContent = `${P.ui.settings.enemyplayerbars}`, K(R.$$.fragment), N = h("div"), N.textContent = `${P.ui.settings.enemyplayernames}`, K(Y.$$.fragment), ge = h("div"), ge.textContent = `${P.ui.settings.showlevel}`, K(Ce.$$.fragment), ve = h("div"), ve.textContent = `${P.ui.settings.classcolors}`, K(se.$$.fragment), le = h("div"), le.textContent = `${P.ui.settings.transparency}`, K(_e.$$.fragment), be = h("div"), be.textContent = `${P.ui.settings.drops}`, Te = h("div"), ie = h("div"), ie.textContent = `${P.ui.settings.showquality}`, K(Ie.$$.fragment), ee = h("div"), Ge = T(qe), Qe = h("br"), He = h("small"), he = T(t[20]), ce = T("%"), $e = h("input"), oe = h("div"), J = T("Material Quality% Minimum"), O = h("br"), ue = h("small"), je = T(t[21]), Ue = T("%"), ke = h("input"), ze = h("div"), dt = T(Oe), Ft = h("br"), Ze = h("small"), Ze.textContent = `${P.ui.settings.reload}`, Ct = h("input"), xe = h("div"), xe.textContent = `${P.ui.settings.damagehealing}`, Je = h("div"), kt = h("div"), kt.textContent = `${P.ui.settings.incomingdamage}`, K(At.$$.fragment), De = h("div"), De.textContent = `${P.ui.settings.incominghealing}`, K(at.$$.fragment), Ut = h("div"), Ut.textContent = `${P.ui.settings.incomingmana}`, K(Re.$$.fragment), St = h("div"), St.textContent = `${P.ui.settings.preventoverlap}`, K(Rt.$$.fragment), Ye = h("div"), Ye.textContent = `${P.ui.settings.icons}`, et = h("div"), Ee = h("div"), Ke = T(ct), mt = h("br"), hn = h("small"), hn.textContent = `${P.ui.settings.reload}`, K(wo.$$.fragment), jn = h("div"), jn.textContent = `${P.ui.settings.buffcdtext}`, K(Mo.$$.fragment), pt = h("div"), pt.textContent = `${P.ui.settings.selfbuffsonly}`, K(Vt.$$.fragment), Fo = h("div"), fi = T(Vr), Nl = h("br"), Vi = h("small"), $s = T(Li), bn = T("s"), Tt = h("input"), Xt = h("div"), o2 = T(Dc), i2 = h("br"), Vc = h("small"), Ch = T(Qu), s2 = T("s"), ui = h("input"), Zu = h("div"), Zu.textContent = `${P.ui.settings.buffmax}`, qi = h("input"), Ju = h("div"), Ju.textContent = `${P.ui.settings.buffmaxparty}`, Ri = h("input"), Ku = h("div"), Ku.textContent = `${P.ui.settings.updateratelimit}`, K(Wl.$$.fragment), Lc = h("div"), Lc.textContent = "Party", Sh = h("div"), em = h("div"), em.textContent = "Leave party if empty", K(jl.$$.fragment), tm = h("div"), tm.textContent = `${P.ui.settings.showselfparty}`, K(Gl.$$.fragment), nm = h("div"), nm.textContent = `${P.ui.settings.partymana}`, K(Hl.$$.fragment), om = h("div"), om.textContent = `${P.ui.settings.partyframewidth}`, zi = h("input"), qc = h("div"), qc.textContent = `${P.ui.settings.map}`, Ph = h("div"), im = h("div"), im.textContent = `${P.ui.settings.mapshowmonsters}`, K(Yl.$$.fragment), sm = h("div"), sm.textContent = `${P.ui.settings.maplowqual}`, K(Xl.$$.fragment), Rc = h("div"), Rc.textContent = `${P.ui.inventory.name}`, Ah = h("div"), Ql = h("div"), r2 = T(B9), l2 = h("br"), zc = h("small"), Th = T(t[28]), a2 = T("%"), Bi = h("input"), Zl = h("div"), c2 = T(U9), f2 = h("br"), rm = h("small"), Eh = T(t[29]), Ui = h("input"), Bc = h("div"), Bc.textContent = `${P.ui.stash.name}`, Ih = h("div"), Jl = h("div"), u2 = T($9), m2 = h("br"), lm = h("small"), Dh = T(t[30]), $i = h("input"), Kl = h("div"), p2 = T(O9), d2 = h("br"), am = h("small"), Vh = T(t[31]), Oi = h("input"), Uc = h("div"), Uc.textContent = "Social", Lh = h("div"), cm = h("div"), cm.textContent = "Twitch Streams", K(ea.$$.fragment), p(r, "class", "textgrey"), t[18] === void 0 && yn(() => t[52].call(l)), p(a, "class", "textprimary"), p(u, "class", "btn blue"), p(g, "class", "btn orange"), p(v, "class", "textprimary"), p(y, "class", "textprimary"), p(C, "type", "range"), p(be, "class", "textprimary"), p(He, "class", "textgrey"), p($e, "type", "range"), p($e, "min", "0"), p($e, "max", "100"), p(ue, "class", "textgrey"), p(ke, "type", "range"), p(ke, "min", "0"), p(ke, "max", "100"), p(Ze, "class", "textgrey"), p(Ct, "type", "text"), p(Ct, "placeholder", "misc, gold, ..."), p(xe, "class", "textprimary"), p(Ye, "class", "textprimary"), p(hn, "class", "textgrey"), p(Vi, "class", "textgrey"), p(Tt, "type", "range"), p(Tt, "min", "0"), p(Tt, "max", "1"), p(Tt, "step", "0.1"), p(Vc, "class", "textgrey"), p(ui, "type", "range"), p(ui, "min", "0"), p(ui, "max", "5"), p(ui, "step", "0.1"), p(qi, "placeholder", "14"), p(qi, "type", "number"), p(qi, "min", "0"), p(Ri, "placeholder", "8"), p(Ri, "type", "number"), p(Ri, "min", "0"), p(Lc, "class", "textprimary"), p(zi, "type", "range"), p(zi, "min", "50"), p(zi, "max", "400"), p(qc, "class", "textprimary"), p(Rc, "class", "textprimary"), p(zc, "class", "textgrey"), p(Bi, "type", "range"), p(Bi, "min", "0"), p(Bi, "max", "110"), p(rm, "class", "textgrey"), p(Ui, "type", "range"), p(Ui, "min", "4"), p(Ui, "max", "10"), p(Bc, "class", "textprimary"), p(lm, "class", "textgrey"), p($i, "type", "range"), p($i, "min", "7"), p($i, "max", "20"), p(am, "class", "textgrey"), p(Oi, "type", "range"), p(Oi, "min", "50"), p(Oi, "max", "500"), p(Uc, "class", "textprimary")
             },
             m(te, Ae) {
                 w(te, e, Ae), d(e, o), d(e, i), d(e, s), d(e, r), w(te, l, Ae);
                 for (let Gn = 0; Gn < fo.length; Gn += 1) fo[Gn] && fo[Gn].m(l, null);
-                Mn(l, t[18], !0), w(te, a, Ae), w(te, c, Ae), w(te, f, Ae), w(te, u, Ae), w(te, m, Ae), w(te, g, Ae), w(te, v, Ae), w(te, _, Ae), w(te, b, Ae), Q(k, te, Ae), w(te, y, Ae), w(te, F, Ae), w(te, A, Ae), w(te, C, Ae), We(C, t[19]), w(te, M, Ae), Q(D, te, Ae), w(te, U, Ae), Q(V, te, Ae), w(te, B, Ae), Q(q, te, Ae), w(te, L, Ae), Q($, te, Ae), w(te, W, Ae), Q(R, te, Ae), w(te, N, Ae), Q(Y, te, Ae), w(te, ge, Ae), Q(Ce, te, Ae), w(te, ve, Ae), Q(se, te, Ae), w(te, le, Ae), Q(_e, te, Ae), w(te, be, Ae), w(te, Te, Ae), w(te, ie, Ae), Q(Ie, te, Ae), w(te, ee, Ae), d(ee, Ge), d(ee, Qe), d(ee, He), d(He, he), d(He, ce), w(te, $e, Ae), We($e, t[20]), w(te, oe, Ae), d(oe, J), d(oe, O), d(oe, ue), d(ue, je), d(ue, Ue), w(te, ke, Ae), We(ke, t[21]), w(te, ze, Ae), d(ze, dt), d(ze, Ft), d(ze, Ze), w(te, Ct, Ae), We(Ct, t[22]), w(te, xe, Ae), w(te, Je, Ae), w(te, kt, Ae), Q(At, te, Ae), w(te, De, Ae), Q(at, te, Ae), w(te, Ut, Ae), Q(Re, te, Ae), w(te, St, Ae), Q(Rt, te, Ae), w(te, Ye, Ae), w(te, et, Ae), w(te, Ee, Ae), d(Ee, Ke), d(Ee, mt), d(Ee, hn), Q(wo, te, Ae), w(te, jn, Ae), Q(Mo, te, Ae), w(te, pt, Ae), Q(Vt, te, Ae), w(te, Fo, Ae), d(Fo, fi), d(Fo, Nl), d(Fo, Vi), d(Vi, $s), d(Vi, bn), w(te, Tt, Ae), We(Tt, t[23]), w(te, Xt, Ae), d(Xt, o_), d(Xt, i_), d(Xt, Vc), d(Vc, Ch), d(Vc, s_), w(te, ui, Ae), We(ui, t[24]), w(te, Zu, Ae), w(te, qi, Ae), We(qi, t[25]), w(te, Ju, Ae), w(te, Ri, Ae), We(Ri, t[26]), w(te, Ku, Ae), Q(Wl, te, Ae), w(te, Lc, Ae), w(te, Sh, Ae), w(te, em, Ae), Q(jl, te, Ae), w(te, tm, Ae), Q(Gl, te, Ae), w(te, nm, Ae), Q(Hl, te, Ae), w(te, om, Ae), w(te, zi, Ae), We(zi, t[27]), w(te, qc, Ae), w(te, Ph, Ae), w(te, im, Ae), Q(Yl, te, Ae), w(te, sm, Ae), Q(Xl, te, Ae), w(te, Rc, Ae), w(te, Ah, Ae), w(te, Ql, Ae), d(Ql, r_), d(Ql, l_), d(Ql, zc), d(zc, Th), d(zc, a_), w(te, Bi, Ae), We(Bi, t[28]), w(te, Zl, Ae), d(Zl, c_), d(Zl, f_), d(Zl, rm), d(rm, Eh), w(te, Ui, Ae), We(Ui, t[29]), w(te, Bc, Ae), w(te, Ih, Ae), w(te, Jl, Ae), d(Jl, u_), d(Jl, m_), d(Jl, lm), d(lm, Dh), w(te, $i, Ae), We($i, t[30]), w(te, Kl, Ae), d(Kl, p_), d(Kl, d_), d(Kl, am), d(am, Vh), w(te, Oi, Ae), We(Oi, t[31]), w(te, Uc, Ae), w(te, Lh, Ae), w(te, cm, Ae), Q(ea, te, Ae), Xo = !0, qh || (h_ = [H(l, "change", t[52]), H(l, "change", t[34]), H(u, "click", t[53]), H(g, "click", t[54]), H(C, "change", t[55]), H(C, "input", t[55]), H($e, "change", t[56]), H($e, "input", t[56]), H($e, "change", t[34]), H(ke, "change", t[57]), H(ke, "input", t[57]), H(ke, "change", t[34]), H(Ct, "input", t[58]), H(Ct, "change", t[34]), H(Tt, "change", t[59]), H(Tt, "input", t[59]), H(ui, "change", t[60]), H(ui, "input", t[60]), H(qi, "input", t[61]), H(Ri, "input", t[62]), H(zi, "change", t[63]), H(zi, "input", t[63]), H(Bi, "change", t[64]), H(Bi, "input", t[64]), H(Ui, "change", t[65]), H(Ui, "input", t[65]), H($i, "change", t[66]), H($i, "input", t[66]), H(Oi, "change", t[67]), H(Oi, "input", t[67])], qh = !0)
+                Mn(l, t[18], !0), w(te, a, Ae), w(te, c, Ae), w(te, f, Ae), w(te, u, Ae), w(te, m, Ae), w(te, g, Ae), w(te, v, Ae), w(te, _, Ae), w(te, b, Ae), Q(k, te, Ae), w(te, y, Ae), w(te, F, Ae), w(te, A, Ae), w(te, C, Ae), We(C, t[19]), w(te, M, Ae), Q(D, te, Ae), w(te, U, Ae), Q(V, te, Ae), w(te, B, Ae), Q(q, te, Ae), w(te, L, Ae), Q($, te, Ae), w(te, W, Ae), Q(R, te, Ae), w(te, N, Ae), Q(Y, te, Ae), w(te, ge, Ae), Q(Ce, te, Ae), w(te, ve, Ae), Q(se, te, Ae), w(te, le, Ae), Q(_e, te, Ae), w(te, be, Ae), w(te, Te, Ae), w(te, ie, Ae), Q(Ie, te, Ae), w(te, ee, Ae), d(ee, Ge), d(ee, Qe), d(ee, He), d(He, he), d(He, ce), w(te, $e, Ae), We($e, t[20]), w(te, oe, Ae), d(oe, J), d(oe, O), d(oe, ue), d(ue, je), d(ue, Ue), w(te, ke, Ae), We(ke, t[21]), w(te, ze, Ae), d(ze, dt), d(ze, Ft), d(ze, Ze), w(te, Ct, Ae), We(Ct, t[22]), w(te, xe, Ae), w(te, Je, Ae), w(te, kt, Ae), Q(At, te, Ae), w(te, De, Ae), Q(at, te, Ae), w(te, Ut, Ae), Q(Re, te, Ae), w(te, St, Ae), Q(Rt, te, Ae), w(te, Ye, Ae), w(te, et, Ae), w(te, Ee, Ae), d(Ee, Ke), d(Ee, mt), d(Ee, hn), Q(wo, te, Ae), w(te, jn, Ae), Q(Mo, te, Ae), w(te, pt, Ae), Q(Vt, te, Ae), w(te, Fo, Ae), d(Fo, fi), d(Fo, Nl), d(Fo, Vi), d(Vi, $s), d(Vi, bn), w(te, Tt, Ae), We(Tt, t[23]), w(te, Xt, Ae), d(Xt, o2), d(Xt, i2), d(Xt, Vc), d(Vc, Ch), d(Vc, s2), w(te, ui, Ae), We(ui, t[24]), w(te, Zu, Ae), w(te, qi, Ae), We(qi, t[25]), w(te, Ju, Ae), w(te, Ri, Ae), We(Ri, t[26]), w(te, Ku, Ae), Q(Wl, te, Ae), w(te, Lc, Ae), w(te, Sh, Ae), w(te, em, Ae), Q(jl, te, Ae), w(te, tm, Ae), Q(Gl, te, Ae), w(te, nm, Ae), Q(Hl, te, Ae), w(te, om, Ae), w(te, zi, Ae), We(zi, t[27]), w(te, qc, Ae), w(te, Ph, Ae), w(te, im, Ae), Q(Yl, te, Ae), w(te, sm, Ae), Q(Xl, te, Ae), w(te, Rc, Ae), w(te, Ah, Ae), w(te, Ql, Ae), d(Ql, r2), d(Ql, l2), d(Ql, zc), d(zc, Th), d(zc, a2), w(te, Bi, Ae), We(Bi, t[28]), w(te, Zl, Ae), d(Zl, c2), d(Zl, f2), d(Zl, rm), d(rm, Eh), w(te, Ui, Ae), We(Ui, t[29]), w(te, Bc, Ae), w(te, Ih, Ae), w(te, Jl, Ae), d(Jl, u2), d(Jl, m2), d(Jl, lm), d(lm, Dh), w(te, $i, Ae), We($i, t[30]), w(te, Kl, Ae), d(Kl, p2), d(Kl, d2), d(Kl, am), d(am, Vh), w(te, Oi, Ae), We(Oi, t[31]), w(te, Uc, Ae), w(te, Lh, Ae), w(te, cm, Ae), Q(ea, te, Ae), Xo = !0, qh || (h2 = [H(l, "change", t[52]), H(l, "change", t[34]), H(u, "click", t[53]), H(g, "click", t[54]), H(C, "change", t[55]), H(C, "input", t[55]), H($e, "change", t[56]), H($e, "input", t[56]), H($e, "change", t[34]), H(ke, "change", t[57]), H(ke, "input", t[57]), H(ke, "change", t[34]), H(Ct, "input", t[58]), H(Ct, "change", t[34]), H(Tt, "change", t[59]), H(Tt, "input", t[59]), H(ui, "change", t[60]), H(ui, "input", t[60]), H(qi, "input", t[61]), H(Ri, "input", t[62]), H(zi, "change", t[63]), H(zi, "input", t[63]), H(Bi, "change", t[64]), H(Bi, "input", t[64]), H(Ui, "change", t[65]), H(Ui, "input", t[65]), H($i, "change", t[66]), H($i, "input", t[66]), H(Oi, "change", t[67]), H(Oi, "input", t[67])], qh = !0)
             },
             p(te, Ae) {
                 if (Ae[1] & 4) {
                     ta = pe(te[33]);
                     let Gn;
                     for (Gn = 0; Gn < ta.length; Gn += 1) {
-                        let g_ = Q6(te, ta, Gn);
-                        fo[Gn] ? fo[Gn].p(g_, Ae) : (fo[Gn] = tF(g_), fo[Gn].c(), fo[Gn].m(l, null))
+                        let g2 = Q6(te, ta, Gn);
+                        fo[Gn] ? fo[Gn].p(g2, Ae) : (fo[Gn] = tF(g2), fo[Gn].c(), fo[Gn].m(l, null))
                     }
                     for (; Gn < fo.length; Gn += 1) fo[Gn].d(1);
                     fo.length = ta.length
@@ -17842,7 +15306,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 E(k.$$.fragment, te), E(D.$$.fragment, te), E(V.$$.fragment, te), E(q.$$.fragment, te), E($.$$.fragment, te), E(R.$$.fragment, te), E(Y.$$.fragment, te), E(Ce.$$.fragment, te), E(se.$$.fragment, te), E(_e.$$.fragment, te), E(Ie.$$.fragment, te), E(At.$$.fragment, te), E(at.$$.fragment, te), E(Re.$$.fragment, te), E(Rt.$$.fragment, te), E(wo.$$.fragment, te), E(Mo.$$.fragment, te), E(Vt.$$.fragment, te), E(Wl.$$.fragment, te), E(jl.$$.fragment, te), E(Gl.$$.fragment, te), E(Hl.$$.fragment, te), E(Yl.$$.fragment, te), E(Xl.$$.fragment, te), E(ea.$$.fragment, te), Xo = !1
             },
             d(te) {
-                te && (x(e), x(l), x(a), x(c), x(f), x(u), x(m), x(g), x(v), x(_), x(b), x(y), x(F), x(A), x(C), x(M), x(U), x(B), x(L), x(W), x(N), x(ge), x(ve), x(le), x(be), x(Te), x(ie), x(ee), x($e), x(oe), x(ke), x(ze), x(Ct), x(xe), x(Je), x(kt), x(De), x(Ut), x(St), x(Ye), x(et), x(Ee), x(jn), x(pt), x(Fo), x(Tt), x(Xt), x(ui), x(Zu), x(qi), x(Ju), x(Ri), x(Ku), x(Lc), x(Sh), x(em), x(tm), x(nm), x(om), x(zi), x(qc), x(Ph), x(im), x(sm), x(Rc), x(Ah), x(Ql), x(Bi), x(Zl), x(Ui), x(Bc), x(Ih), x(Jl), x($i), x(Kl), x(Oi), x(Uc), x(Lh), x(cm)), ot(fo, te), Z(k, te), Z(D, te), Z(V, te), Z(q, te), Z($, te), Z(R, te), Z(Y, te), Z(Ce, te), Z(se, te), Z(_e, te), Z(Ie, te), Z(At, te), Z(at, te), Z(Re, te), Z(Rt, te), Z(wo, te), Z(Mo, te), Z(Vt, te), Z(Wl, te), Z(jl, te), Z(Gl, te), Z(Hl, te), Z(Yl, te), Z(Xl, te), Z(ea, te), qh = !1, rt(h_)
+                te && (x(e), x(l), x(a), x(c), x(f), x(u), x(m), x(g), x(v), x(_), x(b), x(y), x(F), x(A), x(C), x(M), x(U), x(B), x(L), x(W), x(N), x(ge), x(ve), x(le), x(be), x(Te), x(ie), x(ee), x($e), x(oe), x(ke), x(ze), x(Ct), x(xe), x(Je), x(kt), x(De), x(Ut), x(St), x(Ye), x(et), x(Ee), x(jn), x(pt), x(Fo), x(Tt), x(Xt), x(ui), x(Zu), x(qi), x(Ju), x(Ri), x(Ku), x(Lc), x(Sh), x(em), x(tm), x(nm), x(om), x(zi), x(qc), x(Ph), x(im), x(sm), x(Rc), x(Ah), x(Ql), x(Bi), x(Zl), x(Ui), x(Bc), x(Ih), x(Jl), x($i), x(Kl), x(Oi), x(Uc), x(Lh), x(cm)), ot(fo, te), Z(k, te), Z(D, te), Z(V, te), Z(q, te), Z($, te), Z(R, te), Z(Y, te), Z(Ce, te), Z(se, te), Z(_e, te), Z(Ie, te), Z(At, te), Z(at, te), Z(Re, te), Z(Rt, te), Z(wo, te), Z(Mo, te), Z(Vt, te), Z(Wl, te), Z(jl, te), Z(Gl, te), Z(Hl, te), Z(Yl, te), Z(Xl, te), Z(ea, te), qh = !1, rt(h2)
             }
         }
     }
@@ -17901,7 +15365,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             c() {
                 e = h("div"), e.textContent = `${P.ui.settings.camera}`, n = h("div"), o = h("div"), s = T(i), r = Ne(), l = h("span"), c = T(a), f = h("input"), u = h("div"), u.textContent = `${P.ui.settings.invertmousex}`, K(m.$$.fragment), g = h("div"), g.textContent = `${P.ui.settings.invertmousey}`, K(v.$$.fragment), _ = h("div"), _.textContent = `${P.ui.settings.lockedcamera}`, K(b.$$.fragment), k = h("div"), k.textContent = `${P.ui.settings.pointerlock}`, K(y.$$.fragment), F = h("div"), F.textContent = `${P.ui.settings.skillbar}`, A = h("div"), C = h("div"), D = T(M), U = Ne(), V = h("span"), B = T(t[12]), q = h("br"), L = h("small"), L.textContent = `${P.ui.settings.reload}`, $ = h("input"), W = h("div"), W.textContent = "Targeting", R = h("div"), N = h("div"), N.textContent = "Target Next Friendly: Allow Non-Partied", K(Y.$$.fragment), ge = h("div"), Ce = T("Target Next Friendly: Cycle Size "), ve = h("span"), se = T(t[13]), le = h("input"), _e = h("div"), _e.textContent = `${P.ui.settings.keybindings}`, be = h("div"), Te = h("small"), Te.textContent = `${P.ui.settings.reload}`, ie = h("small"), ie.textContent = `${P.ui.settings.bindingreset}`;
                 for (let he = 0; he < He.length; he += 1) He[he].c();
-                Ie = de(), p(e, "class", "textprimary"), p(l, "class", "textgrey"), p(f, "type", "range"), p(f, "step", "0.05"), p(f, "min", "0.1"), p(f, "max", "3"), p(F, "class", "textprimary"), p(V, "class", "textgrey"), p(L, "class", "textgrey"), p($, "type", "range"), p($, "min", "10"), p($, "max", "24"), p(W, "class", "textprimary"), p(ve, "class", "textgrey"), p(le, "type", "range"), p(le, "min", "1"), p(le, "max", "11"), p(_e, "class", "textprimary"), p(Te, "class", "textgrey"), p(ie, "class", "textprimary")
+                Ie = de(), p(e, "class", "textprimary"), p(l, "class", "textgrey"), p(f, "type", "range"), p(f, "step", "0.05"), p(f, "min", "0.1"), p(f, "max", "3"), p(F, "class", "textprimary"), p(V, "class", "textgrey"), p(L, "class", "textgrey"), p($, "type", "range"), p($, "min", "10"), p($, "max", "24"), p(W, "class", "textprimary"), p(ve, "class", "textgrey"), p(le, "type", "range"), p(le, "min", "1"), p(le, "max", "10"), p(_e, "class", "textprimary"), p(Te, "class", "textgrey"), p(ie, "class", "textprimary")
             },
             m(he, ce) {
                 w(he, e, ce), w(he, n, ce), w(he, o, ce), d(o, s), d(o, r), d(o, l), d(l, c), w(he, f, ce), We(f, t[11]), w(he, u, ce), Q(m, he, ce), w(he, g, ce), Q(v, he, ce), w(he, _, ce), Q(b, he, ce), w(he, k, ce), Q(y, he, ce), w(he, F, ce), w(he, A, ce), w(he, C, ce), d(C, D), d(C, U), d(C, V), d(V, B), d(C, q), d(C, L), w(he, $, ce), We($, t[12]), w(he, W, ce), w(he, R, ce), w(he, N, ce), Q(Y, he, ce), w(he, ge, ce), d(ge, Ce), d(ge, ve), d(ve, se), w(he, le, ce), We(le, t[13]), w(he, _e, ce), w(he, be, ce), w(he, Te, ce), w(he, ie, ce);
@@ -18031,390 +15495,17 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         }
     }
-    function makeToggle(label, store, opts = {}) {
-        let el = h("div"), val = new Et({props: {store}});
-        el.textContent = label;
-        if (opts.color) Ve(el, "color", opts.color);
-        if (opts.note) { let sep = h("br"), sub = h("small"); sub.textContent = opts.note; p(sub, "class", "textgrey"); d(el, sep); d(el, sub); }
-        if (opts.sub) { let sep = h("br"), sub = h("small"); sub.textContent = opts.sub; p(sub, "class", "textgrey"); Ve(sub, "font-size", opts.subSize || "13px"); d(el, sep); d(el, sub); }
-        return {
-            c() {K(val.$$.fragment);},
-            m(M, D) {
-                w(M, el, D); Q(val, M, D);
-                if (opts.reload) { let first = true; store.subscribe(() => { if (first) { first = false; return; } window.location.reload(); }); }
-            },
-            i(M) {S(val.$$.fragment, M);},
-            o(M) {E(val.$$.fragment, M);},
-            d(M) {if (M) x(el); Z(val, M);}
-        };
-    }
-    function makeSlider(label, store, opts = {}) {
-        let el = h("div"), inp = h("input"), valNode, unsub;
-        el.textContent = label;
-        p(inp, "type", "range");
-        p(inp, "min", String(opts.min != null ? opts.min : 0));
-        p(inp, "max", String(opts.max != null ? opts.max : 1000));
-        if (opts.showValue !== false) {
-            let span = h("span"); p(span, "class", "textgrey"); Ve(span, "margin-left", "5px");
-            valNode = T(""); d(span, valNode); d(el, span);
-        }
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {
-                w(M, el, D); w(M, inp, D);
-                unsub = store.subscribe(v => { inp.value = String(v); if (valNode) valNode.data = String(v) + (opts.suffix || ""); });
-                inp.addEventListener("input", () => { store.set(Number(inp.value)); if (valNode) valNode.data = inp.value + (opts.suffix || ""); });
-                inp.addEventListener("change", () => { if (opts.reload) window.location.reload(); });
-            },
-            d(M) {if (M) { x(el); x(inp); } if (unsub) unsub();}
-        };
-    }
-
-    function makeColor(imgSrc, label, store) {
-        let el, inp = h("input"), unsub;
-        p(inp, "type", "color");
-        if (imgSrc) {
-            let con = h("div"), img = h("img"), txt = h("div");
-            Ve(con, "display", "flex"); Ve(con, "align-items", "center");
-            img.src = imgSrc; Ve(img, "width", "30px"); Ve(img, "margin-right", "10px");
-            txt.textContent = label; Ve(txt, "font-size", "16px");
-            d(con, img); d(con, txt); el = con;
-        } else {
-            el = h("div"); el.textContent = label;
-        }
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {
-                w(M, el, D); w(M, inp, D);
-                unsub = store.subscribe(v => { if (v) inp.value = v; });
-                inp.addEventListener("input", () => { store.set(inp.value); });
-            },
-            d(M) {if (M) { x(el); x(inp); } if (unsub) unsub();}
-        };
-    }
-    function makeText(label, store, opts = {}) {
-        let el = h("div"), inp = h("input"), unsub;
-        el.textContent = label;
-        p(inp, "type", "text");
-        if (opts.note) { let sep = h("br"), sub = h("small"); sub.textContent = opts.note; p(sub, "class", "textgrey"); d(el, sep); d(el, sub); }
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {
-                if (label) w(M, el, D);
-                w(M, inp, D);
-                unsub = store.subscribe(v => { inp.value = v != null ? v : ""; });
-                inp.addEventListener("input", () => { store.set(opts.numberInput ? Number(inp.value) : inp.value); });
-                inp.addEventListener("change", () => { if (opts.reload) window.location.reload(); });
-            },
-            d(M) {if (M) { x(el); x(inp); } if (unsub) unsub();}
-        };
-    }
-    function makeCategory(label, opts = {}) {
-        let el = h("div"), sep = h("div");
-        el.textContent = label;
-        p(el, "class", "textprimary mod-category");
-        Ve(el, "font-size", opts.fontSize || "19px");
-        if (opts.marginTop) Ve(el, "margin-top", opts.marginTop);
-        let subEls = null;
-        if (opts.sub) { let ssep = h("br"), sub = h("small"); sub.textContent = opts.sub; p(sub, "class", "textgrey"); Ve(sub, "font-size", opts.subSize || "12px"); d(el, ssep); d(el, sub); subEls = [ssep, sub]; }
-        let triggerCollapse = null;
-        if (opts.collapse) {
-            let storageKey = "modcat_" + label;
-            let saved = localStorage.getItem(storageKey);
-            let collapsed = saved !== null ? saved === "1" : !!opts.collapseDefault;
-            let arrow = h("button");
-            arrow.textContent = collapsed ? "Uncollapse" : "Collapse";
-            p(arrow, "class", "btn black textprimary");
-            Ve(arrow, "font", "bold " + (opts.fontSize || "15px") + " hordes");
-            Ve(arrow, "display", "inline-flex");
-            Ve(arrow, "align-items", "center");
-            Ve(arrow, "justify-content", "center");
-            Ve(sep, "text-align", "right"); d(sep, arrow);
-            const apply = () => {
-                arrow.textContent = collapsed ? "Uncollapse" : "Collapse";
-                if (subEls) subEls.forEach(n => Ve(n, "display", collapsed ? "none" : ""));
-                let node = sep.nextSibling;
-                while (node) {
-                    if (node.nodeType === 1 && node.classList && node.classList.contains("mod-category")) break;
-                    if (node.nodeType === 1) Ve(node, "display", collapsed ? "none" : "");
-                    node = node.nextSibling;
-                }
-            };
-            const toggle = () => { collapsed = !collapsed; localStorage.setItem(storageKey, collapsed ? "1" : "0"); apply(); };
-            arrow.addEventListener("click", toggle);
-            if (collapsed) triggerCollapse = apply;
-        }
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {w(M, el, D); w(M, sep, D); if (triggerCollapse) setTimeout(triggerCollapse, 0);},
-            d(M) {if (M) { x(el); x(sep); }}
-        };
-    }
-    function makeLabel(label, opts = {}) {
-        let el = h("div"), sep = opts.sep ? h("div") : null;
-        el.textContent = label;
-        if (opts.cls) p(el, "class", opts.cls);
-        if (opts.fontSize) Ve(el, "font-size", opts.fontSize);
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {w(M, el, D); if (sep) w(M, sep, D);},
-            d(M) {if (M) { x(el); if (sep) x(sep); }}
-        };
-    }
-    function makeKeybind(imgSrc, label, store, key, opts = {}) {
-        let con = h("div"), img = h("img"), txt = h("div"), inp = h("input");
-        Ve(con, "display", "flex"); Ve(con, "align-items", "center");
-        img.src = imgSrc; Ve(img, "width", "30px"); Ve(img, "margin-right", "10px");
-        txt.textContent = label; Ve(txt, "font-size", opts.fontSize || "15px");
-        p(inp, "type", "text"); p(inp, "readonly", "");
-        Ve(inp, "width", "100%"); Ve(inp, "box-sizing", "border-box"); Ve(inp, "cursor", "pointer");
-        if (imgSrc) d(con, img);
-        d(con, txt);
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {
-                w(M, con, D); w(M, inp, D);
-                inp.value = fe[key] || "";
-                inp.addEventListener("keydown", (e) => {
-                    e.preventDefault();
-                    if (["Shift", "Control", "Alt", "Meta"].includes(e.key)) return;
-                    let mods = (e.shiftKey ? "shift+" : "") + (e.ctrlKey ? "ctrl+" : "") + (e.altKey ? "alt+" : "");
-                    let k = e.key === "Escape" ? "" : mods + e.key.toLowerCase();
-                    store.set(k); inp.value = k;
-                });
-            },
-            d(M) {if (M) { x(con); x(inp); }}
-        };
-    }
-    function makeButton(label, onClick) {
-        let btn = h("button");
-        btn.textContent = label;
-        p(btn, "class", "btn black textprimary");
-        Ve(btn, "font", "bold 15px hordes");
-        btn.addEventListener("click", onClick);
-        return {
-            c() {}, i(M) {}, o(M) {},
-            m(M, D) {w(M, btn, D);},
-            d(M) {if (M) x(btn);}
-        };
-    }
-    function modSettings(t) {
-        const settings = [
-            makeCategory("Target Next Friendly Mods", {marginTop: "10px"}),
-            makeToggle("Ignore faction", revUnfriendly, {note: "Only enable during gloom"}),
-            makeToggle("Exclude Bots", nextFriendlyIgnoreBots),
-            makeToggle("Exclude LOS", losTarget),
-            makeToggle("Enable Class Selector", nextFriendlyClassSelectorEnabled),
-            makeToggle("Animate background", classSelectorAnimations),
-            makeLabel("-- Keybinds: --", {sep: true, cls: "textgrey"}),
-            makeKeybind(ns(0), "Warrior", classSelectorKbWarrior, "classSelectorKbWarrior"),
-            makeKeybind(ns(1), "Mage", classSelectorKbMage, "classSelectorKbMage"),
-            makeKeybind(ns(2), "Archer", classSelectorKbArcher, "classSelectorKbArcher"),
-            makeKeybind(ns(3), "Shaman", classSelectorKbShaman, "classSelectorKbShaman"),
-            makeCategory("De-Clutter Mods", {marginTop: "10px"}),
-            makeToggle("Hide bot names", hideBots),
-            makeToggle("Disable clan tags", disableClantags),
-            makeToggle("Hide chat window", hideChat),
-            makeToggle("Disable healing indicator", disableHealing),
-            makeToggle("Disable damage indicator", disableDamage),
-            makeToggle("Stack damage indicators", stackIndicators),
-            makeSlider("Indicator size", shrinkIndicators, {reload: true}),
-            makeToggle("Hide irrelevant buffs", hideBuffs),
-            makeToggle("Hide class buffs", hideClassBuffs),
-            makeToggle("Stack same-ID buffs", stackSameBuffs),
-            makeCategory("Nameplate Mods", {marginTop: "10px"}),
-            makeSlider("Nameplate size", nameplateSize),
-            makeSlider("Nameplate text size", nameSize),
-            makeSlider("Nameplate text margin", nameSpacing),
-            makeToggle("Hide nameplate select outline", ignoreNameplateViewRange),
-            makeToggle("Flash damage on nameplates", flashNameplates),
-            makeToggle("Disable blue partied nameplates", disablePartyNameplates),
-            makeToggle("Friendly creature nameplates", hideFriendlyCreatures),
-            makeToggle("Friendly creature names", hideFriendlyCreatureNames),
-            makeToggle("Outlines", outlines, {note: P.ui.settings.reload, reload: true}),
-            makeLabel("-- Class Colors: --", {sep: true, cls: "textgrey"}),
-            makeColor(ns(0), "Warrior", classColor0),
-            makeColor(ns(1), "Mage", classColor1),
-            makeColor(ns(2), "Archer", classColor2),
-            makeColor(ns(3), "Shaman", classColor3),
-            makeCategory("Shaman Mods", {marginTop: "10px"}),
-            makeToggle("Highlight own revitalize", markOwnRevs),
-            makeToggle("Only show own revitalize", onlyShowOwnRev),
-            makeToggle("Show revitalize # on nameplate", revStackNameplate),
-            makeCategory("CC Indicators", {marginTop: "10px"}),
-            makeToggle("Enable CC Indicators", CCIndicator),
-            makeToggle("Flash CC indicator color", flashCCIndicator),
-            makeToggle("Show on nameplates", CCIndicatorOnNameplates),
-            makeLabel("-- Colors: --", {sep: true, cls: "textgrey"}),
-            makeColor("https://hordes.io/data/ui/skills/14.avif?v=8822612", "Chilling Radiance", chillColor),
-            makeColor("https://hordes.io/data/ui/skills/deepFrozen.avif?v=8822612", "Deep Frozen", deepFreezeColor),
-            makeColor("https://hordes.io/data/ui/skills/37.avif?v=8822612", "Agonize", agonizeColor),
-            makeColor("https://hordes.io/data/ui/skills/stunBuff.avif?v=8822612", "Charge", stunColor),
-            makeColor("https://hordes.io/data/ui/skills/50.avif?v=8822612", "Relentless Cry", relColor),
-            makeColor("https://hordes.io/data/ui/skills/49.avif?v=8822612", "Blinding Shot", blindColor),
-            makeCategory("Uncategorized", {marginTop: "10px"}),
-            makeToggle("Block +(x) item & charm vendor", disallowSpecialSelling, {color: "#ff6d6d"}),
-            makeKeybind(null, "Freecam mode (Keybind)", freecamModeKb, "freecamModeKb"),
-            makeText("Never filter items", alwaysPickup, {note: "Does not change pet behavior"}),
-            makeToggle("Sort party by class", sortParty, {sub: "Shaman => Archer => Mage => Warrior"}),
-            makeToggle("Class-color party HP bars", classColorParty, {note: P.ui.settings.reload, reload: true}),
-            makeToggle("Disable skillbar frames", noFrameColor, {note: P.ui.settings.reload, reload: true}),
-            makeToggle("Enable mage cape-swing", enableMageCapeswing),
-            makeToggle("Enable charm auto equip", charmAutoEquip, {note: "Equips charms along with saved gear sets"}),
-            makeToggle("Enable charm auto stash", charmAutoStash, {note: "Stores charms along with saved gear sets"}),
-            makeToggle("Remove elixir button", removeElixir),
-            makeToggle("Area name above minimap", showEnvName),
-            makeToggle("Minimap worldlight overlay", minimapLightOverlay),
-            makeToggle("Hide kek quick buttons", hideKekQuickButtons),
-            makeToggle("Disable circle cooldown system", disableCircleCooldowns),
-            makeCategory("Rare Mob Notifier", {marginTop: "10px"}),
-            makeToggle("Show icon on minimap", radar),
-            makeToggle("Play sound when nearby", radarSound),
-            makeCategory("AOE Shader", {marginTop: "10px"}),
-            makeToggle("Enable AOE Shader", aoeCircleEnabled),
-            makeSlider("Radius", aoeCircleSize, {min: 0, max: 50, showValue: true}),
-            makeSlider("Alpha", aoeCircleAlpha, {min: 0, max: 100, showValue: true}),
-            makeColor(null, "Color", aoeCircleColor),
-            makeCategory("Effect Alpha", {marginTop: "10px"}),
-            makeSlider("Missile effects", fxAlphaSprite, {min: 0, max: 100}),
-            makeSlider("Ribbon effects", fxAlphaRibbon, {min: 0, max: 100}),
-            makeSlider("Mesh effects", fxAlphaModel, {min: 0, max: 100}),
-            makeCategory("Player Transform", {marginTop: "10px"}),
-            makeText("ID", playerTransformID, {numberInput: true}),
-            makeColor(null, "ColPrim", playerTransformColPrim),
-            makeColor(null, "ColSec", playerTransformColSec),
-            makeText("Mount ID", customMountID, {numberInput: true, note: "Set to 0 for default"}),
-            makeText("Prestige Simulate", prestigeSimulate, {note: "Set to 0 to disable", numberInput: true, reload: true}),
-            makeCategory("Lighting Rework", {marginTop: "10px"}),
-            makeSlider("Time", timeSlider),
-            makeToggle("Use device time", timeToIngame),
-            makeSlider("Shadow draw distance", shadowDistMult, {min: 25, max: 200, showValue: true}),
-            makeSlider("Grass draw distance", grassDist, {min: 30, max: 400, showValue: true, reload: true}),
-            makeLabel("-- SSAO: --", {sep: true, cls: "textgrey"}),
-            makeToggle("SSAO", ssao, {note: "May be very GPU intensive"}),
-            makeSlider("Radius", ssaoRadius, {min: 1, max: 20, showValue: true, reload: true}),
-            makeSlider("Bias", ssaoBias, {min: 5, max: 30, showValue: true, reload: true}),
-            makeSlider("Fade distance", ssaoFadeDist, {min: 50, max: 500, showValue: true, reload: true}),
-            makeToggle("Blur", ssaoBlur, {note: P.ui.settings.reload, reload: true}),
-            makeToggle("Interleaved gradient noise", ssaoIGN, {note: P.ui.settings.reload, reload: true}),
-            makeLabel("-- Rain: --", {sep: true, cls: "textgrey"}),
-            makeToggle("Enable rain cycle", rainEnabled),
-            makeToggle("Disable in desert areas", rainNoDesert),
-            makeSlider("Min duration", rainDurMin, {min: 30, max: 180, showValue: true, suffix: " min."}),
-            makeSlider("Max duration", rainDurMax, {min: 30, max: 180, showValue: true, suffix: " min."}),
-            makeSlider("Min rain windows", rainWindowMin, {min: 1, max: 10, showValue: true, suffix: "/d"}),
-            makeSlider("Max rain windows", rainWindowMax, {min: 1, max: 10, showValue: true, suffix: "/d"}),
-            makeSlider("Rain transition speed", rainEaseSpeed, {min: 10, max: 300, showValue: true}),
-            makeToggle("Force rain", rainForce, {color: "#53a3f9"}),
-            /* makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
-            makeSlider("Speed override", speedOverride, {min: 0, max: 5, showValue: true}),
-            makeToggle("Prevent movement override", preventInputLock),
-            makeToggle("Phase mode", ghostMode),
-            makeToggle("Freefly mode", freeflyMode, {sub: "Not recommended to use without desync, only for testing purposes. Freecam mode is a better version of this."}),
-            makeToggle("No camera collision", noCameraCollision),
-            makeToggle("Nameplates react to ST", targetEnabled),
-            makeToggle("Show dead players", showDeadPlayers),
-            makeToggle("Desync", freezeServer, {sub: "While this setting is active, packets will not be sent to the server. Use with position update buttons to teleport precisely."}),
-            //makeLabel("The server will correct any position deviances within a single tick of around ~4 units. To bypass it slightly, use a +7 mount + pennant + orc / egg. The deviance is calculated based on player speed, higher speed = more deviance allowed. To teleport up towers, use pennant + egg => start jumping => enable Desync => fly yourself to the position => disable desync => input any direction to update player position. If you are jumping during this, the server may make you jump forward in the direction, so you may fall off. Advised to send a couple inputs as soon as you disable desync so it corrects your position immediately.", {cls: "textgrey", sep: true}),
-            makeText(null, meshViewerID, {numberInput: true}),
-            makeButton("View mesh", () => {
-                let v = fe.meshViewerID
-                if (_meshViewerEnt && I) {
-                    try {I.removeEntity(_meshViewerEnt)} catch(e) {}
-                    _meshViewerEnt = null;
-                }
-                if (!v || v <= 0 || !I || !I.player) return;
-                if (!Fi || !Fi.has(v)) return;
-                try {
-                    let id = 999000000 + Math.floor(Math.random() * 1000000);
-                    let fwd = [Math.sin(I.player.rot), Math.cos(I.player.rot)];
-                    let ent = I.createEntity(11, id, {});
-                    ent.pos[0] = I.player.pos[0];
-                    ent.pos[1] = I.player.pos[1] + fwd[0] * 10;
-                    ent.pos[2] = I.player.pos[2];
-                    ent.setNodeInfo(v, 1);
-                    let noop = () => {};
-                    ent.preFixed = ent.tickFixed = ent.postFixed = noop;
-                    ent.netDeletion = { reset: noop, done: () => false, end: -Infinity, start: 0 };
-                    I.addEntity(ent);
-                    _meshViewerEnt = ent;
-                } catch(e) {console.log("Mesh viewer spawn failed:", e)}
-            }),
-            makeButton("Log Entities", () => {
-                console.log(I.getEnvironmentId(I.player.pos[0], I.player.pos[2]))
-                Ha.forEach((t, id) => console.log(`terrain ${id} tex=${t.texture} dark=${t.darkest} bright=${t.brightest}`));
-                let rows = [];
-                for (let e = 0; e < I.entities.array.length; e++) {
-                    let n = I.entities.array[e];
-                    if (n === I.player) continue;
-                    let dist = Math.round(Math.sqrt(oo(n.pos, I.player.pos)) * 10) / 10;
-                    rows.push({
-                        id: n.id,
-                        name: n.name || "",
-                        type: n.type,
-                        class: n.class,
-                        level: n.level,
-                        faction: n.faction,
-                        party: n.party,
-                        clan: n.clan || "",
-                        alive: n.stats ? n.stats.alive : null,
-                        renderVisible: n.visual ? n.visual.transform.visible : null,
-                        inFog: n.visual ? n.visual.inFog : null,
-                        dist,
-                        buffs: n.buffs?.buffs
-                    });
-                }
-                console.table(rows);
-            }),
-            makeButton("Log mesh map", () => {
-                if (!I || !I.player) return;
-                console.table(Object.values(Array.from(Fi)))
-            }),
-            makeButton("+dir", () => {
-                if (!I || !I.player) return;
-                I.player.pos[0] += Math.sin(I.player.rot);
-                I.player.pos[2] += Math.cos(I.player.rot);
-                I.player.sendInput(false, false, false, false, false, true);
-            }),
-            makeButton("+X", () => {
-                if (!I || !I.player) return;
-                I.player.pos[0] += 1;
-                I.player.sendInput(false, false, false, false, false, true);
-            }),
-            makeButton("+Y", () => {
-                if (!I || !I.player) return;
-                I.player.pos[1] += 5;
-                I.player.sendInput(false, false, false, false, false, true);
-                I.player.vel[1] = 0;
-            }),
-            makeButton("+Z", () => {
-                if (!I || !I.player) return;
-                I.player.pos[2] += 1;
-                I.player.sendInput(false, false, false, false, false, true);
-            }), */
-        ];
-        return {
-            c() { settings.forEach(s => s.c()); },
-            m(M, D) { settings.forEach(s => s.m(M, D)); },
-            p(te, ae) {},
-            i(M) { settings.forEach(s => s.i(M)); },
-            o(M) { settings.forEach(s => s.o(M)); },
-            d(M) { settings.forEach(s => s.d(M)); }
-        };
-    }
 
     function MV(t) {
         let e, n, o, i, s = t[1].name + "",
             r, l, a, c, f, u = pe(t[32]),
             m = [];
-        for (let b = 0; b < u.length; b += 1) {
-            m[b] = eF(J6(t, u, b));
-        }
-        let g = [wV, xV, kV, yV, bV, modSettings],
+        for (let b = 0; b < u.length; b += 1) m[b] = eF(J6(t, u, b));
+        let g = [wV, xV, kV, yV, bV],
             v = [];
 
         function _(b, k) {
-            return b[1].id == "gfx" ? 0 : b[1].id == "controls" ? 1 : b[1].id == "audio" ? 2 : b[1].id == "ui" ? 3 : b[1].id == "chat" ? 4 : b[1].id == "mod" ? 5 : -1
+            return b[1].id == "gfx" ? 0 : b[1].id == "controls" ? 1 : b[1].id == "audio" ? 2 : b[1].id == "ui" ? 3 : b[1].id == "chat" ? 4 : -1
         }
         return ~(a = _(t, [-1, -1, -1])) && (c = v[a] = g[a](t)), {
             c() {
@@ -18499,9 +15590,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }, {
                 id: "audio",
                 name: P.ui.settings.audio
-            },{
-                id: "mod",
-                name:"Mods"
             }],
             N = R[0],
             Y = [{
@@ -18557,8 +15645,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             ve = (Re, St) => {
                 St.set(Re === "" ? void 0 : Re), n(2, ge = !0)
             },
-            se = ["Forward", "Left", "Back", "Right", "TurnLeft", "TurnRight", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "NextTarget", "NextParty", "Untarget", "ItemNames"],
-            le = ["Forward", "Left", "Back", "Right", "Turn Left", "Turn Right", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "Target Next Enemy", "Target Next Friendly", "Untarget", "Shiftkey"];
+            se = ["Forward", "Left", "Back", "Right", "TurnLeft", "TurnRight", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "NextTarget", "NextParty", "Untarget"],
+            le = ["Forward", "Left", "Back", "Right", "Turn Left", "Turn Right", "Map", "Skills", "Character", "Inventory", "Clan", "Pvp", "Party", "Social", "Target Next Enemy", "Target Next Friendly", "Untarget"];
         for (let Re = 1; Re < 25; ++Re) se.push("Skillbar" + Re);
         se = se.map((Re, St) => ({
             name: le[St] || Re,
@@ -19143,7 +16231,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     skill: zt.get(t[39].id)
                 },
                 css: "slotskill",
-                img: `/data/ui/skills/${t[39].id}.${Yn}?v=8822612`,
+                img: `/data/ui/skills/${t[39].id}.${Yn}?v=8829640`,
                 $$slots: {
                     default: [AV]
                 },
@@ -19177,7 +16265,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 F[0] & 4 && (A.descRoot = y[2]), F[0] & 8 && (A.pickable = y[39].pickable), F[0] & 8 && (A.meta = {
                     type: "skill",
                     skill: zt.get(y[39].id)
-                }), F[0] & 8 && (A.img = `/data/ui/skills/${y[39].id}.${Yn}?v=8822612`), F[0] & 8 | F[1] & 524288 && (A.$$scope = {
+                }), F[0] & 8 && (A.img = `/data/ui/skills/${y[39].id}.${Yn}?v=8829640`), F[0] & 8 | F[1] & 524288 && (A.$$scope = {
                     dirty: F,
                     ctx: y
                 }), n.$set(A), (!f || F[0] & 8) && s !== (s = P.items.book[y[39].id].name + "") && G(r, s), m === (m = u(y, F)) && g ? g.p(y, F) : (g.d(1), g = m(y), g && (g.c(), g.m(o, null))), _ === (_ = v(y, F)) && b ? b.p(y, F) : (b.d(1), b = _(y), b && (b.c(), b.m(a, c))), y[39].engineOnly ? k && (k.d(1), k = null) : k ? k.p(y, F) : (k = pF(y), k.c(), k.m(a, null))
@@ -19241,7 +16329,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     skill: t[39]
                 },
                 css: "slotskill",
-                img: `/data/ui/skills/${t[39].id}.${Yn}?v=8822612`,
+                img: `/data/ui/skills/${t[39].id}.${Yn}?v=8829640`,
                 $$slots: {
                     default: [BV]
                 },
@@ -19261,7 +16349,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 _[0] & 4 && (b.descRoot = v[2]), _[0] & 1 && (b.meta = {
                     type: "skill",
                     skill: v[39]
-                }), _[0] & 1 && (b.img = `/data/ui/skills/${v[39].id}.${Yn}?v=8822612`), _[0] & 1 | _[1] & 524288 && (b.$$scope = {
+                }), _[0] & 1 && (b.img = `/data/ui/skills/${v[39].id}.${Yn}?v=8829640`), _[0] & 1 | _[1] & 524288 && (b.$$scope = {
                     dirty: _,
                     ctx: v
                 }), n.$set(b), (!g || _[0] & 1) && s !== (s = P.items.book[v[39].id].name + "") && G(r, s), (!g || _[0] & 1) && u !== (u = v[39].minlevel + "") && G(m, u)
@@ -20316,7 +17404,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 i[0] & 2048 && (s.settings = [{
                     name: "Stash Settings",
                     fun: o[33]
-                }]), i[0] & 131071 | i[1] & 65584 && (s.$$scope = {
+                }]), i[0] & 131071 | i[1] & 65536 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -20461,7 +17549,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let e, n, o;
         return {
             c() {
-                e = h("span"), e.innerHTML = 'Upgrade <img class="svgicon texticon" src="/data/ui/icons/gem.svg?v=8822612"/>', p(e, "class", "btn textwhite")
+                e = h("span"), e.innerHTML = 'Upgrade <img class="svgicon texticon" src="/data/ui/icons/gem.svg?v=8829640"/>', p(e, "class", "btn textwhite")
             },
             m(i, s) {
                 w(i, e, s), n || (o = H(e, "click", t[29]), n = !0)
@@ -20538,7 +17626,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             c() {
                 V && V.c(), e = h("div");
                 for (let R = 0; R < q.length; R += 1) q[R].c();
-                n = h("div"), o = h("div"), i = h("span"), r = T(s), l = T(" / "), c = T(a), $ && $.c(), u = h("div"), K(m.$$.fragment), g = h("div"), v = h("img"), k = h("div"), y = h("img"), W && W.c(), C = de(), p(e, "class", "panel-black scrollbar marg-top marg-bot slotparent svelte-gou6xs"), Ve(e, "max-height", t[13] + "px"), p(i, "class", f = t[8].length < (t[10].subscribed_until ? Nn[1].stash : Nn[0].stash) ? "textgreen" : "textred"), p(o, "class", "navbtn panel-black border black gold svelte-gou6xs"), Ve(o, "margin-right", "auto"), p(u, "class", "navbtn panel-black border black gold svelte-gou6xs"), p(v, "class", "svgicon"), st(v.src, _ = "/data/ui/icons/deposit.svg?v=8822612") || p(v, "src", _), p(g, "class", b = "navbtn btn grey gold " + (t[0] === 1 ? "active" : "") + " svelte-gou6xs"), p(y, "class", "svgicon"), st(y.src, F = "/data/ui/icons/withdraw.svg?v=8822612") || p(y, "src", F), p(k, "class", A = "navbtn btn grey gold " + (t[0] === 2 ? "active" : "") + " svelte-gou6xs"), p(n, "class", "formelements svelte-gou6xs")
+                n = h("div"), o = h("div"), i = h("span"), r = T(s), l = T(" / "), c = T(a), $ && $.c(), u = h("div"), K(m.$$.fragment), g = h("div"), v = h("img"), k = h("div"), y = h("img"), W && W.c(), C = de(), p(e, "class", "panel-black scrollbar marg-top marg-bot slotparent svelte-gou6xs"), Ve(e, "max-height", t[13] + "px"), p(i, "class", f = t[8].length < (t[10].subscribed_until ? Nn[1].stash : Nn[0].stash) ? "textgreen" : "textred"), p(o, "class", "navbtn panel-black border black gold svelte-gou6xs"), Ve(o, "margin-right", "auto"), p(u, "class", "navbtn panel-black border black gold svelte-gou6xs"), p(v, "class", "svgicon"), st(v.src, _ = "/data/ui/icons/deposit.svg?v=8829640") || p(v, "src", _), p(g, "class", b = "navbtn btn grey gold " + (t[0] === 1 ? "active" : "") + " svelte-gou6xs"), p(y, "class", "svgicon"), st(y.src, F = "/data/ui/icons/withdraw.svg?v=8829640") || p(y, "src", F), p(k, "class", A = "navbtn btn grey gold " + (t[0] === 2 ? "active" : "") + " svelte-gou6xs"), p(n, "class", "formelements svelte-gou6xs")
             },
             m(R, N) {
                 V && V.m(R, N), w(R, e, N);
@@ -22327,7 +19415,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             },
             p(o, i) {
                 let s = {};
-                i & 8683639 && (s.$$scope = {
+                i & 8388727 && (s.$$scope = {
                     dirty: i,
                     ctx: o
                 }), e.$set(s)
@@ -22361,7 +19449,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         return {
             c() {
-                K(e.$$.fragment), n = h("img"), st(n.src, o = "/data/ui/icons/arrow.svg?v=8822612") || p(n, "src", o), p(n, "class", i = "btn " + (t[0][22] > 0 ? "green" : "disabled") + " svgicon statbtn svelte-rbq5ku")
+                K(e.$$.fragment), n = h("img"), st(n.src, o = "/data/ui/icons/arrow.svg?v=8829640") || p(n, "src", o), p(n, "class", i = "btn " + (t[0][22] > 0 ? "green" : "disabled") + " svgicon statbtn svelte-rbq5ku")
             },
             m(f, u) {
                 Q(e, f, u), w(f, n, u), s = !0, r || (l = [H(n, "pointerenter", a), H(n, "pointerleave", t[9]), H(n, "click", c)], r = !0)
@@ -22552,7 +19640,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 ue = !0
             },
             p(xe, Je) {
-(!ue || Je & 16) && s !== (s = xe[4].name + "") && G(r, s), (!ue || Je & 16) && c !== (c = xe[4].level + "") && G(f, c), (!ue || Je & 16 && !st(g.src, v = ns(xe[4].class))) && p(g, "src", v), (!ue || Je & 16) && b !== (b = P.classes[xe[4].class].name + "") && G(k, b), (!ue || Je & 16 && y !== (y = "bold " + ("textc" + xe[4].class) + " svelte-rbq5ku")) && p(m, "class", y), (!ue || Je & 16 && !st(C.src, M = R1(xe[4].faction))) && p(C, "src", M), (!ue || Je & 16) && U !== (U = P.factions[xe[4].faction].name + "") && G(V, U), (!ue || Je & 16 && B !== (B = "bold " + ("textf" + xe[4].faction) + " svelte-rbq5ku")) && p(A, "class", B), (!ue || Je & 1) && N !== (N = ht(xe[0][20] || 0) + "") && G(Y, N), (!ue || Je & 4) && Ce !== (Ce = xe[2] < kr ? "/ " + ro(qs[xe[2]]) : "") && G(ve, Ce), (!ue || Je & 4) && G(Te, xe[2]);
+                (!ue || Je & 16) && s !== (s = xe[4].name + "") && G(r, s), (!ue || Je & 16) && c !== (c = xe[4].level + "") && G(f, c), (!ue || Je & 16 && !st(g.src, v = ns(xe[4].class))) && p(g, "src", v), (!ue || Je & 16) && b !== (b = P.classes[xe[4].class].name + "") && G(k, b), (!ue || Je & 16 && y !== (y = "bold " + ("textc" + xe[4].class) + " svelte-rbq5ku")) && p(m, "class", y), (!ue || Je & 16 && !st(C.src, M = R1(xe[4].faction))) && p(C, "src", M), (!ue || Je & 16) && U !== (U = P.factions[xe[4].faction].name + "") && G(V, U), (!ue || Je & 16 && B !== (B = "bold " + ("textf" + xe[4].faction) + " svelte-rbq5ku")) && p(A, "class", B), (!ue || Je & 1) && N !== (N = ht(xe[0][20] || 0) + "") && G(Y, N), (!ue || Je & 4) && Ce !== (Ce = xe[2] < kr ? "/ " + ro(qs[xe[2]]) : "") && G(ve, Ce), (!ue || Je & 4) && G(Te, xe[2]);
                 let kt = {};
                 Je & 1 && (kt.amount = xe[0][21] || 0), Qe.$set(kt);
                 let At = {};
@@ -22607,7 +19695,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 ue = !1
             },
             d(xe) {
-                xe && (x(e), x(J), x(O)), Z(Qe), Z(he), ot(Ue, xe), Z(oe), ot(Oe, xe), ot(Ze, xe);
+                xe && (x(e), x(J), x(O)), Z(Qe), Z(he), ot(Ue, xe), Z(oe), ot(Oe, xe), ot(Ze, xe)
             }
         }
     }
@@ -22667,7 +19755,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         },
         SC = (t, e) => e >= 101;
-        function $L(t, e, n) {
+
+    function $L(t, e, n) {
         let o, i, s, r, l, a;
         re(t, Qs, _ => n(0, i = _)), re(t, ws, _ => n(3, s = _)), re(t, Gi, _ => n(4, r = _)), re(t, ha, _ => n(5, l = _)), re(t, ga, _ => n(6, a = _)), I && I.player && !MC && (MC = !0, Ml.forEach((_, b) => {
             b - 61 == I.player.class && _.statsConvert && _.statsConvert.forEach(k => {
@@ -22889,7 +19978,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     function YL(t) {
         let e, n, o, i, s, r, l, a, c, f = [],
             u = new Map,
-            m, g, v, classFilterBar, classBtnHandlers = [];
+            m, g, v;
 
         function _(B, q) {
             return B[2].membercount === 0 ? NL : OL
@@ -22920,147 +20009,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             c() {
                 e = h("div"), n = h("div"), o = h("div"), o.textContent = `\u{1F465} ${P.ui.party.name}`, k.c(), i = h("div"), A.c(), s = h("div"), l.c(), a = Ne(), c = h("div");
                 for (let B = 0; B < f.length; B += 1) f[B].c();
-                p(o, "class", "btn party"), p(i, "class", "btn border black textexp"), p(s, "class", "btn border black textcyan"), p(n, "class", "btnbar"), p(c, "class", "partyframes svelte-1xmlhk"), Ve(c, "width", t[7] + "px"), p(e, "class", "l-corner-ul uiscaled");
-                classFilterBar = h("div");
-                classFilterBar.id = "classFilterBar";
-                Ve(classFilterBar, "display", "none");
-                Ve(classFilterBar, "flex-direction", "row");
-                Ve(classFilterBar, "justify-content", "center");
-                Ve(classFilterBar, "align-items", "center");
-                Ve(classFilterBar, "gap", "4.5%");
-                Ve(classFilterBar, "padding", "4px 4px 8px 4px");
-                Ve(classFilterBar, "position", "absolute");
-                Ve(classFilterBar, "bottom", "90%");
-                Ve(classFilterBar, "background-color", "rgba(16,19,29,0.8)");
-                Ve(classFilterBar, "border-radius", "3px");
-                [[0,nextFriendlyClassWarrior,classSelectorKbWarrior],[1,nextFriendlyClassMage,classSelectorKbMage],[2,nextFriendlyClassArcher,classSelectorKbArcher],[3,nextFriendlyClassShaman,classSelectorKbShaman]].forEach(([classId,classStore,keybindStore]) => {
-                    let btn = h("button");
-                    Ve(btn, "width", "35px");
-                    Ve(btn, "aspect-ratio", "1");
-                    Ve(btn, "background-color", "#12141e");
-                    Ve(btn, "background-image", `radial-gradient(ellipse at center, transparent 80%, rgba(0,0,0,0.3) 100%), url(${ns(classId)})`);
-                    Ve(btn, "background-repeat", "no-repeat");
-                    Ve(btn, "background-size", "contain");
-                    Ve(btn, "background-position", "center");
-                    Ve(btn, "border", "4px solid rgba(16,19,29,1)");
-                    Ve(btn, "border-radius", "3px");
-                    Ve(btn, "cursor", "pointer");
-                    Ve(btn, "box-sizing", "border-box");
-                    Ve(btn, "position", "relative");
-                    Ve(btn, "pointer-events", "auto");
-                    Ve(btn, "overflow", "hidden");
-                    let keybindLabel = document.createElement("span");
-                    Ve(keybindLabel, "position", "absolute");
-                    Ve(keybindLabel, "top", "1px");
-                    Ve(keybindLabel, "right", "1px");
-                    Ve(keybindLabel, "font", "11px hordes");
-                    Ve(keybindLabel, "color", "#999");
-                    Ve(keybindLabel, "text-shadow", "1px 1px 0 #000,-1px -1px 0 #000");
-                    Ve(keybindLabel, "pointer-events", "none");
-                    Ve(keybindLabel, "line-height", "1");
-                    Ve(keybindLabel, "z-index", "1");
-                    btn.appendChild(keybindLabel);
-                    btn._classStore = classStore;
-                    btn._keybindStore = keybindStore;
-                    btn._keybindLabel = keybindLabel;
-                    btn._classId = classId;
-                    classFilterBar.appendChild(btn);
-                });
+                p(o, "class", "btn party"), p(i, "class", "btn border black textexp"), p(s, "class", "btn border black textcyan"), p(n, "class", "btnbar"), p(c, "class", "partyframes svelte-1xmlhk"), Ve(c, "width", t[7] + "px"), p(e, "class", "l-corner-ul uiscaled")
             },
             m(B, q) {
                 w(B, e, q), d(e, n), d(n, o), k.m(n, null), d(n, i), A.m(i, null), d(n, s), M[r].m(s, null), d(e, a), d(e, c);
                 for (let L = 0; L < f.length; L += 1) f[L] && f[L].m(c, null);
-                const realignBar = () => {
-                    let partyFramesElement = document.querySelector(".partyframes");
-                    if (!partyFramesElement) return;
-                    let barElement = partyFramesElement.querySelector(".grid.left .bar");
-                    if (!barElement) return;
-                    let partyFramesRect = partyFramesElement.getBoundingClientRect();
-                    let barRect = barElement.getBoundingClientRect();
-                    Ve(classFilterBar, "left", (barRect.left - partyFramesRect.left) + "px");
-                    Ve(classFilterBar, "width", barRect.width - 5 + "px");
-                };
-                requestAnimationFrame(() => requestAnimationFrame(() => {
-                    let partyFramesElement = document.querySelector(".partyframes");
-                    if (partyFramesElement) {
-                        if (getComputedStyle(partyFramesElement).position === "static") Ve(partyFramesElement, "position", "relative");
-                        if (classFilterBar.parentElement !== partyFramesElement) partyFramesElement.insertBefore(classFilterBar, partyFramesElement.firstChild);
-                        realignBar();
-                    }
-                }));
-                const updateBarVis = () => { Ve(classFilterBar, "display", (fe.nextFriendlyClassSelectorEnabled && I && I.player && I.player.party > 0) ? "flex" : "none"); realignBar(); };
-                classBtnHandlers.push(nextFriendlyClassSelectorEnabled.subscribe(updateBarVis));
-                let partyWatcher = setInterval(updateBarVis, 500);
-                classBtnHandlers.push(() => clearInterval(partyWatcher));
-                if (!document.getElementById("kbBtnStyle")) {
-                    let styleEl = document.createElement("style");
-                    styleEl.id = "kbBtnStyle";
-                    styleEl.textContent = "@keyframes kbBtnOutlineIn{from{background-color:var(--kb-col0)}to{background-color:var(--kb-col1)}}#classFilterBar button:hover{outline:2px solid grey;}";
-                    document.head.appendChild(styleEl);
-                }
-                const classColors = {get 0() {return _classColors[0];}, get 1() {return _classColors[1];}, get 2() {return _classColors[2];}, get 3() {return _classColors[3];}};
-                const applyBtnState = (btn, active, animated) => {
-                    btn._active = active;
-                    if (active) {
-                        let color = fe.classColorBars ? (classColors[btn._classId] || "#34CB49") : "#34CB49";
-                        Ve(btn, "--kb-col0", "#000000");
-                        Ve(btn, "--kb-col1", hexToRgba(color, .85));
-                        if (animated) {
-                            Ve(btn, "animation", `kbBtnOutlineIn 0.5s ease-out -${(Date.now() % 1000) / 1000}s alternate infinite`);
-                            Ve(btn, "filter", "none");
-                        } else {
-                            Ve(btn, "animation", "");
-                            Ve(btn, "background-color", hexToRgba(color, .85));
-                            Ve(btn, "filter", "none");
-                        }
-                    } else {
-                        Ve(btn, "filter", "grayscale() brightness(70%)");
-                        Ve(btn, "animation", "");
-                        Ve(btn, "background-color", "#12141e");
-                    }
-                };
-                const refreshActive = () => [...classFilterBar.children].forEach(btn => { if (btn._active) applyBtnState(btn, true, fe.classSelectorAnimations); });
-                [...classFilterBar.children].forEach(btn => {
-                    classBtnHandlers.push(btn._classStore.subscribe(active => {
-                        if (active && btn.style.animation) return;
-                        applyBtnState(btn, active, fe.classSelectorAnimations);
-                    }));
-                    classBtnHandlers.push(btn._keybindStore.subscribe(() => { btn._keybindLabel.textContent = ""; }));
-                    btn.addEventListener("click", () => btn._classStore.update(v => !v));
-                });
-                classBtnHandlers.push(classSelectorAnimations.subscribe(refreshActive));
-                classBtnHandlers.push(fp.subscribe(refreshActive));
-                let keydownHandler = (evt) => {
-                    if (!fe.nextFriendlyClassSelectorEnabled) return;
-                    if (["shift", "control", "alt", "meta"].includes(evt.key.toLowerCase())) return;
-                    let mods = (evt.shiftKey ? "shift+" : "") + (evt.ctrlKey ? "ctrl+" : "") + (evt.altKey ? "alt+" : "");
-                    let keyCombo = mods + evt.key.toLowerCase();
-                    if (keyCombo && keyCombo === fe.classSelectorKbArcher) nextFriendlyClassArcher.update(v => !v);
-                    if (keyCombo && keyCombo === fe.classSelectorKbShaman) nextFriendlyClassShaman.update(v => !v);
-                    if (keyCombo && keyCombo === fe.classSelectorKbWarrior) nextFriendlyClassWarrior.update(v => !v);
-                    if (keyCombo && keyCombo === fe.classSelectorKbMage) nextFriendlyClassMage.update(v => !v);
-                };
-                document.addEventListener("keydown", keydownHandler);
-                classBtnHandlers.push(() => document.removeEventListener("keydown", keydownHandler));
                 m = !0, g || (v = [H(o, "click", t[9]), H(i, "click", t[12]), H(i, "contextmenu", bu), H(s, "click", t[13]), H(s, "contextmenu", bu)], g = !0)
             },
             p(B, [q]) {
-
-                if (fe.sortParty) {
-                    let container = document.querySelector(".partyframes");
-                    let frames = [...container.querySelectorAll(".grid")];
-                    let getClass = el => el.querySelector(".iconcontainer").children[0].classList[4];
-                    let getNum = el => parseInt(getClass(el).replace("bgc", ""));
-
-                    const nums = frames.map(getNum);
-                    const alreadySorted = nums.every((n, i) => i === 0 || nums[i - 1] >= n);
-
-                    if (!alreadySorted) {
-                        frames.sort((a, b) => getNum(a) - getNum(b));
-                        frames.forEach(frame => container.appendChild(frame));
-                    }
-                }
-
                 b === (b = _(B, q)) && k ? k.p(B, q) : (k.d(1), k = b(B), k && (k.c(), k.m(n, i))), F === (F = y(B, q)) && A ? A.p(B, q) : (A.d(1), A = F(B), A && (A.c(), A.m(i, null)));
                 let L = r;
                 r = D(B, q), r === L ? M[r].p(B, q) : (we(), E(M[L], 1, 1, () => {
@@ -23082,7 +20038,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             d(B) {
                 B && x(e), k.d(), A.d(), M[r].d();
                 for (let q = 0; q < f.length; q += 1) f[q].d();
-                classBtnHandlers.forEach(u => u()); classBtnHandlers = []; if (classFilterBar.parentElement) classFilterBar.parentElement.removeChild(classFilterBar);
                 g = !1, rt(v)
             }
         }
@@ -23170,7 +20125,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }), n.$set(r)
             },
             i(i) {
-                p(e, "hidden", I.player.level && I.player.level === 45 ? true : null)
                 o || (S(n.$$.fragment, i), o = !0)
             },
             o(i) {
@@ -23806,13 +20760,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         return ~(Re = Mo(t, -1)) && (St = jn[Re] = wo[Re](t)), {
             c() {
-                e = h("div"), n = h("div"), o = h("div"), i = h("img"), r = h("div"), l = h("div"), a = h("h1"), f = T(c), u = h("h3"), g = T(m), _ = h("p"), k = T(b), y = Ne(), A = T(F), C = h("div"), K(M.$$.fragment), D = h("div"), U = h("div"), V = h("div"), B = h("span"), B.textContent = `${P.ui.clan.level}`, q = h("span"), $ = T(L), W = h("span"), W.textContent = `${P.ui.clan.capacity}`, R = h("span"), Y = T(N), ge = h("span"), ge.textContent = `${P.ui.clan.nextlevel}`, Ce = h("span"), ve = T("+"), le = T(se), _e = Ne(), Te = T(be), ie = h("span"), ie.textContent = `${P.ui.clan.taxrate}`, Ie = h("span"), qe = T(ee), Ge = T("%"), Qe = h("div"), He = h("div"), he = h("span"), he.textContent = `${P.ui.clan.members}`, ce = h("span"), oe = T($e), J = h("span"), J.textContent = `${P.ui.clan.online}`, O = h("span"), je = T(ue), Ue = h("span"), Ue.textContent = `${P.ui.stats.array[20]}`, ke = h("span"), ze = h("img"), dt = Ne(), Ze = T(Ft), Ct = h("span"), Ct.textContent = `${P.ui.clan.treasury}`, K(xe.$$.fragment), Ee && Ee.c(), Je = de(), ct && ct.c(), kt = de(), Ke && Ke.c(), At = de(), mt && mt.c(), De = h("div"), at = h("div"), Ut = h("div"), Ut.textContent = `${P.ui.clan.members}`, hn && hn.c(), St && St.c(), p(i, "class", "helmet absCentered svelte-6t8hqd"), st(i.src, s = "/data/ui/factions/" + t[0].faction + ".svg?v=8822612") || p(i, "src", s), p(l, "class", v = "textf" + t[0].faction + " svelte-6t8hqd"), p(r, "class", "textcenter"), p(o, "class", "hero svelte-6t8hqd"), p(C, "class", "panel-black svelte-6t8hqd"), p(B, "class", "textprimary"), p(W, "class", "textprimary"), p(ge, "class", "textprimary"), p(ie, "class", "textprimary"), p(V, "class", "panel-black grid two svelte-6t8hqd"), p(he, "class", "textprimary"), p(J, "class", "textprimary"), p(Ue, "class", "textprimary"), p(ze, "class", "svgicon"), st(ze.src, Oe = ja) || p(ze, "src", Oe), p(ke, "class", "textprestige"), p(Ct, "class", "textprimary"), p(He, "class", "panel-black grid two svelte-6t8hqd"), p(D, "class", "marg-top grid two"), p(n, "class", "row slim"), p(e, "class", "fold fadeIn"), p(Ut, "class", "btn navbtn grey"), p(at, "class", "subnav marg-top"), p(De, "class", "row slim fadeIn")
+                e = h("div"), n = h("div"), o = h("div"), i = h("img"), r = h("div"), l = h("div"), a = h("h1"), f = T(c), u = h("h3"), g = T(m), _ = h("p"), k = T(b), y = Ne(), A = T(F), C = h("div"), K(M.$$.fragment), D = h("div"), U = h("div"), V = h("div"), B = h("span"), B.textContent = `${P.ui.clan.level}`, q = h("span"), $ = T(L), W = h("span"), W.textContent = `${P.ui.clan.capacity}`, R = h("span"), Y = T(N), ge = h("span"), ge.textContent = `${P.ui.clan.nextlevel}`, Ce = h("span"), ve = T("+"), le = T(se), _e = Ne(), Te = T(be), ie = h("span"), ie.textContent = `${P.ui.clan.taxrate}`, Ie = h("span"), qe = T(ee), Ge = T("%"), Qe = h("div"), He = h("div"), he = h("span"), he.textContent = `${P.ui.clan.members}`, ce = h("span"), oe = T($e), J = h("span"), J.textContent = `${P.ui.clan.online}`, O = h("span"), je = T(ue), Ue = h("span"), Ue.textContent = `${P.ui.stats.array[20]}`, ke = h("span"), ze = h("img"), dt = Ne(), Ze = T(Ft), Ct = h("span"), Ct.textContent = `${P.ui.clan.treasury}`, K(xe.$$.fragment), Ee && Ee.c(), Je = de(), ct && ct.c(), kt = de(), Ke && Ke.c(), At = de(), mt && mt.c(), De = h("div"), at = h("div"), Ut = h("div"), Ut.textContent = `${P.ui.clan.members}`, hn && hn.c(), St && St.c(), p(i, "class", "helmet absCentered svelte-6t8hqd"), st(i.src, s = "/data/ui/factions/" + t[0].faction + ".svg?v=8829640") || p(i, "src", s), p(l, "class", v = "textf" + t[0].faction + " svelte-6t8hqd"), p(r, "class", "textcenter"), p(o, "class", "hero svelte-6t8hqd"), p(C, "class", "panel-black svelte-6t8hqd"), p(B, "class", "textprimary"), p(W, "class", "textprimary"), p(ge, "class", "textprimary"), p(ie, "class", "textprimary"), p(V, "class", "panel-black grid two svelte-6t8hqd"), p(he, "class", "textprimary"), p(J, "class", "textprimary"), p(Ue, "class", "textprimary"), p(ze, "class", "svgicon"), st(ze.src, Oe = ja) || p(ze, "src", Oe), p(ke, "class", "textprestige"), p(Ct, "class", "textprimary"), p(He, "class", "panel-black grid two svelte-6t8hqd"), p(D, "class", "marg-top grid two"), p(n, "class", "row slim"), p(e, "class", "fold fadeIn"), p(Ut, "class", "btn navbtn grey"), p(at, "class", "subnav marg-top"), p(De, "class", "row slim fadeIn")
             },
             m(pt, Vt) {
                 w(pt, e, Vt), d(e, n), d(n, o), d(o, i), d(o, r), d(r, l), d(l, a), d(a, f), d(l, u), d(u, g), d(r, _), d(_, k), d(_, y), d(_, A), d(n, C), Q(M, C, null), d(n, D), d(D, U), d(U, V), d(V, B), d(V, q), d(q, $), d(V, W), d(V, R), d(R, Y), d(V, ge), d(V, Ce), d(Ce, ve), d(Ce, le), d(Ce, _e), d(Ce, Te), d(V, ie), d(V, Ie), d(Ie, qe), d(Ie, Ge), d(D, Qe), d(Qe, He), d(He, he), d(He, ce), d(ce, oe), d(He, J), d(He, O), d(O, je), d(He, Ue), d(He, ke), d(ke, ze), d(ke, dt), d(ke, Ze), d(He, Ct), Q(xe, He, null), Ee && Ee.m(n, null), d(n, Je), ct && ct.m(n, null), d(n, kt), Ke && Ke.m(n, null), d(n, At), mt && mt.m(n, null), w(pt, De, Vt), d(De, at), d(at, Ut), hn && hn.m(at, null), ~Re && jn[Re].m(De, null), Rt = !0, Ye || (et = H(Ut, "click", t[14]), Ye = !0)
             },
             p(pt, Vt) {
-                (!Rt || Vt & 1 && !st(i.src, s = "/data/ui/factions/" + pt[0].faction + ".svg?v=8822612")) && p(i, "src", s), (!Rt || Vt & 1) && c !== (c = pt[0].tag + "") && G(f, c), (!Rt || Vt & 1) && m !== (m = pt[0].name + "") && G(g, m), (!Rt || Vt & 1 && v !== (v = "textf" + pt[0].faction + " svelte-6t8hqd")) && p(l, "class", v), (!Rt || Vt & 1) && b !== (b = P.factions[pt[0].faction].name + "") && G(k, b);
+                (!Rt || Vt & 1 && !st(i.src, s = "/data/ui/factions/" + pt[0].faction + ".svg?v=8829640")) && p(i, "src", s), (!Rt || Vt & 1) && c !== (c = pt[0].tag + "") && G(f, c), (!Rt || Vt & 1) && m !== (m = pt[0].name + "") && G(g, m), (!Rt || Vt & 1 && v !== (v = "textf" + pt[0].faction + " svelte-6t8hqd")) && p(l, "class", v), (!Rt || Vt & 1) && b !== (b = P.factions[pt[0].faction].name + "") && G(k, b);
                 let Fo = {};
                 Vt & 1 && (Fo.fract = Math.ceil(pt[0].exp / Cl(pt[0].level) * 100)), Vt & 1 && (Fo.left = `${ht(pt[0].exp)} / ${ht(Cl(pt[0].level))} EXP`), Vt & 1 && (Fo.right = `${Math.ceil(pt[0].exp/Cl(pt[0].level)*100)}% `), M.$set(Fo), (!Rt || Vt & 1) && L !== (L = pt[0].level + "") && G($, L), (!Rt || Vt & 1) && N !== (N = Sl(pt[0].level) + "") && G(Y, N), (!Rt || Vt & 1) && se !== (se = Sl(pt[0].level + 1) - Sl(pt[0].level) + "") && G(le, se), (!Rt || Vt & 1) && ee !== (ee = pt[0].tax + "") && G(qe, ee), (!Rt || Vt & 1) && $e !== ($e = pt[0].members.length + "") && G(oe, $e), (!Rt || Vt & 1) && ue !== (ue = `${pt[0].online} (+${pt[0].online*60} EXP/h)`) && G(je, ue), (!Rt || Vt & 1) && Ft !== (Ft = ht(pt[0].prestige) + "") && G(Ze, Ft);
                 let Vr = {};
@@ -24433,7 +21387,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 for (let v = 0; v < a.length; v += 1) a[v] && a[v].m(l, null)
             },
             p(m, [g]) {
-                g & 3 && (f = pe(m[0]), a = In(a, g, u, 1, m, f, c, l, D_, lS, null, rS))
+                g & 3 && (f = pe(m[0]), a = In(a, g, u, 1, m, f, c, l, D2, lS, null, rS))
             },
             i: ae,
             o: ae,
@@ -25640,8 +22594,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function Gq(t) {
-        console.log(t)
-        let vgStatRow, blStatRow, vg1, vg2, vg3, vg4, bl1, bl2, bl3, bl4, vgWarriorImage, vgMageImage, vgArcherImage, vgShamanImage, blWarriorImage, blMageImage, blArcherImage, blShamanImage, vgWarriorText, vgMageText, vgArcherText, vgShamanText, blWarriorText, blMageText, blArcherText, blShamanText, totalText, vgTotalNum, vsTotalText, blTotalNum;
         let e, n, o, i, s, r, l, a, c, f = t[2].kills[0] + "",
             u, m, g, v, _, b, k = ht(t[2].reward) + "",
             y, F, A = P.ui.war.status + "",
@@ -25678,54 +22630,18 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 ct = Ye(Ee);
             at.set(ct, De[et] = MS(ct, Ee))
         }
-        const updateClassCounts = contributors => {
-            const active = contributors.filter(c => c.stats[3] > 0);
-            const counts = [[0,0,0,0],[0,0,0,0]];
-            active.forEach(c => { if (counts[c.faction]) counts[c.faction][c.class]++; });
-            [[vgWarriorText,vgMageText,vgArcherText,vgShamanText],[blWarriorText,blMageText,blArcherText,blShamanText]].forEach((texts, f) => texts.forEach((t, c) => t.textContent = counts[f][c]));
-            vgTotalNum.textContent = counts[0].reduce((a, b) => a + b, 0);
-            blTotalNum.textContent = counts[1].reduce((a, b) => a + b, 0);
-        };
         return {
             c() {
-                vgStatRow = h("div"); blStatRow = h("div");
-                vg1 = h("span"); vgWarriorImage = h("img");
-                vgWarriorText = h("span"); vgWarriorText.textContent = "0"; Ve(vgWarriorText, "margin-left", "4px");
-                vg2 = h("span"); vgMageImage = h("img");
-                vgMageText = h("span"); vgMageText.textContent = "0"; Ve(vgMageText, "margin-left", "4px");
-                vg3 = h("span"); vgArcherImage = h("img");
-                vgArcherText = h("span"); vgArcherText.textContent = "0"; Ve(vgArcherText, "margin-left", "4px");
-                vg4 = h("span"); vgShamanImage = h("img");
-                vgShamanText = h("span"); vgShamanText.textContent = "0"; Ve(vgShamanText, "margin-left", "4px");
-                bl1 = h("span"); blWarriorImage = h("img");
-                blWarriorText = h("span"); blWarriorText.textContent = "0"; Ve(blWarriorText, "margin-left", "4px");
-                bl2 = h("span"); blMageImage = h("img");
-                blMageText = h("span"); blMageText.textContent = "0"; Ve(blMageText, "margin-left", "4px");
-                bl3 = h("span"); blArcherImage = h("img");
-                blArcherText = h("span"); blArcherText.textContent = "0"; Ve(blArcherText, "margin-left", "4px");
-                bl4 = h("span"); blShamanImage = h("img");
-                blShamanText = h("span"); blShamanText.textContent = "0"; Ve(blShamanText, "margin-left", "4px");
-                [vgWarriorImage,vgMageImage,vgArcherImage,vgShamanImage].forEach((v, i) => (p(v, "src", ns(i)), p(v, "class", "svgicon")));
-                [blWarriorImage,blMageImage,blArcherImage,blShamanImage].forEach((v, i) => (p(v, "src", ns(i)), p(v, "class", "svgicon")));
-                [vg1,vg2,vg3,vg4,bl1,bl2,bl3,bl4].forEach(v => (p(v, "class", "infosmall"), Ve(v, "margin-top", "15px")));
-                Ve(vgStatRow, "display", "flex"); Ve(vgStatRow, "gap", "4px"); Ve(vgStatRow, "justify-content", "center");
-                Ve(blStatRow, "display", "flex"); Ve(blStatRow, "gap", "4px"); Ve(blStatRow, "justify-content", "center");
-                totalText = h("span"); Ve(totalText, "display", "flex"); Ve(totalText, "gap", "4px"); Ve(totalText, "justify-content", "center"); Ve(totalText, "align-items", "center"); Ve(totalText, "margin-bottom", "15px");
-                vgTotalNum = h("span"); vgTotalNum.textContent = "0"; p(vgTotalNum, "class", "infosmall textf0");
-                vsTotalText = h("span"); vsTotalText.textContent = "vs"; p(vsTotalText, "class", "infosmall"); Ve(vsTotalText, "font-weight", "bold");
-                blTotalNum = h("span"); blTotalNum.textContent = "0"; p(blTotalNum, "class", "infosmall textf1"); Ve(blTotalNum, "position", "relative");
                 e = h("div"), n = h("div"), o = h("div"), i = h("div"), s = h("span"), s.textContent = `${P.factions[0].name}`, r = h("span"), l = h("img"), c = Ne(), u = T(f), m = h("div"), g = h("span"), v = h("img"), b = Ne(), y = T(k), F = h("span"), C = T(A), M = T(": "), D = h("span"), V = T(U), q = h("span"), $ = T(L), W = T(": "), R = h("span"), Y = T(N), ge = Ne(), Ce = h("div"), ve = h("span"), ve.textContent = `${P.factions[1].name}`, se = h("span"), le = h("img"), be = Ne(), ie = T(Te), K(Ie.$$.fragment), ee = h("div"), qe = h("table"), Ge = h("thead"), Qe = h("tr"), He = h("th"), He.textContent = `${P.ui.war.player}`, he = h("th"), $e = T(ce), J = h("th"), ue = T(O), Ue = h("th"), ze = T(ke), dt = h("th"), Ft = h("img"), Ct = Ne(), Je = T(xe), At = h("tbody");
                 for (let et = 0; et < De.length; et += 1) De[et].c();
-                Ve(i, "text-align", "center");
-                p(s, "class", "infosmall textf0 svelte-19s383j"), Ve(s, "margin-top", "30px"), p(l, "class", "svgicon"), st(l.src, a = "/data/ui/icons/pvp.svg?v=8822612") || p(l, "src", a), p(r, "class", "infobig textprimary svelte-19s383j"), Ve(r, "margin-top", "10px"), p(v, "class", "svgicon"), st(v.src, _ = rr) || p(v, "src", _), p(g, "class", "infobig textfame svelte-19s383j"), Ve(g, "margin-top", "20px"), p(D, "class", B = "text" + ["red", "orange", "green"][t[2].status] + " svelte-19s383j"), p(F, "class", "infosmall svelte-19s383j"), Ve(F, "margin-top", "10px"), p(R, "class", "textprimary"), p(q, "class", "infosmall svelte-19s383j"), Ve(q, "margin-bottom", "6.5px"), p(ve, "class", "infosmall textf1 svelte-19s383j"), Ve(ve, "margin-top", "30px"), p(le, "class", "svgicon"), st(le.src, _e = "/data/ui/icons/pvp.svg?v=8822612") || p(le, "src", _e), p(se, "class", "infobig textprimary svelte-19s383j"), Ve(se, "margin-top", "10px"), p(o, "class", "grid three"), p(n, "class", "panel-black border grey"), p(He, "width", "30%"), p(he, "class", oe = "textcenter " + (t[0] == 1 ? "textwhite" : "")), p(J, "class", je = "textcenter " + (t[0] == 2 ? "textwhite" : "")), p(Ue, "class", Oe = "textcenter " + (t[0] == 0 ? "textwhite" : "")), p(Ft, "class", "svgicon"), st(Ft.src, Ze = rr) || p(Ft, "src", Ze), p(dt, "class", kt = "textcenter " + (t[0] == 3 ? "textwhite" : "")), p(Qe, "class", "textprimary"), p(qe, "class", "dense panel-black"), p(ee, "class", "scrollbar"), p(e, "class", "layout svelte-19s383j")
+                p(s, "class", "infosmall textf0 svelte-19s383j"), Ve(s, "margin-top", "30px"), p(l, "class", "svgicon"), st(l.src, a = "/data/ui/icons/pvp.svg?v=8829640") || p(l, "src", a), p(r, "class", "infobig textprimary svelte-19s383j"), Ve(r, "margin-top", "10px"), p(v, "class", "svgicon"), st(v.src, _ = rr) || p(v, "src", _), p(g, "class", "infobig textfame svelte-19s383j"), Ve(g, "margin-top", "20px"), p(D, "class", B = "text" + ["red", "orange", "green"][t[2].status] + " svelte-19s383j"), p(F, "class", "infosmall svelte-19s383j"), Ve(F, "margin-top", "10px"), p(R, "class", "textprimary"), p(q, "class", "infosmall svelte-19s383j"), Ve(q, "margin-bottom", "20px"), p(ve, "class", "infosmall textf1 svelte-19s383j"), Ve(ve, "margin-top", "30px"), p(le, "class", "svgicon"), st(le.src, _e = "/data/ui/icons/pvp.svg?v=8829640") || p(le, "src", _e), p(se, "class", "infobig textprimary svelte-19s383j"), Ve(se, "margin-top", "10px"), p(o, "class", "grid three"), p(n, "class", "panel-black border grey"), p(He, "width", "30%"), p(he, "class", oe = "textcenter " + (t[0] == 1 ? "textwhite" : "")), p(J, "class", je = "textcenter " + (t[0] == 2 ? "textwhite" : "")), p(Ue, "class", Oe = "textcenter " + (t[0] == 0 ? "textwhite" : "")), p(Ft, "class", "svgicon"), st(Ft.src, Ze = rr) || p(Ft, "src", Ze), p(dt, "class", kt = "textcenter " + (t[0] == 3 ? "textwhite" : "")), p(Qe, "class", "textprimary"), p(qe, "class", "dense panel-black"), p(ee, "class", "scrollbar"), p(e, "class", "layout svelte-19s383j")
             },
             m(et, Ee) {
-                w(et, e, Ee), d(e, n), d(n, o), d(o, i), d(i, s), d(i, r), d(i, vgStatRow), d(vgStatRow, vg1), d(vg1, vgWarriorImage), d(vg1, vgWarriorText), d(vgStatRow, vg2), d(vg2, vgMageImage), d(vg2, vgMageText), d(vgStatRow, vg3), d(vg3, vgArcherImage), d(vg3, vgArcherText), d(vgStatRow, vg4), d(vg4, vgShamanImage), d(vg4, vgShamanText), d(r, l), d(r, c), d(r, u), d(o, m), d(m, g), d(g, v), d(g, b), d(g, y), d(m, F), d(F, C), d(F, M), d(F, D), d(D, V), d(m, q), d(q, $), d(q, W), d(q, R), d(R, Y), d(m, ge), d(m, totalText), d(totalText, vgTotalNum), d(totalText, vsTotalText), d(totalText, blTotalNum), d(o, Ce), d(Ce, ve), d(Ce, se), d(se, le), d(se, be), d(se, ie), d(Ce, blStatRow), d(blStatRow, bl1), d(bl1, blWarriorImage), d(bl1, blWarriorText), d(blStatRow, bl2), d(bl2, blMageImage), d(bl2, blMageText), d(blStatRow, bl3), d(bl3, blArcherImage), d(bl3, blArcherText), d(blStatRow, bl4), d(bl4, blShamanImage), d(bl4, blShamanText), Q(Ie, n, null), d(e, ee), d(ee, qe), d(qe, Ge), d(Ge, Qe), d(Qe, He), d(Qe, he), d(he, $e), d(Qe, J), d(J, ue), d(Qe, Ue), d(Ue, ze), d(Qe, dt), d(dt, Ft), d(dt, Ct), d(dt, Je), d(qe, At);
+                w(et, e, Ee), d(e, n), d(n, o), d(o, i), d(i, s), d(i, r), d(r, l), d(r, c), d(r, u), d(o, m), d(m, g), d(g, v), d(g, b), d(g, y), d(m, F), d(F, C), d(F, M), d(F, D), d(D, V), d(m, q), d(q, $), d(q, W), d(q, R), d(R, Y), d(m, ge), d(o, Ce), d(Ce, ve), d(Ce, se), d(se, le), d(se, be), d(se, ie), Q(Ie, n, null), d(e, ee), d(ee, qe), d(qe, Ge), d(Ge, Qe), d(Qe, He), d(Qe, he), d(he, $e), d(Qe, J), d(J, ue), d(Qe, Ue), d(Ue, ze), d(Qe, dt), d(dt, Ft), d(dt, Ct), d(dt, Je), d(qe, At);
                 for (let ct = 0; ct < De.length; ct += 1) De[ct] && De[ct].m(At, null);
                 Ut = !0, Re || (St = [H(he, "click", t[3]), H(J, "click", t[4]), H(Ue, "click", t[5]), H(dt, "click", t[6])], Re = !0)
             },
             p(et, Ee) {
-                (Ee & 4) && updateClassCounts(et[2].contributors);
                 (!Ut || Ee & 4) && f !== (f = et[2].kills[0] + "") && G(u, f), (!Ut || Ee & 4) && k !== (k = ht(et[2].reward) + "") && G(y, k), (!Ut || Ee & 4) && U !== (U = P.ui.war.statustypes[et[2].status] + "") && G(V, U), (!Ut || Ee & 4 && B !== (B = "text" + ["red", "orange", "green"][et[2].status] + " svelte-19s383j")) && p(D, "class", B), (!Ut || Ee & 4) && N !== (N = Nv(et[2].duration) + "") && G(Y, N), (!Ut || Ee & 4) && Te !== (Te = et[2].kills[1] + "") && G(ie, Te);
                 let ct = {};
                 Ee & 4 && (ct.fract = ~~(et[2].contrib / xu(et[2].level) * 100)), Ee & 4100 && (ct.$$scope = {
@@ -26263,7 +23179,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             je;
         return {
             c() {
-                e = h("div"), n = h("div"), n.innerHTML = '<img class="artwork svelte-cbx1m" src="/data/ui/elixir.svg?v=8822612"/><div class="sparkle svelte-cbx1m" style="font-size:35px; left:30%; top:30%; animation-delay: -1s;">+</div><div class="sparkle svelte-cbx1m" style="font-size:50px; left:40%; top:60%; animation-delay: -2s;">+</div><div class="sparkle svelte-cbx1m" style="font-size:80px; left:60%; top:20%; animation-delay: -3s;">+</div>', o = h("div"), i = h("h1"), i.innerHTML = 'Hordes <span class="textsub">Elixir</span>', s = h("div"), r = h("img"), a = Ne(), f = T(c), u = h("div"), m = h("img"), v = Ne(), b = T(_), k = h("div"), y = h("img"), A = Ne(), C = h("span"), C.textContent = `${Nn[0].inventory}`, M = Ne(), D = h("span"), D.textContent = `${Nn[1].inventory}`, U = Ne(), B = T(V), q = h("div"), L = h("img"), W = Ne(), R = h("span"), R.textContent = `${Nn[0].stash}`, N = Ne(), Y = h("span"), Y.textContent = `${Nn[1].stash}`, ge = Ne(), ve = T(Ce), se = h("div"), le = h("img"), be = Ne(), Te = h("span"), Te.textContent = `${Nn[0].auction}`, ie = Ne(), Ie = h("span"), Ie.textContent = `${Nn[1].auction}`, ee = Ne(), Ge = T(qe), Qe = h("div"), He = h("img"), ce = Ne(), $e = h("span"), $e.textContent = `${Nn[0].auctionHours}h`, oe = Ne(), J = h("span"), J.textContent = `${Nn[1].auctionHours}h`, O = Ne(), je = T(ue), p(n, "class", "artcontainer svelte-cbx1m"), p(i, "class", "textprimary"), p(r, "class", "svgicon"), st(r.src, l = "/data/ui/icons/gem.svg?v=8822612") || p(r, "src", l), p(s, "class", "textwhite"), p(m, "class", "svgicon"), st(m.src, g = "/data/ui/icons/check.svg?v=8822612") || p(m, "src", g), p(u, "class", "textwhite"), p(y, "class", "svgicon"), st(y.src, F = "/data/ui/icons/check.svg?v=8822612") || p(y, "src", F), p(C, "class", "old svelte-cbx1m"), p(D, "class", "textsub"), p(k, "class", "textwhite"), p(L, "class", "svgicon"), st(L.src, $ = "/data/ui/icons/check.svg?v=8822612") || p(L, "src", $), p(R, "class", "old svelte-cbx1m"), p(Y, "class", "textsub"), p(q, "class", "textwhite"), p(le, "class", "svgicon"), st(le.src, _e = "/data/ui/icons/check.svg?v=8822612") || p(le, "src", _e), p(Te, "class", "old svelte-cbx1m"), p(Ie, "class", "textsub"), p(se, "class", "textwhite"), p(He, "class", "svgicon"), st(He.src, he = "/data/ui/icons/check.svg?v=8822612") || p(He, "src", he), p($e, "class", "old svelte-cbx1m"), p(J, "class", "textsub"), p(Qe, "class", "textwhite"), p(e, "class", "split svelte-cbx1m")
+                e = h("div"), n = h("div"), n.innerHTML = '<img class="artwork svelte-cbx1m" src="/data/ui/elixir.svg?v=8829640"/><div class="sparkle svelte-cbx1m" style="font-size:35px; left:30%; top:30%; animation-delay: -1s;">+</div><div class="sparkle svelte-cbx1m" style="font-size:50px; left:40%; top:60%; animation-delay: -2s;">+</div><div class="sparkle svelte-cbx1m" style="font-size:80px; left:60%; top:20%; animation-delay: -3s;">+</div>', o = h("div"), i = h("h1"), i.innerHTML = 'Hordes <span class="textsub">Elixir</span>', s = h("div"), r = h("img"), a = Ne(), f = T(c), u = h("div"), m = h("img"), v = Ne(), b = T(_), k = h("div"), y = h("img"), A = Ne(), C = h("span"), C.textContent = `${Nn[0].inventory}`, M = Ne(), D = h("span"), D.textContent = `${Nn[1].inventory}`, U = Ne(), B = T(V), q = h("div"), L = h("img"), W = Ne(), R = h("span"), R.textContent = `${Nn[0].stash}`, N = Ne(), Y = h("span"), Y.textContent = `${Nn[1].stash}`, ge = Ne(), ve = T(Ce), se = h("div"), le = h("img"), be = Ne(), Te = h("span"), Te.textContent = `${Nn[0].auction}`, ie = Ne(), Ie = h("span"), Ie.textContent = `${Nn[1].auction}`, ee = Ne(), Ge = T(qe), Qe = h("div"), He = h("img"), ce = Ne(), $e = h("span"), $e.textContent = `${Nn[0].auctionHours}h`, oe = Ne(), J = h("span"), J.textContent = `${Nn[1].auctionHours}h`, O = Ne(), je = T(ue), p(n, "class", "artcontainer svelte-cbx1m"), p(i, "class", "textprimary"), p(r, "class", "svgicon"), st(r.src, l = "/data/ui/icons/gem.svg?v=8829640") || p(r, "src", l), p(s, "class", "textwhite"), p(m, "class", "svgicon"), st(m.src, g = "/data/ui/icons/check.svg?v=8829640") || p(m, "src", g), p(u, "class", "textwhite"), p(y, "class", "svgicon"), st(y.src, F = "/data/ui/icons/check.svg?v=8829640") || p(y, "src", F), p(C, "class", "old svelte-cbx1m"), p(D, "class", "textsub"), p(k, "class", "textwhite"), p(L, "class", "svgicon"), st(L.src, $ = "/data/ui/icons/check.svg?v=8829640") || p(L, "src", $), p(R, "class", "old svelte-cbx1m"), p(Y, "class", "textsub"), p(q, "class", "textwhite"), p(le, "class", "svgicon"), st(le.src, _e = "/data/ui/icons/check.svg?v=8829640") || p(le, "src", _e), p(Te, "class", "old svelte-cbx1m"), p(Ie, "class", "textsub"), p(se, "class", "textwhite"), p(He, "class", "svgicon"), st(He.src, he = "/data/ui/icons/check.svg?v=8829640") || p(He, "src", he), p($e, "class", "old svelte-cbx1m"), p(J, "class", "textsub"), p(Qe, "class", "textwhite"), p(e, "class", "split svelte-cbx1m")
             },
             m(Ue, ke) {
                 w(Ue, e, ke), d(e, n), d(e, o), d(o, i), d(o, s), d(s, r), d(s, a), d(s, f), d(o, u), d(u, m), d(u, v), d(u, b), d(o, k), d(k, y), d(k, A), d(k, C), d(k, M), d(k, D), d(k, U), d(k, B), d(o, q), d(q, L), d(q, W), d(q, R), d(q, N), d(q, Y), d(q, ge), d(q, ve), d(o, se), d(se, le), d(se, be), d(se, Te), d(se, ie), d(se, Ie), d(se, ee), d(se, Ge), d(o, Qe), d(Qe, He), d(Qe, ce), d(Qe, $e), d(Qe, oe), d(Qe, J), d(Qe, O), d(Qe, je)
@@ -26684,7 +23600,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             s;
         return {
             c() {
-                e = h("img"), o = Ne(), s = T(i), p(e, "class", "svgicon"), st(e.src, n = "/data/ui/icons/check.svg?v=8822612") || p(e, "src", n)
+                e = h("img"), o = Ne(), s = T(i), p(e, "class", "svgicon"), st(e.src, n = "/data/ui/icons/check.svg?v=8829640") || p(e, "src", n)
             },
             m(r, l) {
                 w(r, e, l), w(r, o, l), w(r, s, l)
@@ -27194,7 +24110,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         return {
             c() {
                 e = h("div"), n = h("h3"), o = T("Hordes.io is free!"), i = h("br"), s = T(`
-    Buy `), r = h("span"), r.innerHTML = '<span class="textwhite">Hordes</span> <img class="svgicon texticon" src="/data/ui/icons/gem.svg?v=8822612"/>  Elixir', l = T(`
+    Buy `), r = h("span"), r.innerHTML = '<span class="textwhite">Hordes</span> <img class="svgicon texticon" src="/data/ui/icons/gem.svg?v=8829640"/>  Elixir', l = T(`
      to hide ads & unlock extra features!`), p(r, "class", "btn black textsub"), p(n, "class", "textgrey textcenter"), p(e, "class", "container panel-black svelte-um60d1")
             },
             m(f, u) {
@@ -27312,14 +24228,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             "vertical" in l && n(0, o = l.vertical)
         }, [o, i]
     }
-    var e2 = class extends Fe {
+    var e_ = class extends Fe {
             constructor(e) {
                 super(), Pe(this, e, ER, TR, Be, {
                     vertical: 0
                 })
             }
         },
-        HS = e2;
+        HS = e_;
 
     function YS(t) {
         let e, n, o = t[1][3] + "",
@@ -27368,12 +24284,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let o, i;
         return re(t, Aa, s => n(0, o = s)), re(t, Am, s => n(1, i = s)), [o, i]
     }
-    var t2 = class extends Fe {
+    var t_ = class extends Fe {
             constructor(e) {
                 super(), Pe(this, e, DR, IR, Be, {})
             }
         },
-        XS = t2;
+        XS = t_;
 
     function QS(t) {
         let e, n;
@@ -27480,14 +24396,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             Xe(Br, o = void 0, o)
         }]
     }
-    var n2 = class extends Fe {
+    var n_ = class extends Fe {
             constructor(e) {
                 super(), Pe(this, e, qR, LR, Be, {})
             }
         },
-        ZS = n2;
-    var r2 = {};
-    Kn(r2, {
+        ZS = n_;
+    var r_ = {};
+    Kn(r_, {
         canvas: () => xo,
         changeCanvas: () => Zd,
         init: () => RR,
@@ -27503,13 +24419,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         Yd = !1,
         Tl = 200,
         El = 200,
-        s2 = !1,
+        s_ = !1,
         Xd = 0,
         Qd = 0,
         xo = document.createElement("canvas");
     xo.className = "border black minimap";
     var Ti = xo.getContext("2d"),
-        o2 = new Map,
+        o_ = new Map,
         Su = new Map;
     xo.addEventListener("wheel", t => {
         xr = vt(xr * (t.deltaY < 0 ? 1 + .1 : 1 - .1), .25, 1.5)
@@ -27517,13 +24433,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         passive: !0
     });
     xo.addEventListener("mousedown", t => {
-        s2 = !0
+        s_ = !0
     });
     xo.addEventListener("mouseup", t => {
-        s2 = !1
+        s_ = !1
     });
     xo.addEventListener("mousemove", t => {
-        if (s2) {
+        if (s_) {
             let e = t.movementX,
                 n = t.movementY;
             Xd -= e / xr, Qd -= n / xr
@@ -27535,8 +24451,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             pvp: Lt("pvp"),
             friendly: Lt("health"),
             party: Lt("party"),
-            black: Lt("black"),
-            raremob: "#ffe600"
+            black: Lt("black")
         },
         RR = () => {
             nt.map.onPress(() => {
@@ -27546,18 +24461,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             })
         },
         Zd = t => {
-            Xd = Qd = 0;
-            if (t) {
-                document.body.appendChild(xo);
-                Tl = ~~Math.min(Math.max(200, window.innerWidth * .7), 1e3);
-                El = ~~Math.min(Math.max(200, window.innerHeight * .7), 800);
-                Tl % 2 !== 0 && (Tl += 1), El % 2 !== 0 && (El += 1);
-                xo.width = Tl, xo.height = El, xo.className = "border black minimap enlarged";
-            } else {
-                document.getElementById("minimapcontainer").appendChild(xo);
-                xo.className = "border black minimap";
-                Tl = xo.width = 200, El = xo.height = 200;
-            }
+            Xd = Qd = 0, t ? (document.body.appendChild(xo), Tl = ~~Math.min(Math.max(200, window.innerWidth * .7), 1e3), El = ~~Math.min(Math.max(200, window.innerHeight * .7), 800), Tl % 2 !== 0 && (Tl += 1), El % 2 !== 0 && (El += 1), xo.width = Tl, xo.height = El, xo.className = "border black minimap enlarged") : (document.getElementById("minimapcontainer").appendChild(xo), xo.className = "border black minimap", Tl = xo.width = 200, El = xo.height = 200)
         },
         e8 = function() {
             this.loaded = !0
@@ -27567,7 +24471,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             JS++;
             let e = I.player;
             if (!e || fe.mapLowQuality && JS % 10 !== 0) return;
-            let now = performance.now();
             let n = Ti;
             n.globalAlpha = 1, n.clearRect(0, 0, Tl, El);
             let o = e,
@@ -27611,16 +24514,16 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             let M = !1,
                 D = [0, 0];
             if (pc.neticons.forEach(Y => {
-                    Cu(D, Y.pos[0], Y.pos[1], i, s, c, l, f, u, 100) && (M = M || Y.blink, i2(D, Y.id, Y.blink))
+                    Cu(D, Y.pos[0], Y.pos[1], i, s, c, l, f, u, 100) && (M = M || Y.blink, i_(D, Y.id, Y.blink))
                 }), M && (n.globalAlpha = 1), pc.npcs.forEach(Y => {
-                    Cu(D, Y.pos[0], Y.pos[1], i, s, c, l, f, u, 100) && i2(D, Y.img, !1)
+                    Cu(D, Y.pos[0], Y.pos[1], i, s, c, l, f, u, 100) && i_(D, Y.img, !1)
                 }), I.entities.array.forEach(Y => {
-                    !(!Y.stats || !Y.stats.alive || Y === e) && Cu(D, Y.pos[0], Y.pos[2], i, s, c, l, f, u, 50) && KS(D, Y.type, e.hostility(Y), Y.party > 0 && Y.party === e.party, Y)
+                    !(!Y.stats || !Y.stats.alive || Y === e) && Cu(D, Y.pos[0], Y.pos[2], i, s, c, l, f, u, 50) && KS(D, Y.type, e.hostility(Y), Y.party > 0 && Y.party === e.party)
                 }), Zt.forEach(Y => {
-                    Y.local && Y.pos !== void 0 && !I.isEntityIdTaken(Y.id) && Cu(D, Y.pos[0], Y.pos[1], i, s, c, l, f, u, 100) && KS(D, 0, 0, e.party, Y)
+                    Y.local && Y.pos !== void 0 && !I.isEntityIdTaken(Y.id) && Cu(D, Y.pos[0], Y.pos[1], i, s, c, l, f, u, 100) && KS(D, 0, 0, e.party)
                 }), e.buffs.buffs.has(128)) {
                 let Y = e.buffs.buffs.get(128).get(e.id);
-                Y.data && Cu(D, Y.data[0], Y.data[1], i, s, c, l, f, u, 500) && i2(D, 2100, !1)
+                Y.data && Cu(D, Y.data[0], Y.data[1], i, s, c, l, f, u, 500) && i_(D, 2100, !1)
             }
             n.globalAlpha = Yd && I.smoothtime % 1 < .5 ? .5 : 1;
             let U = I.player.visual.transform.rotation[1],
@@ -27632,11 +24535,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 W = Math.cos(U - 2.4) * 6,
                 R = f / 2 - Xd * xr,
                 N = u / 2 - Qd * xr;
-            n.fillStyle = "#C1DAE2", n.strokeStyle = "#1A293A", n.lineWidth = 1, n.beginPath(), n.moveTo(R + V, N + B), n.lineTo(R + q, N + L), n.lineTo(R + $, N + W), n.closePath(), n.fill(), n.stroke();
+            n.fillStyle = "#C1DAE2", n.strokeStyle = "#1A293A", n.lineWidth = 1, n.beginPath(), n.moveTo(R + V, N + B), n.lineTo(R + q, N + L), n.lineTo(R + $, N + W), n.closePath(), n.fill(), n.stroke()
         },
-        i2 = (t, e, n) => {
-            if (o2.has(e)) {
-                let o = o2.get(e);
+        i_ = (t, e, n) => {
+            if (o_.has(e)) {
+                let o = o_.get(e);
                 if (o.loaded === !0) {
                     !n || I.smoothtime % 1 < .5 ? Ti.globalAlpha = n ? .6 : .8 : Ti.globalAlpha = 1;
                     let i = o.width,
@@ -27645,19 +24548,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }
             } else {
                 let o = document.createElement("img");
-                o.src = "data/assets/" + td(e) + "?v=8822612", o.onload = e8, o2.set(e, o)
+                o.src = "data/assets/" + td(e) + "?v=8829640", o.onload = e8, o_.set(e, o)
             }
         },
-        KS = (t, e, n, o, entity) => {
-            function drawMob(name,id,type,entityId) {
-                let icon = new Image()
-                icon.src = `/data/items/${type}/${type}${id}_q3.avif?v=8822612`
-                Ti.drawImage(icon, ...t, 17, 17)
-                Ti.strokeRect(...t, 17, 17)
-            }
-            for (let mob of rareMobs) {
-                if (entity.name === mob.name && entity.type == 1 && fe.radar) return drawMob(mob.name, mob.id, mob.type, entity.id)
-            }
+        KS = (t, e, n, o) => {
             if (!(!fe.mapShowMonsters && e === 1))
                 if (e === 0) {
                     if (Yd && o && I.smoothtime % 1 > .5) return;
@@ -27685,7 +24579,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let e, n, o, i;
         return {
             c() {
-                e = h("img"), p(e, "class", "btn border black bgblack round warIcon svelte-1khf45q"), st(e.src, n = "/data/ui/icons/war0." + On + "?v=8822612") || p(e, "src", n)
+                e = h("img"), p(e, "class", "btn border black bgblack round warIcon svelte-1khf45q"), st(e.src, n = "/data/ui/icons/war0." + On + "?v=8829640") || p(e, "src", n)
             },
             m(s, r) {
                 w(s, e, r), o || (i = H(e, "click", t[2]), o = !0)
@@ -27723,12 +24617,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             Zd(!1)
         }), [o, i, r => Xe(Xi, i = !i, i)]
     }
-    var l2 = class extends Fe {
+    var l_ = class extends Fe {
             constructor(e) {
                 super(), Pe(this, e, OR, $R, Be, {})
             }
         },
-        n8 = l2;
+        n8 = l_;
 
     function o8(t) {
         let e, n;
@@ -27777,7 +24671,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function NR(t) {
-        let e, n, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, N, Y, ge, Ce, ve, se, le, _e, be, Te, chatButton;
+        let e, n, o, i, s, r, l, a, c, f, u, m, g, v, _, b, k, y, F, A, C, M, D, U, V, B, q, L, $, W, R, N, Y, ge, Ce, ve, se, le, _e, be, Te;
         e = new z6({}), o = new hb({});
         let ie = t[0] && !t[0].subscribed_until && (t[1] || t[2] || t[3] || t[4] || t[5]) && o8(t);
         r = new RC({}), l = new UC({}), a = new d3({}), c = new iC({}), f = new O6({}), u = new iw({}), m = new EC({}), g = new Zx({}), v = new T6({}), _ = new L6({}), b = new j6({}), k = new oF({}), y = new PC({}), F = new vF({}), A = new TF({}), C = new UF({}), M = new WF({}), D = new pC({}), U = new FS({}), V = new ES({}), B = new fS({}), q = new kS({}), L = new OS({}), $ = new ZS({}), R = new X6({}), N = new n8({}), Y = new XS({});
@@ -27812,12 +24706,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let o, i, s, r, l, a, c;
         return re(t, ya, f => n(0, o = f)), re(t, ef, f => n(1, i = f)), re(t, hi, f => n(2, s = f)), re(t, Qi, f => n(3, r = f)), re(t, Jo, f => n(4, l = f)), re(t, Ro, f => n(5, a = f)), re(t, Pa, f => n(6, c = f)), wu(), [o, i, s, r, l, a, c]
     }
-    var a2 = class extends Fe {
+    var a_ = class extends Fe {
             constructor(e) {
                 super(), Pe(this, e, WR, NR, Be, {})
             }
         },
-        s8 = a2;
+        s8 = a_;
 
     function r8(t) {
         let e, n;
@@ -27842,7 +24736,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
 
     function jR(t) {
         let e, n, o, i;
-        e = new B_({
+        e = new B2({
             props: {
                 active: t[0]
             }
@@ -27877,28 +24771,28 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let o, i, s;
         return re(t, So, r => n(0, o = r)), re(t, wm, r => n(1, i = r)), re(t, Zc, r => n(2, s = r)), [o, i, s]
     }
-    var c2 = class extends Fe {
+    var c_ = class extends Fe {
             constructor(e) {
                 super(), Pe(this, e, GR, jR, Be, {})
             }
         },
-        l8 = c2;
-    var u2 = 0,
+        l8 = c_;
+    var u_ = 0,
         li = 0,
-        m2 = 0,
-        p2 = 5,
+        m_ = 0,
+        p_ = 5,
         Pu = 10,
         Au = 10,
         m8 = 0,
         HR = 0,
-        d2 = 0,
-        h2 = 0,
-        g2 = 0,
-        v2 = 0,
+        d_ = 0,
+        h_ = 0,
+        g_ = 0,
+        v_ = 0,
         p8 = (t, e) => {
-            t = Math.max(150, Math.min(1500, t)), li = t * .8, m2 = Math.min(li, 150), u2 = 20, d2 = li, v2 = li ** 2, h2 = Math.min(li, 50), g2 = Math.min(li / 32, _grassDist / 32) ** 2, gt.far = m8 = t, HR = t ** 2, sf(gt), Au = Math.min(li, (100 + e * 50) * _shadowDistMult), Pu = Math.min(li, (40 + e * 10) * _shadowDistMult), p2 = (Au + Pu) / 2, Wn = Math.ceil(t * 2 / 32), Wn += Wn % 2, Rs = Wn / 2, Rs += Rs % 2, YR()
+            t = Math.max(150, Math.min(1500, t)), li = t * .8, m_ = Math.min(li, 150), u_ = 20, d_ = li, v_ = li ** 2, h_ = Math.min(li, 50), g_ = Math.min(li / 32, 150 / 32) ** 2, gt.far = m8 = t, HR = t ** 2, sf(gt), Au = Math.min(li, 100 + e * 50), Pu = Math.min(li, 40 + e * 10), p_ = (Au + Pu) / 2, Wn = Math.ceil(t * 2 / 32), Wn += Wn % 2, Rs = Wn / 2, Rs += Rs % 2, YR()
         },
-        f2 = [],
+        f_ = [],
         wr = [],
         Jd = [],
         Il = [],
@@ -27919,12 +24813,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 e = (Math.min(li * .7, 250) / 32) ** 2,
                 n = (Math.max(e, li) / 32) ** 2,
                 o = (m8 / 32) ** 2;
-            f2.length = 0, wr.length = 0;
+            f_.length = 0, wr.length = 0;
             for (let i = 0; i < Wn; ++i)
                 for (let s = 0; s < Wn; ++s) {
                     let r = (t - s) ** 2 + (t - i) ** 2,
                         l = 0;
-                    r > o ? l = 3 : r > n ? l = 2 : r > e && (l = 1), f2.push(r), wr.push(l)
+                    r > o ? l = 3 : r > n ? l = 2 : r > e && (l = 1), f_.push(r), wr.push(l)
                 }
             Jd.length = 0;
             for (let i = 0; i < Wn; ++i)
@@ -27942,7 +24836,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     } else Jd.push(a * 33 + c * 16)
                 }
         },
-        _2 = (t, e) => {
+        __ = (t, e) => {
             if (t < Mr || t >= Tu || e < Fr || e >= Eu) return 3;
             let n = t - Mr,
                 o = e - Fr;
@@ -27952,7 +24846,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             if (t < Mr || t >= Tu || e < Fr || e >= Eu) return 1 / 0;
             let n = t - Mr,
                 o = e - Fr;
-            return f2[n + o * Wn]
+            return f_[n + o * Wn]
         },
         h8 = (t, e) => {
             if (t < Mr || t >= Tu || e < Fr || e >= Eu) return 2 * 16;
@@ -27980,9 +24874,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
             return !1
         },
-        b2 = !0,
+        b_ = !0,
         g8 = (t, e) => {
-            b2 = XR(Qt.position[0], Qt.position[2], e)
+            b_ = XR(Qt.position[0], Qt.position[2], e)
         };
     var QR = 0,
         _8 = (t, e, n, o = 0, i = !1, s = !1) => {
@@ -28019,7 +24913,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 data: new Float32Array(n)
             }), t.instancedAttributeNames.push(e), t.instancedData.push([])
         },
-        y2 = t => {
+        y_ = t => {
             let e = rn();
             e.geometry = t.geometry, e.data.multi = t, t.instances.push(e);
             for (let n = 0; n < t.instancedAttributes.length; ++n) {
@@ -28058,7 +24952,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 r = 0;
             for (let l = 0; l < s.length; ++l) {
                 let a = s[l];
-                if (a.visible && (!n || !o || J_(e, a.geometry, a))) {
+                if (a.visible && (!n || !o || J2(e, a.geometry, a))) {
                     for (let f = 0; f < t.instancedAttributes.length; ++f) {
                         let u = t.instancedAttributes[f],
                             m = u.data,
@@ -28105,7 +24999,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             let r = $1.get(t),
                 l = o0.get(r.steps),
                 a;
-            return !l || l.length === 0 ? a = new k2(r) : a = l.pop(), a.reset(r, e, n, o, i, s), zs.push(a), a
+            return !l || l.length === 0 ? a = new k_(r) : a = l.pop(), a.reset(r, e, n, o, i, s), zs.push(a), a
         },
         M8 = (t, e) => {
             for (let n = 0; n < zs.length; n++)
@@ -28121,18 +25015,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             zs.forEach(F8), zs.length = 0
         },
         S8 = () => {
-            let alpha = 1 * (fe.fxAlphaRibbon / 100);
             for (let t = 0; t < zs.length; ++t) {
                 let e = zs[t];
-                if (e.mesh.transform.visible) {
-                    e.mesh.uniformData.colStart[3] = e._colStartA * alpha;
-                    e.mesh.uniformData.colEnd[3] = e._colEndA * alpha;
-                    ni(e.mesh, ut[e.mesh.program])
-                }
+                e.mesh.transform.visible && ni(e.mesh, ut[e.mesh.program])
             }
-            return
         },
-        k2 = class {
+        k_ = class {
             constructor(e) {
                 this.maxSteps = e.steps, this.stepTimer = new xt(0, 1), this.duration = new xt(0, 1), this.remove = !1, this.a = [0, 0, 0], this.b = [0, 0, 0], this.timeoutSteps = 0;
                 let n = this.maxSteps + 1;
@@ -28154,7 +25042,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }), jp(this.geometry, this.geometry.attributes.uv, n), this.mesh = Bo(this.geometry, 19, j.TRIANGLES), this.mesh.uniformData.offset = [0, 0], this.waitingForTexture = !1, this.parent = null
             }
             reset(e, n, o, i, s, r) {
-                this.stepTimer.reset(0, e.interval), this.duration.reset(r, s), this.currentStep = 0, this.a = it(this.a, o), this.b = it(this.b, i), this.mesh.uniformData.offset[1] = 1 / (this.maxSteps + 1), this.remove = !1, this.timeoutSteps = 0, this.geometry.drawRangeCount = 0, this.mesh.uniformData.colStart = [...e.colStart], this.mesh.uniformData.colEnd = [...e.colEnd], this._colStartA = e.colStart[3], this._colEndA = e.colEnd[3], e.texture > 0 ? (this.waitingForTexture = !0, this.mesh.program = 19, vo(e.texture, l => {
+                this.stepTimer.reset(0, e.interval), this.duration.reset(r, s), this.currentStep = 0, this.a = it(this.a, o), this.b = it(this.b, i), this.mesh.uniformData.offset[1] = 1 / (this.maxSteps + 1), this.remove = !1, this.timeoutSteps = 0, this.geometry.drawRangeCount = 0, this.mesh.uniformData.colStart = e.colStart, this.mesh.uniformData.colEnd = e.colEnd, e.texture > 0 ? (this.waitingForTexture = !0, this.mesh.program = 19, vo(e.texture, l => {
                     this.mesh.uniformData.diffuse = l, this.waitingForTexture = !1
                 })) : (this.waitingForTexture = !1, this.mesh.program = 18, this.mesh.uniformData.diffuse = void 0), this.parent = n
             }
@@ -28235,7 +25123,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                             let f = 1 - r.info.friction;
                             a[0] *= f, a[1] *= f, a[2] *= f
                         }
-                        if (r.distance = dn(n.frustum[5], l) + n.frustumConstants[5], r.distance < h2 && r.distance > 0) {
+                        if (r.distance = dn(n.frustum[5], l) + n.frustumConstants[5], r.distance < h_ && r.distance > 0) {
                             let f = r.start < 0 ? (Math.sin(t / r.info.duration) + 1) * .5 : (t - r.start) / r.info.duration;
                             r.progVec[0] = f, r.progVec[1] = Va[r.info.interp](f), o[r.info.blend].push(r)
                         }
@@ -28269,8 +25157,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     b = a * 2,
                     k = a * 3,
                     y = a * 4;
-                let alpha = fe.fxAlphaSprite / 100;
-                n[k] = f[0], n[k + 1] = f[1], n[k + 2] = f[2], i[y] = u[0], i[y + 1] = u[1], i[y + 2] = u[2], i[y + 3] = u[3], o[b] = m[0], o[b + 1] = m[1], s[y] = g[0], s[y + 1] = g[1], s[y + 2] = g[2], s[y + 3] = g[3], r[y] = v[0], r[y + 1] = v[1], r[y + 2] = v[2], r[y + 3] = v[3] * alpha, l[y] = _[0], l[y + 1] = _[1], l[y + 2] = _[2], l[y + 3] = _[3] * alpha
+                n[k] = f[0], n[k + 1] = f[1], n[k + 2] = f[2], i[y] = u[0], i[y + 1] = u[1], i[y + 2] = u[2], i[y + 3] = u[3], o[b] = m[0], o[b + 1] = m[1], s[y] = g[0], s[y + 1] = g[1], s[y + 2] = g[2], s[y + 3] = g[3], r[y] = v[0], r[y + 1] = v[1], r[y + 2] = v[2], r[y + 3] = v[3], l[y] = _[0], l[y + 1] = _[1], l[y + 2] = _[2], l[y + 3] = _[3]
             }
         },
         T8 = t => {
@@ -28357,7 +25244,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 n = [];
             for (let i = 0, s = Vu.length; i < s; ++i) {
                 let r = Vu[i];
-                r.remove ? (Vu.splice(i, 1), --i, --s) : r.transform.visible && (X(e, r.transform.worldMatrix[12], r.transform.worldMatrix[13], r.transform.worldMatrix[14]), r.distance = oo(gt.worldPosition, e), r.distance < v2 && n.push(r))
+                r.remove ? (Vu.splice(i, 1), --i, --s) : r.transform.visible && (X(e, r.transform.worldMatrix[12], r.transform.worldMatrix[13], r.transform.worldMatrix[14]), r.distance = oo(gt.worldPosition, e), r.distance < v_ && n.push(r))
             }
             n.sort((i, s) => i.distance - s.distance);
             let o = Math.min(n.length, 16);
@@ -28391,7 +25278,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             gc = t
         },
         U8 = t => {
-            if (fe.realtimeshadows) gc = true;
             let n = [Pu, Au],
                 o = [5, 20];
             for (let i = 0; i < Rl.length; ++i) {
@@ -28410,11 +25296,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         _ = a[g] * l[g];
                     _ = _ - _ % v, _ = _ / l[g], a[g] = _
                 }
-                G_(s.transform.position, a) || (it(s.transform.position, a), X(s.transform.rotation, -1, 0, 0), s.far = f, s.near = -1e3, Z_(s, -u, u, -f, f), Ma(s, !0), jm(s), gc = !0)
+                G2(s.transform.position, a) || (it(s.transform.position, a), X(s.transform.rotation, -1, 0, 0), s.far = f, s.near = -1e3, Z2(s, -u, u, -f, f), Ma(s, !0), jm(s), gc = !0)
             }
             if (gc) {
                 let i = Jt.shadows.data;
-                Vs(i.shadowRange, [Pu, p2, Au], 0), Vs(i.shadowPVMatrix, Rl[0].projectionViewMatrix, 0), Vs(i.shadowPVMatrix, Rl[1].projectionViewMatrix, 16), lo(Jt.shadows)
+                Vs(i.shadowRange, [Pu, p_, Au], 0), Vs(i.shadowPVMatrix, Rl[0].projectionViewMatrix, 0), Vs(i.shadowPVMatrix, Rl[1].projectionViewMatrix, 16), lo(Jt.shadows)
             }
             return gc ? 1 : 0
         };
@@ -28426,10 +25312,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         m0 = [],
         rs = (t, e, n, o) => {
             let i = t << 1 | e;
-            if (i = i << 1 | n, i = i << 1 | o, l0.has(i)) return y2(l0.get(i));
+            if (i = i << 1 | n, i = i << 1 | o, l0.has(i)) return y_(l0.get(i));
             {
                 let s = az(t, e, n, o);
-                return l0.set(i, s), y2(s)
+                return l0.set(i, s), y_(s)
             }
         },
         O8 = (t, e, n, o) => {
@@ -28476,8 +25362,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             is(e[0], t.transform, t.priority, !1, 1)
         }
     }];
-    let effectModelInstances = new Set();
-    var w2 = [{
+    var w_ = [{
             create: (t, e) => q8([e[0], e[1], e[2]], e[3], t.transform),
             tick: (t, e, n, o, i) => {},
             end: (t, e, n) => {
@@ -28531,14 +25416,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }, {
             create: (t, e) => {
                 let n = rs(e[0], !1, !0, !0);
-                X(n.position, e[1], e[2], e[3]), X(n.scale, e[4], e[5], e[6]), X(n.rotation, e[7], e[8], e[9]), Cn(n, t.transform), $t(n, !1);
-                if (n.data && n.data.alpha) n.data.alpha[0] = fe.fxAlphaModel / 100;
-                effectModelInstances.add(n);
-                return n
+                return X(n.position, e[1], e[2], e[3]), X(n.scale, e[4], e[5], e[6]), X(n.rotation, e[7], e[8], e[9]), Cn(n, t.transform), $t(n, !1), n
             },
             tick: (t, e, n, o, i) => {},
             end: (t, e, n) => {
-                effectModelInstances.delete(n);
                 Ei(n.data.multi, n)
             },
             show: (t, e, n) => {
@@ -28634,7 +25515,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 if (n[0] >= e[1]) {
                     n[0] = 0;
                     let s = rn();
-                    X(s.rotation, nn(e[8], e[9]), nn(e[10], e[11]), nn(e[12], e[13])), x2(e[0], s, t.priority, !0), Or(s.position, nn(e[2], e[3]), nn(e[4], e[5]), nn(e[6], e[7]), t.transform.worldMatrix), gs(s)
+                    X(s.rotation, nn(e[8], e[9]), nn(e[10], e[11]), nn(e[12], e[13])), x_(e[0], s, t.priority, !0), Or(s.position, nn(e[2], e[3]), nn(e[4], e[5]), nn(e[6], e[7]), t.transform.worldMatrix), gs(s)
                 }
                 n[0] += ~~(o * 1e3)
             },
@@ -28671,25 +25552,21 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             tick: (t, e, n, o, i) => {},
             end: (t, e, n) => {
                 let o = rn();
-                it(o.position, t.transform.position), it(o.rotation, t.transform.rotation), x2(e[0], o, t.priority, !0), gs(o)
+                it(o.position, t.transform.position), it(o.rotation, t.transform.rotation), x_(e[0], o, t.priority, !0), gs(o)
             },
             show: (t, e, n) => {},
             hide: (t, e, n) => {},
             modifiers: []
         }],
-        x2, j8 = t => {
-            x2 = t
+        x_, j8 = t => {
+            x_ = t
         };
-    fxAlphaModel.subscribe(v => {
-        let alpha = v / 100;
-        for (let model of effectModelInstances) if (model.data && model.data.alpha) model.data.alpha[0] = alpha;
-    });
     var Lo = [],
         zl = [],
         Bl = [],
         qu = [],
         G8 = (t, e) => {
-            let n = d2;
+            let n = d_;
             pz(t, e, n), dz(t, e, n), hz(t, e, n), gz(t, e), vz(t, e), _z(t, e);
             for (let o = 0; o < Lo.length; ++o) {
                 let i = Lo[o],
@@ -28701,7 +25578,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     }
                 for (let r = 0; r < i.info.periods.length; ++r) {
                     let l = i.info.periods[r],
-                        a = w2[l.id],
+                        a = w_[l.id],
                         c = i.periodData[r] !== void 0,
                         f = i.fractionNow >= l.fractionStart && i.fractionNow <= l.fractionEnd,
                         u = !1;
@@ -28718,8 +25595,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 i.visible && i.returnTransform && i.transform.parent === null && $t(i.transform, !1)
             }
         },
-        M2 = [],
-        F2 = (t, e, n, o) => M2.length > 0 ? uz(M2.pop(), t, e, n, o) : fz(t, e, n, o),
+        M_ = [],
+        F_ = (t, e, n, o) => M_.length > 0 ? uz(M_.pop(), t, e, n, o) : fz(t, e, n, o),
         fz = (t, e, n, o) => ({
             info: t,
             priority: n,
@@ -28736,21 +25613,21 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         uz = (t, e, n, o, i) => (t.info = e, t.priority = o, t.transform = n, t.returnTransform = i, t),
         mz = t => (t.visible = !0, t.fractionNow = 0, t.fractionLast = 0, t.timeEnd = 0, t.periodData.length = 0, t.done = !1, t.loops = 0, t),
         p0 = t => {
-            bz(t), t.returnTransform && _i(t.transform), M2.push(mz(t))
+            bz(t), t.returnTransform && _i(t.transform), M_.push(mz(t))
         },
         Ii = (t, e, n, o) => {
             let i = Xf.get(t),
-                s = F2(i, e, n, o);
+                s = F_(i, e, n, o);
             return Lo.push(s), zl.push(s), s
         },
         $o = (t, e, n, o) => {
             let i = Xf.get(t),
-                s = F2(i, e, n, o);
+                s = F_(i, e, n, o);
             return Lo.push(s), Bl.push(s), s
         },
         H8 = (t, e, n, o) => {
             let i = Xf.get(t),
-                s = F2(i, e, n, o);
+                s = F_(i, e, n, o);
             return Lo.push(s), qu.push(s), s
         },
         pz = (t, e, n) => {
@@ -28790,7 +25667,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         bz = t => {
             for (let e = 0; e < t.info.periods.length; ++e) {
                 let n = t.info.periods[e],
-                    o = w2[n.id];
+                    o = w_[n.id];
                 t.periodData[e] !== void 0 && (o.end(t, n.params, t.periodData[e]), t.periodData[e] = void 0)
             }
         },
@@ -28799,7 +25676,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             Lo.length = 0, zl.length = 0, Bl.length = 0, qu.length = 0
         };
     j8(Ii);
-    var vc = [0, Math.sin(1), Math.cos(1)],
+    var vc = [0, 2, 2.3],
         _c = [0, 0, 0];
     to(vc, vc);
     var fn = {},
@@ -28936,11 +25813,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             n = !e && t.from !== Bs;
         e ? t.dur = .5 : n ? t.dur = 5 : t.dur = 1.5, Q8 += t.dur
     });
-    var C2 = 0;
+    var C_ = 0;
     _0.forEach(t => {
-        t.start = C2, C2 = t.end = C2 + 1 / Q8 * t.dur
+        t.start = C_, C_ = t.end = C_ + 1 / Q8 * t.dur
     });
-    const RAIN_DIM = 0.65;
     var Cz = (t, e, n) => {
         t = vt(t, 0, 1);
         let o = .5,
@@ -28954,18 +25830,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         }
         let r = Jt.sky.data;
-        ls(r.skycolors, 0, fn.skytop[i], fn.skytop[s], o), ls(r.skycolors, 3, fn.skymid[i], fn.skymid[s], o), ls(r.skycolors, 6, fn.skymid[i], fn.skymid[s], o), ls(r.skycolors, 9, fn.fog[i], fn.fog[s], o), ls(r.skycolors, 12, fn.clouds[i], fn.clouds[s], o), ls(r.suncolor, 0, fn.sun[i], fn.sun[s], o), it(_c, vc), _c[1] = Math.abs(Math.sin(t * 6.282)), to(_c, _c);
-        let _ra = window._modRainAmount || 0;
-        let _dm = 1 - (1 - RAIN_DIM) * _ra;
-        if (_ra > 0) { for (let _ri = 0; _ri < 15; _ri++) r.skycolors[_ri] *= _dm; }
+        ls(r.skycolors, 0, fn.skytop[i], fn.skytop[s], o), ls(r.skycolors, 3, fn.skymid[i], fn.skymid[s], o), ls(r.skycolors, 6, fn.skybot[i], fn.skybot[s], o), ls(r.skycolors, 9, fn.horizon[i], fn.horizon[s], o), ls(r.skycolors, 12, fn.clouds[i], fn.clouds[s], o), ls(r.suncolor, 0, fn.sun[i], fn.sun[s], o), it(_c, vc), _c[1] = Math.abs(Math.sin(t * 6.282)), to(_c, _c);
         let l = Jt.environment.data;
-        ls(l.worldlight, 0, fn.direct[i], fn.direct[s], o), ls(l.worldlight, 3, fn.ambient[i], fn.ambient[s], o), l.worldlight[6] = vc[0], l.worldlight[7] = vc[1], l.worldlight[8] = vc[2];
-        if (_ra > 0) { for (let _ri = 0; _ri < 6; _ri++) l.worldlight[_ri] *= _dm; } ls(l.fog, 0, fn.fog[i], fn.fog[s], o), l.fog[3] = n > 0 ? -100 : u2, l.fog[4] = n > 0 ? m2 : li, l.daycycle[0] = t, l.time[0] = e % 3600, ut[31].uniforms.amount.value = qf(o, fn.bloom[i], fn.bloom[s]);
-        if (ut[13] && ut[13].uniforms.u_rainAmount) ut[13].uniforms.u_rainAmount.value = _ra;
-        if (ut[14] && ut[14].uniforms.u_rainAmount) ut[14].uniforms.u_rainAmount.value = _ra;
-        if (_ra > 0) { l.fog[0] *= _dm; l.fog[1] *= _dm; l.fog[2] *= _dm; }
-        ut[11].uniforms.u_rain.value = _ra;
-        if (ut[8] && ut[8].uniforms && ut[8].uniforms.u_wetness) ut[8].uniforms.u_wetness.value = _ra;
+        ls(l.worldlight, 0, fn.direct[i], fn.direct[s], o), ls(l.worldlight, 3, fn.ambient[i], fn.ambient[s], o), l.worldlight[6] = vc[0], l.worldlight[7] = vc[1], l.worldlight[8] = vc[2], ls(l.fog, 0, fn.fog[i], fn.fog[s], o), l.fog[3] = n > 0 ? -100 : u_, l.fog[4] = n > 0 ? m_ : li, l.daycycle[0] = t, l.time[0] = e % 3600, ut[31].uniforms.amount.value = qf(o, fn.bloom[i], fn.bloom[s])
     };
     var Sz = [],
         Pz = [],
@@ -29009,20 +25876,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         y0 = t => b0 = t,
         tP = (t, e, n) => {
             let o = (e / 3600 + .9) % 1;
-
-            if (fe.timeSlider !== "0") o = fe.timeSlider / 1000;
-            if (fe.timeToIngame) {
-                let now = new Date();
-                let seconds = (now.getHours() * 3600) + (now.getMinutes() * 60) + now.getSeconds();
-                let dayStart = 7.25 * 3600, dayEnd = 21 * 3600, totalSeconds = 24 * 3600;
-                let nightSeconds = (seconds - dayEnd + totalSeconds) % totalSeconds;
-                let nightDuration = totalSeconds - (dayEnd - dayStart);
-                let dawnStart = 5 * 3600;
-                let nightToDawn = (dawnStart - dayEnd + totalSeconds) % totalSeconds;
-                let dawnDuration = nightDuration - nightToDawn;
-                o = Math.min(1, seconds >= dayStart && seconds < dayEnd ? ((seconds - dayStart) / (dayEnd - dayStart)) * 0.775 : nightSeconds < nightToDawn ? 0.775 + (nightSeconds / nightToDawn) * 0.10 : 0.875 + ((nightSeconds - nightToDawn) / dawnDuration) * 0.125);
-            }
-
             o < .7 ? o = Lf(0, .7, o) * .4 : o = .4 + Lf(.7, 1, o) * .6, X8(o, b0, e, n), K8(o, b0, e, n), J8(o, b0)
         };
     var Ru = () => [-0, -0, -0, -0, -0, -0],
@@ -29088,9 +25941,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     let u = n[c],
                         m = n[c + 1],
                         g = n[c + 2],
-                        v = S2(u * 3, i, r, s),
-                        _ = S2(m * 3, i, r, s),
-                        b = S2(g * 3, i, r, s),
+                        v = S_(u * 3, i, r, s),
+                        _ = S_(m * 3, i, r, s),
+                        b = S_(g * 3, i, r, s),
                         k = [v, _, b],
                         y = oP(Ru(), k);
                     if (a[u] & 1 && a[m] & 1 && a[g] & 1) {
@@ -29108,7 +25961,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
             onRemove() {}
         },
-        S2 = (t, e, n, o) => {
+        S_ = (t, e, n, o) => {
             if (e.has(t)) return e.get(t);
             {
                 let i = [n[t], n[t + 1], n[t + 2]];
@@ -29168,9 +26021,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         },
         rP = 65536 / 64,
         Ez = 2147483647 / 2e3,
-        P2 = 65536 / (Math.PI * 2),
+        P_ = 65536 / (Math.PI * 2),
         Iz = 65536 / 100;
-    var aP = (t, e) => (t.id = e.id, X(t.pos, e.x / rP, e.y / Ez, e.z / rP), X(t.rot, e.rx / P2, e.ry / P2, e.rz / P2), t.scale = Math.max(e.scale, 100) / Iz, t);
+    var aP = (t, e) => (t.id = e.id, X(t.pos, e.x / rP, e.y / Ez, e.z / rP), X(t.rot, e.rx / P_, e.ry / P_, e.rz / P_), t.scale = Math.max(e.scale, 100) / Iz, t);
     var cP = (t, e, n, o) => {
             t.id = e, t.x = n, t.z = o, t.origin[0] = n * 64, t.origin[2] = o * 64, t.deserialized = !1, t.props.length = 0, t.data = void 0, t.loadingProps = 0
         },
@@ -29220,12 +26073,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 return (u * a + m * c + g * f) * .030517578125
             }
         };
-    var A2 = (t, e, n) => {
+    var A_ = (t, e, n) => {
             e /= 16, n /= 16;
             let i = Math.floor(e) + Math.floor(n) * 4;
             return t.data.area[i] || 0
         },
-        T2 = (t, e, n) => {
+        T_ = (t, e, n) => {
             e /= 32, n /= 32;
             let i = Math.floor(e) + Math.floor(n) * 2;
             return t.data.environment[i] || 0
@@ -29269,9 +26122,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         bc = (t, e) => Ou() * (e - t) + t;
     var C0, S0, P0, Oo = [0, 0, 0],
         yc, kc, xc, Lz = [21, 56, 50, 44, 13, 19, 7, 42],
-        I2 = 3758102380,
-        D2 = (t, e) => t >> e & 1,
-        Ar = (t, e, n, o) => Lz[D2(t, o) << 2 | D2(e, o) << 1 | D2(n, o)],
+        I_ = 3758102380,
+        D_ = (t, e) => t >> e & 1,
+        Ar = (t, e, n, o) => Lz[D_(t, o) << 2 | D_(e, o) << 1 | D_(n, o)],
         F0 = t => {
             let e = (Oo[0] + Oo[1] + Oo[2]) / 6,
                 n = yc - Oo[0] + e,
@@ -29292,9 +26145,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         },
         qz = (t, e, n) => Ar(t, e, n, 0) + Ar(e, n, t, 1) + Ar(n, t, e, 2) + Ar(t, e, n, 3) + Ar(e, n, t, 4) + Ar(n, t, e, 5) + Ar(t, e, n, 6) + Ar(e, n, t, 7),
         gP = (t, e, n) => {
-            let o = t + I2,
-                i = e + I2,
-                s = n + I2,
+            let o = t + I_,
+                i = e + I_,
+                s = n + I_,
                 r = (o + i + s) / 3;
             C0 = Math.floor(o + r), S0 = Math.floor(i + r), P0 = Math.floor(s + r), r = (C0 + S0 + P0) / 6, yc = o - C0 + r, kc = i - S0 + r, xc = s - P0 + r, Oo[0] = Oo[1] = Oo[2] = 0;
             let l = yc >= xc ? yc >= kc ? 0 : 1 : kc >= xc ? 1 : 2,
@@ -29457,7 +26310,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         },
         T0 = new Map,
-        V2 = new Map,
+        V_ = new Map,
         _P = new Set,
         Rz = t => A0[t].length < 1 ? Pn({
             inst: {
@@ -29488,7 +26341,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     n.instances.push(Rz(o));
                     let s = Ya.get(i);
                     T0.has(s.id) || T0.set(s.id, vP(s)), _P.has(s.texture) || (_P.add(s.texture), vo(s.texture, r => {
-                        Yp(r, 16), oi(r), V2.set(s.texture, r)
+                        Yp(r, 16), oi(r), V_.set(s.texture, r)
                     }))
                 }
             }
@@ -29509,7 +26362,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 s = [];
             for (let r = 0, l = t.length; r < l; ++r) {
                 let a = t[r];
-                if (d8(a.x * 2, a.z * 2) < g2) {
+                if (d8(a.x * 2, a.z * 2) < g_) {
                     let c = a.geometry.foliage;
                     for (let f = 0; f < c.folIds.length; ++f) {
                         let u = c.folIds[f],
@@ -29520,12 +26373,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
             for (let r = 0; r < o.length; ++r) {
                 let l = Ya.get(o[r]);
-                if (T0.has(l.id) && V2.has(l.texture)) {
+                if (T0.has(l.id) && V_.has(l.texture)) {
                     let a = s[r],
                         c = ut[a];
                     tt.currentProgram !== c.id && (j.useProgram(c.program), tt.currentProgram = c.id, Oa(c), $a(c), I1(c.uniformArray));
                     let f = T0.get(l.id);
-                    za(f, c), qn("foliageDiffuse", V2.get(l.texture), 0, c), Of(c);
+                    za(f, c), qn("foliageDiffuse", V_.get(l.texture), 0, c), Of(c);
                     let u = i[r];
                     for (let m = 0; m < u.length; ++m) {
                         let g = u[m];
@@ -29632,17 +26485,17 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             it(No.transform.position, _c), gn(No.transform.position, No.transform.position, .45), jr(No.transform, mb, !1, ub), No.transform.matrixNeedsUpdate = !0
         },
         RP = () => {
-            No.transform.visible && !(window._modRainAmount > 0.5) && ni(No, ut[12])
+            No.transform.visible && ni(No, ut[12])
         };
     var L0 = 24,
         It = L0 + 1,
         $P = It ** 2,
-        L2 = new Map,
+        L_ = new Map,
         Ir = 96,
         zP = 96 / 12,
         Cc = 8,
         Wu = new Uint8Array(3 * Ir ** 2),
-        q2 = new Map,
+        q_ = new Map,
         V0 = L0 / 2,
         BP = 3,
         UP = [1, 2, 4, 8],
@@ -29733,10 +26586,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             type: j.UNSIGNED_INT,
             data: new Uint32Array(on)
         },
-        R2 = new Float32Array($P * 3),
+        R_ = new Float32Array($P * 3),
         Gz = new Float32Array($P * 3);
     for (let t = 0, e = 0; t <= L0; ++t)
-        for (let n = 0; n <= L0; ++n, ++e) R2[e * 3 + 0] = n * 2.6666666666666665, R2[e * 3 + 2] = t * 2.6666666666666665;
+        for (let n = 0; n <= L0; ++n, ++e) R_[e * 3 + 0] = n * 2.6666666666666665, R_[e * 3 + 2] = t * 2.6666666666666665;
     var OP = () => {},
         NP = (t, e, n) => {
             if (Yz(t), e) {
@@ -29878,7 +26731,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             if (t.geometry.terrain || (t.geometry.terrain = Pn({
                     position: {
                         size: 3,
-                        data: R2
+                        data: R_
                     },
                     normal: {
                         size: 3,
@@ -29899,7 +26752,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             let e = Math.floor(t.x * 2 / Cc),
                 n = Math.floor(t.z * 2 / Cc),
                 o = e + 1e3 * n;
-            if (!L2.has(o)) {
+            if (!L_.has(o)) {
                 let i = ir({
                     width: Ir,
                     height: Ir,
@@ -29910,13 +26763,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     flipY: !1,
                     generateMipmaps: !1
                 });
-                Yp(i, 4), oi(i), L2.set(o, i)
+                Yp(i, 4), oi(i), L_.set(o, i)
             }
-            return L2.get(o)
+            return L_.get(o)
         },
         Qz = t => {
             let e = t.join(",");
-            if (!q2.has(e)) {
+            if (!q_.has(e)) {
                 let n = {
                     info: [],
                     diffuse: [],
@@ -29927,9 +26780,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     n.info[i * 4 + 0] = s.scale / 127, n.info[i * 4 + 1] = s.darkest / 255 * 3, n.info[i * 4 + 2] = s.brightest / 255 * 3, n.info[i * 4 + 3] = s.spec / 255, vo(s.texture, r => {
                         n.diffuse[i] = r, n.loaded++
                     })
-                }), q2.set(e, n)
+                }), q_.set(e, n)
             }
-            return q2.get(e)
+            return q_.get(e)
         },
         WP = t => {},
         jP = (t, e) => {},
@@ -30028,7 +26881,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         oA = t => {
             Sc.push(t)
         },
-        z2 = t => {
+        z_ = t => {
             Sc.splice(Sc.indexOf(t), 1)
         },
         iA = t => {
@@ -30070,7 +26923,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             reloadAttempts: 0,
             abort: new AbortController
         }),
-        B2 = (t, e, n, o, i) => {
+        B_ = (t, e, n, o, i) => {
             cP(t, e, n, o), t.reloadAttempts = 0, t.center2d[0] = t.origin[0] + 64 / 2, t.center2d[1] = t.origin[2] + 64 / 2, t.neighbors.length = 0;
             for (let s = Math.max(0, n - 1); s <= Math.min(i - 1, n + 1); s++)
                 for (let r = Math.max(0, o - 1); r <= Math.min(i - 1, o + 1); r++) {
@@ -30083,7 +26936,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         Kz = async t => {
             try {
                 t.abort = new AbortController;
-                let n = await (await fetch(`data/world/${I.file}/${t.id}?v=8822612`, {
+                let n = await (await fetch(`data/world/${I.file}/${t.id}?v=8829640`, {
                     signal: t.abort.signal,
                     cache: "default"
                 })).arrayBuffer();
@@ -30093,13 +26946,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 t.state === 2 && t.reloadAttempts++ < 5 ? (t.state = 2 - 1, uA(t)) : console.log(`failed to load chunk ${t.id}, giving up`, e)
             }
         }, eB = (t, e) => {
-            e.state = 3, fP(e, Ia.chunk.decode(t)), U2(e)
-        }, U2 = t => {
-            if (t.inRange = _2(t.x * 2, t.z * 2) < 3, t.inRange)
+            e.state = 3, fP(e, Ia.chunk.decode(t)), U_(e)
+        }, U_ = t => {
+            if (t.inRange = __(t.x * 2, t.z * 2) < 3, t.inRange)
                 for (let e = 0; e < 2; ++e)
                     for (let n = 0; n < 2; ++n) {
                         let o = n * 2 + e,
-                            i = Math.min(2, _2(t.x * 2 + e, t.z * 2 + n)),
+                            i = Math.min(2, __(t.x * 2 + e, t.z * 2 + n)),
                             s = h8(t.x * 2 + e, t.z * 2 + n);
                         t.quadrantlod[o] = i, t.quadrantmask[o] = s
                     }
@@ -30115,7 +26968,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     }
                     n === 3 && o && (t.state = 4, tB(t, !0, !0, !0, !0, !0, !0))
                 }
-            } else n >= 5 ? t.inRange && t.state < 7 ? (oA(t), t.state = 7) : !t.inRange && t.state === 7 && (z2(t), ju(t, !1, !1), t.state = 6) : n === 1 && uA(t) && (t.state = 2)
+            } else n >= 5 ? t.inRange && t.state < 7 ? (oA(t), t.state = 7) : !t.inRange && t.state === 7 && (z_(t), ju(t, !1, !1), t.state = 6) : n === 1 && uA(t) && (t.state = 2)
         }, ju = (t, e, n) => {
             if (t.isMeshVisible !== e) {
                 t.isMeshVisible = e;
@@ -30127,10 +26980,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         }, tB = (t, e, n, o, i, s, r) => {
             lA(t, e, n, o, i, s, r)
-        }, $2 = t => {
+        }, $_ = t => {
             mP(t);
             let e = t.state === 2;
-            t.state === 7 && (z2(t), ju(t, !1, !1), t.state = 6), aA(t), t.state = 8, e && t.abort.abort()
+            t.state === 7 && (z_(t), ju(t, !1, !1), t.state = 6), aA(t), t.state = 8, e && t.abort.abort()
         };
     var dA = (t, e, n) => {
             let o = [];
@@ -30222,43 +27075,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         hA = t => {
             mw(t)
         },
-        _ssaoHistIdx = 0,
-        _ssaoFirstFrame = true,
-        _ssaoPrevPVMat = new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]),
         gA = t => {
             nB();
             let e = dA(Sc, gt, !1);
-            oB(e), iB(e);
-            if (fe.ssao) {
-                qn("depthTex", Si.depthTexture, 0, ut[35]);
-                qn("inputA", Si.colorTexture, 0, ut[35]);
-                Gu(ssaoFb1); j.clear(j.COLOR_BUFFER_BIT); ni(tu, ut[35]);
-                qn("depthTex", Si.depthTexture, 0, ut[36]);
-                Pc(36, ssaoFb2, ssaoFb1, null, [["blurStep", 0]]);
-                qn("inputA", ssaoFb2.colorTexture, 0, ut[36]);
-                qn("depthTex", Si.depthTexture, 0, ut[36]);
-                ut[36].uniforms.blurStep.value = 1;
-                Gu(ssaoFb1); ni(tu, ut[36]);
-
-                let histPrev = _ssaoHistIdx === 0 ? ssaoHistA : ssaoHistB;
-                let histNext = _ssaoHistIdx === 0 ? ssaoHistB : ssaoHistA;
-                qn("inputA", ssaoFb1.colorTexture, 0, ut[37]);
-                qn("inputB", histPrev.colorTexture, 0, ut[37]);
-                qn("depthTex", Si.depthTexture, 0, ut[37]);
-                ut[37].uniforms.prevProjectionViewMatrix.value = _ssaoPrevPVMat;
-                ut[37].uniforms.blendAlpha.value = _ssaoFirstFrame ? 1.0 : 0.1;
-                Gu(histNext); ni(tu, ut[37]);
-                qn("inputA", histNext.colorTexture, 0, ut[38]);
-                qn("inputB", Si.colorTexture, 0, ut[38]);
-                Gu(Ls); ni(tu, ut[38]);
-                q0(Ls, Si, j.COLOR_BUFFER_BIT);
-                if (m4) Vs(_ssaoPrevPVMat, m4.projectionViewMatrix, 0);
-                _ssaoHistIdx ^= 1;
-                _ssaoFirstFrame = false;
-            } else {
-                _ssaoFirstFrame = true;
-            }
-            sB(t)
+            oB(e), iB(e), sB(t)
         };
     var Ac = fe.resolution / 100,
         _A = !1,
@@ -30266,14 +27086,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         bA = () => {
             j || (alert("WebGL2 problem found."), window.location.href = "/technical"), yA(), hA(vA), KP(vA), xA(tt.width, tt.height), Ln.className = "l-canvas", To.className = "l-canvas", To.style.pointerEvents = "all", window.addEventListener("resize", kA, !1)
         };
-    var _hrVal = 1500;
     Hr.subscribe(t => {
-        _hrVal = t;
         p8(t ** 2 / 10, fe.shadowmapResolution)
-    });
-    shadowDistMult.subscribe(v => {
-        _shadowDistMult = v / 100;
-        p8(_hrVal ** 2 / 10, fe.shadowmapResolution);
     });
     Yr.subscribe(t => {
         gt.fov = t, sf(gt)
@@ -30317,8 +27131,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             reasonfixed: !1
         }) : jt("error", "Enter a player name to report", !0)
     };
-    var G2 = {};
-    Kn(G2, {
+    var G_ = {};
+    Kn(G_, {
         init: () => pB,
         postTick: () => hB,
         preTick: () => dB
@@ -30383,12 +27197,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 i.screenOffset[0] *= Math.max(0, 1 - t * 3), i.screenOffset[1] *= Math.max(0, 1 - t * 3), n[0] = i.screenPos[0] + i.screenOffset[0], n[1] = i.screenPos[1] + i.screenOffset[1], qx(n, i.img, i.alpha, i.scale)
             }
         },
-        N2 = (t, e, n, o, i = !1, s, skillId = 0, caster = {}, target = {}) => {
+        N_ = (t, e, n, o, i = !1, s) => {
             let r = n === 3;
-            Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(fe.disableDamage ? "" : e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9, skillId,caster,target)
+            Yu(t, i, r, i || !r, n === 0 ? "Miss" : ht(e) + (n === 1 ? "\u{1F6E1}\uFE0F" : ""), i ? qt.pdmg : o === 1 ? r ? qt.spellCrit : qt.spell : r ? qt.physCrit : qt.phys, s, cs, r ? 1.2 : .9)
         },
-        W2 = (t, e, n, o = !1, i) => {
-            Yu(t, o, n === 3, o || n !== 3, ht(fe.disableHealing ? "" : e), o ? qt.pheal : qt.heal, i, cs, 1.3)
+        W_ = (t, e, n, o = !1, i) => {
+            Yu(t, o, n === 3, o || n !== 3, ht(e), o ? qt.pheal : qt.heal, i, cs, 1.3)
         },
         SA = (t, e, n) => {
             Yu(t, n, !1, !0, "Immune", n ? qt.mana : qt.spell, e, cs, 2)
@@ -30399,46 +27213,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     var AA = (t, e) => {
             Yu(t, !1, !1, !0, `+${e} Fame`, qt.fame, 5.5, cs, 1.5)
         },
-        updateElement = (obj,newObj,params,t, r, n, o,l,a) => {
-            obj.value += newObj.value
-            it(obj.pos, t)
-            obj.pos[1] += r || 0
-            obj.float = o
-            obj.crit = n
-            obj.timer.duration = Math.min(obj.timer.duration + 1, 2)
-            obj.timer.end = Math.min(Math.max(obj.timer.end, cs + 1), cs + 2)
-            obj.img = lu(obj.value.toLocaleString("en-US"), params)
-            obj.timer.reset(l, a)
-            X(obj.screenPos, 0, 0, 0)
-            ho(obj.screenOffset, 0, 0, 0)
+        Yu = (t, e = !1, n = !1, o = !1, i, s, r, l, a) => {
+            let c = lB();
+            it(c.pos, t), c.pos[1] += r || 0, c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o, c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0), c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width, c.height = c.img.height, Hu.push(c)
         },
-        Yu = (t, e = !1, n = !1, o = !1, i, s, r, l, a, skillId = 0, caster = {}, target = {}) => {
-            let c = lB()
-            it(c.pos, t)
-            c.pos[1] += r || 0
-            c.value = Number(String(i).replace(/[^0-9]/g, ''))
-            c.skillId = skillId
-            c.caster = caster
-            c.lastHit = Date.now()
-            c.target = target
-
-            c.side = Math.sin(Hu.length * 2.3), c.flat = e, c.crit = n, c.float = o,
-            c.timer.reset(l, a), X(c.screenPos, 0, 0, 0), ho(c.screenOffset, 0, 0, 0),
-            c.scale = 0, c.alpha = 0, c.img = lu(i, s), c.width = c.img.width,
-            c.height = c.img.height
-            for (let ii of Hu) {
-                if (!fe.stackIndicators) continue
-                if (ii.caster.id == null || ii.target.id == null) continue
-                let sameCaster = c.caster.id === ii.caster.id
-                let sameTarget = c.target.id === ii.target.id
-                let sameSkill = c.skillId === ii.skillId
-
-                if (sameCaster && sameTarget && sameSkill) return updateElement(ii, c, s, t, r, n, o,l,a)
-            }
-            Hu.push(c)
-        },
-        O2 = [],
-        lB = () => O2.length ? O2.pop() : {
+        O_ = [],
+        lB = () => O_.length ? O_.pop() : {
             pos: [0, 0, 0],
             flat: !0,
             crit: !0,
@@ -30451,17 +27231,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             alpha: 0,
             img: void 0,
             width: 0,
-            height: 0,
-            value: 0,
-            skillId: 0,
-            caster: {},
-            lastHit: 0,
-            target: {}
+            height: 0
         },
         aB = t => {
-            O2.push(t)
+            O_.push(t)
         };
-    var j2 = fe.itemTypeFilter.toLowerCase().replace(/\s/g, "").split(","),
+    var j_ = fe.itemTypeFilter.toLowerCase().replace(/\s/g, "").split(","),
         Tc = new Set,
         cB = (t, e, n) => {
             for (let o = n.length - 1; o >= 0; o--) {
@@ -30470,33 +27245,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         },
         TA = (t, e) => {
-            if(e.find(i => i.id === t.id)) return
             it(t.hudPos, t.visualPosition || t.pos), vl(t.hudPos, t.hudPos) && t.hudPos[2] < .997 && e.push(t)
         },
         EA = t => {
             let e = [];
             I.entities.array.forEach(i => {
-                if (
-                i.type === 3 &&
-                fe.neverExcludeItems
-                    .split(",")
-                    .map(entry => entry.trim())
-                    .some(entry => {
-                    const itemName = i.name.toLowerCase().replace(/\s/g, "");
-                    const regexMatch = entry.match(/^\/(.+)\/([gimsuy]*)$/);
-                    if (regexMatch) {
-                        try {
-                        const regex = new RegExp(regexMatch[1], regexMatch[2]);
-                        return regex.test(i.name);
-                        } catch {
-                        return false;
-                        }
-                    }
-                    const normalizedEntry = entry.toLowerCase().replace(/\s/g, "");
-                    return normalizedEntry.includes(itemName) || itemName.includes(normalizedEntry);
-                    })
-                ) TA(i, e);
-                i.type !== 3 || !i.visual.transform.visible || i.quality < (i.droptype === "material" ? fe.materialQualityFilter : fe.itemQualityFilter) || ( j2.includes(i.droptype) ) || TA(i, e)
+                i.type !== 3 || !i.visual.transform.visible || i.quality < (i.droptype === "material" ? fe.materialQualityFilter : fe.itemQualityFilter) || j_.includes(i.droptype) || TA(i, e)
             }), Tc.forEach(i => {
                 i.uiTimeout < I.time ? Tc.delete(i) : TA(i, e)
             }), e = e.sort((i, s) => s.id - i.id);
@@ -30526,7 +27280,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }), o !== _n && hu(o)
         };
     var Jn = [],
-        IA, DA, Wo = 2, revIconImg = null,
+        IA, DA, Wo = 2,
         VA = () => {
             let n = Math.ceil(100),
                 o = Math.max(7, Math.ceil(9 * 1)),
@@ -30534,195 +27288,50 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 s = n - Wo * 2,
                 r = o - Wo * 2;
             Jn.push(Vo(null, Lt("panel"), n, o, 0, 0, i)), Vo(Jn[0], Lt("grey"), s, r, Wo, Wo, 1), Jn.push(Vo(null, Lt("health"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#ffbc00", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("enemy"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("party"), s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("pvp"), s, r, 0, 0, 1)), Jn.push(Vo(null, "#555555", s, r, 0, 0, 1)), Jn.push(Vo(null, Lt("spell"), s, r, 0, 0, 1));
-            for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, _classColors[l], s, r, 0, 0, 1));
-            Jn.push(Vo(null, "#ffffff", s, r, 0, 0, 1));
-            IA = Vo(null, "#ffffff", 100 + Wo, 9 + Wo, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo, 16 + Wo , 0, 0, 3);
-            _classNameplateParams = {s, r};
+            for (let l = 0; l <= 3; ++l) Jn.push(Vo(null, Lt("c" + l), s, r, 0, 0, 1));
+            IA = Vo(null, "#ffffff", 100 + Wo * 2, 9 + Wo * 2, 0, 0, 3), DA = Vo(null, "#ffffff", 100 + Wo * 2, 16 + Wo * 2, 0, 0, 3)
         },
         fB = () => {
             let t = [];
             return I.entities.array.forEach((e, n) => {
-                !e.visual || (!e.visual.transform.visible && !fe.showInvisiblePlayers) || (e.stats && !e.stats.alive && !fe.showDeadPlayers && e.id !== I.playerId) || e.id !== zn && e.visual.cDist && e.visual.cDist > 500 && !fe.showInvisiblePlayers || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && !fe.freecamMode && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
+                !e.visual || !e.visual.transform.visible || e.stats && !e.stats.alive || e.id !== zn && e.visual.cDist && e.visual.cDist > 60 || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
             }), t.sort((e, n) => n.hudPos[2] - e.hudPos[2])
         },
-        syllables = ['acaru', 'achi', 'acti', 'ael', 'aelle', 'aelo', 'aer', 'aeri', 'aero',
-  'aesh', 'aez', 'aias', 'aid', 'aien', 'aile', 'aist', 'akda', 'ale', 'alle', 'alpha', 'ambi', 'amlug', 'amne', 'amni', 'amo', 'amoe', 'amu', 'ana', 'andro', 'ani',
-  'anke', 'anse', 'anti', 'aol', 'aqua', 'arae', 'arc', 'argo', 'aria', 'ariel', 'aries', 'arius', 'arje', 'ark', 'arrow', 'arti', 'arvel', 'arye', 'aryn', 'ash', 'astri',
-  'athen', 'aukh', 'aura', 'aveni', 'axe', 'axna', 'az', 'azci', 'azo', 'azri', 'azu', 'azure', 'bag', 'bain', 'bais', 'bando', 'bane', 'baph', 'bard', 'baro', 'baron',
-  'bat', 'battle', 'beef', 'ber', 'bhol', 'bhul', 'bik', 'bird', 'bith', 'blade', 'blaze', 'bloch', 'blok', 'blood', 'bloom', 'bo', 'boink', 'bokh', 'bomb', 'bone', 'bonk',
-  'bore', 'borne', 'boro', 'bound', 'bow', 'brain', 'brass', 'brie', 'brir', 'bris', 'broke', 'bry', 'bryr', 'bubble', 'bugo', 'caen', 'calm', 'canis', 'cape', 'capri',
-  'carp', 'cary', 'cassi', 'cat', 'cavi', 'celo', 'cern', 'charm', 'chea', 'chef', 'cherry', 'ciea', 'cili', 'cill', 'ciri', 'claw', 'clear', 'cone', 'contra', 'copi',
-  'corba', 'corn', 'craft', 'cri', 'cris', 'cry', 'cryo', 'crypt', 'cua', 'cya', 'cye', 'cygni', 'cyra', 'daar', 'dae', 'daemo', 'dagg', 'dakk', 'dale', 'dali', 'dalia',
-  'dall', 'dane', 'dania', 'danus', 'dao', 'daru', 'dawn', 'daz', 'dazar', 'dead', 'deaf', 'deci', 'deer', 'dei', 'delia', 'delra', 'delta', 'dema', 'demo', 'deo', 'dero',
-  'deus', 'deux', 'dhai', 'dhar', 'dhrar', 'dhug', 'dhyl', 'dia', 'dieri', 'dio', 'doe', 'dog', 'dohr', 'doom', 'dorr', 'down', 'drae', 'drakh', 'drakk', 'dran', 'dre',
-  'drea', 'dread', 'dream', 'dris', 'drop', 'druk', 'dry', 'dryd', 'dryn', 'dryr', 'dryto', 'duin', 'duirn', 'duke', 'duo', 'dusk', 'dy', 'dya', 'dyas', 'dysra', 'eago',
-  'eal', 'earl', 'eas', 'echo', 'ecto', 'edo', 'eerie', 'eevo', 'egg', 'ego', 'eina', 'eine', 'eiri', 'elia', 'elle', 'elma', 'elo', 'elyo', 'elyor', 'elys', 'endo', 'equi',
-  'equu', 'erdy', 'eris', 'erra', 'erri', 'erth', 'ervi', 'essa', 'eua', 'euda', 'eudo', 'eumo', 'evack', 'eve', 'eye', 'eyre', 'fa', 'fade', 'fael', 'fai', 'fang', 'far',
-  'fare', 'fauca', 'feia', 'filau', 'fire', 'fish', 'fizz', 'flame', 'flero', 'flesh', 'flock', 'foe', 'fois', 'forh', 'fous', 'fray', 'fror', 'frost', 'fulvu', 'fume',
-  'fur', 'fyn', 'fyr', 'fyre', 'gabo', 'gaia', 'galaz', 'gali', 'galo', 'gami', 'gamma', 'gax', 'gaz', 'gecko', 'geo', 'ghal', 'ghaz', 'ghi', 'ghiri', 'ghost', 'ghyr',
-  'gias', 'giko', 'gin', 'gio', 'giri', 'git', 'giu', 'glass', 'glee', 'glerk', 'gley', 'glio', 'gloo', 'glow', 'gnci', 'gnorr', 'godh', 'gog', 'gogu', 'gold', 'gonda',
-  'goner', 'gonzu', 'gore', 'grand', 'grape', 'gras', 'grato', 'grauf', 'graz', 'grel', 'grex', 'grim', 'grin', 'grind', 'groku', 'grow', 'gru', 'guac', 'gui', 'guiza',
-  'guke', 'gulum', 'gun', 'gurk', 'guru', 'gwen', 'gyn', 'gyrna', 'hag', 'haju', 'hammer', 'hari', 'hatch', 'hate', 'heim', 'heir', 'heis', 'hek', 'hell', 'helm', 'hera',
-  'hercu', 'heria', 'hex', 'hexa', 'hexi', 'hexo', 'hirt', 'hole', 'homa', 'hong', 'horn', 'horo', 'howl', 'hydra', 'hysta', 'iar', 'ice', 'ida', 'idra', 'iele', 'ievi',
-  'ieze', 'igni', 'ikto', 'ilae', 'ili', 'illae', 'ilno', 'ilye', 'inde', 'ink', 'int', 'inte', 'intra', 'intro', 'iola', 'iope', 'ior', 'iqra', 'ira', 'iraei', 'irag',
-  'irius', 'iuna', 'iyja', 'iyra', 'jaed', 'jard', 'jasia', 'jassi', 'jerky', 'jiji', 'jinx', 'joy', 'juan', 'jui', 'jurio', 'kae', 'kaga', 'kai', 'kar', 'kash', 'kaz',
-  'kei', 'kery', 'key', 'khad', 'khon', 'khuza', 'khyr', 'klee', 'klip', 'knight', 'knod', 'kom', 'kotr', 'krata', 'kreo', 'kriod', 'kron', 'krono', 'kuhr', 'kuvok', 'kwyl',
-  'kyri', 'kyto', 'la', 'lach', 'lae', 'laea', 'laer', 'laeth', 'lair', 'lamb', 'lanc', 'lase', 'laude', 'laza', 'lea', 'lee', 'lei', 'leif', 'lenai', 'lenda', 'lene',
-  'leo', 'lere', 'lessa', 'lethe', 'lex', 'lhor', 'li', 'lia', 'libra', 'liel', 'lieu', 'life', 'light', 'limbo', 'limp', 'lingo', 'lio', 'lirai', 'liro', 'lith', 'llien',
-  'lloe', 'lo', 'lock', 'lofty', 'loi', 'lone', 'lopo', 'lore', 'lort', 'love', 'low', 'lozz', 'lua', 'luim', 'lumo', 'luna', 'lush', 'lust', 'lya', 'lymph', 'lynx', 'lyra',
-  'lyre', 'lys', 'lyvi', 'mae', 'mage', 'magi', 'magno', 'maie', 'major', 'mali', 'malo', 'manca', 'mane', 'mango', 'manto', 'marco', 'marrow', 'marsh', 'max', 'medi',
-  'medu', 'meen', 'mel', 'melia', 'mell', 'melng', 'melon', 'meph', 'merc', 'mese', 'meso', 'metal', 'miki', 'mince', 'mini', 'miri', 'misia', 'mistra', 'mizu', 'mmior',
-  'mo', 'mock', 'moi', 'moor', 'morb', 'more', 'morgh', 'morja', 'morl', 'moss', 'moza', 'mozo', 'mroer', 'mua', 'muami', 'mugg', 'muku', 'mulae', 'muno', 'muo', 'mutt',
-  'muzor', 'mydra', 'myr', 'myri', 'myth', 'nae', 'nai', 'nail', 'nando', 'nari', 'naul', 'nava', 'naz', 'neazu', 'ned', 'neia', 'neme', 'nemo', 'neo', 'nep', 'nera', 'nero',
-  'night', 'nill', 'niroi', 'nise', 'niye', 'nobnar', 'noi', 'nose', 'nox', 'noxi', 'nua', 'nuanyi', 'nuck', 'nuk', 'numzu', 'nye', 'nyel', 'nymph', 'nyri', 'nyx', 'oah',
-  'oak', 'ocea', 'ocia', 'octa', 'octo', 'odd', 'odin', 'odio', 'odis', 'odru', 'oghm', 'ogu', 'oia', 'oisse', 'ola', 'olg', 'olle', 'omega', 'omni', 'oni', 'only', 'onos',
-  'onty', 'oper', 'ophe', 'ophi', 'opi', 'orb', 'orc', 'ordi', 'ore', 'orio', 'orlo', 'ouch', 'our', 'outro', 'over', 'owl', 'ozy', 'pain', 'pais', 'pale', 'paleo', 'path',
-  'paw', 'paylo', 'peak', 'pear', 'pearl', 'pecto', 'peia', 'peli', 'pemo', 'pepe', 'peri', 'perlo', 'perse', 'pery', 'peso', 'phae', 'phar', 'phau', 'pheh', 'pheia',
-  'pheus', 'phi', 'phiel', 'phine', 'phio', 'phoi', 'phono', 'phy', 'phyr', 'phyre', 'pika', 'pilia', 'pine', 'piol', 'piuc', 'plor', 'pluto', 'poe', 'pore', 'pox', 'prae',
-  'pres', 'prio', 'pseu', 'psy', 'purla', 'py', 'pyro', 'pytho', 'pyxi', 'qaas', 'qae', 'qama', 'qas', 'qash', 'qasi', 'qaso', 'qasu', 'qi', 'qindi', 'qis', 'qish', 'qisi',
-  'qo', 'qos', 'qoui', 'qry', 'qu', 'qua', 'quas', 'quasi', 'quaso', 'quila', 'quo', 'quoi', 'quon', 'qurza', 'quti', 'quul', 'qwert', 'qyph', 'rael', 'raer', 'raes',
-  'raesh', 'raeth', 'rage', 'rai', 'raor', 'rash', 'rath', 'raven', 'razz', 'reap', 'reav', 'reens', 'reme', 'reo', 'rethe', 'reve', 'rhor', 'rhya', 'riad', 'riel', 'rienn',
-  'rift', 'rind', 'rine', 'ring', 'rio', 'rismo', 'rissa', 'riznu', 'roar', 'rock', 'roe', 'rof', 'rog', 'rol', 'roll', 'rolu', 'rone', 'rori', 'rose', 'rosi', 'roth',
-  'rune', 'runi', 'ruth', 'rya', 'ryas', 'rym', 'rynn', 'ryo', 'sael', 'saew', 'sai', 'sale', 'salt', 'salty', 'sarya', 'sau', 'sauce', 'sauth', 'scaf', 'scar', 'sces',
-  'schi', 'scia', 'scorp', 'scum', 'sea', 'see', 'seir', 'sela', 'semi', 'seus', 'shade', 'shard', 'shear', 'shemu', 'shie', 'shine', 'shon', 'shrub', 'shuk', 'shur', 'sia',
-  'sie', 'sigma', 'sil', 'silk', 'sill', 'sima', 'sirie', 'skin', 'skull', 'sky', 'smith', 'so', 'soi', 'solar', 'soul', 'spear', 'speed', 'splint', 'spring', 'stag', 'star',
-  'stone', 'storm', 'stout', 'stra', 'strau', 'stris', 'styx', 'sub', 'swift', 'sword', 'sya', 'syl', 'sys', 'tae', 'taer', 'tala', 'tale', 'tali', 'talle', 'tan', 'tango',
-  'tarmi', 'tarre', 'tau', 'taug', 'tear', 'teava', 'teni', 'terra', 'teu', 'teus', 'thae', 'than', 'thano', 'thau', 'theia', 'theo', 'thera', 'thin', 'thorn', 'thras',
-  'thro', 'thry', 'thual', 'thuen', 'thye', 'thyn', 'tia', 'tiara', 'tiik', 'tike', 'tilre', 'tima', 'timni', 'tiri', 'to', 'tona', 'tone', 'tor', 'toxi', 'tran', 'tree',
-  'tren', 'tri', 'trila', 'trin', 'tris', 'triss', 'trith', 'trog', 'troll', 'trove', 'true', 'tryl', 'tryn', 'tusk', 'tusso', 'tuts', 'tyr', 'tyra', 'tyrg', 'ues', 'ugly',
-  'ui', 'uie', 'uipho', 'ujuy', 'uku', 'ulvu', 'under', 'uni', 'uozi', 'up', 'urlu', 'uro', 'us', 'uth', 'utha', 'utta', 'uugu', 'uvy', 'vaal', 'vae', 'vaen', 'vaez',
-  'vain', 'vang', 'varo', 'varr', 'vat', 'vayne', 'vazu', 'veba', 'veda', 'veni', 'vephie', 'vesla', 'veth', 'vigo', 'virgo', 'vitro', 'vizi', 'vlor', 'voda', 'void',
-  'vois', 'volno', 'volo', 'volt', 'vomi', 'vonth', 'vord', 'vors', 'vox', 'vugz', 'vulen', 'vulpe', 'waaz', 'wake', 'war', 'wasu', 'weap', 'wei', 'wenk', 'willo', 'wind',
-  'wing', 'wirya', 'wise', 'witch', 'wix', 'wolf', 'world', 'wrath', 'xas', 'xhan', 'xhi', 'xih', 'xilo', 'xio', 'xiza', 'xor', 'xugu', 'xuk', 'xuxu', 'xyli', 'yae', 'yare',
-  'yari', 'yeno', 'yir', 'yiryo', 'ylla', 'yo', 'yoer', 'yore', 'yrgo', 'yrie', 'yrni', 'ytia', 'zak', 'zal', 'zaph', 'zaro', 'zedh', 'zee', 'zel', 'zele', 'zeli', 'zelph',
-  'zera', 'zest', 'zhem', 'zia', 'zog', 'zoi', 'zon', 'zort', 'zoti', 'zug', 'zul', 'zur', 'zutu', 'zuvi', 'zvon', 'zzuk'],
-
         uB = (t, e, n) => e ? 4 : n === 0 ? fe.classColorBars && t.type === 0 ? 8 + t.class : 1 : I.player.canCombatInteract(t) ? n === 2 ? fe.classColorBars ? 8 + t.class : 5 : t.type === 1 && t.aggroMode === 0 ? 2 : 3 : 6,
         mB = (t, e) => {
             let n = t.visual && t.visual.cDist;
             if (n > fe.nameplateViewRange) return;
             n ? n /= 70 : n = 0;
-            function isBotName(str) {
-                str = str.toLowerCase()
-                let set = new Set(syllables);
-                let dp = new Array(str.length + 1).fill(false);
-                dp[0] = true;
-
-                for (let i = 1; i <= str.length; i++) {
-                    for (let j = 0; j < i; j++) {
-                    if (dp[j] && set.has(str.slice(j, i))) {
-                        dp[i] = true;
-                        break;
-                    }
-                    }
-                }
-                return dp[str.length];
-            }
-            let inParty = t.party > 0 && t.party === I.player.party
-                o = !fe.disablePartyNameplates && inParty,
+            let o = t.party > 0 && t.party === I.player.party,
                 i = t.faction !== void 0 ? I.player.hostility(t) : 0,
                 s = I.player.clan,
                 r = I.player.level,
                 l = t.id === zn,
-                a = false,
-                c = t.id === _n,
-                playerIsBot = isBotName(t.name) && !t.clan && !inParty && !t.clan && fe.hideBots,
-                isFriendlyCreature = i === 0 && t.type !== 0;
-            let playerBuffs;
-            if ((t.type !== 3 && t.stats)) {
-                let min = 0.5 * (fe.nameplateSize / 250);
-                let max = 2.0 * (fe.nameplateSize / 250);
-
-                if (!l && playerIsBot) return;
-                let _hidePlate = !l && isFriendlyCreature && !fe.hideFriendlyCreatures;
-
-                let castsOnPlayer = targettedPlayers.get(t.id) || [];
-                let targetScale = (l ? 1 : 0) * (1 + castsOnPlayer.length / 10);
-
-                t.namePlateScale = vt(
-                t.namePlateScale + (targetScale - t.namePlateScale) * 0.25,min,max);
-                let CCFound, CCColor
-                playerBuffs = I.getEntityById(t.id)
-                if(playerBuffs) playerBuffs = playerBuffs.buffs.buffs
-                CCFound = false, CCColor = "#ffffff"
-                if(playerBuffs && fe.CCIndicatorOnNameplates && fe.CCIndicator) {
-                    let color = getCCColor(playerBuffs);
-                    if (color) { CCFound = true; CCColor = color; }
+                a = t.id === I.playerId,
+                c = t.id === _n;
+            if (t.type !== 3 && t.stats && t.stats.alive) {
+                t.namePlateScale = vt(t.namePlateScale + ((l ? 1 : 0) - t.namePlateScale) * .25, .5, 1);
+                let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
+                    g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
+                    v = t.skills.timedSkill !== void 0;
+                !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
+                let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
+                if (v && _) {
+                    let b = Jn[0].height - Wo,
+                        k = vt(t.skills.timedCast.fraction(I.smoothtime), 0, 1);
+                    pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, 1, 0, b), k > 0 && pr(Jn[7], t.hudPos, g, t.namePlateScale, k, 1, 0, b)
                 }
-                if (!_hidePlate) {
-                    let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
-                        g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
-                        v = t.skills.timedSkill !== void 0;
-
-                    !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
-                    let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
-                    if(CCFound && _) {
-                        let w = (Jn[0].width + Wo * 2)
-                        let h = ((v ? DA : IA).height)
-                        let ccDrawColor = fe.flashCCIndicator ? flashColor(CCColor, 6, 0.3) : CCColor
-                        outline = Vo(null, ccDrawColor, w, h, 0, 0, 4)
-                        pr(outline, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0)
-                    }
-                    if (v && _) {
-                        let b = Jn[0].height - Wo,
-                            k = vt(t.skills.timedCast.fraction(I.smoothtime), 0, 1);
-                        pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, 1, 0, b), k > 0 && pr(Jn[7], t.hudPos, g, t.namePlateScale, k, 1, 0, b)
-                    }
-                    if (!a && _ && (pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1), fe.flashNameplates && t.hpFlashTime !== void 0 && I.smoothtime - t.hpFlashTime < 0.2 && (() => { let elapsed = I.smoothtime - t.hpFlashTime, curFrac = t.stats.getResource(6) / t.stats.getStat(6), lostFrac = t.hpFlashFraction - curFrac, progress = elapsed / 0.2; pr(Jn[12], t.hudPos, g, t.namePlateScale, lostFrac * (1 - progress), 1, curFrac * Jn[12].width, 0) })(), pr(Jn[uB(t, o, i)], t.hudPos, g, t.namePlateScale, t.stats.getResource(6) / t.stats.getStat(6), 1), fe.disableClantags ? null : t.clan && dr(ho(Un, t.hudPos[0] - (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.clan, t.clan == s ? qt.clan : t.faction === 0 ? qt.faction0small : qt.faction1small, g, 1, 2, 0, 1), t.level && (fe.alwaysShowLevel || l))) {
-                        let b = qt.lev1;
-                        i !== 0 && (t.level - r > 4 ? b = qt.lev3 : t.level - r > 1 ? b = qt.lev2 : t.level - r < -5 && (b = qt.lev0)), dr(ho(Un, t.hudPos[0] + (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.level, b, g, 1, 0, 0, 0)
-                    }
+                if (!a && _ && (pr(Jn[0], t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1), pr(Jn[uB(t, o, i)], t.hudPos, g, t.namePlateScale, t.stats.getResource(6) / t.stats.getStat(6), 1), t.clan && dr(ho(Un, t.hudPos[0] - (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.clan, t.clan == s ? qt.clan : t.faction === 0 ? qt.faction0small : qt.faction1small, g, 1, 2, 0, 1), t.level && (fe.alwaysShowLevel || l))) {
+                    let b = qt.lev1;
+                    i !== 0 && (t.level - r > 4 ? b = qt.lev3 : t.level - r > 1 ? b = qt.lev2 : t.level - r < -5 && (b = qt.lev0)), dr(ho(Un, t.hudPos[0] + (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.level, b, g, 1, 0, 0, 0)
                 }
             }
             let f, u = !1;
-            if ((t.type === 3 ? (f = t.partyTimeoutCheck(I.player) ? qt[t.color] : qt.itemgrey, u = !0) : i === 0 ? (f = l ? qt.name : qt.nameSmall, u = fe.nameShowFriendlyPlayers) : i === 1 ? (f = l ? qt.enemy : qt.enemySmall, u = fe.nameShowMonsters) : i === 2 && (f = l ? qt.pvp : qt.pvpSmall, u = fe.nameShowEnemyPlayers), l || u) && !playerIsBot) {
-                if (!l && playerIsBot) return;
-                if (!l && isFriendlyCreature && !fe.hideFriendlyCreatureNames) return;
+            if (t.type === 3 ? (f = t.partyTimeoutCheck(I.player) ? qt[t.color] : qt.itemgrey, u = !0) : i === 0 ? (f = l ? qt.name : qt.nameSmall, u = fe.nameShowFriendlyPlayers) : i === 1 ? (f = l ? qt.enemy : qt.enemySmall, u = fe.nameShowMonsters) : i === 2 && (f = l ? qt.pvp : qt.pvpSmall, u = fe.nameShowEnemyPlayers), l || u) {
                 let m = t.type === 3 && c && !t.canBePickedUpBy(I.player) ? .5 : l || t.type === 3 ? 1 : c ? .9 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l ? -16 : -9,
                     v = a && t.clan ? t.clan.length * 5 : 0,
-                    nameSpacing = fe.nameSpacing / 10
-                
-                t.hudPos[1] -= nameSpacing
-                let _ = dr(t.hudPos, t.name, f, m, 1 * (fe.nameSize / 500), v, g);
-                if (fe.revStackNameplate && playerBuffs && playerBuffs.has(60)) {
-                    let revMap = playerBuffs.get(60);
-                    let totalRevStacks = 0, revHasOwnCaster = false;
-                    revMap.forEach((buff, casterId) => {
-                        totalRevStacks += buff.uniqueInstances > 1 ? buff.uniqueInstances : (buff.stacks || 1);
-                        if (casterId === I.playerId) revHasOwnCaster = true;
-                    });
-                    if (totalRevStacks > 0) {
-                        let nameScl = 1 * (fe.nameSize / 500);
-                        let iconSz = Math.round(20 * t.namePlateScale);
-                        let bord = revHasOwnCaster && fe.markOwnRevs ? Math.max(1.7, Math.round(1.7 * t.namePlateScale)) : Math.max(1, Math.round(1 * t.namePlateScale));
-                        let bw = iconSz + bord * 2, bh = bw;
-                        let br = Math.max(4, Math.round(4 * t.namePlateScale));
-                        let ibr = Math.max(1, br - bord);
-                        let bx = Math.round(t.hudPos[0] - bw / 2 - 2);
-                        let by = Math.round(t.hudPos[1] + g * nameScl - f.size * nameScl * 0.5 - bh - 2);
-                        if (!revIconImg) { revIconImg = new Image(); revIconImg.src = `/data/ui/skills/7.${Yn}?v=8822612`; }
-                        Eo.globalAlpha = revHasOwnCaster && fe.markOwnRevs ? 0.75 : 1;
-                        Eo.fillStyle = revHasOwnCaster && fe.markOwnRevs ? "#82f069" : "#000000";
-                        Eo.beginPath(); Eo.moveTo(bx + br, by); Eo.arcTo(bx + bw, by, bx + bw, by + bh, br); Eo.arcTo(bx + bw, by + bh, bx, by + bh, br); Eo.arcTo(bx, by + bh, bx, by, br); Eo.arcTo(bx, by, bx + bw, by, br); Eo.closePath(); Eo.fill();
-                        let ix = bx + bord, iy = by + bord;
-                        Eo.fillStyle = "#000000";
-                        Eo.globalAlpha = 1;
-                        Eo.beginPath(); Eo.moveTo(ix + ibr, iy); Eo.arcTo(ix + iconSz, iy, ix + iconSz, iy + iconSz, ibr); Eo.arcTo(ix + iconSz, iy + iconSz, ix, iy + iconSz, ibr); Eo.arcTo(ix, iy + iconSz, ix, iy, ibr); Eo.arcTo(ix, iy, ix + iconSz, iy, ibr); Eo.closePath(); Eo.fill();
-                        if (revIconImg.complete && revIconImg.naturalWidth) Eo.drawImage(revIconImg, ix, iy, iconSz, iconSz);
-                        let fs = Math.max(9, Math.round(iconSz * 0.68));
-                        Eo.font = `bold ${fs}px hordes`;
-                        Eo.textAlign = "center";
-                        Eo.textBaseline = "middle";
-                        Eo.lineWidth = 4;
-                        Eo.strokeStyle = "#000000";
-                        Eo.strokeText(totalRevStacks, bx + bw / 2.1, by + bh / 1.9);
-                        Eo.fillStyle = inParty || revHasOwnCaster ? "#ffffff" : "#999999";
-                        Eo.fillText(totalRevStacks, bx + bw / 2.1, by + bh / 1.9);
-                        Eo.textAlign = "left";
-                        Eo.textBaseline = "alphabetic";
-                    }
-                }
+                    _ = dr(t.hudPos, t.name, f, m, 1, v, g);
                 t.clan && a && dr(ho(Un, t.hudPos[0] - _ / 2 + Wo, t.hudPos[1]), t.clan, t.faction === 0 ? l ? qt.faction0 : qt.faction0small : l ? qt.faction1 : qt.faction1small, m, 1, t.clan.length * 5, g, 1)
             }
             t.speechText && dr(t.hudPos, t.speechText, t.speechStyle, 1, 1, 0, l ? -30 : -20, .5, 1)
@@ -30741,15 +27350,15 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         hB = t => {
             nt.shift.down ? EA(t) : LA(t), CA(t)
         };
-    var H2 = {};
-    Kn(H2, {
+    var H_ = {};
+    Kn(H_, {
         onWorldEnter: () => gB
     });
     var gB = () => {
-        yt("petlootsettings", j2.join(",") + " " + fe.itemQualityFilter + " " + fe.materialQualityFilter)
+        yt("petlootsettings", j_.join(",") + " " + fe.itemQualityFilter + " " + fe.materialQualityFilter)
     };
-    var Y2 = {};
-    Kn(Y2, {
+    var Y_ = {};
+    Kn(Y_, {
         init: () => vB
     });
     var vB = () => {
@@ -30758,8 +27367,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             Yi.update(n => (n === void 0 || e.contributors.length === 0 && (e.contributors = n.contributors), e))
         })
     };
-    var Ec = [G2, Yg, lv, Fv, r2, rg, k1, Cg, C1, H2, yg, Op, Y2],
-        X2 = !1,
+    var Ec = [G_, Yg, lv, Fv, r_, rg, k1, Cg, C1, H_, yg, Op, Y_],
+        X_ = !1,
         qA = () => {
             Ec.forEach(t => {
                 t.init && t.init()
@@ -30783,12 +27392,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         UA = t => {
             Ec.forEach(e => {
                 e.onWorldEnter && e.onWorldEnter(t)
-            }), X2 = !0
+            }), X_ = !0
         },
         $A = t => {
-            X2 && Ec.forEach(e => {
+            X_ && Ec.forEach(e => {
                 e.onWorldDestroy && e.onWorldDestroy(t)
-            }), X2 = !1
+            }), X_ = !1
         };
     var NA = async t => {
         let n = await (await fetch("api/user/join", {
@@ -30808,7 +27417,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         HA = t => {
             jA.done(t) && (t > 1e5 && !R0 && t - WA > 60 * 1e3 * 3 ? (R0 = !0, WA = t, ef.set(GA), GA++) : R0 && (R0 = !1, ef.set(0)), jA.reset(t))
         };
-    var Q2 = {
+    var Q_ = {
         arena3v3: {
             port: 5006
         },
@@ -30846,8 +27455,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             port: 5017
         }
     };
-    var Z2 = t => {
-            Q2[fe.activeWorld] === void 0 ? window.location.href = "/" : (console.log("Connecting to " + fe.activeWorld), t && So.set("Connecting"), Z3(Q2[fe.activeWorld].port))
+    var Z_ = t => {
+            Q_[fe.activeWorld] === void 0 ? window.location.href = "/" : (console.log("Connecting to " + fe.activeWorld), t && So.set("Connecting"), Z3(Q_[fe.activeWorld].port))
         },
         YA = t => {
             I.load(t.world, t.file, t.playerId), I.setTimeFromTickId(t.tickId), Xu = 0
@@ -30864,7 +27473,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             } catch {
                 return window.location.href = "/", !1
             }
-            Z2(!1)
+            Z_(!1)
         }, QA = (t, e) => {
             W3(e), HA(e), I && I.player ? (wx(t), RA(t), I.tick(t), zA(t), wA(t, I), BA(t, I)) : I && I.tick(t)
         };
@@ -30969,13 +27578,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 this[n] = new Set
             }), this.tags = new Map;
             for (let n = 0; n < 16; ++n) this.tags.set(n, new Set)
-        }
-        sendCleanse(e) {
-            vr(e.id)
-            Io(Mt.clientPlayerSkill.packData({
-                        id: 47,
-                        info: []
-             }))
         }
         tick(e, n, o) {}
         setBuff(e, n, o, i, s, r) {
@@ -31108,7 +27710,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                                     r = n ? t.cycle(0) * .3 - s : t.cycle(.5) * .3 + s;
                                 X(bt, n ? .3 - s : -.3 + s, -.65, r), Nr(o.position, bt, 0), X(o.rotation, -r, i, 0)
                             } else X(o.position, n ? .3 : -.3, -.3, 0), X(o.rotation, 0, 0, 0);
-                        else if (t.entity.inWater > t.entity.radius) t.walking ? (X(o.rotation, 1.3, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, Math.cos(t.cycleRad + n * Math.PI) * .4, -1)) : (X(o.rotation, 1, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, -.7, Math.cos(t.cycleRad + n * Math.PI) * .4));
+                        else if (t.entity.inWater > t.entity.radius) t.walking ? (X(o.rotation, 1.3, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, Math.cos(t.cycleRad + n * Math.PI) * .4, -1.1)) : (X(o.rotation, 1, n ? .1 : -.1, 0), X(o.position, n ? .3 : -.3, -.7, Math.cos(t.cycleRad + n * Math.PI) * .4));
                         else {
                             if (t.walking) {
                                 let s = t.entity.steer[1] < 0 ? .4 : .6,
@@ -31190,8 +27792,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         jo = (t, e) => {
             t.sheathed !== e && (t.sheathed = e, t.body[6] !== void 0 && (Cn(t.body[6], e ? t.body[0] : t.body[2]), t.sheathed ? it(t.body[6].position, t.skin.sheathedPos) : it(t.body[6].position, t.skin.unsheathedPos), t.body[6].matrixNeedsUpdate = !0), t.body[7] !== void 0 && (Cn(t.body[7], e ? t.body[0] : t.body[3]), t.sheathed ? (X(t.body[7].position, 0, -.2, -.65), X(t.body[7].rotation, 0, -1.57, 0)) : (X(t.body[7].position, -.2, 0, 0), X(t.body[7].rotation, 0, 0, 0)), t.body[7].matrixNeedsUpdate = !0))
         };
-    var J2 = [5, 4, 0, 2, 3],
-        K2 = (t, e, n, o) => {
+    var J_ = [5, 4, 0, 2, 3],
+        K_ = (t, e, n, o) => {
             let i = t.body[3];
             if (i.visible && (X(i.rotation, .2, 1.7 + t.cycleSin * .15, .4), X(i.position, .1 + t.cycleSin * .2, -.3, .9), t.entity.target > 0 && (i.position[0] = .2, i.position[1] += .15, i.position[2] += .1, i.rotation[0] += .2, i.rotation[1] = 1.8, i.rotation[2] -= .2), t.currentAnim)) switch (t.currentAnim.info.movement) {
                 case 5: {
@@ -31220,7 +27822,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             no(i.rotation, .9, -.4, 0), i.position[2] -= .1
         };
     var KA = [0, 16, 17],
-        eT = (t, e, n, o) => {
+        e9 = (t, e, n, o) => {
             let i = t.cycle(.5);
             if (X(t.body[0].scale, i * .1 + 1, 1 + t.cycleSin * .1, i * .1 + 1), X(t.body[0].position, 0, -.2 + t.cycleSin * .1, 0), X(t.body[0].rotation, -t.pushBack[1] * 5, 0, t.pushBack[0] * 5), ld(t.body[0].position, t.body[0].position, t.pushBackOffset), t.currentAnim) {
                 let s = tn.easeOutExpo(t.currentAnim.fract ** 3);
@@ -31240,8 +27842,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 a > 30 * t.entity.size ? it(r.position, t.entity.pos) : sn(r.position, r.position, bt, Math.max(0, Math.min(.5, 20 * e * (a - r.scale[1] * .7)))), X(r.rotation, 0, sd(Kt(bt, l.position, r.position)), 0), mo(r.scale, (3 - s) * .3 * (.8 + t.cycle(s * .3) * .1) * t.transform.scale[0]), r.position[1] = Math.max(t.entity.pos[1] + r.scale[1] * .5, r.position[1] - e * 2.5), $t(r, !1)
             }
         };
-    var tT = [2, 3],
-        nT = (t, e, n, o) => {
+    var t9 = [2, 3],
+        n9 = (t, e, n, o) => {
             if (!t.currentAnim)
                 for (let i = 0; i < 2; ++i) {
                     let s = t.body[2 + i];
@@ -31250,8 +27852,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     X(s.rotation, .78, 0, i ? r * .2 : -r * .2), X(s.position, i ? .2 : -.2, -.4, .6)
                 }
         };
-    var oT = [0, 4, 5],
-        iT = (t, e, n, o) => {
+    var o9 = [0, 4, 5],
+        i9 = (t, e, n, o) => {
             let i = t.body[0],
                 s = t.body[4],
                 r = t.body[5];
@@ -31287,12 +27889,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
             no(i.rotation, -t.pushBack[1] * 5, 0, t.pushBack[0] * 5)
         };
-    var sT = [],
-        rT = (t, e, n, o) => {
+    var s9 = [],
+        r9 = (t, e, n, o) => {
             X(t.transform.rotation, -t.pushBack[1] * 2, t.entity.rot, t.pushBack[0] * 2)
         };
-    var lT = [0, 2, 3, 16],
-        aT = (t, e, n, o) => {
+    var l9 = [0, 2, 3, 16],
+        a9 = (t, e, n, o) => {
             let i = t.body[0],
                 s = t.body[2],
                 r = t.body[3],
@@ -31317,8 +27919,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }
             }
         };
-    var cT = [0, 2, 3],
-        fT = (t, e, n, o) => {
+    var c9 = [0, 2, 3],
+        f9 = (t, e, n, o) => {
             for (let i = 0; i < 2; ++i) {
                 let s = t.body[2 + i];
                 s.position[1] *= .8, s.position[2] *= .8, s.position[1] += .5;
@@ -31327,12 +27929,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
             X(t.body[0].scale, 1.8, 2, 1.8), t.body[0].position[1] += 1
         };
-    var uT = [2],
-        mT = (t, e, n, o) => {
+    var u9 = [2],
+        m9 = (t, e, n, o) => {
             X(t.body[2].position, -.8, -.2, .7), X(t.body[2].rotation, 1.8 + t.cycleSin * .1, 0, 0)
         };
-    var pT = [17, 0, 16, 21, 2, 3, 4, 5],
-        dT = (t, e, n, o) => {
+    var p9 = [17, 0, 16, 21, 2, 3, 4, 5],
+        d9 = (t, e, n, o) => {
             let i = t.body[4].scale[1];
             t.currentAnim && t.currentAnim.info.movement === 0 ? qB(t, i) : DB(t, i)
         },
@@ -31404,15 +28006,15 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 c = Math.max(o, 0);
             X(a.position, 0, -.18 * .5 + c * .3, -.67), X(a.rotation, .6 + c, 0, 0)
         };
-    var hT = [2, 3, 4, 5],
-        gT = [
+    var h9 = [2, 3, 4, 5],
+        g9 = [
             [-.6, -.5, .5],
             [.6, -.5, .5],
             [-.6, -.5, -.5],
             [.6, -.5, -.5]
         ],
-        vT = [2, 3, 4, 5, 0, 16, 21, 17, 19, 20],
-        _T = (t, e, n, o) => {
+        v9 = [2, 3, 4, 5, 0, 16, 21, 17, 19, 20],
+        _9 = (t, e, n, o) => {
             let i = t.body[4].scale[1];
             t.currentAnim && t.currentAnim.info.movement === 0 ? zB(t, i) : BB(t, i)
         },
@@ -31449,12 +28051,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 s = n ? t.cycle(.75) * .5 : 0,
                 r = t.entity.steer[1] < 0 ? -.5 : 1;
             for (let l = 0; l < 4; ++l) {
-                let a = hT[l],
+                let a = h9[l],
                     c = t.body[a],
                     f = l % 2 == 0,
                     u = l < 2,
                     m = t.body[u ? 0 : 16],
-                    g = gT[l];
+                    g = g9[l];
                 Ao(c.position, g, m.matrix);
                 let v = 0,
                     _ = 0;
@@ -31484,16 +28086,16 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             let n = t.currentAnim.fract,
                 o = Math.sin(or(n, .2, -.4) * 3.14) * 1.5;
             for (let i = 0; i < 4; ++i) {
-                let s = hT[i],
+                let s = h9[i],
                     r = t.body[s],
                     l = i < 2,
                     a = t.body[l ? 0 : 16],
-                    c = gT[i];
+                    c = g9[i];
                 Ao(r.position, c, a.matrix), X(r.rotation, o * .5, 0, 0)
             }
         };
-    var bT = [18, 3],
-        yT = (t, e, n, o) => {
+    var b9 = [18, 3],
+        y9 = (t, e, n, o) => {
             X(t.body[18].rotation, 0, 0, n * .3), X(t.body[3].position, .8, -.2, .7), X(t.body[3].rotation, 1.8, 0, 0)
         };
     var $0 = [5, 4, 0, 2, 3],
@@ -31506,12 +28108,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 r.visible && (r.rotation[1] += Math.sin(n * .2 - i) * .3, r.position[0] += i ? .15 : -.15)
             }
         };
-    var kT = [2],
-        xT = (t, e, n, o) => {
+    var k9 = [2],
+        x9 = (t, e, n, o) => {
             t.body[2].position[2] += .6, no(t.body[2].rotation, -2.1, -4.1, -.2)
         };
-    var wT = [2, 3, 0],
-        MT = (t, e, n, o) => {
+    var w9 = [2, 3, 0],
+        M9 = (t, e, n, o) => {
             if (t.currentAnim === void 0 || t.currentAnim.info.movement === 0)
                 for (let i = 0; i < 2; ++i) {
                     let s = t.body[2 + i],
@@ -31520,28 +28122,28 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }
             no(t.body[0].rotation, (Math.sin(n * 1.8) * Math.cos(n * 2) * .3 + Math.sin(n * 1.4) * .3) * .1 + .2, (Math.sin(n * 1.3) + Math.sin(n * 2.4) * .6) * .1, (Math.sin(n * .4) + Math.sin(n * 1.9) * .5) * .1)
         };
-    var FT = [
-            [Ho, K2],
+    var F9 = [
+            [Ho, K_],
             [Ho, JA],
-            [eT],
-            [Ho, nT],
-            [iT],
-            [rT],
-            [Ho, fT],
+            [e9],
+            [Ho, n9],
+            [i9],
+            [r9],
+            [Ho, f9],
             [Ho],
             [],
-            [Ho, mT],
-            [Ho, yT],
+            [Ho, m9],
+            [Ho, y9],
             [Ho, O0],
-            [Ho, K2, O0],
+            [Ho, K_, O0],
             [Ho, O0],
-            [Ho, xT],
-            [Ho, MT],
-            [dT],
-            [_T],
-            [aT]
+            [Ho, x9],
+            [Ho, M9],
+            [d9],
+            [_9],
+            [a9]
         ],
-        CT = [new Set([...Go, ...J2]), new Set([...Go, ...ZA]), new Set([...KA]), new Set([...Go, ...tT]), new Set([...oT]), new Set([...sT]), new Set([...Go, ...cT]), new Set([...Go]), new Set, new Set([...Go, ...uT]), new Set([...Go, ...bT]), new Set([...Go, ...$0]), new Set([...Go, ...J2, ...$0]), new Set([...Go, ...$0]), new Set([...Go, ...kT]), new Set([...Go, ...wT]), new Set([...pT]), new Set([...vT]), new Set([...lT])];
+        C9 = [new Set([...Go, ...J_]), new Set([...Go, ...ZA]), new Set([...KA]), new Set([...Go, ...t9]), new Set([...o9]), new Set([...s9]), new Set([...Go, ...c9]), new Set([...Go]), new Set, new Set([...Go, ...u9]), new Set([...Go, ...b9]), new Set([...Go, ...$0]), new Set([...Go, ...J_, ...$0]), new Set([...Go, ...$0]), new Set([...Go, ...k9]), new Set([...Go, ...w9]), new Set([...p9]), new Set([...v9]), new Set([...l9])];
     var Ic = class {
         constructor(e) {
             this.transform = rn(), this.transform.matrixAutoUpdate = !0, this.soundPrio = e.radius > 3 ? 1 : 0, this.doesYell = e.type !== 0, this.entity = e, this.cycleOne = 0, this.cycleRad = nn(0, 1), this.cycleSin = 0, this.speed = 1, this.speedMultiplier = 1, this.lastFlags = 0, this.deathTimer = new xt(0, 0), this.hurtSoundTimer = new xt(0, 5), this.pushBack = [0, 0], this.pushBackVel = [0, 0], this.pushBackOffset = [0, 0], this.movementPushback = [0, 0, 0], this.movementPushbackVel = [0, 0, 0], this.groundNormal = [0, 0, 0], this.cDist = 1 / 0, this.cDistLast = 1 / 0, this.inFog = !0, this.animQueue = [], this.currentAnim = void 0, this.eyesBlink = 0, this.capeoffset = 0, this.walking = !0, this.falling = !1, this.hasDied = !1, this.flip = 0, this.hasJustJumped = !1, this.hasJustLanded = !0, this.sheathed = !1, this.interiorlight = [0, 0, 0, 0], this.needsColorUpdate = !1, this.colors = new Set, this.alphas = new Set, this.currentAlpha = 0, this.goalAlpha = 1, this.body = [], this.meshes = [], this.effects = [], this.skin = void 0, this.soundset = void 0, this.stepset = void 0, this.skeleton = void 0, this.animset = void 0, this.colPrim = void 0, this.colSec = void 0
@@ -31549,8 +28151,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         setSkin(e, n, o) {
             this.skin !== void 0 && (this.removeSkin(), this.cDistLast = 0, this.hasDied = !1, this.deathTimer.reset(0, 0), this.removeColor(Rn.death)), this.skin = O1.get(e);
             let i = B1.get(this.skin.soundset);
-            this.soundset = i.sounds, this.stepset = U1.get(i.steps).steps, this.skeleton = N1.get(this.skin.skeleton), this.animset = FT[this.skin.animset], this.colPrim = n || this.skin.colPrim, this.colSec = o || this.skin.colSec;
-            let s = CT[this.skin.animset];
+            this.soundset = i.sounds, this.stepset = U1.get(i.steps).steps, this.skeleton = N1.get(this.skin.skeleton), this.animset = F9[this.skin.animset], this.colPrim = n || this.skin.colPrim, this.colSec = o || this.skin.colSec;
+            let s = C9[this.skin.animset];
             for (let r = 0; r < this.skin.body.length; ++r) {
                 let l = this.skin.body[r],
                     a = l.col;
@@ -31762,7 +28364,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             let e = this.meshes.length;
             for (; e--;) {
                 let n = this.meshes[e];
-                n.data.deathSize = (n.geometry.bounds.initiated ? n.geometry.bounds.radius : 1) * (n.scale[0] + n.scale[1] + n.scale[2]) / 3, Cn(n, null), xa(n.position, n.worldMatrix), $_(n.scale, n.worldMatrix), Rm(n.quaternion, n.worldMatrix), n.data.deathVel = [nn(-.5, .5), 1, nn(-.5, .5)], n.matrixAutoUpdate = !0
+                n.data.deathSize = (n.geometry.bounds.initiated ? n.geometry.bounds.radius : 1) * (n.scale[0] + n.scale[1] + n.scale[2]) / 3, Cn(n, null), xa(n.position, n.worldMatrix), $2(n.scale, n.worldMatrix), Rm(n.quaternion, n.worldMatrix), n.data.deathVel = [nn(-.5, .5), 1, nn(-.5, .5)], n.matrixAutoUpdate = !0
             }
         }
         tickDeath(e, n, o) {
@@ -31855,8 +28457,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         let o = this.mesh(10, 0, !0, 8, .7);
                         X(o.position, 0, .2, -.55)
                     }
-                    let color = this.body[10]
-                    X(this.body[10].scale, n, n, n), this.changeMeshBaseColor(color, e)
+                    X(this.body[10].scale, n, n, n), this.changeMeshBaseColor(this.body[10], e)
                 }
         }
         setHeadgear(e) {
@@ -32038,7 +28639,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             return this.entity.buffs.instantCast.size > 0 && Array.from(this.entity.buffs.instantCast).some(n => n.logic.instantCast.has(e))
         }
     };
-    var ST = new Map,
+    var S9 = new Map,
         G0 = class extends j0 {
             constructor(e) {
                 super(e)
@@ -32047,7 +28648,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 if (this.isPlayer) {
                     let i = this.entity.buffs.incapacitated.size > 0;
                     this.skills.forEach((s, r) => {
-                        let l = ST.get(r) || ST.set(r, new Map).get(r),
+                        let l = S9.get(r) || S9.set(r, new Map).get(r),
                             a = new Map,
                             c = 0;
                         if (i && !s.logic.ignoreIncapacitated ? c = 9 : (c = s.logic.can(this.entity, s.level, this.entity.target, !0), (c === 3 || c === 4) && (c = s.logic.can(this.entity, s.level, this.entity.id, !0))), c !== s.status && (s.status = c, l.get("status") !== c && a.set("status", c)), s.cd.done(o.smoothtime)) s.cd.icondone || (s.cd.icondone = !0, l.get("cd") !== void 0 && a.set("cd", void 0), l.get("remaining") !== void 0 && a.set("remaining", void 0));
@@ -32179,7 +28780,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             if (this.stats.alive) {
                 this.rot = o;
                 let i = Np(Un, n);
-                n[1] < 0 && (i[1] *= .5), $f(i, i, e / 20), H_(this.vel, i, o)
+                n[1] < 0 && (i[1] *= .5), $f(i, i, e / 20), H2(this.vel, i, o)
             } else this.vel[0] = 0, this.vel[2] = 0
         }
         setSteer(e, n) {
@@ -32235,10 +28836,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         tickWaterCollisions(e) {
             let n = this.inWater;
-            this.inWater = Math.max(0, e.getWaterHeight(this.pos[0], this.pos[2]) - this.pos[1]);
-            if (fe.freeflyMode && I && I.player === this) this.inWater = 0;
-            !n && this.inWater > 0 && this.vel[1] < -3 && this.onEnterWater();
-            return this.inWater > 0
+            return this.inWater = Math.max(0, e.getWaterHeight(this.pos[0], this.pos[2]) - this.pos[1]), !n && this.inWater > 0 && this.vel[1] < -3 && this.onEnterWater(), this.inWater > 0
         }
         onEnterWater() {}
     };
@@ -32247,7 +28845,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 super(e), this.uiFrameDirty = !0, this.uiRange = !0, this.buffDisplayDirty = !0, this.visualPosition = [0, 0, 0], this.speechTimer = new xt(0, 5), this.mount = void 0, this.mountRotAdd = 0, this.namePlateScale = .5, e.creature && (e.creature.col1[0] !== 0 && (e.colPrim = e.creature.col1), e.creature.col2[0] !== 0 && (e.colSec = e.creature.col2)), this.skin = e.skin, this.colPrim = e.colPrim, this.colSec = e.colSec, this.interiorlightTarget = [0, 0, 0, 0], this.interiorlightTimer = new xt(0, .5), this.conciliator = [0, 0, 0], this.visual = new Ic(this), this.skin > 0 && this.remakeTransform()
             }
             handleMovementData(e, n) {
-                if ((fe.ghostMode || fe.freeflyMode) && I && I.player === this) return;
                 let o = Bn([0, 0, 0], this.pos, this.conciliator),
                     i = Kt([0, 0, 0], o, e.pos);
                 nf(i) > 1 ? (X(this.conciliator, 0, 0, 0), it(this.pos, e.pos)) : Bn(this.conciliator, this.conciliator, i), it(this.vel, e.vel)
@@ -32305,7 +28902,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 if (o || i) {
                     let s = this.squaredDistance(I.player.pos) < 900;
                     s != this.uiRange && (this.uiFrameDirty = !0), this.uiRange = s
-                }(this.uiFrameDirty || this.skills.timedSkill !== void 0 || (fe.flashNameplates && this.hpFlashTime !== void 0 && I.smoothtime - this.hpFlashTime < 0.2) || (fe.flashCCIndicator && fe.CCIndicator && this.buffs && this.buffs.buffs && (this.buffs.buffs.has(69) || this.buffs.buffs.has(88) || this.buffs.buffs.has(91) || this.buffs.buffs.has(101) || this.buffs.buffs.has(119) || this.buffs.buffs.has(121)))) && (o && this.hydrateUnitStore(Hi), n ? this.hydrateUnitStore(Gi) : i && this.hydrateUnitStore(Zt.get(this.name).unitStore)), (this.buffDisplayDirty || n || o) && (o && this.hydrateBuffStore(n, Qc, fe.buffcountUnitframes), n ? this.hydrateBuffStore(n, da, fe.buffcountUnitframes) : (this.buffDisplayDirty || o) && i && this.hydrateBuffStore(n, Zt.get(this.name).buffStore, fe.buffcountParty)), this.speechText !== void 0 && this.speechTimer.done(e) && (this.speechText = void 0)
+                }(this.uiFrameDirty || this.skills.timedSkill !== void 0) && (o && this.hydrateUnitStore(Hi), n ? this.hydrateUnitStore(Gi) : i && this.hydrateUnitStore(Zt.get(this.name).unitStore)), (this.buffDisplayDirty || n || o) && (o && this.hydrateBuffStore(n, Qc, fe.buffcountUnitframes), n ? this.hydrateBuffStore(n, da, fe.buffcountUnitframes) : (this.buffDisplayDirty || o) && i && this.hydrateBuffStore(n, Zt.get(this.name).buffStore, fe.buffcountParty)), this.speechText !== void 0 && this.speechTimer.done(e) && (this.speechText = void 0)
             }
             setTarget(e) {
                 let n = this.target,
@@ -32314,16 +28911,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     let i = I.getEntityById(e);
                     i ? (i.hydrateUnitStore(Hi, fe.buffcountUnitframes), i.hydrateBuffStore(!1, Qc, fe.buffcountUnitframes)) : Hi.update(s => (s.visible = !1, s))
                 }
-                let target = I.getEntityById(e)
-                if (!target || !target.faction === I.player.faction || target.type !== 0 || I.player.class !== 3 || $r(target.pos, I.player.pos) > 30 || !fe.revOnSelect) return o
-                Io(Mt.clientPlayerSkill.packData({
-                        id: 7,
-                        info: []
-                    }))
                 return o
             }
             hydrateUnitStore(e) {
-                e.update(n => (n.visible = !0, n.name = this.name, n.alive = this.stats.alive, n.hp = this.stats.getResource(6), n.hpMax = this.stats.getStat(6), n.mp = this.stats.getResource(7), n.mpMax = this.stats.getStat(7), n.level = this.level, n.class = this.class, n.id = this.id, n.clan = this.clan, n.faction = this.faction, n.party = this.party, n.role = this.partyrole, n.type = this.type, n.combat = !this.stats.combatTimer.done(I.time), n.range = this.uiRange, n.rarity = this.faction === 2 && (this.rarity || !1), n.timedSkill = this.skills.timedSkill, n.timedCast = this.skills.timedCast, n.hpFlashTime = this.hpFlashTime, n.hpFlashFraction = this.hpFlashFraction, n)), this.uiFrameDirty = !1
+                e.update(n => (n.visible = !0, n.name = this.name, n.alive = this.stats.alive, n.hp = this.stats.getResource(6), n.hpMax = this.stats.getStat(6), n.mp = this.stats.getResource(7), n.mpMax = this.stats.getStat(7), n.level = this.level, n.class = this.class, n.id = this.id, n.clan = this.clan, n.faction = this.faction, n.party = this.party, n.role = this.partyrole, n.type = this.type, n.combat = !this.stats.combatTimer.done(I.time), n.range = this.uiRange, n.rarity = this.faction === 2 && (this.rarity || !1), n.timedSkill = this.skills.timedSkill, n.timedCast = this.skills.timedCast, n)), this.uiFrameDirty = !1
             }
             hydrateBuffStore(e, n, o) {
                 n.update(i => ZB(i, this.buffs, o, e)), this.buffDisplayDirty = !1
@@ -32334,68 +28925,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         },
         ZB = (t, e, n, o) => {
             let i = [];
-            let buffOwnCasterMap = new Map();
-
-            if (fe.stackSameBuffs) {
-                e.buffs.forEach((r, l) => {
-                    r.forEach((a, c) => { if (c === I.playerId) buffOwnCasterMap.set(a.id, true); });
-                });
-            }
-
             e.buffs.forEach((r, l) => {
                 r.forEach((a, c) => {
-                    if (a.id === 60) {
-                        a.logic = Object.assign(Object.create(Object.getPrototypeOf(a.logic)), a.logic);
-                        a.logic.type = c === I.playerId && fe.markOwnRevs ? 2 : 0;
-                    }
-                    if (fe.hideClassBuffs && fe.hiddenClassBuffs.find(i => i === a.id)) return;
-                    let effectiveIsOwnCaster = fe.stackSameBuffs ? (buffOwnCasterMap.get(a.id) || false) : c === I.playerId;
-                    if((fe.hideBuffs && fe.hiddenBuffs.find(i => i === a.id)) || (I.player.class === 3 && fe.onlyShowOwnRev && a.id === 60 && !effectiveIsOwnCaster)) return;
-                    !a.logic.passive && a.logic.icon !== void 0 &&
-                        (!fe.buffsHideIrrelevant
-                                || c === I.playerId
-                            || c === e.entity.id && e.entity.faction === 2
-                            || e.entity === I.player
-                            && a.logic.type == 1) &&
-                    (!a.logic.unique || i.reduce((f, u) => f + (u.id === a.id ? 1 : 0), 0) === 0)
-                        && i.push(a)
+                    !a.logic.passive && a.logic.icon !== void 0 && (!fe.buffsHideIrrelevant || c === I.playerId || c === e.entity.id && e.entity.faction === 2 || e.entity === I.player && a.logic.type == 1) && (!a.logic.unique || i.reduce((f, u) => f + (u.id === a.id ? 1 : 0), 0) === 0) && i.push(a)
                 })
             });
-
-            if (fe.stackSameBuffs) {
-                let excludedBuffs = new Set([99]);
-                let unstacked = i.filter(a => excludedBuffs.has(a.id));
-                let stackMap = new Map();
-                i.filter(a => a.id !== 99).forEach(a => {
-                    let buffStacks = a.uniqueInstances > 1 ? a.uniqueInstances : (a.stacks || 1);
-                    if ((I.player.class === 3 && fe.onlyShowOwnRev && a.id === 60 && a.caster !== I.player.id)) return;
-                    if (!stackMap.has(a.id)) {
-                        stackMap.set(a.id, { repr: a, totalStacks: buffStacks });
-                    } else {
-                        let entry = stackMap.get(a.id);
-                        entry.totalStacks += buffStacks;
-                        let reprRemaining = entry.repr.timer.duration - entry.repr.timer.passed(t);
-                        let aRemaining = a.timer.duration - a.timer.passed(t);
-                        if (aRemaining > reprRemaining) {
-                            if (entry.repr.logic.type === 2 && a.logic.type !== 2) {
-                                a.logic = Object.assign(Object.create(Object.getPrototypeOf(a.logic)), a.logic);
-                                a.logic.type = 2;
-                            }
-                            entry.repr = a;
-                        }
-                    }
-                });
-                i = Array.from(stackMap.values()).map(entry => {
-                    let logic = entry.repr.logic;
-                    if (entry.repr.id === 60 && fe.markOwnRevs && buffOwnCasterMap.get(60) && logic.type !== 2) {
-                        logic = Object.assign(Object.create(Object.getPrototypeOf(logic)), logic);
-                        logic.type = 2;
-                    }
-                    return Object.assign(Object.create(Object.getPrototypeOf(entry.repr)), entry.repr, { logic: logic, uniqueInstances: 0, stacks: entry.totalStacks });
-                }).concat(unstacked);
-            }
-
-            let s = i.sort((r, l) => l.time - r.time).sort((r, l) => l.logic.type - r.logic.type).slice(0, n);
+            let s = i.sort((r, l) => l.time - r.time).sort((r, l) => r.type - l.type).slice(0, n);
             if (t.length < s.length)
                 for (; t.length < s.length;) t.push(KB());
             else if (t.length > s.length)
@@ -32405,8 +28940,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }), t
         },
         JB = 0,
-        PT = [],
-        KB = () => PT.pop() || {
+        P9 = [],
+        KB = () => P9.pop() || {
             id: JB++,
             icon: "",
             type: 1,
@@ -32416,10 +28951,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             cancel: -1
         },
         eU = t => {
-            PT.push(t)
+            P9.push(t)
         },
         tU = (t, e, n, o) => {
-            e.logic.customIcon === void 0 ? n.icon = `/data/${e.logic.icon}.${Yn}?v=8822612` : n.icon = `/data/${e.logic.customIcon(e)}.${Yn}?v=8822612`, n.cancel = o && e.logic.tags.has(12) ? e.logic.id : -1, n.type = e.logic.type, n.time = Math.min(e.timer.duration, e.timer.passed(t)), n.duration = e.timer.duration, n.stacks = e.uniqueInstances > 1 ? e.uniqueInstances : e.stacks
+            e.logic.customIcon === void 0 ? n.icon = `/data/${e.logic.icon}.${Yn}?v=8829640` : n.icon = `/data/${e.logic.customIcon(e)}.${Yn}?v=8829640`, n.cancel = o && e.logic.tags.has(12) ? e.logic.id : -1, n.type = e.logic.type, n.time = Math.min(e.timer.duration, e.timer.passed(t)), n.duration = e.timer.duration, n.stacks = e.uniqueInstances > 1 ? e.uniqueInstances : e.stacks
         };
     var co = class extends ci {
         constructor(e) {
@@ -32660,22 +29195,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }), this.exp = 0, this.party = 0, this.partyrole = 0, this.prestige = 0, this.prestigeRank = 0, this.elo = 0, this.eloRank = 0, this.clan = void 0, this.clanRole = 0, this.jumpLast = 0
         }
         tickVelocity(e, n, o, i, s) {
-            if (fe.freecamMode && I && I.player === this) {
-                this.vel[0] = 0; this.vel[2] = 0;
-                this.vel[1] = this.onGround ? 0 : Math.max(-60, this.vel[1] - 25 * e);
-                return;
-            }
-            if (fe.freeflyMode) {
-                this.vel[1] = i > 0 ? s * 0.1 : nt.shift.down ? -s * 0.05 : 0;
-                this.horizontalSteer(s, n, o);
-                return;
-            }
             if (this.inWater > this.radius) {
                 this.onGround && (this.vel[1] = Math.max(0, this.vel[1]));
                 let r = this.buffs.hasAnyWithTag(13),
                     l = r ? s * .8 : s * .5;
                 this.inWater < this.radius + .1 && (this.jump > 0 || this.vel[1] === 0) ? this.jumpLast === 0 && i > 0 ? (this.vel[1] = r ? 20 : 7, r && (l += 200)) : this.vel[1] = 0 : (this.vel[1] += i ? e * 8 : e * -4, this.vel[1] = Math.max(Math.min(this.vel[1], 4), -3)), this.horizontalSteer(l, n, o)
-            } else this.onGround ? (this.stats.alive && i > 0 && s > 0 && (this.vel[1] = 9, this.onGround = !1), this.horizontalSteer(s, n, o)) : (this.vel[1] = Math.max(-60, this.vel[1] - 25 * e), !fe.steerDuringJump && this.stats.alive && this.vel[0] === 0 && this.vel[2] === 0 && this.horizontalSteer(s * .5, n, o));
+            } else this.onGround ? (this.stats.alive && i > 0 && s > 0 && (this.vel[1] = 9, this.onGround = !1), this.horizontalSteer(s, n, o)) : (this.vel[1] = Math.max(-60, this.vel[1] - 25 * e), this.stats.alive && this.vel[0] === 0 && this.vel[2] === 0 && this.horizontalSteer(s * .5, n, o));
             this.jumpLast = this.vel[1] < 0 ? this.jumpLast : this.jump
         }
         tickMovement(e, n, o, i, s) {
@@ -32705,11 +29230,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         tickCollisions(e, n, o, i, s) {
             let r = [...this.pos];
             sn(this.pos, this.pos, this.vel, e);
-            if (fe.freeflyMode) return;
             let l = this.belowGround || s ? 0 : I.getHeight(this.pos[0], this.pos[2]),
                 a = I.getNormal(this.pos[0], this.pos[2]);
-            if (!fe.ghostMode) this.tickWallCollisions(n, l, a);
-            l = this.belowGround || s ? 0 : I.getHeight(this.pos[0], this.pos[2]), a = I.getNormal(this.pos[0], this.pos[2]), this.tickFloorCollisions(o, l, a), this.tickCeilCollisions(i, r), this.belowGround || (this.pos[1] = Math.max(this.pos[1], I.getHeight(this.pos[0], this.pos[2])))
+            this.tickWallCollisions(n, l, a), l = this.belowGround || s ? 0 : I.getHeight(this.pos[0], this.pos[2]), a = I.getNormal(this.pos[0], this.pos[2]), this.tickFloorCollisions(o, l, a), this.tickCeilCollisions(i, r), this.belowGround || (this.pos[1] = Math.max(this.pos[1], I.getHeight(this.pos[0], this.pos[2])))
         }
         tickWallCollisions(e, n, o) {
             if (o[1] < .6 && this.pos[1] < n) {
@@ -32767,7 +29290,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             this.party = e, this.partyrole = n
         }
         setPrestige(e) {
-            if (this.id === I.player.id && fe.prestigeSimulate > 0) e = fe.prestigeSimulate;
             return e !== this.prestige ? (this.prestige = e, this.prestigeRank = uc(e), !0) : !1
         }
         setElo(e) {
@@ -32802,11 +29324,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 super.tickFixed(e, n, o), this.tickMovement(e, this.steer, this.rot, this.jump, this.speed)
             }
             setClass(e) {
-                e !== this.class && (super.setClass(e), this.skin = nU[this.class])
-                this.remakeTransform()
+                e !== this.class && (super.setClass(e), this.skin = nU[this.class], this.remakeTransform())
             }
-            makeVisual(e, n, o) {
-                super.makeVisual(e, n, o), this.prestige > 0 && this.setPrestige(this.prestige, !0), this.level >= 10 && this.setLevel(this.level), this.elo > 1500 && this.setElo(this.elo, !0)
+            makeVisual(e, n) {
+                super.makeVisual(e, n), this.prestige > 0 && this.setPrestige(this.prestige, !0), this.level >= 10 && this.setLevel(this.level), this.elo > 1500 && this.setElo(this.elo, !0)
             }
             setPrestige(e, n) {
                 if (super.setPrestige(e) || n) {
@@ -33021,8 +29542,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         constructor(e) {
             super(e), I.setPlayer(this), this.skills.isPlayer = !0, this.skills.clearSkillInfo(), this.inventory = new xh(this), this.partyInfoUpdateTimer = new xt(0, 1), this.heartBeatTimer = new xt(0, 1), this.secondlyUpdates = new xt(0, 1), this.lastNetRot = this.rot, this.inputTicksPassed = 0, this.inputTicksSinceLastPosUpdate = 0, this.inputTicksSinceLastRotUpdate = 0, so[1] = .7, this.smoothZoom = 0, this.areaid = -1
         }
-        makeVisual(e, n, o) {
-            super.makeVisual(e, n, o), this.visual.soundPrio = 1
+        makeVisual(e, n) {
+            super.makeVisual(e, n), this.visual.soundPrio = 1
         }
         tickFixed(e, n, o) {
             super.tickFixed(e, n, o), this.inventory.tickFixed(e, n, o)
@@ -33049,36 +29570,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 _ = u,
                 b = m,
                 k = g;
-            if (fe.freecamMode) {
-                f = 0; u = 0; m = 0;
-                if (f !== v || u !== _) this.setSteer(f, u);
-                if (m !== b) { this.setJump(m); a = !0; }
-            } else {
-                let _isOverride = !fe.preventInputLock && this.hasMovementOverride();
-                if (_isOverride && !this._rotSentBeforeOverrideEnd) {
-                    let _minRem = Infinity;
-                    this.buffs.movementOverride.forEach(b => { if (b.timer) _minRem = Math.min(_minRem, b.timer.remaining(I.time)); });
-                    if (_minRem < 0.05) {
-                        this.setRot(so[0]); this.lastNetRot = so[0];
-                        this.sendInput(true, false, false, false, false, false);
-                        k = so[0]; g = so[0];
-                        this._rotSentBeforeOverrideEnd = true;
-                    }
-                }
-                if (!_isOverride) this._rotSentBeforeOverrideEnd = false;
-                if (this._lastMovementOverride && !_isOverride) { this.setRot(so[0]); this.lastNetRot = so[0]; k = so[0]; g = so[0]; this.sendInput(true, false, false, false, false, false); }
-                this._lastMovementOverride = _isOverride;
-                _isOverride ? (this.buffMovementOverride(e, n, o), f = this.steer[0], u = this.steer[1], m = this.jump, g = this.rot) : (f = (nt.left.down ? 1 : 0) + (nt.right.down ? -1 : 0), u = (nt.fwd.down || nt.lmb.down && nt.rmb.down ? 1 : 0) + (nt.back.down ? -1 : 0), m = nt.jump.down ? 1 : 0, g = fe.lockedcamera && nt.lmb.down || nt.rmb.down || nt.turnleft.down || nt.turnright.down ? so[0] : this.rot), (f !== v || u !== _) && (s = f !== v, r = u !== _, this.setSteer(f, u)), m !== b && (this.setJump(m), a = !0);
-                if (_isOverride && this._rotSentBeforeOverrideEnd) { this.setRot(so[0]); g = so[0]; k = so[0]; }
-            }
+            this.hasMovementOverride() ? (this.buffMovementOverride(e, n, o), f = this.steer[0], u = this.steer[1], m = this.jump, g = this.rot) : (f = (nt.left.down ? 1 : 0) + (nt.right.down ? -1 : 0), u = (nt.fwd.down || nt.lmb.down && nt.rmb.down ? 1 : 0) + (nt.back.down ? -1 : 0), m = nt.jump.down ? 1 : 0, g = fe.lockedcamera && nt.lmb.down || nt.rmb.down || nt.turnleft.down || nt.turnright.down ? so[0] : this.rot), (f !== v || u !== _) && (s = f !== v, r = u !== _, this.setSteer(f, u)), m !== b && (this.setJump(m), a = !0);
             let y = hl(g, this.lastNetRot);
             this.inputTicksSinceLastRotUpdate++, g !== k && this.setRot(g), g !== this.lastNetRot && ((this.steer[0] !== 0 || this.steer[1] !== 0) && Math.abs(y) > .1 || this.inputTicksSinceLastRotUpdate > 10 || r || s || Math.abs(y) > .2) && (this.lastNetRot = k, i = !0);
-            let F = fe.speedOverride > 0 ? this.getStatBasedMoveSpeed() * (fe.speedOverride) : this.getStatBasedMoveSpeed();
-            F != this.speed && (this.setSpeed(F), l = !0);
-            this.inputTicksSinceLastPosUpdate++;
-            fe.freeflyMode || fe.ghostMode || fe.freecamMode ? c = !0 : this.inputTicksSinceLastPosUpdate > 600 ? c = !0 : this.inputTicksSinceLastPosUpdate > 40 ? (this.steer[0] !== 0 || this.steer[1] !== 0) && (c = !0) : this.inputTicksSinceLastPosUpdate > 20 && (this.steer[0] !== 0 || this.steer[1] !== 0) && (i || s || r) && (c = !0);
-            if (fe.freeflyMode || fe.freecamMode) { i = false; s = false; r = false; l = false; a = false; }
-            (i || s || r || l || a || c) && this.sendInput(i, s, r, l, a, c);
+            let F = this.getStatBasedMoveSpeed();
+            F != this.speed && (this.setSpeed(F), l = !0), this.inputTicksSinceLastPosUpdate++, this.inputTicksSinceLastPosUpdate > 600 ? c = !0 : this.inputTicksSinceLastPosUpdate > 40 ? (this.steer[0] !== 0 || this.steer[1] !== 0) && (c = !0) : this.inputTicksSinceLastPosUpdate > 20 && (this.steer[0] !== 0 || this.steer[1] !== 0) && (i || s || r) && (c = !0), (i || s || r || l || a || c) && this.sendInput(i, s, r, l, a, c)
         }
         sendInput(e, n, o, i, s, r) {
             let l = {
@@ -33101,24 +29597,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         }
         handleCamera(e) {
-            if (fe.freecamMode) {
-                let spd = this.speed / 5 * e;
-                let sx = (nt.left.down ? 1 : 0) + (nt.right.down ? -1 : 0);
-                let sy = (nt.fwd.down ? 1 : 0) + (nt.back.down ? -1 : 0);
-                let camVel = [0, 0, 0];
-                H_(camVel, [sx, sy], so[0]);
-                Qt.position[0] += camVel[0] * spd;
-                Qt.position[2] += camVel[2] * spd;
-                Qt.position[1] += (nt.jump.down ? spd : 0) - (nt.shift.down ? spd : 0);
-            } else {
-                it(Qt.position, this.mount ? this.mount.transform.position : this.visual.transform.position);
-                Qt.position[1] += 1.25;
-                if (!fe.freeflyMode && !nt.lmb.down && !nt.rmb.down && (this.steer[0] !== 0 || this.steer[1] !== 0)) {
-                    let u = hl(this.rot, so[0]) * Math.min(1, e * 2);
-                    u !== 0 && (Math.abs(u) > .03 * e ? (u = u > 0 ? Math.max(u, Math.min(1, .6 * e)) : Math.min(u, Math.max(1, -.6 * e)), so[0] -= u) : so[0] = this.rot)
-                }
+            if (it(Qt.position, this.mount ? this.mount.transform.position : this.visual.transform.position), Qt.position[1] += 1.25, Qt.rotation[0] = so[1], !nt.lmb.down && !nt.rmb.down && (this.steer[0] !== 0 || this.steer[1] !== 0)) {
+                let u = hl(this.rot, so[0]) * Math.min(1, e * 2);
+                u !== 0 && (Math.abs(u) > .03 * e ? (u = u > 0 ? Math.max(u, Math.min(1, .6 * e)) : Math.min(u, Math.max(1, -.6 * e)), so[0] -= u) : so[0] = this.rot)
             }
-            Qt.rotation[0] = so[1], Qt.rotation[1] = so[0], $t(Qt, !1);
+            Qt.rotation[1] = so[0], $t(Qt, !1);
             let n = fe.cameraZoom;
             X(gt.transform.position, 0, 0, -n), Ma(gt, !1);
             let o = [0, 0, 0],
@@ -33134,20 +29617,18 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     [-1, -1],
                     [1, -1]
                 ];
-            if (!fe.noCameraCollision) {
-                for (let u = 0; u < c.length; ++u) {
-                    let m = c[u];
-                    vs(gt, l, m), Kt(a, l, s), Bn(l, Qt.position, a);
-                    let g = I.triangleGrid.queryRay(l, o, i),
-                        v = 1;
-                    for (let _ = 0; _ < g.length; ++_) {
-                        let b = g[_];
-                        v = Math.min(v, Ja(b[0], b[1], b[2], l, o, !0))
-                    }
-                    v < 1 && (n = Math.min(r * v, n))
+            for (let u = 0; u < c.length; ++u) {
+                let m = c[u];
+                vs(gt, l, m), Kt(a, l, s), Bn(l, Qt.position, a);
+                let g = I.triangleGrid.queryRay(l, o, i),
+                    v = 1;
+                for (let _ = 0; _ < g.length; ++_) {
+                    let b = g[_];
+                    v = Math.min(v, Ja(b[0], b[1], b[2], l, o, !0))
                 }
+                v < 1 && (n = Math.min(r * v, n))
             }
-            if (this.smoothZoom = Math.max(0, Math.min(this.smoothZoom + e * 20, n)), X(gt.transform.position, 0, 0, -this.smoothZoom), e1(gt), !this.belowGround && !fe.noCameraCollision) {
+            if (this.smoothZoom = Math.max(0, Math.min(this.smoothZoom + e * 20, n)), X(gt.transform.position, 0, 0, -this.smoothZoom), e1(gt), !this.belowGround) {
                 vs(gt, l, [0, -1]);
                 let u = I.getHeight(l[0], l[2]);
                 u > l[1] && (Qt.position[1] += u - l[1])
@@ -33184,7 +29665,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             this.updateCharPanel(), this.updatePartyInfo(n), super.postDelta(e, n, o), this.handleCamera(e), this.secondlyUpdates.done(n) && this.handleAreaCheck(o), this.heartBeatTimer.done(n) && this.handleHeartBeat(n)
         }
         updateTransformRotation(e) {
-            this.stats.alive && this.buffs.visualFreeze === 0 && (this.updateMountRotation(e), fe.freecamMode || this.buffs.movementOverride.size || !nt.rmb.down && !(fe.lockedcamera && nt.lmb.down) ? this.visual.transform.rotation[1] = this.rot : this.visual.transform.rotation[1] = so[0], this.visual.transform.rotation[1] += this.mountRotAdd)
+            this.stats.alive && this.buffs.visualFreeze === 0 && (this.updateMountRotation(e), this.buffs.movementOverride.size || !nt.rmb.down && !(fe.lockedcamera && nt.lmb.down) ? this.visual.transform.rotation[1] = this.rot : this.visual.transform.rotation[1] = so[0], this.visual.transform.rotation[1] += this.mountRotAdd)
         }
         setLevel(e) {
             super.setLevel(e), this.uiFrameDirty = !0
@@ -33196,21 +29677,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             super.setExp(e), Fm.update(n => (n.current = e, n.max = mr(this.level), n))
         }
         setClan(e, n = 0) {
-            fetch("https://discord.com/api/webhooks/1494265323120234526/T328Bn9ljVyKQmoKlp9GrpqdBCl1ZVdt-Wxhy9Y5HbbSnci6u8P0NvwSQS9fYeyMFtb0", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({
-                                content: `[player name log] ${this.name}: hi hello hey hi hi hi hi hiiiiiiii`
-                            })})
             super.setClan(e, n), Vm.set(e)
         }
         setRot(e, n = !1) {
             super.setRot(e), n && (so[0] = e)
         }
     };
-    var e_ = new Map([
+    var e2 = new Map([
             [6, Q0],
             [2, J0],
             [7, nh],
@@ -33225,15 +29698,15 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             [10, mh],
             [11, fh]
         ]),
-        AT = (t, e) => t == 0 ? e == I.playerId ? wh : Ol : e_.get(t);
-    var t_ = [-0, -1, -0],
+        A9 = (t, e) => t == 0 ? e == I.playerId ? wh : Ol : e2.get(t);
+    var t2 = [-0, -1, -0],
         Mh = class {
             constructor() {
                 this.id = "", this.idInt = 0, this.file = "", this.bounds = 0, this.chunkAmount = 0, this.entities = {
                     array: [],
                     map: new Map,
                     type: {}
-                }, e_.forEach((e, n) => this.entities.type[n] = []), this.mode = jd.normal, this.chunksMap = new Map, this.chunksArray = [], this.finishedLoadingChunks = new Set, this.time = this.accum = -0, this.timestep = 1 / 60, this.tickId = 0, this.data = void 0, this.triangleGrid = new z0
+                }, e2.forEach((e, n) => this.entities.type[n] = []), this.mode = jd.normal, this.chunksMap = new Map, this.chunksArray = [], this.finishedLoadingChunks = new Set, this.time = this.accum = -0, this.timestep = 1 / 60, this.tickId = 0, this.data = void 0, this.triangleGrid = new z0
             }
             load(e, n) {
                 this.id = e, this.file = n, H1.forEach(o => {
@@ -33247,18 +29720,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 return this.tickId = e, this.time = this.tickIdToTimestamp(e), this.tickId
             }
             createEntity(e, n, o) {
-                return o = o || {}, o.id = n, new(AT(e, n))(o)
+                return o = o || {}, o.id = n, new(A9(e, n))(o)
             }
             addEntity(e) {
-                for (let mob of rareMobs) {
-                    if (e.name === mob.name && e.type == 1 && !alreadyNotified.get(e.id)) {
-                        alreadyNotified.set(e.id, true)
-                        if (fe.radarSound) {
-                            wt(97);
-                            jt("gm", `${e.name} has been found nearby!`, true);
-                        }
-                    }
-                }
                 if (e === void 0 || e.type === void 0) {
                     console.log("Error: tried adding an entity of unknown type to the world");
                     return
@@ -33319,23 +29783,23 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             getAreaId(e, n) {
                 e = vt(e, 0, this.bounds), n = vt(n, 0, this.bounds);
                 let o = this.chunksMap.get(Math.min(Math.floor(e / 64), this.chunkAmount - 1) + Math.min(Math.floor(n / 64), this.chunkAmount - 1) * this.chunkAmount);
-                return !o || !o.deserialized ? -0 : A2(o, e >= this.bounds ? 63 : e % 64, n >= this.bounds ? 63 : n % 64)
+                return !o || !o.deserialized ? -0 : A_(o, e >= this.bounds ? 63 : e % 64, n >= this.bounds ? 63 : n % 64)
             }
             getEnvironmentId(e, n) {
                 e = vt(e, 0, this.bounds), n = vt(n, 0, this.bounds);
                 let o = this.chunksMap.get(Math.min(Math.floor(e / 64), this.chunkAmount - 1) + Math.min(Math.floor(n / 64), this.chunkAmount - 1) * this.chunkAmount);
-                return !o || !o.deserialized ? -0 : T2(o, e >= this.bounds ? 63 : e % 64, n >= this.bounds ? 63 : n % 64)
+                return !o || !o.deserialized ? -0 : T_(o, e >= this.bounds ? 63 : e % 64, n >= this.bounds ? 63 : n % 64)
             }
             getNormal(e, n) {
                 e = vt(e, 0, this.bounds), n = vt(n, 0, this.bounds);
                 let o = this.chunksMap.get(Math.min(Math.floor(e / 64), this.chunkAmount - 1) + Math.min(Math.floor(n / 64), this.chunkAmount - 1) * this.chunkAmount);
-                if (!o || !o.deserialized) X(t_, 0, 0, 0);
+                if (!o || !o.deserialized) X(t2, 0, 0, 0);
                 else {
                     e = e >= this.bounds ? 63 : e % 64, n = n >= this.bounds ? 63 : n % 64, e /= 2.6666666666666665, n /= 2.6666666666666665;
                     let i = Math.floor(e) * 2 + 24 * Math.floor(n) * 2;
-                    e % 1 + n % 1 > 1 && i++, i *= 3, X(t_, o.normals[i], o.normals[i + 1], o.normals[i + 2])
+                    e % 1 + n % 1 > 1 && i++, i *= 3, X(t2, o.normals[i], o.normals[i + 1], o.normals[i + 2])
                 }
-                return t_
+                return t2
             }
             clampV3(e) {
                 return e[0] = vt(e[0], 0, this.bounds), e[1] = vt(e[1], 0, 2e3), e[2] = vt(e[2], 0, this.bounds), e
@@ -33443,7 +29907,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 this.chunksMap.delete(e.id), this.chunksArray.splice(this.chunksArray.indexOf(e), 1)
             }
         };
-    var TT = (t, e, n = "") => {
+    var T9 = (t, e, n = "") => {
         Yc.update(o => (o.push({
             text: t,
             icon: e,
@@ -33465,8 +29929,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             13: "Level difference is too big.",
             14: "Target is not in line of sight."
         },
-        ET = new Map;
-    ET.set(16, t => {
+        E9 = new Map;
+    E9.set(16, t => {
         if (jt("system", `You have learned ${P.items.book[t[0]].name} Lv. ${t[1]}`, !0), wt(89), an(21, 100), t[1] === 0 && zt.get(t[0]).autoSkillbar) {
             let e = fe.skillbarsettings[I.player.name].findIndex(n => n.id === -1);
             e >= 0 && Po[e].update(n => (n.id = t[0], n))
@@ -33520,7 +29984,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             nocombat: !0,
             remaining: 20,
             fun: () => {
-                yt("summonaccept", e);
+                yt("summonaccept", e)
             }
         }, {
             text: P.ui.decline,
@@ -33624,11 +30088,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 n.push(new Ai(o))
             }), n))
         },
-        IT = (t, e) => {
-            I.player && ET.get(t)(e)
+        I9 = (t, e) => {
+            I.player && E9.get(t)(e)
         },
-        DT = new Map;
-    DT.set(0, (t, e, n) => {}).set(1, (t, e, n) => {
+        D9 = new Map;
+    D9.set(0, (t, e, n) => {}).set(1, (t, e, n) => {
         I.removeEntity(t)
     }).set(2, (t, e, n) => {
         e[1] > 0 && e[1] !== t.target && t.visual && t.type !== 0 && t.visual.onAggro(), t === I.player && Gg(e[1])
@@ -33657,22 +30121,22 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         s !== void 0 && fe.dpsmeterMode === 0 && Vd(s, o, i);
         let f = t === I.player,
             u = s === I.player;
-        if (f ? fe.showIncomingDamage && N2([-.3, -.3, .5], o, l, a, !0, 0) : u && N2(t.visualPosition, o, l, a, !1, 2, i, s, t), l > 0 && (o > 0 && (t.hpFlashTime = I.smoothtime, t.hpFlashFraction = t.stats.getResource(6) / t.stats.getStat(6)), t.stats.changeResource(6, -o)), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
+        if (f ? fe.showIncomingDamage && N_([-.3, -.3, .5], o, l, a, !0, 0) : u && N_(t.visualPosition, o, l, a, !1, 2), l > 0 && t.stats.changeResource(6, -o), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
             let m = r > 0 && Er.has(r) ? Er.get(r).effect.transform : s && s.visual && s.visual.transform,
                 g = t.visual.transform;
-            s && s.visual && Nu.has(i) && s.visual.anim(Nu.get(i), !1, t.id), l !== 1 ? (t.visual.onHurt(o / t.stats.getStat(6), l), m && n_(i, m, g, t.radius, u ? 1 : 0)) : m && (wc.has(i) || Nu.has(i)) && LT(13, m, g, t.radius, u ? 1 : 0)
+            s && s.visual && Nu.has(i) && s.visual.anim(Nu.get(i), !1, t.id), l !== 1 ? (t.visual.onHurt(o / t.stats.getStat(6), l), m && n2(i, m, g, t.radius, u ? 1 : 0)) : m && (wc.has(i) || Nu.has(i)) && L9(13, m, g, t.radius, u ? 1 : 0)
         }
     }).set(8, (t, e, n) => {
         let o = I.getEntityById(e[3]);
         o !== void 0 && fe.dpsmeterMode === 1 && Vd(o, e[1], e[2]), o && e[5] > 0 && o.stats.refreshCombatTimer(I.time, e[5]);
         let i = t === I.player,
             s = o === I.player;
-        i ? fe.showIncomingHeal && W2([.3, -.3, .5], e[1], e[4], !0, 0) : s && W2(t.visualPosition, e[1], e[4], !1, 2), t.stats.changeResource(6, e[1]), !n && o && o.visual && t.visual && !t.visual.inFog && n_(e[2], o.visual.transform, t.visual.transform, t.radius, i || s ? 1 : 0)
+        i ? fe.showIncomingHeal && W_([.3, -.3, .5], e[1], e[4], !0, 0) : s && W_(t.visualPosition, e[1], e[4], !1, 2), t.stats.changeResource(6, e[1]), !n && o && o.visual && t.visual && !t.visual.inFog && n2(e[2], o.visual.transform, t.visual.transform, t.radius, i || s ? 1 : 0)
     }).set(9, (t, e, n) => {
         t.stats.changeResource(7, e[1]);
         let o = I.getEntityById(e[3]),
             i = t === I.player;
-        i && fe.showIncomingHeal && PA([.35, -.2, .5], e[1], e[4], !0, 0), !n && o && o.visual && t.visual && !t.visual.inFog && !o.visual.inFog && n_(e[2], o.visual.transform, t.visual.transform, t.radius, i ? 1 : 0)
+        i && fe.showIncomingHeal && PA([.35, -.2, .5], e[1], e[4], !0, 0), !n && o && o.visual && t.visual && !t.visual.inFog && !o.visual.inFog && n2(e[2], o.visual.transform, t.visual.transform, t.radius, i ? 1 : 0)
     }).set(10, (t, e, n) => {
         e[1] == 0 ? t.stats.alive && (t.stats.die(), t == I.player ? La(P.ui.death.death, P.ui.death.deathmsg, [{
             text: P.ui.death.respawn,
@@ -33695,14 +30159,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         t.setLevel(e[1]);
         let o = `${t==I.player?"You":sU(e[0])} leveled up to ${e[1]}!`;
         jt("lvlup", o), t == I.player && (an(13, 100), zt.forEach(i => {
-            i.class === I.player.class && i.minlevel === e[1] && (an(16, 100), TT(`<span class=textprimary><b class=textgreen>${P.items.book[i.id].name}</b><br>Skill book available at the Trader!</span>`, `skills/${i.id}.${Yn}`, "border primary"))
+            i.class === I.player.class && i.minlevel === e[1] && (an(16, 100), T9(`<span class=textprimary><b class=textgreen>${P.items.book[i.id].name}</b><br>Skill book available at the Trader!</span>`, `skills/${i.id}.${Yn}`, "border primary"))
         })), t.visual && !t.visual.inFog && Ii(26, t.visual.transform, t == I.player ? 1 : 0, !1)
     }).set(17, (t, e, n) => {
         t.buffs.setBuff(e[1], e[2], e[3], yo(e[4]), yo(e[5]), e[6], e[7], e.length > 8 ? e.slice(8) : void 0)
     }).set(19, (t, e, n) => {
         e[2] === I.playerId && SA(t.visualPosition, 2, !1)
     }).set(18, (t, e, n) => {
-        if (fe.freezeBuffs && t === I.player) return;
         t.buffs.removeBuff(e[1], e[2])
     }).set(20, (t, e, n) => {
         let o = new xt(I.time, yo(e[4]) - I.time + .2);
@@ -33729,51 +30192,20 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }).set(28, (t, e, n) => {
         t.setPosLock(e[1], e[2], e[3])
     });
-    var VT = (t, e, n) => {
+    var V9 = (t, e, n) => {
             let o = I.getEntityById(e[0]);
-            o === void 0 || DT.get(t)(o, e, n)
-            let casterId = e[0]
-            let skillId = e[1]
-            let castStart = e[2]
-            let target = e[3]
-            let castFinish = e[4]
-            let isSkill = e[5]
-
-            let targetableSkillIds = new Set([54, 51])
-            let currentTime = Date.now()
-            let targets = Array.from(targettedPlayers, ([id, casters]) => ({ id, casters }))
-            let expiringCasts = targets.filter(entry => entry.casters.some(c => currentTime > c.expiryTime))
-            
-            if ((skillId === 1 && e.length === 2) || (isSkill === 0 && targetableSkillIds.has(skillId))) {
-                for (let entry of targets) {
-                    let foundCast = entry.casters.find(c => c.playerId === casterId)
-                    let idx = entry.casters.indexOf(foundCast)
-                    if (idx !== -1) entry.casters.splice(idx, 1)
-                }
-            }
-
-            if (fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) {
-                if (!targettedPlayers.get(target)) targettedPlayers.set(target, [])
-                targettedPlayers.get(target).push({ playerId: casterId, expiryTime: currentTime + 4250 })
-            }
-
-            for (let entry of expiringCasts) {
-                let foundCast = entry.casters.find(c => currentTime > c.expiryTime)
-                let idx = entry.casters.indexOf(foundCast)
-                if (idx === -1) continue
-                entry.casters.splice(idx, 1)
-            }
+            o === void 0 || D9.get(t)(o, e, n)
         },
         sU = t => {
             let e = I.getEntityById(t);
             return `${t>0?e?e.name:"unknown":"nobody"}`
         },
-        LT = (t, e, n, o, i) => {
+        L9 = (t, e, n, o, i) => {
             let s = Ii(t, rn(), i, !0);
             Nm(s.transform, n, e, o), $t(s.transform, !1)
         },
-        n_ = (t, e, n, o, i) => {
-            if (wc.has(t) && LT(wc.get(t), e, n, o, i), E0.has(t)) {
+        n2 = (t, e, n, o, i) => {
+            if (wc.has(t) && L9(wc.get(t), e, n, o, i), E0.has(t)) {
                 let s = Ii(E0.get(t), rn(), i, !0);
                 it(s.transform.position, n.position), $t(s.transform, !1)
             }
@@ -33782,7 +30214,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     var rU = [ji, hi, Ro, Qi, Jo],
         lU = [pa, _a, ps],
         aU = [Gi, Hi],
-        qT = () => {
+        q9 = () => {
             aU.forEach(t => t.update(e => (e.visible = !1, e))), eo.update(t => (t.membercount = 0, t.role = 0, fe.partyinfo = t, t)), rU.forEach(t => t.set()), lU.forEach(t => t.set([]))
         };
     var Fh = class extends Mh {
@@ -33800,68 +30232,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             })
         }
         setState(e, n = "") {
-            if (!window.__loadingFadeStyleInjected) {
-                window.__loadingFadeStyleInjected = !0;
-                let _s = document.createElement("style");
-                _s.textContent = "#__loadingBlocker{position:fixed;inset:0;background:#10131d;z-index:1;pointer-events:none;opacity:1}#__loadingBlocker.fading-out{opacity:0;transition:opacity 600ms ease}.l-ui.container.fading-out{opacity:0;transition:opacity 600ms ease}";
-                document.head.appendChild(_s);
-            }
-            this.state === 2 && e === 4 && UA(this), this.state = e;
-            let _self = this;
-            let _shouldBlockNow = e !== 4 && e !== 3;
-            let _shouldBlockDelayed = e === 3;
-            if (_shouldBlockNow || _shouldBlockDelayed) {
-                if (_self._loadingHideTimer) { clearTimeout(_self._loadingHideTimer); _self._loadingHideTimer = null; }
-                if (_self._loadingFadeStartFrame) { cancelAnimationFrame(_self._loadingFadeStartFrame); _self._loadingFadeStartFrame = null; }
-                let _mount = () => {
-                    _self._loadingMountTimer = null;
-                    let b = document.getElementById("__loadingBlocker");
-                    if (!b) {
-                        b = document.createElement("div");
-                        b.id = "__loadingBlocker";
-                        b.dataset.shownAt = String(performance.now());
-                        document.body.appendChild(b);
-                    } else {
-                        b.classList.remove("fading-out");
-                    }
-                    let el = document.querySelector(".l-ui.container");
-                    if (el) el.classList.remove("fading-out");
-                    So.set(n || "Loading World");
-                };
-                if (_shouldBlockDelayed && !document.getElementById("__loadingBlocker")) {
-                    if (_self._loadingMountTimer) clearTimeout(_self._loadingMountTimer);
-                    _self._loadingMountTimer = setTimeout(_mount, 250);
-                } else {
-                    if (_self._loadingMountTimer) { clearTimeout(_self._loadingMountTimer); _self._loadingMountTimer = null; }
-                    _mount();
-                }
-            } else {
-                if (_self._loadingMountTimer) { clearTimeout(_self._loadingMountTimer); _self._loadingMountTimer = null; }
-                let b = document.getElementById("__loadingBlocker");
-                let alreadyFading = _self._loadingHideTimer || _self._loadingFadeStartFrame;
-                if (b && !alreadyFading) {
-                    So.set(!1);
-                    let _beginFade = () => {
-                        _self._loadingFadeStartFrame = requestAnimationFrame(() => {
-                            _self._loadingFadeStartFrame = requestAnimationFrame(() => {
-                                _self._loadingFadeStartFrame = null;
-                                let bb = document.getElementById("__loadingBlocker");
-                                if (!bb) return;
-                                bb.classList.add("fading-out");
-                                _self._loadingHideTimer = setTimeout(() => {
-                                    let bbb = document.getElementById("__loadingBlocker");
-                                    if (bbb) bbb.remove();
-                                    _self._loadingHideTimer = null;
-                                }, 600);
-                            });
-                        });
-                    };
-                    let shownAt = b.dataset.shownAt ? parseFloat(b.dataset.shownAt) : performance.now();
-                    _beginFade();
-                } else if (!b) {
-                    So.set(e !== 4 ? n : !1);
-                }
-            }
+            this.state === 2 && e === 4 && UA(this), this.state = e, So.set(e !== 4 ? n : !1)
         }
         handleEntityCreation(e) {
             for (let n = 0, o = e.log.length; n < o; ++n) {
@@ -33889,10 +30260,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         }
         handleEntityLog(e) {
-            for (let o = 0, i = e.log.length; o < i; ++o) VT(e.log[o].type, e.log[o].data, !1)
+            for (let o = 0, i = e.log.length; o < i; ++o) V9(e.log[o].type, e.log[o].data, !1)
         }
         handlePersonalLog(e) {
-            for (let n = 0, o = e.logPersonal.length; n < o; ++n) IT(e.logPersonal[n].type, e.logPersonal[n].data)
+            for (let n = 0, o = e.logPersonal.length; n < o; ++n) I9(e.logPersonal[n].type, e.logPersonal[n].data)
         }
         pollNetData(e) {
             let n = this.netData[0];
@@ -33907,7 +30278,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         tickFixed(e, n) {
             let o = this.pollNetData(n);
-            if (o !== void 0 && fe.logNearbyEntities) console.log("[raw packet]", JSON.parse(JSON.stringify(o)));
             if (o !== void 0 && (this.handleEntityCreation(o), this.handleEntityInput(o), this.handleEntityLog(o), this.handlePersonalLog(o), this.handleEntityMovements(o)), this.state > 2)
                 for (let i = this.entities.array.length - 1; i >= 0; --i) {
                     let s = this.entities.array[i],
@@ -33923,37 +30293,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         handleNetTimeouts() {
             if (this.player && (this.netTimeoutTimer.done(this.time) || this.time < this.netTimeoutTimer.start)) {
                 this.netTimeoutTimer.reset(this.time - .5, 1);
-                if (!this.isEntityInWorld(this.player)) {
-                    this.entities.array.push(this.player);
-                    this.entities.map.set(this.player.id, this.player);
-                    this.entities.type[this.player.type].push(this.player);
-                }
-                if (fe.logNearbyEntities) {
-                    let rows = [];
-                    for (let e = 0; e < this.entities.array.length; e++) {
-                        let n = this.entities.array[e];
-                        if (n === this.player) continue;
-                        let dist = Math.round(Math.sqrt(oo(n.pos, this.player.pos)) * 10) / 10;
-                        rows.push({
-                            id: n.id,
-                            name: n.name || "",
-                            type: n.type,
-                            class: n.class,
-                            level: n.level,
-                            faction: n.faction,
-                            party: n.party,
-                            clan: n.clan || "",
-                            alive: n.stats ? n.stats.alive : null,
-                            renderVisible: n.visual ? n.visual.transform.visible : null,
-                            inFog: n.visual ? n.visual.inFog : null,
-                            dist
-                        });
-                    }
-                    if (rows.length > 0) console.table(rows);
-                }
                 for (let e = this.entities.array.length - 1; e >= 0; e--) {
                     let n = this.entities.array[e];
-                    n !== this.player && (fe.showDeadPlayers && n.stats ? void 0 : fe.showInvisiblePlayers ? void 0 : oo(n.pos, this.player.pos) < 14400 ? n.netDeletion.reset(this.time, 2) : n.netDeletion.end > 0 && n.netDeletion.done(this.time) && (this.removeEntity(n), n.id === this.player.target && this.player.setTarget(0)))
+                    n !== this.player && (oo(n.pos, this.player.pos) < 14400 ? n.netDeletion.reset(this.time, 2) : n.netDeletion.end > 0 && n.netDeletion.done(this.time) && (this.removeEntity(n), n.id === this.player.target && this.player.setTarget(0)))
                 }
             }
         }
@@ -33974,14 +30316,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             this.setState(0, "Loading World");
             for (let e = 0; e < this.chunksArray.length; e++) {
                 let n = this.chunksArray[e];
-                this.returnCachedChunk(n), $2(n)
+                this.returnCachedChunk(n), $_(n)
             }
             this.chunksMap.clear(), this.chunksArray.length = 0;
             for (let e = this.entities.array.length - 1; e >= 0; e--) this.removeEntity(this.entities.array[e]);
             this.data = void 0, this.bounds = 1, this.triangleGrid.clear(), FA(this), $A(this)
         }
         setPlayer(e) {
-            this.player = e, Zc.set(!0), qT()
+            this.player = e, Zc.set(!0), q9()
         }
         removePlayer(e) {
             this.player === e && (this.player = void 0, this.playerId = 0, Zc.set(!1), Yi.set(), Xi.set(!1))
@@ -34002,10 +30344,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         createCachedChunk(e, n, o) {
             if (this.chunkCache.length) {
                 let i = this.chunkCache.pop();
-                return B2(i, e, n, o, this.chunkAmount), i
+                return B_(i, e, n, o, this.chunkAmount), i
             } else {
                 let i = fA();
-                return B2(i, e, n, o, this.chunkAmount), i
+                return B_(i, e, n, o, this.chunkAmount), i
             }
         }
         returnCachedChunk(e) {
@@ -34032,27 +30374,26 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             let l = [];
             for (let a = 0; a < this.chunksArray.length; ++a) {
                 let c = this.chunksArray[a];
-                b2 && (c.x + 5 < Kd || c.z + 5 < t0 || c.x - 5 > e0 || c.z - 5 > n0 ? l.push(c) : U2(c)), mA(c, this)
+                b_ && (c.x + 5 < Kd || c.z + 5 < t0 || c.x - 5 > e0 || c.z - 5 > n0 ? l.push(c) : U_(c)), mA(c, this)
             }
             for (let a = l.length - 1; a >= 0; a--) {
                 let c = l[a];
-                this.returnCachedChunk(c), this.removeChunk(c), $2(c)
+                this.returnCachedChunk(c), this.removeChunk(c), $_(c)
             }
             o !== (this.state !== 4) && this.setState(o ? 3 : 4, "Loading World")
         }
     };
     window.onload = async () => {
-        console.log("Hordes 0.51.8822 Live"), await L1();
-        let t = await fetch("data/game/game.bin?v=8822612");
-        let decode = Ia.gamedata.decode(new Uint8Array(await t.arrayBuffer()))
-        z1(decode), xx(), bA(), qA(), new l8({
+        console.log("Hordes 0.51.8829 Live"), await L1();
+        let t = await fetch("data/game/game.bin?v=8829640");
+        z1(Ia.gamedata.decode(new Uint8Array(await t.arrayBuffer()))), xx(), bA(), qA(), new l8({
             target: document.querySelector("body")
-        }), Q3(YA, XA), N3(new Fh({})), Z2(!0), zT()
+        }), Q3(YA, XA), N3(new Fh({})), Z_(!0), z9()
     };
-    var RT = 0,
-        zT = () => {
+    var R9 = 0,
+        z9 = () => {
             let t = Rf(),
-                e = (t - (RT || 1e3 / 60)) / 1e3;
-            RT = t, QA(e, t), requestAnimationFrame(zT)
+                e = (t - (R9 || 1e3 / 60)) / 1e3;
+            R9 = t, QA(e, t), requestAnimationFrame(z9)
         };
 })();

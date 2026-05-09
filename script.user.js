@@ -319,7 +319,7 @@
         });
         if (!equipped.length || !pid) return;
 
-        let name = gearSetNameInput || new Date().toLocaleTimeString();
+        let name = gearSetNameInput || "unnamed"
         let sets = readAllSets();
         let equippedSet = new Set(equipped);
 
