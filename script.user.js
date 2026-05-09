@@ -162,7 +162,7 @@
 
     var send = (t, e = "") => {
         if (!ws || ws.readyState !== 1) return;
-        ws.send(C3.encode({ _header: clientCmdHeader, command: t, string: e + "" }))
+        ws.send(C3.encode({_header: clientCmdHeader, command: t, string: e + ""}))
     };
 
     const moveItem = (fromSlot, toSlot) => send("itemmove", `${fromSlot} ${toSlot}`);
