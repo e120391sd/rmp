@@ -171,13 +171,9 @@
     function handlePersonalLog(events) {
         let needsRefresh = false;
         for (let {type, data} of events) {
-            if (type === 29) {
-                inventorySlots.set(data[0], data[1]);
-                needsRefresh = true;
-            } else if (type === 30) {
-                inventorySlots.delete(data[0]);
-                needsRefresh = true;
-            } else if (type === 38) {
+            if (type === 29) { inventorySlots.set(data[0], data[1]); needsRefresh = true; continue; }
+            if (type === 30) { inventorySlots.delete(data[0]); needsRefresh = true; continue; }
+            if (type === 38) {
                 stashSlots.clear();
                 let i = 2;
                 for (let g = 0; g < 2; g++) {
@@ -432,9 +428,10 @@
                 await delay(configStashDelay / 2);
                 clientPlayerCommand("itemstash", `${emptySlot}`);
                 await delay(configStashDelay / 2);
-            } else {
-                clientPlayerCommand("itemstash", `${slot}`);
+                await delay(configStashDelay);
+                continue;
             }
+            clientPlayerCommand("itemstash", `${slot}`);
             await delay(configStashDelay);
         }
     }
@@ -576,16 +573,19 @@
 
     const mutationObserver = new MutationObserver(() => {
         let equipSlots = document.getElementById("equipslots");
-        if (equipSlots) {
-            if (parent && !document.getElementById(uiRowId)) {
-                injectGearSetUI(equipSlots.parentElement);
-            }
-        } else {
+        if (!equipSlots) {
             document.getElementById(uiRowId)?.remove();
             currentPlayerName = null;
         }
+        if (equipSlots && parent && !document.getElementById(uiRowId)) {
+            injectGearSetUI(equipSlots.parentElement);
+        }
 
         let _formelements = document.querySelector(".formelements");
+        if (!_formelements) {
+            document.getElementById(stashUIRowId)?.remove();
+            stashSlots.clear();
+        }
         if (_formelements) {
             let stash = _formelements.parentElement
             let panel = stash.querySelectorAll(".panel-black.marg-top")[1]
@@ -593,10 +593,6 @@
             if (formelements && !document.getElementById(stashUIRowId)) {
                 injectStashUI(formelements);
             }
-        } else {
-            let injected = document.getElementById(stashUIRowId)
-            if (injected) injected.remove();
-            stashSlots.clear();
         }
     });
 
