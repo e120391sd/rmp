@@ -18312,7 +18312,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeToggle("Exclude LOS", losTarget),
             makeToggle("Enable Class Selector", nextFriendlyClassSelectorEnabled),
             makeToggle("Animate background", classSelectorAnimations),
-            makeLabel("-- Keybinds: --", {sep: true, cls: "textgrey"}),
+            makeLabel("-- Class Selector Keybinds: --", {sep: true, cls: "textgrey"}),
             makeKeybind(ns(0), "Warrior", classSelectorKbWarrior, "classSelectorKbWarrior"),
             makeKeybind(ns(1), "Mage", classSelectorKbMage, "classSelectorKbMage"),
             makeKeybind(ns(2), "Archer", classSelectorKbArcher, "classSelectorKbArcher"),
