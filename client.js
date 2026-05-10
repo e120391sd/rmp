@@ -18128,7 +18128,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         }
     }
-    const _registeredStores = [];
+    const _registeredStores = ["hiddenBuffs", "hiddenClassBuffs"];
     function getStoreKey(store) {
         return Object.keys(l1).find(k => l1[k] === store);
     }
