@@ -18129,8 +18129,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
     }
     const _registeredStores = [];
+    function getStoreKey(store) {
+        return Object.keys(l1).find(k => l1[k] === store);
+    }
     function makeToggle(label, store, opts = {}) {
-        if (store) _registeredStores.push(store);
+        if (store) _registeredStores.push(getStoreKey(store));
         let el = h("div"), val = new Et({props: {store}});
         el.textContent = label;
         if (opts.color) Ve(el, "color", opts.color);
@@ -18148,7 +18151,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         };
     }
     function makeSlider(label, store, opts = {}) {
-        if (store) _registeredStores.push(store);
+        if (store) _registeredStores.push(getStoreKey(store));
         let el = h("div"), inp = h("input"), valNode, unsub;
         el.textContent = label;
         p(inp, "type", "range");
@@ -18171,7 +18174,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function makeColor(imgSrc, label, store) {
-        if (store) _registeredStores.push(store);
+        if (store) _registeredStores.push(getStoreKey(store));
         let el, inp = h("input"), unsub;
         p(inp, "type", "color");
         if (imgSrc) {
@@ -18194,7 +18197,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         };
     }
     function makeText(label, store, opts = {}) {
-        if (store) _registeredStores.push(store);
+        if (store) _registeredStores.push(getStoreKey(store));
         let el = h("div"), inp = h("input"), unsub;
         el.textContent = label;
         p(inp, "type", "text");
@@ -18264,7 +18267,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         };
     }
     function makeKeybind(imgSrc, label, store, key, opts = {}) {
-        if (store) _registeredStores.push(store);
+        if (store) _registeredStores.push(getStoreKey(store));
         let con = h("div"), img = h("img"), txt = h("div"), inp = h("input");
         Ve(con, "display", "flex"); Ve(con, "align-items", "center");
         img.src = imgSrc; Ve(img, "width", "30px"); Ve(img, "margin-right", "10px");
@@ -18410,10 +18413,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeSlider("Max rain windows", rainWindowMax, {min: 1, max: 10, showValue: true, suffix: "/d"}),
             makeSlider("Rain transition speed", rainEaseSpeed, {min: 10, max: 300, showValue: true}),
             makeToggle("Force rain", rainForce, {color: "#53a3f9"}),
-            makeButton("Reset all settings", () => {
+            makeButton("Reset all settings to default", () => {
                 for (let store of _registeredStores) {
-                    if(localStorage.getItem(store)) localStorage.removeItem(store);
+                    localStorage.removeItem(store);
                 }
+                window.location.reload();
             })
             /* makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
             makeSlider("Speed override", speedOverride, {min: 0, max: 5, showValue: true}),
