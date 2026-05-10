@@ -2059,7 +2059,7 @@ void main() {
         classSelectorKbWarrior: () => classSelectorKbWarrior,
         classSelectorKbMage: () => classSelectorKbMage,
         classSelectorAnimations: () => classSelectorAnimations,
-        kbItemNames: () => kbItemNamesStore,
+        kbItemNames: () => kbShift,
         timeToIngame: () => timeToIngame,
         nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
         ignoreNameplateViewRange: () => ignoreNameplateViewRange,
@@ -2093,7 +2093,7 @@ void main() {
         outlines: () => outlines,
         enableMageCapeswing: () => enableMageCapeswing,
         prestigeChange: () => prestigeChange,
-        kbItemNames: () => kbItemNamesStore,
+        kbItemNames: () => kbShift,
         freecamModeKb: () => freecamModeKb,
         playerTransformID: () => playerTransformID,
         playerTransformColPrim: () => playerTransformColPrim,
@@ -2279,7 +2279,7 @@ void main() {
         classSelectorKbWarrior: () => classSelectorKbWarrior,
         classSelectorKbMage: () => classSelectorKbMage,
         classSelectorAnimations: () => classSelectorAnimations,
-        kbItemNames: () => kbItemNamesStore,
+        kbItemNames: () => kbShift,
         timeToIngame: () => timeToIngame,
         nextFriendlyIgnoreBots: () => nextFriendlyIgnoreBots,
         ignoreNameplateViewRange: () => ignoreNameplateViewRange,
@@ -2527,10 +2527,10 @@ void main() {
         disallowSpecialSelling = ne(true),
         losTarget = ne(true),
         timeSlider = ne(0),
-        targetEnabled = ne(true),
+        targetEnabled = ne(false),
         disableDamage = ne(false),
-        disableHealing = ne(false),
-        disableClantags = ne(false),
+        disableHealing = ne(true),
+        disableClantags = ne(true),
         disableCircleCooldowns = ne(false),
         nextFriendlyClassSelectorEnabled = ne(false),
         nextFriendlyClassArcher = ne(false),
@@ -2541,13 +2541,13 @@ void main() {
         classSelectorKbShaman = ne(""),
         classSelectorKbWarrior = ne(""),
         classSelectorKbMage = ne(""),
-        classSelectorAnimations = ne(true),
-        kbItemNamesStore = ne("control"),
-        timeToIngame = ne(false),
+        classSelectorAnimations = ne(false),
+        kbShift = ne("shift"),
+        timeToIngame = ne(true),
         nextFriendlyIgnoreBots = ne(true),
-        removeFX = ne(true),
-        shrinkIndicators = ne(500),
-        stackIndicators = ne(false),
+        removeFX = ne(false),
+        shrinkIndicators = ne(160),
+        stackIndicators = ne(true),
         prestigeChange = ne(false),
         prestigeSimulate = ne(0),
         preventInputLock = ne(false),
@@ -2557,47 +2557,47 @@ void main() {
         noRangeCheck = ne(false),
         freeflyMode = ne(false),
         freecamMode = ne(false),
-        noCameraCollision = ne(false),
+        noCameraCollision = ne(true),
         freezeServer = ne(false),
         showDeadPlayers = ne(false),
-        showInvisiblePlayers = ne(false),
+        showInvisiblePlayers = ne(true),
         logNearbyEntities = ne(false),
-        deepFreezeColor = ne("#4cfff9"),
+        deepFreezeColor = ne("#ff2020"),
         chillColor = ne("#4cfff9"),
         agonizeColor = ne("#ff2020"),
         stunColor = ne("#ff2020"),
         blindColor = ne("#ffed2d"),
         relColor = ne("#ffed2d"),
-        CCIndicator = ne(false),
-        sortParty = ne(false),
-        hideBuffs = ne(false),
+        CCIndicator = ne(true),
+        sortParty = ne(true),
+        hideBuffs = ne(true),
         hiddenBuffs = ne([92,96,95,86,68,67,89,74,127,130,93]),
-        hideClassBuffs = ne(false),
+        hideClassBuffs = ne(true),
         hiddenClassBuffs = ne([80, 78, 81, 76, 75]),
-        onlyShowOwnRev = ne(false),
-        stackSameBuffs = ne(false),
+        onlyShowOwnRev = ne(true),
+        stackSameBuffs = ne(true),
         revStackNameplate = ne(false),
-        nameplateSize = ne(500),
-        nameSize = ne(500),
-        nameSpacing = ne(0),
-        CCIndicatorOnNameplates = ne(false),
-        noFrameColor = ne(false),
-        outlines = ne(false),
-        enableMageCapeswing = ne(false),
+        nameplateSize = ne(365),
+        nameSize = ne(445),
+        nameSpacing = ne(60),
+        CCIndicatorOnNameplates = ne(true),
+        noFrameColor = ne(true),
+        outlines = ne(true),
+        enableMageCapeswing = ne(true),
         ignoreNameplateViewRange = ne(false),
         flashNameplates = ne(true),
-        flashCCIndicator = ne(false),
+        flashCCIndicator = ne(true),
         hideChat = ne(false),
-        disablePartyNameplates = ne(false),
-        charmAutoEquip = ne(false),
+        disablePartyNameplates = ne(true),
+        charmAutoEquip = ne(true),
         charmAutoStash = ne(false),
         aoeCircleEnabled = ne(false),
         aoeCircleSize = ne(0),
         aoeCircleAlpha = ne(100),
         aoeCircleColor = ne("#000000"),
-        fxAlphaSprite = ne(100),
-        fxAlphaRibbon = ne(100),
-        fxAlphaModel = ne(100),
+        fxAlphaSprite = ne(15),
+        fxAlphaRibbon = ne(0),
+        fxAlphaModel = ne(75),
         posX = ne(""),
         posY = ne(""),
         posZ = ne(""),
@@ -2616,24 +2616,24 @@ void main() {
         shadowDistMult = ne(130),
         grassDist = ne(130),
         meshViewerID = ne(0),
-        classColorParty = ne(false),
+        classColorParty = ne(true),
         classColor0 = ne("#C7966F"),
         classColor1 = ne("#21A9E1"),
         classColor2 = ne("#98CE64"),
         classColor3 = ne("#1C51FF"),
-        hideFriendlyCreatures = ne(false),
-        hideFriendlyCreatureNames = ne(false),
-        hideKekQuickButtons = ne(false),
-        showEnvName = ne(false),
+        hideFriendlyCreatures = ne(true),
+        hideFriendlyCreatureNames = ne(true),
+        hideKekQuickButtons = ne(true),
+        showEnvName = ne(true),
         rainEnabled = ne(true),
         rainForce = ne(false),
-        rainNoDesert = ne(false),
+        rainNoDesert = ne(true),
         rainDurMin = ne(50),
         rainDurMax = ne(140),
         rainWindowMin = ne(1),
         rainWindowMax = ne(5),
         rainEaseSpeed = ne(300),
-        removeElixir = ne(false),
+        removeElixir = ne(true),
         minimapLightOverlay = ne(true)
     var _posX = "", _posY = "", _posZ = "";
     posX.subscribe(v => _posX = v);
@@ -2647,7 +2647,7 @@ void main() {
     shadowDistMult.subscribe(v => _shadowDistMult = v / 100);
     grassDist.subscribe(v => _grassDist = v);
     var _classColors = ["#C7966F", "#21A9E1", "#98CE64", "#1C51FF"];
-    const CLASS_NAMES = ["warrior", "mage", "archer", "shaman"];
+    const _classNames = ["warrior", "mage", "archer", "shaman"];
     function _darkenHex(hex, factor) {
         let n = parseInt(hex.slice(1), 16);
         let r = Math.round(((n >> 16) & 0xff) * factor);
@@ -18128,7 +18128,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
         }
     }
+    const _registeredStores = [];
     function makeToggle(label, store, opts = {}) {
+        if (store) _registeredStores.push(store);
         let el = h("div"), val = new Et({props: {store}});
         el.textContent = label;
         if (opts.color) Ve(el, "color", opts.color);
@@ -18146,6 +18148,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         };
     }
     function makeSlider(label, store, opts = {}) {
+        if (store) _registeredStores.push(store);
         let el = h("div"), inp = h("input"), valNode, unsub;
         el.textContent = label;
         p(inp, "type", "range");
@@ -18168,6 +18171,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function makeColor(imgSrc, label, store) {
+        if (store) _registeredStores.push(store);
         let el, inp = h("input"), unsub;
         p(inp, "type", "color");
         if (imgSrc) {
@@ -18190,6 +18194,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         };
     }
     function makeText(label, store, opts = {}) {
+        if (store) _registeredStores.push(store);
         let el = h("div"), inp = h("input"), unsub;
         el.textContent = label;
         p(inp, "type", "text");
@@ -18259,6 +18264,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         };
     }
     function makeKeybind(imgSrc, label, store, key, opts = {}) {
+        if (store) _registeredStores.push(store);
         let con = h("div"), img = h("img"), txt = h("div"), inp = h("input");
         Ve(con, "display", "flex"); Ve(con, "align-items", "center");
         img.src = imgSrc; Ve(img, "width", "30px"); Ve(img, "margin-right", "10px");
@@ -18359,7 +18365,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeToggle("Enable mage cape-swing", enableMageCapeswing),
             makeToggle("Enable charm auto equip", charmAutoEquip, {note: "Equips charms along with saved gear sets"}),
             makeToggle("Enable charm auto stash", charmAutoStash, {note: "Stores charms along with saved gear sets"}),
-            makeToggle("Stash categories save to player", saveCategoriesToPlayer),
+            makeToggle("Stash categories save to character", saveCategoriesToPlayer),
             makeToggle("Remove elixir button", removeElixir),
             makeToggle("Area name above minimap", showEnvName),
             makeToggle("Minimap worldlight overlay", minimapLightOverlay),
@@ -18404,6 +18410,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeSlider("Max rain windows", rainWindowMax, {min: 1, max: 10, showValue: true, suffix: "/d"}),
             makeSlider("Rain transition speed", rainEaseSpeed, {min: 10, max: 300, showValue: true}),
             makeToggle("Force rain", rainForce, {color: "#53a3f9"}),
+            makeButton("Reset all settings", () => {
+                for (let store of _registeredStores) {
+                    if(localStorage.getItem(store)) localStorage.removeItem(store);
+                }
+            })
             /* makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
             makeSlider("Speed override", speedOverride, {min: 0, max: 5, showValue: true}),
             makeToggle("Prevent movement override", preventInputLock),
