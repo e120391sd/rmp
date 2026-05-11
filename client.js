@@ -2523,7 +2523,7 @@ void main() {
         radarSound = ne(true),
         revUnfriendly = ne(false),
         markOwnRevs = ne(true),
-        transparentBots = ne(false),
+        transparentBots = ne(true),
         hideBots = ne(false),
         revOnSelect = ne(false),
         alwaysPickup = ne("Purum"),
