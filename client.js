@@ -30924,16 +30924,13 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 let min = 0.5 * (fe.nameplateSize / 250);
                 let max = 2.0 * (fe.nameplateSize / 250);
 
-                if (!l && playerIsBot) {
-                    t.namePlateScale = min * 0.5;
-                }
                 let hidePlate = !l && isFriendlyCreature && !fe.hideFriendlyCreatures;
 
                 let castsOnPlayer = targettedPlayers.get(t.id) || [];
                 let targetScale = (l ? 1 : 0) * (1 + castsOnPlayer.length / 10);
-
+                let botMin = (!l && playerIsBot) ? min * 0.5 : min;
                 t.namePlateScale = vt(
-                t.namePlateScale + (targetScale - t.namePlateScale) * 0.25,min,max);
+                t.namePlateScale + (targetScale - t.namePlateScale) * 0.25, botMin, max);
                 let CCFound, CCColor
                 playerBuffs = I.getEntityById(t.id)
                 if(playerBuffs) playerBuffs = playerBuffs.buffs.buffs
@@ -30947,6 +30944,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                         v = t.skills.timedSkill !== void 0;
                     if (!l && playerIsBot) g *= 0.3;
+                    let origTransp = fe.nameplateShowTransparency;
+                    if (!l && playerIsBot) fe.nameplateShowTransparency = true;
 
                     !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
                     let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
@@ -30966,6 +30965,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         let b = qt.lev1;
                         i !== 0 && (t.level - r > 4 ? b = qt.lev3 : t.level - r > 1 ? b = qt.lev2 : t.level - r < -5 && (b = qt.lev0)), dr(ho(Un, t.hudPos[0] + (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.level, b, g, 1, 0, 0, 0)
                     }
+                    fe.nameplateShowTransparency = origTransp;
                 }
             }
             let f, u = !1;
