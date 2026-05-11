@@ -18318,7 +18318,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeKeybind(ns(2), "Archer", classSelectorKbArcher, "classSelectorKbArcher"),
             makeKeybind(ns(3), "Shaman", classSelectorKbShaman, "classSelectorKbShaman"),
             makeCategory("De-Clutter Mods", {marginTop: "10px"}),
-            makeToggle("Hide bot names", hideBots),
+            makeToggle("Minimize bot nameplates", hideBots),
             makeToggle("Disable clan tags", disableClantags),
             makeToggle("Hide chat window", hideChat),
             makeToggle("Disable healing indicator", disableHealing),
@@ -30924,8 +30924,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 let min = 0.5 * (fe.nameplateSize / 250);
                 let max = 2.0 * (fe.nameplateSize / 250);
 
-                if (!l && playerIsBot) return;
-                let _hidePlate = !l && isFriendlyCreature && !fe.hideFriendlyCreatures;
+                if (!l && playerIsBot) {
+                    t.namePlateScale = min * 0.5;
+                }
+                let hidePlate = !l && isFriendlyCreature && !fe.hideFriendlyCreatures;
 
                 let castsOnPlayer = targettedPlayers.get(t.id) || [];
                 let targetScale = (l ? 1 : 0) * (1 + castsOnPlayer.length / 10);
@@ -30940,10 +30942,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     let color = getCCColor(playerBuffs);
                     if (color) { CCFound = true; CCColor = color; }
                 }
-                if (!_hidePlate) {
+                if (!hidePlate) {
                     let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                         g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                         v = t.skills.timedSkill !== void 0;
+                    if (!l && playerIsBot) g *= 0.3;
 
                     !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
                     let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
