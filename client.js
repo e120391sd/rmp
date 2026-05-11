@@ -32952,8 +32952,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         tickVelocity(e, n, o, i, s) {
             if (fe.freecamMode && I && I.player === this) {
-                this.vel[0] = 0; this.vel[2] = 0;
-                this.vel[1] = this.onGround ? 0 : Math.max(-60, this.vel[1] - 25 * e);
+                /* this.vel[0] = 0; this.vel[2] = 0;
+                this.vel[1] = this.onGround ? 0 : Math.max(-60, this.vel[1] - 25 * e); */
+                this.setSteer(0,0);
+                this.setJump(0);
                 return;
             }
             if (fe.freeflyMode) {
