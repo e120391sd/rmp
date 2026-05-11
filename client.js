@@ -32553,6 +32553,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 super.onRemove(), this.mount !== void 0 && this.mount.onRemove()
             }
             updateVisualPosition(e, n, o, i = !1) {
+                if (fe.freecamMode && I && I.player === this) X(this.conciliator, 0, 0, 0);
                 e > 0 && (sn(this.pos, this.pos, this.conciliator, -e * 10), gn(this.conciliator, this.conciliator, 1 - e * 10));
                 let s = oo(this.pos, this.visualPosition);
                 (i || s > 1e-5) && (it(this.visualPosition, this.pos), this.visualPosition[1] += this.radius, this.mount === void 0 ? it(this.visual.transform.position, this.visualPosition) : (it(this.mount.transform.position, this.visualPosition), this.mount.transform.position[1] += this.mount.skin.size * .5 - this.radius)), this.interiorlightTimer.done(n) && (this.interiorlightTimer.reset(n), o.getInteriorLight(this.interiorlightTarget, this.aabb));
@@ -32951,13 +32952,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }), this.exp = 0, this.party = 0, this.partyrole = 0, this.prestige = 0, this.prestigeRank = 0, this.elo = 0, this.eloRank = 0, this.clan = void 0, this.clanRole = 0, this.jumpLast = 0
         }
         tickVelocity(e, n, o, i, s) {
-            if (fe.freecamMode && I && I.player === this) {
-                /* this.vel[0] = 0; this.vel[2] = 0; */
-                this.vel[1] = this.onGround ? 0 : Math.max(-60, this.vel[1] - 25 * e);
-                this.setSteer(0,0);
-                this.setJump(0);
-                return;
-            }
             if (fe.freeflyMode) {
                 this.vel[1] = i > 0 ? s * 0.1 : nt.shift.down ? -s * 0.05 : 0;
                 this.horizontalSteer(s, n, o);
