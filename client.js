@@ -2040,6 +2040,8 @@ void main() {
         markOwnRevs: () => markOwnRevs,
         transparentBots: () => transparentBots,
         hideBots: () => hideBots,
+        modSettingsScale: () => modSettingsScale,
+        modSettingsCollapse: () => modSettingsCollapse,
         revOnSelect : () => revOnSelect,
         neverExcludeItems: () => alwaysPickup,
         disallowSpecialSelling: () => disallowSpecialSelling,
@@ -2055,10 +2057,6 @@ void main() {
         nextFriendlyClassShaman: () => nextFriendlyClassShaman,
         nextFriendlyClassWarrior: () => nextFriendlyClassWarrior,
         nextFriendlyClassMage: () => nextFriendlyClassMage,
-        classSelectorKbArcher: () => classSelectorKbArcher,
-        classSelectorKbShaman: () => classSelectorKbShaman,
-        classSelectorKbWarrior: () => classSelectorKbWarrior,
-        classSelectorKbMage: () => classSelectorKbMage,
         classSelectorAnimations: () => classSelectorAnimations,
         kbItemNames: () => kbShift,
         timeToIngame: () => timeToIngame,
@@ -2261,6 +2259,8 @@ void main() {
         markOwnRevs: () => markOwnRevs,
         transparentBots: () => transparentBots,
         hideBots: () => hideBots,
+        modSettingsScale: () => modSettingsScale,
+        modSettingsCollapse: () => modSettingsCollapse,
         revOnSelect : () => revOnSelect,
         neverExcludeItems: () => alwaysPickup,
         disallowSpecialSelling: () => disallowSpecialSelling,
@@ -2276,10 +2276,6 @@ void main() {
         nextFriendlyClassShaman: () => nextFriendlyClassShaman,
         nextFriendlyClassWarrior: () => nextFriendlyClassWarrior,
         nextFriendlyClassMage: () => nextFriendlyClassMage,
-        classSelectorKbArcher: () => classSelectorKbArcher,
-        classSelectorKbShaman: () => classSelectorKbShaman,
-        classSelectorKbWarrior: () => classSelectorKbWarrior,
-        classSelectorKbMage: () => classSelectorKbMage,
         classSelectorAnimations: () => classSelectorAnimations,
         kbItemNames: () => kbShift,
         timeToIngame: () => timeToIngame,
@@ -2525,6 +2521,8 @@ void main() {
         markOwnRevs = ne(true),
         transparentBots = ne(true),
         hideBots = ne(false),
+        modSettingsScale = ne(75),
+        modSettingsCollapse = ne(false),
         revOnSelect = ne(false),
         alwaysPickup = ne("Purum"),
         disallowSpecialSelling = ne(true),
@@ -2540,10 +2538,6 @@ void main() {
         nextFriendlyClassShaman = ne(false),
         nextFriendlyClassWarrior = ne(false),
         nextFriendlyClassMage = ne(false),
-        classSelectorKbArcher = ne(""),
-        classSelectorKbShaman = ne(""),
-        classSelectorKbWarrior = ne(""),
-        classSelectorKbMage = ne(""),
         classSelectorAnimations = ne(false),
         kbShift = ne("shift"),
         timeToIngame = ne(true),
@@ -2605,7 +2599,7 @@ void main() {
         posY = ne(""),
         posZ = ne(""),
         speedOverride = ne(0),
-        freecamModeKb = ne(""),
+        freecamModeKb = ne("f4"),
         playerTransformID = ne(0),
         playerTransformColPrim = ne("#000000"),
         playerTransformColSec = ne("#000000"),
@@ -2739,6 +2733,33 @@ void main() {
     }
     
     injectStyle("modRevGlowStyle", `.slot.glow { border: 2px solid #60b64d; border-radius: 6px; }`);
+    injectStyle("modRainbowTabStyle", `
+        @keyframes rainbowTab {
+            0%   { color: #ff8888; }
+            16%  { color: #ffcc88; }
+            33%  { color: #ffff88; }
+            50%  { color: #88ff88; }
+            66%  { color: #88ccff; }
+            83%  { color: #cc88ff; }
+            100% { color: #ff8888; }
+        }
+        .neon-new {
+            position: absolute;
+            right: 8px;
+            top: 0;
+            bottom: 0;
+            height: fit-content;
+            margin-top: auto;
+            margin-bottom: auto;
+            font-size: 13px;
+            pointer-events: none;
+            animation: rainbowTab 1.33s linear infinite;
+            text-shadow:
+                0 0 6px currentColor,
+                0 0 14px currentColor,
+                0 0 22px currentColor;
+        }
+    `);
 
     let stashSelectCategoryCallbacks = [];
     function onStashCategorySelect(callback) {
@@ -17720,8 +17741,22 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     function eF(t) {
         let e, n = t[76].name + "",
             o, i, s, r;
+        let tabId = t[76].id;
+        let rainbowTabs = {"mod": true, "mod2": true};
+        let badgeText = {"mod2": "The Sequel!"};
+        let isRainbowTab = !!rainbowTabs[tabId];
+        let visitedKey = "tabVisited_" + tabId;
+        let isRainbow = isRainbowTab && !localStorage.getItem(visitedKey);
+        let newBadge = null;
 
         function l(...a) {
+            if (isRainbow) {
+                localStorage.setItem(visitedKey, "1");
+                isRainbow = false;
+                p(e, "class", i);
+                Ve(e, "position", "");
+                if (newBadge) {x(newBadge); newBadge = null;}
+            }
             return t[36](t[76], ...a)
         }
         return {
@@ -17729,13 +17764,22 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 e = h("div"), o = T(n), p(e, "class", i = "choice " + (t[76] == t[1] ? "active" : ""))
             },
             m(a, c) {
-                w(a, e, c), d(e, o), s || (r = H(e, "click", l), s = !0)
+                w(a, e, c), d(e, o), s || (r = H(e, "click", l), s = !0);
+                if (isRainbow && badgeText[tabId]) {
+                    Ve(e, "position", "relative");
+                    newBadge = h("span");
+                    newBadge.textContent = badgeText[tabId];
+                    p(newBadge, "class", "neon-new");
+                    d(e, newBadge);
+                }
             },
             p(a, c) {
                 t = a, c[0] & 2 && i !== (i = "choice " + (t[76] == t[1] ? "active" : "")) && p(e, "class", i)
             },
             d(a) {
-                a && x(e), s = !1, r()
+                a && x(e);
+                if (a && newBadge) x(newBadge);
+                s = !1, r()
             }
         }
     }
@@ -18225,37 +18269,46 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         if (opts.marginTop) Ve(el, "margin-top", opts.marginTop);
         let subEls = null;
         if (opts.sub) { let ssep = h("br"), sub = h("small"); sub.textContent = opts.sub; p(sub, "class", "textgrey"); Ve(sub, "font-size", opts.subSize || "12px"); d(el, ssep); d(el, sub); subEls = [ssep, sub]; }
-        let triggerCollapse = null;
-        if (opts.collapse) {
-            let storageKey = "modcat_" + label;
-            let saved = localStorage.getItem(storageKey);
-            let collapsed = saved !== null ? saved === "1" : !!opts.collapseDefault;
-            let arrow = h("button");
+        let storageKey = "modcat_" + label;
+        let saved = localStorage.getItem(storageKey);
+        let collapsed = saved !== null ? saved === "1" : !!opts.collapseDefault;
+        let arrow = h("button");
+        arrow.textContent = collapsed ? "Uncollapse" : "Collapse";
+        p(arrow, "class", "btn black textprimary");
+        Ve(arrow, "font", "bold " + (opts.fontSize || "15px") + " hordes");
+        Ve(arrow, "display", "none");
+        Ve(arrow, "align-items", "center");
+        Ve(arrow, "justify-content", "center");
+        Ve(sep, "text-align", "right");
+        d(sep, arrow);
+        const applyCollapse = () => {
             arrow.textContent = collapsed ? "Uncollapse" : "Collapse";
-            p(arrow, "class", "btn black textprimary");
-            Ve(arrow, "font", "bold " + (opts.fontSize || "15px") + " hordes");
-            Ve(arrow, "display", "inline-flex");
-            Ve(arrow, "align-items", "center");
-            Ve(arrow, "justify-content", "center");
-            Ve(sep, "text-align", "right"); d(sep, arrow);
-            const apply = () => {
-                arrow.textContent = collapsed ? "Uncollapse" : "Collapse";
-                if (subEls) subEls.forEach(n => Ve(n, "display", collapsed ? "none" : ""));
-                let node = sep.nextSibling;
-                while (node) {
-                    if (node.nodeType === 1 && node.classList && node.classList.contains("mod-category")) break;
-                    if (node.nodeType === 1) Ve(node, "display", collapsed ? "none" : "");
-                    node = node.nextSibling;
-                }
-            };
-            const toggle = () => { collapsed = !collapsed; localStorage.setItem(storageKey, collapsed ? "1" : "0"); apply(); };
-            arrow.addEventListener("click", toggle);
-            if (collapsed) triggerCollapse = apply;
-        }
+            if (subEls) subEls.forEach(n => Ve(n, "display", collapsed ? "none" : ""));
+            let node = sep.nextSibling;
+            while (node) {
+                if (node.nodeType === 1 && node.classList && node.classList.contains("mod-category")) break;
+                if (node.nodeType === 1) Ve(node, "display", collapsed ? "none" : "");
+                node = node.nextSibling;
+            }
+        };
+        const toggle = () => {collapsed = !collapsed; localStorage.setItem(storageKey, collapsed ? "1" : "0"); applyCollapse();};
+        arrow.addEventListener("click", toggle);
+        let unsubCollapse = null;
         return {
             c() {}, i(M) {}, o(M) {},
-            m(M, D) {w(M, el, D); w(M, sep, D); if (triggerCollapse) setTimeout(triggerCollapse, 0);},
-            d(M) {if (M) { x(el); x(sep); }}
+            m(M, D) {
+                w(M, el, D); w(M, sep, D);
+                if (collapsed) setTimeout(applyCollapse, 0);
+                unsubCollapse = modSettingsCollapse.subscribe(enabled => {
+                    let show = enabled || !!opts.collapse;
+                    Ve(arrow, "display", show ? "inline-flex" : "none");
+                    if (!show && collapsed) {collapsed = false; applyCollapse();}
+                });
+            },
+            d(M) {
+                if (unsubCollapse) unsubCollapse();
+                if (M) {x(el); x(sep);}
+            }
         };
     }
     function makeLabel(label, opts = {}) {
@@ -18315,11 +18368,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeToggle("Exclude LOS", losTarget),
             makeToggle("Enable Class Selector", nextFriendlyClassSelectorEnabled),
             makeToggle("Animate background", classSelectorAnimations),
-            makeLabel("-- Class Selector Keybinds: --", {sep: true, cls: "textgrey"}),
-            makeKeybind(ns(0), "Warrior", classSelectorKbWarrior, "classSelectorKbWarrior"),
-            makeKeybind(ns(1), "Mage", classSelectorKbMage, "classSelectorKbMage"),
-            makeKeybind(ns(2), "Archer", classSelectorKbArcher, "classSelectorKbArcher"),
-            makeKeybind(ns(3), "Shaman", classSelectorKbShaman, "classSelectorKbShaman"),
             makeCategory("De-Clutter Mods", {marginTop: "10px"}),
             makeToggle("Hide bot names", hideBots),
             makeToggle("Disable clan tags", disableClantags),
@@ -18362,6 +18410,40 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeColor("https://hordes.io/data/ui/skills/stunBuff.avif?v=8822612", "Charge", stunColor),
             makeColor("https://hordes.io/data/ui/skills/50.avif?v=8822612", "Relentless Cry", relColor),
             makeColor("https://hordes.io/data/ui/skills/49.avif?v=8822612", "Blinding Shot", blindColor),
+            makeCategory("Rare Mob Notifier", {marginTop: "10px"}),
+            makeToggle("Show icon on minimap", radar),
+            makeToggle("Play sound when nearby", radarSound),
+            makeButton("Reset all settings to default", () => {
+                for (let store of registeredStores) {
+                    localStorage.removeItem(store);
+                }
+                window.location.reload();
+            })
+        ];
+        let wrapper = null, scaleUnsub = null;
+        return {
+            c() {settings.forEach(s => s.c());},
+            m(M, D) {
+                wrapper = h("div");
+                wrapper.className = M.className;
+                Ve(wrapper, "grid-column", "1 / -1");
+                w(M, wrapper, D);
+                settings.forEach(s => s.m(wrapper, null));
+                scaleUnsub = modSettingsScale.subscribe(v => {Ve(wrapper, "zoom", (v / 100).toString());});
+            },
+            p(te, ae) {},
+            i(M) {settings.forEach(s => s.i(M));},
+            o(M) {settings.forEach(s => s.o(M));},
+            d(M) {
+                if (scaleUnsub) scaleUnsub();
+                settings.forEach(s => s.d(false));
+                if (M && wrapper) x(wrapper);
+            }
+        };
+    }
+
+    function modSettings2(t) {
+        const settings = [
             makeCategory("Uncategorized", {marginTop: "10px"}),
             makeToggle("Block +(x) item & charm vendor", disallowSpecialSelling, {color: "#ff6d6d"}),
             makeKeybind(null, "Freecam mode (Keybind)", freecamModeKb, "freecamModeKb"),
@@ -18378,9 +18460,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeToggle("Minimap worldlight overlay", minimapLightOverlay),
             makeToggle("Hide kek quick buttons", hideKekQuickButtons),
             makeToggle("Disable circle cooldown system", disableCircleCooldowns),
-            makeCategory("Rare Mob Notifier", {marginTop: "10px"}),
-            makeToggle("Show icon on minimap", radar),
-            makeToggle("Play sound when nearby", radarSound),
             makeCategory("AOE Shader", {marginTop: "10px"}),
             makeToggle("Enable AOE Shader", aoeCircleEnabled),
             makeSlider("Radius", aoeCircleSize, {min: 0, max: 50, showValue: true}),
@@ -18417,13 +18496,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeSlider("Max rain windows", rainWindowMax, {min: 1, max: 10, showValue: true, suffix: "/d"}),
             makeSlider("Rain transition speed", rainEaseSpeed, {min: 10, max: 300, showValue: true}),
             makeToggle("Force rain", rainForce, {color: "#53a3f9"}),
-            makeButton("Reset all settings to default", () => {
-                for (let store of registeredStores) {
-                    localStorage.removeItem(store);
-                }
-                window.location.reload();
-            })
-            /* makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
+            makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
             makeSlider("Speed override", speedOverride, {min: 0, max: 5, showValue: true}),
             makeToggle("Prevent movement override", preventInputLock),
             makeToggle("Phase mode", ghostMode),
@@ -18432,91 +18505,70 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeToggle("Nameplates react to ST", targetEnabled),
             makeToggle("Show dead players", showDeadPlayers),
             makeToggle("Desync", freezeServer, {sub: "While this setting is active, packets will not be sent to the server. Use with position update buttons to teleport precisely."}),
-            //makeLabel("The server will correct any position deviances within a single tick of around ~4 units. To bypass it slightly, use a +7 mount + pennant + orc / egg. The deviance is calculated based on player speed, higher speed = more deviance allowed. To teleport up towers, use pennant + egg => start jumping => enable Desync => fly yourself to the position => disable desync => input any direction to update player position. If you are jumping during this, the server may make you jump forward in the direction, so you may fall off. Advised to send a couple inputs as soon as you disable desync so it corrects your position immediately.", {cls: "textgrey", sep: true}),
             makeText(null, meshViewerID, {numberInput: true}),
             makeButton("View mesh", () => {
-                let v = fe.meshViewerID
-                if (meshViewerEnt && I) {
-                    try {I.removeEntity(meshViewerEnt)} catch(e) {}
-                    meshViewerEnt = null;
-                }
+                let v = fe.meshViewerID;
+                if (meshViewerEnt && I) {try {I.removeEntity(meshViewerEnt);} catch(e) {} meshViewerEnt = null;}
                 if (!v || v <= 0 || !I || !I.player) return;
                 if (!Fi || !Fi.has(v)) return;
                 try {
                     let id = 999000000 + Math.floor(Math.random() * 1000000);
                     let fwd = [Math.sin(I.player.rot), Math.cos(I.player.rot)];
                     let ent = I.createEntity(11, id, {});
-                    ent.pos[0] = I.player.pos[0];
-                    ent.pos[1] = I.player.pos[1] + fwd[0] * 10;
-                    ent.pos[2] = I.player.pos[2];
+                    ent.pos[0] = I.player.pos[0]; ent.pos[1] = I.player.pos[1] + fwd[0] * 10; ent.pos[2] = I.player.pos[2];
                     ent.setNodeInfo(v, 1);
                     let noop = () => {};
                     ent.preFixed = ent.tickFixed = ent.postFixed = noop;
                     ent.netDeletion = { reset: noop, done: () => false, end: -Infinity, start: 0 };
-                    I.addEntity(ent);
-                    meshViewerEnt = ent;
-                } catch(e) {console.log("Mesh viewer spawn failed:", e)}
+                    I.addEntity(ent); meshViewerEnt = ent;
+                } catch(e) {console.log("Mesh viewer spawn failed:", e);}
             }),
             makeButton("Log Entities", () => {
-                console.log(I.getEnvironmentId(I.player.pos[0], I.player.pos[2]))
+                console.log(I.getEnvironmentId(I.player.pos[0], I.player.pos[2]));
                 Ha.forEach((t, id) => console.log(`terrain ${id} tex=${t.texture} dark=${t.darkest} bright=${t.brightest}`));
                 let rows = [];
                 for (let e = 0; e < I.entities.array.length; e++) {
                     let n = I.entities.array[e];
                     if (n === I.player) continue;
                     let dist = Math.round(Math.sqrt(oo(n.pos, I.player.pos)) * 10) / 10;
-                    rows.push({
-                        id: n.id,
-                        name: n.name || "",
-                        type: n.type,
-                        class: n.class,
-                        level: n.level,
-                        faction: n.faction,
-                        party: n.party,
-                        clan: n.clan || "",
-                        alive: n.stats ? n.stats.alive : null,
-                        renderVisible: n.visual ? n.visual.transform.visible : null,
-                        inFog: n.visual ? n.visual.inFog : null,
-                        dist,
-                        buffs: n.buffs?.buffs
-                    });
+                    rows.push({ id: n.id, name: n.name || "", type: n.type, class: n.class, level: n.level, faction: n.faction, party: n.party, clan: n.clan || "", alive: n.stats ? n.stats.alive : null, renderVisible: n.visual ? n.visual.transform.visible : null, inFog: n.visual ? n.visual.inFog : null, dist, buffs: n.buffs?.buffs });
                 }
                 console.table(rows);
             }),
-            makeButton("Log mesh map", () => {
-                if (!I || !I.player) return;
-                console.table(Object.values(Array.from(Fi)))
+            makeButton("Log mesh map", () => {if (!I || !I.player) return; console.table(Object.values(Array.from(Fi)));}),
+            makeButton("+dir", () => {if (!I || !I.player) return; I.player.pos[0] += Math.sin(I.player.rot); I.player.pos[2] += Math.cos(I.player.rot); I.player.sendInput(false, false, false, false, false, true);}),
+            makeButton("+X", () => {if (!I || !I.player) return; I.player.pos[0] += 1; I.player.sendInput(false, false, false, false, false, true);}),
+            makeButton("+Y", () => {if (!I || !I.player) return; I.player.pos[1] += 5; I.player.sendInput(false, false, false, false, false, true); I.player.vel[1] = 0;}),
+            makeButton("+Z", () => {if (!I || !I.player) return; I.player.pos[2] += 1; I.player.sendInput(false, false, false, false, false, true);}),
+            makeCategory("UI", {marginTop: "10px"}),
+            makeSlider("Element size", modSettingsScale, {min: 50, max: 100, showValue: true, suffix: "%"}),
+            makeToggle("Collapse categories", modSettingsCollapse),
+            makeButton("Reset all settings to default", () => {
+                for (let store of registeredStores) {
+                    localStorage.removeItem(store);
+                }
+                window.location.reload();
             }),
-            makeButton("+dir", () => {
-                if (!I || !I.player) return;
-                I.player.pos[0] += Math.sin(I.player.rot);
-                I.player.pos[2] += Math.cos(I.player.rot);
-                I.player.sendInput(false, false, false, false, false, true);
-            }),
-            makeButton("+X", () => {
-                if (!I || !I.player) return;
-                I.player.pos[0] += 1;
-                I.player.sendInput(false, false, false, false, false, true);
-            }),
-            makeButton("+Y", () => {
-                if (!I || !I.player) return;
-                I.player.pos[1] += 5;
-                I.player.sendInput(false, false, false, false, false, true);
-                I.player.vel[1] = 0;
-            }),
-            makeButton("+Z", () => {
-                if (!I || !I.player) return;
-                I.player.pos[2] += 1;
-                I.player.sendInput(false, false, false, false, false, true);
-            }), */
         ];
+        let wrapper = null, scaleUnsub = null;
         return {
-            c() { settings.forEach(s => s.c()); },
-            m(M, D) { settings.forEach(s => s.m(M, D)); },
+            c() {settings.forEach(s => s.c());},
+            m(M, D) {
+                wrapper = h("div");
+                wrapper.className = M.className;
+                Ve(wrapper, "grid-column", "1 / -1");
+                w(M, wrapper, D);
+                settings.forEach(s => s.m(wrapper, null));
+                scaleUnsub = modSettingsScale.subscribe(v => {Ve(wrapper, "zoom", (v / 100).toString());});
+            },
             p(te, ae) {},
-            i(M) { settings.forEach(s => s.i(M)); },
-            o(M) { settings.forEach(s => s.o(M)); },
-            d(M) { settings.forEach(s => s.d(M)); }
+            i(M) {settings.forEach(s => s.i(M));},
+            o(M) {settings.forEach(s => s.o(M));},
+            d(M) {
+                if (scaleUnsub) scaleUnsub();
+                settings.forEach(s => s.d(false));
+                if (M && wrapper) x(wrapper);
+            }
         };
     }
 
@@ -18527,11 +18579,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         for (let b = 0; b < u.length; b += 1) {
             m[b] = eF(J6(t, u, b));
         }
-        let g = [wV, xV, kV, yV, bV, modSettings],
+        let g = [wV, xV, kV, yV, bV, modSettings, modSettings2],
             v = [];
 
         function _(b, k) {
-            return b[1].id == "gfx" ? 0 : b[1].id == "controls" ? 1 : b[1].id == "audio" ? 2 : b[1].id == "ui" ? 3 : b[1].id == "chat" ? 4 : b[1].id == "mod" ? 5 : -1
+            return b[1].id == "gfx" ? 0 : b[1].id == "controls" ? 1 : b[1].id == "audio" ? 2 : b[1].id == "ui" ? 3 : b[1].id == "chat" ? 4 : b[1].id == "mod" ? 5 : b[1].id == "mod2" ? 6 : -1
         }
         return ~(a = _(t, [-1, -1, -1])) && (c = v[a] = g[a](t)), {
             c() {
@@ -18619,6 +18671,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             },{
                 id: "mod",
                 name:"Mods"
+            },{
+                id: "mod2",
+                name:"Mods 2"
             }],
             N = R[0],
             Y = [{
@@ -23228,7 +23283,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 Ve(classFilterBar, "bottom", "90%");
                 Ve(classFilterBar, "background-color", "rgba(16,19,29,0.8)");
                 Ve(classFilterBar, "border-radius", "3px");
-                [[0,nextFriendlyClassWarrior,classSelectorKbWarrior],[1,nextFriendlyClassMage,classSelectorKbMage],[2,nextFriendlyClassArcher,classSelectorKbArcher],[3,nextFriendlyClassShaman,classSelectorKbShaman]].forEach(([classId,classStore,keybindStore]) => {
+                [[0,nextFriendlyClassWarrior],[1,nextFriendlyClassMage],[2,nextFriendlyClassArcher],[3,nextFriendlyClassShaman]].forEach(([classId,classStore]) => {
                     let btn = h("button");
                     Ve(btn, "width", "35px");
                     Ve(btn, "aspect-ratio", "1");
@@ -23244,20 +23299,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     Ve(btn, "position", "relative");
                     Ve(btn, "pointer-events", "auto");
                     Ve(btn, "overflow", "hidden");
-                    let keybindLabel = document.createElement("span");
-                    Ve(keybindLabel, "position", "absolute");
-                    Ve(keybindLabel, "top", "1px");
-                    Ve(keybindLabel, "right", "1px");
-                    Ve(keybindLabel, "font", "11px hordes");
-                    Ve(keybindLabel, "color", "#999");
-                    Ve(keybindLabel, "text-shadow", "1px 1px 0 #000,-1px -1px 0 #000");
-                    Ve(keybindLabel, "pointer-events", "none");
-                    Ve(keybindLabel, "line-height", "1");
-                    Ve(keybindLabel, "z-index", "1");
-                    btn.appendChild(keybindLabel);
                     btn.classStore = classStore;
-                    btn.keybindStore = keybindStore;
-                    btn.keybindLabel = keybindLabel;
                     btn.classId = classId;
                     classFilterBar.appendChild(btn);
                 });
@@ -23320,23 +23362,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         if (active && btn.style.animation) return;
                         applyBtnState(btn, active, fe.classSelectorAnimations);
                     }));
-                    classBtnHandlers.push(btn.keybindStore.subscribe(() => { btn.keybindLabel.textContent = ""; }));
                     btn.addEventListener("click", () => btn.classStore.update(v => !v));
                 });
                 classBtnHandlers.push(classSelectorAnimations.subscribe(refreshActive));
                 classBtnHandlers.push(fp.subscribe(refreshActive));
-                let keydownHandler = (evt) => {
-                    if (!fe.nextFriendlyClassSelectorEnabled) return;
-                    if (["shift", "control", "alt", "meta"].includes(evt.key.toLowerCase())) return;
-                    let mods = (evt.shiftKey ? "shift+" : "") + (evt.ctrlKey ? "ctrl+" : "") + (evt.altKey ? "alt+" : "");
-                    let keyCombo = mods + evt.key.toLowerCase();
-                    if (keyCombo && keyCombo === fe.classSelectorKbArcher) nextFriendlyClassArcher.update(v => !v);
-                    if (keyCombo && keyCombo === fe.classSelectorKbShaman) nextFriendlyClassShaman.update(v => !v);
-                    if (keyCombo && keyCombo === fe.classSelectorKbWarrior) nextFriendlyClassWarrior.update(v => !v);
-                    if (keyCombo && keyCombo === fe.classSelectorKbMage) nextFriendlyClassMage.update(v => !v);
-                };
-                document.addEventListener("keydown", keydownHandler);
-                classBtnHandlers.push(() => document.removeEventListener("keydown", keydownHandler));
                 m = !0, g || (v = [H(o, "click", t[9]), H(i, "click", t[12]), H(i, "contextmenu", bu), H(s, "click", t[13]), H(s, "contextmenu", bu)], g = !0)
             },
             p(B, [q]) {
@@ -30921,7 +30950,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 l = t.id === zn,
                 a = false,
                 c = t.id === _n,
-                playerIsBot = isBotName(t.name) && !t.clan && !inParty,
+                playerIsBot = isBotName(t.name) && !t.clan && !inParty && (t.faction === 0 || t.faction === 1),
                 hideBot = playerIsBot && fe.transparentBots,
                 isFriendlyCreature = i === 0 && t.type !== 0;
             if (!l && playerIsBot && fe.hideBots) return;
