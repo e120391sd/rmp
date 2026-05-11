@@ -30943,6 +30943,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                         g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                         v = t.skills.timedSkill !== void 0;
+                    if (!l && playerIsBot) g *= 0.7;
                     let origTransparency = fe.nameplateShowTransparency;
                     if (!l && playerIsBot) fe.nameplateShowTransparency = true;
 
