@@ -30917,7 +30917,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 l = t.id === zn,
                 a = false,
                 c = t.id === _n,
-                playerIsBot = isBotName(t.name) && !t.clan && !inParty && !t.clan && fe.hideBots,
+                playerIsBot = isBotName(t.name) && !t.clan && !inParty,
+                hideBot = playerIsBot && fe.hideBots,
                 isFriendlyCreature = i === 0 && t.type !== 0;
             let playerBuffs;
             if ((t.type !== 3 && t.stats)) {
@@ -30928,9 +30929,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
 
                 let castsOnPlayer = targettedPlayers.get(t.id) || [];
                 let targetScale = (l ? 1 : 0) * (1 + castsOnPlayer.length / 10);
-                let botMin = (!l && playerIsBot) ? min * 0.5 : min;
+                let _min = (!l && hideBot) ? min * 0.75 : min;
                 t.namePlateScale = vt(
-                t.namePlateScale + (targetScale - t.namePlateScale) * 0.25, botMin, max);
+                t.namePlateScale + (targetScale - t.namePlateScale) * 0.25, _min, max);
                 let CCFound, CCColor
                 playerBuffs = I.getEntityById(t.id)
                 if(playerBuffs) playerBuffs = playerBuffs.buffs.buffs
@@ -30943,9 +30944,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                         g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                         v = t.skills.timedSkill !== void 0;
-                    if (!l && playerIsBot) g *= 0.7;
                     let origTransparency = fe.nameplateShowTransparency;
-                    if (!l && playerIsBot) fe.nameplateShowTransparency = true;
+                    if (!l && hideBot) fe.nameplateShowTransparency = true;
 
                     !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
                     let _ = l || i === 0 && fe.nameplateShowFriendlyPlayers || i === 1 && fe.nameplateShowMonsters || i === 2 && fe.nameplateShowEnemyPlayers;
@@ -30969,8 +30969,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }
             }
             let f, u = !1;
-            if ((t.type === 3 ? (f = t.partyTimeoutCheck(I.player) ? qt[t.color] : qt.itemgrey, u = !0) : i === 0 ? (f = l ? qt.name : qt.nameSmall, u = fe.nameShowFriendlyPlayers) : i === 1 ? (f = l ? qt.enemy : qt.enemySmall, u = fe.nameShowMonsters) : i === 2 && (f = l ? qt.pvp : qt.pvpSmall, u = fe.nameShowEnemyPlayers), l || u) && !playerIsBot) {
-                if (!l && playerIsBot) return;
+            if ((t.type === 3 ? (f = t.partyTimeoutCheck(I.player) ? qt[t.color] : qt.itemgrey, u = !0) : i === 0 ? (f = l ? qt.name : qt.nameSmall, u = fe.nameShowFriendlyPlayers) : i === 1 ? (f = l ? qt.enemy : qt.enemySmall, u = fe.nameShowMonsters) : i === 2 && (f = l ? qt.pvp : qt.pvpSmall, u = fe.nameShowEnemyPlayers), l || u || playerIsBot)) {
                 if (!l && isFriendlyCreature && !fe.hideFriendlyCreatureNames) return;
                 let m = t.type === 3 && c && !t.canBePickedUpBy(I.player) ? .5 : l || t.type === 3 ? 1 : c ? .9 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                     g = l ? -16 : -9,
@@ -30978,7 +30977,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     nameSpacing = fe.nameSpacing / 10
                 
                 t.hudPos[1] -= nameSpacing
-                let _ = dr(t.hudPos, t.name, f, m, 1 * (fe.nameSize / 500), v, g);
+                if (!l && hideBot) m *= 0.7;
+                let origTransp = fe.nameplateShowTransparency;
+                if (!l && hideBot) fe.nameplateShowTransparency = true;
+                let _ = dr(t.hudPos, playerIsBot ? "bot" : t.name, f, m, 1 * (fe.nameSize / 500), v, g);
+                fe.nameplateShowTransparency = origTransp;
                 if (fe.revStackNameplate && playerBuffs && playerBuffs.has(60)) {
                     let revMap = playerBuffs.get(60);
                     let totalRevStacks = 0, revHasOwnCaster = false;
