@@ -32538,7 +32538,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 super(e), this.uiFrameDirty = !0, this.uiRange = !0, this.buffDisplayDirty = !0, this.visualPosition = [0, 0, 0], this.speechTimer = new xt(0, 5), this.mount = void 0, this.mountRotAdd = 0, this.namePlateScale = .5, e.creature && (e.creature.col1[0] !== 0 && (e.colPrim = e.creature.col1), e.creature.col2[0] !== 0 && (e.colSec = e.creature.col2)), this.skin = e.skin, this.colPrim = e.colPrim, this.colSec = e.colSec, this.interiorlightTarget = [0, 0, 0, 0], this.interiorlightTimer = new xt(0, .5), this.conciliator = [0, 0, 0], this.visual = new Ic(this), this.skin > 0 && this.remakeTransform()
             }
             handleMovementData(e, n) {
-                if ((fe.ghostMode || fe.freeflyMode) && I && I.player === this) return;
+                if ((fe.ghostMode || fe.freeflyMode || fe.freecamMode) && I && I.player === this) return;
                 let o = Bn([0, 0, 0], this.pos, this.conciliator),
                     i = Kt([0, 0, 0], o, e.pos);
                 nf(i) > 1 ? (X(this.conciliator, 0, 0, 0), it(this.pos, e.pos)) : Bn(this.conciliator, this.conciliator, i), it(this.vel, e.vel)
