@@ -30943,8 +30943,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     let m = l ? 1 : Math.max(.1, Math.min(1, 1 - n)) * .7,
                         g = l || o ? 1 : Math.min(.8, c ? .9 : m * .75 + .2),
                         v = t.skills.timedSkill !== void 0;
-                    if (!l && playerIsBot) g *= 0.3;
-                    let origTransp = fe.nameplateShowTransparency;
+                    let origTransparency = fe.nameplateShowTransparency;
                     if (!l && playerIsBot) fe.nameplateShowTransparency = true;
 
                     !CCFound && !fe.ignoreNameplateViewRange && !a && l && pr(v ? DA : IA, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0);
@@ -30965,7 +30964,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         let b = qt.lev1;
                         i !== 0 && (t.level - r > 4 ? b = qt.lev3 : t.level - r > 1 ? b = qt.lev2 : t.level - r < -5 && (b = qt.lev0)), dr(ho(Un, t.hudPos[0] + (Jn[0].width / 2 + Wo) * t.namePlateScale, t.hudPos[1]), t.level, b, g, 1, 0, 0, 0)
                     }
-                    fe.nameplateShowTransparency = origTransp;
+                    fe.nameplateShowTransparency = origTransparency;
                 }
             }
             let f, u = !1;
