@@ -32956,6 +32956,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 this.vel[1] = this.onGround ? 0 : Math.max(-60, this.vel[1] - 25 * e); */
                 this.setSteer(0,0);
                 this.setJump(0);
+                this.vel[1] = 0;
                 return;
             }
             if (fe.freeflyMode) {
