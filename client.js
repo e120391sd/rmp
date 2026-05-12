@@ -2616,7 +2616,7 @@ void main() {
         classColorParty = ne(true),
         classColor0 = ne("#C7966F"),
         classColor1 = ne("#21A9E1"),
-        classColor2 = ne("#98CE64"),
+        classColor2 = ne("#8cd75b"),
         classColor3 = ne("#1C51FF"),
         hideFriendlyCreatures = ne(true),
         hideFriendlyCreatureNames = ne(true),
