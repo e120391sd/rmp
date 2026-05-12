@@ -18536,7 +18536,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 console.table(rows);
             }),
             makeButton("Log mesh map", () => {if (!I || !I.player) return; console.table(Object.values(Array.from(Fi)));}),
-            makeButton("+dir", () => {if (!I || !I.player) return; I.player.pos[0] += Math.sin(I.player.rot); I.player.pos[2] += Math.cos(I.player.rot); I.player.sendInput(false, false, false, false, false, true);}),
+            makeButton("+dir", () => {if (!I || !I.player) return; I.player.pos[0] += Math.sin(I.player.rot) / 10; I.player.pos[2] += Math.cos(I.player.rot) / 10; I.player.sendInput(false, false, false, false, false, true);}),
             makeButton("+X", () => {if (!I || !I.player) return; I.player.pos[0] += 1; I.player.sendInput(false, false, false, false, false, true);}),
             makeButton("+Y", () => {if (!I || !I.player) return; I.player.pos[1] += 5; I.player.sendInput(false, false, false, false, false, true); I.player.vel[1] = 0;}),
             makeButton("+Z", () => {if (!I || !I.player) return; I.player.pos[2] += 1; I.player.sendInput(false, false, false, false, false, true);}),
