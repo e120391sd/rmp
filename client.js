@@ -30950,7 +30950,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 l = t.id === zn,
                 a = false,
                 c = t.id === _n,
-                playerIsBot = isBotName(t.name) && !t.clan && !inParty && (t.faction === 0 || t.faction === 1),
+                playerIsBot = isBotName(t.name) && !t.clan && !inParty && (t.faction === 0 || t.faction === 1 || t.faction === 5),
                 hideBot = playerIsBot && fe.transparentBots,
                 isFriendlyCreature = i === 0 && t.type !== 0;
             if (!l && playerIsBot && fe.hideBots) return;
