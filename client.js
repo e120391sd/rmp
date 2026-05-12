@@ -30988,7 +30988,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         let h = ((v ? DA : IA).height)
                         let ccDrawColor = fe.flashCCIndicator ? flashColor(CCColor, 6, 0.3) : CCColor
                         outline = Vo(null, ccDrawColor, w, h, 0, 0, 4)
-                        pr(outline, t.hudPos, 1, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0)
+                        pr(outline, t.hudPos, g, t.namePlateScale, 1, v ? 2 : 1, 0, v ? 4 : 0)
                     }
                     if (v && _) {
                         let b = Jn[0].height - Wo,
@@ -31016,7 +31016,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 if (!l && hideBot) fe.nameplateShowTransparency = true;
                 let _ = dr(t.hudPos, playerIsBot ? "bot" : t.name, f, m, 1 * (fe.nameSize / 500), v, g);
                 fe.nameplateShowTransparency = origTransp;
-                if (fe.revStackNameplate && playerBuffs && playerBuffs.has(60)) {
+                if (fe.revStackNameplate && !hideBot && playerBuffs && playerBuffs.has(60)) {
                     let revMap = playerBuffs.get(60);
                     let totalRevStacks = 0, revHasOwnCaster = false;
                     revMap.forEach((buff, casterId) => {
