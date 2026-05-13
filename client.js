@@ -2047,7 +2047,6 @@ void main() {
         disallowSpecialSelling: () => disallowSpecialSelling,
         losTarget: () => losTarget,
         timeSlider: () => timeSlider,
-        targetEnabled: () => targetEnabled,
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
@@ -2266,7 +2265,6 @@ void main() {
         disallowSpecialSelling: () => disallowSpecialSelling,
         losTarget: () => losTarget,
         timeSlider: () => timeSlider,
-        targetEnabled: () => targetEnabled,
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
@@ -2321,17 +2319,10 @@ void main() {
         aoeCircleSize: () => aoeCircleSize,
         aoeCircleAlpha: () => aoeCircleAlpha,
         aoeCircleColor: () => aoeCircleColor,
-        preventInputLock: () => preventInputLock,
         steerDuringJump: () => steerDuringJump,
-        ghostMode: () => ghostMode,
-        speedOverride: () => speedOverride,
         freezeBuffs: () => freezeBuffs,
         noRangeCheck: () => noRangeCheck,
-        freeflyMode: () => freeflyMode,
         freecamMode: () => freecamMode,
-        noCameraCollision: () => noCameraCollision,
-        freezeServer: () => freezeServer,
-        showDeadPlayers: () => showDeadPlayers,
         showInvisiblePlayers: () => showInvisiblePlayers,
         logNearbyEntities: () => logNearbyEntities,
         freecamModeKb: () => freecamModeKb,
@@ -2348,7 +2339,6 @@ void main() {
         ssaoIGN: () => ssaoIGN,
         shadowDistMult: () => shadowDistMult,
         grassDist: () => grassDist,
-        meshViewerID: () => meshViewerID,
         classColorParty: () => classColorParty,
         classColor0: () => classColor0,
         classColor1: () => classColor1,
@@ -2528,7 +2518,6 @@ void main() {
         disallowSpecialSelling = ne(true),
         losTarget = ne(true),
         timeSlider = ne(0),
-        targetEnabled = ne(false),
         disableDamage = ne(false),
         disableHealing = ne(true),
         disableClantags = ne(true),
@@ -2547,16 +2536,10 @@ void main() {
         stackIndicators = ne(true),
         prestigeChange = ne(false),
         prestigeSimulate = ne(0),
-        preventInputLock = ne(false),
         steerDuringJump = ne(false),
-        ghostMode = ne(false),
         freezeBuffs = ne(false),
         noRangeCheck = ne(false),
-        freeflyMode = ne(false),
         freecamMode = ne(false),
-        noCameraCollision = ne(true),
-        freezeServer = ne(false),
-        showDeadPlayers = ne(false),
         showInvisiblePlayers = ne(true),
         logNearbyEntities = ne(false),
         deepFreezeColor = ne("#ff2020"),
@@ -2598,7 +2581,6 @@ void main() {
         posX = ne(""),
         posY = ne(""),
         posZ = ne(""),
-        speedOverride = ne(0),
         freecamModeKb = ne("f4"),
         playerTransformID = ne(0),
         playerTransformColPrim = ne("#000000"),
@@ -2612,7 +2594,6 @@ void main() {
         ssaoIGN = ne(true),
         shadowDistMult = ne(130),
         grassDist = ne(130),
-        meshViewerID = ne(0),
         classColorParty = ne(true),
         classColor0 = ne("#C7966F"),
         classColor1 = ne("#21A9E1"),
@@ -2689,14 +2670,6 @@ void main() {
     for (let t in a1) a3(t, a1[t]);
     let categoriesPlayerName = null;
     saveCategoriesToPlayer.subscribe(() => stashCategories.update(cats => cats));
-    showDeadPlayers.subscribe(val => {
-        if (!val && I) {
-            for (let e = I.entities.array.length - 1; e >= 0; e--) {
-                let n = I.entities.array[e];
-                if (n !== I.player && n.stats && !n.stats.alive) I.removeEntity(n);
-            }
-        }
-    });
     showInvisiblePlayers.subscribe(val => {
         if (!val && I) {
             for (let e = I.entities.array.length - 1; e >= 0; e--) {
@@ -3247,9 +3220,6 @@ void main(){
             if (I && I.player) I.player.remakeTransform(id, colPrim, colSec);
         })
     })
-    let meshViewerEnt = null;
-    meshViewerID.subscribe(v => {
-    });
     document.addEventListener("keydown", (evt) => {if (evt.key.toLowerCase() === fe.freecamModeKb) freecamMode.set(!fe.freecamMode)});
 
     var P;
@@ -4590,7 +4560,7 @@ void main(){
             rl[t].push(e)
         },
         Io = t => {
-            xi === void 0 || w1 !== 1 || fe.freezeServer || xi.send(t)
+            xi === void 0 || w1 !== 1 || xi.send(t)
         },
         Z3 = t => {
             if (xi !== void 0) return;
@@ -12354,7 +12324,6 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             let n = [0, 0, 0];
             xa(Tn, gt.transform.worldMatrix), vs(gt, n, ad), Kt(n, n, Tn), to(n, n);
             gn(n, n, 999);
-            if (fe.noCameraCollision && !t) return sn(Tn, Tn, n, 1), Tn;
             let s = I.raycastEnvironmentClosest(Tn[0], Tn[1], Tn[2], n[0], n[1], n[2]);
             sn(Tn, Tn, n, s);
             if (s === 1) Tn[1] = I.getHeight(Tn[0], Tn[2]);
@@ -18496,50 +18465,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeSlider("Max rain windows", rainWindowMax, {min: 1, max: 10, showValue: true, suffix: "/d"}),
             makeSlider("Rain transition speed", rainEaseSpeed, {min: 10, max: 300, showValue: true}),
             makeToggle("Force rain", rainForce, {color: "#53a3f9"}),
-            makeCategory("super secret stuff", {marginTop: "10px", collapse: true, collapseDefault: true}),
-            makeSlider("Speed override", speedOverride, {min: 0, max: 5, showValue: true}),
-            makeToggle("Prevent movement override", preventInputLock),
-            makeToggle("Phase mode", ghostMode),
-            makeToggle("Freefly mode", freeflyMode, {sub: "Not recommended to use without desync, only for testing purposes. Freecam mode is a better version of this."}),
-            makeToggle("No camera collision", noCameraCollision),
-            makeToggle("Nameplates react to ST", targetEnabled),
-            makeToggle("Show dead players", showDeadPlayers),
-            makeToggle("Desync", freezeServer, {sub: "While this setting is active, packets will not be sent to the server. Use with position update buttons to teleport precisely."}),
-            makeText(null, meshViewerID, {numberInput: true}),
-            makeButton("View mesh", () => {
-                let v = fe.meshViewerID;
-                if (meshViewerEnt && I) {try {I.removeEntity(meshViewerEnt);} catch(e) {} meshViewerEnt = null;}
-                if (!v || v <= 0 || !I || !I.player) return;
-                if (!Fi || !Fi.has(v)) return;
-                try {
-                    let id = 999000000 + Math.floor(Math.random() * 1000000);
-                    let fwd = [Math.sin(I.player.rot), Math.cos(I.player.rot)];
-                    let ent = I.createEntity(11, id, {});
-                    ent.pos[0] = I.player.pos[0]; ent.pos[1] = I.player.pos[1] + fwd[0] * 10; ent.pos[2] = I.player.pos[2];
-                    ent.setNodeInfo(v, 1);
-                    let noop = () => {};
-                    ent.preFixed = ent.tickFixed = ent.postFixed = noop;
-                    ent.netDeletion = { reset: noop, done: () => false, end: -Infinity, start: 0 };
-                    I.addEntity(ent); meshViewerEnt = ent;
-                } catch(e) {console.log("Mesh viewer spawn failed:", e);}
-            }),
-            makeButton("Log Entities", () => {
-                console.log(I.getEnvironmentId(I.player.pos[0], I.player.pos[2]));
-                Ha.forEach((t, id) => console.log(`terrain ${id} tex=${t.texture} dark=${t.darkest} bright=${t.brightest}`));
-                let rows = [];
-                for (let e = 0; e < I.entities.array.length; e++) {
-                    let n = I.entities.array[e];
-                    if (n === I.player) continue;
-                    let dist = Math.round(Math.sqrt(oo(n.pos, I.player.pos)) * 10) / 10;
-                    rows.push({ id: n.id, name: n.name || "", type: n.type, class: n.class, level: n.level, faction: n.faction, party: n.party, clan: n.clan || "", alive: n.stats ? n.stats.alive : null, renderVisible: n.visual ? n.visual.transform.visible : null, inFog: n.visual ? n.visual.inFog : null, dist, buffs: n.buffs?.buffs });
-                }
-                console.table(rows);
-            }),
-            makeButton("Log mesh map", () => {if (!I || !I.player) return; console.table(Object.values(Array.from(Fi)));}),
-            makeButton("+dir", () => {if (!I || !I.player) return; I.player.pos[0] += Math.sin(I.player.rot) / 10; I.player.pos[2] += Math.cos(I.player.rot) / 10; I.player.sendInput(false, false, false, false, false, true);}),
-            makeButton("+X", () => {if (!I || !I.player) return; I.player.pos[0] += 1; I.player.sendInput(false, false, false, false, false, true);}),
-            makeButton("+Y", () => {if (!I || !I.player) return; I.player.pos[1] += 5; I.player.sendInput(false, false, false, false, false, true); I.player.vel[1] = 0;}),
-            makeButton("+Z", () => {if (!I || !I.player) return; I.player.pos[2] += 1; I.player.sendInput(false, false, false, false, false, true);}),
             makeCategory("UI", {marginTop: "10px"}),
             makeSlider("Element size", modSettingsScale, {min: 50, max: 100, showValue: true, suffix: "%"}),
             makeToggle("Collapse categories", modSettingsCollapse),
@@ -30866,7 +30791,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         fB = () => {
             let t = [];
             return I.entities.array.forEach((e, n) => {
-                !e.visual || (!e.visual.transform.visible && !fe.showInvisiblePlayers) || (e.stats && !e.stats.alive && !fe.showDeadPlayers && e.id !== I.playerId) || e.id !== zn && e.visual.cDist && e.visual.cDist > 500 && !fe.showInvisiblePlayers || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && !fe.freecamMode && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
+                !e.visual || (!e.visual.transform.visible && !fe.showInvisiblePlayers) || (e.stats && !e.stats.alive && e.id !== I.playerId) || e.id !== zn && e.visual.cDist && e.visual.cDist > 500 && !fe.showInvisiblePlayers || e.type === 3 && e.id !== _n || (it(e.hudPos, e.visualPosition || e.pos), e.type !== 3 && (e.hudPos[1] += e.visual.getTopAbsolute(), e.mount !== void 0 && (e.hudPos[1] += 1)), vl(e.hudPos, e.hudPos) && (e.id === I.playerId && !fe.freecamMode && (e.hudPos[0] = Math.round(.5 * Ln.width), e.hudPos[1] = Math.round(.5 * Ln.height)), t.push(e)))
             }), t.sort((e, n) => n.hudPos[2] - e.hudPos[2])
         },
         syllables = ['acaru', 'achi', 'acti', 'ael', 'aelle', 'aelo', 'aer', 'aeri', 'aero',
@@ -32567,7 +32492,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         tickWaterCollisions(e) {
             let n = this.inWater;
             this.inWater = Math.max(0, e.getWaterHeight(this.pos[0], this.pos[2]) - this.pos[1]);
-            if (fe.freeflyMode && I && I.player === this) this.inWater = 0;
             !n && this.inWater > 0 && this.vel[1] < -3 && this.onEnterWater();
             return this.inWater > 0
         }
@@ -32578,7 +32502,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 super(e), this.uiFrameDirty = !0, this.uiRange = !0, this.buffDisplayDirty = !0, this.visualPosition = [0, 0, 0], this.speechTimer = new xt(0, 5), this.mount = void 0, this.mountRotAdd = 0, this.namePlateScale = .5, e.creature && (e.creature.col1[0] !== 0 && (e.colPrim = e.creature.col1), e.creature.col2[0] !== 0 && (e.colSec = e.creature.col2)), this.skin = e.skin, this.colPrim = e.colPrim, this.colSec = e.colSec, this.interiorlightTarget = [0, 0, 0, 0], this.interiorlightTimer = new xt(0, .5), this.conciliator = [0, 0, 0], this.visual = new Ic(this), this.skin > 0 && this.remakeTransform()
             }
             handleMovementData(e, n) {
-                if ((fe.ghostMode || fe.freeflyMode) && I && I.player === this) return;
                 let o = Bn([0, 0, 0], this.pos, this.conciliator),
                     i = Kt([0, 0, 0], o, e.pos);
                 nf(i) > 1 ? (X(this.conciliator, 0, 0, 0), it(this.pos, e.pos)) : Bn(this.conciliator, this.conciliator, i), it(this.vel, e.vel)
@@ -32998,11 +32921,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 this.setJump(0);
                 return;
             }
-            if (fe.freeflyMode) {
-                this.vel[1] = i > 0 ? s * 0.1 : nt.shift.down ? -s * 0.05 : 0;
-                this.horizontalSteer(s, n, o);
-                return;
-            }
             if (this.inWater > this.radius) {
                 this.onGround && (this.vel[1] = Math.max(0, this.vel[1]));
                 let r = this.buffs.hasAnyWithTag(13),
@@ -33038,10 +32956,9 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         tickCollisions(e, n, o, i, s) {
             let r = [...this.pos];
             sn(this.pos, this.pos, this.vel, e);
-            if (fe.freeflyMode) return;
             let l = this.belowGround || s ? 0 : I.getHeight(this.pos[0], this.pos[2]),
                 a = I.getNormal(this.pos[0], this.pos[2]);
-            if (!fe.ghostMode) this.tickWallCollisions(n, l, a);
+            this.tickWallCollisions(n, l, a);
             l = this.belowGround || s ? 0 : I.getHeight(this.pos[0], this.pos[2]), a = I.getNormal(this.pos[0], this.pos[2]), this.tickFloorCollisions(o, l, a), this.tickCeilCollisions(i, r), this.belowGround || (this.pos[1] = Math.max(this.pos[1], I.getHeight(this.pos[0], this.pos[2])))
         }
         tickWallCollisions(e, n, o) {
@@ -33387,7 +33304,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 if (f !== v || u !== _) this.setSteer(f, u);
                 if (m !== b) { this.setJump(m); a = !0; }
             } else {
-                let isOverride = !fe.preventInputLock && this.hasMovementOverride();
+                let isOverride = this.hasMovementOverride();
                 if (isOverride && !this.rotSentBeforeOverrideEnd) {
                     let minRem = Infinity;
                     this.buffs.movementOverride.forEach(b => { if (b.timer) minRem = Math.min(minRem, b.timer.remaining(I.time)); });
@@ -33406,11 +33323,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }
             let y = hl(g, this.lastNetRot);
             this.inputTicksSinceLastRotUpdate++, g !== k && this.setRot(g), g !== this.lastNetRot && ((this.steer[0] !== 0 || this.steer[1] !== 0) && Math.abs(y) > .1 || this.inputTicksSinceLastRotUpdate > 10 || r || s || Math.abs(y) > .2) && (this.lastNetRot = k, i = !0);
-            let F = fe.speedOverride > 0 ? this.getStatBasedMoveSpeed() * (fe.speedOverride) : this.getStatBasedMoveSpeed();
+            let F = this.getStatBasedMoveSpeed();
             F != this.speed && (this.setSpeed(F), l = !0);
             this.inputTicksSinceLastPosUpdate++;
-            fe.freeflyMode || fe.ghostMode || fe.freecamMode ? c = !0 : this.inputTicksSinceLastPosUpdate > 600 ? c = !0 : this.inputTicksSinceLastPosUpdate > 40 ? (this.steer[0] !== 0 || this.steer[1] !== 0) && (c = !0) : this.inputTicksSinceLastPosUpdate > 20 && (this.steer[0] !== 0 || this.steer[1] !== 0) && (i || s || r) && (c = !0);
-            if (fe.freeflyMode || fe.freecamMode) { i = false; s = false; r = false; l = false; a = false; }
+            fe.freecamMode ? c = !0 : this.inputTicksSinceLastPosUpdate > 600 ? c = !0 : this.inputTicksSinceLastPosUpdate > 40 ? (this.steer[0] !== 0 || this.steer[1] !== 0) && (c = !0) : this.inputTicksSinceLastPosUpdate > 20 && (this.steer[0] !== 0 || this.steer[1] !== 0) && (i || s || r) && (c = !0);
+            if (fe.freecamMode) { i = false; s = false; r = false; l = false; a = false; }
             (i || s || r || l || a || c) && this.sendInput(i, s, r, l, a, c);
         }
         sendInput(e, n, o, i, s, r) {
@@ -33446,7 +33363,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             } else {
                 it(Qt.position, this.mount ? this.mount.transform.position : this.visual.transform.position);
                 Qt.position[1] += 1.25;
-                if (!fe.freeflyMode && !nt.lmb.down && !nt.rmb.down && (this.steer[0] !== 0 || this.steer[1] !== 0)) {
+                if (!nt.lmb.down && !nt.rmb.down && (this.steer[0] !== 0 || this.steer[1] !== 0)) {
                     let u = hl(this.rot, so[0]) * Math.min(1, e * 2);
                     u !== 0 && (Math.abs(u) > .03 * e ? (u = u > 0 ? Math.max(u, Math.min(1, .6 * e)) : Math.min(u, Math.max(1, -.6 * e)), so[0] -= u) : so[0] = this.rot)
                 }
@@ -33467,20 +33384,18 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     [-1, -1],
                     [1, -1]
                 ];
-            if (!fe.noCameraCollision) {
-                for (let u = 0; u < c.length; ++u) {
-                    let m = c[u];
-                    vs(gt, l, m), Kt(a, l, s), Bn(l, Qt.position, a);
-                    let g = I.triangleGrid.queryRay(l, o, i),
-                        v = 1;
-                    for (let _ = 0; _ < g.length; ++_) {
-                        let b = g[_];
-                        v = Math.min(v, Ja(b[0], b[1], b[2], l, o, !0))
-                    }
-                    v < 1 && (n = Math.min(r * v, n))
+            for (let u = 0; u < c.length; ++u) {
+                let m = c[u];
+                vs(gt, l, m), Kt(a, l, s), Bn(l, Qt.position, a);
+                let g = I.triangleGrid.queryRay(l, o, i),
+                    v = 1;
+                for (let _ = 0; _ < g.length; ++_) {
+                    let b = g[_];
+                    v = Math.min(v, Ja(b[0], b[1], b[2], l, o, !0))
                 }
+                v < 1 && (n = Math.min(r * v, n))
             }
-            if (this.smoothZoom = Math.max(0, Math.min(this.smoothZoom + e * 20, n)), X(gt.transform.position, 0, 0, -this.smoothZoom), e1(gt), !this.belowGround && !fe.noCameraCollision) {
+            if (this.smoothZoom = Math.max(0, Math.min(this.smoothZoom + e * 20, n)), X(gt.transform.position, 0, 0, -this.smoothZoom), e1(gt), !this.belowGround) {
                 vs(gt, l, [0, -1]);
                 let u = I.getHeight(l[0], l[2]);
                 u > l[1] && (Qt.position[1] += u - l[1])
@@ -34085,10 +34000,6 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }
             }
 
-            if (fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) {
-                if (!targettedPlayers.get(target)) targettedPlayers.set(target, [])
-                targettedPlayers.get(target).push({ playerId: casterId, expiryTime: currentTime + 4250 })
-            }
 
             for (let entry of expiringCasts) {
                 let foundCast = entry.casters.find(c => currentTime > c.expiryTime)
@@ -34286,7 +34197,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }
                 for (let e = this.entities.array.length - 1; e >= 0; e--) {
                     let n = this.entities.array[e];
-                    n !== this.player && (fe.showDeadPlayers && n.stats ? void 0 : fe.showInvisiblePlayers ? void 0 : oo(n.pos, this.player.pos) < 14400 ? n.netDeletion.reset(this.time, 2) : n.netDeletion.end > 0 && n.netDeletion.done(this.time) && (this.removeEntity(n), n.id === this.player.target && this.player.setTarget(0)))
+                    n !== this.player && (fe.showInvisiblePlayers ? void 0 : oo(n.pos, this.player.pos) < 14400 ? n.netDeletion.reset(this.time, 2) : n.netDeletion.end > 0 && n.netDeletion.done(this.time) && (this.removeEntity(n), n.id === this.player.target && this.player.setTarget(0)))
                 }
             }
         }
