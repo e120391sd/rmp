@@ -2047,6 +2047,7 @@ void main() {
         disallowSpecialSelling: () => disallowSpecialSelling,
         losTarget: () => losTarget,
         timeSlider: () => timeSlider,
+        noCameraCollision: () => noCameraCollision,
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
@@ -2265,6 +2266,7 @@ void main() {
         disallowSpecialSelling: () => disallowSpecialSelling,
         losTarget: () => losTarget,
         timeSlider: () => timeSlider,
+        noCameraCollision: () => noCameraCollision,
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
         disableClantags: () => disableClantags,
@@ -2323,6 +2325,7 @@ void main() {
         freezeBuffs: () => freezeBuffs,
         noRangeCheck: () => noRangeCheck,
         freecamMode: () => freecamMode,
+        noCameraCollision: () => noCameraCollision,
         showInvisiblePlayers: () => showInvisiblePlayers,
         logNearbyEntities: () => logNearbyEntities,
         freecamModeKb: () => freecamModeKb,
@@ -2537,6 +2540,7 @@ void main() {
         prestigeChange = ne(false),
         prestigeSimulate = ne(0),
         steerDuringJump = ne(false),
+        noCameraCollision = ne(true),
         freezeBuffs = ne(false),
         noRangeCheck = ne(false),
         freecamMode = ne(false),
@@ -12324,6 +12328,7 @@ precision highp float;precision highp int;in vec4 vWorldPos;out vec4 fragColor;v
             let n = [0, 0, 0];
             xa(Tn, gt.transform.worldMatrix), vs(gt, n, ad), Kt(n, n, Tn), to(n, n);
             gn(n, n, 999);
+            if (fe.noCameraCollision && !t) return sn(Tn, Tn, n, 1), Tn;
             let s = I.raycastEnvironmentClosest(Tn[0], Tn[1], Tn[2], n[0], n[1], n[2]);
             sn(Tn, Tn, n, s);
             if (s === 1) Tn[1] = I.getHeight(Tn[0], Tn[2]);
@@ -18429,6 +18434,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeToggle("Minimap worldlight overlay", minimapLightOverlay),
             makeToggle("Hide kek quick buttons", hideKekQuickButtons),
             makeToggle("Disable circle cooldown system", disableCircleCooldowns),
+            makeToggle("No camera collision", noCameraCollision),
             makeCategory("AOE Shader", {marginTop: "10px"}),
             makeToggle("Enable AOE Shader", aoeCircleEnabled),
             makeSlider("Radius", aoeCircleSize, {min: 0, max: 50, showValue: true}),
@@ -33384,18 +33390,20 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     [-1, -1],
                     [1, -1]
                 ];
-            for (let u = 0; u < c.length; ++u) {
-                let m = c[u];
-                vs(gt, l, m), Kt(a, l, s), Bn(l, Qt.position, a);
-                let g = I.triangleGrid.queryRay(l, o, i),
-                    v = 1;
-                for (let _ = 0; _ < g.length; ++_) {
-                    let b = g[_];
-                    v = Math.min(v, Ja(b[0], b[1], b[2], l, o, !0))
+            if (!fe.noCameraCollision) {
+                for (let u = 0; u < c.length; ++u) {
+                    let m = c[u];
+                    vs(gt, l, m), Kt(a, l, s), Bn(l, Qt.position, a);
+                    let g = I.triangleGrid.queryRay(l, o, i),
+                        v = 1;
+                    for (let _ = 0; _ < g.length; ++_) {
+                        let b = g[_];
+                        v = Math.min(v, Ja(b[0], b[1], b[2], l, o, !0))
+                    }
+                    v < 1 && (n = Math.min(r * v, n))
                 }
-                v < 1 && (n = Math.min(r * v, n))
             }
-            if (this.smoothZoom = Math.max(0, Math.min(this.smoothZoom + e * 20, n)), X(gt.transform.position, 0, 0, -this.smoothZoom), e1(gt), !this.belowGround) {
+            if (this.smoothZoom = Math.max(0, Math.min(this.smoothZoom + e * 20, n)), X(gt.transform.position, 0, 0, -this.smoothZoom), e1(gt), !this.belowGround && !fe.noCameraCollision) {
                 vs(gt, l, [0, -1]);
                 let u = I.getHeight(l[0], l[2]);
                 u > l[1] && (Qt.position[1] += u - l[1])
