@@ -2047,6 +2047,7 @@ void main() {
         disallowSpecialSelling: () => disallowSpecialSelling,
         losTarget: () => losTarget,
         timeSlider: () => timeSlider,
+        targetEnabled: () => targetEnabled,
         noCameraCollision: () => noCameraCollision,
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
@@ -2266,6 +2267,7 @@ void main() {
         disallowSpecialSelling: () => disallowSpecialSelling,
         losTarget: () => losTarget,
         timeSlider: () => timeSlider,
+        targetEnabled: () => targetEnabled,
         noCameraCollision: () => noCameraCollision,
         disableDamage: () => disableDamage,
         disableHealing: () => disableHealing,
@@ -2521,6 +2523,7 @@ void main() {
         disallowSpecialSelling = ne(true),
         losTarget = ne(true),
         timeSlider = ne(0),
+        targetEnabled = ne(false),
         disableDamage = ne(false),
         disableHealing = ne(true),
         disableClantags = ne(true),
@@ -34008,6 +34011,10 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }
             }
 
+            if (fe.targetEnabled && isSkill && castStart > 100 && targetableSkillIds.has(skillId)) {
+                if (!targettedPlayers.get(target)) targettedPlayers.set(target, [])
+                targettedPlayers.get(target).push({ playerId: casterId, expiryTime: currentTime + 4250 })
+            }
 
             for (let entry of expiringCasts) {
                 let foundCast = entry.casters.find(c => currentTime > c.expiryTime)
