@@ -18168,6 +18168,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             m(M, D) {
                 w(M, el, D); Q(val, M, D);
                 if (opts.reload) { let first = true; store.subscribe(() => { if (first) { first = false; return; } window.location.reload(); }); }
+                if (opts.onChange) {let first = true; store.subscribe(v => {if (first) {first = false; return;} opts.onChange(v);});}
             },
             i(M) {S(val.$$.fragment, M);},
             o(M) {E(val.$$.fragment, M);},
@@ -18190,14 +18191,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             m(M, D) {
                 w(M, el, D); w(M, inp, D);
                 unsub = store.subscribe(v => { inp.value = String(v); if (valNode) valNode.data = String(v) + (opts.suffix || ""); });
-                inp.addEventListener("input", () => { store.set(Number(inp.value)); if (valNode) valNode.data = inp.value + (opts.suffix || ""); });
+                inp.addEventListener("input", () => {let v = Number(inp.value); store.set(v); if (valNode) valNode.data = inp.value + (opts.suffix || ""); if (opts.onChange) opts.onChange(v);});
                 inp.addEventListener("change", () => { if (opts.reload) window.location.reload(); });
             },
             d(M) {if (M) { x(el); x(inp); } if (unsub) unsub();}
         };
     }
 
-    function makeColor(imgSrc, label, store) {
+    function makeColor(imgSrc, label, store, opts = {}) {
         if (store) registeredStores.push(getStoreKey(store));
         let el, inp = h("input"), unsub;
         p(inp, "type", "color");
@@ -18215,7 +18216,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             m(M, D) {
                 w(M, el, D); w(M, inp, D);
                 unsub = store.subscribe(v => { if (v) inp.value = v; });
-                inp.addEventListener("input", () => { store.set(inp.value); });
+                inp.addEventListener("input", () => {store.set(inp.value); if (opts && opts.onChange) opts.onChange(inp.value);});
             },
             d(M) {if (M) { x(el); x(inp); } if (unsub) unsub();}
         };
@@ -18225,14 +18226,15 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let el = h("div"), inp = h("input"), unsub;
         el.textContent = label;
         p(inp, "type", "text");
+        if (opts.placeholder) p(inp, "placeholder", opts.placeholder);
         if (opts.note) { let sep = h("br"), sub = h("small"); sub.textContent = opts.note; p(sub, "class", "textgrey"); d(el, sep); d(el, sub); }
         return {
             c() {}, i(M) {}, o(M) {},
             m(M, D) {
                 if (label) w(M, el, D);
                 w(M, inp, D);
-                unsub = store.subscribe(v => { inp.value = v != null ? v : ""; });
-                inp.addEventListener("input", () => { store.set(opts.numberInput ? Number(inp.value) : inp.value); });
+                if (store) unsub = store.subscribe(v => {inp.value = v != null ? v : "";});
+                inp.addEventListener("input", () => {let v = opts.numberInput ? Number(inp.value) : inp.value; if (store) store.set(v); if (opts.onChange) opts.onChange(v);});
                 inp.addEventListener("change", () => { if (opts.reload) window.location.reload(); });
             },
             d(M) {if (M) { x(el); x(inp); } if (unsub) unsub();}
@@ -18319,7 +18321,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                     if (["Shift", "Control", "Alt", "Meta"].includes(e.key)) return;
                     let mods = (e.shiftKey ? "shift+" : "") + (e.ctrlKey ? "ctrl+" : "") + (e.altKey ? "alt+" : "");
                     let k = e.key === "Escape" ? "" : mods + e.key.toLowerCase();
-                    store.set(k); inp.value = k;
+                    store.set(k); inp.value = k; if (opts.onChange) opts.onChange(k);
                 });
             },
             d(M) {if (M) { x(con); x(inp); }}
@@ -18338,6 +18340,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         };
     }
     function modSettings(t) {
+        let importVal = "";
         const settings = [
             makeCategory("Target Next Friendly Mods", {marginTop: "10px"}),
             makeToggle("Ignore faction", revUnfriendly, {note: "Only enable during gloom"}),
@@ -18390,6 +18393,24 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeCategory("Rare Mob Notifier", {marginTop: "10px"}),
             makeToggle("Show icon on minimap", radar),
             makeToggle("Play sound when nearby", radarSound),
+            makeText(null, null, {placeholder: "Import JSON", onChange: v => importVal = v}),
+            makeButton("Import", () => {
+                try {
+                    let data = JSON.parse(importVal);
+                    for (let [k, v] of Object.entries(data)) {
+                        localStorage.setItem(k, v);
+                    }
+                    window.location.reload();
+                } catch(e) {}
+            }),
+            makeButton("Export data", () => {
+                let data = {};
+                for (let store of registeredStores) {
+                    let val = localStorage.getItem(store);
+                    if (val !== null) data[store] = val;
+                }
+                navigator.clipboard.writeText(JSON.stringify(data));
+            }),
             makeButton("Reset all settings to default", () => {
                 for (let store of registeredStores) {
                     localStorage.removeItem(store);
@@ -18420,6 +18441,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function modSettings2(t) {
+        let importVal = "";
         const settings = [
             makeCategory("Uncategorized", {marginTop: "10px"}),
             makeToggle("Block +(x) item & charm vendor", disallowSpecialSelling, {color: "#ff6d6d"}),
@@ -18477,6 +18499,24 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             makeCategory("UI", {marginTop: "10px"}),
             makeSlider("Element size", modSettingsScale, {min: 50, max: 100, showValue: true, suffix: "%"}),
             makeToggle("Collapse categories", modSettingsCollapse),
+            makeText(null, null, {placeholder: "Import JSON", onChange: v => importVal = v}),
+            makeButton("Import", () => {
+                try {
+                    let data = JSON.parse(importVal);
+                    for (let [k, v] of Object.entries(data)) {
+                        localStorage.setItem(k, v);
+                    }
+                    window.location.reload();
+                } catch(e) {}
+            }),
+            makeButton("Export data", () => {
+                let data = {};
+                for (let store of registeredStores) {
+                    let val = localStorage.getItem(store);
+                    if (val !== null) data[store] = val;
+                }
+                navigator.clipboard.writeText(JSON.stringify(data));
+            }),
             makeButton("Reset all settings to default", () => {
                 for (let store of registeredStores) {
                     localStorage.removeItem(store);
