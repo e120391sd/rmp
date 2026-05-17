@@ -2595,7 +2595,7 @@ void main() {
         customMountID = ne(0),
         ssao = ne(false),
         ssaoRadius = ne(9),
-        ssaoBias = ne(16),
+        ssaoBias = ne(9),
         ssaoFadeDist = ne(305),
         ssaoBlur = ne(true),
         ssaoIGN = ne(true),
