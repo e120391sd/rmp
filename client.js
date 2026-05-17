@@ -31677,7 +31677,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             o <= 0 && console.error("buff with zero or less stacks");
             let l = this.buffs.get(e) || this.buffs.set(e, new Map).get(e),
                 a = l.get(n) || {};
-            if (a.caster = n, a.id = e, a.level = r, a.stacks = o, a.logic = Ml.get(e), a.timer = new xt(i, s), a.active = !0, a.uniqueInstances = 0, a.remove = !1, a.logic.intervalDuration !== void 0) {
+            if (a.caster = n, a.id = e, a.level = r, a.stacks = o, a.logic = Ml.get(e), a.timer = new xt(i, s), a.active = !0, a.uniqueInstances = 0, a.remove = !1, !a.logic) { console.warn("setBuff: unknown buff id", e); a.interval = new xt(0, 0); return l.set(n, a), (this.casters.get(n) || this.casters.set(n, new Map).get(n)).set(e, a), a; } if (a.logic.intervalDuration !== void 0) {
                 let f = i;
                 a.interval && (f = a.interval.start);
                 let u = I.entity(n);
@@ -34464,7 +34464,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }).set(27, (t, e, n) => {
         t.setNodeInfo(e[1], e[2], e[3])
     }).set(28, (t, e, n) => {
-        t.setPosLock(e[1], e[2], e[3])
+        if (typeof t.setPosLock === "function") t.setPosLock(e[1], e[2], e[3])
     });
     var VT = (t, e, n) => {
             let o = I.getEntityById(e[0]);
