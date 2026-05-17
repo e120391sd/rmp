@@ -31677,7 +31677,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             o <= 0 && console.error("buff with zero or less stacks");
             let l = this.buffs.get(e) || this.buffs.set(e, new Map).get(e),
                 a = l.get(n) || {};
-            if (a.caster = n, a.id = e, a.level = r, a.stacks = o, a.logic = Ml.get(e), a.timer = new xt(i, s), a.active = !0, a.uniqueInstances = 0, a.remove = !1, !a.logic) { console.warn("setBuff: unknown buff id", e); a.interval = new xt(0, 0); return l.set(n, a), (this.casters.get(n) || this.casters.set(n, new Map).get(n)).set(e, a), a; } if (a.logic.intervalDuration !== void 0) {
+            if (a.caster = n, a.id = e, a.level = r, a.stacks = o, a.logic = Ml.get(e), a.timer = new xt(i, s), a.active = !0, a.uniqueInstances = 0, a.remove = !1, a.logic.intervalDuration !== void 0) {
                 let f = i;
                 a.interval && (f = a.interval.start);
                 let u = I.entity(n);
@@ -32601,12 +32601,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         setBuff(e, n, o, i, s, r, l, a) {
             let c = super.setBuff(e, n, o, i, s, r);
-            if (!c || !c.logic) { if (c) c.data = a; return; }
             c.data = a, c.visualFreeze = c.visualIncapacitate = 0, this.immuneCC.size === 0 && (c.logic.fx.frozen && c.visualFreeze++, c.logic.fx.incapacitated && c.visualIncapacitate++), this.entity.buffDisplayDirty = !0, this.entity.visual && this.addEffectBuff(e, c, l)
         }
         removeBuff(e, n) {
             let o = super.removeBuff(e, n);
-            o && o.logic && (this.entity.buffDisplayDirty = !0, this.removeEffectBuff(e, o.logic, o), o.logic.fx.endSound !== void 0 && I.player !== void 0 && is(o.logic.fx.endSound, this.entity.visual.transform, this.entity.id === I.playerId || n === I.playerId ? 1 : 0, 0, 1))
+            o && (this.entity.buffDisplayDirty = !0, this.removeEffectBuff(e, o.logic, o), o.logic.fx.endSound !== void 0 && I.player !== void 0 && is(o.logic.fx.endSound, this.entity.visual.transform, this.entity.id === I.playerId || n === I.playerId ? 1 : 0, 0, 1))
         }
         changeEntityVisual(e) {
             this.entity.remakeTransform(e), this.stickEffects.forEach((n, o) => {
@@ -34330,11 +34329,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         for (let o = 1; o < e.length; o += 2) t.stats.setStat(e[o], e[o + 1])
     }).set(5, (t, e, n) => {
         t == I.player && (an(3, 100), t.skills.cd(e[1], I.time, yo(e[2])), e[5] > 0 && t.skills.globalCd(yo(e[4]), yo(e[5]))), !n && t.visual && !t.visual.inFog && ((!zt.get(e[1]).castLen || !t.visual.currentAnim) && D0.has(e[1]) && t.visual.anim(D0.get(e[1])), t.visual.onYell())
-    }).set(22, (t, e, n) => {
-        t.skills.startTimedCast(zt.get(e[1]), yo(e[2]), e[3], yo(e[4])), e[5] > 0 && t.skills.globalCd(yo(e[2]), yo(e[5]))
     }).set(23, (t, e, n) => {
-        t.skills.interruptTimedCast(!0, e[1] === 1)
+        t.skills.startTimedCast(zt.get(e[1]), yo(e[2]), e[3], yo(e[4])), e[5] > 0 && t.skills.globalCd(yo(e[2]), yo(e[5]))
     }).set(24, (t, e, n) => {
+        t.skills.interruptTimedCast(!0, e[1] === 1)
+    }).set(25, (t, e, n) => {
         t.skills.finishTimedCast(yo(e[1]))
     }).set(7, (t, e, n) => {
         let o = e[1],
@@ -34421,31 +34420,33 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }]) : I.player && t.id == zn && an(4, 100)) : t.stats.alive || t.stats.respawn()
     }).set(11, (t, e, n) => {
         t.setFaction(e[1])
-    }).set(14, (t, e, n) => {
+    }).set(15, (t, e, n) => {
         t.setLevel(e[1])
-    }).set(16, (t, e, n) => {
+    }).set(17, (t, e, n) => {
         t.setClass(e[1])
     }).set(12, (t, e, n) => {
         t.setName(Yo(e, 1))
     }).set(13, (t, e, n) => {
+        t.skin = e[1], t.remakeTransform()
+    }).set(14, (t, e, n) => {
         t.setClan(e.length > 2 ? Yo(e, 2) : void 0, e[1])
-    }).set(15, (t, e, n) => {
+    }).set(16, (t, e, n) => {
         t.setLevel(e[1]);
         let o = `${t==I.player?"You":sU(e[0])} leveled up to ${e[1]}!`;
         jt("lvlup", o), t == I.player && (an(13, 100), zt.forEach(i => {
             i.class === I.player.class && i.minlevel === e[1] && (an(16, 100), TT(`<span class=textprimary><b class=textgreen>${P.items.book[i.id].name}</b><br>Skill book available at the Trader!</span>`, `skills/${i.id}.${Yn}`, "border primary"))
         })), t.visual && !t.visual.inFog && Ii(26, t.visual.transform, t == I.player ? 1 : 0, !1)
-    }).set(17, (t, e, n) => {
-        t.buffs.setBuff(e[1], e[2], e[3], yo(e[4]), yo(e[5]), e[6], e[7], e.length > 8 ? e.slice(8) : void 0)
-    }).set(19, (t, e, n) => {
-        e[2] === I.playerId && SA(t.visualPosition, 2, !1)
     }).set(18, (t, e, n) => {
+        t.buffs.setBuff(e[1], e[2], e[3], yo(e[4]), yo(e[5]), e[6], e[7], e.length > 8 ? e.slice(8) : void 0)
+    }).set(20, (t, e, n) => {
+        e[2] === I.playerId && SA(t.visualPosition, 2, !1)
+    }).set(19, (t, e, n) => {
         if (fe.freezeBuffs && t === I.player) return;
         t.buffs.removeBuff(e[1], e[2])
-    }).set(20, (t, e, n) => {
+    }).set(21, (t, e, n) => {
         let o = new xt(I.time, yo(e[4]) - I.time + .2);
         CP(e[0], e[2], e[1], e[3], o)
-    }).set(21, (t, e, n) => {
+    }).set(22, (t, e, n) => {
         let o = e[2],
             i = yo(e[3]) - I.time,
             s = new xt(I.time, i),
@@ -34458,14 +34459,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         if (a > 2)
             for (let u = r + a * 3; u < e.length; ++u) f.push(e[u] / 65535);
         SP(t.id, c, f, e[1], o, s)
-    }).set(25, (t, e, n) => {
-        t.setParty(e[1], e[2])
     }).set(26, (t, e, n) => {
-        t.hasInfo === !1 && t.setDropInfo(e[1], e[2], e[3], e[4], e[5])
+        t.setParty(e[1], e[2])
     }).set(27, (t, e, n) => {
-        t.setNodeInfo(e[1], e[2], e[3])
+        t.hasInfo === !1 && t.setDropInfo(e[1], e[2], e[3], e[4], e[5])
     }).set(28, (t, e, n) => {
-        if (typeof t.setPosLock === "function") t.setPosLock(e[1], e[2], e[3])
+        t.setNodeInfo(e[1], e[2], e[3])
+    }).set(29, (t, e, n) => {
+        t.setPosLock(e[1], e[2], e[3])
     });
     var VT = (t, e, n) => {
             let o = I.getEntityById(e[0]);
