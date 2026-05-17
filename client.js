@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
     let rareMobs = [
                 {name:"Ghost",id:15,type:"mount"},
                 {name:"Keiler",id:16,type:"mount"},
@@ -2399,6 +2399,7 @@ void main() {
         bs = ne(!1),
         tl = ne(!1),
         gf = ne(!0),
+        waveGoldMeterActive = ne(!1),
         vf = ne(!0),
         Pa = ne(!0),
         zo = ne(!1),
@@ -2631,7 +2632,7 @@ void main() {
     var shadowDistMultiplier = 1.0, grassDistVal = 130;
     shadowDistMult.subscribe(v => shadowDistMultiplier = v / 100);
     grassDist.subscribe(v => grassDistVal = v);
-    var classColorsArr = ["#C7966F", "#21A9E1", "#98CE64", "#1C51FF"];
+    var classColorsArr = ["#C7966F", "#030404", "#98CE64", "#1C51FF"];
     const classNames = ["warrior", "mage", "archer", "shaman"];
     function darkenHex(hex, factor) {
         let n = parseInt(hex.slice(1), 16);
@@ -22143,11 +22144,159 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         tick: () => TL,
         values: () => Pi
     });
+    let waveDataByClusters = new Map(),
+        wavePendingDeathQueue = [],
+        waveActiveKey = null,
+        waveLastAttackedKey = null,
+        waveGoldStore = ne({gpw: 0, mobEntries: [], waveTime: -1});
+
+    function waveMakeClusterEntry(stacks, namesIterable) {
+        return {stacks, clusterNames: new Set(namesIterable), maxCount: 0, currentCount: 0, mobGoldMap: new Map(), timerStart: -1, timerEnd: -1, deathCount: 0, downtimeStart: -1, downtime: -1, waveRespawned: false, lastWaveTime: -1, waveTotalTime: 0, waveTimeCount: 0, downtimeTotalTime: 0, downtimeCount: 0};
+    }
+
+    function waveBuildKey(stacks, namesIterable) {
+        return stacks + ":" + Array.from(namesIterable).sort().join(",");
+    }
+
+    function waveFindOrMatchCluster(stacks, namesSet) {
+        for (let [key, data] of waveDataByClusters) {
+            if (data.stacks !== stacks) continue;
+            let allMatch = true;
+            for (let name of namesSet) {
+                if (!data.clusterNames.has(name)) { allMatch = false; break; }
+            }
+            if (allMatch) return key;
+        }
+        let key = waveBuildKey(stacks, namesSet);
+        waveDataByClusters.set(key, waveMakeClusterEntry(stacks, namesSet));
+        return key;
+    }
+
+    function waveFindClusterKeyForDeath(stacks, entityName) {
+        if (waveActiveKey !== null) {
+            let activeData = waveDataByClusters.get(waveActiveKey);
+            if (activeData && activeData.stacks === stacks && activeData.clusterNames.has(entityName)) return waveActiveKey;
+        }
+        for (let [key, data] of waveDataByClusters) {
+            if (data.stacks === stacks && data.clusterNames.has(entityName)) return key;
+        }
+        return null;
+    }
+
+    function waveGetActiveKey() {
+        if (waveLastAttackedKey !== null && waveDataByClusters.has(waveLastAttackedKey)) return waveLastAttackedKey;
+        let bestKey = null, bestCount = 0;
+        waveDataByClusters.forEach((data, key) => {
+            if (data.stacks <= 10 && data.currentCount > bestCount) {
+                bestCount = data.currentCount;
+                bestKey = key;
+            }
+        });
+        if (bestKey === null) {
+            waveDataByClusters.forEach((data, key) => {
+                if (data.stacks <= 10 && data.maxCount > bestCount) {
+                    bestCount = data.maxCount;
+                    bestKey = key;
+                }
+            });
+        }
+        return bestKey;
+    }
+
+    function waveUpdateGoldStore() {
+        waveActiveKey = waveGetActiveKey();
+        if (waveActiveKey === null || !waveDataByClusters.has(waveActiveKey)) {
+            waveGoldStore.set({gpw: 0, mobEntries: [], waveTime: -1, downtime: -1, gph: -1, clusterSize: 0, clusterStacks: -1});
+            return;
+        }
+        let data = waveDataByClusters.get(waveActiveKey);
+        let totalGold = 0;
+        let totalCount = 0;
+        let mobEntries = [];
+        data.mobGoldMap.forEach((mobData, name) => {
+            totalGold += mobData.total;
+            totalCount += mobData.count;
+            mobEntries.push({name, totalGold: Math.round(mobData.total / mobData.count), count: Math.min(mobData.count, data.maxCount)});
+        });
+        let avgGold = totalCount > 0 ? totalGold / totalCount : 0;
+        let gpw = Math.round(avgGold * (data.maxCount || totalCount));
+        let waveTime = data.timerStart !== -1 ? (data.timerEnd !== -1 ? data.timerEnd - data.timerStart : I.time - data.timerStart) : -1;
+        let gph = data.lastWaveTime > 0 && data.downtime >= 0 ? Math.round(gpw * 3600 / (data.lastWaveTime + data.downtime)) : -1;
+        waveGoldStore.set({gpw, mobEntries, waveTime, downtime: data.downtime, gph, clusterSize: data.maxCount, clusterStacks: data.stacks});
+    }
+
+    function waveRecordHellspawnDeath(entity) {
+        let hellspawnMap = entity.buffs.buffs.get(124);
+        let firstBuff = hellspawnMap.values().next().value;
+        if (!firstBuff) return;
+        let stacks = firstBuff.stacks;
+        let entityName = entity.name || "Unknown";
+        let clusterKey = waveFindClusterKeyForDeath(stacks, entityName);
+        if (clusterKey === null) return;
+        let data = waveDataByClusters.get(clusterKey);
+        let currentCount = 0;
+        for (let e of I.entities.array) {
+            if (!e.stats || !e.stats.alive) continue;
+            if (!e.buffs || !e.buffs.buffs || !e.buffs.buffs.has(124)) continue;
+            let eMap = e.buffs.buffs.get(124);
+            let eBuff = eMap.values().next().value;
+            if (!eBuff || eBuff.stacks !== stacks) continue;
+            if (!data.clusterNames.has(e.name || "Unknown")) continue;
+            currentCount++;
+        }
+        if (currentCount > data.maxCount) data.maxCount = currentCount;
+        data.currentCount = Math.max(0, currentCount - 1);
+        data.deathCount++;
+        if (data.timerStart !== -1 && data.timerEnd === -1 && data.deathCount >= data.maxCount) {
+            data.timerEnd = I.time;
+            data.downtimeStart = I.time;
+            data.lastWaveTime = data.timerEnd - data.timerStart;
+            data.waveTotalTime += data.lastWaveTime;
+            data.waveTimeCount++;
+        }
+        wavePendingDeathQueue.push({name: entityName, clusterKey});
+    }
+
+    function waveUpdateNearbyClusterCounts() {
+        if (!I || !I.player) return;
+        let groupsByStacks = new Map();
+        for (let entity of I.entities.array) {
+            if (!entity.stats || !entity.stats.alive) continue;
+            if (!entity.buffs || !entity.buffs.buffs || !entity.buffs.buffs.has(124)) continue;
+            let hellspawnMap = entity.buffs.buffs.get(124);
+            let buff = hellspawnMap.values().next().value;
+            if (!buff) continue;
+            let stacks = buff.stacks;
+            let name = entity.name || "Unknown";
+            if (!groupsByStacks.has(stacks)) groupsByStacks.set(stacks, {names: new Set(), total: 0});
+            let group = groupsByStacks.get(stacks);
+            group.names.add(name);
+            group.total++;
+        }
+        waveDataByClusters.forEach(data => { data.currentCount = 0; });
+        groupsByStacks.forEach((group, stacks) => {
+            let key = waveFindOrMatchCluster(stacks, group.names);
+            let data = waveDataByClusters.get(key);
+            data.currentCount = group.total;
+            for (let name of group.names) data.clusterNames.add(name);
+            if (group.total > data.maxCount) data.maxCount = group.total;
+        });
+        waveDataByClusters.forEach((data, key) => {
+            if (data.maxCount > 0 && data.deathCount >= data.maxCount && data.currentCount > 0 && !data.waveRespawned) {
+                data.deathCount = 0;
+                data.waveRespawned = true;
+            }
+        });
+        waveUpdateGoldStore();
+    }
+
     var Pi = new Map,
         wv = new xt(0, 1),
+        waveDisplayTimer = new xt(0, 0.1),
         Bd = 0,
         bu = () => {
-            Pi.set("exp", 0), Pi.set("gold", 0), wv.reset(0), Bd = 0
+            Pi.set("exp", 0), Pi.set("gold", 0), wv.reset(0), Bd = 0,
+            waveDataByClusters.clear(), wavePendingDeathQueue.length = 0, waveActiveKey = null, waveLastAttackedKey = null, waveGoldStore.set({gpw: 0, mobEntries: [], waveTime: -1})
         },
         AL = bu,
         TL = t => {
@@ -22157,7 +22306,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             }), Dm.set({
                 exp: Pi.get("exp"),
                 exph: Pi.get("exp") / Bd * 60 * 60
-            }))
+            }), waveUpdateNearbyClusterCounts());
+            waveDisplayTimer.done(I.time) && (waveDisplayTimer.reset(I.time), waveUpdateGoldStore());
         },
         Mv = t => {
             Pi.set("exp", (Pi.get("exp") || 0) + t)
@@ -22199,6 +22349,18 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             switch (n) {
                 case 1:
                     fe.msgGoldPickUp && jt("inv", P.ui.inventory.pick.replace("$1", i), !0), Ud(e);
+                    if (wavePendingDeathQueue.length > 0) {
+                        let pending = wavePendingDeathQueue.shift();
+                        let waveData = waveDataByClusters.get(pending.clusterKey);
+                        if (waveData) {
+                            if (!waveData.mobGoldMap.has(pending.name)) waveData.mobGoldMap.set(pending.name, {total: 0, count: 0});
+                            let mobData = waveData.mobGoldMap.get(pending.name);
+                            mobData.total += e;
+                            mobData.count++;
+                            waveActiveKey = pending.clusterKey;
+                            waveUpdateGoldStore();
+                        }
+                    }
                     break;
                 case 4:
                     zr.update(s => !s), jt("inv", P.ui.merchant.auctionbuy.replace("$1", i), !0);
@@ -23176,6 +23338,158 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
     }
 
+    function waveGoldFrag(t) {
+        let goldAmountComp, waveText, clusterInfoEl, dropdown, parentEl, mouseEnterHandler, mouseLeaveHandler, initialized = !1;
+        goldAmountComp = new wn({props: {amount: Math.round(t[10].gpw)}});
+
+        function updateClusterInfo(storeVal) {
+            if (!clusterInfoEl) return;
+            if (storeVal.clusterSize > 0 && storeVal.clusterStacks !== -1) {
+                let clusterEnemyColor = Lt("enemy") || "#ff6060";
+                clusterInfoEl.innerHTML = "<span style=\"color:#888888\">" + storeVal.clusterSize + "x</span><img src=\"/data/ui/skills/hellspawn." + On + "?v=8822612\" class=\"svgicon texticon\" style=\"margin-left:5px;margin-right:0px;\"><span style=\"color:" + clusterEnemyColor + "\">" + storeVal.clusterStacks + "</span>";
+                Ve(clusterInfoEl, "display", "inline-flex");
+            } else {
+                Ve(clusterInfoEl, "display", "none");
+            }
+        }
+
+        function buildDropdown(storeVal) {
+            if (!dropdown) return;
+            while (dropdown.firstChild) dropdown.removeChild(dropdown.firstChild);
+            let entries = storeVal.mobEntries || [];
+            if (entries.length === 0 && storeVal.waveTime < 0 && storeVal.gph < 0) return;
+            let enemyColor = Lt("enemy") || "#ff6060";
+            for (let entry of entries) {
+                let row = h("div");
+                Ve(row, "display", "flex");
+                Ve(row, "align-items", "center");
+                Ve(row, "gap", "4px");
+                let countSpan = h("span");
+                countSpan.textContent = "(" + entry.count + "x)";
+                Ve(countSpan, "color", "#888888");
+                let nameSpan = h("span");
+                nameSpan.textContent = entry.name + ":";
+                Ve(nameSpan, "color", enemyColor);
+                let goldSpan = h("span");
+                goldSpan.innerHTML = cg(entry.totalGold);
+                row.appendChild(countSpan);
+                row.appendChild(nameSpan);
+                row.appendChild(goldSpan);
+                dropdown.appendChild(row);
+            }
+            if (storeVal.waveTime >= 0) {
+                let timeRow = h("div");
+                timeRow.textContent = "Wave time: " + storeVal.waveTime.toFixed(1) + "s";
+                Ve(timeRow, "color", "#aaaaaa");
+                Ve(timeRow, "margin-top", entries.length > 0 ? "4px" : "0");
+                dropdown.appendChild(timeRow);
+            }
+            if (storeVal.downtime >= 0) {
+                let downtimeRow = h("div");
+                downtimeRow.textContent = "Downtime: " + storeVal.downtime.toFixed(1) + "s";
+                Ve(downtimeRow, "color", "#aaaaaa");
+                Ve(downtimeRow, "margin-top", "0");
+                dropdown.appendChild(downtimeRow);
+            }
+            if (storeVal.gph >= 0) {
+                let gphRow = h("div");
+                gphRow.innerHTML = cg(storeVal.gph) + " / h";
+                Ve(gphRow, "color", "#aaaaaa");
+                Ve(gphRow, "margin-top", "4px");
+                dropdown.appendChild(gphRow);
+            }
+        }
+
+        return {
+            c() {
+                K(goldAmountComp.$$.fragment);
+                waveText = T(" / wave");
+            },
+            m(mountEl, anchor) {
+                parentEl = mountEl;
+                Ve(parentEl, "display", "flex");
+                Ve(parentEl, "justify-content", "space-between");
+                Ve(parentEl, "align-items", "center");
+                Q(goldAmountComp, mountEl, anchor);
+                w(mountEl, waveText, anchor);
+                clusterInfoEl = h("span");
+                Ve(clusterInfoEl, "margin-left", "8px");
+                Ve(clusterInfoEl, "display", "none");
+                Ve(clusterInfoEl, "align-items", "center");
+                Ve(clusterInfoEl, "gap", "2px");
+                Ve(clusterInfoEl, "white-space", "nowrap");
+                mountEl.appendChild(clusterInfoEl);
+                updateClusterInfo(t[10]);
+                dropdown = h("div");
+                Ve(dropdown, "margin-top", "5px");
+                Ve(dropdown, "position", "fixed");
+                Ve(dropdown, "background-color", "rgba(16,19,29,0.9)");
+                Ve(dropdown, "border-radius", "3px");
+                Ve(dropdown, "padding", "6px 10px");
+                Ve(dropdown, "display", "none");
+                Ve(dropdown, "flex-direction", "column");
+                Ve(dropdown, "gap", "4px");
+                Ve(dropdown, "white-space", "nowrap");
+                Ve(dropdown, "z-index", "9999");
+                Ve(dropdown, "pointer-events", "none");
+                Ve(dropdown, "transform-origin", "top left");
+                Ve(dropdown, "border-top", "3px solid rgba(120,134,180,.8)");
+                Ve(dropdown, "border-left", "3px solid rgba(120,134,180,.8)");
+                Ve(dropdown, "border-right", "3px solid rgba(120,134,180,.8)");
+                Ve(dropdown, "border-bottom", "3px solid rgba(120,134,180,.8)");
+                buildDropdown(t[10]);
+                document.body.appendChild(dropdown);
+                mouseEnterHandler = () => {
+                    if (!dropdown.firstChild) return;
+                    let rect = parentEl.getBoundingClientRect();
+                    Ve(dropdown, "transform", "scale(1)");
+                    Ve(dropdown, "left", "0px");
+                    Ve(dropdown, "top", "-9999px");
+                    Ve(dropdown, "visibility", "hidden");
+                    Ve(dropdown, "display", "flex");
+                    let naturalWidth = dropdown.scrollWidth;
+                    Ve(dropdown, "visibility", "");
+                    Ve(dropdown, "left", rect.left + "px");
+                    Ve(dropdown, "top", rect.bottom + "px");
+                    let scale = naturalWidth > 0 && rect.width > 0 ? Math.min(1, (rect.width - 5) / (naturalWidth)) : 1;
+                    Ve(dropdown, "transform", "scale(" + scale + ")");
+                };
+                mouseLeaveHandler = () => {
+                    Ve(dropdown, "display", "none");
+                };
+                parentEl.addEventListener("mouseenter", mouseEnterHandler);
+                parentEl.addEventListener("mouseleave", mouseLeaveHandler);
+                initialized = !0;
+            },
+            p(i, s) {
+                if (s & 1024) {
+                    let r = {};
+                    r.amount = Math.round(i[10].gpw);
+                    goldAmountComp.$set(r);
+                    updateClusterInfo(i[10]);
+                    buildDropdown(i[10]);
+                }
+            },
+            i(i) {
+                initialized || (S(goldAmountComp.$$.fragment, i), initialized = !0);
+            },
+            o(i) {
+                E(goldAmountComp.$$.fragment, i);
+                initialized = !1;
+            },
+            d(detach) {
+                if (detach) x(waveText);
+                if (detach && clusterInfoEl && clusterInfoEl.parentElement) clusterInfoEl.parentElement.removeChild(clusterInfoEl);
+                Z(goldAmountComp, detach);
+                if (parentEl) {
+                    parentEl.removeEventListener("mouseenter", mouseEnterHandler);
+                    parentEl.removeEventListener("mouseleave", mouseLeaveHandler);
+                }
+                if (dropdown && dropdown.parentElement) dropdown.parentElement.removeChild(dropdown);
+            }
+        };
+    }
+
     function TC(t, e) {
         let n, o, i;
         return o = new vu({
@@ -23226,11 +23540,11 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         let F = y(t, -1),
             A = F(t),
-            C = [HL, GL],
+            C = [HL, GL, waveGoldFrag],
             M = [];
 
         function D(B, q) {
-            return B[6] ? 0 : 1
+            return B[9] ? 2 : B[6] ? 0 : 1
         }
         r = D(t, -1), l = M[r] = C[r](t);
         let U = pe(t[8]),
@@ -23280,6 +23594,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             },
             m(B, q) {
                 w(B, e, q), d(e, n), d(n, o), k.m(n, null), d(n, i), A.m(i, null), d(n, s), M[r].m(s, null), d(e, a), d(e, c);
+                Ve(i, "display", I.player && I.player.level >= 45 ? "none" : "");
                 for (let L = 0; L < f.length; L += 1) f[L] && f[L].m(c, null);
                 const realignBar = () => {
                     let partyFramesElement = document.querySelector(".partyframes");
@@ -23340,7 +23655,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 });
                 classBtnHandlers.push(classSelectorAnimations.subscribe(refreshActive));
                 classBtnHandlers.push(fp.subscribe(refreshActive));
-                m = !0, g || (v = [H(o, "click", t[9]), H(i, "click", t[12]), H(i, "contextmenu", bu), H(s, "click", t[13]), H(s, "contextmenu", bu)], g = !0)
+                m = !0, g || (v = [H(o, "click", t[11]), H(i, "click", t[14]), H(i, "contextmenu", bu), H(s, "click", t[15]), H(s, "contextmenu", bu)], g = !0)
             },
             p(B, [q]) {
 
@@ -23360,6 +23675,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                 }
 
                 b === (b = _(B, q)) && k ? k.p(B, q) : (k.d(1), k = b(B), k && (k.c(), k.m(n, i))), F === (F = y(B, q)) && A ? A.p(B, q) : (A.d(1), A = F(B), A && (A.c(), A.m(i, null)));
+                Ve(i, "display", I.player && I.player.level >= 45 ? "none" : "");
                 let L = r;
                 r = D(B, q), r === L ? M[r].p(B, q) : (we(), E(M[L], 1, 1, () => {
                     M[L] = null
@@ -23387,8 +23703,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     }
 
     function XL(t, e, n) {
-        let o, i, s, r, l, a, c, f, u;
-        re(t, Im, F => n(0, o = F)), re(t, Dm, F => n(1, i = F)), re(t, eo, F => n(2, s = F)), re(t, ei, F => n(3, r = F)), re(t, Qo, F => n(4, l = F)), re(t, vf, F => n(5, a = F)), re(t, gf, F => n(6, c = F)), re(t, ol, F => n(7, f = F)), re(t, pa, F => n(8, u = F));
+        let o, i, s, r, l, a, c, f, u, waveActive, waveData;
+        re(t, Im, F => n(0, o = F)), re(t, Dm, F => n(1, i = F)), re(t, eo, F => n(2, s = F)), re(t, ei, F => n(3, r = F)), re(t, Qo, F => n(4, l = F)), re(t, vf, F => n(5, a = F)), re(t, gf, F => n(6, c = F)), re(t, ol, F => n(7, f = F)), re(t, pa, F => n(8, u = F)), re(t, waveGoldMeterActive, F => n(9, waveActive = F)), re(t, waveGoldStore, F => n(10, waveData = F));
         let m = F => {
                 let A = [{
                     name: "Party Panel",
@@ -23408,10 +23724,17 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             v = () => {
                 console.log(o)
             };
-        return [o, i, s, r, l, a, c, f, u, m, F => Xe(ei, r = !r, r), F => Xe(ei, r = !r, r), F => {
+        return [o, i, s, r, l, a, c, f, u, waveActive, waveData, m, F => Xe(ei, r = !r, r), F => Xe(ei, r = !r, r), F => {
             Xe(vf, a = !a, a)
         }, F => {
-            Xe(gf, c = !c, c)
+            if (waveActive) {
+                waveGoldMeterActive.set(!1);
+                Xe(gf, c = !0, !0);
+            } else if (c) {
+                Xe(gf, c = !1, !1);
+            } else {
+                waveGoldMeterActive.set(!0);
+            }
         }]
     }
     var Dv = class extends Fe {
@@ -33956,6 +34279,54 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         s !== void 0 && fe.dpsmeterMode === 0 && Vd(s, o, i);
         let f = t === I.player,
             u = s === I.player;
+        if (u && t.buffs && t.buffs.buffs && t.buffs.buffs.has(124)) {
+            let waveHellspawnMap = t.buffs.buffs.get(124);
+            let waveHellspawnBuff = waveHellspawnMap.values().next().value;
+            if (waveHellspawnBuff) {
+                let attackedStacks = waveHellspawnBuff.stacks;
+                let attackedName = t.name || "Unknown";
+                let attackedKey = null;
+                if (waveActiveKey !== null) {
+                    let activeData = waveDataByClusters.get(waveActiveKey);
+                    if (activeData && activeData.stacks === attackedStacks && activeData.clusterNames.has(attackedName)) attackedKey = waveActiveKey;
+                }
+                if (attackedKey === null) {
+                    for (let [key, data] of waveDataByClusters) {
+                        if (data.stacks === attackedStacks && data.clusterNames.has(attackedName)) { attackedKey = key; break; }
+                    }
+                }
+                if (attackedKey === null) {
+                    let nearbyNames = new Set();
+                    nearbyNames.add(attackedName);
+                    for (let entity of I.entities.array) {
+                        if (!entity.stats || !entity.stats.alive) continue;
+                        if (!entity.buffs || !entity.buffs.buffs || !entity.buffs.buffs.has(124)) continue;
+                        let eMap = entity.buffs.buffs.get(124);
+                        let eBuff = eMap.values().next().value;
+                        if (!eBuff || eBuff.stacks !== attackedStacks) continue;
+                        nearbyNames.add(entity.name || "Unknown");
+                    }
+                    attackedKey = waveFindOrMatchCluster(attackedStacks, nearbyNames);
+                }
+                waveLastAttackedKey = attackedKey;
+                let waveAttackData = waveDataByClusters.get(attackedKey);
+                if (waveAttackData.waveRespawned) {
+                    waveAttackData.downtime = waveAttackData.downtimeStart !== -1 ? I.time - waveAttackData.downtimeStart : -1;
+                    if (waveAttackData.downtime >= 0) {
+                        waveAttackData.downtimeTotalTime += waveAttackData.downtime;
+                        waveAttackData.downtimeCount++;
+                    }
+                    waveAttackData.downtimeStart = -1;
+                    waveAttackData.timerStart = I.time;
+                    waveAttackData.timerEnd = -1;
+                    wavePendingDeathQueue = wavePendingDeathQueue.filter(entry => entry.clusterKey !== attackedKey);
+                    waveAttackData.waveRespawned = false;
+                } else if (waveAttackData.timerStart === -1) {
+                    waveAttackData.timerStart = I.time;
+                }
+                waveUpdateGoldStore();
+            }
+        }
         if (f ? fe.showIncomingDamage && N2([-.3, -.3, .5], o, l, a, !0, 0) : u && N2(t.visualPosition, o, l, a, !1, 2, i, s, t), l > 0 && (o > 0 && (t.hpFlashTime = I.smoothtime, t.hpFlashFraction = t.stats.getResource(6) / t.stats.getStat(6)), t.stats.changeResource(6, -o)), c > 0 && (t.stats.refreshCombatTimer(I.time, c), s && s.stats.refreshCombatTimer(I.time, c)), !n && l > 0 && t.visual && !t.visual.inFog) {
             let m = r > 0 && Er.has(r) ? Er.get(r).effect.transform : s && s.visual && s.visual.transform,
                 g = t.visual.transform;
@@ -33973,7 +34344,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             i = t === I.player;
         i && fe.showIncomingHeal && PA([.35, -.2, .5], e[1], e[4], !0, 0), !n && o && o.visual && t.visual && !t.visual.inFog && !o.visual.inFog && n_(e[2], o.visual.transform, t.visual.transform, t.radius, i ? 1 : 0)
     }).set(10, (t, e, n) => {
-        e[1] == 0 ? t.stats.alive && (t.stats.die(), t == I.player ? La(P.ui.death.death, P.ui.death.deathmsg, [{
+        e[1] == 0 ? t.stats.alive && (t !== I.player && t.buffs && t.buffs.buffs && t.buffs.buffs.has(124) && waveRecordHellspawnDeath(t), t.stats.die(), t == I.player ? La(P.ui.death.death, P.ui.death.deathmsg, [{
             text: P.ui.death.respawn,
             blockedTime: Math.max(0, Math.ceil(e[2] - I.time) + 1),
             fun: () => {
@@ -34355,3 +34726,4 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             RT = t, QA(e, t), requestAnimationFrame(zT)
         };
 })();
+
