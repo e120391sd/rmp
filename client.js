@@ -22151,7 +22151,25 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         waveGoldStore = ne({gpw: 0, mobEntries: [], waveTime: -1});
 
     function waveMakeClusterEntry(stacks, namesIterable) {
-        return {stacks, clusterNames: new Set(namesIterable), maxCount: 0, currentCount: 0, mobGoldMap: new Map(), timerStart: -1, timerEnd: -1, deathCount: 0, downtimeStart: -1, downtime: -1, waveRespawned: false, lastWaveTime: -1, waveTotalTime: 0, waveTimeCount: 0, downtimeTotalTime: 0, downtimeCount: 0};
+        return {
+            stacks,
+            clusterNames: new Set(namesIterable),
+            maxCount: 0,
+            currentCount: 0,
+            mobGoldMap: new Map(),
+            mobTypeMaxCounts: new Map(),
+            timerStart: -1,
+            timerEnd: -1,
+            deathCount: 0,
+            downtimeStart: -1,
+            downtime: -1,
+            waveRespawned: false,
+            lastWaveTime: -1,
+            waveTotalTime: 0,
+            waveTimeCount: 0,
+            downtimeTotalTime: 0,
+            downtimeCount: 0
+        };
     }
 
     function waveBuildKey(stacks, namesIterable) {
@@ -22160,15 +22178,28 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
 
     function waveFindOrMatchCluster(stacks, namesSet) {
         for (let [key, data] of waveDataByClusters) {
-            if (data.stacks !== stacks) continue;
+            if (data.stacks !== stacks)
+                continue;
+
+            if (data.clusterNames.size !== namesSet.size)
+                continue;
+
             let allMatch = true;
+
             for (let name of namesSet) {
-                if (!data.clusterNames.has(name)) { allMatch = false; break; }
+                if (!data.clusterNames.has(name)) {
+                    allMatch = false;
+                    break;
+                }
             }
-            if (allMatch) return key;
+
+            if (allMatch)
+                return key;
         }
+
         let key = waveBuildKey(stacks, namesSet);
         waveDataByClusters.set(key, waveMakeClusterEntry(stacks, namesSet));
+
         return key;
     }
 
@@ -22177,21 +22208,26 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             let activeData = waveDataByClusters.get(waveActiveKey);
             if (activeData && activeData.stacks === stacks && activeData.clusterNames.has(entityName)) return waveActiveKey;
         }
+
         for (let [key, data] of waveDataByClusters) {
             if (data.stacks === stacks && data.clusterNames.has(entityName)) return key;
         }
+
         return null;
     }
 
     function waveGetActiveKey() {
         if (waveLastAttackedKey !== null && waveDataByClusters.has(waveLastAttackedKey)) return waveLastAttackedKey;
+
         let bestKey = null, bestCount = 0;
+
         waveDataByClusters.forEach((data, key) => {
             if (data.stacks <= 10 && data.currentCount > bestCount) {
                 bestCount = data.currentCount;
                 bestKey = key;
             }
         });
+
         if (bestKey === null) {
             waveDataByClusters.forEach((data, key) => {
                 if (data.stacks <= 10 && data.maxCount > bestCount) {
@@ -22209,6 +22245,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             waveGoldStore.set({gpw: 0, mobEntries: [], waveTime: -1, downtime: -1, gph: -1, clusterSize: 0, clusterStacks: -1});
             return;
         }
+
         let data = waveDataByClusters.get(waveActiveKey);
         let totalGold = 0;
         let totalCount = 0;
@@ -22216,12 +22253,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         data.mobGoldMap.forEach((mobData, name) => {
             totalGold += mobData.total;
             totalCount += mobData.count;
-            mobEntries.push({name, totalGold: Math.round(mobData.total / mobData.count), count: Math.min(mobData.count, data.maxCount)});
+            mobEntries.push({name, totalGold: Math.round(mobData.total / mobData.count), count: data.mobTypeMaxCounts.get(name) || mobData.count});
         });
+
         let avgGold = totalCount > 0 ? totalGold / totalCount : 0;
         let gpw = Math.round(avgGold * (data.maxCount || totalCount));
         let waveTime = data.timerStart !== -1 ? (data.timerEnd !== -1 ? data.timerEnd - data.timerStart : I.time - data.timerStart) : -1;
         let gph = data.lastWaveTime > 0 && data.downtime >= 0 ? Math.round(gpw * 3600 / (data.lastWaveTime + data.downtime)) : -1;
+
         waveGoldStore.set({gpw, mobEntries, waveTime, downtime: data.downtime, gph, clusterSize: data.maxCount, clusterStacks: data.stacks});
     }
 
@@ -22229,10 +22268,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let hellspawnMap = entity.buffs.buffs.get(124);
         let firstBuff = hellspawnMap.values().next().value;
         if (!firstBuff) return;
+
         let stacks = firstBuff.stacks;
         let entityName = entity.name || "Unknown";
         let clusterKey = waveFindClusterKeyForDeath(stacks, entityName);
         if (clusterKey === null) return;
+
         let data = waveDataByClusters.get(clusterKey);
         let currentCount = 0;
         for (let e of I.entities.array) {
@@ -22263,11 +22304,14 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         for (let entity of I.entities.array) {
             if (!entity.stats || !entity.stats.alive) continue;
             if (!entity.buffs || !entity.buffs.buffs || !entity.buffs.buffs.has(124)) continue;
+
             let hellspawnMap = entity.buffs.buffs.get(124);
             let buff = hellspawnMap.values().next().value;
+
             if (!buff) continue;
             let stacks = buff.stacks;
             let name = entity.name || "Unknown";
+
             if (!groupsByStacks.has(stacks)) groupsByStacks.set(stacks, {names: new Set(), total: 0});
             let group = groupsByStacks.get(stacks);
             group.names.add(name);
@@ -22277,7 +22321,30 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         groupsByStacks.forEach((group, stacks) => {
             let key = waveFindOrMatchCluster(stacks, group.names);
             let data = waveDataByClusters.get(key);
+
             data.currentCount = group.total;
+
+            let currentMobCounts = new Map();
+
+            for (let entity of I.entities.array) {
+                if (!entity.stats || !entity.stats.alive) continue;
+                if (!entity.buffs || !entity.buffs.buffs || !entity.buffs.buffs.has(124)) continue;
+
+                let hellspawnMap = entity.buffs.buffs.get(124);
+                let buff = hellspawnMap.values().next().value;
+                if (!buff || buff.stacks !== stacks) continue;
+
+                let name = entity.name || "Unknown";
+                if (!group.names.has(name)) continue;
+
+                currentMobCounts.set(name, (currentMobCounts.get(name) || 0) + 1);
+            }
+
+            currentMobCounts.forEach((count, name) => {
+                let prev = data.mobTypeMaxCounts.get(name) || 0;
+                if (count > prev) data.mobTypeMaxCounts.set(name, count);
+            });
+
             for (let name of group.names) data.clusterNames.add(name);
             if (group.total > data.maxCount) data.maxCount = group.total;
         });
