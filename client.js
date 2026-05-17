@@ -32601,11 +32601,12 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
         setBuff(e, n, o, i, s, r, l, a) {
             let c = super.setBuff(e, n, o, i, s, r);
+            if (!c || !c.logic) { if (c) c.data = a; return; }
             c.data = a, c.visualFreeze = c.visualIncapacitate = 0, this.immuneCC.size === 0 && (c.logic.fx.frozen && c.visualFreeze++, c.logic.fx.incapacitated && c.visualIncapacitate++), this.entity.buffDisplayDirty = !0, this.entity.visual && this.addEffectBuff(e, c, l)
         }
         removeBuff(e, n) {
             let o = super.removeBuff(e, n);
-            o && (this.entity.buffDisplayDirty = !0, this.removeEffectBuff(e, o.logic, o), o.logic.fx.endSound !== void 0 && I.player !== void 0 && is(o.logic.fx.endSound, this.entity.visual.transform, this.entity.id === I.playerId || n === I.playerId ? 1 : 0, 0, 1))
+            o && o.logic && (this.entity.buffDisplayDirty = !0, this.removeEffectBuff(e, o.logic, o), o.logic.fx.endSound !== void 0 && I.player !== void 0 && is(o.logic.fx.endSound, this.entity.visual.transform, this.entity.id === I.playerId || n === I.playerId ? 1 : 0, 0, 1))
         }
         changeEntityVisual(e) {
             this.entity.remakeTransform(e), this.stickEffects.forEach((n, o) => {
