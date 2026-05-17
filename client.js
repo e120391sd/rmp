@@ -34781,7 +34781,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
     };
     window.onload = async () => {
         console.log("Hordes 0.51.8822 Live"), await L1();
-        let t = await fetch("data/game/game.bin?v=8822612");
+        let t = await fetch("data/game/game.bin?v=8845418");
         let decode = Ia.gamedata.decode(new Uint8Array(await t.arrayBuffer()))
         z1(decode), xx(), bA(), qA(), new l8({
             target: document.querySelector("body")
