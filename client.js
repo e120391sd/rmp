@@ -22253,7 +22253,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         data.mobGoldMap.forEach((mobData, name) => {
             totalGold += mobData.total;
             totalCount += mobData.count;
-            mobEntries.push({name, totalGold: Math.round(mobData.total / mobData.count), count: data.mobTypeMaxCounts.get(name) || mobData.count});
+            mobEntries.push({name, totalGold: Math.round(mobData.total), count: data.mobTypeMaxCounts.get(name) || mobData.count});
         });
 
         let avgGold = totalCount > 0 ? totalGold / totalCount : 0;
@@ -23447,21 +23447,21 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             if (storeVal.waveTime >= 0) {
                 let timeRow = h("div");
                 timeRow.textContent = "Wave time: " + storeVal.waveTime.toFixed(1) + "s";
-                Ve(timeRow, "color", "#aaaaaa");
+                Ve(timeRow, "color", "#888888");
                 Ve(timeRow, "margin-top", entries.length > 0 ? "4px" : "0");
                 dropdown.appendChild(timeRow);
             }
             if (storeVal.downtime >= 0) {
                 let downtimeRow = h("div");
                 downtimeRow.textContent = "Downtime: " + storeVal.downtime.toFixed(1) + "s";
-                Ve(downtimeRow, "color", "#aaaaaa");
+                Ve(downtimeRow, "color", "#888888");
                 Ve(downtimeRow, "margin-top", "0");
                 dropdown.appendChild(downtimeRow);
             }
             if (storeVal.gph >= 0) {
                 let gphRow = h("div");
                 gphRow.innerHTML = cg(storeVal.gph) + " / h";
-                Ve(gphRow, "color", "#aaaaaa");
+                Ve(gphRow, "color", "#888888");
                 Ve(gphRow, "margin-top", "4px");
                 dropdown.appendChild(gphRow);
             }
