@@ -22157,6 +22157,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             maxCount: 0,
             currentCount: 0,
             mobGoldMap: new Map(),
+            lastWaveGold: new Map(),
             mobTypeMaxCounts: new Map(),
             timerStart: -1,
             timerEnd: -1,
@@ -22250,7 +22251,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         let totalGold = 0;
         let totalCount = 0;
         let mobEntries = [];
-        data.mobGoldMap.forEach((mobData, name) => {
+        let displayMap = data.lastWaveGold.size > 0 ? data.lastWaveGold : data.mobGoldMap;
+        displayMap.forEach((mobData, name) => {
             totalGold += mobData.total;
             totalCount += mobData.count;
             mobEntries.push({name, totalGold: Math.round(mobData.total), count: data.mobTypeMaxCounts.get(name) || mobData.count});
@@ -22294,6 +22296,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             data.lastWaveTime = data.timerEnd - data.timerStart;
             data.waveTotalTime += data.lastWaveTime;
             data.waveTimeCount++;
+            data.lastWaveGold = data.mobGoldMap;
+            data.mobGoldMap = new Map();
         }
         wavePendingDeathQueue.push({name: entityName, clusterKey});
     }
