@@ -22158,6 +22158,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             currentCount: 0,
             mobGoldMap: new Map(),
             lastWaveGold: new Map(),
+            waveInstance: 0,
             mobTypeMaxCounts: new Map(),
             timerStart: -1,
             timerEnd: -1,
@@ -22171,6 +22172,17 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             downtimeTotalTime: 0,
             downtimeCount: 0
         };
+    }
+
+    function waveCreditMobGold(waveData, name, amount, waveInstance) {
+        let targetMap = waveInstance < waveData.waveInstance ? waveData.lastWaveGold : waveData.mobGoldMap;
+        let mobData = targetMap.get(name);
+        if (!mobData) {
+            mobData = {total: 0, count: 0};
+            targetMap.set(name, mobData);
+        }
+        mobData.total += amount;
+        mobData.count++;
     }
 
     function waveBuildKey(stacks, namesIterable) {
@@ -22248,18 +22260,15 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         }
 
         let data = waveDataByClusters.get(waveActiveKey);
-        let totalGold = 0;
-        let totalCount = 0;
-        let mobEntries = [];
         let displayMap = data.lastWaveGold.size > 0 ? data.lastWaveGold : data.mobGoldMap;
+        let mobEntries = [];
+        let waveGoldSum = 0;
         displayMap.forEach((mobData, name) => {
-            totalGold += mobData.total;
-            totalCount += mobData.count;
+            waveGoldSum += mobData.total;
             mobEntries.push({name, totalGold: Math.round(mobData.total), count: data.mobTypeMaxCounts.get(name) || mobData.count});
         });
 
-        let avgGold = totalCount > 0 ? totalGold / totalCount : 0;
-        let gpw = Math.round(avgGold * (data.maxCount || totalCount));
+        let gpw = Math.round(waveGoldSum);
         let waveTime = data.timerStart !== -1 ? (data.timerEnd !== -1 ? data.timerEnd - data.timerStart : I.time - data.timerStart) : -1;
         let gph = data.lastWaveTime > 0 && data.downtime >= 0 ? Math.round(gpw * 3600 / (data.lastWaveTime + data.downtime)) : -1;
 
@@ -22290,6 +22299,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
         if (currentCount > data.maxCount) data.maxCount = currentCount;
         data.currentCount = Math.max(0, currentCount - 1);
         data.deathCount++;
+        wavePendingDeathQueue.push({name: entityName, clusterKey, waveInstance: data.waveInstance});
         if (data.timerStart !== -1 && data.timerEnd === -1 && data.deathCount >= data.maxCount) {
             data.timerEnd = I.time;
             data.downtimeStart = I.time;
@@ -22298,8 +22308,8 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
             data.waveTimeCount++;
             data.lastWaveGold = data.mobGoldMap;
             data.mobGoldMap = new Map();
+            data.waveInstance++;
         }
-        wavePendingDeathQueue.push({name: entityName, clusterKey});
     }
 
     function waveUpdateNearbyClusterCounts() {
@@ -22424,10 +22434,7 @@ o[10] || o[8] ? "auto" : fe.noFrameColor ? "black"
                         let pending = wavePendingDeathQueue.shift();
                         let waveData = waveDataByClusters.get(pending.clusterKey);
                         if (waveData) {
-                            if (!waveData.mobGoldMap.has(pending.name)) waveData.mobGoldMap.set(pending.name, {total: 0, count: 0});
-                            let mobData = waveData.mobGoldMap.get(pending.name);
-                            mobData.total += e;
-                            mobData.count++;
+                            waveCreditMobGold(waveData, pending.name, e, pending.waveInstance);
                             waveActiveKey = pending.clusterKey;
                             waveUpdateGoldStore();
                         }
